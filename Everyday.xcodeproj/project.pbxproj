@@ -38,6 +38,32 @@
 		9E5B750B2B7F9A8300E2BDE6 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75042B7F9A8300E2BDE6 /* SignInViewModel.swift */; };
 		9E5B750C2B7F9A8300E2BDE6 /* SignInInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75052B7F9A8300E2BDE6 /* SignInInteractor.swift */; };
 		9E5B750D2B7F9A8300E2BDE6 /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75062B7F9A8300E2BDE6 /* SignInPresenter.swift */; };
+		9E5B75102B7F9CE300E2BDE6 /* UserFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B750E2B7F9CE200E2BDE6 /* UserFieldView.swift */; };
+		9E5B75112B7F9CE300E2BDE6 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B750F2B7F9CE300E2BDE6 /* ImagePickerView.swift */; };
+		9E5B75142B7F9D1D00E2BDE6 /* AgeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75132B7F9D1D00E2BDE6 /* AgeButtonView.swift */; };
+		9E5B75162B7F9D3500E2BDE6 /* GenderButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75152B7F9D3500E2BDE6 /* GenderButtonView.swift */; };
+		9E5B75382B7F9D7600E2BDE6 /* GenderModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75182B7F9D7600E2BDE6 /* GenderModel.swift */; };
+		9E5B75392B7F9D7600E2BDE6 /* GenderView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75192B7F9D7600E2BDE6 /* GenderView.swift */; };
+		9E5B753A2B7F9D7600E2BDE6 /* GenderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B751B2B7F9D7600E2BDE6 /* GenderViewModel.swift */; };
+		9E5B753B2B7F9D7600E2BDE6 /* GenderController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B751C2B7F9D7600E2BDE6 /* GenderController.swift */; };
+		9E5B753C2B7F9D7600E2BDE6 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B751D2B7F9D7600E2BDE6 /* ContentView.swift */; };
+		9E5B753D2B7F9D7600E2BDE6 /* TextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B751F2B7F9D7600E2BDE6 /* TextFieldView.swift */; };
+		9E5B753E2B7F9D7600E2BDE6 /* WeightViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75212B7F9D7600E2BDE6 /* WeightViewModel.swift */; };
+		9E5B753F2B7F9D7600E2BDE6 /* WeightView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75222B7F9D7600E2BDE6 /* WeightView.swift */; };
+		9E5B75402B7F9D7600E2BDE6 /* PageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75252B7F9D7600E2BDE6 /* PageViewModel.swift */; };
+		9E5B75412B7F9D7600E2BDE6 /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75262B7F9D7600E2BDE6 /* PageView.swift */; };
+		9E5B75422B7F9D7600E2BDE6 /* AgeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75282B7F9D7600E2BDE6 /* AgeController.swift */; };
+		9E5B75432B7F9D7600E2BDE6 /* AgeModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75292B7F9D7600E2BDE6 /* AgeModel.swift */; };
+		9E5B75442B7F9D7600E2BDE6 /* AgeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B752B2B7F9D7600E2BDE6 /* AgeViewModel.swift */; };
+		9E5B75452B7F9D7600E2BDE6 /* AgeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B752C2B7F9D7600E2BDE6 /* AgeView.swift */; };
+		9E5B75462B7F9D7600E2BDE6 /* ProfileAcknowledgementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B752E2B7F9D7600E2BDE6 /* ProfileAcknowledgementView.swift */; };
+		9E5B75472B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B752F2B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift */; };
+		9E5B75482B7F9D7600E2BDE6 /* ProfileAcknowledgementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75312B7F9D7600E2BDE6 /* ProfileAcknowledgementViewModel.swift */; };
+		9E5B75492B7F9D7600E2BDE6 /* ProfileAcknowledgementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75322B7F9D7600E2BDE6 /* ProfileAcknowledgementController.swift */; };
+		9E5B754A2B7F9D7600E2BDE6 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75332B7F9D7600E2BDE6 /* OnBoardingViewController.swift */; };
+		9E5B754B2B7F9D7600E2BDE6 /* ProfileSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75352B7F9D7600E2BDE6 /* ProfileSetupViewModel.swift */; };
+		9E5B754C2B7F9D7600E2BDE6 /* ProfileSetupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75362B7F9D7600E2BDE6 /* ProfileSetupModel.swift */; };
+		9E5B754D2B7F9D7600E2BDE6 /* ProfileSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75372B7F9D7600E2BDE6 /* ProfileSetupView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -77,6 +103,32 @@
 		9E5B75042B7F9A8300E2BDE6 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		9E5B75052B7F9A8300E2BDE6 /* SignInInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInInteractor.swift; sourceTree = "<group>"; };
 		9E5B75062B7F9A8300E2BDE6 /* SignInPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
+		9E5B750E2B7F9CE200E2BDE6 /* UserFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFieldView.swift; sourceTree = "<group>"; };
+		9E5B750F2B7F9CE300E2BDE6 /* ImagePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
+		9E5B75132B7F9D1D00E2BDE6 /* AgeButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeButtonView.swift; sourceTree = "<group>"; };
+		9E5B75152B7F9D3500E2BDE6 /* GenderButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderButtonView.swift; sourceTree = "<group>"; };
+		9E5B75182B7F9D7600E2BDE6 /* GenderModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderModel.swift; sourceTree = "<group>"; };
+		9E5B75192B7F9D7600E2BDE6 /* GenderView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderView.swift; sourceTree = "<group>"; };
+		9E5B751B2B7F9D7600E2BDE6 /* GenderViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderViewModel.swift; sourceTree = "<group>"; };
+		9E5B751C2B7F9D7600E2BDE6 /* GenderController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderController.swift; sourceTree = "<group>"; };
+		9E5B751D2B7F9D7600E2BDE6 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		9E5B751F2B7F9D7600E2BDE6 /* TextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TextFieldView.swift; sourceTree = "<group>"; };
+		9E5B75212B7F9D7600E2BDE6 /* WeightViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightViewModel.swift; sourceTree = "<group>"; };
+		9E5B75222B7F9D7600E2BDE6 /* WeightView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WeightView.swift; sourceTree = "<group>"; };
+		9E5B75252B7F9D7600E2BDE6 /* PageViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageViewModel.swift; sourceTree = "<group>"; };
+		9E5B75262B7F9D7600E2BDE6 /* PageView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
+		9E5B75282B7F9D7600E2BDE6 /* AgeController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeController.swift; sourceTree = "<group>"; };
+		9E5B75292B7F9D7600E2BDE6 /* AgeModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeModel.swift; sourceTree = "<group>"; };
+		9E5B752B2B7F9D7600E2BDE6 /* AgeViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeViewModel.swift; sourceTree = "<group>"; };
+		9E5B752C2B7F9D7600E2BDE6 /* AgeView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeView.swift; sourceTree = "<group>"; };
+		9E5B752E2B7F9D7600E2BDE6 /* ProfileAcknowledgementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAcknowledgementView.swift; sourceTree = "<group>"; };
+		9E5B752F2B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAcknowledgementModel.swift; sourceTree = "<group>"; };
+		9E5B75312B7F9D7600E2BDE6 /* ProfileAcknowledgementViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAcknowledgementViewModel.swift; sourceTree = "<group>"; };
+		9E5B75322B7F9D7600E2BDE6 /* ProfileAcknowledgementController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAcknowledgementController.swift; sourceTree = "<group>"; };
+		9E5B75332B7F9D7600E2BDE6 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
+		9E5B75352B7F9D7600E2BDE6 /* ProfileSetupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupViewModel.swift; sourceTree = "<group>"; };
+		9E5B75362B7F9D7600E2BDE6 /* ProfileSetupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupModel.swift; sourceTree = "<group>"; };
+		9E5B75372B7F9D7600E2BDE6 /* ProfileSetupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -134,6 +186,10 @@
 		9E53FB492B7F94BA00C55A45 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
+				9E5B75152B7F9D3500E2BDE6 /* GenderButtonView.swift */,
+				9E5B75132B7F9D1D00E2BDE6 /* AgeButtonView.swift */,
+				9E5B750F2B7F9CE300E2BDE6 /* ImagePickerView.swift */,
+				9E5B750E2B7F9CE200E2BDE6 /* UserFieldView.swift */,
 				9E53FB512B7F951400C55A45 /* String+Ext.swift */,
 				9E53FB4F2B7F951000C55A45 /* UIColor+Extension.swift */,
 				9E53FB4D2B7F950B00C55A45 /* Color+Extension.swift */,
@@ -154,10 +210,10 @@
 		9E5B74CF2B7F96ED00E2BDE6 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
+				9E5B74D02B7F96FA00E2BDE6 /* WelcomeScreen */,
 				9E5B74DF2B7F98F200E2BDE6 /* SignIn */,
 				9E5B74DE2B7F98EB00E2BDE6 /* SignUp */,
 				9E5B74DD2B7F98E200E2BDE6 /* OnBoarding */,
-				9E5B74D02B7F96FA00E2BDE6 /* WelcomeScreen */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -178,6 +234,14 @@
 		9E5B74DD2B7F98E200E2BDE6 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
+				9E5B75272B7F9D7600E2BDE6 /* Age */,
+				9E5B751D2B7F9D7600E2BDE6 /* ContentView.swift */,
+				9E5B75172B7F9D7600E2BDE6 /* Gender */,
+				9E5B75232B7F9D7600E2BDE6 /* Introduction */,
+				9E5B75332B7F9D7600E2BDE6 /* OnBoardingViewController.swift */,
+				9E5B752D2B7F9D7600E2BDE6 /* ProfileAcknowledgement */,
+				9E5B75342B7F9D7600E2BDE6 /* ProfileSetup */,
+				9E5B751E2B7F9D7600E2BDE6 /* Weight */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";
@@ -239,6 +303,108 @@
 				9E5B75042B7F9A8300E2BDE6 /* SignInViewModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		9E5B75172B7F9D7600E2BDE6 /* Gender */ = {
+			isa = PBXGroup;
+			children = (
+				9E5B75182B7F9D7600E2BDE6 /* GenderModel.swift */,
+				9E5B75192B7F9D7600E2BDE6 /* GenderView.swift */,
+				9E5B751A2B7F9D7600E2BDE6 /* Models */,
+				9E5B751C2B7F9D7600E2BDE6 /* GenderController.swift */,
+			);
+			path = Gender;
+			sourceTree = "<group>";
+		};
+		9E5B751A2B7F9D7600E2BDE6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9E5B751B2B7F9D7600E2BDE6 /* GenderViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9E5B751E2B7F9D7600E2BDE6 /* Weight */ = {
+			isa = PBXGroup;
+			children = (
+				9E5B751F2B7F9D7600E2BDE6 /* TextFieldView.swift */,
+				9E5B75202B7F9D7600E2BDE6 /* Models */,
+				9E5B75222B7F9D7600E2BDE6 /* WeightView.swift */,
+			);
+			path = Weight;
+			sourceTree = "<group>";
+		};
+		9E5B75202B7F9D7600E2BDE6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9E5B75212B7F9D7600E2BDE6 /* WeightViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9E5B75232B7F9D7600E2BDE6 /* Introduction */ = {
+			isa = PBXGroup;
+			children = (
+				9E5B75242B7F9D7600E2BDE6 /* Models */,
+				9E5B75262B7F9D7600E2BDE6 /* PageView.swift */,
+			);
+			path = Introduction;
+			sourceTree = "<group>";
+		};
+		9E5B75242B7F9D7600E2BDE6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9E5B75252B7F9D7600E2BDE6 /* PageViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9E5B75272B7F9D7600E2BDE6 /* Age */ = {
+			isa = PBXGroup;
+			children = (
+				9E5B75282B7F9D7600E2BDE6 /* AgeController.swift */,
+				9E5B75292B7F9D7600E2BDE6 /* AgeModel.swift */,
+				9E5B752A2B7F9D7600E2BDE6 /* Models */,
+				9E5B752C2B7F9D7600E2BDE6 /* AgeView.swift */,
+			);
+			path = Age;
+			sourceTree = "<group>";
+		};
+		9E5B752A2B7F9D7600E2BDE6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9E5B752B2B7F9D7600E2BDE6 /* AgeViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9E5B752D2B7F9D7600E2BDE6 /* ProfileAcknowledgement */ = {
+			isa = PBXGroup;
+			children = (
+				9E5B752E2B7F9D7600E2BDE6 /* ProfileAcknowledgementView.swift */,
+				9E5B752F2B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift */,
+				9E5B75302B7F9D7600E2BDE6 /* Models */,
+				9E5B75322B7F9D7600E2BDE6 /* ProfileAcknowledgementController.swift */,
+			);
+			path = ProfileAcknowledgement;
+			sourceTree = "<group>";
+		};
+		9E5B75302B7F9D7600E2BDE6 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9E5B75312B7F9D7600E2BDE6 /* ProfileAcknowledgementViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9E5B75342B7F9D7600E2BDE6 /* ProfileSetup */ = {
+			isa = PBXGroup;
+			children = (
+				9E5B75352B7F9D7600E2BDE6 /* ProfileSetupViewModel.swift */,
+				9E5B75362B7F9D7600E2BDE6 /* ProfileSetupModel.swift */,
+				9E5B75372B7F9D7600E2BDE6 /* ProfileSetupView.swift */,
+			);
+			path = ProfileSetup;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -341,31 +507,57 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E5B75482B7F9D7600E2BDE6 /* ProfileAcknowledgementViewModel.swift in Sources */,
 				9E5B74F82B7F9A7000E2BDE6 /* SignUpInteractor.swift in Sources */,
+				9E5B754D2B7F9D7600E2BDE6 /* ProfileSetupView.swift in Sources */,
+				9E5B753E2B7F9D7600E2BDE6 /* WeightViewModel.swift in Sources */,
 				9E5B74FC2B7F9A7000E2BDE6 /* SignUpViewModel.swift in Sources */,
 				9E5B74ED2B7F99FB00E2BDE6 /* WelcomeScreenViewModel.swift in Sources */,
+				9E5B75382B7F9D7600E2BDE6 /* GenderModel.swift in Sources */,
+				9E5B754B2B7F9D7600E2BDE6 /* ProfileSetupViewModel.swift in Sources */,
+				9E5B75422B7F9D7600E2BDE6 /* AgeController.swift in Sources */,
 				9E5B74F92B7F9A7000E2BDE6 /* SignUpRouter.swift in Sources */,
+				9E5B75112B7F9CE300E2BDE6 /* ImagePickerView.swift in Sources */,
 				9E53FB522B7F951400C55A45 /* String+Ext.swift in Sources */,
 				9E5B74EA2B7F99FB00E2BDE6 /* WelcomeScreenRouter.swift in Sources */,
+				9E5B753A2B7F9D7600E2BDE6 /* GenderViewModel.swift in Sources */,
 				9E5B75092B7F9A8300E2BDE6 /* SignInRouter.swift in Sources */,
+				9E5B753B2B7F9D7600E2BDE6 /* GenderController.swift in Sources */,
 				9E5B74E92B7F99FB00E2BDE6 /* WelcomeScreenContainer.swift in Sources */,
+				9E5B75402B7F9D7600E2BDE6 /* PageViewModel.swift in Sources */,
 				9E5B74FE2B7F9A7000E2BDE6 /* SignUpViewController.swift in Sources */,
 				9E5B74EC2B7F99FB00E2BDE6 /* WelcomeScreenViewController.swift in Sources */,
+				9E5B75102B7F9CE300E2BDE6 /* UserFieldView.swift in Sources */,
 				9E5B75082B7F9A8300E2BDE6 /* SignInContainer.swift in Sources */,
+				9E5B753C2B7F9D7600E2BDE6 /* ContentView.swift in Sources */,
+				9E5B75452B7F9D7600E2BDE6 /* AgeView.swift in Sources */,
 				9E5B75072B7F9A8300E2BDE6 /* SignInProtocols.swift in Sources */,
+				9E5B75472B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift in Sources */,
 				9E5B74FA2B7F9A7000E2BDE6 /* SignUpProtocols.swift in Sources */,
 				9E53FB4E2B7F950B00C55A45 /* Color+Extension.swift in Sources */,
 				9E53FB342B7F87BA00C55A45 /* AppDelegate.swift in Sources */,
+				9E5B75162B7F9D3500E2BDE6 /* GenderButtonView.swift in Sources */,
+				9E5B75442B7F9D7600E2BDE6 /* AgeViewModel.swift in Sources */,
 				9E5B74EB2B7F99FB00E2BDE6 /* WelcomeScreenProtocols.swift in Sources */,
+				9E5B754A2B7F9D7600E2BDE6 /* OnBoardingViewController.swift in Sources */,
+				9E5B75492B7F9D7600E2BDE6 /* ProfileAcknowledgementController.swift in Sources */,
+				9E5B75412B7F9D7600E2BDE6 /* PageView.swift in Sources */,
 				9E53FB502B7F951000C55A45 /* UIColor+Extension.swift in Sources */,
 				9E53FB4C2B7F950400C55A45 /* UIView+Extension.swift in Sources */,
 				9E5B750D2B7F9A8300E2BDE6 /* SignInPresenter.swift in Sources */,
+				9E5B75462B7F9D7600E2BDE6 /* ProfileAcknowledgementView.swift in Sources */,
+				9E5B753D2B7F9D7600E2BDE6 /* TextFieldView.swift in Sources */,
 				9E53FB362B7F87BA00C55A45 /* SceneDelegate.swift in Sources */,
 				9E5B74FD2B7F9A7000E2BDE6 /* SignUpContainer.swift in Sources */,
 				9E5B750B2B7F9A8300E2BDE6 /* SignInViewModel.swift in Sources */,
 				9E5B750C2B7F9A8300E2BDE6 /* SignInInteractor.swift in Sources */,
+				9E5B75432B7F9D7600E2BDE6 /* AgeModel.swift in Sources */,
+				9E5B75392B7F9D7600E2BDE6 /* GenderView.swift in Sources */,
 				9E5B74FB2B7F9A7000E2BDE6 /* SignUpPresenter.swift in Sources */,
 				9E5B750A2B7F9A8300E2BDE6 /* SignInViewController.swift in Sources */,
+				9E5B75142B7F9D1D00E2BDE6 /* AgeButtonView.swift in Sources */,
+				9E5B753F2B7F9D7600E2BDE6 /* WeightView.swift in Sources */,
+				9E5B754C2B7F9D7600E2BDE6 /* ProfileSetupModel.swift in Sources */,
 				9E5B74EE2B7F99FB00E2BDE6 /* WelcomeScreenPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

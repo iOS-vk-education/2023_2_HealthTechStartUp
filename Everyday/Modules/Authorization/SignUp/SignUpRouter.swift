@@ -14,12 +14,10 @@ final class SignUpRouter {
 
 extension SignUpRouter: SignUpRouterInput {
     func openOnBoarding() {
-//        let onBoarding = onBoardingViewController()
-//        // viewController?.present(onBoarding, animated: true, completion: nil)
-//        
-//        let navigationController = UINavigationController(rootViewController: onBoarding)
-//        navigationController.modalPresentationStyle = .fullScreen
-//        viewController?.present(navigationController, animated: true, completion: nil)
+        let onBoarding = onBoardingViewController()
         
+        let navigationController = UINavigationController(rootViewController: onBoarding)
+        navigationController.modalPresentationStyle = .fullScreen
+        viewController?.present(navigationController, animated: true, completion: nil)
     }
 }
