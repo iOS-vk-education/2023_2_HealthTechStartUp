@@ -18,6 +18,7 @@
 		9E53FB522B7F951400C55A45 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E53FB512B7F951400C55A45 /* String+Ext.swift */; };
 		9E5B74CC2B7F963100E2BDE6 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9E5B74CB2B7F963100E2BDE6 /* PinLayout */; };
 		9E5B74CE2B7F966100E2BDE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E5B74CD2B7F966100E2BDE6 /* Assets.xcassets */; };
+		9E5B74D22B7F973500E2BDE6 /* WelcomeScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B74D12B7F973500E2BDE6 /* WelcomeScreenViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		9E53FB4F2B7F951000C55A45 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9E53FB512B7F951400C55A45 /* String+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
 		9E5B74CD2B7F966100E2BDE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
+		9E5B74D12B7F973500E2BDE6 /* WelcomeScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WelcomeScreenViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -101,8 +103,25 @@
 		9E53FB4A2B7F94C200C55A45 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9E5B74CF2B7F96ED00E2BDE6 /* Authorization */,
 			);
 			path = Modules;
+			sourceTree = "<group>";
+		};
+		9E5B74CF2B7F96ED00E2BDE6 /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				9E5B74D02B7F96FA00E2BDE6 /* WelcomeScreen */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
+		9E5B74D02B7F96FA00E2BDE6 /* WelcomeScreen */ = {
+			isa = PBXGroup;
+			children = (
+				9E5B74D12B7F973500E2BDE6 /* WelcomeScreenViewController.swift */,
+			);
+			path = WelcomeScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -209,6 +228,7 @@
 				9E53FB4E2B7F950B00C55A45 /* Color+Extension.swift in Sources */,
 				9E53FB342B7F87BA00C55A45 /* AppDelegate.swift in Sources */,
 				9E53FB502B7F951000C55A45 /* UIColor+Extension.swift in Sources */,
+				9E5B74D22B7F973500E2BDE6 /* WelcomeScreenViewController.swift in Sources */,
 				9E53FB4C2B7F950400C55A45 /* UIView+Extension.swift in Sources */,
 				9E53FB362B7F87BA00C55A45 /* SceneDelegate.swift in Sources */,
 			);
