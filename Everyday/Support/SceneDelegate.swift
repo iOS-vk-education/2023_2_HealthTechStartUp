@@ -16,8 +16,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
 
-        // let viewController = WelcomeScreenContainer.assemble(with: .init()).viewController
-        let viewController = WelcomeScreenViewController()
+        let viewController = WelcomeScreenContainer.assemble(with: .init()).viewController
         let navigationController = UINavigationController(rootViewController: viewController)
 
         let window = UIWindow(windowScene: scene)
