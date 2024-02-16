@@ -11,12 +11,13 @@
 		9E53FB362B7F87BA00C55A45 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E53FB352B7F87BA00C55A45 /* SceneDelegate.swift */; };
 		9E53FB382B7F87BA00C55A45 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E53FB372B7F87BA00C55A45 /* ViewController.swift */; };
 		9E53FB3B2B7F87BA00C55A45 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E53FB392B7F87BA00C55A45 /* Main.storyboard */; };
-		9E53FB3D2B7F87BB00C55A45 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E53FB3C2B7F87BB00C55A45 /* Assets.xcassets */; };
 		9E53FB402B7F87BB00C55A45 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 9E53FB3E2B7F87BB00C55A45 /* LaunchScreen.storyboard */; };
 		9E53FB4C2B7F950400C55A45 /* UIView+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E53FB4B2B7F950400C55A45 /* UIView+Extension.swift */; };
 		9E53FB4E2B7F950B00C55A45 /* Color+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E53FB4D2B7F950B00C55A45 /* Color+Extension.swift */; };
 		9E53FB502B7F951000C55A45 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E53FB4F2B7F951000C55A45 /* UIColor+Extension.swift */; };
 		9E53FB522B7F951400C55A45 /* String+Ext.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E53FB512B7F951400C55A45 /* String+Ext.swift */; };
+		9E5B74CC2B7F963100E2BDE6 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9E5B74CB2B7F963100E2BDE6 /* PinLayout */; };
+		9E5B74CE2B7F966100E2BDE6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 9E5B74CD2B7F966100E2BDE6 /* Assets.xcassets */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,13 +26,13 @@
 		9E53FB352B7F87BA00C55A45 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		9E53FB372B7F87BA00C55A45 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		9E53FB3A2B7F87BA00C55A45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
-		9E53FB3C2B7F87BB00C55A45 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		9E53FB3F2B7F87BB00C55A45 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		9E53FB412B7F87BB00C55A45 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		9E53FB4B2B7F950400C55A45 /* UIView+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIView+Extension.swift"; sourceTree = "<group>"; };
 		9E53FB4D2B7F950B00C55A45 /* Color+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "Color+Extension.swift"; sourceTree = "<group>"; };
 		9E53FB4F2B7F951000C55A45 /* UIColor+Extension.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
 		9E53FB512B7F951400C55A45 /* String+Ext.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = "String+Ext.swift"; sourceTree = "<group>"; };
+		9E5B74CD2B7F966100E2BDE6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -39,6 +40,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E5B74CC2B7F963100E2BDE6 /* PinLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -79,7 +81,7 @@
 				9E53FB352B7F87BA00C55A45 /* SceneDelegate.swift */,
 				9E53FB372B7F87BA00C55A45 /* ViewController.swift */,
 				9E53FB392B7F87BA00C55A45 /* Main.storyboard */,
-				9E53FB3C2B7F87BB00C55A45 /* Assets.xcassets */,
+				9E5B74CD2B7F966100E2BDE6 /* Assets.xcassets */,
 				9E53FB3E2B7F87BB00C55A45 /* LaunchScreen.storyboard */,
 			);
 			path = Support;
@@ -120,6 +122,9 @@
 			dependencies = (
 			);
 			name = Everyday;
+			packageProductDependencies = (
+				9E5B74CB2B7F963100E2BDE6 /* PinLayout */,
+			);
 			productName = Everyday;
 			productReference = 9E53FB302B7F87BA00C55A45 /* Everyday.app */;
 			productType = "com.apple.product-type.application";
@@ -148,6 +153,9 @@
 				Base,
 			);
 			mainGroup = 9E53FB272B7F87BA00C55A45;
+			packageReferences = (
+				9E5B74CA2B7F963100E2BDE6 /* XCRemoteSwiftPackageReference "PinLayout" */,
+			);
 			productRefGroup = 9E53FB312B7F87BA00C55A45 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -163,7 +171,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				9E53FB402B7F87BB00C55A45 /* LaunchScreen.storyboard in Resources */,
-				9E53FB3D2B7F87BB00C55A45 /* Assets.xcassets in Resources */,
+				9E5B74CE2B7F966100E2BDE6 /* Assets.xcassets in Resources */,
 				9E53FB3B2B7F87BA00C55A45 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -429,6 +437,25 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		9E5B74CA2B7F963100E2BDE6 /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.10.5;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		9E5B74CB2B7F963100E2BDE6 /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E5B74CA2B7F963100E2BDE6 /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 9E53FB282B7F87BA00C55A45 /* Project object */;
 }
