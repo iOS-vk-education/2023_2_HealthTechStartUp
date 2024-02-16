@@ -230,6 +230,7 @@ final class SignInViewController: UIViewController {
     @objc
     private func didTapSignInButton() {
         animateButton(with: signInButton)
+        output.didTapSignInButton() 
     }
 
     @objc

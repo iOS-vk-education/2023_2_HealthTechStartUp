@@ -11,6 +11,8 @@ struct ProfileAcknowledgementView: View {
     @State private var weight: String = ""
     private let defaultImage = Image("anonymous")
     
+    var onFinish: (() -> Void)?
+    
     // MARK: - body
     
     var body: some View {
@@ -110,16 +112,18 @@ struct ProfileAcknowledgementView: View {
                     .cornerRadius(Constants.TextFieldValues.cornerRadius)
 
                 Spacer()
-                
-                Button(action: {}, label: {
-                    Text(AttributedString(viewModel.starter))
-                        .padding(.horizontal, Constants.ButtonValues.hPadding)
-                        .padding(.vertical, Constants.ButtonValues.vPadding)
-                        .frame(maxWidth: .infinity)
-                        .background(Constants.accent)
-                        .foregroundColor(Constants.primaryText)
-                        .cornerRadius(Constants.ButtonValues.cornerRadius)
-                })
+                                
+                Button(action: {
+                    onFinish?()
+                                }, label: {
+                                    Text(AttributedString(viewModel.starter))
+                                        .padding(.horizontal, Constants.ButtonValues.hPadding)
+                                        .padding(.vertical, Constants.ButtonValues.vPadding)
+                                        .frame(maxWidth: .infinity)
+                                        .background(Constants.accent)
+                                        .foregroundColor(Constants.primaryText)
+                                        .cornerRadius(Constants.ButtonValues.cornerRadius)
+                                })
 
                 .padding(.bottom, Constants.VStackValues.bPadding)
             }

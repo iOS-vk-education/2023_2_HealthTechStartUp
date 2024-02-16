@@ -21,6 +21,7 @@ protocol SignInViewInput: AnyObject {
 
 protocol SignInViewOutput: AnyObject {
     func didLoadView()
+    func didTapSignInButton() 
 }
 
 protocol SignInInteractorInput: AnyObject {
@@ -30,4 +31,5 @@ protocol SignInInteractorOutput: AnyObject {
 }
 
 protocol SignInRouterInput: AnyObject {
+    func openApp()
 }

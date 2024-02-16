@@ -7,10 +7,19 @@
 
 import SwiftUI
 
+// MARK: - ContentView
+
 struct ContentView: View {
+    
+    // MARK: - properties
+    
     @State private var pageIndex = 0
     private let pages: [Page] = Page.samplePages
     private let dotAppearance = UIPageControl.appearance()
+    
+    var onFinish: (() -> Void)?
+    
+    // MARK: - body
     
     var body: some View {
         TabView(selection: $pageIndex) {
@@ -45,7 +54,7 @@ struct ContentView: View {
                     })
             .tag(6)
             
-            ProfileAcknowledgementView()
+            ProfileAcknowledgementView(onFinish: onFinish)
             .tag(7)
         }
         .animation(.easeInOut, value: pageIndex)
@@ -58,6 +67,7 @@ struct ContentView: View {
         .background(Color.background) 
     }
     
+    // MARK: - actions
     func incrementPage() {
         pageIndex += 1
     }
@@ -65,10 +75,4 @@ struct ContentView: View {
     func skipToProfileSetup() {
             pageIndex = 3
         }
-}
-
-struct ContentView_Preview: PreviewProvider {
-    static var previews: some View {
-        ContentView()
-    }
 }

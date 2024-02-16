@@ -25,6 +25,10 @@ extension SignInPresenter: SignInModuleInput {
 }
 
 extension SignInPresenter: SignInViewOutput {
+    func didTapSignInButton() {
+        router.openApp()
+    }
+    
     func didLoadView() {
         let viewModel = SignInViewModel()
         view?.configure(with: viewModel)

@@ -64,6 +64,31 @@
 		9E5B754C2B7F9D7600E2BDE6 /* ProfileSetupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75362B7F9D7600E2BDE6 /* ProfileSetupModel.swift */; };
 		9E5B754D2B7F9D7600E2BDE6 /* ProfileSetupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75372B7F9D7600E2BDE6 /* ProfileSetupView.swift */; };
 		9EE8AE052B7FA45F001D126F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9EE8AE042B7FA45F001D126F /* Localizable.xcstrings */; };
+		9EE8AE072B7FB77D001D126F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE062B7FB77D001D126F /* TabBarController.swift */; };
+		9EE8AE0F2B7FB8CF001D126F /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE092B7FB8CF001D126F /* SettingsPresenter.swift */; };
+		9EE8AE102B7FB8CF001D126F /* SettingsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE0A2B7FB8CF001D126F /* SettingsRouter.swift */; };
+		9EE8AE112B7FB8CF001D126F /* SettingsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE0B2B7FB8CF001D126F /* SettingsViewController.swift */; };
+		9EE8AE122B7FB8CF001D126F /* SettingsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE0C2B7FB8CF001D126F /* SettingsProtocols.swift */; };
+		9EE8AE132B7FB8CF001D126F /* SettingsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE0D2B7FB8CF001D126F /* SettingsInteractor.swift */; };
+		9EE8AE142B7FB8CF001D126F /* SettingsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE0E2B7FB8CF001D126F /* SettingsContainer.swift */; };
+		9EE8AE1C2B7FB905001D126F /* ProgressPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE162B7FB905001D126F /* ProgressPresenter.swift */; };
+		9EE8AE1D2B7FB905001D126F /* ProgressRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE172B7FB905001D126F /* ProgressRouter.swift */; };
+		9EE8AE1E2B7FB905001D126F /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE182B7FB905001D126F /* ProgressViewController.swift */; };
+		9EE8AE1F2B7FB905001D126F /* ProgressProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE192B7FB905001D126F /* ProgressProtocols.swift */; };
+		9EE8AE202B7FB905001D126F /* ProgressInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE1A2B7FB905001D126F /* ProgressInteractor.swift */; };
+		9EE8AE212B7FB905001D126F /* ProgressContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE1B2B7FB905001D126F /* ProgressContainer.swift */; };
+		9EE8AE292B7FB930001D126F /* NotepadPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE232B7FB930001D126F /* NotepadPresenter.swift */; };
+		9EE8AE2A2B7FB930001D126F /* NotepadRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE242B7FB930001D126F /* NotepadRouter.swift */; };
+		9EE8AE2B2B7FB930001D126F /* NotepadViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE252B7FB930001D126F /* NotepadViewController.swift */; };
+		9EE8AE2C2B7FB930001D126F /* NotepadProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE262B7FB930001D126F /* NotepadProtocols.swift */; };
+		9EE8AE2D2B7FB930001D126F /* NotepadInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE272B7FB930001D126F /* NotepadInteractor.swift */; };
+		9EE8AE2E2B7FB930001D126F /* NotepadContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE282B7FB930001D126F /* NotepadContainer.swift */; };
+		9EE8AE362B7FB96E001D126F /* WorkoutPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE302B7FB96E001D126F /* WorkoutPresenter.swift */; };
+		9EE8AE372B7FB96E001D126F /* WorkoutRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE312B7FB96E001D126F /* WorkoutRouter.swift */; };
+		9EE8AE382B7FB96E001D126F /* WorkoutViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE322B7FB96E001D126F /* WorkoutViewController.swift */; };
+		9EE8AE392B7FB96E001D126F /* WorkoutProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE332B7FB96E001D126F /* WorkoutProtocols.swift */; };
+		9EE8AE3A2B7FB96E001D126F /* WorkoutInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE342B7FB96E001D126F /* WorkoutInteractor.swift */; };
+		9EE8AE3B2B7FB96E001D126F /* WorkoutContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE352B7FB96E001D126F /* WorkoutContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -129,6 +154,31 @@
 		9E5B75362B7F9D7600E2BDE6 /* ProfileSetupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupModel.swift; sourceTree = "<group>"; };
 		9E5B75372B7F9D7600E2BDE6 /* ProfileSetupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupView.swift; sourceTree = "<group>"; };
 		9EE8AE042B7FA45F001D126F /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		9EE8AE062B7FB77D001D126F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		9EE8AE092B7FB8CF001D126F /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
+		9EE8AE0A2B7FB8CF001D126F /* SettingsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsRouter.swift; sourceTree = "<group>"; };
+		9EE8AE0B2B7FB8CF001D126F /* SettingsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewController.swift; sourceTree = "<group>"; };
+		9EE8AE0C2B7FB8CF001D126F /* SettingsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsProtocols.swift; sourceTree = "<group>"; };
+		9EE8AE0D2B7FB8CF001D126F /* SettingsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsInteractor.swift; sourceTree = "<group>"; };
+		9EE8AE0E2B7FB8CF001D126F /* SettingsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsContainer.swift; sourceTree = "<group>"; };
+		9EE8AE162B7FB905001D126F /* ProgressPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPresenter.swift; sourceTree = "<group>"; };
+		9EE8AE172B7FB905001D126F /* ProgressRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRouter.swift; sourceTree = "<group>"; };
+		9EE8AE182B7FB905001D126F /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
+		9EE8AE192B7FB905001D126F /* ProgressProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressProtocols.swift; sourceTree = "<group>"; };
+		9EE8AE1A2B7FB905001D126F /* ProgressInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressInteractor.swift; sourceTree = "<group>"; };
+		9EE8AE1B2B7FB905001D126F /* ProgressContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressContainer.swift; sourceTree = "<group>"; };
+		9EE8AE232B7FB930001D126F /* NotepadPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadPresenter.swift; sourceTree = "<group>"; };
+		9EE8AE242B7FB930001D126F /* NotepadRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadRouter.swift; sourceTree = "<group>"; };
+		9EE8AE252B7FB930001D126F /* NotepadViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadViewController.swift; sourceTree = "<group>"; };
+		9EE8AE262B7FB930001D126F /* NotepadProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadProtocols.swift; sourceTree = "<group>"; };
+		9EE8AE272B7FB930001D126F /* NotepadInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadInteractor.swift; sourceTree = "<group>"; };
+		9EE8AE282B7FB930001D126F /* NotepadContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadContainer.swift; sourceTree = "<group>"; };
+		9EE8AE302B7FB96E001D126F /* WorkoutPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutPresenter.swift; sourceTree = "<group>"; };
+		9EE8AE312B7FB96E001D126F /* WorkoutRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutRouter.swift; sourceTree = "<group>"; };
+		9EE8AE322B7FB96E001D126F /* WorkoutViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutViewController.swift; sourceTree = "<group>"; };
+		9EE8AE332B7FB96E001D126F /* WorkoutProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutProtocols.swift; sourceTree = "<group>"; };
+		9EE8AE342B7FB96E001D126F /* WorkoutInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutInteractor.swift; sourceTree = "<group>"; };
+		9EE8AE352B7FB96E001D126F /* WorkoutContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -201,6 +251,10 @@
 		9E53FB4A2B7F94C200C55A45 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9EE8AE2F2B7FB94D001D126F /* Workout */,
+				9EE8AE222B7FB91E001D126F /* Notepad */,
+				9EE8AE152B7FB8F3001D126F /* Progress */,
+				9EE8AE082B7FB8BC001D126F /* Settings */,
 				9E5B74E02B7F990100E2BDE6 /* TabBar */,
 				9E5B74CF2B7F96ED00E2BDE6 /* Authorization */,
 			);
@@ -234,11 +288,11 @@
 		9E5B74DD2B7F98E200E2BDE6 /* OnBoarding */ = {
 			isa = PBXGroup;
 			children = (
-				9E5B75272B7F9D7600E2BDE6 /* Age */,
 				9E5B751D2B7F9D7600E2BDE6 /* ContentView.swift */,
+				9E5B75332B7F9D7600E2BDE6 /* OnBoardingViewController.swift */,
+				9E5B75272B7F9D7600E2BDE6 /* Age */,
 				9E5B75172B7F9D7600E2BDE6 /* Gender */,
 				9E5B75232B7F9D7600E2BDE6 /* Introduction */,
-				9E5B75332B7F9D7600E2BDE6 /* OnBoardingViewController.swift */,
 				9E5B752D2B7F9D7600E2BDE6 /* ProfileAcknowledgement */,
 				9E5B75342B7F9D7600E2BDE6 /* ProfileSetup */,
 				9E5B751E2B7F9D7600E2BDE6 /* Weight */,
@@ -277,6 +331,7 @@
 		9E5B74E02B7F990100E2BDE6 /* TabBar */ = {
 			isa = PBXGroup;
 			children = (
+				9EE8AE062B7FB77D001D126F /* TabBarController.swift */,
 			);
 			path = TabBar;
 			sourceTree = "<group>";
@@ -407,6 +462,58 @@
 			path = ProfileSetup;
 			sourceTree = "<group>";
 		};
+		9EE8AE082B7FB8BC001D126F /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9EE8AE092B7FB8CF001D126F /* SettingsPresenter.swift */,
+				9EE8AE0A2B7FB8CF001D126F /* SettingsRouter.swift */,
+				9EE8AE0B2B7FB8CF001D126F /* SettingsViewController.swift */,
+				9EE8AE0C2B7FB8CF001D126F /* SettingsProtocols.swift */,
+				9EE8AE0D2B7FB8CF001D126F /* SettingsInteractor.swift */,
+				9EE8AE0E2B7FB8CF001D126F /* SettingsContainer.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
+		9EE8AE152B7FB8F3001D126F /* Progress */ = {
+			isa = PBXGroup;
+			children = (
+				9EE8AE162B7FB905001D126F /* ProgressPresenter.swift */,
+				9EE8AE172B7FB905001D126F /* ProgressRouter.swift */,
+				9EE8AE182B7FB905001D126F /* ProgressViewController.swift */,
+				9EE8AE192B7FB905001D126F /* ProgressProtocols.swift */,
+				9EE8AE1A2B7FB905001D126F /* ProgressInteractor.swift */,
+				9EE8AE1B2B7FB905001D126F /* ProgressContainer.swift */,
+			);
+			path = Progress;
+			sourceTree = "<group>";
+		};
+		9EE8AE222B7FB91E001D126F /* Notepad */ = {
+			isa = PBXGroup;
+			children = (
+				9EE8AE232B7FB930001D126F /* NotepadPresenter.swift */,
+				9EE8AE242B7FB930001D126F /* NotepadRouter.swift */,
+				9EE8AE252B7FB930001D126F /* NotepadViewController.swift */,
+				9EE8AE262B7FB930001D126F /* NotepadProtocols.swift */,
+				9EE8AE272B7FB930001D126F /* NotepadInteractor.swift */,
+				9EE8AE282B7FB930001D126F /* NotepadContainer.swift */,
+			);
+			path = Notepad;
+			sourceTree = "<group>";
+		};
+		9EE8AE2F2B7FB94D001D126F /* Workout */ = {
+			isa = PBXGroup;
+			children = (
+				9EE8AE302B7FB96E001D126F /* WorkoutPresenter.swift */,
+				9EE8AE312B7FB96E001D126F /* WorkoutRouter.swift */,
+				9EE8AE322B7FB96E001D126F /* WorkoutViewController.swift */,
+				9EE8AE332B7FB96E001D126F /* WorkoutProtocols.swift */,
+				9EE8AE342B7FB96E001D126F /* WorkoutInteractor.swift */,
+				9EE8AE352B7FB96E001D126F /* WorkoutContainer.swift */,
+			);
+			path = Workout;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -510,12 +617,20 @@
 				9E5B75482B7F9D7600E2BDE6 /* ProfileAcknowledgementViewModel.swift in Sources */,
 				9E5B74F82B7F9A7000E2BDE6 /* SignUpInteractor.swift in Sources */,
 				9E5B754D2B7F9D7600E2BDE6 /* ProfileSetupView.swift in Sources */,
+				9EE8AE072B7FB77D001D126F /* TabBarController.swift in Sources */,
+				9EE8AE102B7FB8CF001D126F /* SettingsRouter.swift in Sources */,
 				9E5B753E2B7F9D7600E2BDE6 /* WeightViewModel.swift in Sources */,
+				9EE8AE212B7FB905001D126F /* ProgressContainer.swift in Sources */,
 				9E5B74FC2B7F9A7000E2BDE6 /* SignUpViewModel.swift in Sources */,
+				9EE8AE2A2B7FB930001D126F /* NotepadRouter.swift in Sources */,
 				9E5B74ED2B7F99FB00E2BDE6 /* WelcomeScreenViewModel.swift in Sources */,
 				9E5B75382B7F9D7600E2BDE6 /* GenderModel.swift in Sources */,
 				9E5B754B2B7F9D7600E2BDE6 /* ProfileSetupViewModel.swift in Sources */,
+				9EE8AE2B2B7FB930001D126F /* NotepadViewController.swift in Sources */,
 				9E5B75422B7F9D7600E2BDE6 /* AgeController.swift in Sources */,
+				9EE8AE1E2B7FB905001D126F /* ProgressViewController.swift in Sources */,
+				9EE8AE392B7FB96E001D126F /* WorkoutProtocols.swift in Sources */,
+				9EE8AE132B7FB8CF001D126F /* SettingsInteractor.swift in Sources */,
 				9E5B74F92B7F9A7000E2BDE6 /* SignUpRouter.swift in Sources */,
 				9E5B75112B7F9CE300E2BDE6 /* ImagePickerView.swift in Sources */,
 				9E53FB522B7F951400C55A45 /* String+Ext.swift in Sources */,
@@ -524,40 +639,57 @@
 				9E5B75092B7F9A8300E2BDE6 /* SignInRouter.swift in Sources */,
 				9E5B753B2B7F9D7600E2BDE6 /* GenderController.swift in Sources */,
 				9E5B74E92B7F99FB00E2BDE6 /* WelcomeScreenContainer.swift in Sources */,
+				9EE8AE142B7FB8CF001D126F /* SettingsContainer.swift in Sources */,
 				9E5B75402B7F9D7600E2BDE6 /* PageViewModel.swift in Sources */,
 				9E5B74FE2B7F9A7000E2BDE6 /* SignUpViewController.swift in Sources */,
 				9E5B74EC2B7F99FB00E2BDE6 /* WelcomeScreenViewController.swift in Sources */,
+				9EE8AE362B7FB96E001D126F /* WorkoutPresenter.swift in Sources */,
 				9E5B75102B7F9CE300E2BDE6 /* UserFieldView.swift in Sources */,
+				9EE8AE112B7FB8CF001D126F /* SettingsViewController.swift in Sources */,
 				9E5B75082B7F9A8300E2BDE6 /* SignInContainer.swift in Sources */,
+				9EE8AE3B2B7FB96E001D126F /* WorkoutContainer.swift in Sources */,
+				9EE8AE1C2B7FB905001D126F /* ProgressPresenter.swift in Sources */,
+				9EE8AE1D2B7FB905001D126F /* ProgressRouter.swift in Sources */,
+				9EE8AE382B7FB96E001D126F /* WorkoutViewController.swift in Sources */,
+				9EE8AE2E2B7FB930001D126F /* NotepadContainer.swift in Sources */,
 				9E5B753C2B7F9D7600E2BDE6 /* ContentView.swift in Sources */,
 				9E5B75452B7F9D7600E2BDE6 /* AgeView.swift in Sources */,
 				9E5B75072B7F9A8300E2BDE6 /* SignInProtocols.swift in Sources */,
 				9E5B75472B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift in Sources */,
 				9E5B74FA2B7F9A7000E2BDE6 /* SignUpProtocols.swift in Sources */,
+				9EE8AE202B7FB905001D126F /* ProgressInteractor.swift in Sources */,
 				9E53FB4E2B7F950B00C55A45 /* Color+Extension.swift in Sources */,
+				9EE8AE372B7FB96E001D126F /* WorkoutRouter.swift in Sources */,
+				9EE8AE292B7FB930001D126F /* NotepadPresenter.swift in Sources */,
 				9E53FB342B7F87BA00C55A45 /* AppDelegate.swift in Sources */,
 				9E5B75162B7F9D3500E2BDE6 /* GenderButtonView.swift in Sources */,
 				9E5B75442B7F9D7600E2BDE6 /* AgeViewModel.swift in Sources */,
 				9E5B74EB2B7F99FB00E2BDE6 /* WelcomeScreenProtocols.swift in Sources */,
 				9E5B754A2B7F9D7600E2BDE6 /* OnBoardingViewController.swift in Sources */,
 				9E5B75492B7F9D7600E2BDE6 /* ProfileAcknowledgementController.swift in Sources */,
+				9EE8AE3A2B7FB96E001D126F /* WorkoutInteractor.swift in Sources */,
+				9EE8AE122B7FB8CF001D126F /* SettingsProtocols.swift in Sources */,
 				9E5B75412B7F9D7600E2BDE6 /* PageView.swift in Sources */,
 				9E53FB502B7F951000C55A45 /* UIColor+Extension.swift in Sources */,
 				9E53FB4C2B7F950400C55A45 /* UIView+Extension.swift in Sources */,
 				9E5B750D2B7F9A8300E2BDE6 /* SignInPresenter.swift in Sources */,
 				9E5B75462B7F9D7600E2BDE6 /* ProfileAcknowledgementView.swift in Sources */,
 				9E5B753D2B7F9D7600E2BDE6 /* TextFieldView.swift in Sources */,
+				9EE8AE0F2B7FB8CF001D126F /* SettingsPresenter.swift in Sources */,
 				9E53FB362B7F87BA00C55A45 /* SceneDelegate.swift in Sources */,
 				9E5B74FD2B7F9A7000E2BDE6 /* SignUpContainer.swift in Sources */,
 				9E5B750B2B7F9A8300E2BDE6 /* SignInViewModel.swift in Sources */,
+				9EE8AE2D2B7FB930001D126F /* NotepadInteractor.swift in Sources */,
 				9E5B750C2B7F9A8300E2BDE6 /* SignInInteractor.swift in Sources */,
 				9E5B75432B7F9D7600E2BDE6 /* AgeModel.swift in Sources */,
 				9E5B75392B7F9D7600E2BDE6 /* GenderView.swift in Sources */,
 				9E5B74FB2B7F9A7000E2BDE6 /* SignUpPresenter.swift in Sources */,
 				9E5B750A2B7F9A8300E2BDE6 /* SignInViewController.swift in Sources */,
 				9E5B75142B7F9D1D00E2BDE6 /* AgeButtonView.swift in Sources */,
+				9EE8AE1F2B7FB905001D126F /* ProgressProtocols.swift in Sources */,
 				9E5B753F2B7F9D7600E2BDE6 /* WeightView.swift in Sources */,
 				9E5B754C2B7F9D7600E2BDE6 /* ProfileSetupModel.swift in Sources */,
+				9EE8AE2C2B7FB930001D126F /* NotepadProtocols.swift in Sources */,
 				9E5B74EE2B7F99FB00E2BDE6 /* WelcomeScreenPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
