@@ -22,6 +22,7 @@ final class WelcomeScreenViewController: UIViewController {
 
     private var signInViewController: UIViewController?
     private var signUpViewController: UIViewController?
+    private var activePage: ActivePage = .signUp
     
     // MARK: - Init
     
@@ -65,6 +66,18 @@ final class WelcomeScreenViewController: UIViewController {
         super.viewDidLayoutSubviews()
         
         layout()
+    }
+    
+    override func traitCollectionDidChange(_ previousTraitCollection: UITraitCollection?) {
+        super.traitCollectionDidChange(previousTraitCollection)
+        
+        if self.traitCollection.hasDifferentColorAppearance(comparedTo: previousTraitCollection) {
+            let newFillColor: CGColor = Constants.accentLight.cgColor
+            
+            if let shapeLayer = triangleView.layer.sublayers?.first(where: { $0 is CAShapeLayer }) as? CAShapeLayer {
+                shapeLayer.fillColor = newFillColor
+            }
+        }
     }
     
     // MARK: - Setup
@@ -144,12 +157,19 @@ final class WelcomeScreenViewController: UIViewController {
             .marginBottom(Constants.Image.marginBottom)
             .horizontally()
         
-        let centerX = signUpButton.frame.midX - Constants.Triangle.size.width / 2
-        let centerY = signUpButton.frame.maxY
-        
-        triangleView.pin
-            .top(centerY)
-            .left(centerX)
+       let centerX: CGFloat
+       let centerY = signUpButton.frame.maxY
+       
+       switch activePage {
+       case .signUp:
+           centerX = signUpButton.frame.midX - Constants.Triangle.size.width / 2
+       case .signIn:
+           centerX = signInButton.frame.midX - Constants.Triangle.size.width / 2
+       }
+       
+       triangleView.pin
+           .top(centerY)
+           .left(centerX)
     }
     
     // MARK: - Actions
@@ -157,11 +177,13 @@ final class WelcomeScreenViewController: UIViewController {
     @objc
     private func didTapSignUpButton() {
         controllersScrollView.setContentOffset(.zero, animated: true)
+        activePage = .signUp
     }
     
     @objc
     private func didTapSignInButton() {
         controllersScrollView.setContentOffset(CGPoint(x: controllersScrollView.frame.width, y: .zero), animated: true)
+        activePage = .signIn
     }
     
     // MARK: - Keyboard Actions
@@ -218,6 +240,11 @@ extension WelcomeScreenViewController: UIScrollViewDelegate {
         
         triangleView.frame.origin.x = newOriginX
     }
+    
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        let pageIndex = round(scrollView.contentOffset.x / view.frame.width)
+        activePage = pageIndex == 0 ? .signUp : .signIn
+    }
 }
 
 // MARK: - WelcomeScreenViewInput
@@ -240,10 +267,20 @@ extension WelcomeScreenViewController: WelcomeScreenViewInput {
     }
 }
 
+// MARK: - Enum
+
+enum ActivePage {
+    case signUp
+    case signIn
+}
+
 // MARK: - Constants
 
 private extension WelcomeScreenViewController {
     struct Constants {
+        
+        static let accentLight = UIColor.UI.accentLight
+        
         struct Buttons {
             static let height: CGFloat = 50
             static let marginBottom: CGFloat = 10
