@@ -26,7 +26,7 @@ struct GenderButtonView: View {
                     .padding(.trailing, Constants.ImageValues.tPadding)
 
                 Text(localizedText)
-                    .foregroundColor(.black)
+                    .foregroundColor(Constants.primaryText)
                 
                 Spacer()
                 

@@ -25,7 +25,7 @@ struct AgeButtonView: View {
         }, label: {
             HStack {
                 Text(ageText)
-                    .foregroundColor(.black)
+                    .foregroundColor(Constants.primaryText)
                 
                 Spacer()
                 

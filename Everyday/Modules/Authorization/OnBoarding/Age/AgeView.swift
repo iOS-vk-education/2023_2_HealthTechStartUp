@@ -26,7 +26,6 @@ struct AgeView: View {
             Text(AttributedString(viewModel.title))
                 .font(.headline)
                 .multilineTextAlignment(.center)
-                .foregroundColor(Color.primaryText)
                         
             ForEach(controller.ages, id: \.self) { age in
                 let ageText = viewModel.ageText(for: age)
@@ -43,7 +42,7 @@ struct AgeView: View {
                     .padding(.vertical, Constants.ButtonValues.vPadding)
                     .frame(maxWidth: .infinity)
                     .background(Constants.accent)
-                    .foregroundColor(Constants.primaryText)
+                    .foregroundColor(Constants.button)
                     .cornerRadius(Constants.ButtonValues.cornerRadius)
             })
 
@@ -70,6 +69,7 @@ private extension AgeView {
         static let primaryText = Color.primaryText
         static let accent = Color.accent
         static let clear = Color.clear
+        static let button = Color.grayElement
         
         struct VStackValues {
             static let spacing: CGFloat = 15

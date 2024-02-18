@@ -27,21 +27,16 @@ struct PageView: View {
                 .resizable()
                 .scaledToFit()
                 .padding()
-                .cornerRadius(Constants.ImageValues.fCornerRadius)
-                .background(Constants.gray.opacity(Constants.ImageValues.colorOpacity))
-                .cornerRadius(Constants.ImageValues.sCornerRadius)
                 .padding()
 
-            Text(viewModel.page.name.string)
-                .font(.title)
+            Text(AttributedString(viewModel.page.name))
+                .font(.headline)
                 .multilineTextAlignment(.center)
-                .foregroundColor(Color(viewModel.page.name.attribute(.foregroundColor, at: 0, effectiveRange: nil) as? UIColor ?? UIColor.black))
             
-            Text(viewModel.page.description.string)
+            Text(AttributedString(viewModel.page.description))
                 .font(.subheadline)
                 .multilineTextAlignment(.center)
                 .frame(width: Constants.TextValues.width)
-                .foregroundColor(Color(viewModel.page.description.attribute(.foregroundColor, at: 0, effectiveRange: nil) as? UIColor ?? UIColor.black))
             
             Spacer()
             
@@ -52,7 +47,7 @@ struct PageView: View {
                     .padding(.horizontal, Constants.ButtonValues.hPadding)
                     .padding(.vertical, Constants.ButtonValues.vPadding)
                     .background(Constants.accent)
-                    .foregroundColor(Constants.primaryText)
+                    .foregroundColor(Constants.button)
                     .cornerRadius(Constants.ButtonValues.cornerRadius)
             }
             
@@ -80,6 +75,7 @@ private extension PageView {
         static let accent = Color.accent
         static let clear = Color.clear
         static let gray = Color.gray
+        static let button = Color.grayElement
         
         struct VStackValues {
             static let spacing: CGFloat = 10

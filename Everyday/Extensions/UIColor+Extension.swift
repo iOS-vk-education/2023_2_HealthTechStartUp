@@ -39,8 +39,14 @@ extension UIColor {
             guard let color = UIColor(named: "SpaceGray") else {
                 fatalError("Can't find color: SpaceGray")
             }
+                return color
+            }()
             
-            return color
-        }()
-    }
+            static let grayElement: UIColor = {
+                guard let color = UIColor(named: "GrayElements") else {
+                    fatalError("Can't find color: Snow")
+                }
+                return color
+            }()
+        }
 }

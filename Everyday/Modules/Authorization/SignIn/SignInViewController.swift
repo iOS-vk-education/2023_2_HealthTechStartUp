@@ -95,12 +95,12 @@ final class SignInViewController: UIViewController {
     private func setupLines() {
         for separator in [firstSeparator, secondSeparator] {
             separator.layer.borderWidth = Constants.Separators.borderWidth
-            separator.layer.borderColor = UIColor.Text.primary.cgColor
+            separator.layer.borderColor = UIColor.Text.grayElement.cgColor
         }
         
         for line in [emailUnderline, passwordUnderline] {
             line.layer.borderWidth = Constants.Underline.borderWidth
-            line.layer.borderColor = UIColor.Text.primary.cgColor
+            line.layer.borderColor = UIColor.Text.grayElement.cgColor
         }
     }
 
@@ -285,7 +285,7 @@ private extension SignInViewController {
     struct Constants {
         static let backgroundColor: UIColor = UIColor.UI.accentLight
         static let accentColor: UIColor = UIColor.UI.accent
-        static let textColor: UIColor = UIColor.Text.primary
+        static let textColor: UIColor = UIColor.Text.grayElement
         
         struct Buttons {
             static let size: CGSize = CGSize(width: 60, height: 60)

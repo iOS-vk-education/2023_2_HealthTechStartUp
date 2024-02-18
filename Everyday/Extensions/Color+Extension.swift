@@ -12,4 +12,5 @@ extension Color {
     static let accentLight       = Color("Ivory")
     static let background        = Color("Ghost")
     static let primaryText       = Color("SpaceGray")
+    static let grayElement       = Color("GrayElements")
 }

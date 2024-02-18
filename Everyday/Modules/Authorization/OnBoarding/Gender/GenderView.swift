@@ -40,7 +40,7 @@ struct GenderView: View {
                     .padding(.vertical, Constants.ButtonValues.vPadding)
                     .frame(maxWidth: .infinity)
                     .background(Constants.accent)
-                    .foregroundColor(Constants.primaryText)
+                    .foregroundColor(Constants.button)
                     .cornerRadius(Constants.ButtonValues.cornerRadius)
             })
 
@@ -66,6 +66,7 @@ private extension GenderView {
         
         static let primaryText = Color.primaryText
         static let accent = Color.accent
+        static let button = Color.grayElement
         
         struct VStackValues {
             static let spacing: CGFloat = 15

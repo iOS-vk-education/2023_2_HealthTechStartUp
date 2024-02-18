@@ -51,12 +51,12 @@ private extension Page {
     struct Styles {
         static let titleAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: Color.primaryText,
-            .font: UIFont.systemFont(ofSize: 16)
+            .font: UIFont.systemFont(ofSize: 26)
         ]
         
         static let descriptionAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: Color.primaryText,
-            .font: UIFont.systemFont(ofSize: 14)
+            .font: UIFont.systemFont(ofSize: 18)
         ]
     }
 }

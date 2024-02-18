@@ -27,7 +27,6 @@ struct ProfileSetupView: View {
                 Text(AttributedString(viewModel.title))
                     .font(.headline)
                     .multilineTextAlignment(.center)
-                    .foregroundColor(Constants.primaryText)
                 
                 Spacer()
                 
@@ -84,7 +83,7 @@ struct ProfileSetupView: View {
                         .padding(.vertical, Constants.ButtonValues.vPadding)
                         .frame(maxWidth: .infinity)
                         .background(Constants.accent)
-                        .foregroundColor(Constants.primaryText)
+                        .foregroundColor(Constants.button)
                         .cornerRadius(Constants.ButtonValues.cornerRadius)
                 })
                 .padding(.bottom, Constants.VStackValues.bPadding)
@@ -106,6 +105,7 @@ private extension ProfileSetupView {
         static let accent = Color.accent
         static let clear = Color.clear
         static let gray = Color.gray
+        static let button = Color.grayElement
         
         struct VStackValues {
             static let spacing: CGFloat = 15

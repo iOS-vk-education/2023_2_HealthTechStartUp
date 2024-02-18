@@ -36,7 +36,7 @@ struct SignInViewModel {
 private extension SignInViewModel {
     struct Styles {
         static let titleAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.Text.primary,
+            .foregroundColor: UIColor.Text.grayElement,
             .font: UIFont.systemFont(ofSize: 16)
         ]
         
