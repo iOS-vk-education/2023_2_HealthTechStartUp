@@ -132,6 +132,7 @@ struct ProfileAcknowledgementView: View {
                 ImagePicker(image: self.$viewModel.inputImage)
             }
         }
+        .scrollIndicators(.hidden)
     }
 }
 

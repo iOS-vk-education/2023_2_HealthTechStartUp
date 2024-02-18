@@ -26,6 +26,7 @@ final class SignUpViewController: UIViewController {
     private let privacyPolicyLabel   = UILabel()
     private let emailTextField       = UITextField()
     private let passwordTextField    = UITextField()
+    private let toolbar              = UIToolbar()
     
     // MARK: - lifecycle
     
@@ -50,8 +51,8 @@ final class SignUpViewController: UIViewController {
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnPrivacyPolicy))
         privacyPolicyLabel.addGestureRecognizer(tapGesture)
-                
-        view.addSubviews(signWithGoogleButton, signWithVKButton, signWithAnonymButton, 
+        
+        view.addSubviews(signWithGoogleButton, signWithVKButton, signWithAnonymButton,
                          firstSeparator, secondSeparator, separatorLabel,
                          emailTextField, emailUnderline,
                          passwordTextField, passwordUnderline, togglePasswordButton,
@@ -72,6 +73,7 @@ final class SignUpViewController: UIViewController {
         setupLines()
         setupLabels()
         setupTextField()
+        setupToolBar()
     }
     
     private func setupButtons() {
@@ -120,11 +122,24 @@ final class SignUpViewController: UIViewController {
             field.textColor = Constants.textColor
             field.autocapitalizationType = .none
             field.tintColor = Constants.accentColor
+            field.inputAccessoryView = toolbar
+            field.autocorrectionType = .no
         }
+        
+        emailTextField.keyboardType = .emailAddress
         
         passwordTextField.isSecureTextEntry = true
         passwordTextField.rightView = togglePasswordButton
         passwordTextField.rightViewMode = .always
+    }
+    
+    private func setupToolBar() {
+        let flexSpace = UIBarButtonItem(barButtonSystemItem: .flexibleSpace, target: nil, action: nil)
+        let doneButton = UIBarButtonItem(barButtonSystemItem: .done, target: self, action: #selector(didTapDoneButton))
+        
+        toolbar.sizeToFit()
+        toolbar.items = [flexSpace, doneButton]
+        doneButton.tintColor = .white
     }
     
     // MARK: - Layout
@@ -245,6 +260,11 @@ final class SignUpViewController: UIViewController {
         passwordTextField.isSecureTextEntry.toggle()
         let isOpen = !passwordTextField.isSecureTextEntry
         (passwordTextField.rightView as? UIButton)?.isSelected = isOpen
+    }
+    
+    @objc
+    private func didTapDoneButton() {
+        view.endEditing(true)
     }
     
     // MARK: - Helpers

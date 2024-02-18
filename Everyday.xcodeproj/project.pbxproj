@@ -37,7 +37,7 @@
 		9E5B750B2B7F9A8300E2BDE6 /* SignInViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75042B7F9A8300E2BDE6 /* SignInViewModel.swift */; };
 		9E5B750C2B7F9A8300E2BDE6 /* SignInInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75052B7F9A8300E2BDE6 /* SignInInteractor.swift */; };
 		9E5B750D2B7F9A8300E2BDE6 /* SignInPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75062B7F9A8300E2BDE6 /* SignInPresenter.swift */; };
-		9E5B75102B7F9CE300E2BDE6 /* UserFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B750E2B7F9CE200E2BDE6 /* UserFieldView.swift */; };
+		9E5B75102B7F9CE300E2BDE6 /* UserTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B750E2B7F9CE200E2BDE6 /* UserTextFieldView.swift */; };
 		9E5B75112B7F9CE300E2BDE6 /* ImagePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B750F2B7F9CE300E2BDE6 /* ImagePickerView.swift */; };
 		9E5B75142B7F9D1D00E2BDE6 /* AgeButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75132B7F9D1D00E2BDE6 /* AgeButtonView.swift */; };
 		9E5B75162B7F9D3500E2BDE6 /* GenderButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75152B7F9D3500E2BDE6 /* GenderButtonView.swift */; };
@@ -127,7 +127,7 @@
 		9E5B75042B7F9A8300E2BDE6 /* SignInViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInViewModel.swift; sourceTree = "<group>"; };
 		9E5B75052B7F9A8300E2BDE6 /* SignInInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInInteractor.swift; sourceTree = "<group>"; };
 		9E5B75062B7F9A8300E2BDE6 /* SignInPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SignInPresenter.swift; sourceTree = "<group>"; };
-		9E5B750E2B7F9CE200E2BDE6 /* UserFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserFieldView.swift; sourceTree = "<group>"; };
+		9E5B750E2B7F9CE200E2BDE6 /* UserTextFieldView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = UserTextFieldView.swift; sourceTree = "<group>"; };
 		9E5B750F2B7F9CE300E2BDE6 /* ImagePickerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ImagePickerView.swift; sourceTree = "<group>"; };
 		9E5B75132B7F9D1D00E2BDE6 /* AgeButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AgeButtonView.swift; sourceTree = "<group>"; };
 		9E5B75152B7F9D3500E2BDE6 /* GenderButtonView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GenderButtonView.swift; sourceTree = "<group>"; };
@@ -239,7 +239,7 @@
 				9E5B75152B7F9D3500E2BDE6 /* GenderButtonView.swift */,
 				9E5B75132B7F9D1D00E2BDE6 /* AgeButtonView.swift */,
 				9E5B750F2B7F9CE300E2BDE6 /* ImagePickerView.swift */,
-				9E5B750E2B7F9CE200E2BDE6 /* UserFieldView.swift */,
+				9E5B750E2B7F9CE200E2BDE6 /* UserTextFieldView.swift */,
 				9E53FB512B7F951400C55A45 /* String+Extension.swift */,
 				9E53FB4F2B7F951000C55A45 /* UIColor+Extension.swift */,
 				9E53FB4D2B7F950B00C55A45 /* Color+Extension.swift */,
@@ -644,7 +644,7 @@
 				9E5B74FE2B7F9A7000E2BDE6 /* SignUpViewController.swift in Sources */,
 				9E5B74EC2B7F99FB00E2BDE6 /* WelcomeScreenViewController.swift in Sources */,
 				9EE8AE362B7FB96E001D126F /* WorkoutPresenter.swift in Sources */,
-				9E5B75102B7F9CE300E2BDE6 /* UserFieldView.swift in Sources */,
+				9E5B75102B7F9CE300E2BDE6 /* UserTextFieldView.swift in Sources */,
 				9EE8AE112B7FB8CF001D126F /* SettingsViewController.swift in Sources */,
 				9E5B75082B7F9A8300E2BDE6 /* SignInContainer.swift in Sources */,
 				9EE8AE3B2B7FB96E001D126F /* WorkoutContainer.swift in Sources */,

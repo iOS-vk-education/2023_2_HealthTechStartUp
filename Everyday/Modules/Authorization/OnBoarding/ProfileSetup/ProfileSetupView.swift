@@ -93,6 +93,7 @@ struct ProfileSetupView: View {
                 ImagePicker(image: self.$viewModel.inputImage)
             }
         }
+        .scrollIndicators(.hidden)
     }
 }
 
