@@ -43,7 +43,7 @@ struct GenderButtonView: View {
     }
 }
 
-// MARK: - extensions
+// MARK: - Constants
 
 private extension GenderButtonView {
     

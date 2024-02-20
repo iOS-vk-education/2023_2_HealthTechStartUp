@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class PageViewModel: ObservableObject {
+final class PageViewModel: ObservableObject {
     var page: Page
     let next: NSAttributedString
     let skip: NSAttributedString

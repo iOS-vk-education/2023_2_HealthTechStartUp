@@ -7,9 +7,7 @@
 
 import SwiftUI
 
-// MARK: - GenderController
-
-class GenderViewController: ObservableObject {
+final class GenderViewController: ObservableObject {
     
     // MARK: - Properties
     

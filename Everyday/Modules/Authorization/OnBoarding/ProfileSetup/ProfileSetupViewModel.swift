@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class ProfileSetupViewModel: ObservableObject {
+final class ProfileSetupViewModel: ObservableObject {
     
     @Published var userProfile = UserProfile()
     @Published var showingImagePicker = false

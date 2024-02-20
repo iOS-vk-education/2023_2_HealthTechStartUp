@@ -7,6 +7,11 @@
 
 import UIKit
 
+enum ActivePage {
+    case signUp
+    case signIn
+}
+
 struct WelcomeScreenViewModel {
     let logoImage: UIImage?
     let signInTitle: NSAttributedString

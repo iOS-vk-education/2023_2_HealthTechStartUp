@@ -28,7 +28,7 @@ struct AgeView: View {
                 .multilineTextAlignment(.center)
                         
             ForEach(controller.ages, id: \.self) { age in
-                let ageText = viewModel.ageText(for: age)
+                let ageText = ageText(for: age)
                 AgeButtonView(age: age, ageText: ageText, selectedAge: $controller.selectedAge)
             }
             
@@ -59,9 +59,17 @@ struct AgeView: View {
         }
         .padding(.horizontal)
     }
+    private func ageText(for age: Age) -> String {
+        switch age {
+        case .small: return "17 - 24"
+        case .young: return "25 - 34"
+        case .adult: return "35 - 54"
+        case .old: return "55+"
+        }
+    }
 }
 
-// MARK: - extensions
+// MARK: - Constants
 
 private extension AgeView {
     struct Constants {

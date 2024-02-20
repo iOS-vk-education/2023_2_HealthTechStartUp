@@ -7,7 +7,7 @@
 
 import Foundation
 
-class ProfileAcknowledgementController: ObservableObject {
+final class ProfileAcknowledgementController: ObservableObject {
     
     // MARK: - Properties
     

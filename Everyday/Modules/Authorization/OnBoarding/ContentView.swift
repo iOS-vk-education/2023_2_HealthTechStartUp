@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - ContentView
-
 struct ContentView: View {
     
     // MARK: - properties
@@ -68,11 +66,12 @@ struct ContentView: View {
     }
     
     // MARK: - actions
-    func incrementPage() {
+    
+    private func incrementPage() {
         pageIndex += 1
     }
     
-    func skipToProfileSetup() {
+    private func skipToProfileSetup() {
             pageIndex = 3
         }
 }

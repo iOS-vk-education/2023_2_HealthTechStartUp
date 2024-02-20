@@ -23,8 +23,8 @@ final class WorkoutViewController: UIViewController {
     }
 
     override func viewDidLoad() {
-        view.backgroundColor = .gray
         super.viewDidLoad()
+        view.backgroundColor = .gray
     }
 }
 

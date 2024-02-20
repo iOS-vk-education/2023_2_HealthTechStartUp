@@ -19,7 +19,7 @@ struct AgeViewModel {
     }
 }
 
-extension AgeViewModel {
+private extension AgeViewModel {
     struct Styles {
         static let titleAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: Color.primaryText,
@@ -30,19 +30,5 @@ extension AgeViewModel {
             .foregroundColor: Color.primaryText,
             .font: UIFont.systemFont(ofSize: 18)
         ]
-    }
-    
-    func ageText(for age: Age) -> String {
-        switch age {
-        case .small: return "17 - 24"
-        case .young: return "25 - 34"
-        case .adult: return "35 - 54"
-        case .old: return "55+"
-        }
-    }
-    
-    func ageAttributedText(for age: Age) -> NSAttributedString {
-        let text = ageText(for: age)
-        return NSAttributedString(string: text, attributes: AgeViewModel.Styles.buttonAttributes)
     }
 }

@@ -267,13 +267,6 @@ extension WelcomeScreenViewController: WelcomeScreenViewInput {
     }
 }
 
-// MARK: - Enum
-
-enum ActivePage {
-    case signUp
-    case signIn
-}
-
 // MARK: - Constants
 
 private extension WelcomeScreenViewController {

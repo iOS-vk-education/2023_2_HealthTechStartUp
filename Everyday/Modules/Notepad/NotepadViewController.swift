@@ -23,8 +23,8 @@ final class NotepadViewController: UIViewController {
     }
 
     override func viewDidLoad() {
-        view.backgroundColor = .green
         super.viewDidLoad()
+        view.backgroundColor = .green
     }
 }
 

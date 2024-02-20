@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-class ProfileAcknowledgementViewModel: ObservableObject {
+final class ProfileAcknowledgementViewModel: ObservableObject {
     
     @Published var userProfile = UserProfile()
     @Published var showingImagePicker = false
@@ -66,11 +66,6 @@ class ProfileAcknowledgementViewModel: ObservableObject {
         case .adult: return "35 - 54"
         case .old: return "55+"
         }
-    }
-    
-    func ageAttributedText(for age: Age) -> NSAttributedString {
-        let text = ageText(for: age)
-        return NSAttributedString(string: text, attributes: AgeViewModel.Styles.buttonAttributes)
     }
 }
 

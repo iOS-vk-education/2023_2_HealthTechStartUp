@@ -14,7 +14,7 @@ final class SignUpRouter {
 
 extension SignUpRouter: SignUpRouterInput {
     func openOnBoarding() {
-        let onBoarding = onBoardingViewController(onFinish: { [weak self] in
+        let onBoarding = OnBoardingViewController(onFinish: { [weak self] in
             self?.openApp()
         })
         

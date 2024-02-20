@@ -1,5 +1,4 @@
 import SwiftUI
-// MARK: - ProfileSetupView
 
 struct ProfileAcknowledgementView: View {
     

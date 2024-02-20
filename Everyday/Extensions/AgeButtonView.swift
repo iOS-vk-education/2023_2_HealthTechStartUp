@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-// MARK: - AgeButtonView
-
 struct AgeButtonView: View {
     
     // MARK: - Properties
@@ -42,7 +40,7 @@ struct AgeButtonView: View {
     }
 }
 
-// MARK: - extensions
+// MARK: - Constants
 
 private extension AgeButtonView {
     

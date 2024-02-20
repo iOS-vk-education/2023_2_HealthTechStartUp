@@ -3,13 +3,15 @@ import UIKit
 
 // MARK: - onBoardingViewController
 
-class onBoardingViewController: UIHostingController<ContentView> {
+class OnBoardingViewController: UIHostingController<ContentView> {
     
     // MARK: - properties
     
     var onOnboardingFinished: (() -> Void)?
     
     let standardAppearance = UINavigationBarAppearance()
+    
+    // MARK: - lifecycle
     
     override func viewDidLoad() {
          super.viewDidLoad()
@@ -18,7 +20,7 @@ class onBoardingViewController: UIHostingController<ContentView> {
         self.navigationController?.navigationBar.shadowImage = UIImage()
     }
     
-    // MARK: - lifecycle
+    // MARK: - init
         
     init(onFinish: @escaping () -> Void) {
         let contentView = ContentView(onFinish: onFinish)

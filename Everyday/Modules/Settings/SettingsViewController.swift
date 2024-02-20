@@ -23,8 +23,8 @@ final class SettingsViewController: UIViewController {
     }
 
     override func viewDidLoad() {
-        view.backgroundColor = .blue
         super.viewDidLoad()
+        view.backgroundColor = .blue
     }
 }
 

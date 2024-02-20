@@ -9,7 +9,7 @@ import SwiftUI
 
 // MARK: - AgeViewController
 
-class AgeViewController: ObservableObject {
+final class AgeViewController: ObservableObject {
     
     // MARK: - Properties
     
