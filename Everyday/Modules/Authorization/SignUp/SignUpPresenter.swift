@@ -33,6 +33,14 @@ extension SignUpPresenter: SignUpViewOutput {
     func didTapSignUpButton() {
         router.openOnBoarding()
     }
+    
+    func didTapSignWithVKButton() {
+        interactor.authWithVKID()
+    }
+    
+    func didTapSignWithGoogleButton() {
+        interactor.authWithGoogle()
+    }
 }
 
 extension SignUpPresenter: SignUpInteractorOutput {

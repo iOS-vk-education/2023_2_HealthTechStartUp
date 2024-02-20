@@ -233,11 +233,13 @@ final class SignUpViewController: UIViewController {
     @objc
     private func didTapSignWithGoogleButton() {
         animateButton(with: signWithGoogleButton)
+        output.didTapSignWithGoogleButton()
     }
     
     @objc
     private func didTapSignWithVKButton() {
         animateButton(with: signWithVKButton)
+        output.didTapSignWithVKButton()
     }
     
     @objc

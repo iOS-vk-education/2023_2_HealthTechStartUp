@@ -22,9 +22,13 @@ protocol SignUpViewInput: AnyObject {
 protocol SignUpViewOutput: AnyObject {
     func didLoadView()
     func didTapSignUpButton()
+    func didTapSignWithVKButton()
+    func didTapSignWithGoogleButton()
 }
 
 protocol SignUpInteractorInput: AnyObject {
+    func authWithVKID()
+    func authWithGoogle()
 }
 
 protocol SignUpInteractorOutput: AnyObject {
