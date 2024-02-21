@@ -33,16 +33,16 @@ final class TabBarController: UITabBarController {
             switch item {
             case .notepad:
                 viewController = NotepadContainer.assemble(with: .init()).viewController
-                tabBarItem.title = "notepad_title".localized
+                tabBarItem.title = "Notepad_title".localized
             case .progress:
                 viewController = ProgressContainer.assemble(with: .init()).viewController
-                tabBarItem.title = "progress_title".localized
+                tabBarItem.title = "Progress_title".localized
             case .workout:
                 viewController = WorkoutContainer.assemble(with: .init()).viewController
-                tabBarItem.title = "workout_title".localized
+                tabBarItem.title = "Workout_title".localized
             case .settings:
                 viewController = SettingsContainer.assemble(with: .init()).viewController
-                tabBarItem.title = "settings_title".localized
+                tabBarItem.title = "Settings_title".localized
             }
 
             tabBarItem.tag = item.rawValue

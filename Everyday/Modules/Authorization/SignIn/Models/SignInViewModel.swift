@@ -23,13 +23,13 @@ struct SignInViewModel {
         self.googleImage = UIImage(named: "google")
         self.vkImage = UIImage(named: "vk")
         self.anonymImage = UIImage(named: "anonymous")
-        self.separatorTitle = NSAttributedString(string: "or".localized, attributes: Styles.titleAttributes)
-        self.emailTitle = NSAttributedString(string: "email_adress".localized, attributes: Styles.titleAttributes)
-        self.passwordTitle = NSAttributedString(string: "password".localized, attributes: Styles.titleAttributes)
-        self.signInTitle = NSAttributedString(string: "sign_title".localized, attributes: Styles.titleAttributes)
+        self.separatorTitle = NSAttributedString(string: "SignUp_or_SignIn_separator_or".localized, attributes: Styles.titleAttributes)
+        self.emailTitle = NSAttributedString(string: "Onboarding_user_email".localized, attributes: Styles.titleAttributes)
+        self.passwordTitle = NSAttributedString(string: "Onboarding_user_password".localized, attributes: Styles.titleAttributes)
+        self.signInTitle = NSAttributedString(string: "WelcomeScreen_or_Signin_button_title".localized, attributes: Styles.titleAttributes)
         self.hidePasswordImage = UIImage(systemName: "eye.slash.fill")
         self.showPasswordImage = UIImage(systemName: "eye.fill")
-        self.forgotPasswordLabel = NSAttributedString(string: "forgot_password".localized, attributes: Styles.linkAttributes)
+        self.forgotPasswordLabel = NSAttributedString(string: "SignIn_forgot_password_title".localized, attributes: Styles.linkAttributes)
     }
 }
 

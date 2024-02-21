@@ -16,7 +16,7 @@ struct GenderView: View {
         VStack(spacing: Constants.VStackValues.spacing) {
             Spacer()
             
-            Text(AttributedString(viewModel.description))
+            Text(AttributedString(viewModel.title))
                 .font(.subheadline)
                 .multilineTextAlignment(.center)
                 .foregroundColor(Constants.primaryText)

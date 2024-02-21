@@ -13,9 +13,9 @@ struct AgeViewModel {
     let skip: NSAttributedString
     
     init() {
-        self.title = NSAttributedString(string: "onboard5_title".localized, attributes: Styles.titleAttributes)
-        self.next = NSAttributedString(string: "next".localized, attributes: Styles.buttonAttributes)
-        self.skip = NSAttributedString(string: "skip".localized, attributes: Styles.buttonAttributes)
+        self.title = NSAttributedString(string: "Onboarding_Age_title".localized, attributes: Styles.titleAttributes)
+        self.next = NSAttributedString(string: "Onboarding_next_button_title".localized, attributes: Styles.buttonAttributes)
+        self.skip = NSAttributedString(string: "Onboarding_skip_button_title".localized, attributes: Styles.buttonAttributes)
     }
 }
 

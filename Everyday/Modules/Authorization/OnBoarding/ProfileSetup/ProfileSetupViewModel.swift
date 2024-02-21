@@ -25,12 +25,12 @@ final class ProfileSetupViewModel: ObservableObject {
     let nickname: String
     
     init() {
-        self.title = NSAttributedString(string: "onboard4_title".localized, attributes: Styles.titleAttributes)
-        self.photoTitle = NSAttributedString(string: "onboard7_1".localized, attributes: Styles.buttonAttributes)
-        self.next = NSAttributedString(string: "next".localized, attributes: Styles.buttonAttributes)
-        self.name = "name".localized
-        self.surname = "surname".localized
-        self.nickname = "nickname".localized
+        self.title = NSAttributedString(string: "Onboarding_ProfileSetup_title".localized, attributes: Styles.titleAttributes)
+        self.photoTitle = NSAttributedString(string: "Onboarding_user_choose_image_button_title".localized, attributes: Styles.buttonAttributes)
+        self.next = NSAttributedString(string: "Onboarding_next_button_title".localized, attributes: Styles.buttonAttributes)
+        self.name = "Onboarding_user_name".localized
+        self.surname = "Onboarding_user_surname".localized
+        self.nickname = "Onboarding_user_nickname".localized
     }
 
     func loadImage() {

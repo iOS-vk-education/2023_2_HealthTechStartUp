@@ -20,6 +20,8 @@
 		9E2A8BC62B84FEDD004A81CF /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E2A8BC52B84FEDD004A81CF /* GoogleService-Info.plist */; };
 		9E2A8BC92B850461004A81CF /* FIrebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */; };
 		9E2A8BCD2B8520B2004A81CF /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */; };
+		9E2A8BCF2B854147004A81CF /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BCE2B854147004A81CF /* Validator.swift */; };
+		9E2A8BD12B8543DD004A81CF /* SignUpModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BD02B8543DD004A81CF /* SignUpModel.swift */; };
 		9E4382D32B83738800C69708 /* InfoPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4382CE2B83738800C69708 /* InfoPlist.swift */; };
 		9E4382D42B83738800C69708 /* VKIDAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4382CF2B83738800C69708 /* VKIDAuthService.swift */; };
 		9E4382D52B83738800C69708 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4382D02B83738800C69708 /* AuthService.swift */; };
@@ -116,6 +118,8 @@
 		9E2A8BC52B84FEDD004A81CF /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
 		9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
+		9E2A8BCE2B854147004A81CF /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
+		9E2A8BD02B8543DD004A81CF /* SignUpModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUpModel.swift; sourceTree = "<group>"; };
 		9E4382CE2B83738800C69708 /* InfoPlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoPlist.swift; sourceTree = "<group>"; };
 		9E4382CF2B83738800C69708 /* VKIDAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKIDAuthService.swift; sourceTree = "<group>"; };
 		9E4382D02B83738800C69708 /* AuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
@@ -259,6 +263,7 @@
 				9E4382D12B83738800C69708 /* GoogleAuth */,
 				9E4382D02B83738800C69708 /* AuthService.swift */,
 				9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */,
+				9E2A8BCE2B854147004A81CF /* Validator.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -399,6 +404,7 @@
 				9E5B74F02B7F9A6F00E2BDE6 /* SignUpInteractor.swift */,
 				9E5B74F32B7F9A6F00E2BDE6 /* SignUpPresenter.swift */,
 				9E5B74F12B7F9A6F00E2BDE6 /* SignUpRouter.swift */,
+				9E2A8BD02B8543DD004A81CF /* SignUpModel.swift */,
 			);
 			path = SignUp;
 			sourceTree = "<group>";
@@ -723,8 +729,10 @@
 			files = (
 				9E5B75482B7F9D7600E2BDE6 /* ProfileAcknowledgementViewModel.swift in Sources */,
 				9E5B74F82B7F9A7000E2BDE6 /* SignUpInteractor.swift in Sources */,
+				9E2A8BD12B8543DD004A81CF /* SignUpModel.swift in Sources */,
 				9E5B754D2B7F9D7600E2BDE6 /* ProfileSetupView.swift in Sources */,
 				9EE8AE072B7FB77D001D126F /* TabBarController.swift in Sources */,
+				9E2A8BCF2B854147004A81CF /* Validator.swift in Sources */,
 				9EE8AE102B7FB8CF001D126F /* SettingsRouter.swift in Sources */,
 				9E5B753E2B7F9D7600E2BDE6 /* WeightViewModel.swift in Sources */,
 				9EE8AE212B7FB905001D126F /* ProgressContainer.swift in Sources */,

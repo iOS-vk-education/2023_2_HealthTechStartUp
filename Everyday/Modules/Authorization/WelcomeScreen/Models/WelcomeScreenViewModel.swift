@@ -19,8 +19,8 @@ struct WelcomeScreenViewModel {
     
     init() {
         self.logoImage = UIImage(named: "logo")
-        self.signInTitle = NSAttributedString(string: "sign_title".localized, attributes: Styles.titleAttributes)
-        self.signUpTitle = NSAttributedString(string: "registration_title".localized, attributes: Styles.titleAttributes)
+        self.signInTitle = NSAttributedString(string: "WelcomeScreen_signup_button_title".localized, attributes: Styles.titleAttributes)
+        self.signUpTitle = NSAttributedString(string: "WelcomeScreen_or_Signin_button_title".localized, attributes: Styles.titleAttributes)
     }
 }
 

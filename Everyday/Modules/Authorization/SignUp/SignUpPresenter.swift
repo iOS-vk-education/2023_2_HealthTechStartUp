@@ -36,6 +36,9 @@ extension SignUpPresenter: SignUpViewOutput {
     
     func didTapSignWithVKButton() {
         interactor.authWithVKID()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
+            self.router.openOnBoarding()
+        }
     }
     
     func didTapSignWithGoogleButton() {
