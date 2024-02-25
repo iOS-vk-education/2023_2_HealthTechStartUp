@@ -9,6 +9,23 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
+enum Sign {
+    case vk
+    case google
+    case common
+    case anonym
+}
+
+class AuthModel {
+    static let shared = AuthModel()
+    
+    var whichSign: Sign?
+    var credential: AuthCredential?
+
+    init() {
+    }
+}
+
 protocol FirebaseAuthServiceDescription {
     func registerUser(with userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void)
     // func login(with userRequest: LoginModel, completion: @escaping (Error?) -> Void)
@@ -32,43 +49,81 @@ class FirebaseAuthService: FirebaseAuthServiceDescription {
         let gender = userRequest.gender
         let weight = userRequest.weight
         let schedule = userRequest.schedule
-        
-        if let email = userRequest.email, let password = userRequest.password {
-            Auth.auth().createUser(withEmail: email, password: password) { result, error in
-                if let error = error {
-                    completion(false, error)
-                    return
-                }
-                
-                guard let resultUser = result?.user else {
+        let email = userRequest.email ?? ""
+        let password = userRequest.password ?? ""
+
+            switch AuthModel.shared.whichSign {
+            case .google:
+                guard let credential = AuthModel.shared.credential else {
                     completion(false, nil)
                     return
                 }
                 
-                let db = Firestore.firestore()
-                db.collection("user")
-                    .document(resultUser.uid)
-                    .setData([
+                Auth.auth().signIn(with: credential) { result, error in
+                    if let error = error {
+                        completion(false, error)
+                        return
+                    }
+                    
+                    guard let resultUser = result?.user else {
+                        completion(false, nil)
+                        return
+                    }
+                    
+                    let db = Firestore.firestore()
+                    
+                    db.collection("user").document(resultUser.uid).setData([
                         "firstname": firstname ?? "",
                         "lastname": lastname ?? "",
                         "nickname": nickname ?? "",
-                        
                         "email": email,
-                        "age": age ?? 0,
+                        "age": age ?? "",
                         "gender": gender ?? "",
-                        "weight": weight ?? 0,
+                        "weight": weight ?? "",
                         "schedule": schedule
                     ]) { error in
-                         if let error = error {
+                        if let error = error {
                             completion(false, error)
                             return
-                         }
+                        }
                         
                         completion(true, nil)
                     }
+                }
+            case .common:
+                Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                    if let error = error {
+                        completion(false, error)
+                        return
+                    }
+                                        
+                    guard let resultUser = result?.user else {
+                        completion(false, nil)
+                        return
+                    }
+                    
+                    let db = Firestore.firestore()
+                    
+                    db.collection("user").document(resultUser.uid).setData([
+                        "firstname": firstname ?? "",
+                        "lastname": lastname ?? "",
+                        "nickname": nickname ?? "",
+                        "email": email,
+                        "age": age ?? "",
+                        "gender": gender ?? "",
+                        "weight": weight ?? "",
+                        "schedule": schedule
+                    ]) { error in
+                        if let error = error {
+                            completion(false, error)
+                            return
+                        }
+                    }
+                    completion(true, nil)
+                }
+            default:
+                completion(false, nil)
             }
-        } else {
-           // sign in anonym
         }
     }
     
@@ -100,4 +155,3 @@ class FirebaseAuthService: FirebaseAuthServiceDescription {
 //            completion(error)
 //        }
 //    }
-}

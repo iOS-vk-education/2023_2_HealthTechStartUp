@@ -19,19 +19,21 @@ final class SignUpInteractor {
 }
 
 extension SignUpInteractor: SignUpInteractorInput {
-    func authWithVKID() {
+    func authWithVKID(completion: @escaping () -> Void) {
         guard let viewController else {
             return
         }
         
         authService.authWithVKID(with: viewController)
+        completion()
     }
     
-    func authWithGoogle() {
+    func authWithGoogle(completion: @escaping () -> Void) {
         guard let viewController else {
             return
         }
         
         authService.authWithGoogle(with: viewController)
+        completion()
     }
 }

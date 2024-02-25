@@ -7,7 +7,7 @@
 		<dict>
 			<key>CFBundleURLSchemes</key>
 			<array>
-				<string>com.googleusercontent.apps.139499736539-bnbqlkodvup1ppmflufe3bbtjfhe4clr</string>
+				<string>com.googleusercontent.apps.526363179403-hbgqsrvddhtqf5gnvvbog0f9gs2gr89c</string>
 			</array>
 		</dict>
 	</array>
@@ -16,7 +16,7 @@
 	<key>CLIENT_SECRET</key>
 	<string>TuLxUbA9hIGUf8UJHQOP</string>
 	<key>GIDClientID</key>
-	<string>139499736539-bnbqlkodvup1ppmflufe3bbtjfhe4clr.apps.googleusercontent.com</string>
+	<string>526363179403-hbgqsrvddhtqf5gnvvbog0f9gs2gr89c.apps.googleusercontent.com</string>
 	<key>LSApplicationQueriesSchemes</key>
 	<array>
 		<string>vkauthorize-silent</string>

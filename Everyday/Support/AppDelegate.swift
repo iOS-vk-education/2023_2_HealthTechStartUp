@@ -36,10 +36,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         if VKIDAuthService.shared.vkid?.open(url: url) == true {
             return true
         }
-
-        // Handle other custom URL types.
-
-        // If not handled by this app, return false.
         return false
     }
 }

@@ -32,6 +32,8 @@ extension SignUpPresenter: SignUpViewOutput {
     }
     
     func didTapSignUpButton(with email: String?, and password: String?) {
+        AuthModel.shared.whichSign = .common
+        
         if !Validator.isValidEmail(for: email ?? "") {
             view?.showAlert(with: "email", message: NSMutableAttributedString(string: ""))
             return
@@ -49,14 +51,23 @@ extension SignUpPresenter: SignUpViewOutput {
     }
     
     func didTapSignWithVKButton() {
-        interactor.authWithVKID()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 5) {
-            self.router.openOnBoarding()
+        AuthModel.shared.whichSign = .vk
+        
+        interactor.authWithVKID {
+            DispatchQueue.main.async {
+                self.router.openOnBoarding()
+            }
         }
     }
-    
+
     func didTapSignWithGoogleButton() {
-        interactor.authWithGoogle()
+        AuthModel.shared.whichSign = .google
+        
+        interactor.authWithGoogle {
+            DispatchQueue.main.async {
+                self.router.openOnBoarding()
+            }
+        }
     }
 }
 

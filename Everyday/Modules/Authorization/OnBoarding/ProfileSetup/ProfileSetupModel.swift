@@ -8,8 +8,8 @@
 import UIKit
 
 struct UserProfile {
-    var name: String = ""
-    var surname: String = ""
+    var name: String = ProfileAcknowledgementModel.shared.firstname ?? ""
+    var surname: String = ProfileAcknowledgementModel.shared.lastname ?? ""
     var nickname: String = ""
     var profileImage: UIImage?
 }

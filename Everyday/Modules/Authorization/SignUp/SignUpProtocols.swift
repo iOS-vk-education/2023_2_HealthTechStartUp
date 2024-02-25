@@ -28,8 +28,8 @@ protocol SignUpViewOutput: AnyObject {
 }
 
 protocol SignUpInteractorInput: AnyObject {
-    func authWithVKID()
-    func authWithGoogle()
+    func authWithGoogle(completion: @escaping () -> Void)
+    func authWithVKID(completion: @escaping () -> Void)
 }
 
 protocol SignUpInteractorOutput: AnyObject {

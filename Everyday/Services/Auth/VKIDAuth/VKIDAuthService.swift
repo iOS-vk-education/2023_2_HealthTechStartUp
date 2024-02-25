@@ -48,6 +48,11 @@ final class VKIDAuthService: VKIDAuthServiceDescription {
             do {
                 let session = try result.get()
                 print("Auth succeeded with token: \(session.accessToken) and user info: \(session.user)")
+                
+                ProfileAcknowledgementModel.shared.firstname = session.user.firstName
+                ProfileAcknowledgementModel.shared.lastname = session.user.lastName
+                ProfileAcknowledgementModel.shared.email = session.user.email
+                // session.user.avatarURL
             } catch AuthError.cancelled {
                 print("Auth cancelled by user")
             } catch {

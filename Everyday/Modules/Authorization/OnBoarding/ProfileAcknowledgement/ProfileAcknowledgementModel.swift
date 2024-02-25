@@ -21,5 +21,6 @@ class ProfileAcknowledgementModel {
     var weight: String?
     var schedule: [[DocumentReference]] = []
     
-    init() {}
+    init() {
+    }
 }
