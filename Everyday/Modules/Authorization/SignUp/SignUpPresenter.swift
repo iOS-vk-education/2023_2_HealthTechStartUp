@@ -32,6 +32,17 @@ extension SignUpPresenter: SignUpViewOutput {
     }
     
     func didTapSignUpButton(with email: String?, and password: String?) {
+        if !Validator.isValidEmail(for: email ?? "") {
+            view?.showAlert(with: "email", message: NSMutableAttributedString(string: ""))
+            return
+        }
+        
+        let validationErrors = Validator.validatePassword(for: password ?? "")
+        if  validationErrors.length > 0 {
+            view?.showAlert(with: "password", message: validationErrors)
+            return
+        }
+        
         ProfileAcknowledgementModel.shared.email = email
         ProfileAcknowledgementModel.shared.password = password
         router.openOnBoarding()
