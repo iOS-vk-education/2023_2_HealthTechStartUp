@@ -249,8 +249,11 @@ final class SignUpViewController: UIViewController {
     
     @objc
     private func didTapSignUpButton() {
+        let email = self.emailTextField.text ?? ""
+        let password = self.passwordTextField.text ?? ""
+        
         animateButton(with: signUpButton)
-        output.didTapSignUpButton()
+        output.didTapSignUpButton(with: email, and: password)
     }
     
     @objc

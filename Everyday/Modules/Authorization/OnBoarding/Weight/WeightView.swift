@@ -20,13 +20,13 @@ struct WeightView: View {
                 .font(.headline)
                 .multilineTextAlignment(.center)
                 .foregroundColor(Color.primaryText)
-         
+            
             DecimalTextField(text: $weight, keyType: .numberPad, placeholder: viewModel.placeholder)
                 .frame(width: Constants.TextFieldValues.size.width, height: Constants.TextFieldValues.size.height)
                 .padding(.horizontal, Constants.TextFieldValues.hPadding)
                 .background(Color.gray.opacity(Constants.TextFieldValues.colorOpacity))
                 .cornerRadius(Constants.TextFieldValues.cornerRadius)
-
+            
             Spacer()
             
             Button(action: {
@@ -40,7 +40,7 @@ struct WeightView: View {
                     .foregroundColor(Constants.button)
                     .cornerRadius(Constants.ButtonValues.cornerRadius)
             })
-
+            
             Button(action: {
                 onNext()
             }, label: {
@@ -49,10 +49,13 @@ struct WeightView: View {
                     .foregroundColor(Constants.primaryText)
                     .cornerRadius(Constants.ButtonValues.cornerRadius)
             })
-
+            
             .padding(.bottom, Constants.VStackValues.bPadding)
         }
         .padding(.horizontal)
+        .onChange(of: weight) { newValue in
+            ProfileAcknowledgementModel.shared.weight = newValue
+        }
     }
 }
 

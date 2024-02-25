@@ -5,9 +5,15 @@ struct ProfileAcknowledgementView: View {
     // MARK: - properties
     
     @StateObject private var viewModel = ProfileAcknowledgementViewModel()
-    @StateObject var controller = ProfileAcknowledgementController()
+    @State private var controller: ProfileAcknowledgementController?
     
-    @State private var weight: String = ""
+    @State private var selectedAge: Age = .small
+    @State private var selectedGender: Gender = .male
+    @State private var selectedWeight = ""
+    @State private var selectedName = ""
+    @State private var selectedSurname = ""
+    @State private var selectedNickname = ""
+    
     private let defaultImage = Image("anonymous")
     
     var onFinish: (() -> Void)?
@@ -27,15 +33,15 @@ struct ProfileAcknowledgementView: View {
                 Spacer()
                 
                 ZStack {
-                    if let inputImage = viewModel.inputImage {
-                        Image(uiImage: inputImage)
-                            .resizable()
-                            .scaledToFill()
-                    } else {
+//                    if let inputImage = viewModel.inputImage {
+//                        Image(uiImage: inputImage)
+//                            .resizable()
+//                            .scaledToFill()
+//                    } else {
                         defaultImage
                             .resizable()
                             .scaledToFill()
-                    }
+//                    }
                 }
                 .frame(width: Constants.ZStackValues.size.width, height: Constants.ZStackValues.size.height)
                 .clipShape(Circle())
@@ -51,19 +57,19 @@ struct ProfileAcknowledgementView: View {
 
                 Spacer()
                 
-                UserTextField(text: $viewModel.userProfile.name, keyType: .default, placeholder: viewModel.name)
+                UserTextField(text: $selectedName, keyType: .default, placeholder: viewModel.name)
                     .frame(width: Constants.TextFieldValues.size.width, height: Constants.TextFieldValues.size.height)
                     .padding(.horizontal, Constants.TextFieldValues.hPadding)
                     .background(Constants.gray.opacity(Constants.TextFieldValues.colorOpacity))
                     .cornerRadius(Constants.TextFieldValues.cornerRadius)
                 
-                UserTextField(text: $viewModel.userProfile.surname, keyType: .default, placeholder: viewModel.surname)
+                UserTextField(text: $selectedSurname, keyType: .default, placeholder: viewModel.surname)
                     .frame(width: Constants.TextFieldValues.size.width, height: Constants.TextFieldValues.size.height)
                     .padding(.horizontal, Constants.TextFieldValues.hPadding)
                     .background(Constants.gray.opacity(Constants.TextFieldValues.colorOpacity))
                     .cornerRadius(Constants.TextFieldValues.cornerRadius)
                 
-                UserTextField(text: $viewModel.userProfile.nickname, keyType: .default, placeholder: viewModel.nickname)
+                UserTextField(text: $selectedNickname, keyType: .default, placeholder: viewModel.nickname)
                     .frame(width: Constants.TextFieldValues.size.width, height: Constants.TextFieldValues.size.height)
                     .padding(.horizontal, Constants.TextFieldValues.hPadding)
                     .background(Constants.gray.opacity(Constants.TextFieldValues.colorOpacity))
@@ -76,9 +82,9 @@ struct ProfileAcknowledgementView: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color.primaryText)
                             
-                ForEach(controller.ages, id: \.self) { age in
+                ForEach(controller?.ages ?? [], id: \.self) { age in
                     let ageText = viewModel.ageText(for: age)
-                    AgeButtonView(age: age, ageText: ageText, selectedAge: $controller.selectedAge)
+                    AgeButtonView(age: age, ageText: ageText, selectedAge: $selectedAge )
                 }
                 
                 Spacer()
@@ -93,7 +99,7 @@ struct ProfileAcknowledgementView: View {
                         gender: genderUI.gender,
                         imageName: genderUI.imageName,
                         localizedText: genderUI.localizedText,
-                        selectedGender: $controller.selectedGender
+                        selectedGender: $selectedGender
                     )
                 }
                 
@@ -104,7 +110,7 @@ struct ProfileAcknowledgementView: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color.primaryText)
              
-                DecimalTextField(text: $weight, keyType: .numberPad, placeholder: viewModel.placeholder)
+                DecimalTextField(text: $selectedWeight, keyType: .numberPad, placeholder: viewModel.placeholder)
                     .frame(width: Constants.TextFieldValues.size.width, height: Constants.TextFieldValues.size.height)
                     .padding(.horizontal, Constants.TextFieldValues.hPadding)
                     .background(Color.gray.opacity(Constants.TextFieldValues.colorOpacity))
@@ -113,6 +119,11 @@ struct ProfileAcknowledgementView: View {
                 Spacer()
                                 
                 Button(action: {
+                    
+                    saveDataToModel()
+                    
+                    AuthService.shared.authWithFirebase(with: ProfileAcknowledgementModel.shared)
+                    
                     onFinish?()
                                 }, label: {
                                     Text(AttributedString(viewModel.starter))
@@ -132,6 +143,38 @@ struct ProfileAcknowledgementView: View {
             }
         }
         .scrollIndicators(.hidden)
+        .onAppear {
+            let ageEnum = Age.from(description: ProfileAcknowledgementModel.shared.age ?? "") ?? .small
+            let genderEnum = Gender.from(description: ProfileAcknowledgementModel.shared.gender ?? "") ?? .male
+            let weight = ProfileAcknowledgementModel.shared.weight
+            let name = ProfileAcknowledgementModel.shared.firstname
+            let surname = ProfileAcknowledgementModel.shared.lastname
+            let nickname = ProfileAcknowledgementModel.shared.nickname
+            
+            self.controller = ProfileAcknowledgementController(ageDescription: ageEnum.description,
+                                                               genderDescription: genderEnum.description,
+                                                               weight: weight,
+                                                               name: name,
+                                                               surname: surname,
+                                                               nickname: nickname)
+            
+            self.selectedAge = controller?.selectedAge ?? .small
+            self.selectedGender = controller?.selectedGender ?? .male
+            self.selectedWeight = controller?.weight ?? "0"
+            self.selectedName = controller?.name ?? ""
+            self.selectedSurname = controller?.surname ?? ""
+            self.selectedNickname = controller?.nickname ?? ""
+        }
+    }
+    
+    func saveDataToModel() {
+        ProfileAcknowledgementModel.shared.firstname = selectedName
+        ProfileAcknowledgementModel.shared.lastname = selectedSurname
+        ProfileAcknowledgementModel.shared.nickname = selectedNickname
+        ProfileAcknowledgementModel.shared.profileImage = viewModel.inputImage
+        ProfileAcknowledgementModel.shared.age = selectedAge.description
+        ProfileAcknowledgementModel.shared.gender = selectedGender.description
+        ProfileAcknowledgementModel.shared.weight = selectedWeight
     }
 }
 
@@ -169,8 +212,4 @@ private extension ProfileAcknowledgementView {
             static let colorOpacity: CGFloat = 0.1
         }
     }
-}
-
-#Preview {
-    ProfileAcknowledgementView()
 }

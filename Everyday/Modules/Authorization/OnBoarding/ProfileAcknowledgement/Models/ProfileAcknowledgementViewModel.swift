@@ -9,13 +9,10 @@ import SwiftUI
 
 final class ProfileAcknowledgementViewModel: ObservableObject {
     
-    @Published var userProfile = UserProfile()
     @Published var showingImagePicker = false
-    @Published var inputImage: UIImage? {
-        didSet {
-            userProfile.profileImage = inputImage
-        }
-    }
+    @Published var inputImage: UIImage?
+    
+    var temp = UserProfile()
     
     let title: NSAttributedString
     let photoTitle: NSAttributedString
@@ -51,11 +48,13 @@ final class ProfileAcknowledgementViewModel: ObservableObject {
         self.ageConfirm = NSAttributedString(string: "Onboarding_ProfileAck_age_confirm".localized, attributes: Styles.buttonAttributes)
         self.genderConfirm = NSAttributedString(string: "Onboarding_ProfileAck_gender_confirm".localized, attributes: Styles.buttonAttributes)
         self.weightConfirm = NSAttributedString(string: "Onboarding_ProfileAck_weight_confirm".localized, attributes: Styles.buttonAttributes)
+        
+        inputImage = ProfileAcknowledgementModel.shared.profileImage
     }
 
     func loadImage() {
         if let inputImage = inputImage {
-            userProfile.profileImage = inputImage
+            temp.profileImage = inputImage
         }
     }
     

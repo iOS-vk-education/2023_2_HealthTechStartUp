@@ -31,7 +31,7 @@ class Validator {
     }
     
     static func validatePassword(for password: String) -> NSMutableAttributedString {
-        var errors = NSMutableAttributedString()
+        let errors = NSMutableAttributedString()
 
         if password.count < 8 || password.count > 32 {
             errors.append(PasswordValidationError.length)

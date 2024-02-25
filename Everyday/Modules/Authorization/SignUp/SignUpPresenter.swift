@@ -25,12 +25,15 @@ extension SignUpPresenter: SignUpModuleInput {
 }
 
 extension SignUpPresenter: SignUpViewOutput {
+   
     func didLoadView() {
         let viewModel = SignUpViewModel()
         view?.configure(with: viewModel)
     }
     
-    func didTapSignUpButton() {
+    func didTapSignUpButton(with email: String?, and password: String?) {
+        ProfileAcknowledgementModel.shared.email = email
+        ProfileAcknowledgementModel.shared.password = password
         router.openOnBoarding()
     }
     

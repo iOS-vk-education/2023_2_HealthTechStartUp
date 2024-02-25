@@ -21,7 +21,7 @@ protocol SignUpViewInput: AnyObject {
 
 protocol SignUpViewOutput: AnyObject {
     func didLoadView()
-    func didTapSignUpButton()
+    func didTapSignUpButton(with email: String?, and password: String?)
     func didTapSignWithVKButton()
     func didTapSignWithGoogleButton()
 }

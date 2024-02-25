@@ -14,7 +14,7 @@ struct ContentView: View {
     @State private var pageIndex = 0
     private let pages: [Page] = Page.samplePages
     private let dotAppearance = UIPageControl.appearance()
-    
+        
     var onFinish: (() -> Void)?
     
     // MARK: - body
@@ -35,7 +35,7 @@ struct ContentView: View {
             ProfileSetupView(onNext: {
                         incrementPage()
                     })
-            .tag(3)
+                    .tag(3)
             
             AgeView(onNext: {
                         incrementPage()
@@ -62,7 +62,7 @@ struct ContentView: View {
             dotAppearance.currentPageIndicatorTintColor = .black
             dotAppearance.pageIndicatorTintColor = .gray
         }
-        .background(Color.background) 
+        .background(Color.background)
     }
     
     // MARK: - actions
@@ -73,5 +73,5 @@ struct ContentView: View {
     
     private func skipToProfileSetup() {
             pageIndex = 3
-        }
+    }
 }

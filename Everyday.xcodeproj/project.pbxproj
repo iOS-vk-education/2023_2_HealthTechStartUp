@@ -384,12 +384,12 @@
 			children = (
 				9E5B751D2B7F9D7600E2BDE6 /* ContentView.swift */,
 				9E5B75332B7F9D7600E2BDE6 /* OnBoardingViewController.swift */,
+				9E5B75232B7F9D7600E2BDE6 /* Introduction */,
 				9E5B75272B7F9D7600E2BDE6 /* Age */,
 				9E5B75172B7F9D7600E2BDE6 /* Gender */,
-				9E5B75232B7F9D7600E2BDE6 /* Introduction */,
-				9E5B752D2B7F9D7600E2BDE6 /* ProfileAcknowledgement */,
-				9E5B75342B7F9D7600E2BDE6 /* ProfileSetup */,
 				9E5B751E2B7F9D7600E2BDE6 /* Weight */,
+				9E5B75342B7F9D7600E2BDE6 /* ProfileSetup */,
+				9E5B752D2B7F9D7600E2BDE6 /* ProfileAcknowledgement */,
 			);
 			path = OnBoarding;
 			sourceTree = "<group>";

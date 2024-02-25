@@ -60,18 +60,27 @@ struct ProfileSetupView: View {
                     .padding(.horizontal, Constants.TextFieldValues.hPadding)
                     .background(Constants.gray.opacity(Constants.TextFieldValues.colorOpacity))
                     .cornerRadius(Constants.TextFieldValues.cornerRadius)
+                    .onChange(of: viewModel.userProfile.name) { newValue in
+                        ProfileAcknowledgementModel.shared.firstname = newValue
+                    }
                 
                 UserTextField(text: $viewModel.userProfile.surname, keyType: .default, placeholder: viewModel.surname)
                     .frame(width: Constants.TextFieldValues.size.width, height: Constants.TextFieldValues.size.height)
                     .padding(.horizontal, Constants.TextFieldValues.hPadding)
                     .background(Constants.gray.opacity(Constants.TextFieldValues.colorOpacity))
                     .cornerRadius(Constants.TextFieldValues.cornerRadius)
+                    .onChange(of: viewModel.userProfile.surname) { newValue in
+                        ProfileAcknowledgementModel.shared.lastname = newValue
+                    }
                 
                 UserTextField(text: $viewModel.userProfile.nickname, keyType: .default, placeholder: viewModel.nickname)
                     .frame(width: Constants.TextFieldValues.size.width, height: Constants.TextFieldValues.size.height)
                     .padding(.horizontal, Constants.TextFieldValues.hPadding)
                     .background(Constants.gray.opacity(Constants.TextFieldValues.colorOpacity))
                     .cornerRadius(Constants.TextFieldValues.cornerRadius)
+                    .onChange(of: viewModel.userProfile.nickname) { newValue in
+                        ProfileAcknowledgementModel.shared.nickname = newValue
+                    }
                 
                 Spacer()
                 

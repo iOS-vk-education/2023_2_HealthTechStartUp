@@ -7,16 +7,19 @@
 import UIKit
 import FirebaseFirestore
 
-struct ProfileAcknowledgementModel {
-    let firstname: String?
-    let lastname: String?
-    let nickname: String?
-    let email: String?
-    let password: String?
-    let profileImage: UIImage?
-    let age: Int?
-    let gender: String?
-    let weight: Int?
+class ProfileAcknowledgementModel {
+    static let shared = ProfileAcknowledgementModel()
+
+    var firstname: String?
+    var lastname: String?
+    var nickname: String?
+    var email: String?
+    var password: String?
+    var profileImage: UIImage?
+    var age: String?
+    var gender: String?
+    var weight: String?
+    var schedule: [[DocumentReference]] = []
     
-    let schedule: [[DocumentReference]]
+    init() {}
 }

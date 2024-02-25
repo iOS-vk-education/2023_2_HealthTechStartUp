@@ -27,7 +27,7 @@ class FirebaseAuthService: FirebaseAuthServiceDescription {
         let firstname = userRequest.firstname
         let lastname = userRequest.lastname
         let nickname = userRequest.nickname
-        let profileImage = userRequest.profileImage // не забыть
+        let profileImage = userRequest.profileImage
         let age = userRequest.age
         let gender = userRequest.gender
         let weight = userRequest.weight
