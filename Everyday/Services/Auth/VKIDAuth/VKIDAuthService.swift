@@ -49,10 +49,14 @@ final class VKIDAuthService: VKIDAuthServiceDescription {
                 let session = try result.get()
                 print("Auth succeeded with token: \(session.accessToken) and user info: \(session.user)")
                 
+                let passwordGenerator = PasswordGenerator(length: 20)
+                
                 ProfileAcknowledgementModel.shared.firstname = session.user.firstName
                 ProfileAcknowledgementModel.shared.lastname = session.user.lastName
                 ProfileAcknowledgementModel.shared.email = session.user.email
+                ProfileAcknowledgementModel.shared.password = passwordGenerator.generatePassword()
                 // session.user.avatarURL
+               
             } catch AuthError.cancelled {
                 print("Auth cancelled by user")
             } catch {

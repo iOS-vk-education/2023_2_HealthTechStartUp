@@ -121,6 +121,37 @@ class FirebaseAuthService: FirebaseAuthServiceDescription {
                     }
                     completion(true, nil)
                 }
+            case .vk:
+                Auth.auth().createUser(withEmail: email, password: password) { result, error in
+                    if let error = error {
+                        completion(false, error)
+                        return
+                    }
+                                        
+                    guard let resultUser = result?.user else {
+                        completion(false, nil)
+                        return
+                    }
+                    
+                    let db = Firestore.firestore()
+                    
+                    db.collection("user").document(resultUser.uid).setData([
+                        "firstname": firstname ?? "",
+                        "lastname": lastname ?? "",
+                        "nickname": nickname ?? "",
+                        "email": email,
+                        "age": age ?? "",
+                        "gender": gender ?? "",
+                        "weight": weight ?? "",
+                        "schedule": schedule
+                    ]) { error in
+                        if let error = error {
+                            completion(false, error)
+                            return
+                        }
+                    }
+                    completion(true, nil)
+                }
             default:
                 completion(false, nil)
             }
