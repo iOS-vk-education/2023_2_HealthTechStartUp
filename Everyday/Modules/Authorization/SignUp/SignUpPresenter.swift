@@ -25,10 +25,20 @@ extension SignUpPresenter: SignUpModuleInput {
 }
 
 extension SignUpPresenter: SignUpViewOutput {
-   
     func didLoadView() {
         let viewModel = SignUpViewModel()
         view?.configure(with: viewModel)
+    }
+    
+    func didTapSignWithAnonymButton() {
+        AuthModel.shared.whichSign = .anonym
+        
+        let generator = NameGenerator()
+        
+        ProfileAcknowledgementModel.shared.firstname = generator.generateName()
+        ProfileAcknowledgementModel.shared.lastname = generator.generateSurname()
+        
+        router.openOnBoarding()
     }
     
     func didTapSignUpButton(with email: String?, and password: String?) {

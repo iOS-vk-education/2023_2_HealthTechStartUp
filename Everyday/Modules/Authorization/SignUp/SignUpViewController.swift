@@ -245,6 +245,7 @@ final class SignUpViewController: UIViewController {
     @objc
     private func didTapSignWithAnonymButton() {
         animateButton(with: signWithAnonymButton)
+        output.didTapSignWithAnonymButton()
     }
     
     @objc
