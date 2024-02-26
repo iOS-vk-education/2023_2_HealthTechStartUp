@@ -27,13 +27,15 @@ extension SignUpInteractor: SignUpInteractorInput {
         authService.authWithVKID(with: viewController)
         completion()
     }
-    
-    func authWithGoogle(completion: @escaping () -> Void) {
-        guard let viewController else {
+        
+    func authWithGoogle(completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let viewController = self.viewController else {
+            completion(.failure(NSError(domain: "AuthError", code: 0, userInfo: [NSLocalizedDescriptionKey: "ViewController is nil"])))
             return
         }
         
-        authService.authWithGoogle(with: viewController)
-        completion()
+        authService.authWithGoogle(with: viewController) { result in
+            completion(result)
+        }
     }
 }

@@ -63,10 +63,15 @@ extension SignUpPresenter: SignUpViewOutput {
     func didTapSignWithGoogleButton() {
         AuthModel.shared.whichSign = .google
         
-        interactor.authWithGoogle {
-            DispatchQueue.main.async {
-                self.router.openOnBoarding()
-            }
+        interactor.authWithGoogle { result in
+                DispatchQueue.main.async {
+                    switch result {
+                    case .success:
+                        self.router.openOnBoarding()
+                    case .failure(let error):
+                        self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
+                    }
+                }
         }
     }
 }

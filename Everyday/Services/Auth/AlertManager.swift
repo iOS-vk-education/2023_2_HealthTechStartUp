@@ -50,6 +50,10 @@ extension AlertManager {
     public static func showRegistrationErrorAlert(on vc: UIViewController, with error: Error) {
         self.showBasicAlert(on: vc, title: "AlertManager_invalid_registration_title".localized, message: "\(error.localizedDescription)")
     }
+    
+    public static func showRegistrationErrorAlert(on vc: UIViewController, message: String) {
+        self.showBasicAlert(on: vc, title: "AlertManager_invalid_registration_title".localized, message: message)
+    }
 }
 
 // MARK: - Log In Errors
