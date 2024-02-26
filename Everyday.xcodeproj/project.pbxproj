@@ -88,6 +88,7 @@
 		9E673DA82B8275680041B97D /* VKIDCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9E673DA72B8275680041B97D /* VKIDCore */; };
 		9E7C19972B8BF1340006D48C /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C19962B8BF1340006D48C /* PasswordGenerator.swift */; };
 		9E7C19992B8CC3E80006D48C /* NameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C19982B8CC3E80006D48C /* NameGenerator.swift */; };
+		9E7C199B2B8D0EC50006D48C /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C199A2B8D0EC50006D48C /* SignInModel.swift */; };
 		9EE8AE052B7FA45F001D126F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9EE8AE042B7FA45F001D126F /* Localizable.xcstrings */; };
 		9EE8AE072B7FB77D001D126F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE062B7FB77D001D126F /* TabBarController.swift */; };
 		9EE8AE0F2B7FB8CF001D126F /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE092B7FB8CF001D126F /* SettingsPresenter.swift */; };
@@ -189,6 +190,7 @@
 		9E5B75372B7F9D7600E2BDE6 /* ProfileSetupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupView.swift; sourceTree = "<group>"; };
 		9E7C19962B8BF1340006D48C /* PasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
 		9E7C19982B8CC3E80006D48C /* NameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameGenerator.swift; sourceTree = "<group>"; };
+		9E7C199A2B8D0EC50006D48C /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		9EE8AE042B7FA45F001D126F /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9EE8AE062B7FB77D001D126F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		9EE8AE092B7FB8CF001D126F /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
@@ -456,6 +458,7 @@
 		9E5B75032B7F9A8300E2BDE6 /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				9E7C199A2B8D0EC50006D48C /* SignInModel.swift */,
 				9E5B75042B7F9A8300E2BDE6 /* SignInViewModel.swift */,
 			);
 			path = Models;
@@ -810,6 +813,7 @@
 				9E5B750B2B7F9A8300E2BDE6 /* SignInViewModel.swift in Sources */,
 				9EE8AE2D2B7FB930001D126F /* NotepadInteractor.swift in Sources */,
 				9E5B750C2B7F9A8300E2BDE6 /* SignInInteractor.swift in Sources */,
+				9E7C199B2B8D0EC50006D48C /* SignInModel.swift in Sources */,
 				9E5B75432B7F9D7600E2BDE6 /* AgeModel.swift in Sources */,
 				9E5B75392B7F9D7600E2BDE6 /* GenderView.swift in Sources */,
 				9E5B74FB2B7F9A7000E2BDE6 /* SignUpPresenter.swift in Sources */,

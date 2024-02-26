@@ -230,22 +230,28 @@ final class SignInViewController: UIViewController {
     @objc
     private func didTapSignWithGoogleButton() {
         animateButton(with: signWithGoogleButton)
+        output.didTapSignWithGoogleButton()
     }
 
     @objc
     private func didTapSignWithVKButton() {
         animateButton(with: signWithVKButton)
+        output.didTapSignSignWithVKButton()
     }
 
     @objc
     private func didTapSignWithAnonymButton() {
         animateButton(with: signWithAnonymButton)
+        output.didTapSignSignWithAnonymButton()
     }
 
     @objc
     private func didTapSignInButton() {
+        let email = self.emailTextField.text ?? ""
+        let password = self.passwordTextField.text ?? ""
+        
         animateButton(with: signInButton)
-        output.didTapSignInButton() 
+        output.didTapSignInButton(with: email, and: password)
     }
 
     @objc
@@ -280,6 +286,20 @@ final class SignInViewController: UIViewController {
 // MARK: - SignUpViewInput
 
 extension SignInViewController: SignInViewInput {
+    func showAlert(with key: String, message: NSMutableAttributedString) {
+        switch key {
+        case "email":
+            AlertManager.showInvalidEmailAlert(on: self)
+        case "password":
+            AlertManager.showInvalidPasswordAlert(on: self, message: message.string)
+        case "network":
+            AlertManager.showSignInErrorAlert(on: self, message: message.string)
+        default:
+            let error = NSError(domain: "Everydaytech.ru", code: 400)
+            AlertManager.showSignInErrorAlert(on: self, with: error)
+        }
+    }
+    
     func configure(with model: SignInViewModel) {
         signWithGoogleButton.setImage(model.googleImage, for: .normal)
         signWithVKButton.setImage(model.vkImage, for: .normal)

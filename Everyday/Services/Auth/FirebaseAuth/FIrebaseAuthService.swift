@@ -21,6 +21,8 @@ class AuthModel {
     
     var whichSign: Sign?
     var credential: AuthCredential?
+//    var email: String?
+//    var password: String?
 
     init() {
     }
@@ -28,6 +30,7 @@ class AuthModel {
 
 protocol FirebaseAuthServiceDescription {
     func registerUser(with userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void)
+    func login(with userRequest: SignInModel, completion: @escaping(Bool, Error?) -> Void)
     // func login(with userRequest: LoginModel, completion: @escaping (Error?) -> Void)
     // func signOut(completion: @escaping (Error?) -> Void)
     // func forgotPassword(with email: String, completion: @escaping (Error?) -> Void)
@@ -38,13 +41,27 @@ class FirebaseAuthService: FirebaseAuthServiceDescription {
     public static let shared = FirebaseAuthService()
     
     private init() {}
-
+    
     public func registerUser(with userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void) {
         switch AuthModel.shared.whichSign {
         case .google, .vk, .common, .anonym:
             performAuth(userRequest: userRequest, completion: completion)
         default:
             completion(false, nil)
+        }
+    }
+    
+    public func login(with userRequest: SignInModel, completion: @escaping (Bool, Error?) -> Void) {
+        let email = userRequest.email
+        let password = userRequest.password
+        
+        Auth.auth().signIn(withEmail: email, password: password) { _, error in
+            if let error = error {
+                completion(false, error)
+                return
+            } else {
+                completion(true, nil)
+            }
         }
     }
     
@@ -110,20 +127,7 @@ class FirebaseAuthService: FirebaseAuthServiceDescription {
         }
     }
 }
-
-//    public func logIn(with userRequest: LoginModel, completion: @escaping (Error?) -> Void) {
-//        Auth.auth().signIn(
-//            withEmail: userRequest.email,
-//            password: userRequest.password
-//        ) { _, error in
-//            if let error = error {
-//                completion(error)
-//                return
-//            } else {
-//                completion(nil)
-//            }
-//        }
-//    }
+    
 //    
 //    public func signOut(completion: @escaping (Error?) -> Void) {
 //        do {
@@ -139,3 +143,43 @@ class FirebaseAuthService: FirebaseAuthServiceDescription {
 //            completion(error)
 //        }
 //    }
+
+ //   switch AuthModel.shared.whichSign {
+    //        case .google:
+    //            guard let credential = AuthModel.shared.credential else {
+    //                return completion(nil)
+    //            }
+    //
+    //            Auth.auth().signIn(with: credential) { authResult, error in
+    //                if let error = error {
+    //                    completion(nil)
+    //                    return
+    //                }
+    //
+    //                if let isNewUser = authResult?.additionalUserInfo?.isNewUser, isNewUser {
+    //                        print("Welcome, new user!")
+    //                }
+    //
+    //                completion(nil)
+    //            }
+    //        case .vk, .common:
+    //            guard let email = userRequest.email, let password = userRequest.password else {
+    //                completion(nil)
+    //                return
+    //            }
+    //
+    //            Auth.auth().signIn(
+    //                withEmail: email,
+    //                password: password
+    //            ) { _, error in
+    //                if let error = error {
+    //                    completion(error)
+    //                    return
+    //                } else {
+    //                    completion(nil)
+    //                }
+    //            }
+    //        default:
+    //            completion(nil)
+    //        }
+    //    }

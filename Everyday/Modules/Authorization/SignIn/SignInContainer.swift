@@ -15,7 +15,7 @@ final class SignInContainer {
     
     class func assemble(with context: SignInContext) -> SignInContainer {
         let router = SignInRouter()
-        let interactor = SignInInteractor()
+        let interactor = SignInInteractor(authService: AuthService.shared)
         let presenter = SignInPresenter(router: router, interactor: interactor)
         let viewController = SignInViewController(output: presenter)
         
