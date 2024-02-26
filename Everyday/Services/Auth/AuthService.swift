@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AuthServiceDescription {
-    func authWithVKID(with presentingController: UIViewController)
+    func authWithVKID(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
     func authWithGoogle(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
     func authWithFirebase(with userRequest: ProfileAcknowledgementModel)
 }
@@ -28,8 +28,10 @@ final class AuthService: AuthServiceDescription {
         self.firebaseAuthService = firebaseAuthService
     }
     
-    func authWithVKID(with presentingController: UIViewController) {
-        vkidAuthService.authWithVKID(with: presentingController)
+    func authWithVKID(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void) {
+        vkidAuthService.authWithVKID(with: presentingController) { result in
+            completion(result)
+        }
     }
     
     func authWithGoogle(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void) {

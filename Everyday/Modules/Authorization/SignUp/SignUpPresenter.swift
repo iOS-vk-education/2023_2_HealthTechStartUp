@@ -53,9 +53,14 @@ extension SignUpPresenter: SignUpViewOutput {
     func didTapSignWithVKButton() {
         AuthModel.shared.whichSign = .vk
         
-        interactor.authWithVKID {
+        interactor.authWithVKID { result in
             DispatchQueue.main.async {
-                self.router.openOnBoarding()
+                switch result {
+                case .success:
+                    self.router.openOnBoarding()
+                case .failure(let error):
+                    self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
+                }
             }
         }
     }
@@ -64,14 +69,14 @@ extension SignUpPresenter: SignUpViewOutput {
         AuthModel.shared.whichSign = .google
         
         interactor.authWithGoogle { result in
-                DispatchQueue.main.async {
-                    switch result {
-                    case .success:
-                        self.router.openOnBoarding()
-                    case .failure(let error):
-                        self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
-                    }
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self.router.openOnBoarding()
+                case .failure(let error):
+                    self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
                 }
+            }
         }
     }
 }
