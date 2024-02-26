@@ -30,7 +30,7 @@ protocol SignInViewOutput: AnyObject {
 
 protocol SignInInteractorInput: AnyObject {
     func loginWithEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
-    func loginWithGoogle(completion: @escaping (Result<Void, Error>) -> Void)
+    func loginWithGoogle(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 protocol SignInInteractorOutput: AnyObject {
@@ -38,4 +38,5 @@ protocol SignInInteractorOutput: AnyObject {
 
 protocol SignInRouterInput: AnyObject {
     func openApp()
+    func openOnBoarding()
 }

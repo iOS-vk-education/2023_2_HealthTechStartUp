@@ -122,6 +122,8 @@ struct ProfileAcknowledgementView: View {
                     
                     saveDataToModel()
                     
+                    UserDefaults.standard.set(true, forKey: "HasCompletedOnboarding")
+                    
                     AuthService.shared.authWithFirebase(with: ProfileAcknowledgementModel.shared)
                     
                     onFinish?()

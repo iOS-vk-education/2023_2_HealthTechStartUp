@@ -21,8 +21,6 @@ class AuthModel {
     
     var whichSign: Sign?
     var credential: AuthCredential?
-//    var email: String?
-//    var password: String?
 
     init() {
     }
@@ -161,23 +159,6 @@ class FirebaseAuthService: FirebaseAuthServiceDescription {
     //                }
     //
     //                completion(nil)
-    //            }
-    //        case .vk, .common:
-    //            guard let email = userRequest.email, let password = userRequest.password else {
-    //                completion(nil)
-    //                return
-    //            }
-    //
-    //            Auth.auth().signIn(
-    //                withEmail: email,
-    //                password: password
-    //            ) { _, error in
-    //                if let error = error {
-    //                    completion(error)
-    //                    return
-    //                } else {
-    //                    completion(nil)
-    //                }
     //            }
     //        default:
     //            completion(nil)

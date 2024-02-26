@@ -6,10 +6,11 @@
 //  
 //
 
-import Foundation
+import UIKit
 
 final class SignInInteractor {
     weak var output: SignInInteractorOutput?
+    weak var viewController: UIViewController?
     let authService: AuthServiceDescription
     
     init(authService: AuthServiceDescription) {
@@ -18,8 +19,21 @@ final class SignInInteractor {
 }
 
 extension SignInInteractor: SignInInteractorInput {
-    func loginWithGoogle(completion: @escaping (Result<Void, Error>) -> Void) {
-        print("ok")
+    func loginWithGoogle(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let viewController = self.viewController else {
+            completion(.failure(NSError(domain: "AuthError", code: 0, userInfo: [NSLocalizedDescriptionKey: "ViewController is nil"])))
+            return
+        }
+        
+        if flag {
+            authService.loginWithGoogle(with: viewController) { result in
+                completion(result)
+            }
+        } else {
+            authService.authWithGoogle(with: viewController) { result in
+                completion(result)
+            }
+        }
     }
     
     func loginWithEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {

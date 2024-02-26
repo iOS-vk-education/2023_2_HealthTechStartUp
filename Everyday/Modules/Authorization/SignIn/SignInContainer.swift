@@ -22,6 +22,7 @@ final class SignInContainer {
         presenter.view = viewController
         presenter.moduleOutput = context.moduleOutput
         
+        interactor.viewController = viewController
         interactor.output = presenter
         router.viewController = viewController
         

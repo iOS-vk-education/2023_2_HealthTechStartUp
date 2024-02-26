@@ -13,6 +13,7 @@ protocol AuthServiceDescription {
     func authWithFirebase(with userRequest: ProfileAcknowledgementModel)
     
     func login(with userRequest: SignInModel, completion: @escaping (Result<Void, Error>) -> Void)
+    func loginWithGoogle(with: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 final class AuthService: AuthServiceDescription {
@@ -59,6 +60,12 @@ final class AuthService: AuthServiceDescription {
             } else if let error = error {
                 completion(.failure(error))
             }
+        }
+    }
+    
+    func loginWithGoogle(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void) {
+        googleAuthService.loginWithGoogle(with: presentingController) { result in
+            completion(result)
         }
     }
 }

@@ -55,11 +55,23 @@ extension SignInPresenter: SignInViewOutput {
     }
     
     func didTapSignWithGoogleButton() {
-        interactor.loginWithGoogle() { result in
+        let signedUp: Bool
+        
+        if UserDefaults.standard.bool(forKey: "HasCompletedOnboarding") {
+            signedUp = true
+        } else {
+            AuthModel.shared.whichSign = .google
+            signedUp = false
+        }
+        interactor.loginWithGoogle(with: signedUp) { result in
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    self.router.openApp()
+                    if signedUp {
+                        self.router.openApp()
+                    } else {
+                        self.router.openOnBoarding()
+                    }
                 case .failure(let error):
                     self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
                 }
@@ -73,9 +85,7 @@ extension SignInPresenter: SignInViewOutput {
     
     func didTapSignSignWithAnonymButton() {
         AuthModel.shared.whichSign = .anonym
-        // router.openApp()
     }
-    
     
     func didLoadView() {
         let viewModel = SignInViewModel()
