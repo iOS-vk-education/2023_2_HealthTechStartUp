@@ -17,14 +17,20 @@ protocol SignUpModuleOutput: AnyObject {
 
 protocol SignUpViewInput: AnyObject {
     func configure(with model: SignUpViewModel)
+    func showAlert(with key: String, message: NSMutableAttributedString)
 }
 
 protocol SignUpViewOutput: AnyObject {
     func didLoadView()
-    func didTapSignUpButton()
+    func didTapSignUpButton(with email: String?, and password: String?)
+    func didTapSignWithVKButton()
+    func didTapSignWithGoogleButton()
+    func didTapSignWithAnonymButton()
 }
 
 protocol SignUpInteractorInput: AnyObject {
+    func authWithGoogle(completion: @escaping (Result<Void, Error>) -> Void)
+    func authWithVKID(completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 protocol SignUpInteractorOutput: AnyObject {

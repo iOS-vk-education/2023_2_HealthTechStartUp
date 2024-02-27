@@ -9,13 +9,10 @@ import SwiftUI
 
 final class ProfileAcknowledgementViewModel: ObservableObject {
     
-    @Published var userProfile = UserProfile()
     @Published var showingImagePicker = false
-    @Published var inputImage: UIImage? {
-        didSet {
-            userProfile.profileImage = inputImage
-        }
-    }
+    @Published var inputImage: UIImage?
+    
+    var temp = UserProfile()
     
     let title: NSAttributedString
     let photoTitle: NSAttributedString
@@ -35,27 +32,29 @@ final class ProfileAcknowledgementViewModel: ObservableObject {
        }
     
     let gendersUI: [GenderUI] = [
-            GenderUI(gender: .male, imageName: "male", localizedText: "male".localized),
-            GenderUI(gender: .female, imageName: "female", localizedText: "female".localized),
-            GenderUI(gender: .other, imageName: "other", localizedText: "other".localized)
+            GenderUI(gender: .male, imageName: "male", localizedText: "Onboarding_user_gender_male".localized),
+            GenderUI(gender: .female, imageName: "female", localizedText: "Onboarding_user_gender_female".localized),
+            GenderUI(gender: .other, imageName: "other", localizedText: "Onboarding_user_gender_other".localized)
         ]
     
     init() {
-        self.title = NSAttributedString(string: "ack".localized, attributes: Styles.titleAttributes)
-        self.photoTitle = NSAttributedString(string: "onboard7_1".localized, attributes: Styles.buttonAttributes)
-        self.starter = NSAttributedString(string: "start".localized, attributes: Styles.buttonAttributes)
-        self.name = "name".localized
-        self.surname = "surname".localized
-        self.nickname = "nickname".localized
-        self.placeholder = "onboard6_desc".localized
-        self.ageConfirm = NSAttributedString(string: "age_confirm".localized, attributes: Styles.buttonAttributes)
-        self.genderConfirm = NSAttributedString(string: "gender_confirm".localized, attributes: Styles.buttonAttributes)
-        self.weightConfirm = NSAttributedString(string: "weight_confirm".localized, attributes: Styles.buttonAttributes)
+        self.title = NSAttributedString(string: "Onboarding_ProfileAck_title".localized, attributes: Styles.titleAttributes)
+        self.photoTitle = NSAttributedString(string: "Onboarding_user_choose_image_button_title".localized, attributes: Styles.buttonAttributes)
+        self.starter = NSAttributedString(string: "Onboarding_start_button_title".localized, attributes: Styles.buttonAttributes)
+        self.name = "Onboarding_user_name".localized
+        self.surname = "Onboarding_user_surname".localized
+        self.nickname = "Onboarding_user_nickname".localized
+        self.placeholder = "Onboarding_Weight_description".localized
+        self.ageConfirm = NSAttributedString(string: "Onboarding_ProfileAck_age_confirm".localized, attributes: Styles.buttonAttributes)
+        self.genderConfirm = NSAttributedString(string: "Onboarding_ProfileAck_gender_confirm".localized, attributes: Styles.buttonAttributes)
+        self.weightConfirm = NSAttributedString(string: "Onboarding_ProfileAck_weight_confirm".localized, attributes: Styles.buttonAttributes)
+        
+        inputImage = ProfileAcknowledgementModel.shared.profileImage
     }
 
     func loadImage() {
         if let inputImage = inputImage {
-            userProfile.profileImage = inputImage
+            temp.profileImage = inputImage
         }
     }
     

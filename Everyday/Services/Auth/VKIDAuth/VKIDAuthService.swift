@@ -10,7 +10,7 @@ import VKID
 
 protocol VKIDAuthServiceDescription {
     var vkid: VKID? { get }
-    func authWithVKID(with presentingController: UIViewController)
+    func authWithVKID(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 final class VKIDAuthService: VKIDAuthServiceDescription {
@@ -41,17 +41,28 @@ final class VKIDAuthService: VKIDAuthServiceDescription {
         }
     }
     
-    func authWithVKID(with presentingController: UIViewController) {
+    func authWithVKID(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void) {
         vkid?.authorize(
             using: .uiViewController(presentingController)
         ) { result in
             do {
                 let session = try result.get()
-                print("Auth succeeded with token: \(session.accessToken) and user info: \(session.user)")
+                let passwordGenerator = PasswordGenerator(length: 20)
+                
+                ProfileAcknowledgementModel.shared.firstname = session.user.firstName
+                ProfileAcknowledgementModel.shared.lastname = session.user.lastName
+                ProfileAcknowledgementModel.shared.email = session.user.email
+                ProfileAcknowledgementModel.shared.password = passwordGenerator.generatePassword()
+                // session.user.avatarURL
+                
+                completion(.success(()))
             } catch AuthError.cancelled {
                 print("Auth cancelled by user")
+                return                
             } catch {
-                print("Auth failed with error: \(error)")
+                let error = NSError(domain: "AuthError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unable to retrieve user information"])
+                completion(.failure(error))
+                return
             }
         }
     }

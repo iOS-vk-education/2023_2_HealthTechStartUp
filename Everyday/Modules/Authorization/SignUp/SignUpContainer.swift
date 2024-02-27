@@ -15,13 +15,14 @@ final class SignUpContainer {
     
     class func assemble(with context: SignUpContext) -> SignUpContainer {
         let router = SignUpRouter()
-        let interactor = SignUpInteractor()
+        let interactor = SignUpInteractor(authService: AuthService.shared)
         let presenter = SignUpPresenter(router: router, interactor: interactor)
         let viewController = SignUpViewController(output: presenter)
         
         presenter.view = viewController
         presenter.moduleOutput = context.moduleOutput
         
+        interactor.viewController = viewController
         interactor.output = presenter
         router.viewController = viewController
         

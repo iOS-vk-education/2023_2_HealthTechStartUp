@@ -4,7 +4,7 @@
 ![Static Badge](https://img.shields.io/badge/Swift-5.0-orange) ![Discord](https://img.shields.io/discord/1158889179791503390)
 
 <p align="center">
-  <img src="preview\logo.png"  width="200" style="border-radius: 20%;" />
+  <img src="preview\logo_with_border.png"  width="200" />
 </p>
 
 <p align="center">

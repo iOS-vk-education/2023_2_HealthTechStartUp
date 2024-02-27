@@ -30,8 +30,64 @@ extension SignUpPresenter: SignUpViewOutput {
         view?.configure(with: viewModel)
     }
     
-    func didTapSignUpButton() {
+    func didTapSignWithAnonymButton() {
+        AuthModel.shared.whichSign = .anonym
+        
+        let generator = NameGenerator()
+        
+        ProfileAcknowledgementModel.shared.firstname = generator.generateName()
+        ProfileAcknowledgementModel.shared.lastname = generator.generateSurname()
+        
         router.openOnBoarding()
+    }
+    
+    func didTapSignUpButton(with email: String?, and password: String?) {
+        AuthModel.shared.whichSign = .common
+        
+        if !Validator.isValidEmail(for: email ?? "") {
+            view?.showAlert(with: "email", message: NSMutableAttributedString(string: ""))
+            return
+        }
+        
+        let validationErrors = Validator.validatePassword(for: password ?? "")
+        if  validationErrors.length > 0 {
+            view?.showAlert(with: "password", message: validationErrors)
+            return
+        }
+        
+        ProfileAcknowledgementModel.shared.email = email
+        ProfileAcknowledgementModel.shared.password = password
+        router.openOnBoarding()
+    }
+    
+    func didTapSignWithVKButton() {
+        AuthModel.shared.whichSign = .vk
+        
+        interactor.authWithVKID { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self.router.openOnBoarding()
+                case .failure(let error):
+                    self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
+                }
+            }
+        }
+    }
+
+    func didTapSignWithGoogleButton() {
+        AuthModel.shared.whichSign = .google
+        
+        interactor.authWithGoogle { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self.router.openOnBoarding()
+                case .failure(let error):
+                    self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
+                }
+            }
+        }
     }
 }
 

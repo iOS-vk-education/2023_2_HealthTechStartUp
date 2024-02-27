@@ -16,10 +16,10 @@ struct WeightViewModel {
     let placeholder: String
     
     init() {
-        self.title = NSAttributedString(string: "onboard6_title".localized, attributes: Styles.titleAttributes)
-        self.next = NSAttributedString(string: "next".localized, attributes: Styles.buttonAttributes)
-        self.skip = NSAttributedString(string: "skip".localized, attributes: Styles.buttonAttributes)
-        self.placeholder = "onboard6_desc".localized
+        self.title = NSAttributedString(string: "Onboarding_Weight_title".localized, attributes: Styles.titleAttributes)
+        self.next = NSAttributedString(string: "Onboarding_next_button_title".localized, attributes: Styles.buttonAttributes)
+        self.skip = NSAttributedString(string: "Onboarding_skip_button_title".localized, attributes: Styles.buttonAttributes)
+        self.placeholder = "Onboarding_Weight_description".localized
     }
 }
 

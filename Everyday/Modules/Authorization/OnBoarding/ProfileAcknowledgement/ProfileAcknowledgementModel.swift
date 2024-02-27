@@ -5,16 +5,22 @@
 //  Created by Михаил on 16.02.2024.
 //
 import UIKit
+import FirebaseFirestore
 
-struct ProfileAcknowledgementModel {
-    var name: String = ""
-    var surname: String = ""
-    var nickname: String = ""
+class ProfileAcknowledgementModel {
+    static let shared = ProfileAcknowledgementModel()
+
+    var firstname: String?
+    var lastname: String?
+    var nickname: String?
+    var email: String?
+    var password: String?
     var profileImage: UIImage?
+    var age: String?
+    var gender: String?
+    var weight: String?
+    var schedule: [[DocumentReference]] = []
     
-    let age: Age
-    
-    let gender: Gender
-    
-    let weight: Int
+    init() {
+    }
 }

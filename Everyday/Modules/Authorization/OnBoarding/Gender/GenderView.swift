@@ -16,7 +16,7 @@ struct GenderView: View {
         VStack(spacing: Constants.VStackValues.spacing) {
             Spacer()
             
-            Text(AttributedString(viewModel.description))
+            Text(AttributedString(viewModel.title))
                 .font(.subheadline)
                 .multilineTextAlignment(.center)
                 .foregroundColor(Constants.primaryText)
@@ -33,6 +33,7 @@ struct GenderView: View {
             Spacer()
             
             Button(action: {
+
                 onNext()
             }, label: {
                 Text(AttributedString(viewModel.next))
@@ -56,6 +57,9 @@ struct GenderView: View {
             .padding(.bottom, Constants.VStackValues.bPadding)
         }
         .padding(.horizontal)
+        .onChange(of: controller.selectedGender) { newValue in
+            ProfileAcknowledgementModel.shared.gender = newValue.description
+        }
     }
 }
 
