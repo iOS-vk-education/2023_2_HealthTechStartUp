@@ -9,20 +9,20 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-enum Sign {
-    case vk
-    case google
-    case common
-    case anonym
-}
-
-class AuthModel {
+final class AuthModel {
     static let shared = AuthModel()
     
-    var whichSign: Sign?
-    var credential: AuthCredential?
+    enum Sign {
+        case vk
+        case google
+        case common
+        case anonym
+        case none
+    }
+    
+    var whichSign: Sign = .none
 
-    init() {
+    private init() {
     }
 }
 
@@ -35,12 +35,12 @@ protocol FirebaseAuthServiceDescription {
     
 }
 
-class FirebaseAuthService: FirebaseAuthServiceDescription {
+final class FirebaseAuthService: FirebaseAuthServiceDescription {
     public static let shared = FirebaseAuthService()
     
     private init() {}
     
-    public func registerUser(with userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void) {
+    func registerUser(with userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void) {
         switch AuthModel.shared.whichSign {
         case .google, .vk, .common, .anonym:
             performAuth(userRequest: userRequest, completion: completion)
@@ -49,7 +49,7 @@ class FirebaseAuthService: FirebaseAuthServiceDescription {
         }
     }
     
-    public func login(with userRequest: SignInModel, completion: @escaping (Bool, Error?) -> Void) {
+   func login(with userRequest: SignInModel, completion: @escaping (Bool, Error?) -> Void) {
         let email = userRequest.email
         let password = userRequest.password
         
@@ -73,7 +73,7 @@ class FirebaseAuthService: FirebaseAuthServiceDescription {
         
         switch AuthModel.shared.whichSign {
         case .google:
-            guard let credential = AuthModel.shared.credential else {
+            guard let credential = GoogleAuthService.shared.credential else {
                 return completion(false, nil)
             }
             Auth.auth().signIn(with: credential, completion: authAction)

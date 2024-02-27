@@ -61,7 +61,7 @@ struct ProfileSetupView: View {
                     .background(Constants.gray.opacity(Constants.TextFieldValues.colorOpacity))
                     .cornerRadius(Constants.TextFieldValues.cornerRadius)
                     .onChange(of: viewModel.userProfile.name) { newValue in
-                        ProfileAcknowledgementModel.shared.firstname = newValue
+                        ProfileAcknowledgementModel.shared.update(firstname: newValue)
                     }
                 
                 UserTextField(text: $viewModel.userProfile.surname, keyType: .default, placeholder: viewModel.surname)
@@ -70,7 +70,7 @@ struct ProfileSetupView: View {
                     .background(Constants.gray.opacity(Constants.TextFieldValues.colorOpacity))
                     .cornerRadius(Constants.TextFieldValues.cornerRadius)
                     .onChange(of: viewModel.userProfile.surname) { newValue in
-                        ProfileAcknowledgementModel.shared.lastname = newValue
+                        ProfileAcknowledgementModel.shared.update(lastname: newValue)
                     }
                 
                 UserTextField(text: $viewModel.userProfile.nickname, keyType: .default, placeholder: viewModel.nickname)
@@ -79,7 +79,7 @@ struct ProfileSetupView: View {
                     .background(Constants.gray.opacity(Constants.TextFieldValues.colorOpacity))
                     .cornerRadius(Constants.TextFieldValues.cornerRadius)
                     .onChange(of: viewModel.userProfile.nickname) { newValue in
-                        ProfileAcknowledgementModel.shared.nickname = newValue
+                        ProfileAcknowledgementModel.shared.update(nickname: newValue)
                     }
                 
                 Spacer()

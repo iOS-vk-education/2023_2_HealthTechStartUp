@@ -54,7 +54,7 @@ extension SignInPresenter: SignInViewOutput {
         }
     }
     
-    func didTapSignWithGoogleButton() {
+    func didTapSignInWithGoogleButton() {
         let signedUp: Bool
         
         if UserDefaults.standard.bool(forKey: "HasCompletedOnboarding") {
@@ -79,11 +79,18 @@ extension SignInPresenter: SignInViewOutput {
         }
     }
     
-    func didTapSignSignWithVKButton() {
-        AuthModel.shared.whichSign = .vk
+    func didTapSignInWithVKButton() {
+        let signedUp: Bool
+        
+        if UserDefaults.standard.bool(forKey: "HasCompletedOnboarding") {
+            signedUp = true
+        } else {
+            AuthModel.shared.whichSign = .vk
+            signedUp = false
+        }
     }
     
-    func didTapSignSignWithAnonymButton() {
+    func didTapSignInWithAnonymButton() {
         AuthModel.shared.whichSign = .anonym
     }
     

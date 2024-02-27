@@ -48,4 +48,12 @@ extension SignInInteractor: SignInInteractorInput {
             }
         }
     }
+    
+    func loginWithEmail(email: String, password: String, flag: Bool, completion: @escaping (Result<Void, Error>) -> Void) {
+        print("ok")
+    }
+    
+    func userExists() {
+        print("ok")
+    }
 }

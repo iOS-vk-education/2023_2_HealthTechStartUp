@@ -19,7 +19,7 @@ struct NameGeneratorModel {
                    "NameGenerator_surname_7".localized, "NameGenerator_surname_8".localized]
 }
 
-class NameGenerator {
+final class NameGenerator {
     private let model = NameGeneratorModel()
     
     func generateName() -> String {

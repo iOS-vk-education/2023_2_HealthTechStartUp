@@ -170,13 +170,10 @@ struct ProfileAcknowledgementView: View {
     }
     
     func saveDataToModel() {
-        ProfileAcknowledgementModel.shared.firstname = selectedName
-        ProfileAcknowledgementModel.shared.lastname = selectedSurname
-        ProfileAcknowledgementModel.shared.nickname = selectedNickname
-        ProfileAcknowledgementModel.shared.profileImage = viewModel.inputImage
-        ProfileAcknowledgementModel.shared.age = selectedAge.description
-        ProfileAcknowledgementModel.shared.gender = selectedGender.description
-        ProfileAcknowledgementModel.shared.weight = selectedWeight
+        ProfileAcknowledgementModel.shared.update(firstname: selectedName, lastname: selectedSurname,
+                                                  nickname: selectedNickname, profileImage: viewModel.inputImage,
+                                                  age: selectedAge.description, gender: selectedGender.description,
+                                                  weight: selectedWeight)
     }
 }
 

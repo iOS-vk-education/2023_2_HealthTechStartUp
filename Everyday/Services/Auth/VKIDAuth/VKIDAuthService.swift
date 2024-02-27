@@ -49,10 +49,11 @@ final class VKIDAuthService: VKIDAuthServiceDescription {
                 let session = try result.get()
                 let passwordGenerator = PasswordGenerator(length: 20)
                 
-                ProfileAcknowledgementModel.shared.firstname = session.user.firstName
-                ProfileAcknowledgementModel.shared.lastname = session.user.lastName
-                ProfileAcknowledgementModel.shared.email = session.user.email
-                ProfileAcknowledgementModel.shared.password = passwordGenerator.generatePassword()
+                ProfileAcknowledgementModel.shared.update(firstname: session.user.firstName,
+                                                          lastname: session.user.lastName,
+                                                          email: session.user.email,
+                                                          password: passwordGenerator.generatePassword())
+                
                 // session.user.avatarURL
                 
                 completion(.success(()))

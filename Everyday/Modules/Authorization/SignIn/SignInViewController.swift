@@ -230,19 +230,19 @@ final class SignInViewController: UIViewController {
     @objc
     private func didTapSignWithGoogleButton() {
         animateButton(with: signWithGoogleButton)
-        output.didTapSignWithGoogleButton()
+        output.didTapSignInWithGoogleButton()
     }
 
     @objc
     private func didTapSignWithVKButton() {
         animateButton(with: signWithVKButton)
-        output.didTapSignSignWithVKButton()
+        output.didTapSignInWithVKButton()
     }
 
     @objc
     private func didTapSignWithAnonymButton() {
         animateButton(with: signWithAnonymButton)
-        output.didTapSignSignWithAnonymButton()
+        output.didTapSignInWithAnonymButton()
     }
 
     @objc

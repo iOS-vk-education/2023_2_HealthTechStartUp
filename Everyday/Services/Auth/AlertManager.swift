@@ -10,11 +10,9 @@ import UIKit
 final class AlertManager {
     
     private static func showBasicAlert(on vc: UIViewController, title: String, message: String?) {
-        DispatchQueue.main.async {
             let alert = UIAlertController(title: title, message: message, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: "AlertManager_alert_title".localized, style: .default, handler: nil))
             vc.present(alert, animated: true)
-        }
     }
 }
 

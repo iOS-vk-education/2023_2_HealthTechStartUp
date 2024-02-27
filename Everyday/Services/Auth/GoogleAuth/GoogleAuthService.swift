@@ -19,6 +19,8 @@ final class GoogleAuthService: GoogleAuthServiceDescription {
 
     static let shared = GoogleAuthService()
     
+    var credential: AuthCredential?
+    
     private init() {
     }
     
@@ -35,13 +37,12 @@ final class GoogleAuthService: GoogleAuthServiceDescription {
                 return
             }
 
-            let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: user.accessToken.tokenString)
+            GoogleAuthService.shared.credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: user.accessToken.tokenString)
             
-            AuthModel.shared.credential = credential
+            ProfileAcknowledgementModel.shared.update(firstname: user.profile?.givenName,
+                                                      lastname: user.profile?.familyName,
+                                                      email: user.profile?.email)
             
-            ProfileAcknowledgementModel.shared.firstname = user.profile?.givenName
-            ProfileAcknowledgementModel.shared.lastname = user.profile?.familyName
-            ProfileAcknowledgementModel.shared.email = user.profile?.email
             // let profilePicUrl = user.profile?.imageURL(withDimension: 320)
             
             completion(.success(()))
