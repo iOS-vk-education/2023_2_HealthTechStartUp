@@ -19,120 +19,88 @@ final class SignInPresenter {
         self.router = router
         self.interactor = interactor
     }
+    
+    private func handleLoginResult(signedUp: Bool, result: Result<Void, Error>) {
+        DispatchQueue.main.async {
+            switch result {
+            case .success:
+                if signedUp {
+                    self.router.openApp()
+                } else {
+                    self.router.openOnBoarding()
+                }
+            case .failure(let error):
+                self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
+            }
+        }
+    }
 }
 
+// MARK: - SignInModuleInput
 extension SignInPresenter: SignInModuleInput {
 }
 
+// MARK: - SignInViewOutput
 extension SignInPresenter: SignInViewOutput {
     
     func didTapSignInButton(with email: String?, and password: String?) {
-        if !Validator.isValidEmail(for: email ?? "") {
-            view?.showAlert(with: "email", message: NSMutableAttributedString(string: ""))
+        guard let email = email, Validator.isValidEmail(for: email) else {
+            view?.showAlert(with: "email", message: NSMutableAttributedString(string: "Invalid email"))
             return
         }
         
         let validationErrors = Validator.validatePassword(for: password ?? "")
-        if  validationErrors.length > 0 {
+        if validationErrors.length > 0 {
             view?.showAlert(with: "password", message: validationErrors)
             return
         }
         
-        guard let email = email, let password = password else {
-            return
-        }
-        
-        interactor.loginWithEmail(email: email, password: password) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    self.router.openApp()
-                case .failure(let error):
-                    self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
-                }
+        interactor.loginWithEmail(email: email, password: password ?? "") { [weak self] result in
+            guard let self = self else {
+                return
             }
+            self.handleLoginResult(signedUp: UserDefaults.standard.bool(forKey: "HasCompletedOnboarding"), result: result)
         }
     }
     
     func didTapSignInWithGoogleButton() {
-        let signedUp: Bool
-        
-        if UserDefaults.standard.bool(forKey: "HasCompletedOnboarding") {
-            signedUp = true
-        } else {
-            AuthModel.shared.whichSign = .google
-            signedUp = false
-        }
-        
-        interactor.loginWithGoogle(with: signedUp) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    if signedUp {
-                        self.router.openApp()
-                    } else {
-                        self.router.openOnBoarding()
-                    }
-                case .failure(let error):
-                    self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
-                }
-            }
-        }
+        performSignIn(signInMethod: .google)
     }
     
     func didTapSignInWithVKButton() {
-        let signedUp: Bool
-        
-        if UserDefaults.standard.bool(forKey: "HasCompletedOnboarding") {
-            signedUp = true
-        } else {
-            AuthModel.shared.whichSign = .vk
-            signedUp = false
-        }
-        
-        interactor.loginWithVK(with: signedUp) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    if signedUp {
-                        self.router.openApp()
-                    } else {
-                        self.router.openOnBoarding()
-                    }
-                case .failure(let error):
-                    self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
-                }
-            }
-        }
+        performSignIn(signInMethod: .vk)
     }
     
     func didTapSignInWithAnonymButton() {
-        let signedUp: Bool
+        performSignIn(signInMethod: .anonym)
+    }
+    
+    private func performSignIn(signInMethod: AuthModel.Sign) {
+        let signedUp = UserDefaults.standard.bool(forKey: "HasCompletedOnboarding")
+        AuthModel.shared.whichSign = signInMethod
         
-        if UserDefaults.standard.bool(forKey: "HasCompletedOnboarding") {
-            signedUp = true
-        } else {
-            AuthModel.shared.whichSign = .anonym
-            signedUp = false
+        let completion: (Result<Void, Error>) -> Void = { [weak self] result in
+            guard let self = self else {
+                return
+            }
+            self.handleLoginResult(signedUp: signedUp, result: result)
         }
         
-        interactor.loginWithAnonym(with: signedUp) { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    if signedUp {
-                        self.router.openApp()
-                    } else {
-                        let generator = NameGenerator()
-                        
-                        ProfileAcknowledgementModel.shared.update(firstname: generator.generateName(),
-                                                                  lastname: generator.generateSurname())
-                        self.router.openOnBoarding()
-                    }
-                case .failure(let error):
-                    self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
-                }
-            }
+        if signInMethod == .anonym && !signedUp {
+            let generator = NameGenerator()
+            ProfileAcknowledgementModel.shared.update(firstname: generator.generateName(),
+                                                      lastname: generator.generateSurname())
+        }
+                
+        switch signInMethod {
+        case .google:
+            interactor.loginWithGoogle(with: signedUp, completion: completion)
+        case .vk:
+            interactor.loginWithVK(with: signedUp, completion: completion)
+        case .anonym:
+            interactor.loginWithAnonym(with: signedUp, completion: completion)
+        default:
+            break // or handle other cases if needed
         }
     }
     
@@ -142,5 +110,6 @@ extension SignInPresenter: SignInViewOutput {
     }
 }
 
+// MARK: - SignInInteractorOutput
 extension SignInPresenter: SignInInteractorOutput {
 }

@@ -25,22 +25,22 @@ class KeychainService {
     }
     
     static func loadPassword(for email: String) -> String? {
-            let query: [String: Any] = [
-                kSecClass as String: kSecClassGenericPassword,
-                kSecAttrAccount as String: email,
-                kSecReturnData as String: kCFBooleanTrue!,
-                kSecMatchLimit as String: kSecMatchLimitOne
-            ]
-            
-            var retrievedData: AnyObject?
-            let status = SecItemCopyMatching(query as CFDictionary, &retrievedData)
-            
-            if status == errSecSuccess,
-               let passwordData = retrievedData as? Data,
-               let password = String(data: passwordData, encoding: .utf8) {
-                return password
-            } else {
-                return nil
-            }
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: email,
+            kSecReturnData as String: kCFBooleanTrue!,
+            kSecMatchLimit as String: kSecMatchLimitOne
+        ]
+        
+        var retrievedData: AnyObject?
+        let status = SecItemCopyMatching(query as CFDictionary, &retrievedData)
+        
+        if status == errSecSuccess,
+           let passwordData = retrievedData as? Data,
+           let password = String(data: passwordData, encoding: .utf8) {
+            return password
+        } else {
+            return nil
         }
+    }
 }

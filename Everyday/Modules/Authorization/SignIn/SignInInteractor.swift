@@ -8,6 +8,20 @@
 
 import UIKit
 
+enum SignError: Error {
+    case viewControllerNil
+    case other(Error)
+    
+    var localizedDescription: String {
+        switch self {
+        case .viewControllerNil:
+            return "ViewController is nil"
+        case .other(let error):
+            return error.localizedDescription
+        }
+    }
+}
+
 final class SignInInteractor {
     weak var output: SignInInteractorOutput?
     weak var viewController: UIViewController?
@@ -16,64 +30,49 @@ final class SignInInteractor {
     init(authService: AuthServiceDescription) {
         self.authService = authService
     }
+    
+    private func performAuthAction(flag: Bool, viewController: UIViewController, 
+                                   action: (_ viewController: UIViewController, _ completion: @escaping (Result<Void, Error>) -> Void) -> Void,
+                                   completion: @escaping (Result<Void, Error>) -> Void) {
+        action(viewController) { result in
+            completion(result)
+        }
+    }
 }
 
 extension SignInInteractor: SignInInteractorInput {
     func loginWithGoogle(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let viewController = self.viewController else {
-            completion(.failure(NSError(domain: "AuthError", code: 0, userInfo: [NSLocalizedDescriptionKey: "ViewController is nil"])))
+            completion(.failure(SignError.viewControllerNil))
             return
         }
         
-        if flag {
-            authService.loginWithGoogle(with: viewController) { result in
-                completion(result)
-            }
-        } else {
-            authService.authWithGoogle(with: viewController) { result in
-                completion(result)
-            }
-        }
+        performAuthAction(flag: flag, viewController: viewController, 
+                          action: flag ? authService.loginWithGoogle : authService.authWithGoogle, completion: completion)
     }
     
     func loginWithEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let model = SignInModel(email: email, password: password)
-          
         authService.login(with: model) { result in
-            switch result {
-            case .success:
-                completion(.success(()))
-            case .failure(let error):
-                completion(.failure(error))
-            }
+            completion(result)
         }
     }
     
     func loginWithVK(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void) {
         guard let viewController = self.viewController else {
-            completion(.failure(NSError(domain: "AuthError", code: 0, userInfo: [NSLocalizedDescriptionKey: "ViewController is nil"])))
+            completion(.failure(SignError.viewControllerNil))
             return
         }
         
-        if flag {
-            authService.loginWithVKID(with: viewController) { result in
-                completion(result)
-            }
-        } else {
-            authService.authWithVKID(with: viewController) { result in
-                completion(result)
-            }
-        }
+        performAuthAction(flag: flag, viewController: viewController, 
+                          action: flag ? authService.loginWithVKID : authService.authWithVKID, completion: completion)
     }
     
     func loginWithAnonym(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void) {
         if flag {
-            authService.loginWithAnonym { result in
-                completion(result)
-            }
+            authService.loginWithAnonym(completion: completion)
         } else {
             completion(.success(()))
-            return
         }
     }
 }

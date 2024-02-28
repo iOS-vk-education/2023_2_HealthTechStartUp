@@ -50,25 +50,23 @@ final class VKIDAuthService: VKIDAuthServiceDescription {
                 let session = try result.get()
                 let passwordGenerator = PasswordGenerator(length: 20)
                 let password = passwordGenerator.generatePassword()
-                
                 guard let email = session.user.email  else {
                     let error = NSError(domain: "AuthError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unable to retrieve user information"])
                     completion(.failure(error))
                     return
                 }
                 
+                KeychainService.savePassword(password, for: email)
+                
                 ProfileAcknowledgementModel.shared.update(firstname: session.user.firstName,
                                                           lastname: session.user.lastName,
                                                           email: email,
                                                           password: password)
                 
-                KeychainService.savePassword(password, for: email)
-                
                 // session.user.avatarURL
                 
                 completion(.success(()))
             } catch AuthError.cancelled {
-                print("Auth cancelled by user")
                 return                
             } catch {
                 let error = NSError(domain: "AuthError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unable to retrieve user information"])
