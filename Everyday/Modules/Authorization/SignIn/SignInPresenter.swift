@@ -107,7 +107,33 @@ extension SignInPresenter: SignInViewOutput {
     }
     
     func didTapSignInWithAnonymButton() {
-        AuthModel.shared.whichSign = .anonym
+        let signedUp: Bool
+        
+        if UserDefaults.standard.bool(forKey: "HasCompletedOnboarding") {
+            signedUp = true
+        } else {
+            AuthModel.shared.whichSign = .anonym
+            signedUp = false
+        }
+        
+        interactor.loginWithAnonym(with: signedUp) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    if signedUp {
+                        self.router.openApp()
+                    } else {
+                        let generator = NameGenerator()
+                        
+                        ProfileAcknowledgementModel.shared.update(firstname: generator.generateName(),
+                                                                  lastname: generator.generateSurname())
+                        self.router.openOnBoarding()
+                    }
+                case .failure(let error):
+                    self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
+                }
+            }
+        }
     }
     
     func didLoadView() {

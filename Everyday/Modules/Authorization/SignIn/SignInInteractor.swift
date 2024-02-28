@@ -65,4 +65,15 @@ extension SignInInteractor: SignInInteractorInput {
             }
         }
     }
+    
+    func loginWithAnonym(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void) {
+        if flag {
+            authService.loginWithAnonym { result in
+                completion(result)
+            }
+        } else {
+            completion(.success(()))
+            return
+        }
+    }
 }

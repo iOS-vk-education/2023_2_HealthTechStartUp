@@ -15,6 +15,7 @@ protocol AuthServiceDescription {
     func login(with userRequest: SignInModel, completion: @escaping (Result<Void, Error>) -> Void)
     func loginWithGoogle(with: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
     func loginWithVKID(with: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
+    func loginWithAnonym(completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 final class AuthService: AuthServiceDescription {
@@ -73,6 +74,16 @@ final class AuthService: AuthServiceDescription {
     func loginWithVKID(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void) {
         vkidAuthService.loginWithVKID(with: presentingController) { result in
             completion(result)
+        }
+    }
+    
+    func loginWithAnonym(completion: @escaping (Result<Void, Error>) -> Void) {
+        firebaseAuthService.anonymLogin { success, error in
+            if success {
+                completion(.success(()))
+            } else if let error = error {
+                completion(.failure(error))
+            }
         }
     }
 }

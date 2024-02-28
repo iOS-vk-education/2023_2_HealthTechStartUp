@@ -32,6 +32,7 @@ protocol SignInInteractorInput: AnyObject {
     func loginWithEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
     func loginWithVK(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void)
     func loginWithGoogle(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void)
+    func loginWithAnonym(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 protocol SignInInteractorOutput: AnyObject {

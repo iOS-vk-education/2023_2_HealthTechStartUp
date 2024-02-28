@@ -29,9 +29,9 @@ final class AuthModel {
 protocol FirebaseAuthServiceDescription {
     func registerUser(with userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void)
     func login(with userRequest: SignInModel, completion: @escaping(Bool, Error?) -> Void)
+    func anonymLogin(completion: @escaping (Bool, Error?) -> Void)
     // func signOut(completion: @escaping (Error?) -> Void)
     // func forgotPassword(with email: String, completion: @escaping (Error?) -> Void)
-    
 }
 
 final class FirebaseAuthService: FirebaseAuthServiceDescription {
@@ -53,6 +53,17 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
         let password = userRequest.password
         
         Auth.auth().signIn(withEmail: email, password: password) { _, error in
+            if let error = error {
+                completion(false, error)
+                return
+            } else {
+                completion(true, nil)
+            }
+        }
+    }
+    
+    func anonymLogin(completion: @escaping (Bool, Error?) -> Void) {
+        Auth.auth().signInAnonymously { _, error in
             if let error = error {
                 completion(false, error)
                 return
