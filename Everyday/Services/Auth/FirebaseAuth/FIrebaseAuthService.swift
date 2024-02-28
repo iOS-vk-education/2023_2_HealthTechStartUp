@@ -29,7 +29,6 @@ final class AuthModel {
 protocol FirebaseAuthServiceDescription {
     func registerUser(with userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void)
     func login(with userRequest: SignInModel, completion: @escaping(Bool, Error?) -> Void)
-    // func login(with userRequest: LoginModel, completion: @escaping (Error?) -> Void)
     // func signOut(completion: @escaping (Error?) -> Void)
     // func forgotPassword(with email: String, completion: @escaping (Error?) -> Void)
     
@@ -141,26 +140,3 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
 //            completion(error)
 //        }
 //    }
-
- //   switch AuthModel.shared.whichSign {
-    //        case .google:
-    //            guard let credential = AuthModel.shared.credential else {
-    //                return completion(nil)
-    //            }
-    //
-    //            Auth.auth().signIn(with: credential) { authResult, error in
-    //                if let error = error {
-    //                    completion(nil)
-    //                    return
-    //                }
-    //
-    //                if let isNewUser = authResult?.additionalUserInfo?.isNewUser, isNewUser {
-    //                        print("Welcome, new user!")
-    //                }
-    //
-    //                completion(nil)
-    //            }
-    //        default:
-    //            completion(nil)
-    //        }
-    //    }

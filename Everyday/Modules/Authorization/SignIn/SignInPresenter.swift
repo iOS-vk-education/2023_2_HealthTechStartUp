@@ -63,6 +63,7 @@ extension SignInPresenter: SignInViewOutput {
             AuthModel.shared.whichSign = .google
             signedUp = false
         }
+        
         interactor.loginWithGoogle(with: signedUp) { result in
             DispatchQueue.main.async {
                 switch result {
@@ -87,6 +88,21 @@ extension SignInPresenter: SignInViewOutput {
         } else {
             AuthModel.shared.whichSign = .vk
             signedUp = false
+        }
+        
+        interactor.loginWithVK(with: signedUp) { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    if signedUp {
+                        self.router.openApp()
+                    } else {
+                        self.router.openOnBoarding()
+                    }
+                case .failure(let error):
+                    self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
+                }
+            }
         }
     }
     

@@ -14,6 +14,7 @@ protocol AuthServiceDescription {
     
     func login(with userRequest: SignInModel, completion: @escaping (Result<Void, Error>) -> Void)
     func loginWithGoogle(with: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
+    func loginWithVKID(with: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 final class AuthService: AuthServiceDescription {
@@ -65,6 +66,12 @@ final class AuthService: AuthServiceDescription {
     
     func loginWithGoogle(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void) {
         googleAuthService.loginWithGoogle(with: presentingController) { result in
+            completion(result)
+        }
+    }
+    
+    func loginWithVKID(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void) {
+        vkidAuthService.loginWithVKID(with: presentingController) { result in
             completion(result)
         }
     }

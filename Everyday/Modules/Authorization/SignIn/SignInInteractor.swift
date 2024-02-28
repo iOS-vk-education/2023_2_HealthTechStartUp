@@ -49,11 +49,20 @@ extension SignInInteractor: SignInInteractorInput {
         }
     }
     
-    func loginWithEmail(email: String, password: String, flag: Bool, completion: @escaping (Result<Void, Error>) -> Void) {
-        print("ok")
-    }
-    
-    func userExists() {
-        print("ok")
+    func loginWithVK(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void) {
+        guard let viewController = self.viewController else {
+            completion(.failure(NSError(domain: "AuthError", code: 0, userInfo: [NSLocalizedDescriptionKey: "ViewController is nil"])))
+            return
+        }
+        
+        if flag {
+            authService.loginWithVKID(with: viewController) { result in
+                completion(result)
+            }
+        } else {
+            authService.authWithVKID(with: viewController) { result in
+                completion(result)
+            }
+        }
     }
 }
