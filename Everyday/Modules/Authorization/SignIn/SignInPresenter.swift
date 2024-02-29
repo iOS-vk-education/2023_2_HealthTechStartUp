@@ -100,7 +100,7 @@ extension SignInPresenter: SignInViewOutput {
         case .anonym:
             interactor.loginWithAnonym(with: signedUp, completion: completion)
         default:
-            break // or handle other cases if needed
+            break 
         }
     }
     

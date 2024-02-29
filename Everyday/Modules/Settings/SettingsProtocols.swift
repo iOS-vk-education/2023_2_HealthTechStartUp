@@ -16,16 +16,22 @@ protocol SettingsModuleOutput: AnyObject {
 }
 
 protocol SettingsViewInput: AnyObject {
+    func configure(with: SettingsViewModel)
+    func showAlert()
 }
 
 protocol SettingsViewOutput: AnyObject {
+    func didLoadView()
+    func didTapLogoutButton()
 }
 
 protocol SettingsInteractorInput: AnyObject {
+    func logout(completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 protocol SettingsInteractorOutput: AnyObject {
 }
 
 protocol SettingsRouterInput: AnyObject {
+    func routeToAuthentication()
 }

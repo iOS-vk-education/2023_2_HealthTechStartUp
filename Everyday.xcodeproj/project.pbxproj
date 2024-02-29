@@ -90,6 +90,7 @@
 		9E7C19992B8CC3E80006D48C /* NameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C19982B8CC3E80006D48C /* NameGenerator.swift */; };
 		9E7C199B2B8D0EC50006D48C /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C199A2B8D0EC50006D48C /* SignInModel.swift */; };
 		9E7C199D2B8F482E0006D48C /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C199C2B8F482E0006D48C /* KeychainService.swift */; };
+		9EBE66212B91255400EB9DAF /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBE66202B91255400EB9DAF /* SettingsViewModel.swift */; };
 		9EE335992B8F9CCD00F532B3 /* SplashAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE335982B8F9CCD00F532B3 /* SplashAnimator.swift */; };
 		9EE3359B2B8F9CDC00F532B3 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3359A2B8F9CDC00F532B3 /* SplashViewController.swift */; };
 		9EE3359D2B8F9CEA00F532B3 /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3359C2B8F9CEA00F532B3 /* SplashPresenter.swift */; };
@@ -196,6 +197,7 @@
 		9E7C19982B8CC3E80006D48C /* NameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameGenerator.swift; sourceTree = "<group>"; };
 		9E7C199A2B8D0EC50006D48C /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		9E7C199C2B8F482E0006D48C /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		9EBE66202B91255400EB9DAF /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		9EE335982B8F9CCD00F532B3 /* SplashAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashAnimator.swift; sourceTree = "<group>"; };
 		9EE3359A2B8F9CDC00F532B3 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		9EE3359C2B8F9CEA00F532B3 /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
@@ -576,6 +578,14 @@
 			path = ProfileSetup;
 			sourceTree = "<group>";
 		};
+		9EBE661F2B911F7C00EB9DAF /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9EBE66202B91255400EB9DAF /* SettingsViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		9EE335972B8F9C3900F532B3 /* ScreenSaver */ = {
 			isa = PBXGroup;
 			children = (
@@ -589,6 +599,7 @@
 		9EE8AE082B7FB8BC001D126F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				9EBE661F2B911F7C00EB9DAF /* Models */,
 				9EE8AE092B7FB8CF001D126F /* SettingsPresenter.swift */,
 				9EE8AE0A2B7FB8CF001D126F /* SettingsRouter.swift */,
 				9EE8AE0B2B7FB8CF001D126F /* SettingsViewController.swift */,
@@ -836,6 +847,7 @@
 				9E5B74FD2B7F9A7000E2BDE6 /* SignUpContainer.swift in Sources */,
 				9E5B750B2B7F9A8300E2BDE6 /* SignInViewModel.swift in Sources */,
 				9EE8AE2D2B7FB930001D126F /* NotepadInteractor.swift in Sources */,
+				9EBE66212B91255400EB9DAF /* SettingsViewModel.swift in Sources */,
 				9E5B750C2B7F9A8300E2BDE6 /* SignInInteractor.swift in Sources */,
 				9E7C199B2B8D0EC50006D48C /* SignInModel.swift in Sources */,
 				9E5B75432B7F9D7600E2BDE6 /* AgeModel.swift in Sources */,

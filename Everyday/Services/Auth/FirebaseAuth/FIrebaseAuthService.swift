@@ -30,7 +30,8 @@ protocol FirebaseAuthServiceDescription {
     func registerUser(with userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void)
     func login(with userRequest: SignInModel, completion: @escaping(Bool, Error?) -> Void)
     func anonymLogin(completion: @escaping (Bool, Error?) -> Void)
-    // func signOut(completion: @escaping (Error?) -> Void)
+    func signOut(completion: @escaping (Bool, Error?) -> Void)
+    
     // func forgotPassword(with email: String, completion: @escaping (Error?) -> Void)
 }
 
@@ -70,6 +71,15 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
             } else {
                 completion(true, nil)
             }
+        }
+    }
+    
+    func signOut(completion: @escaping (Bool, Error?) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completion(true, nil)
+        } catch let error {
+            completion(false, error)
         }
     }
     
@@ -135,16 +145,7 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
         }
     }
 }
-    
-//    
-//    public func signOut(completion: @escaping (Error?) -> Void) {
-//        do {
-//            try Auth.auth().signOut()
-//            completion(nil)
-//        } catch let error {
-//            completion(error)
-//        }
-//    }
+
 //    
 //    public func forgotPassword(with email: String, completion: @escaping (Error?) -> Void) {
 //        Auth.auth().sendPasswordReset(withEmail: email) { error in

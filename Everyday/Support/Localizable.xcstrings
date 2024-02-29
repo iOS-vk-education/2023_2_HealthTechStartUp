@@ -1055,6 +1055,23 @@
         }
       }
     },
+    "Settings_logout_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exit"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выйти"
+          }
+        }
+      }
+    },
     "Settings_title" : {
       "extractionState" : "manual",
       "localizations" : {
