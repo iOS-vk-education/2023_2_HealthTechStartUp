@@ -7,11 +7,6 @@
 
 import Foundation
 
-struct User {
-    let info: String  // change for several properies: name, weight, etc.
-    let schedule: Schedule
-}
-
 struct Schedule {
     let daysOfWeek: [[(workout: Workout, indexOfDay: Int)]]  // 7 elements (arrays) = 7 days
 }

@@ -10,9 +10,9 @@ import Foundation
 
 final class NotepadInteractor {
     weak var output: NotepadInteractorOutput?
-    private let dayManager: DayManagerDescription
+    private let dayManager: DayServiceDescription
 
-    init(dayManager: DayManagerDescription = DayManager.shared) {
+    init(dayManager: DayServiceDescription = DayService.shared) {
         self.dayManager = dayManager
     }
 }
