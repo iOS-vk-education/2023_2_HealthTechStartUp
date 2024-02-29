@@ -25,26 +25,24 @@ final class SplashPresenter: SplashPresenterDescription {
                                                                           backgroundSplashWindow: backgroundSplashWindow)
     
     private lazy var foregroundSplashWindow: UIWindow = {
-        let splashViewController = self.splashViewController(with: textImage, logoIsHidden: false)
+        let splashViewController = self.splashViewController(with: text, logoIsHidden: false)
         let splashWindow = self.splashWindow(windowLevel: .normal + 1, rootViewController: splashViewController)
         
         return splashWindow
     }()
     
     private lazy var backgroundSplashWindow: UIWindow = {
-        let splashViewController = self.splashViewController(with: textImage, logoIsHidden: true)
+        let splashViewController = self.splashViewController(with: text, logoIsHidden: true)
         let splashWindow = self.splashWindow(windowLevel: .normal - 1, rootViewController: splashViewController)
         
         return splashWindow
     }()
     
-    private lazy var textImage: UIImage? = {
-        let textsCount = 11
+    private lazy var text: String? = {
+        let texts = ["Text1", "Text2", "Text3"]
+        let textIndex = Int.random(in: 0..<texts.count)
         
-        let imageNumber = Int.random(in: 1...textsCount)
-        let imageName = "text\(imageNumber)"
-        
-        return UIImage(named: imageName)
+        return texts[textIndex]
     }()
     
     // MARK: - Helpers
@@ -58,13 +56,13 @@ final class SplashPresenter: SplashPresenterDescription {
         
         return splashWindow
     }
-    
-    private func splashViewController(with textImage: UIImage?, logoIsHidden: Bool) -> SplashViewController? {
+        
+    private func splashViewController(with text: String?, logoIsHidden: Bool) -> SplashViewController? {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "SplashViewController")
         let splashViewController = viewController as? SplashViewController
         
-        splashViewController?.textImage = textImage
+        splashViewController?.text = text
         splashViewController?.logoIsHidden = logoIsHidden
         
         return splashViewController

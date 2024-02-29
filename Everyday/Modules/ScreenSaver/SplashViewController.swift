@@ -11,11 +11,12 @@ final class SplashViewController: UIViewController {
     
     // MARK: - Properties
     // swiftlint:disable private_outlet
+ 
     @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var textImageView: UIImageView!
+    @IBOutlet weak var textLabel: UILabel!
     
     var logoIsHidden: Bool = false
-    var textImage: UIImage?
+    var text: String?
     
     static let logoImageBig: UIImage = UIImage(named: "logo")!
 
@@ -24,7 +25,9 @@ final class SplashViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        textImageView.image = textImage
+        view.backgroundColor = .background
+        
+        textLabel.text = text
         logoImageView.isHidden = logoIsHidden
     }
     // swiftlint:enable private_outlet

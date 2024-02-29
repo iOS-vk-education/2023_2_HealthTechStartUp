@@ -4,8 +4,8 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
-        <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -17,27 +17,19 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="RqL-JO-AWE">
-                                <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_splash" translatesAutoresizingMaskIntoConstraints="NO" id="jsj-bF-l9i">
+                                <rect key="frame" x="121.66666666666669" y="295" width="150" height="150"/>
                                 <constraints>
-                                    <constraint firstAttribute="height" constant="852" id="9Sb-4Q-cEn"/>
-                                    <constraint firstAttribute="width" constant="393" id="HM1-nY-CmI"/>
-                                    <constraint firstAttribute="height" relation="greaterThanOrEqual" constant="852" id="uhe-MD-ajx"/>
-                                    <constraint firstAttribute="width" relation="greaterThanOrEqual" constant="393" id="wyk-k7-0lm"/>
+                                    <constraint firstAttribute="height" constant="150" id="On7-T9-Bfn"/>
+                                    <constraint firstAttribute="width" constant="150" id="jQt-MI-9sL"/>
                                 </constraints>
                             </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="Ghost"/>
                         <constraints>
-                            <constraint firstItem="RqL-JO-AWE" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="8oO-oo-PzK"/>
-                            <constraint firstItem="RqL-JO-AWE" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Cju-XV-die"/>
-                            <constraint firstAttribute="bottom" secondItem="RqL-JO-AWE" secondAttribute="bottom" id="Du7-ea-OZJ"/>
-                            <constraint firstItem="RqL-JO-AWE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="EWF-3d-8So"/>
-                            <constraint firstItem="RqL-JO-AWE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="ThI-Up-hgI"/>
-                            <constraint firstItem="RqL-JO-AWE" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="U1l-nc-72l"/>
-                            <constraint firstItem="RqL-JO-AWE" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eIr-tA-MCC"/>
-                            <constraint firstAttribute="bottom" secondItem="RqL-JO-AWE" secondAttribute="bottom" id="eQp-jd-DVL"/>
+                            <constraint firstItem="jsj-bF-l9i" firstAttribute="centerY" secondItem="Ze5-6b-2t3" secondAttribute="centerY" constant="-56" id="L7W-da-fMz"/>
+                            <constraint firstItem="jsj-bF-l9i" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="xu5-9p-gje"/>
                         </constraints>
                     </view>
                 </viewController>
@@ -47,8 +39,9 @@
         </scene>
     </scenes>
     <resources>
-        <systemColor name="systemBackgroundColor">
-            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-        </systemColor>
+        <image name="logo_splash" width="150" height="150"/>
+        <namedColor name="Ghost">
+            <color red="0.97299998998641968" green="0.96899998188018799" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
     </resources>
 </document>

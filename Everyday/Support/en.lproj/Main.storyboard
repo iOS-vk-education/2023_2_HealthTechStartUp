@@ -4,30 +4,57 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="22130"/>
+        <capability name="Named colors" minToolsVersion="9.0"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="System colors in document resources" minToolsVersion="11.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
-        <!--View Controller-->
+        <!--Splash View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Everyday" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="SplashViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="SplashViewController" customModule="Everyday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="logo_splash" translatesAutoresizingMaskIntoConstraints="NO" id="va1-yh-m2K">
+                                <rect key="frame" x="121.66666666666669" y="295" width="150" height="150"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="150" id="20d-Bo-3dh"/>
+                                    <constraint firstAttribute="width" constant="150" id="ac1-VP-AyX"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24G-jx-4Ow">
+                                <rect key="frame" x="175" y="661" width="42" height="21"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <color key="backgroundColor" name="Ghost"/>
+                        <constraints>
+                            <constraint firstItem="va1-yh-m2K" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-56" id="0mI-3L-2N4"/>
+                            <constraint firstItem="va1-yh-m2K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3Lr-BK-Bq1"/>
+                            <constraint firstItem="va1-yh-m2K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qdR-pk-8xX"/>
+                            <constraint firstItem="va1-yh-m2K" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-56" id="zSm-BZ-pN7"/>
+                        </constraints>
                     </view>
+                    <connections>
+                        <outlet property="logoImageView" destination="va1-yh-m2K" id="P9R-RZ-PfO"/>
+                        <outlet property="textLabel" destination="24G-jx-4Ow" id="p9Q-Od-3Tb"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="37" y="27"/>
+            <point key="canvasLocation" x="35.877862595419849" y="26.760563380281692"/>
         </scene>
         <!--Welcome Screen View Controller-->
         <scene sceneID="bZ8-6Y-lso">
             <objects>
-                <viewController storyboardIdentifier="WelcomeScreenViewController" id="eSK-Ge-QsL" customClass="WelcomeScreenViewController" customModule="Everyday" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="WelcomeScreenViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="eSK-Ge-QsL" customClass="WelcomeScreenViewController" customModule="Everyday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="jbc-ia-qJ3">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -42,7 +69,7 @@
         <!--Tab Bar Controller-->
         <scene sceneID="KiN-9b-mWa">
             <objects>
-                <viewController storyboardIdentifier="TabBarController" id="T9z-mt-ZXh" customClass="TabBarController" customModule="Everyday" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="TabBarController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="T9z-mt-ZXh" customClass="TabBarController" customModule="Everyday" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="fqX-9h-K3n">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -56,6 +83,10 @@
         </scene>
     </scenes>
     <resources>
+        <image name="logo_splash" width="150" height="150"/>
+        <namedColor name="Ghost">
+            <color red="0.97299998998641968" green="0.96899998188018799" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+        </namedColor>
         <systemColor name="systemBackgroundColor">
             <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
