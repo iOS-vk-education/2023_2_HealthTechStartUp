@@ -27,7 +27,7 @@ final class DayService: DayServiceDescription {
     
     func getDayResults(on date: Date, completion: @escaping (Result<[(workout: Workout, indexOfDay: Int)], CustomError>) -> Void) {
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            let workoutDays = MockSchedule.mockSchedule.daysOfWeek[4]
+//            let workoutDays = MockSchedule.mockSchedule.daysOfWeek[4]
 //            let result: Result<[(workout: Workout, indexOfDay: Int)], CustomError> = .success(workoutDays)
             let result: Result<[(workout: Workout, indexOfDay: Int)], CustomError> = .failure(.unknownError)
             completion(result)

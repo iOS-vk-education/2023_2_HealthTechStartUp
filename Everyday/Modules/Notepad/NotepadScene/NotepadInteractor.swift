@@ -28,7 +28,7 @@ extension NotepadInteractor: NotepadInteractorInput {
             switch result {
             case .success(let workoutDays):
                 self.output?.didLoadDay(with: workoutDays, true)
-            case .failure(let error):
+            case .failure:
                 self.loadSchedule()
             }
         }
@@ -43,7 +43,7 @@ extension NotepadInteractor: NotepadInteractorInput {
             switch result {
             case .success(let workoutDays):
                 self.output?.didLoadDay(with: workoutDays, false)
-            case .failure(let error):
+            case .failure:
                 break
             }
         }

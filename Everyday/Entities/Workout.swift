@@ -63,6 +63,6 @@ struct Mock {
         Workout(name: "Кардио", days: [
             DayOfWorkout(name: "День 1", sets: [
                 TrainingSet(name: "", exercises: [
-                    Exercise(name: "Jumping Jacks", description: "", result: "20 раз")])])]),
+                    Exercise(name: "Jumping Jacks", description: "", result: "20 раз")])])])
     ]
 }

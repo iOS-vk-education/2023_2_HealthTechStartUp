@@ -6,7 +6,7 @@
 //
 
 import UIKit
-//import VKID
+// import VKID
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -17,7 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             return
         }
 
-        let viewController = WelcomeScreenContainer.assemble(with: .init()).viewController
+        let viewController = NotepadContainer.assemble(with: .init()).viewController
         let navigationController = UINavigationController(rootViewController: viewController)
 
         let window = UIWindow(windowScene: scene)

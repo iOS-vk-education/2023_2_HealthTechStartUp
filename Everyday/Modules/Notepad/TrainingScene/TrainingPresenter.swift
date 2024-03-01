@@ -47,7 +47,7 @@ extension TrainingPresenter: TrainingViewOutput {
     
     func setSwitchState(at index: Int, with value: Bool) {
         switchStates[index] = value
-        let allSatisfy = switchStates.allSatisfy{ $0 }
+        let allSatisfy = switchStates.allSatisfy { $0 }
         if allSatisfy {
             view?.showFinishButton()
         } else {
@@ -82,11 +82,12 @@ extension TrainingPresenter: TrainingViewOutput {
 
 extension TrainingPresenter: ExerciseModuleOutput {
     func setResult(of exercise: String, with result: String, at indexOfSet: Int) {
-        guard let exerciseNumber1 = self.workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises.firstIndex(where: { $0.name == exercise }) else {
+        let exercises = self.workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises
+        guard let indexOfExercise = exercises.firstIndex(where: { $0.name == exercise }) else {
             return
         }
         
-        self.workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises[exerciseNumber1].result = result
+        self.workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises[indexOfExercise].result = result
         view?.reloadData()
     }
 }

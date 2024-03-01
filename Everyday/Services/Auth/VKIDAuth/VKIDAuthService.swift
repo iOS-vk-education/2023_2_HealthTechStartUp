@@ -6,14 +6,14 @@
 //
 
 import UIKit
-//import VKID
+// import VKID
 //
-//protocol VKIDAuthServiceDescription {
+// protocol VKIDAuthServiceDescription {
 //    var vkid: VKID? { get }
 //    func authWithVKID(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
-//}
+// }
 //
-//final class VKIDAuthService: VKIDAuthServiceDescription {
+// final class VKIDAuthService: VKIDAuthServiceDescription {
 //    static let shared = VKIDAuthService()
 //    
 //    var vkid: VKID?
@@ -66,4 +66,4 @@ import UIKit
 //            }
 //        }
 //    }
-//}
+// }
