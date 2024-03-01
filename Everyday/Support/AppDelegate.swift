@@ -33,9 +33,9 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
           return true
         }
         
-        if VKIDAuthService.shared.vkid?.open(url: url) == true {
-            return true
-        }
+//        if VKIDAuthService.shared.vkid?.open(url: url) == true {
+//            return true
+//        }
         return false
     }
 }

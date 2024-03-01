@@ -6,7 +6,7 @@
 //
 
 import UIKit
-import VKID
+//import VKID
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
