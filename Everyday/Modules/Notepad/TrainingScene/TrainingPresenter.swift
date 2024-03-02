@@ -49,9 +49,9 @@ extension TrainingPresenter: TrainingViewOutput {
         switchStates[index] = value
         let allSatisfy = switchStates.allSatisfy { $0 }
         if allSatisfy {
-            view?.showFinishButton()
+//            view?.showFinishButton()
         } else {
-            view?.hideFinishButton()
+//            view?.hideFinishButton()
         }
     }
     
@@ -103,7 +103,7 @@ extension TrainingPresenter: ResultsModuleOutput {
         }
         
         switchStates = [Bool](repeating: false, count: workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises.count)
-        view?.hideFinishButton()
+//        view?.hideFinishButton()
         view?.reloadData()
     }
 }

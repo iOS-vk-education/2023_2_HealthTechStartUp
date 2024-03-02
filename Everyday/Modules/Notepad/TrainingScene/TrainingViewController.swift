@@ -86,8 +86,8 @@ private extension TrainingViewController {
     
     func setupFinishButton() {
         finishButton.backgroundColor = Constants.FinishButton.backgroundColor
+        finishButton.layer.cornerRadius = Constants.FinishButton.cornerRadius
         finishButton.addTarget(self, action: #selector(didTapFinishButton), for: .touchUpInside)
-        finishButton.isHidden = true
     }
     
     // MARK: - Actions
@@ -186,7 +186,7 @@ private extension TrainingViewController {
         
         struct FinishButton {
             static let backgroundColor: UIColor = UIColor.UI.accent
-            
+            static let cornerRadius: CGFloat = 16
             static let height: CGFloat = 30
             static let marginTop: CGFloat = 40
             static let horizontalMargin: CGFloat = 20
