@@ -76,7 +76,6 @@ extension NotepadPresenter: NotepadViewOutput {
 }
 
 extension NotepadPresenter: NotepadInteractorOutput {
-    
     func didLoadDay(with workoutDays: [(workout: Workout, indexOfDay: Int)], _ isResult: Bool) {
         self.workoutDays = workoutDays
         self.isResult = isResult
@@ -84,5 +83,13 @@ extension NotepadPresenter: NotepadInteractorOutput {
         let viewModel = NotepadViewModel(isResult: isResult)
         view?.configure(with: viewModel)
         view?.reloadData()
+    }
+    
+    func didStartLoading() {
+        view?.showLoadingView()
+    }
+    
+    func didEndLoading() {
+        view?.dismissLoadingView()
     }
 }

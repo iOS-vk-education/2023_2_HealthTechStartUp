@@ -17,6 +17,7 @@ final class NotepadViewController: UIViewController {
     
     private let stateLabel = UILabel()
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
     
     // MARK: - Init
 
@@ -36,8 +37,8 @@ final class NotepadViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        output.didLoadView()
         setup()
+        output.didLoadView()
     }
     
     override func viewDidLayoutSubviews() {
@@ -187,6 +188,22 @@ extension NotepadViewController: NotepadViewInput {
             }
             
             self.tableView.reloadData()
+        }
+    }
+    
+    func showLoadingView() {
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.pin
+            .hCenter()
+            .vCenter()
+        
+        activityIndicator.startAnimating()
+    }
+    
+    func dismissLoadingView() {
+        DispatchQueue.main.async {
+            self.activityIndicator.removeFromSuperview()
         }
     }
 }

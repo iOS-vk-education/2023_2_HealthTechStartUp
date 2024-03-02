@@ -20,6 +20,8 @@ final class NotepadInteractor {
 extension NotepadInteractor: NotepadInteractorInput {
     
     func loadResult(date: Date) {
+        self.output?.didStartLoading()
+        
         dayManager.getDayResults(on: date) { [weak self] result in
             guard let self else {
                 return
@@ -27,6 +29,7 @@ extension NotepadInteractor: NotepadInteractorInput {
 
             switch result {
             case .success(let workoutDays):
+                self.output?.didEndLoading()
                 self.output?.didLoadDay(with: workoutDays, true)
             case .failure:
                 self.loadSchedule()
@@ -39,6 +42,7 @@ extension NotepadInteractor: NotepadInteractorInput {
             guard let self else {
                 return
             }
+            self.output?.didEndLoading()
 
             switch result {
             case .success(let workoutDays):

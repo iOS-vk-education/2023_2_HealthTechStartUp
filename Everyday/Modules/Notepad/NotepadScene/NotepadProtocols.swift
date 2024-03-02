@@ -18,6 +18,8 @@ protocol NotepadModuleOutput: AnyObject {
 protocol NotepadViewInput: AnyObject {
     func configure(with viewModel: NotepadViewModel)
     func reloadData()
+    func showLoadingView()
+    func dismissLoadingView()
 }
 
 protocol NotepadViewOutput: AnyObject {
@@ -40,6 +42,8 @@ protocol NotepadInteractorInput: AnyObject {
 
 protocol NotepadInteractorOutput: AnyObject {
     func didLoadDay(with workoutDays: [(workout: Workout, indexOfDay: Int)], _ isResult: Bool)
+    func didStartLoading()
+    func didEndLoading()
 }
 
 protocol NotepadRouterInput: AnyObject {
