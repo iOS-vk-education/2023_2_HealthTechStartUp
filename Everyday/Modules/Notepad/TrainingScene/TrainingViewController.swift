@@ -51,13 +51,13 @@ private extension TrainingViewController {
     func layout() {
         finishButton.pin
             .top(view.pin.safeArea)
-            .marginTop(40)
-            .horizontally(20)
-            .height(30)
+            .marginTop(Constants.FinishButton.marginTop)
+            .horizontally(Constants.FinishButton.horizontalMargin)
+            .height(Constants.FinishButton.height)
 
         tableView.pin
             .below(of: finishButton)
-            .marginTop(170)
+            .marginTop(Constants.TableView.marginTop)
             .horizontally()
             .bottom()
     }
@@ -73,18 +73,19 @@ private extension TrainingViewController {
     }
 
     func setupView() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = Constants.backgroundColor
     }
     
     func setupTableView() {
+        tableView.backgroundColor = Constants.backgroundColor
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(TrainingTableViewCell.self, forCellReuseIdentifier: TrainingTableViewCell.reuseID)
-        tableView.rowHeight = 80
+        tableView.rowHeight = Constants.TableView.rowHeight
     }
     
     func setupFinishButton() {
-        finishButton.backgroundColor = .systemMint
+        finishButton.backgroundColor = Constants.FinishButton.backgroundColor
         finishButton.addTarget(self, action: #selector(didTapFinishButton), for: .touchUpInside)
         finishButton.isHidden = true
     }
@@ -114,7 +115,10 @@ extension TrainingViewController: UITableViewDataSource {
             return UITableViewCell()
         }
         
-        cell.configure(with: output.getExercise(at: indexPath.row), and: indexPath.row)
+        let exercise = output.getExercise(at: indexPath.row)
+        let viewModel = TrainingTableViewCellViewModel(exercise: exercise)
+        
+        cell.configure(with: viewModel, and: indexPath.row)
         cell.addStartButtonTarget(self, action: #selector(didTapStartButton))
         cell.delegate = self
         
@@ -170,6 +174,27 @@ extension TrainingViewController: TrainingViewInput {
             }
             
             self.tableView.reloadData()
+        }
+    }
+}
+
+// MARK: - Constants
+
+private extension TrainingViewController {
+    struct Constants {
+        static let backgroundColor: UIColor = UIColor.background
+        
+        struct FinishButton {
+            static let backgroundColor: UIColor = UIColor.UI.accent
+            
+            static let height: CGFloat = 30
+            static let marginTop: CGFloat = 40
+            static let horizontalMargin: CGFloat = 20
+        }
+        
+        struct TableView {
+            static let marginTop: CGFloat = 170
+            static let rowHeight: CGFloat = 80
         }
     }
 }

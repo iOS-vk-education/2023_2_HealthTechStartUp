@@ -49,9 +49,11 @@ class TrainingTableViewCell: UITableViewCell {
     
     // MARK: - Interface
 
-    func configure(with exercise: Exercise, and index: Int) {
-        exerciseNameLabel.text = exercise.name
-        resultLabel.text = exercise.result
+    func configure(with viewModel: TrainingTableViewCellViewModel, and index: Int) {
+        exerciseNameLabel.attributedText = viewModel.title
+        resultLabel.attributedText = viewModel.result
+        startButton.setAttributedTitle(viewModel.startTitle, for: .normal)
+        
         startButton.tag = index
     }
     
@@ -98,30 +100,30 @@ private extension TrainingTableViewCell {
     
     func layout() {
         checkbox.pin
-            .left(20)
+            .left(Constants.horizontalMargin)
+            .width(Constants.Checkbox.width)
+            .height(Constants.contentHeight)
             .vCenter()
-            .width(40)
-            .height(40)
         
         exerciseNameLabel.pin
             .after(of: checkbox)
-            .marginLeft(20)
-            .width(200)
-            .height(40)
+            .marginLeft(Constants.horizontalMargin)
+            .width(Constants.ExerciseNameLabel.width)
+            .height(Constants.contentHeight)
             .vCenter()
         
         resultLabel.pin
             .right()
             .after(of: exerciseNameLabel)
-            .marginLeft(20)
-            .height(40)
+            .marginLeft(Constants.horizontalMargin)
+            .height(Constants.contentHeight)
             .vCenter()
         
         startButton.pin
-            .right(20)
+            .right(Constants.horizontalMargin)
             .after(of: exerciseNameLabel)
-            .marginLeft(20)
-            .height(40)
+            .marginLeft(Constants.horizontalMargin)
+            .height(Constants.contentHeight)
             .vCenter()
     }
     
@@ -132,9 +134,8 @@ private extension TrainingTableViewCell {
         checkbox.stateChangeAnimation = .bounce(.fill)
         checkbox.setCheckState(.unchecked, animated: true)
         
-        startButton.setTitle("Начать", for: .normal)
-        startButton.backgroundColor = .systemMint
-        startButton.layer.cornerRadius = 16
+        startButton.backgroundColor = Constants.StartButton.backgroundColor
+        startButton.layer.cornerRadius = Constants.StartButton.cornerRadius
         startButton.isHidden = true
         
         contentView.addSubviews(checkbox, exerciseNameLabel, resultLabel, startButton)
@@ -154,5 +155,29 @@ private extension TrainingTableViewCell {
             value = false
         }
         delegate?.switchCell(self, with: value)
+    }
+}
+
+// MARK: - Constants
+
+private extension TrainingTableViewCell {
+    struct Constants {
+        static let backgroundColor: UIColor = UIColor.background
+        
+        static let horizontalMargin: CGFloat = 20
+        static let contentHeight: CGFloat = 40
+        
+        struct Checkbox {
+            static let width: CGFloat = 40
+        }
+        
+        struct ExerciseNameLabel {
+            static let width: CGFloat = 200
+        }
+        
+        struct StartButton {
+            static let backgroundColor: UIColor = UIColor.UI.accent
+            static let cornerRadius: CGFloat = 16
+        }
     }
 }

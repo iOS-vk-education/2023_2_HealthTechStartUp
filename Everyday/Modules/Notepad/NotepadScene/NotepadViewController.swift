@@ -51,13 +51,13 @@ private extension NotepadViewController {
     
     func layout() {
         stateLabel.pin
-            .top(view.pin.safeArea).marginTop(200)
-            .horizontally(20)
-            .height(30)
+            .top(view.pin.safeArea)
+            .horizontally(Constants.HeaderLabel.horizontalMargin)
+            .height(Constants.HeaderLabel.height)
 
         tableView.pin
             .below(of: stateLabel)
-            .marginTop(10)
+            .marginTop(Constants.TableView.marginTop)
             .horizontally()
             .bottom()
     }
@@ -72,13 +72,16 @@ private extension NotepadViewController {
     }
 
     func setupView() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = Constants.backgroundColor
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: dateLabel())
     }
     
     func setupTableView() {
-        tableView.backgroundColor = .systemBackground
-        tableView.contentInset = UIEdgeInsets(top: 10, left: 0, bottom: 0, right: 0)
+        tableView.backgroundColor = Constants.backgroundColor
+        tableView.contentInset = UIEdgeInsets(top: Constants.TableView.contentInsetTop,
+                                              left: Constants.TableView.contentInsetLeft,
+                                              bottom: Constants.TableView.contentInsetBottom,
+                                              right: Constants.TableView.contentInsetRight)
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(NotepadTableViewCell.self, forCellReuseIdentifier: NotepadTableViewCell.reuseID)
@@ -86,8 +89,7 @@ private extension NotepadViewController {
     
     func dateLabel() -> UILabel {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE, MMM d"
-        dateFormatter.locale = Locale(identifier: "ru_RU")
+        dateFormatter.dateFormat = Constants.DateLabel.dateFormat
         
         let currentDate = dateFormatter.string(from: Date())
         
@@ -144,7 +146,8 @@ extension NotepadViewController: UITableViewDataSource {
         }
         
         let exercise = output.getExercise(at: indexPath.section, at: indexPath.row)
-        cell.configure(with: exercise)
+        let viewModel = NotepadTableViewCellViewModel(exercise: exercise)
+        cell.configure(with: viewModel)
         
         return cell
     }
@@ -157,15 +160,16 @@ extension NotepadViewController: UITableViewDelegate {
         let headerView = NotepadSectionHeaderView()
         
         let workoutDay = output.getWorkoutDay(section)
+        let viewModel = NotepadHeaderViewModel(workoutDay: workoutDay)
         let headerViewState = output.headerViewState()
-        headerView.configure(with: workoutDay, and: section, state: headerViewState)
+        headerView.configure(with: viewModel, and: section, state: headerViewState)
         headerView.addActions(self, viewAction: #selector(didTapHeaderView), buttonAction: #selector(didTapCollapseButton))
         
         return headerView
     }
     
     func tableView(_ tableView: UITableView, heightForHeaderInSection section: Int) -> CGFloat {
-        return 60
+        Constants.TableView.headerHeight
     }
 }
 
@@ -183,6 +187,32 @@ extension NotepadViewController: NotepadViewInput {
             }
             
             self.tableView.reloadData()
+        }
+    }
+}
+
+// MARK: - Constants
+
+private extension NotepadViewController {
+    struct Constants {
+        static let backgroundColor: UIColor = UIColor.background
+        
+        struct DateLabel {
+            static let dateFormat: String = "EEEE, d MMM"
+        }
+        
+        struct HeaderLabel {
+            static let height: CGFloat = 30
+            static let horizontalMargin: CGFloat = 20
+        }
+        
+        struct TableView {
+            static let marginTop: CGFloat = 10
+            static let contentInsetTop: CGFloat = 10
+            static let contentInsetLeft: CGFloat = 0
+            static let contentInsetBottom: CGFloat = 0
+            static let contentInsetRight: CGFloat = 0
+            static let headerHeight: CGFloat = 60
         }
     }
 }

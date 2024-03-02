@@ -61,29 +61,29 @@ private extension ResultsViewController {
             .all()
         
         closeButton.pin
-            .top(8)
-            .right(8)
-            .width(40)
-            .height(40)
+            .top(Constants.CloseButton.padding)
+            .right(Constants.CloseButton.padding)
+            .width(Constants.CloseButton.width)
+            .height(Constants.contentHeight)
         
         titleLabel.pin
             .top()
-            .height(80)
+            .height(Constants.TitleLabel.height)
             .left()
             .right()
         
         restButton.pin
-            .bottom(20)
-            .height(40)
-            .left(40)
-            .width(100)
+            .bottom(Constants.marginBottom)
+            .height(Constants.contentHeight)
+            .left(Constants.horizontalMargin)
+            .width(Constants.RestButton.width)
         
         continueButton.pin
-            .bottom(20)
-            .height(40)
+            .bottom(Constants.marginBottom)
+            .height(Constants.contentHeight)
             .after(of: restButton)
-            .marginLeft(20)
-            .right(40)
+            .marginLeft(Constants.ContinueButton.marginLeft)
+            .right(Constants.horizontalMargin)
         
         tableView.pin
             .below(of: titleLabel)
@@ -113,6 +113,7 @@ private extension ResultsViewController {
     }
     
     func setupTableView() {
+        tableView.backgroundColor = Constants.backgroundColor
         tableView.delegate = self
         tableView.dataSource = self
         tableView.register(ResultsTableViewCell.self, forCellReuseIdentifier: ResultsTableViewCell.reuseID)
@@ -125,36 +126,35 @@ private extension ResultsViewController {
     }
     
     func setupContentView() {
-        contentView.backgroundColor = .white
+        contentView.backgroundColor = Constants.backgroundColor
         
-        let width: CGFloat = view.bounds.width - 24 * 2
+        let width: CGFloat = view.bounds.width - Constants.padding * 2
         let height: CGFloat = width
         
         let x = (view.bounds.width - width) / 2
         let y = (view.bounds.height - height) / 2
         
         contentView.frame = CGRect(x: x, y: y, width: width, height: height)
-        contentView.layer.cornerRadius = 16
+        contentView.layer.cornerRadius = Constants.cornerRadius
+        
+        let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
+        contentView.addGestureRecognizer(tapGesture)
     }
     
     func setupCloseButton() {
-        closeButton.setTitle("", for: .normal)
-        let buttonImageConfiguration = UIImage.SymbolConfiguration(textStyle: .largeTitle)
-        let buttonImage = UIImage(systemName: "xmark.circle.fill", withConfiguration: buttonImageConfiguration)
-        closeButton.setImage(buttonImage, for: .normal)
         closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
-        closeButton.tintColor = .systemMint
+        closeButton.tintColor = Constants.buttonColor
     }
     
     func setupRestButton() {
-        restButton.backgroundColor = .systemMint
-        restButton.layer.cornerRadius = 16
+        restButton.backgroundColor = Constants.buttonColor
+        restButton.layer.cornerRadius = Constants.cornerRadius
         restButton.addTarget(self, action: #selector(didTapRestButton), for: .touchUpInside)
     }
     
     func setupContinueButton() {
-        continueButton.backgroundColor = .systemMint
-        continueButton.layer.cornerRadius = 16
+        continueButton.backgroundColor = Constants.buttonColor
+        continueButton.layer.cornerRadius = Constants.cornerRadius
         continueButton.addTarget(self, action: #selector(didTapContinueButton), for: .touchUpInside)
     }
     
@@ -178,6 +178,11 @@ private extension ResultsViewController {
     func didTapContinueButton() {
         output.didTapContinueButton()
     }
+    
+    @objc
+    func dismissKeyboard() {
+        view.endEditing(true)
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -193,7 +198,8 @@ extension ResultsViewController: UITableViewDataSource {
         }
 
         let exercise = output.getExercise(at: indexPath.row)
-        cell.configure(with: exercise)
+        let viewModel = ResultsTableViewCellViewModel(exercise: exercise)
+        cell.configure(with: viewModel)
         
         return cell
     }
@@ -208,13 +214,10 @@ extension ResultsViewController: UITableViewDelegate {
 
 extension ResultsViewController: ResultsViewInput {
     func configure(with viewModel: ResultsViewModel) {
-        titleLabel.attributedText = viewModel.title
+        titleLabel.attributedText = viewModel.resultsTitle
         restButton.setAttributedTitle(viewModel.restTitle, for: .normal)
         continueButton.setAttributedTitle(viewModel.continueTitle, for: .normal)
-    }
-    
-    func getSelf() -> ResultsViewController {
-        return self
+        closeButton.setImage(viewModel.closeImage, for: .normal)
     }
     
     func reloadData() {
@@ -224,6 +227,38 @@ extension ResultsViewController: ResultsViewInput {
             }
             
             self.tableView.reloadData()
+        }
+    }
+}
+
+// MARK: - Constants
+
+private extension ResultsViewController {
+    struct Constants {
+        static let backgroundColor: UIColor = UIColor.background
+        static let buttonColor: UIColor = UIColor.UI.accent
+        
+        static let padding: CGFloat = 24
+        static let cornerRadius: CGFloat = 16
+        static let horizontalMargin: CGFloat = 40
+        static let marginBottom: CGFloat = 20
+        static let contentHeight: CGFloat = 40
+        
+        struct RestButton {
+            static let width: CGFloat = 100
+        }
+        
+        struct ContinueButton {
+            static let marginLeft: CGFloat = 20
+        }
+        
+        struct CloseButton {
+            static let padding: CGFloat = 8
+            static let width: CGFloat = 40
+        }
+        
+        struct TitleLabel {
+            static let height: CGFloat = 80
         }
     }
 }

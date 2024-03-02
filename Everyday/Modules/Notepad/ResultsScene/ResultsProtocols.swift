@@ -19,7 +19,6 @@ protocol ResultsModuleOutput: AnyObject {
 protocol ResultsViewInput: AnyObject {
     func configure(with viewModel: ResultsViewModel)
     func reloadData()
-    func getSelf() -> ResultsViewController
 }
 
 protocol ResultsViewOutput: AnyObject {

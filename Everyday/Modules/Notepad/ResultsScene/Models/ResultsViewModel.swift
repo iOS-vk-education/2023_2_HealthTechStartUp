@@ -8,28 +8,40 @@
 import UIKit
 
 struct ResultsViewModel {
-    let title: NSAttributedString
+    let resultsTitle: NSAttributedString
     let restTitle: NSAttributedString
     let continueTitle: NSAttributedString
+    let closeImage: UIImage?
     
     init() {
-        let titleLabelTitle = "Результаты"
-        let titleLabelAttributedString = NSAttributedString(string: titleLabelTitle, attributes: Styles.titleAttributes)
+        let resultsLabelTitle = "Результаты"
+        let resultsLabelAttributedString = NSAttributedString(string: resultsLabelTitle, attributes: Styles.titleAttributes)
         let restButtonTitle = "Отдых"
-        let restButtonAttributedString = NSAttributedString(string: restButtonTitle, attributes: Styles.titleAttributes)
+        let restButtonAttributedString = NSAttributedString(string: restButtonTitle, attributes: Styles.buttonTitleAttributes)
         let continueButtonTitle = "Продолжить"
-        let continueButtonAttributedString = NSAttributedString(string: continueButtonTitle, attributes: Styles.titleAttributes)
+        let continueButtonAttributedString = NSAttributedString(string: continueButtonTitle, attributes: Styles.buttonTitleAttributes)
+        let closeButtonImageName = "xmark.circle.fill"
+        let closeButtonImage = UIImage(systemName: closeButtonImageName, withConfiguration: Configurations.large)
         
-        self.title = titleLabelAttributedString
+        self.resultsTitle = resultsLabelAttributedString
         self.restTitle = restButtonAttributedString
         self.continueTitle = continueButtonAttributedString
+        self.closeImage = closeButtonImage
     }
 }
 
 private extension ResultsViewModel {
     struct Styles {
         static let titleAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont.systemFont(ofSize: 24, weight: .regular)
+        ]
+        
+        static let buttonTitleAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 16, weight: .regular)
         ]
+    }
+    
+    struct Configurations {
+        static let large = UIImage.SymbolConfiguration(textStyle: .largeTitle)
     }
 }

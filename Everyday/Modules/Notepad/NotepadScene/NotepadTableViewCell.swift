@@ -36,9 +36,9 @@ class NotepadTableViewCell: UITableViewCell {
     
     // MARK: - Interface
     
-    func configure(with exercise: Exercise) {
-        titleLabel.text = exercise.name
-        resultLabel.text = exercise.result
+    func configure(with viewModel: NotepadTableViewCellViewModel) {
+        titleLabel.attributedText = viewModel.title
+        resultLabel.attributedText = viewModel.result
     }
 }
 
@@ -48,16 +48,16 @@ private extension NotepadTableViewCell {
     
     func layout() {
         titleLabel.pin
-            .left(10)
+            .left(Constants.horizontalMargin)
             .vCenter()
-            .width(200)
-            .height(20)
+            .width(Constants.TitleLabel.width)
+            .height(Constants.contentHeight)
         
         resultLabel.pin
-            .right(10)
+            .right(Constants.horizontalMargin)
             .vCenter()
-            .width(100)
-            .height(20)
+            .width(Constants.ResultLabel.width)
+            .height(Constants.contentHeight)
     }
     
     // MARK: - Setup
@@ -66,5 +66,24 @@ private extension NotepadTableViewCell {
         resultLabel.textAlignment = .center
         
         contentView.addSubviews(titleLabel, resultLabel)
+    }
+}
+
+// MARK: - Constants
+
+private extension NotepadTableViewCell {
+    struct Constants {
+        static let backgroundColor: UIColor = UIColor.UI.accentLight
+        
+        static let horizontalMargin: CGFloat = 10
+        static let contentHeight: CGFloat = 20
+        
+        struct TitleLabel {
+            static let width: CGFloat = 200
+        }
+        
+        struct ResultLabel {
+            static let width: CGFloat = 100
+        }
     }
 }

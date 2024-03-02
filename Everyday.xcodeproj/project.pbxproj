@@ -106,6 +106,10 @@
 		CE5E73712B9129C9007620A7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = CE5E73702B9129C9007620A7 /* FirebaseAuth */; };
 		CE5E73732B9129C9007620A7 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = CE5E73722B9129C9007620A7 /* FirebaseFirestore */; };
 		CE5E73762B912DA1007620A7 /* M13Checkbox in Frameworks */ = {isa = PBXBuildFile; productRef = CE5E73752B912DA1007620A7 /* M13Checkbox */; };
+		CE8BF53E2B93302400A0A963 /* NotepadHeaderViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8BF53D2B93302400A0A963 /* NotepadHeaderViewModel.swift */; };
+		CE8BF5402B93603400A0A963 /* NotepadTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8BF53F2B93603400A0A963 /* NotepadTableViewCellViewModel.swift */; };
+		CE8BF5422B93665B00A0A963 /* TrainingTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8BF5412B93665B00A0A963 /* TrainingTableViewCellViewModel.swift */; };
+		CE8BF5442B9372E700A0A963 /* ResultsTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = CE8BF5432B9372E700A0A963 /* ResultsTableViewCellViewModel.swift */; };
 		CEED457A2B8F693E00DD4058 /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED45792B8F693E00DD4058 /* CustomError.swift */; };
 		CEED457D2B8F69C500DD4058 /* DayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED457C2B8F69C500DD4058 /* DayService.swift */; };
 		CEED45802B8F6A7B00DD4058 /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = CEED457F2B8F6A7B00DD4058 /* Workout.swift */; };
@@ -251,6 +255,10 @@
 		9EE8AE332B7FB96E001D126F /* WorkoutProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutProtocols.swift; sourceTree = "<group>"; };
 		9EE8AE342B7FB96E001D126F /* WorkoutInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutInteractor.swift; sourceTree = "<group>"; };
 		9EE8AE352B7FB96E001D126F /* WorkoutContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutContainer.swift; sourceTree = "<group>"; };
+		CE8BF53D2B93302400A0A963 /* NotepadHeaderViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadHeaderViewModel.swift; sourceTree = "<group>"; };
+		CE8BF53F2B93603400A0A963 /* NotepadTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		CE8BF5412B93665B00A0A963 /* TrainingTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCellViewModel.swift; sourceTree = "<group>"; };
+		CE8BF5432B9372E700A0A963 /* ResultsTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		CEED45792B8F693E00DD4058 /* CustomError.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
 		CEED457C2B8F69C500DD4058 /* DayService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DayService.swift; sourceTree = "<group>"; };
 		CEED457F2B8F6A7B00DD4058 /* Workout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
@@ -735,6 +743,8 @@
 			isa = PBXGroup;
 			children = (
 				CEED45852B8F6B6C00DD4058 /* NotepadViewModel.swift */,
+				CE8BF53D2B93302400A0A963 /* NotepadHeaderViewModel.swift */,
+				CE8BF53F2B93603400A0A963 /* NotepadTableViewCellViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -758,6 +768,7 @@
 			isa = PBXGroup;
 			children = (
 				CEED45992B8F6DE200DD4058 /* TrainingViewModel.swift */,
+				CE8BF5412B93665B00A0A963 /* TrainingTableViewCellViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -803,6 +814,7 @@
 			isa = PBXGroup;
 			children = (
 				CEED45BC2B8F6FA300DD4058 /* ResultsViewModel.swift */,
+				CE8BF5432B9372E700A0A963 /* ResultsTableViewCellViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -963,6 +975,7 @@
 			files = (
 				CEED45A52B8F6EF500DD4058 /* ExercisePresenter.swift in Sources */,
 				CEED45BA2B8F6F9300DD4058 /* ResultsContainer.swift in Sources */,
+				CE8BF5402B93603400A0A963 /* NotepadTableViewCellViewModel.swift in Sources */,
 				CEED45DB2B8F708100DD4058 /* ExtraInteractor.swift in Sources */,
 				CEED45BF2B8F6FDB00DD4058 /* ResultsTableViewCell.swift in Sources */,
 				CEED45DF2B8F70BB00DD4058 /* ExtraViewModel.swift in Sources */,
@@ -985,6 +998,7 @@
 				9E5B74ED2B7F99FB00E2BDE6 /* WelcomeScreenViewModel.swift in Sources */,
 				9E5B75382B7F9D7600E2BDE6 /* GenderModel.swift in Sources */,
 				CEED45822B8F6A8F00DD4058 /* User.swift in Sources */,
+				CE8BF5442B9372E700A0A963 /* ResultsTableViewCellViewModel.swift in Sources */,
 				9E5B754B2B7F9D7600E2BDE6 /* ProfileSetupViewModel.swift in Sources */,
 				9EE8AE2B2B7FB930001D126F /* NotepadViewController.swift in Sources */,
 				9E5B75422B7F9D7600E2BDE6 /* AgeController.swift in Sources */,
@@ -1036,6 +1050,7 @@
 				CEED45942B8F6DCE00DD4058 /* TrainingViewController.swift in Sources */,
 				9E5B75472B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift in Sources */,
 				9E7C19992B8CC3E80006D48C /* NameGenerator.swift in Sources */,
+				CE8BF53E2B93302400A0A963 /* NotepadHeaderViewModel.swift in Sources */,
 				9E5B74FA2B7F9A7000E2BDE6 /* SignUpProtocols.swift in Sources */,
 				9EE8AE202B7FB905001D126F /* ProgressInteractor.swift in Sources */,
 				9E53FB4E2B7F950B00C55A45 /* Color+Extension.swift in Sources */,
@@ -1091,6 +1106,7 @@
 				9E5B754C2B7F9D7600E2BDE6 /* ProfileSetupModel.swift in Sources */,
 				CEED45952B8F6DCE00DD4058 /* TrainingProtocols.swift in Sources */,
 				9EE8AE2C2B7FB930001D126F /* NotepadProtocols.swift in Sources */,
+				CE8BF5422B93665B00A0A963 /* TrainingTableViewCellViewModel.swift in Sources */,
 				9E5B74EE2B7F99FB00E2BDE6 /* WelcomeScreenPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -43,12 +43,14 @@ class NotepadSectionHeaderView: UIView {
     
     // MARK: - Interface
     
-    func configure(with workoutDay: (workout: Workout, indexOfDay: Int), and tag: Int, state: NotepadSectionHeaderState) {
-        titleLabel.text = workoutDay.workout.name
-        descriptionLabel.text = workoutDay.workout.days[workoutDay.indexOfDay].name
+    func configure(with viewModel: NotepadHeaderViewModel, and tag: Int, state: NotepadSectionHeaderState) {
+        titleLabel.attributedText = viewModel.title
+        descriptionLabel.attributedText = viewModel.desciption
+        collapseButton.setImage(viewModel.collapseImage, for: .normal)
         
         self.tag = tag
         collapseButton.tag = tag
+        
         self.state = state
     }
     
@@ -79,44 +81,37 @@ private extension NotepadSectionHeaderView {
         self.addSubview(mainStackView)
         
         mainStackView.pin
-            .horizontally(20)
-            .vertically(10)
+            .horizontally(Constants.horizontalMargin)
+            .vertically(Constants.verticalMargin)
     }
     
     // MARK: - Setup
     
     func setup() {
         setupView()
-        setupTitleLabel()
-        setupDescriptionLabel()
         setupCollapseButton()
     }
     
     func setupView() {
-        self.backgroundColor = .systemBackground
-        
-        self.layer.borderColor = UIColor.label.cgColor
-        self.layer.borderWidth = 1
-        
-        self.layer.cornerRadius = 16
-        self.layer.shadowColor = UIColor.black.cgColor
-        self.layer.shadowOpacity = 0.3
-        self.layer.shadowOffset = .zero
-    }
-    
-    func setupTitleLabel() {
-        titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        titleLabel.textColor = .label
-    }
-    
-    func setupDescriptionLabel() {
-        descriptionLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        descriptionLabel.textColor = .secondaryLabel
+        self.backgroundColor = Constants.backgroundColor
+        self.layer.cornerRadius = Constants.cornerRadius
     }
     
     func setupCollapseButton() {
-        let buttonImage = UIImage(systemName: "chevron.down")
-        collapseButton.setImage(buttonImage, for: .normal)
-        collapseButton.tintColor = .label
+        collapseButton.tintColor = Constants.tintColor
+    }
+}
+
+// MARK: - Constants
+
+private extension NotepadSectionHeaderView {
+    struct Constants {
+        static let backgroundColor: UIColor = UIColor.UI.accent
+        static let tintColor: UIColor = UIColor.Text.primary
+        
+        static let horizontalMargin: CGFloat = 20
+        static let verticalMargin: CGFloat = 10
+        
+        static let cornerRadius: CGFloat = 16
     }
 }

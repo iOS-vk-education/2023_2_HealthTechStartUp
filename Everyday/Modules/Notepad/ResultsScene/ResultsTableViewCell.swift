@@ -40,9 +40,11 @@ class ResultsTableViewCell: UITableViewCell {
     
     // MARK: - Interface
 
-    func configure(with exercise: Exercise) {
-        exerciseNameLabel.text = exercise.name
-        resultTextField.text = exercise.result
+    func configure(with viewModel: ResultsTableViewCellViewModel) {
+        exerciseNameLabel.attributedText = viewModel.exerciseName
+        resultTextField.attributedText = viewModel.result
+        minusButton.setImage(viewModel.minusImage, for: .normal)
+        plusButton.setImage(viewModel.plusImage, for: .normal)
     }
 }
 
@@ -52,33 +54,34 @@ private extension ResultsTableViewCell {
     
     func layout() {
         exerciseNameLabel.pin
-            .left(20)
+            .left(Constants.horizontalMargin)
+            .width(Constants.ExerciseNameLabel.width)
+            .height(Constants.ExerciseNameLabel.height)
             .vCenter()
-            .width(200)
-            .height(40)
         
         plusButton.pin
+            .right(Constants.horizontalMargin)
+            .width(Constants.Button.width)
+            .height(Constants.Button.height)
             .vCenter()
-            .right(20)
-            .width(20)
-            .height(20)
         
         resultTextField.pin
-            .vCenter()
             .before(of: plusButton)
-            .width(40)
-            .height(20)
+            .width(Constants.ResultTextField.width)
+            .height(Constants.ResultTextField.height)
+            .vCenter()
         
         minusButton.pin
-            .vCenter()
             .before(of: resultTextField)
-            .width(20)
-            .height(20)
+            .width(Constants.Button.width)
+            .height(Constants.Button.height)
+            .vCenter()
     }
     
     // MARK: - Setup
     
     func setup() {
+        setupView()
         setupMinusButton()
         setupPlusButton()
         setupResultTextField()
@@ -86,20 +89,23 @@ private extension ResultsTableViewCell {
         contentView.addSubviews(exerciseNameLabel, plusButton, resultTextField, minusButton)
     }
     
+    func setupView() {
+        contentView.backgroundColor = Constants.backgroundColor
+    }
+    
     func setupMinusButton() {
-        let minusButtonImage = UIImage(systemName: "minus")
-        minusButton.setImage(minusButtonImage, for: .normal)
+        minusButton.tintColor = Constants.Button.tintColor
         minusButton.addTarget(self, action: #selector(didTapMinusButton), for: .touchUpInside)
     }
     
     func setupPlusButton() {
-        let plusButtonImage = UIImage(systemName: "plus")
-        plusButton.setImage(plusButtonImage, for: .normal)
+        plusButton.tintColor = Constants.Button.tintColor
         plusButton.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
     }
     
     func setupResultTextField() {
-        resultTextField.backgroundColor = .secondaryLabel
+        resultTextField.backgroundColor = .clear
+        resultTextField.textColor = Constants.ResultTextField.textColor
         resultTextField.textAlignment = .center
     }
     
@@ -127,5 +133,32 @@ private extension ResultsTableViewCell {
         }
         
         resultTextField.text = String(result + 1)
+    }
+}
+
+// MARK: - Constants
+
+private extension ResultsTableViewCell {
+    struct Constants {
+        static let backgroundColor: UIColor = UIColor.background
+        
+        static let horizontalMargin: CGFloat = 20
+        
+        struct ExerciseNameLabel {
+            static let width: CGFloat = 200
+            static let height: CGFloat = 40
+        }
+        
+        struct ResultTextField {
+            static let textColor: UIColor = UIColor.Text.primary
+            static let width: CGFloat = 40
+            static let height: CGFloat = 20
+        }
+        
+        struct Button {
+            static let tintColor: UIColor = UIColor.Text.primary
+            static let width: CGFloat = 20
+            static let height: CGFloat = 20
+        }
     }
 }

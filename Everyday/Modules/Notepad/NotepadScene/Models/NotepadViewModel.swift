@@ -21,6 +21,7 @@ struct NotepadViewModel {
 private extension NotepadViewModel {
     struct Styles {
         static let titleAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.Text.primary,
             .font: UIFont.systemFont(ofSize: 24, weight: .regular)
         ]
     }

@@ -55,33 +55,33 @@ private extension TimerViewController {
     func layout() {
         remainingTimeLabel.pin
             .hCenter()
-            .top(200)
-            .width(200)
-            .height(40)
+            .top(Constants.RemainingTimeLabel.marginTop)
+            .height(Constants.contentHeight)
+            .width(Constants.contentWidth)
         
         startButton.pin
             .below(of: remainingTimeLabel)
             .hCenter()
-            .height(40)
-            .width(100)
+            .height(Constants.contentHeight)
+            .width(Constants.contentWidth)
         
         stopButton.pin
             .below(of: startButton)
             .hCenter()
-            .height(40)
-            .width(100)
+            .height(Constants.contentHeight)
+            .width(Constants.contentWidth)
         
         resetButton.pin
             .below(of: stopButton)
             .hCenter()
-            .height(40)
-            .width(100)
+            .height(Constants.contentHeight)
+            .width(Constants.contentWidth)
         
         skipButton.pin
             .below(of: resetButton)
             .hCenter()
-            .height(40)
-            .width(200)
+            .height(Constants.contentHeight)
+            .width(Constants.contentWidth)
     }
     
     // MARK: - Setup
@@ -98,31 +98,30 @@ private extension TimerViewController {
     }
     
     func setupView() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = Constants.backgroundColor
     }
     
     func setupStartButton() {
-        startButton.backgroundColor = .systemMint
+        startButton.backgroundColor = Constants.Button.backgroundColor
         startButton.addTarget(self, action: #selector(didTapStartButton), for: .touchUpInside)
     }
     
     func setupStopButton() {
-        stopButton.backgroundColor = .systemMint
+        stopButton.backgroundColor = Constants.Button.backgroundColor
         stopButton.addTarget(self, action: #selector(didTapStopButton), for: .touchUpInside)
     }
     
     func setupResetButton() {
-        resetButton.backgroundColor = .systemMint
+        resetButton.backgroundColor = Constants.Button.backgroundColor
         resetButton.addTarget(self, action: #selector(didTapResetButton), for: .touchUpInside)
     }
     
     func setupSkipButton() {
-        skipButton.backgroundColor = .systemMint
+        skipButton.backgroundColor = Constants.Button.backgroundColor
         skipButton.addTarget(self, action: #selector(didTapSkipButton), for: .touchUpInside)
     }
     
     func setupRemainingTimeLabel() {
-        remainingTimeLabel.font = UIFont.systemFont(ofSize: 24, weight: .bold)
         remainingTimeLabel.textAlignment = .center
     }
     
@@ -162,5 +161,24 @@ extension TimerViewController: TimerViewInput {
     
     func updateRemainingTime(with time: Int) {
         remainingTimeLabel.text = String(time)
+    }
+}
+
+// MARK: - Constants
+
+private extension TimerViewController {
+    struct Constants {
+        static let backgroundColor: UIColor = UIColor.background
+        
+        static let contentWidth: CGFloat = 100
+        static let contentHeight: CGFloat = 100
+        
+        struct Button {
+            static let backgroundColor: UIColor = UIColor.UI.accent
+        }
+        
+        struct RemainingTimeLabel {
+            static let marginTop: CGFloat = 200
+        }
     }
 }

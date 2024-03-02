@@ -53,22 +53,22 @@ private extension ExerciseViewController {
     func layout() {
         resultLabel.pin
             .top(view.pin.safeArea)
-            .marginTop(300)
-            .horizontally(20)
-            .height(30)
+            .marginTop(Constants.ResultLabel.marginTop)
+            .horizontally(Constants.horizontalMargin)
+            .height(Constants.contentHeight)
         
         counterStepper.pin
             .below(of: resultLabel)
+            .width(Constants.CounterStepper.width)
+            .height(Constants.contentHeight)
             .hCenter()
-            .width(100)
-            .height(40)
         
         saveButton.pin
             .below(of: counterStepper)
-            .marginTop(40)
+            .marginTop(Constants.SaveButton.marginTop)
+            .width(Constants.SaveButton.width)
+            .height(Constants.contentHeight)
             .hCenter()
-            .width(100)
-            .height(40)
     }
     
     // MARK: - Setup
@@ -77,13 +77,13 @@ private extension ExerciseViewController {
         setupView()
         setupResultLabel()
         setupStepper()
-        setupButton()
+        setupSaveButton()
         
         view.addSubviews(resultLabel, counterStepper, saveButton)
     }
     
     func setupView() {
-        view.backgroundColor = .systemBackground
+        view.backgroundColor = Constants.backgroundColor
     }
     
     func setupResultLabel() {
@@ -94,8 +94,9 @@ private extension ExerciseViewController {
         counterStepper.addTarget(self, action: #selector(didTapStepper), for: .touchUpInside)
     }
     
-    func setupButton() {
-        saveButton.backgroundColor = .systemBlue
+    func setupSaveButton() {
+        saveButton.backgroundColor = Constants.SaveButton.backgroundColor
+        saveButton.layer.cornerRadius = Constants.SaveButton.cornerRadius
         saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
     }
 
@@ -124,5 +125,31 @@ extension ExerciseViewController: ExerciseViewInput {
     
     func updateResult(with result: String) {
         resultLabel.text = result
+    }
+}
+
+// MARK: - Constants
+
+private extension ExerciseViewController {
+    struct Constants {
+        static let backgroundColor: UIColor = UIColor.background
+        
+        static let horizontalMargin: CGFloat = 20
+        static let contentHeight: CGFloat = 40
+        
+        struct ResultLabel {
+            static let marginTop: CGFloat = 300
+        }
+        
+        struct CounterStepper {
+            static let width: CGFloat = 100
+        }
+        
+        struct SaveButton {
+            static let backgroundColor: UIColor = UIColor.UI.accent
+            static let cornerRadius: CGFloat = 16
+            static let width: CGFloat = 100
+            static let marginTop: CGFloat = 40
+        }
     }
 }
