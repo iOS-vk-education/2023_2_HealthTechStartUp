@@ -10,7 +10,6 @@ import UIKit
 
 final class SettingsInteractor {
     weak var output: SettingsInteractorOutput?
-    weak var viewController: UIViewController?
     let authService: AuthServiceDescription
     
     init(authService: AuthServiceDescription) {

@@ -22,16 +22,12 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         splashPresenter = SplashPresenter(scene: scene)
         setupWindow(with: scene)
         
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        
         if Auth.auth().currentUser == nil {
-            if let viewController = storyboard.instantiateViewController(withIdentifier: "WelcomeScreenViewController") as? WelcomeScreenViewController {
-               window?.rootViewController = viewController
-            }
+            let viewController = WelcomeScreenContainer.assemble(with: .init()).viewController
+            window?.rootViewController = viewController
         } else {
-            if let viewController = storyboard.instantiateViewController(withIdentifier: "TabBarController") as? TabBarController {
-               window?.rootViewController = viewController
-            }
+            let viewController = TabBarController()
+            window?.rootViewController = viewController
         }
         
         splashPresenter?.present()

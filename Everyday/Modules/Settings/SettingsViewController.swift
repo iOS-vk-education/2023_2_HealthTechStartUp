@@ -58,20 +58,7 @@ final class SettingsViewController: UIViewController {
     
     @objc
     private func didTapSignInButton() {
-        animateButton(with: logoutButton)
         output.didTapLogoutButton()
-    }
-    
-    // MARK: - Helpers
-    
-    private func animateButton(with button: UIButton) {
-        UIView.animate(withDuration: Constants.Buttons.transformDuration, animations: {
-            button.transform = CGAffineTransform(scaleX: Constants.Buttons.transform, y: Constants.Buttons.transform)
-        }, completion: { _ in
-            UIView.animate(withDuration: Constants.Buttons.transformDuration) {
-                button.transform = .identity
-            }
-        })
     }
 }
 
