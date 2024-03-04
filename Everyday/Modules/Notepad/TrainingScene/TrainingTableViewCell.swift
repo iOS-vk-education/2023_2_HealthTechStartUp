@@ -132,6 +132,7 @@ private extension TrainingTableViewCell {
     func setup() {
         checkbox.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
         checkbox.stateChangeAnimation = .bounce(.fill)
+        checkbox.tintColor = Constants.Checkbox.tintColor
         checkbox.setCheckState(.unchecked, animated: true)
         
         startButton.backgroundColor = Constants.StartButton.backgroundColor
@@ -168,6 +169,7 @@ private extension TrainingTableViewCell {
         static let contentHeight: CGFloat = 40
         
         struct Checkbox {
+            static let tintColor: UIColor = UIColor.UI.accent
             static let width: CGFloat = 40
         }
         

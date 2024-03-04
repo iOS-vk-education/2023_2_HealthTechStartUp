@@ -30,7 +30,7 @@ protocol SignUpViewOutput: AnyObject {
 
 protocol SignUpInteractorInput: AnyObject {
     func authWithGoogle(completion: @escaping (Result<Void, Error>) -> Void)
-//    func authWithVKID(completion: @escaping (Result<Void, Error>) -> Void)
+    func authWithVKID(completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 protocol SignUpInteractorOutput: AnyObject {

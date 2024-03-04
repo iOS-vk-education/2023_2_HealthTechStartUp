@@ -8,7 +8,7 @@
 import UIKit
 
 protocol AuthServiceDescription {
-//    func authWithVKID(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
+    func authWithVKID(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
     func authWithGoogle(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
     func authWithFirebase(with userRequest: ProfileAcknowledgementModel)
 }
@@ -16,22 +16,23 @@ protocol AuthServiceDescription {
 final class AuthService: AuthServiceDescription {
     static let shared = AuthService()
     
-//    private let vkidAuthService: VKIDAuthServiceDescription
+    private let vkidAuthService: VKIDAuthServiceDescription
     private let googleAuthService: GoogleAuthServiceDescription
     private let firebaseAuthService: FirebaseAuthServiceDescription
     
-    private init(googleAuthService: GoogleAuthServiceDescription = GoogleAuthService.shared,
-                 firebaseAuthService: FirebaseAuthServiceDescription = FirebaseAuthService.shared ) {
-//        self.vkidAuthService = vkidAuthService
+    private init(vkidAuthService: VKIDAuthServiceDescription = VKIDAuthService.shared,
+                 googleAuthService: GoogleAuthServiceDescription = GoogleAuthService.shared,
+                 firebaseAuthService: FirebaseAuthServiceDescription = FirebaseAuthService.shared) {
+        self.vkidAuthService = vkidAuthService
         self.googleAuthService = googleAuthService
         self.firebaseAuthService = firebaseAuthService
     }
     
-//    func authWithVKID(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void) {
-//        vkidAuthService.authWithVKID(with: presentingController) { result in
-//            completion(result)
-//        }
-//    }
+    func authWithVKID(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void) {
+        vkidAuthService.authWithVKID(with: presentingController) { result in
+            completion(result)
+        }
+    }
     
     func authWithGoogle(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void) {
         googleAuthService.authWithGoogle(with: presentingController) { result in

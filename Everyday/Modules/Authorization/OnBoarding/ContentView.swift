@@ -52,8 +52,8 @@ struct ContentView: View {
                     })
             .tag(6)
             
-//            ProfileAcknowledgementView(onFinish: onFinish)
-//            .tag(7)
+            ProfileAcknowledgementView(onFinish: onFinish)
+            .tag(7)
         }
         .animation(.easeInOut, value: pageIndex)
         .indexViewStyle(.page(backgroundDisplayMode: .interactive))

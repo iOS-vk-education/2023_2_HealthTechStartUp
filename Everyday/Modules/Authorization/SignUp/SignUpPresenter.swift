@@ -63,16 +63,16 @@ extension SignUpPresenter: SignUpViewOutput {
     func didTapSignWithVKButton() {
         AuthModel.shared.whichSign = .vk
         
-//        interactor.authWithVKID { result in
-//            DispatchQueue.main.async {
-//                switch result {
-//                case .success:
-//                    self.router.openOnBoarding()
-//                case .failure(let error):
-//                    self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
-//                }
-//            }
-//        }
+        interactor.authWithVKID { result in
+            DispatchQueue.main.async {
+                switch result {
+                case .success:
+                    self.router.openOnBoarding()
+                case .failure(let error):
+                    self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
+                }
+            }
+        }
     }
 
     func didTapSignWithGoogleButton() {
