@@ -12,16 +12,15 @@ final class NotepadRouter {
     weak var viewController: NotepadViewController?
 }
 
-extension NotepadRouter: NotepadRouterInput {
+extension NotepadRouter: NotepadRouterInput {    
     func openTraining(with trainingContext: TrainingContext) {
-        guard
-            let viewController = viewController,
-            let navigationController = viewController.navigationController
-        else {
-            return
+        if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+           let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
+            let viewController = TrainingContainer.assemble(with: trainingContext).viewController
+            viewController.modalPresentationStyle = .fullScreen
+            UIView.transition(with: window, duration: 0.5, options: [.transitionCrossDissolve], animations: {
+                window.rootViewController = viewController
+            }, completion: nil)
         }
-        
-        let trainingContainer = TrainingContainer.assemble(with: trainingContext)
-        navigationController.pushViewController(trainingContainer.viewController, animated: true)
     }
 }

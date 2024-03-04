@@ -12,14 +12,12 @@ import FirebaseAuth
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
-    private var splashPresenter: SplashPresenterDescription?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else {
-            return
+                   return
         }
         
-        splashPresenter = SplashPresenter(scene: scene)
         setupWindow(with: scene)
         
         if Auth.auth().currentUser == nil {
@@ -28,15 +26,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             let viewController = TabBarController()
             window?.rootViewController = viewController
-        }
-        
-        splashPresenter?.present()
-        
-        let delay: TimeInterval = 1.5
-        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
-            self.splashPresenter?.dismiss { [weak self] in
-                self?.splashPresenter = nil
-            }
         }
         
         checkAuthentication()

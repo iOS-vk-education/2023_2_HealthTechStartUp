@@ -14,15 +14,14 @@ final class TrainingRouter {
 
 extension TrainingRouter: TrainingRouterInput {
     func openExercise(with exerciseContext: ExerciseContext) {
-        guard
-            let viewController = viewController,
-            let navigationController = viewController.navigationController
-        else {
-            return
+        if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+           let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
+            let viewController = ExerciseContainer.assemble(with: exerciseContext).viewController
+            viewController.modalPresentationStyle = .fullScreen
+            UIView.transition(with: window, duration: 0.5, options: [.transitionCrossDissolve], animations: {
+                window.rootViewController = viewController
+            }, completion: nil)
         }
-        
-        let exerciseContainer = ExerciseContainer.assemble(with: exerciseContext)
-        navigationController.pushViewController(exerciseContainer.viewController, animated: true)
     }
     
     func showResults(with resultsContext: ResultsContext) {
@@ -37,14 +36,13 @@ extension TrainingRouter: TrainingRouterInput {
     }
     
     func openExtra() {
-        guard
-            let viewController = viewController,
-            let navigationController = viewController.navigationController
-        else {
-            return
+        if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+           let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
+            let viewController = ExtraContainer.assemble(with: .init()).viewController
+            viewController.modalPresentationStyle = .fullScreen
+            UIView.transition(with: window, duration: 0.5, options: [.transitionCrossDissolve], animations: {
+                window.rootViewController = viewController
+            }, completion: nil)
         }
-        
-        let extraContainer = ExtraContainer.assemble(with: .init())
-        navigationController.pushViewController(extraContainer.viewController, animated: true)
     }
 }
