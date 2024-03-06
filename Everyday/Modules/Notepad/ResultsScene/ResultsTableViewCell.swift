@@ -107,6 +107,8 @@ private extension ResultsTableViewCell {
         resultTextField.backgroundColor = .clear
         resultTextField.textColor = Constants.ResultTextField.textColor
         resultTextField.textAlignment = .center
+        resultTextField.keyboardType = .numberPad
+        resultTextField.addTarget(self, action: #selector(didEndEditingTextField), for: .editingDidEnd)
     }
     
     // MARK: - Actions
@@ -115,7 +117,8 @@ private extension ResultsTableViewCell {
     func didTapMinusButton() {
         guard
             let resultText = resultTextField.text,
-            let result = Int(resultText)
+            let result = Int(resultText),
+            result > 0
         else {
             return
         }
@@ -133,6 +136,17 @@ private extension ResultsTableViewCell {
         }
         
         resultTextField.text = String(result + 1)
+    }
+    
+    @objc
+    func didEndEditingTextField() {
+        guard let resultText = resultTextField.text else {
+            return
+        }
+        
+        if resultText.isEmpty || !resultText.isNumber || Int(resultText) ?? 0 < 0 {
+            resultTextField.text = "0"
+        }
     }
 }
 
