@@ -220,14 +220,8 @@ extension ResultsViewController: ResultsViewInput {
         closeButton.setImage(viewModel.closeImage, for: .normal)
     }
     
-    func reloadData() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self else {
-                return
-            }
-            
-            self.tableView.reloadData()
-        }
+    func reloadData() {    
+        tableView.reloadData()
     }
 }
 

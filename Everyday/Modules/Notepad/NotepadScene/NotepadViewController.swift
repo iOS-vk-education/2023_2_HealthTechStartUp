@@ -182,13 +182,7 @@ extension NotepadViewController: NotepadViewInput {
     }
     
     func reloadData() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self else {
-                return
-            }
-            
-            self.tableView.reloadData()
-        }
+        tableView.reloadData()
     }
     
     func showLoadingView() {
@@ -202,9 +196,7 @@ extension NotepadViewController: NotepadViewInput {
     }
     
     func dismissLoadingView() {
-        DispatchQueue.main.async {
-            self.activityIndicator.removeFromSuperview()
-        }
+        activityIndicator.removeFromSuperview()
     }
 }
 

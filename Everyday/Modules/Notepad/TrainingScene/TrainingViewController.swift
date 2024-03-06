@@ -167,14 +167,8 @@ extension TrainingViewController: TrainingViewInput {
         finishButton.isHidden = true
     }
     
-    func reloadData() {
-        DispatchQueue.main.async { [weak self] in
-            guard let self else {
-                return
-            }
-            
-            self.tableView.reloadData()
-        }
+    func reloadData() {    
+        tableView.reloadData()
     }
 }
 
