@@ -22,7 +22,7 @@ final class AuthService: AuthServiceDescription {
     
     private init(vkidAuthService: VKIDAuthServiceDescription = VKIDAuthService.shared,
                  googleAuthService: GoogleAuthServiceDescription = GoogleAuthService.shared,
-                 firebaseAuthService: FirebaseAuthServiceDescription = FirebaseAuthService.shared ) {
+                 firebaseAuthService: FirebaseAuthServiceDescription = FirebaseAuthService.shared) {
         self.vkidAuthService = vkidAuthService
         self.googleAuthService = googleAuthService
         self.firebaseAuthService = firebaseAuthService

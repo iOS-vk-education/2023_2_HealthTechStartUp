@@ -22,38 +22,41 @@ struct ProfileSetupView: View {
     var body: some View {
         ScrollView {
             VStack(spacing: Constants.VStackValues.spacing) {
-                Spacer()
-                
-                Text(AttributedString(viewModel.title))
-                    .font(.headline)
-                    .multilineTextAlignment(.center)
-                
-                Spacer()
-                
-                ZStack {
-                    if let inputImage = viewModel.inputImage {
-                        Image(uiImage: inputImage)
-                            .resizable()
-                            .scaledToFill()
-                    } else {
-                        defaultImage
-                            .resizable()
-                            .scaledToFill()
+                Group {
+                    
+                    Spacer()
+                    
+                    Text(AttributedString(viewModel.title))
+                        .font(.headline)
+                        .multilineTextAlignment(.center)
+                    
+                    Spacer()
+                    
+                    ZStack {
+                        if let inputImage = viewModel.inputImage {
+                            Image(uiImage: inputImage)
+                                .resizable()
+                                .scaledToFill()
+                        } else {
+                            defaultImage
+                                .resizable()
+                                .scaledToFill()
+                        }
                     }
+                    .frame(width: Constants.ZStackValues.size.width, height: Constants.ZStackValues.size.height)
+                    .clipShape(Circle())
+                    .overlay(Circle().stroke(Color.primary, lineWidth: Constants.ZStackValues.overlay))
+                    .padding()
+                    
+                    Button(action: {
+                        viewModel.showingImagePicker = true
+                    }, label: {
+                        Text(AttributedString(viewModel.photoTitle))
+                            .foregroundColor(Constants.primaryText)
+                    })
+                    
+                    Spacer()
                 }
-                .frame(width: Constants.ZStackValues.size.width, height: Constants.ZStackValues.size.height)
-                .clipShape(Circle())
-                .overlay(Circle().stroke(Color.primary, lineWidth: Constants.ZStackValues.overlay))
-                .padding()
-                
-                Button(action: {
-                    viewModel.showingImagePicker = true
-                }, label: {
-                    Text(AttributedString(viewModel.photoTitle))
-                        .foregroundColor(Constants.primaryText)
-                })
-                
-                Spacer()
                 
                 UserTextField(text: $viewModel.userProfile.name, keyType: .default, placeholder: viewModel.name)
                     .frame(width: Constants.TextFieldValues.size.width, height: Constants.TextFieldValues.size.height)
