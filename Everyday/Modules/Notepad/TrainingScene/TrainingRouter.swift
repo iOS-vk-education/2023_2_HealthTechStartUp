@@ -14,14 +14,13 @@ final class TrainingRouter {
 
 extension TrainingRouter: TrainingRouterInput {
     func openExercise(with exerciseContext: ExerciseContext) {
-        if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
-           let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
-            let viewController = ExerciseContainer.assemble(with: exerciseContext).viewController
-            viewController.modalPresentationStyle = .fullScreen
-            UIView.transition(with: window, duration: 0.5, options: [.transitionCrossDissolve], animations: {
-                window.rootViewController = viewController
-            }, completion: nil)
+        guard let viewController = viewController else {
+            return
         }
+        
+        let exerciseContainer = ExerciseContainer.assemble(with: exerciseContext)
+        let exerciseViewController = exerciseContainer.viewController
+        viewController.present(exerciseViewController, animated: true)
     }
     
     func showResults(with resultsContext: ResultsContext) {

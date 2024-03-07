@@ -14,13 +14,10 @@ final class ExerciseRouter {
 
 extension ExerciseRouter: ExerciseRouterInput {
     func closeExercise() {
-        guard
-            let viewController = viewController,
-            let navigationController = viewController.navigationController
-        else {
+        guard let viewController = viewController else {
             return
         }
         
-        navigationController.popViewController(animated: true)
+        viewController.dismiss(animated: true)
     }
 }
