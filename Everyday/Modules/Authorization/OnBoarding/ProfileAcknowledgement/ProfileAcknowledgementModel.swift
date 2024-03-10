@@ -37,4 +37,35 @@ class ProfileAcknowledgementModel {
         if let weight = weight { self.weight = weight }
         if let schedule = schedule { self.schedule = schedule }
     }
+    
+    enum Field {
+        case firstname, lastname, nickname, email, password, profileImage, age, gender, weight, schedule
+    }
+
+    func clear(fields: [Field]) {
+        for field in fields {
+            switch field {
+            case .firstname:
+                firstname = nil
+            case .lastname:
+                lastname = nil
+            case .nickname:
+                nickname = nil
+            case .email:
+                email = nil
+            case .password:
+                password = nil
+            case .profileImage:
+                profileImage = nil
+            case .age:
+                age = nil
+            case .gender:
+                gender = nil
+            case .weight:
+                weight = nil
+            case .schedule:
+                schedule = []
+            }
+        }
+    }
 }

@@ -7,25 +7,31 @@
 
 import SwiftUI
 
+enum ValidationType {
+    case username
+    case name
+    case lastname
+    case none
+}
+
 struct UserTextField: UIViewRepresentable {
     @Binding var text: String
     var keyType: UIKeyboardType
     var placeholder: String
+    var validationType: ValidationType
+    var onValidation: ((Bool) -> Void)?
 
     func makeUIView(context: Context) -> UITextField {
         let textField = UITextField()
         textField.keyboardType = keyType
-        textField.attributedPlaceholder = NSAttributedString(
-            string: placeholder,
-            attributes: [NSAttributedString.Key.foregroundColor: UIColor.Text.primary]
-        )
+        textField.placeholder = placeholder
         textField.textColor = UIColor.Text.primary
         textField.tintColor = UIColor.UI.accent
 
         let toolbar = UIToolbar()
         toolbar.sizeToFit()
 
-        let doneButton = UIBarButtonItem(title: "ready".localized, 
+        let doneButton = UIBarButtonItem(title: "keyboard_toolbar_ready_title".localized, 
                                          style: .done,
                                          target: context.coordinator, action: #selector(context.coordinator.dismissKeyboard))
         doneButton.tintColor = UIColor.white
@@ -60,6 +66,22 @@ struct UserTextField: UIViewRepresentable {
 
         func textFieldDidChangeSelection(_ textField: UITextField) {
             parent.text = textField.text ?? ""
+        }
+        
+        func textFieldDidEndEditing(_ textField: UITextField) {
+            switch parent.validationType {
+            case .username:
+                let isValid = Validator.isValidUsername(for: textField.text ?? "")
+                parent.onValidation?(isValid)
+            case .name:
+                let isValid = Validator.isValidName(for: textField.text ?? "")
+                parent.onValidation?(isValid)
+            case .lastname:
+                let isValid = Validator.isValidSurname(for: textField.text ?? "")
+                parent.onValidation?(isValid)
+            case .none:
+                break
+            }
         }
     }
 }

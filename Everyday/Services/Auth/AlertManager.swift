@@ -31,10 +31,6 @@ extension AlertManager {
     static func showInvalidPasswordAlert(on vc: UIViewController, message: String) {
         self.showBasicAlert(on: vc, title: "AlertManager_invalid_password_title".localized, message: message)
     }
-    
-    static func showInvalidUsernameAlert(on vc: UIViewController) {
-        self.showBasicAlert(on: vc, title: "AlertManager_invalid_username_title".localized, message: "AlertManager_invalid_username_message".localized)
-    }
 }
 
 // MARK: - Registration Errors

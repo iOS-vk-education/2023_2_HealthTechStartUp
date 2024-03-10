@@ -16,6 +16,7 @@ struct ProfileSetupView: View {
     @StateObject private var viewModel = ProfileSetupViewModel()
     private let defaultImage = Image("anonymous")
     var onNext: () -> Void
+    @State private var update: Bool = false
 
     // MARK: - body
 
@@ -30,21 +31,7 @@ struct ProfileSetupView: View {
 
                 Spacer()
 
-                ZStack {
-                    if let inputImage = viewModel.inputImage {
-                        Image(uiImage: inputImage)
-                            .resizable()
-                            .scaledToFill()
-                    } else {
-                        defaultImage
-                            .resizable()
-                            .scaledToFill()
-                    }
-                }
-                .frame(width: Constants.ZStackValues.size.width, height: Constants.ZStackValues.size.height)
-                .clipShape(Circle())
-                .overlay(Circle().stroke(Color.primary, lineWidth: Constants.ZStackValues.overlay))
-                .padding()
+                profileImageView
 
                 Button(action: {
                     viewModel.showingImagePicker = true
@@ -55,33 +42,8 @@ struct ProfileSetupView: View {
 
                 Spacer()
 
-                UserTextField(text: $viewModel.userProfile.name, keyType: .default, placeholder: viewModel.name)
-                    .frame(width: Constants.TextFieldValues.size.width, height: Constants.TextFieldValues.size.height)
-                    .padding(.horizontal, Constants.TextFieldValues.hPadding)
-                    .background(Constants.gray.opacity(Constants.TextFieldValues.colorOpacity))
-                    .cornerRadius(Constants.TextFieldValues.cornerRadius)
-                    .onChange(of: viewModel.userProfile.name) { newValue in
-                        ProfileAcknowledgementModel.shared.update(firstname: newValue)
-                    }
-
-                UserTextField(text: $viewModel.userProfile.surname, keyType: .default, placeholder: viewModel.surname)
-                    .frame(width: Constants.TextFieldValues.size.width, height: Constants.TextFieldValues.size.height)
-                    .padding(.horizontal, Constants.TextFieldValues.hPadding)
-                    .background(Constants.gray.opacity(Constants.TextFieldValues.colorOpacity))
-                    .cornerRadius(Constants.TextFieldValues.cornerRadius)
-                    .onChange(of: viewModel.userProfile.surname) { newValue in
-                        ProfileAcknowledgementModel.shared.update(lastname: newValue)
-                    }
-
-                UserTextField(text: $viewModel.userProfile.nickname, keyType: .default, placeholder: viewModel.nickname)
-                    .frame(width: Constants.TextFieldValues.size.width, height: Constants.TextFieldValues.size.height)
-                    .padding(.horizontal, Constants.TextFieldValues.hPadding)
-                    .background(Constants.gray.opacity(Constants.TextFieldValues.colorOpacity))
-                    .cornerRadius(Constants.TextFieldValues.cornerRadius)
-                    .onChange(of: viewModel.userProfile.nickname) { newValue in
-                        ProfileAcknowledgementModel.shared.update(nickname: newValue)
-                    }
-
+                userTextFields
+                
                 Spacer()
 
                 Button(action: {
@@ -104,6 +66,93 @@ struct ProfileSetupView: View {
         }
         .scrollIndicators(.hidden)
     }
+    
+    private var profileImageView: some View {
+        ZStack {
+            if let inputImage = viewModel.inputImage {
+                Image(uiImage: inputImage)
+                    .resizable()
+            } else {
+                defaultImage.resizable()
+            }
+        }
+        .scaledToFill()
+        .frame(width: Constants.ZStackValues.size.width, height: Constants.ZStackValues.size.height)
+        .clipShape(Circle())
+        .overlay(Circle().stroke(Color.primary, lineWidth: Constants.ZStackValues.overlay))
+        .padding()
+    }
+    
+    private var userTextFields: some View {
+            Group {
+                UserTextField(text: $viewModel.userProfile.name,
+                              keyType: .default,
+                              placeholder: viewModel.name,
+                              validationType: .name,
+                              onValidation: { isValid in
+                    if !isValid {
+                        viewModel.chooseAlert = .name
+                        viewModel.setAlert()
+                        update = false
+                        ProfileAcknowledgementModel.shared.clear(fields: [.firstname])
+                    } else {
+                        update = true
+                        ProfileAcknowledgementModel.shared.update(firstname: $viewModel.userProfile.name.wrappedValue)
+                    }
+                })
+                .alert(isPresented: $viewModel.showingAlert) {
+                    Alert(title: Text(viewModel.nameAlertTitle),
+                          message: Text(viewModel.nameAlertMessage),
+                          dismissButton: .default(Text(AttributedString(viewModel.alertTitle))))
+                }
+                
+                UserTextField(text: $viewModel.userProfile.surname,
+                              keyType: .default,
+                              placeholder: viewModel.surname,
+                              validationType: .lastname,
+                              onValidation: { isValid in
+                    if !isValid {
+                        viewModel.chooseAlert = .surname
+                        viewModel.setAlert()
+                        update = false
+                        ProfileAcknowledgementModel.shared.clear(fields: [.lastname])
+                    } else {
+                        update = true
+                        ProfileAcknowledgementModel.shared.update(lastname: $viewModel.userProfile.surname.wrappedValue)
+                    }
+                  })
+                .alert(isPresented: $viewModel.showingAlert) {
+                    Alert(title: Text(viewModel.surnameAlertTitle),
+                          message: Text(viewModel.surnameAlertMessage),
+                          dismissButton: .default(Text(AttributedString(viewModel.alertTitle))))
+                }
+                
+                UserTextField(text: $viewModel.userProfile.nickname,
+                              keyType: .default,
+                              placeholder: viewModel.nickname,
+                              validationType: .username,
+                              onValidation: { isValid in
+                    if !isValid {
+                        viewModel.chooseAlert = .nickname
+                        viewModel.setAlert()
+                        update = false
+                        ProfileAcknowledgementModel.shared.clear(fields: [.nickname])
+                    } else {
+                        update = true
+                        ProfileAcknowledgementModel.shared.update(nickname: $viewModel.userProfile.nickname.wrappedValue)
+                    }
+                })
+                .alert(isPresented: $viewModel.showingAlert) {
+                    Alert(title: Text(viewModel.nicknameAlertTitle),
+                          message: Text(viewModel.nicknameAlertMessage),
+                          dismissButton: .default(Text(AttributedString(viewModel.alertTitle))))
+                }
+            }
+            .frame(width: Constants.TextFieldValues.size.width, height: Constants.TextFieldValues.size.height)
+            .padding(.horizontal, Constants.TextFieldValues.hPadding)
+            .background(Constants.gray.opacity(Constants.TextFieldValues.colorOpacity))
+            .cornerRadius(Constants.TextFieldValues.cornerRadius)
+        }
 }
 
 // MARK: - extensions
