@@ -15,8 +15,8 @@ struct ExerciseViewModel {
     init(exercise: Exercise) {
         let resultLabelTitle = "0"
         let resultLabelAttributedString = NSAttributedString(string: resultLabelTitle, attributes: Styles.titleAttributes)
-        let saveButtonTitle = "Сохранить"
-        let saveButtonAttributedString = NSAttributedString(string: saveButtonTitle, attributes: Styles.titleAttributes)
+        let saveButtonTitle = "Exercise_save_title"
+        let saveButtonAttributedString = NSAttributedString(string: saveButtonTitle.localized, attributes: Styles.titleAttributes)
         
         self.title = exercise.name
         self.resultTitle = resultLabelAttributedString

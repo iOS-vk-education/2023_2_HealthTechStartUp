@@ -11,8 +11,8 @@ struct TrainingViewModel {
     let finishTitle: NSAttributedString
     
     init() {
-        let finishButtonTitle = "Закончить"
-        let finishButtonAttributedString = NSAttributedString(string: finishButtonTitle, attributes: Styles.titleAttributes)
+        let finishButtonTitle = "Training_Finish_Button_Title"
+        let finishButtonAttributedString = NSAttributedString(string: finishButtonTitle.localized, attributes: Styles.titleAttributes)
         
         self.finishTitle = finishButtonAttributedString
     }

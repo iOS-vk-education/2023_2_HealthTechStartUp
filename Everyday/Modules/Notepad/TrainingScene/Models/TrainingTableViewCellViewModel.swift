@@ -17,8 +17,8 @@ struct TrainingTableViewCellViewModel {
         let titleLabelAttributedString = NSAttributedString(string: titleLabelTitle, attributes: Styles.titleAttributes)
         let resultLabelTitle = exercise.result
         let resultLabelAttributedString = NSAttributedString(string: resultLabelTitle, attributes: Styles.resultAttributes)
-        let startButtonTitle = "Начать"
-        let startButtonAttributedString = NSAttributedString(string: startButtonTitle, attributes: Styles.titleAttributes)
+        let startButtonTitle = "Timer_Start_Button_Title"
+        let startButtonAttributedString = NSAttributedString(string: startButtonTitle.localized, attributes: Styles.titleAttributes)
         
         self.title = titleLabelAttributedString
         self.result = resultLabelAttributedString

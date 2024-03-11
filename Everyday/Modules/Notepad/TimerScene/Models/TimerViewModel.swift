@@ -17,14 +17,14 @@ struct TimerViewModel {
     init(remainingTime: Int) {
         let remainingTimeLabelTitle = "\(remainingTime)"
         let remainingTimeLabelAttributedString = NSAttributedString(string: remainingTimeLabelTitle, attributes: Styles.titleAttributes)
-        let startButtonTitle = "Старт"
-        let startButtonAttributedString = NSAttributedString(string: startButtonTitle, attributes: Styles.titleAttributes)
-        let stopButtonTitle = "Стоп"
-        let stopButtonAttributedString = NSAttributedString(string: stopButtonTitle, attributes: Styles.titleAttributes)
-        let resetButtonTitle = "Заново"
-        let resetButtonAttributedString = NSAttributedString(string: resetButtonTitle, attributes: Styles.titleAttributes)
-        let skipButtonTitle = "Пропустить"
-        let skipButtonAttributedString = NSAttributedString(string: skipButtonTitle, attributes: Styles.titleAttributes)
+        let startButtonTitle = "Timer_Start_Button_Title"
+        let startButtonAttributedString = NSAttributedString(string: startButtonTitle.localized, attributes: Styles.titleAttributes)
+        let stopButtonTitle = "Timer_Stop_Button_Title"
+        let stopButtonAttributedString = NSAttributedString(string: stopButtonTitle.localized, attributes: Styles.titleAttributes)
+        let resetButtonTitle = "Timer_Restart_Button_Title"
+        let resetButtonAttributedString = NSAttributedString(string: resetButtonTitle.localized, attributes: Styles.titleAttributes)
+        let skipButtonTitle = "Timer_Skip_Button_Title"
+        let skipButtonAttributedString = NSAttributedString(string: skipButtonTitle.localized, attributes: Styles.titleAttributes)
         
         self.remainingTimeTitle = remainingTimeLabelAttributedString
         self.startTitle = startButtonAttributedString
