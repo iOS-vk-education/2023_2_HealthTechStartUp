@@ -165,7 +165,7 @@ private extension ResultsTableViewCell {
         
         struct ResultTextField {
             static let textColor: UIColor = UIColor.Text.primary
-            static let width: CGFloat = 40
+            static let width: CGFloat = 50
             static let height: CGFloat = 20
         }
         

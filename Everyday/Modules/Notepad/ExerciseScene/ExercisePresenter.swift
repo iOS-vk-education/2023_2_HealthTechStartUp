@@ -17,7 +17,7 @@ final class ExercisePresenter {
     
     private var exercise: Exercise
     private var indexOfSet: Int
-    private var result: String = "0"
+    private var result: Int = 0
     
     init(router: ExerciseRouterInput, interactor: ExerciseInteractorInput, exercise: Exercise, indexOfSet: Int) {
         self.router = router
@@ -36,14 +36,31 @@ extension ExercisePresenter: ExerciseViewOutput {
         view?.configure(with: viewModel)
     }
     
-    func didTapStepper(with result: String) {
-        self.result = result
-        view?.updateResult(with: result)
+    func didTapSaveButton() {
+        moduleOutput?.setResult(of: exercise.name, with: String(result), at: indexOfSet)
+        router.closeExercise()
     }
     
-    func didTapSaveButton() {
-        moduleOutput?.setResult(of: exercise.name, with: result, at: indexOfSet)
+    func didTapCloseButton() {
         router.closeExercise()
+    }
+    
+    func didTapMinusButton() {
+        guard
+//            let resultText = resultTextField.text,
+//            let result = Int(resultText),
+            result > 0
+        else {
+            return
+        }
+        
+        result -= 1
+        view?.updateResult(with: String(result))
+    }
+    
+    func didTapPlusButton() {
+        result += 1
+        view?.updateResult(with: String(result))
     }
 }
 

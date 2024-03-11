@@ -53,7 +53,7 @@ struct WorkoutDay {
 }
 
 struct Schedule1 {
-    let daysOfWeek: [[(workout: Workout, indexOfDay: Int)]]  // 7 elements (arrays) = 7 days
+    let daysOfWeek: [[WorkoutDay]]  // 7 elements (arrays) = 7 days
 }
 
 struct MockSchedule {
@@ -62,8 +62,8 @@ struct MockSchedule {
         [],
         [],
         [],
-        [(workout: Mock.mockWorkouts[0], indexOfDay: 0), (workout: Mock.mockWorkouts[1], indexOfDay: 0)],
-        [(workout: Mock.mockWorkouts[2], indexOfDay: 0)],
-        [(workout: Mock.mockWorkouts[0], indexOfDay: 1)]
+        [.init(workout: Mock.mockWorkouts[0], indexOfDay: 0), .init(workout: Mock.mockWorkouts[1], indexOfDay: 0)],
+        [.init(workout: Mock.mockWorkouts[2], indexOfDay: 0)],
+        [.init(workout: Mock.mockWorkouts[0], indexOfDay: 1)]
     ])
 }

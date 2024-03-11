@@ -24,7 +24,7 @@ extension ResultsRouter: ResultsRouterInput {
         if let sheet = timerViewController.sheetPresentationController {
             sheet.detents = [
                 .custom(resolver: { _ in
-                    return 250
+                    return Constants.timerSheetHeight
                 })
             ]
         }
@@ -38,5 +38,11 @@ extension ResultsRouter: ResultsRouterInput {
         }
         
         viewController.dismiss(animated: true)
+    }
+}
+
+private extension ResultsRouter {
+    struct Constants {
+        static let timerSheetHeight: CGFloat = 250
     }
 }

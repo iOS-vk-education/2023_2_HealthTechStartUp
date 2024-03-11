@@ -56,7 +56,6 @@ private extension TimerViewController {
     
     func layout() {
         let timerViewWidth: CGFloat = view.bounds.width - Constants.TimerView.padding * 2
-//        let timerViewHeight: CGFloat = timerViewWidth
         
         timerView.pin
             .width(timerViewWidth)

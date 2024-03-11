@@ -20,6 +20,15 @@ extension TrainingRouter: TrainingRouterInput {
         
         let exerciseContainer = ExerciseContainer.assemble(with: exerciseContext)
         let exerciseViewController = exerciseContainer.viewController
+        
+        if let sheet = exerciseViewController.sheetPresentationController {
+            sheet.detents = [
+                .custom(resolver: { _ in
+                    return Constants.sheetHeight
+                })
+            ]
+        }
+        
         viewController.present(exerciseViewController, animated: true)
     }
     
@@ -54,5 +63,11 @@ extension TrainingRouter: TrainingRouterInput {
                 window.rootViewController = viewController
             }, completion: nil)
         }
+    }
+}
+
+private extension TrainingRouter {
+    struct Constants {
+        static let sheetHeight: CGFloat = 250
     }
 }
