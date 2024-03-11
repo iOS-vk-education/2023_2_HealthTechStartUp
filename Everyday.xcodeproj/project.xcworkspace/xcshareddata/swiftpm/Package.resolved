@@ -118,6 +118,15 @@
       }
     },
     {
+      "identity" : "m13checkbox",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/Marxon13/M13Checkbox",
+      "state" : {
+        "revision" : "96ff6c8862db87095315480a56dcebe51e15dac8",
+        "version" : "3.4.1"
+      }
+    },
+    {
       "identity" : "nanopb",
       "kind" : "remoteSourceControl",
       "location" : "https://github.com/firebase/nanopb.git",
