@@ -24,6 +24,8 @@ final class NotepadContainer {
         
         interactor.output = presenter
         
+        router.viewController = viewController
+        
         return NotepadContainer(view: viewController, input: presenter, router: router)
     }
     
