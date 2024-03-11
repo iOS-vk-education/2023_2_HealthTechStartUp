@@ -44,4 +44,15 @@ extension TrainingRouter: TrainingRouterInput {
             }, completion: nil)
         }
     }
+    
+    func openNotepad() {
+        if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+           let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
+            let viewController = NotepadContainer.assemble(with: .init()).viewController
+            viewController.modalPresentationStyle = .fullScreen
+            UIView.transition(with: window, duration: 0.5, options: [.transitionCrossDissolve], animations: {
+                window.rootViewController = viewController
+            }, completion: nil)
+        }
+    }
 }

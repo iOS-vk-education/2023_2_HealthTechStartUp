@@ -15,11 +15,11 @@ final class TrainingPresenter {
     private let router: TrainingRouterInput
     private let interactor: TrainingInteractorInput
     
-    private var workoutDay: (workout: Workout, indexOfDay: Int)
+    private var workoutDay: WorkoutDay
     private var indexOfSet: Int = 0
     private var switchStates: [Bool] = []
     
-    init(router: TrainingRouterInput, interactor: TrainingInteractorInput, workoutDay: (workout: Workout, indexOfDay: Int)) {
+    init(router: TrainingRouterInput, interactor: TrainingInteractorInput, workoutDay: WorkoutDay) {
         self.router = router
         self.interactor = interactor
         self.workoutDay = workoutDay
@@ -98,7 +98,7 @@ extension TrainingPresenter: ResultsModuleOutput {
         if workoutDay.workout.days[workoutDay.indexOfDay].sets.count > index + 1 {
             self.indexOfSet = index + 1
         } else {
-            router.openExtra()
+            router.openNotepad()
             return
         }
         

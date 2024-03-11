@@ -43,4 +43,5 @@ protocol TrainingRouterInput: AnyObject {
     func openExercise(with exerciseContext: ExerciseContext)
     func showResults(with resultsContext: ResultsContext)
     func openExtra()
+    func openNotepad()
 }

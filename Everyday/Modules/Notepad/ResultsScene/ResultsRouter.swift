@@ -20,6 +20,15 @@ extension ResultsRouter: ResultsRouterInput {
         
         let timerContainer = TimerContainer.assemble(with: timerContext)
         let timerViewController = timerContainer.viewController
+        
+        if let sheet = timerViewController.sheetPresentationController {
+            sheet.detents = [
+                .custom(resolver: { _ in
+                    return 250
+                })
+            ]
+        }
+        
         viewController.present(timerViewController, animated: true)
     }
     
