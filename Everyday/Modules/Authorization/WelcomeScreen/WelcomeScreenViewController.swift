@@ -141,14 +141,14 @@ final class WelcomeScreenViewController: UIViewController {
             .above(of: controllersScrollView)
             .left(view.pin.safeArea)
             .marginBottom(Constants.Buttons.marginBottom)
-            .width(50%)
+            .width(Constants.Buttons.percent)
             .height(Constants.Buttons.height)
         
         signInButton.pin
             .above(of: controllersScrollView)
             .right(view.pin.safeArea)
             .marginBottom(Constants.Buttons.marginBottom)
-            .width(50%)
+            .width(Constants.Buttons.percent)
             .height(Constants.Buttons.height)
         
         logoImageView.pin
@@ -198,7 +198,7 @@ final class WelcomeScreenViewController: UIViewController {
         }
         
         let keyboardHeight = keyboardFrameInfo.cgRectValue.height
-        let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? 0.1
+        let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? Constants.Keyboard.duration
         
         UIView.animate(withDuration: duration) {
             self.view.frame.origin.y = -keyboardHeight
@@ -207,7 +207,7 @@ final class WelcomeScreenViewController: UIViewController {
 
     @objc
     func keyboardWillHide(notification: Notification) {
-        let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? 0.1
+        let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? Constants.Keyboard.duration
         
         UIView.animate(withDuration: duration) {
             self.view.frame.origin.y = 0
@@ -277,6 +277,7 @@ private extension WelcomeScreenViewController {
         struct Buttons {
             static let height: CGFloat = 50
             static let marginBottom: CGFloat = 10
+            static let percent: Percent = 50%
         }
         
         struct Triangle {
@@ -291,6 +292,10 @@ private extension WelcomeScreenViewController {
         
         struct ScrollView {
             static let cornerRadius: CGFloat = 45
+        }
+        
+        struct Keyboard {
+            static let duration: CGFloat = 0.1
         }
     }
 }

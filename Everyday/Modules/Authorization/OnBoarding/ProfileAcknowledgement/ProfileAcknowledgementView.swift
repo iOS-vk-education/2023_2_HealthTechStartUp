@@ -5,7 +5,6 @@ struct ProfileAcknowledgementView: View {
     // MARK: - properties
     
     @StateObject private var viewModel = ProfileAcknowledgementViewModel()
-    @State private var controller: ProfileAcknowledgementController?
     
     @State private var selectedAge: Age = .small
     @State private var selectedGender: Gender = .male
@@ -13,6 +12,7 @@ struct ProfileAcknowledgementView: View {
     @State private var selectedName = ""
     @State private var selectedSurname = ""
     @State private var selectedNickname = ""
+    @State private var update: Bool = false
     
     private let defaultImage = Image("anonymous")
     
@@ -32,21 +32,7 @@ struct ProfileAcknowledgementView: View {
                 
                 Spacer()
                 
-                ZStack {
-//                    if let inputImage = viewModel.inputImage {
-//                        Image(uiImage: inputImage)
-//                            .resizable()
-//                            .scaledToFill()
-//                    } else {
-                        defaultImage
-                            .resizable()
-                            .scaledToFill()
-//                    }
-                }
-                .frame(width: Constants.ZStackValues.size.width, height: Constants.ZStackValues.size.height)
-                .clipShape(Circle())
-                .overlay(Circle().stroke(Color.primary, lineWidth: Constants.ZStackValues.overlay))
-                .padding()
+                profileImageView
                 
                 Button(action: {
                     viewModel.showingImagePicker = true
@@ -57,23 +43,7 @@ struct ProfileAcknowledgementView: View {
 
                 Spacer()
                 
-                UserTextField(text: $selectedName, keyType: .default, placeholder: viewModel.name)
-                    .frame(width: Constants.TextFieldValues.size.width, height: Constants.TextFieldValues.size.height)
-                    .padding(.horizontal, Constants.TextFieldValues.hPadding)
-                    .background(Constants.gray.opacity(Constants.TextFieldValues.colorOpacity))
-                    .cornerRadius(Constants.TextFieldValues.cornerRadius)
-                
-                UserTextField(text: $selectedSurname, keyType: .default, placeholder: viewModel.surname)
-                    .frame(width: Constants.TextFieldValues.size.width, height: Constants.TextFieldValues.size.height)
-                    .padding(.horizontal, Constants.TextFieldValues.hPadding)
-                    .background(Constants.gray.opacity(Constants.TextFieldValues.colorOpacity))
-                    .cornerRadius(Constants.TextFieldValues.cornerRadius)
-                
-                UserTextField(text: $selectedNickname, keyType: .default, placeholder: viewModel.nickname)
-                    .frame(width: Constants.TextFieldValues.size.width, height: Constants.TextFieldValues.size.height)
-                    .padding(.horizontal, Constants.TextFieldValues.hPadding)
-                    .background(Constants.gray.opacity(Constants.TextFieldValues.colorOpacity))
-                    .cornerRadius(Constants.TextFieldValues.cornerRadius)
+                userTextFields
                 
                 Spacer()
                 
@@ -82,7 +52,7 @@ struct ProfileAcknowledgementView: View {
                     .multilineTextAlignment(.center)
                     .foregroundColor(Color.primaryText)
                             
-                ForEach(controller?.ages ?? [], id: \.self) { age in
+                ForEach(viewModel.ages, id: \.self) { age in
                     let ageText = viewModel.ageText(for: age)
                     AgeButtonView(age: age, ageText: ageText, selectedAge: $selectedAge )
                 }
@@ -122,6 +92,8 @@ struct ProfileAcknowledgementView: View {
                     
                     saveDataToModel()
                     
+                    UserDefaults.standard.set(true, forKey: "HasCompletedOnboarding")
+                    
                     AuthService.shared.authWithFirebase(with: ProfileAcknowledgementModel.shared)
                     
                     onFinish?()
@@ -144,37 +116,121 @@ struct ProfileAcknowledgementView: View {
         }
         .scrollIndicators(.hidden)
         .onAppear {
-            let ageEnum = Age.from(description: ProfileAcknowledgementModel.shared.age ?? "") ?? .small
-            let genderEnum = Gender.from(description: ProfileAcknowledgementModel.shared.gender ?? "") ?? .male
-            let weight = ProfileAcknowledgementModel.shared.weight
-            let name = ProfileAcknowledgementModel.shared.firstname
-            let surname = ProfileAcknowledgementModel.shared.lastname
-            let nickname = ProfileAcknowledgementModel.shared.nickname
-            
-            self.controller = ProfileAcknowledgementController(ageDescription: ageEnum.description,
-                                                               genderDescription: genderEnum.description,
-                                                               weight: weight,
-                                                               name: name,
-                                                               surname: surname,
-                                                               nickname: nickname)
-            
-            self.selectedAge = controller?.selectedAge ?? .small
-            self.selectedGender = controller?.selectedGender ?? .male
-            self.selectedWeight = controller?.weight ?? "0"
-            self.selectedName = controller?.name ?? ""
-            self.selectedSurname = controller?.surname ?? ""
-            self.selectedNickname = controller?.nickname ?? ""
+            self.selectedAge = Age.from(description: ProfileAcknowledgementModel.shared.age ?? "") ?? .small
+            self.selectedGender = Gender.from(description: ProfileAcknowledgementModel.shared.gender ?? "") ?? .male
+            self.selectedWeight = ProfileAcknowledgementModel.shared.weight ?? ""
+            self.selectedName = ProfileAcknowledgementModel.shared.firstname ?? ""
+            self.selectedSurname = ProfileAcknowledgementModel.shared.lastname ?? ""
+            self.selectedNickname = ProfileAcknowledgementModel.shared.nickname ?? ""
         }
     }
     
-    func saveDataToModel() {
-        ProfileAcknowledgementModel.shared.firstname = selectedName
-        ProfileAcknowledgementModel.shared.lastname = selectedSurname
-        ProfileAcknowledgementModel.shared.nickname = selectedNickname
-        ProfileAcknowledgementModel.shared.profileImage = viewModel.inputImage
-        ProfileAcknowledgementModel.shared.age = selectedAge.description
-        ProfileAcknowledgementModel.shared.gender = selectedGender.description
-        ProfileAcknowledgementModel.shared.weight = selectedWeight
+    private func saveDataToModel() {
+        ProfileAcknowledgementModel.shared.update(firstname: selectedName, lastname: selectedSurname,
+                                                  nickname: selectedNickname, profileImage: viewModel.inputImage,
+                                                  age: selectedAge.description, gender: selectedGender.description,
+                                                  weight: selectedWeight)
+    }
+    
+    private var profileImageView: some View {
+        ZStack {
+            if let inputImage = viewModel.inputImage {
+                Image(uiImage: inputImage)
+                    .resizable()
+            } else {
+                defaultImage.resizable()
+            }
+        }
+        .scaledToFill()
+        .frame(width: Constants.ZStackValues.size.width, height: Constants.ZStackValues.size.height)
+        .clipShape(Circle())
+        .overlay(Circle().stroke(Color.primary, lineWidth: Constants.ZStackValues.overlay))
+        .padding()
+    }
+    
+     private var userTextFields: some View {
+        Group {
+            UserTextField(text: $selectedName,
+                          keyType: .default,
+                          placeholder: viewModel.name,
+                          validationType: .name,
+                          onValidation: { isValid in
+                if !isValid {
+                    viewModel.chooseAlert = .name
+                    setAlert()
+                    update = false
+                    ProfileAcknowledgementModel.shared.clear(fields: [.firstname])
+                } else {
+                    update = true
+                    ProfileAcknowledgementModel.shared.update(firstname: viewModel.name)
+                }
+            })
+            .alert(isPresented: $viewModel.showingAlert) {
+                Alert(title: Text(viewModel.nameAlertTitle),
+                      message: Text(viewModel.nameAlertMessage),
+                      dismissButton: .default(Text(AttributedString(viewModel.alertTitle))))
+            }
+            
+            UserTextField(text: $selectedSurname,
+                          keyType: .default,
+                          placeholder: viewModel.surname,
+                          validationType: .lastname,
+                          onValidation: { isValid in
+                if !isValid {
+                    viewModel.chooseAlert = .surname
+                    setAlert()
+                    update = false
+                    ProfileAcknowledgementModel.shared.clear(fields: [.lastname])
+                } else {
+                    update = true
+                    ProfileAcknowledgementModel.shared.update(nickname: viewModel.surname)
+                }
+            })
+            .alert(isPresented: $viewModel.showingAlert) {
+                Alert(title: Text(viewModel.surnameAlertTitle),
+                      message: Text(viewModel.surnameAlertMessage),
+                      dismissButton: .default(Text(AttributedString(viewModel.alertTitle))))
+            }
+            
+            UserTextField(text: $selectedNickname,
+                          keyType: .default,
+                          placeholder: viewModel.nickname,
+                          validationType: .username,
+                          onValidation: { isValid in
+                if !isValid {
+                    viewModel.chooseAlert = .nickname
+                    setAlert()
+                    update = false
+                    ProfileAcknowledgementModel.shared.clear(fields: [.nickname])
+                } else {
+                    update = true
+                    ProfileAcknowledgementModel.shared.update(nickname: viewModel.nickname)
+                }
+            })
+            .alert(isPresented: $viewModel.showingAlert) {
+                Alert(title: Text(viewModel.nicknameAlertTitle),
+                      message: Text(viewModel.nicknameAlertMessage),
+                      dismissButton: .default(Text(AttributedString(viewModel.alertTitle))))
+            }
+        }
+        .frame(width: Constants.TextFieldValues.size.width, height: Constants.TextFieldValues.size.height)
+        .padding(.horizontal, Constants.TextFieldValues.hPadding)
+        .background(Constants.gray.opacity(Constants.TextFieldValues.colorOpacity))
+        .cornerRadius(Constants.TextFieldValues.cornerRadius)
+    }
+    func setAlert() {
+        switch viewModel.chooseAlert {
+        case .nickname:
+            selectedNickname = ""
+        case .name:
+            selectedName = ""
+        case .surname:
+            selectedSurname = ""
+        default:
+            break
+        }
+        
+        viewModel.showingAlert = true
     }
 }
 

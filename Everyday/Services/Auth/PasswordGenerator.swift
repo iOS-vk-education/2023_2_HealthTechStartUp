@@ -7,10 +7,10 @@
 
 import Foundation
 
-class PasswordGenerator {
+final class PasswordGenerator {
     private let letters = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ"
     private let numbers = "0123456789"
-    private var length: Int
+    private let length: Int
 
     init(length: Int) {
         self.length = length

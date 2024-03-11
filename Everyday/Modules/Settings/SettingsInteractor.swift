@@ -6,11 +6,21 @@
 //  
 //
 
-import Foundation
+import UIKit
 
 final class SettingsInteractor {
     weak var output: SettingsInteractorOutput?
+    let authService: AuthServiceDescription
+    
+    init(authService: AuthServiceDescription) {
+        self.authService = authService
+    }
 }
 
 extension SettingsInteractor: SettingsInteractorInput {
+    func logout(completion: @escaping (Result<Void, Error>) -> Void) {
+        authService.logout { result in
+            completion(result)
+        }
+    }
 }

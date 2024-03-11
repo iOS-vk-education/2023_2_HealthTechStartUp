@@ -171,36 +171,13 @@
         }
       }
     },
-    "AlertManager_invalid_username_message" : {
+    "AlertManager_invalid_weight_title" : {
       "extractionState" : "manual",
       "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Please enter a valid username."
-          }
-        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Введите корректное имя пользователя."
-          }
-        }
-      }
-    },
-    "AlertManager_invalid_username_title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Incorrect username"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Неправильное имя пользователя"
+            "value" : "Неправильный вес"
           }
         }
       }
@@ -664,6 +641,84 @@
         }
       }
     },
+    "Onboarding_invalid_lastname_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите корректную фамилию"
+          }
+        }
+      }
+    },
+    "Onboarding_invalid_lastname_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неправильная фамилия"
+          }
+        }
+      }
+    },
+    "Onboarding_invalid_name_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите корректное имя"
+          }
+        }
+      }
+    },
+    "Onboarding_invalid_name_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неправильное имя"
+          }
+        }
+      }
+    },
+    "Onboarding_invalid_username_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please enter a valid username."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Введите корректное имя пользователя."
+          }
+        }
+      }
+    },
+    "Onboarding_invalid_username_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Incorrect username"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неправильное имя пользователя"
+          }
+        }
+      }
+    },
     "Onboarding_next_button_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1051,6 +1106,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Результаты"
+          }
+        }
+      }
+    },
+    "Settings_logout_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exit"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Выйти"
           }
         }
       }

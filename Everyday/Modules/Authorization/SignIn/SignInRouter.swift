@@ -24,4 +24,14 @@ extension SignInRouter: SignInRouterInput {
             }, completion: nil)
         }
     }
+    
+    func openOnBoarding() {
+        let onBoarding = OnBoardingViewController(onFinish: { [weak self] in
+            self?.openApp()
+        })
+        
+        let navigationController = UINavigationController(rootViewController: onBoarding)
+        navigationController.modalPresentationStyle = .fullScreen
+        viewController?.present(navigationController, animated: true, completion: nil)
+    }
 }
