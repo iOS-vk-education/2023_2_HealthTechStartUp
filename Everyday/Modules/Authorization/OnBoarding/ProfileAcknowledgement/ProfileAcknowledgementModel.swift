@@ -15,31 +15,33 @@ class ProfileAcknowledgementModel {
     private(set) var nickname: String?
     private(set) var email: String?
     private(set) var password: String?
-    private(set) var profileImage: UIImage?
     private(set) var age: String?
     private(set) var gender: String?
     private(set) var weight: String?
     private(set) var schedule: [[DocumentReference]] = []
+    private(set) var profileImagePath: String?
+    private(set) var profileImage: UIImage?
 
     private init() { }
 
     func update(firstname: String? = nil, lastname: String? = nil, nickname: String? = nil, email: String? = nil, 
                 password: String? = nil, profileImage: UIImage? = nil, age: String? = nil, gender: String? = nil,
-                weight: String? = nil, schedule: [[DocumentReference]]? = nil) {
+                weight: String? = nil, schedule: [[DocumentReference]]? = nil, profileImagePath: String? = nil) {
         if let firstname = firstname { self.firstname = firstname }
         if let lastname = lastname { self.lastname = lastname }
         if let nickname = nickname { self.nickname = nickname }
         if let email = email { self.email = email }
         if let password = password { self.password = password }
-        if let profileImage = profileImage { self.profileImage = profileImage }
         if let age = age { self.age = age }
         if let gender = gender { self.gender = gender }
         if let weight = weight { self.weight = weight }
         if let schedule = schedule { self.schedule = schedule }
+        if let profileImagePath = profileImagePath { self.profileImagePath = profileImagePath }
+        if let profileImage = profileImage { self.profileImage = profileImage }
     }
     
     enum Field {
-        case firstname, lastname, nickname, email, password, profileImage, age, gender, weight, schedule
+        case firstname, lastname, nickname, email, password, profileImagePath, age, gender, weight, schedule, profileImage
     }
 
     func clear(fields: [Field]) {
@@ -55,8 +57,8 @@ class ProfileAcknowledgementModel {
                 email = nil
             case .password:
                 password = nil
-            case .profileImage:
-                profileImage = nil
+            case .profileImagePath:
+                profileImagePath = nil
             case .age:
                 age = nil
             case .gender:
@@ -65,6 +67,8 @@ class ProfileAcknowledgementModel {
                 weight = nil
             case .schedule:
                 schedule = []
+            case .profileImage:
+                profileImage = nil
             }
         }
     }

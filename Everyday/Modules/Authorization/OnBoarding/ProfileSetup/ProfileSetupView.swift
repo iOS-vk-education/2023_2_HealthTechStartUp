@@ -14,7 +14,6 @@ struct ProfileSetupView: View {
     // MARK: - properties
 
     @StateObject private var viewModel = ProfileSetupViewModel()
-    private let defaultImage = Image("anonymous")
     var onNext: () -> Void
     @State private var update: Bool = false
 
@@ -63,6 +62,9 @@ struct ProfileSetupView: View {
             .sheet(isPresented: $viewModel.showingImagePicker, onDismiss: viewModel.loadImage) {
                 ImagePicker(image: self.$viewModel.inputImage)
             }
+            .onAppear {
+                viewModel.inputImage = ProfileAcknowledgementModel.shared.profileImage ?? UIImage(named: viewModel.image)
+            }
         }
         .scrollIndicators(.hidden)
     }
@@ -72,8 +74,6 @@ struct ProfileSetupView: View {
             if let inputImage = viewModel.inputImage {
                 Image(uiImage: inputImage)
                     .resizable()
-            } else {
-                defaultImage.resizable()
             }
         }
         .scaledToFill()
@@ -81,6 +81,9 @@ struct ProfileSetupView: View {
         .clipShape(Circle())
         .overlay(Circle().stroke(Color.primary, lineWidth: Constants.ZStackValues.overlay))
         .padding()
+        .onChange(of: viewModel.inputImage) { newValue in
+            ProfileAcknowledgementModel.shared.update(profileImage: newValue)
+        }
     }
     
     private var userTextFields: some View {

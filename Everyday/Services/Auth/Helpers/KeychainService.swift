@@ -43,4 +43,15 @@ class KeychainService {
             return nil
         }
     }
+    
+    @discardableResult
+    static func clearAllPasswords() -> Bool {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword
+        ]
+        
+        let status = SecItemDelete(query as CFDictionary)
+        
+        return status == errSecSuccess || status == errSecItemNotFound
+    }
 }

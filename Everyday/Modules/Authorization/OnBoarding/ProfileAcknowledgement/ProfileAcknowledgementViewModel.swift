@@ -19,9 +19,7 @@ final class ProfileAcknowledgementViewModel: ObservableObject {
     
     @Published var showingImagePicker = false
     @Published var inputImage: UIImage?
-    
-    var temp = UserProfile()
-    
+        
     let title: NSAttributedString
     let photoTitle: NSAttributedString
     let starter: NSAttributedString
@@ -40,6 +38,8 @@ final class ProfileAcknowledgementViewModel: ObservableObject {
     let surnameAlertTitle: String
     let surnameAlertMessage: String
     let alertTitle: NSAttributedString
+    
+    var storageService: StorageServiceDescription = StorageService.shared
     
     struct GenderUI {
            let gender: Gender
@@ -71,14 +71,13 @@ final class ProfileAcknowledgementViewModel: ObservableObject {
         self.nameAlertMessage = "Onboarding_invalid_name_message".localized
         self.surnameAlertTitle = "Onboarding_invalid_surname_title".localized
         self.surnameAlertMessage = "Onboarding_invalid_surname_message".localized
-        
-        inputImage = ProfileAcknowledgementModel.shared.profileImage
     }
 
     func loadImage() {
-        if let inputImage = inputImage {
-            temp.profileImage = inputImage
+        guard let inputImage = inputImage else {
+            return
         }
+        ProfileAcknowledgementModel.shared.update(profileImage: inputImage)
     }
     
     func ageText(for age: Age) -> String {

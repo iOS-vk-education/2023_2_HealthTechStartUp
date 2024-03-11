@@ -13,9 +13,7 @@ struct ProfileAcknowledgementView: View {
     @State private var selectedSurname = ""
     @State private var selectedNickname = ""
     @State private var update: Bool = false
-    
-    private let defaultImage = Image("anonymous")
-    
+        
     var onFinish: (() -> Void)?
     
     // MARK: - body
@@ -122,6 +120,7 @@ struct ProfileAcknowledgementView: View {
             self.selectedName = ProfileAcknowledgementModel.shared.firstname ?? ""
             self.selectedSurname = ProfileAcknowledgementModel.shared.lastname ?? ""
             self.selectedNickname = ProfileAcknowledgementModel.shared.nickname ?? ""
+            viewModel.inputImage = ProfileAcknowledgementModel.shared.profileImage
         }
     }
     
@@ -137,8 +136,6 @@ struct ProfileAcknowledgementView: View {
             if let inputImage = viewModel.inputImage {
                 Image(uiImage: inputImage)
                     .resizable()
-            } else {
-                defaultImage.resizable()
             }
         }
         .scaledToFill()
