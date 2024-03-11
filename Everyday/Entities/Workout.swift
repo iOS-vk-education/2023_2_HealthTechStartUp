@@ -6,23 +6,25 @@
 //
 
 import Foundation
+import FirebaseFirestoreSwift
 
-struct Workout {
+struct Workout: Codable {
+    @DocumentID var id: String?
     let name: String
     var days: [DayOfWorkout]
 }
 
-struct DayOfWorkout {
+struct DayOfWorkout: Codable, Hashable {
     var name: String
     var sets: [TrainingSet]
 }
 
-struct TrainingSet {
+struct TrainingSet: Codable, Hashable {
     var name: String
     var exercises: [Exercise]
 }
 
-struct Exercise {
+struct Exercise: Codable, Hashable {
     let name: String
     let description: String
     var result: String  // change for enum ResultOfExercise, problem: set 0 by default?

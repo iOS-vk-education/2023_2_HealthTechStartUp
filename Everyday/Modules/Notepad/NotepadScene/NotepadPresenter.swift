@@ -16,7 +16,7 @@ final class NotepadPresenter {
     private let interactor: NotepadInteractorInput
     
     private var isResult: Bool = false
-    private var workoutDays: [(workout: Workout, indexOfDay: Int)] = []
+    private var workoutDays: [WorkoutDay] = []
     private var isCollapsed = [
         true,
         true
@@ -40,7 +40,7 @@ extension NotepadPresenter: NotepadViewOutput {
         isResult ? .collapse : .open
     }
     
-    func getWorkoutDay(_ number: Int) -> (workout: Workout, indexOfDay: Int) {
+    func getWorkoutDay(_ number: Int) -> WorkoutDay {
         (workoutDays[number])
     }
     
@@ -76,7 +76,7 @@ extension NotepadPresenter: NotepadViewOutput {
 }
 
 extension NotepadPresenter: NotepadInteractorOutput {
-    func didLoadDay(with workoutDays: [(workout: Workout, indexOfDay: Int)], _ isResult: Bool) {
+    func didLoadDay(with workoutDays: [WorkoutDay], _ isResult: Bool) {
         self.workoutDays = workoutDays
         self.isResult = isResult
         
