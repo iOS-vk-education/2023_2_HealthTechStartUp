@@ -15,7 +15,7 @@ final class SettingsContainer {
     
     class func assemble(with context: SettingsContext) -> SettingsContainer {
         let router = SettingsRouter()
-        let interactor = SettingsInteractor()
+        let interactor = SettingsInteractor(authService: AuthService.shared)
         let presenter = SettingsPresenter(router: router, interactor: interactor)
         let viewController = SettingsViewController(output: presenter)
         
@@ -23,6 +23,7 @@ final class SettingsContainer {
         presenter.moduleOutput = context.moduleOutput
         
         interactor.output = presenter
+        router.viewController = viewController
         
         return SettingsContainer(view: viewController, input: presenter, router: router)
     }

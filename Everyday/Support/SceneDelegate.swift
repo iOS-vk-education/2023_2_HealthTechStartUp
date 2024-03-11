@@ -12,6 +12,7 @@ import FirebaseAuth
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     var window: UIWindow?
+    private var splashPresenter: SplashPresenterDescription?
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else {
@@ -26,6 +27,34 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         } else {
             let viewController = TabBarController()
             window?.rootViewController = viewController
+        }
+        
+        checkAuthentication()
+    }
+    
+    private func setupWindow(with scene: UIScene) {
+        guard let windowScene = (scene as? UIWindowScene) else {
+            return
+        }
+        
+        splashPresenter = SplashPresenter(scene: scene)
+        setupWindow(with: scene)
+        
+        if Auth.auth().currentUser == nil {
+            let viewController = WelcomeScreenContainer.assemble(with: .init()).viewController
+            window?.rootViewController = viewController
+        } else {
+            let viewController = TabBarController()
+            window?.rootViewController = viewController
+        }
+        
+        splashPresenter?.present()
+        
+        let delay: TimeInterval = 1.5
+        DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
+            self.splashPresenter?.dismiss { [weak self] in
+                self?.splashPresenter = nil
+            }
         }
         
         checkAuthentication()

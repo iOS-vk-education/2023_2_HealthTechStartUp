@@ -14,12 +14,12 @@ struct ResultsViewModel {
     let closeImage: UIImage?
     
     init() {
-        let resultsLabelTitle = "Результаты"
-        let resultsLabelAttributedString = NSAttributedString(string: resultsLabelTitle, attributes: Styles.titleAttributes)
-        let restButtonTitle = "Отдых"
-        let restButtonAttributedString = NSAttributedString(string: restButtonTitle, attributes: Styles.buttonTitleAttributes)
-        let continueButtonTitle = "Продолжить"
-        let continueButtonAttributedString = NSAttributedString(string: continueButtonTitle, attributes: Styles.buttonTitleAttributes)
+        let resultsLabelTitle = "Progress_title"
+        let resultsLabelAttributedString = NSAttributedString(string: resultsLabelTitle.localized, attributes: Styles.titleAttributes)
+        let restButtonTitle = "Results_Rest_Button_Title"
+        let restButtonAttributedString = NSAttributedString(string: restButtonTitle.localized, attributes: Styles.buttonTitleAttributes)
+        let continueButtonTitle = "Results_Continue_Button_Title"
+        let continueButtonAttributedString = NSAttributedString(string: continueButtonTitle.localized, attributes: Styles.buttonTitleAttributes)
         let closeButtonImageName = "xmark.circle.fill"
         let closeButtonImage = UIImage(systemName: closeButtonImageName, withConfiguration: Configurations.large)
         

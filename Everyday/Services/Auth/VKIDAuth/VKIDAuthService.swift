@@ -11,6 +11,7 @@ import VKID
 protocol VKIDAuthServiceDescription {
     var vkid: VKID? { get }
     func authWithVKID(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
+    func loginWithVKID(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 final class VKIDAuthService: VKIDAuthServiceDescription {
@@ -48,14 +49,54 @@ final class VKIDAuthService: VKIDAuthServiceDescription {
             do {
                 let session = try result.get()
                 let passwordGenerator = PasswordGenerator(length: 20)
+                let password = passwordGenerator.generatePassword()
+                guard let email = session.user.email  else {
+                    let error = NSError(domain: "AuthError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unable to retrieve user information"])
+                    completion(.failure(error))
+                    return
+                }
                 
-                ProfileAcknowledgementModel.shared.firstname = session.user.firstName
-                ProfileAcknowledgementModel.shared.lastname = session.user.lastName
-                ProfileAcknowledgementModel.shared.email = session.user.email
-                ProfileAcknowledgementModel.shared.password = passwordGenerator.generatePassword()
+                KeychainService.savePassword(password, for: email)
+                
+                ProfileAcknowledgementModel.shared.update(firstname: session.user.firstName,
+                                                          lastname: session.user.lastName,
+                                                          email: email,
+                                                          password: password)
+                
                 // session.user.avatarURL
                 
                 completion(.success(()))
+            } catch AuthError.cancelled {
+                return                
+            } catch {
+                let error = NSError(domain: "AuthError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unable to retrieve user information"])
+                completion(.failure(error))
+                return
+            }
+        }
+    }
+    
+    func loginWithVKID(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void) {
+        vkid?.authorize(
+            using: .uiViewController(presentingController)
+        ) { result in
+            do {
+                let session = try result.get()
+               
+                guard let email = session.user.email, let password = KeychainService.loadPassword(for: email)  else {
+                    let error = NSError(domain: "AuthError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unable to retrieve user information"])
+                    completion(.failure(error))
+                    return
+                }
+                
+                let model = SignInModel(email: email, password: password)
+                FirebaseAuthService.shared.login(with: model) { _, error in
+                    if let error = error {
+                        completion(.failure(error))
+                    } else {
+                        completion(.success(()))
+                    }
+                }
             } catch AuthError.cancelled {
                 print("Auth cancelled by user")
                 return

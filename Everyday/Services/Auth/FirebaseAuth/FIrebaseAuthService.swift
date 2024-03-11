@@ -9,42 +9,77 @@ import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 
-enum Sign {
-    case vk
-    case google
-    case common
-    case anonym
-}
-
-class AuthModel {
+final class AuthModel {
     static let shared = AuthModel()
     
-    var whichSign: Sign?
-    var credential: AuthCredential?
+    enum Sign {
+        case vk
+        case google
+        case common
+        case anonym
+        case none
+    }
+    
+    var whichSign: Sign = .none
 
-    init() {
+    private init() {
     }
 }
 
 protocol FirebaseAuthServiceDescription {
     func registerUser(with userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void)
-    // func login(with userRequest: LoginModel, completion: @escaping (Error?) -> Void)
-    // func signOut(completion: @escaping (Error?) -> Void)
-    // func forgotPassword(with email: String, completion: @escaping (Error?) -> Void)
+    func login(with userRequest: SignInModel, completion: @escaping(Bool, Error?) -> Void)
+    func anonymLogin(completion: @escaping (Bool, Error?) -> Void)
+    func signOut(completion: @escaping (Bool, Error?) -> Void)
     
+    // func forgotPassword(with email: String, completion: @escaping (Error?) -> Void)
 }
 
-class FirebaseAuthService: FirebaseAuthServiceDescription {
+final class FirebaseAuthService: FirebaseAuthServiceDescription {
     public static let shared = FirebaseAuthService()
     
     private init() {}
-
-    public func registerUser(with userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void) {
+    
+    func registerUser(with userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void) {
         switch AuthModel.shared.whichSign {
         case .google, .vk, .common, .anonym:
             performAuth(userRequest: userRequest, completion: completion)
         default:
             completion(false, nil)
+        }
+    }
+    
+   func login(with userRequest: SignInModel, completion: @escaping (Bool, Error?) -> Void) {
+        let email = userRequest.email
+        let password = userRequest.password
+        
+        Auth.auth().signIn(withEmail: email, password: password) { _, error in
+            if let error = error {
+                completion(false, error)
+                return
+            } else {
+                completion(true, nil)
+            }
+        }
+    }
+    
+    func anonymLogin(completion: @escaping (Bool, Error?) -> Void) {
+        Auth.auth().signInAnonymously { _, error in
+            if let error = error {
+                completion(false, error)
+                return
+            } else {
+                completion(true, nil)
+            }
+        }
+    }
+    
+    func signOut(completion: @escaping (Bool, Error?) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completion(true, nil)
+        } catch let error {
+            completion(false, error)
         }
     }
     
@@ -58,7 +93,7 @@ class FirebaseAuthService: FirebaseAuthServiceDescription {
         
         switch AuthModel.shared.whichSign {
         case .google:
-            guard let credential = AuthModel.shared.credential else {
+            guard let credential = GoogleAuthService.shared.credential else {
                 return completion(false, nil)
             }
             Auth.auth().signIn(with: credential, completion: authAction)
@@ -111,28 +146,6 @@ class FirebaseAuthService: FirebaseAuthServiceDescription {
     }
 }
 
-//    public func logIn(with userRequest: LoginModel, completion: @escaping (Error?) -> Void) {
-//        Auth.auth().signIn(
-//            withEmail: userRequest.email,
-//            password: userRequest.password
-//        ) { _, error in
-//            if let error = error {
-//                completion(error)
-//                return
-//            } else {
-//                completion(nil)
-//            }
-//        }
-//    }
-//    
-//    public func signOut(completion: @escaping (Error?) -> Void) {
-//        do {
-//            try Auth.auth().signOut()
-//            completion(nil)
-//        } catch let error {
-//            completion(error)
-//        }
-//    }
 //    
 //    public func forgotPassword(with email: String, completion: @escaping (Error?) -> Void) {
 //        Auth.auth().sendPasswordReset(withEmail: email) { error in

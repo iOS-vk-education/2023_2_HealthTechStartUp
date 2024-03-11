@@ -11,8 +11,8 @@ struct NotepadViewModel {
     let stateTitle: NSAttributedString
     
     init(isResult: Bool) {
-        let stateLabelTitle = isResult ? "Результат" : "Ваш план"
-        let stateLabelAttributedString = NSAttributedString(string: stateLabelTitle, attributes: Styles.titleAttributes)
+        let stateLabelTitle = isResult ? "Journal_Results_Title" : "Journal_Plan_Title"
+        let stateLabelAttributedString = NSAttributedString(string: stateLabelTitle.localized, attributes: Styles.titleAttributes)
         
         self.stateTitle = stateLabelAttributedString
     }

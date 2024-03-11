@@ -54,7 +54,7 @@ struct WeightView: View {
         }
         .padding(.horizontal)
         .onChange(of: weight) { newValue in
-            ProfileAcknowledgementModel.shared.weight = newValue
+            ProfileAcknowledgementModel.shared.update(weight: newValue)
         }
     }
 }

@@ -35,9 +35,8 @@ extension SignUpPresenter: SignUpViewOutput {
         
         let generator = NameGenerator()
         
-        ProfileAcknowledgementModel.shared.firstname = generator.generateName()
-        ProfileAcknowledgementModel.shared.lastname = generator.generateSurname()
-        
+        ProfileAcknowledgementModel.shared.update(firstname: generator.generateName(),
+                                                  lastname: generator.generateSurname())
         router.openOnBoarding()
     }
     
@@ -55,8 +54,7 @@ extension SignUpPresenter: SignUpViewOutput {
             return
         }
         
-        ProfileAcknowledgementModel.shared.email = email
-        ProfileAcknowledgementModel.shared.password = password
+        ProfileAcknowledgementModel.shared.update(email: email, password: password)
         router.openOnBoarding()
     }
     
