@@ -6,7 +6,7 @@
 //  
 //
 
-import Foundation
+import UIKit
 
 protocol TimerModuleInput {
     var moduleOutput: TimerModuleOutput? { get }
@@ -17,15 +17,15 @@ protocol TimerModuleOutput: AnyObject {
 
 protocol TimerViewInput: AnyObject {
     func configure(with viewModel: TimerViewModel)
-    func updateRemainingTime(with time: Int)
+    func updateRemainingTime(with time: String)
+    func changeMainButtonImage(with image: UIImage?)
 }
 
 protocol TimerViewOutput: AnyObject {
     func didLoadView()
     func didTapStartButton()
-    func didTapStopButton()
     func didTapResetButton()
-    func didTapSkipButton()
+    func didTapCloseButton()
 }
 
 protocol TimerInteractorInput: AnyObject {
