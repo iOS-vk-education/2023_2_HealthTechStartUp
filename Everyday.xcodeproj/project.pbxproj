@@ -78,7 +78,6 @@
 		9E5B75462B7F9D7600E2BDE6 /* ProfileAcknowledgementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B752E2B7F9D7600E2BDE6 /* ProfileAcknowledgementView.swift */; };
 		9E5B75472B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B752F2B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift */; };
 		9E5B75482B7F9D7600E2BDE6 /* ProfileAcknowledgementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75312B7F9D7600E2BDE6 /* ProfileAcknowledgementViewModel.swift */; };
-		9E5B75492B7F9D7600E2BDE6 /* ProfileAcknowledgementController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75322B7F9D7600E2BDE6 /* ProfileAcknowledgementController.swift */; };
 		9E5B754A2B7F9D7600E2BDE6 /* OnBoardingViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75332B7F9D7600E2BDE6 /* OnBoardingViewController.swift */; };
 		9E5B754B2B7F9D7600E2BDE6 /* ProfileSetupViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75352B7F9D7600E2BDE6 /* ProfileSetupViewModel.swift */; };
 		9E5B754C2B7F9D7600E2BDE6 /* ProfileSetupModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E5B75362B7F9D7600E2BDE6 /* ProfileSetupModel.swift */; };
@@ -187,7 +186,6 @@
 		9E5B752E2B7F9D7600E2BDE6 /* ProfileAcknowledgementView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAcknowledgementView.swift; sourceTree = "<group>"; };
 		9E5B752F2B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAcknowledgementModel.swift; sourceTree = "<group>"; };
 		9E5B75312B7F9D7600E2BDE6 /* ProfileAcknowledgementViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAcknowledgementViewModel.swift; sourceTree = "<group>"; };
-		9E5B75322B7F9D7600E2BDE6 /* ProfileAcknowledgementController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileAcknowledgementController.swift; sourceTree = "<group>"; };
 		9E5B75332B7F9D7600E2BDE6 /* OnBoardingViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnBoardingViewController.swift; sourceTree = "<group>"; };
 		9E5B75352B7F9D7600E2BDE6 /* ProfileSetupViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupViewModel.swift; sourceTree = "<group>"; };
 		9E5B75362B7F9D7600E2BDE6 /* ProfileSetupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupModel.swift; sourceTree = "<group>"; };
@@ -255,6 +253,37 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E2931822B9F25FB00950B15 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				9E2931832B9F260000950B15 /* OnBoarding */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		9E2931832B9F260000950B15 /* OnBoarding */ = {
+			isa = PBXGroup;
+			children = (
+				9E5B75152B7F9D3500E2BDE6 /* GenderButtonView.swift */,
+				9E5B75132B7F9D1D00E2BDE6 /* AgeButtonView.swift */,
+				9E5B750F2B7F9CE300E2BDE6 /* ImagePickerView.swift */,
+				9E5B750E2B7F9CE200E2BDE6 /* UserTextFieldView.swift */,
+			);
+			path = OnBoarding;
+			sourceTree = "<group>";
+		};
+		9E2931842B9F262D00950B15 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */,
+				9E2A8BCE2B854147004A81CF /* Validator.swift */,
+				9E7C19962B8BF1340006D48C /* PasswordGenerator.swift */,
+				9E7C19982B8CC3E80006D48C /* NameGenerator.swift */,
+				9E7C199C2B8F482E0006D48C /* KeychainService.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		9E2A8BC72B85044A004A81CF /* FirebaseAuth */ = {
 			isa = PBXGroup;
 			children = (
@@ -274,15 +303,11 @@
 		9E4382CC2B83738800C69708 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				9E2931842B9F262D00950B15 /* Helpers */,
 				9E2A8BC72B85044A004A81CF /* FirebaseAuth */,
 				9E4382CD2B83738800C69708 /* VKIDAuth */,
 				9E4382D12B83738800C69708 /* GoogleAuth */,
 				9E4382D02B83738800C69708 /* AuthService.swift */,
-				9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */,
-				9E2A8BCE2B854147004A81CF /* Validator.swift */,
-				9E7C19962B8BF1340006D48C /* PasswordGenerator.swift */,
-				9E7C19982B8CC3E80006D48C /* NameGenerator.swift */,
-				9E7C199C2B8F482E0006D48C /* KeychainService.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -323,6 +348,7 @@
 		9E53FB322B7F87BA00C55A45 /* Everyday */ = {
 			isa = PBXGroup;
 			children = (
+				9E2931822B9F25FB00950B15 /* UI */,
 				9E4382CB2B83737600C69708 /* Services */,
 				9E53FB4A2B7F94C200C55A45 /* Modules */,
 				9E53FB492B7F94BA00C55A45 /* Extensions */,
@@ -349,10 +375,6 @@
 		9E53FB492B7F94BA00C55A45 /* Extensions */ = {
 			isa = PBXGroup;
 			children = (
-				9E5B75152B7F9D3500E2BDE6 /* GenderButtonView.swift */,
-				9E5B75132B7F9D1D00E2BDE6 /* AgeButtonView.swift */,
-				9E5B750F2B7F9CE300E2BDE6 /* ImagePickerView.swift */,
-				9E5B750E2B7F9CE200E2BDE6 /* UserTextFieldView.swift */,
 				9E53FB512B7F951400C55A45 /* String+Extension.swift */,
 				9E53FB4F2B7F951000C55A45 /* UIColor+Extension.swift */,
 				9E53FB4D2B7F950B00C55A45 /* Color+Extension.swift */,
@@ -555,7 +577,6 @@
 				9E5B752E2B7F9D7600E2BDE6 /* ProfileAcknowledgementView.swift */,
 				9E5B752F2B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift */,
 				9E5B75302B7F9D7600E2BDE6 /* Models */,
-				9E5B75322B7F9D7600E2BDE6 /* ProfileAcknowledgementController.swift */,
 			);
 			path = ProfileAcknowledgement;
 			sourceTree = "<group>";
@@ -832,7 +853,6 @@
 				9E5B74EB2B7F99FB00E2BDE6 /* WelcomeScreenProtocols.swift in Sources */,
 				9E5B754A2B7F9D7600E2BDE6 /* OnBoardingViewController.swift in Sources */,
 				9E2A8BCD2B8520B2004A81CF /* AlertManager.swift in Sources */,
-				9E5B75492B7F9D7600E2BDE6 /* ProfileAcknowledgementController.swift in Sources */,
 				9EE8AE3A2B7FB96E001D126F /* WorkoutInteractor.swift in Sources */,
 				9EE8AE122B7FB8CF001D126F /* SettingsProtocols.swift in Sources */,
 				9E5B75412B7F9D7600E2BDE6 /* PageView.swift in Sources */,
