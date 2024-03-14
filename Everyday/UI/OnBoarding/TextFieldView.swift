@@ -30,7 +30,7 @@ struct DecimalTextField: UIViewRepresentable {
         segmentedControl.selectedSegmentIndex = 0
         let segmentBarItem = UIBarButtonItem(customView: segmentedControl)
 
-        let doneButton = UIBarButtonItem(title: "ready".localized, 
+        let doneButton = UIBarButtonItem(title: "keyboard_toolbar_ready_title".localized, 
                                          style: .done,
                                          target: context.coordinator, action: #selector(context.coordinator.dismissKeyboard))
         doneButton.tintColor = UIColor.white

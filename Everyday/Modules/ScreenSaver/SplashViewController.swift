@@ -16,7 +16,7 @@ final class SplashViewController: UIViewController {
     @IBOutlet weak var textLabel: UILabel!
     
     var logoIsHidden: Bool = false
-    var text: String?
+    var text: NSAttributedString?
     
     static let logoImageBig: UIImage = UIImage(named: "logo")!
 
@@ -26,8 +26,9 @@ final class SplashViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .background
+        textLabel.lineBreakMode = .byWordWrapping
         
-        textLabel.text = text
+        textLabel.attributedText = text
         logoImageView.isHidden = logoIsHidden
     }
     // swiftlint:enable private_outlet

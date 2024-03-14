@@ -1354,6 +1354,116 @@
         }
       }
     },
+    "SplashPresenter_text1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Начни, и сила придет.\" – Гете"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Успех начинается с самодисциплины.\" – Дензел Вашингтон"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Тело достигает того, во что верит ум.\" – Джим Эванс"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Без пота нет славы.\" – Бенджамин Франклин"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text5" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Величие начинается за пределами зоны комфорта.\" – Неизвестный автор"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text6" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Сила не приходит из физических возможностей. Она исходит из несгибаемой воли.\" – Махатма Ганди"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text7" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Прогресс, а не совершенство.\" – Неизвестный автор"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text8" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Действуй. Вдохновение найдет тебя на пути.\" – Пабло Пикассо"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text9" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Каждый шаг приближает.\" – Неизвестный автор"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text10" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Тело – это отражение того, чем мы занимаемся.\" – Неизвестный автор"
+          }
+        }
+      }
+    },
     "Timer_Restart_Button_Title" : {
       "extractionState" : "manual",
       "localizations" : {
