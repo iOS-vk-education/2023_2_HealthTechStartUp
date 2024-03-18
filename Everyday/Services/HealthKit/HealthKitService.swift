@@ -9,9 +9,7 @@ import Foundation
 import HealthKit
 
 protocol HealthKitDescription {
-    
 }
 
 class HealthKitService: HealthKitDescription {
-    
 }

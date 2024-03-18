@@ -24,8 +24,8 @@
                                     <constraint firstAttribute="width" constant="150" id="ac1-VP-AyX"/>
                                 </constraints>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="24G-jx-4Ow">
-                                <rect key="frame" x="57" y="661" width="277" height="101"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yK6-kT-J0T">
+                                <rect key="frame" x="87" y="673" width="219" height="20.333333333333371"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -36,17 +36,16 @@
                         <constraints>
                             <constraint firstItem="va1-yh-m2K" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-56" id="0mI-3L-2N4"/>
                             <constraint firstItem="va1-yh-m2K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="3Lr-BK-Bq1"/>
-                            <constraint firstItem="24G-jx-4Ow" firstAttribute="top" secondItem="va1-yh-m2K" secondAttribute="bottom" constant="216" id="76m-Q8-b1S"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="24G-jx-4Ow" secondAttribute="bottom" constant="56" id="JH3-Bi-Bz1"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="24G-jx-4Ow" secondAttribute="trailing" constant="59" id="d8a-R0-soB"/>
-                            <constraint firstItem="24G-jx-4Ow" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="57" id="omX-aw-QrL"/>
+                            <constraint firstItem="yK6-kT-J0T" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="87" id="6Xm-6B-A8c"/>
+                            <constraint firstItem="yK6-kT-J0T" firstAttribute="top" secondItem="va1-yh-m2K" secondAttribute="bottom" constant="228" id="Obp-Bw-HrD"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="yK6-kT-J0T" secondAttribute="trailing" constant="87" id="etG-ii-utQ"/>
                             <constraint firstItem="va1-yh-m2K" firstAttribute="centerX" secondItem="8bC-Xf-vdC" secondAttribute="centerX" id="qdR-pk-8xX"/>
                             <constraint firstItem="va1-yh-m2K" firstAttribute="centerY" secondItem="8bC-Xf-vdC" secondAttribute="centerY" constant="-56" id="zSm-BZ-pN7"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="logoImageView" destination="va1-yh-m2K" id="P9R-RZ-PfO"/>
-                        <outlet property="textLabel" destination="24G-jx-4Ow" id="p9Q-Od-3Tb"/>
+                        <outlet property="quoteLabel" destination="yK6-kT-J0T" id="zW2-mi-WSc"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -57,7 +56,7 @@
     <resources>
         <image name="logo_splash" width="150" height="150"/>
         <namedColor name="Ghost">
-            <color red="0.97254901960784312" green="0.96862745098039216" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+            <color red="0.97299998998641968" green="0.96899998188018799" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
         </namedColor>
     </resources>
 </document>

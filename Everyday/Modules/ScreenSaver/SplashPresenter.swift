@@ -17,6 +17,7 @@ final class SplashPresenter: SplashPresenterDescription {
     // MARK: - Properties
     
     private let scene: UIWindowScene
+    private var index: Int = 0
     
     init(scene: UIWindowScene) {
         self.scene = scene
@@ -43,6 +44,8 @@ final class SplashPresenter: SplashPresenterDescription {
         
         let texts = SplashText()
         let textIndex = Int.random(in: 0..<texts.text.count)
+        
+        index = textIndex
         
         return texts.text[textIndex]
     }()
@@ -106,7 +109,7 @@ private extension SplashText {
     struct Styles {
         static let titleAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.Text.primary,
-            .font: UIFont.systemFont(ofSize: 18)
+            .font: UIFont.systemFont(ofSize: 26)
         ]
     }
 }
