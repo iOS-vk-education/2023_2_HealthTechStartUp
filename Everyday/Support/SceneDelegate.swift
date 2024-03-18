@@ -16,24 +16,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         guard let scene = (scene as? UIWindowScene) else {
-                   return
-        }
-        
-        setupWindow(with: scene)
-        
-        if Auth.auth().currentUser == nil {
-            let viewController = WelcomeScreenContainer.assemble(with: .init()).viewController
-            window?.rootViewController = viewController
-        } else {
-            let viewController = TabBarController()
-            window?.rootViewController = viewController
-        }
-        
-        checkAuthentication()
-    }
-    
-    private func setupWindow(with scene: UIScene) {
-        guard let windowScene = (scene as? UIWindowScene) else {
             return
         }
         
