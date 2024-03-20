@@ -39,7 +39,7 @@ final class GoogleAuthService: GoogleAuthServiceDescription {
 
             GoogleAuthService.shared.credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: user.accessToken.tokenString)
             
-            if let profilePicUrl = user.profile?.imageURL(withDimension: 320) {
+            if let profilePicUrl = user.profile?.imageURL(withDimension: Constants.imageDimension) {
                 self.downloadProfileImage(from: profilePicUrl) { image in
                     guard let image = image else {
                         completion(.failure(NSError(domain: "DownloadError", code: -2, 
@@ -89,5 +89,12 @@ final class GoogleAuthService: GoogleAuthServiceDescription {
             }
             completion(image)
         }.resume()
+    }
+}
+
+// MARK: - Constants
+private extension GoogleAuthService {
+    struct Constants {
+        static let imageDimension: UInt = 320
     }
 }

@@ -48,6 +48,14 @@ final class StorageService: StorageServiceDescription {
     }
     
     func getData(userId: String, path: String) async throws -> Data {
-        try await userReference(userId: userId).child(path).data(maxSize: 3 * 1024 * 1024)
+        try await userReference(userId: userId).child(path).data(maxSize: Constants.imageMaxSize)
+    }
+}
+
+// MARK: - Constants
+
+private extension StorageService {
+    struct Constants {
+        static let imageMaxSize: Int64 = 3 * 1024 * 1024
     }
 }
