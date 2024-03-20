@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
 		9E2A8BB22B84F106004A81CF /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 9E2A8BB12B84F106004A81CF /* FirebaseAppCheck */; };
 		9E2A8BB42B84F106004A81CF /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 9E2A8BB32B84F106004A81CF /* FirebaseAppDistribution-Beta */; };
 		9E2A8BB62B84F106004A81CF /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9E2A8BB52B84F106004A81CF /* FirebaseAuth */; };
@@ -148,6 +149,9 @@
 		9E7C199B2B8D0EC50006D48C /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C199A2B8D0EC50006D48C /* SignInModel.swift */; };
 		9E7C199D2B8F482E0006D48C /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C199C2B8F482E0006D48C /* KeychainService.swift */; };
 		9EBE66212B91255400EB9DAF /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBE66202B91255400EB9DAF /* SettingsViewModel.swift */; };
+		9EBFD9642BAB077500A1891D /* UserAuthentication+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9622BAB077500A1891D /* UserAuthentication+CoreDataClass.swift */; };
+		9EBFD9652BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9632BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift */; };
+		9EBFD9672BAB273400A1891D /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9662BAB273400A1891D /* CoreDataService.swift */; };
 		9EE335992B8F9CCD00F532B3 /* SplashAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE335982B8F9CCD00F532B3 /* SplashAnimator.swift */; };
 		9EE3359B2B8F9CDC00F532B3 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3359A2B8F9CDC00F532B3 /* SplashViewController.swift */; };
 		9EE3359D2B8F9CEA00F532B3 /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3359C2B8F9CEA00F532B3 /* SplashPresenter.swift */; };
@@ -174,6 +178,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
 		9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		9E2A8BCE2B854147004A81CF /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
@@ -306,6 +311,9 @@
 		9E7C199A2B8D0EC50006D48C /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		9E7C199C2B8F482E0006D48C /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		9EBE66202B91255400EB9DAF /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		9EBFD9622BAB077500A1891D /* UserAuthentication+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAuthentication+CoreDataClass.swift"; sourceTree = "<group>"; };
+		9EBFD9632BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAuthentication+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		9EBFD9662BAB273400A1891D /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
 		9EE335982B8F9CCD00F532B3 /* SplashAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashAnimator.swift; sourceTree = "<group>"; };
 		9EE3359A2B8F9CDC00F532B3 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		9EE3359C2B8F9CEA00F532B3 /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
@@ -358,6 +366,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9E1383072BAB03240073622C /* CoreData */ = {
+			isa = PBXGroup;
+			children = (
+				9EBFD9622BAB077500A1891D /* UserAuthentication+CoreDataClass.swift */,
+				9EBFD9632BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift */,
+				9E1383002BAB017E0073622C /* Model.xcdatamodeld */,
+				9EBFD9662BAB273400A1891D /* CoreDataService.swift */,
+			);
+			path = CoreData;
+			sourceTree = "<group>";
+		};
 		9E2931822B9F25FB00950B15 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -381,6 +400,7 @@
 		9E2931842B9F262D00950B15 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				9E1383072BAB03240073622C /* CoreData */,
 				9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */,
 				9E2A8BCE2B854147004A81CF /* Validator.swift */,
 				9E7C19962B8BF1340006D48C /* PasswordGenerator.swift */,
@@ -1096,6 +1116,7 @@
 				9E4F229A2B9F3BDD003E749E /* ExercisePresenter.swift in Sources */,
 				9E4F22BF2B9F3C2E003E749E /* TimerViewController.swift in Sources */,
 				9E4F227A2B9F3B9B003E749E /* NotepadHeaderViewModel.swift in Sources */,
+				9EBFD9642BAB077500A1891D /* UserAuthentication+CoreDataClass.swift in Sources */,
 				9E4F22AC2B9F3C05003E749E /* ResultsViewController.swift in Sources */,
 				9E5B753E2B7F9D7600E2BDE6 /* WeightViewModel.swift in Sources */,
 				9EE8AE212B7FB905001D126F /* ProgressContainer.swift in Sources */,
@@ -1142,6 +1163,7 @@
 				9E4F228A2B9F3BB4003E749E /* TrainingPresenter.swift in Sources */,
 				9E5B75102B7F9CE300E2BDE6 /* UserTextFieldView.swift in Sources */,
 				9EE8AE112B7FB8CF001D126F /* SettingsViewController.swift in Sources */,
+				9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */,
 				9E5B75082B7F9A8300E2BDE6 /* SignInContainer.swift in Sources */,
 				9E4F22872B9F3BB4003E749E /* TrainingTableViewCell.swift in Sources */,
 				9EE8AE3B2B7FB96E001D126F /* WorkoutContainer.swift in Sources */,
@@ -1171,6 +1193,7 @@
 				9E4766DA2B9FC0BD00DD31B9 /* View+Extension.swift in Sources */,
 				9EE8AE372B7FB96E001D126F /* WorkoutRouter.swift in Sources */,
 				9E4F22D02B9F3C51003E749E /* ExtraInteractor.swift in Sources */,
+				9EBFD9652BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift in Sources */,
 				9E4382D52B83738800C69708 /* AuthService.swift in Sources */,
 				9EE3359D2B8F9CEA00F532B3 /* SplashPresenter.swift in Sources */,
 				9E4766D82B9F516F00DD31B9 /* StorageService.swift in Sources */,
@@ -1197,6 +1220,7 @@
 				9E5B75412B7F9D7600E2BDE6 /* PageView.swift in Sources */,
 				9E53FB502B7F951000C55A45 /* UIColor+Extension.swift in Sources */,
 				9E53FB4C2B7F950400C55A45 /* UIView+Extension.swift in Sources */,
+				9EBFD9672BAB273400A1891D /* CoreDataService.swift in Sources */,
 				9E5B750D2B7F9A8300E2BDE6 /* SignInPresenter.swift in Sources */,
 				9E4F22B32B9F3C14003E749E /* ResultsTableViewCellViewModel.swift in Sources */,
 				9E5B75462B7F9D7600E2BDE6 /* ProfileAcknowledgementView.swift in Sources */,
@@ -1586,6 +1610,19 @@
 			productName = VKIDCore;
 		};
 /* End XCSwiftPackageProductDependency section */
+
+/* Begin XCVersionGroup section */
+		9E1383002BAB017E0073622C /* Model.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				9E1383012BAB017E0073622C /* Model.xcdatamodel */,
+			);
+			currentVersion = 9E1383012BAB017E0073622C /* Model.xcdatamodel */;
+			path = Model.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = 9E53FB282B7F87BA00C55A45 /* Project object */;
 }
