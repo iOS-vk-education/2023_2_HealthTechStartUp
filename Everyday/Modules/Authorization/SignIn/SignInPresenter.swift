@@ -20,19 +20,26 @@ final class SignInPresenter {
         self.interactor = interactor
     }
     
-    private func handleLoginResult(signedUp: Bool, result: Result<Void, Error>) {
+    private func handleLoginResult(signedUp: Bool, authType: String, result: Result<Void, Error>) {
         DispatchQueue.main.async {
             switch result {
             case .success:
                 if signedUp {
                     self.router.openApp()
                 } else {
-                    self.router.openOnBoarding()
+                    self.router.openOnBoarding(with: authType)
                 }
             case .failure(let error):
                 self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
             }
         }
+    }
+    
+    private func checkAuth(for service: String) -> Bool {
+        if CoreDataService.shared.isItemExists(for: service) {
+            return true
+        }
+        return false
     }
 }
 
@@ -59,31 +66,31 @@ extension SignInPresenter: SignInViewOutput {
             guard let self = self else {
                 return
             }
-            self.handleLoginResult(signedUp: UserDefaults.standard.bool(forKey: "HasCompletedOnboarding"), result: result)
+            self.handleLoginResult(signedUp: checkAuth(for: "email"), authType: "email", result: result)
         }
     }
     
     func didTapSignInWithGoogleButton() {
-        performSignIn(signInMethod: .google)
+        performSignIn(signInMethod: .google, authType: "google")
     }
     
     func didTapSignInWithVKButton() {
-        performSignIn(signInMethod: .vk)
+        performSignIn(signInMethod: .vk, authType: "vk")
     }
     
     func didTapSignInWithAnonymButton() {
-        performSignIn(signInMethod: .anonym)
+        performSignIn(signInMethod: .anonym, authType: "anonym")
     }
     
-    private func performSignIn(signInMethod: AuthModel.Sign) {
-        let signedUp = UserDefaults.standard.bool(forKey: "HasCompletedOnboarding")
+    private func performSignIn(signInMethod: AuthModel.Sign, authType: String) {
+        let signedUp = checkAuth(for: authType)
         AuthModel.shared.whichSign = signInMethod
         
         let completion: (Result<Void, Error>) -> Void = { [weak self] result in
             guard let self = self else {
                 return
             }
-            self.handleLoginResult(signedUp: signedUp, result: result)
+            self.handleLoginResult(signedUp: signedUp, authType: authType, result: result)
         }
         
         if signInMethod == .anonym && !signedUp {

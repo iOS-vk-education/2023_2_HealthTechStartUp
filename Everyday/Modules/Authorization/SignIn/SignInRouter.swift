@@ -25,8 +25,10 @@ extension SignInRouter: SignInRouterInput {
         }
     }
     
-    func openOnBoarding() {
+    func openOnBoarding(with authType: String) {
         let onBoarding = OnBoardingViewController(onFinish: { [weak self] in
+            let key = authType + "Auth"
+            KeychainService.saveString(authType, for: key)
             self?.openApp()
         })
         

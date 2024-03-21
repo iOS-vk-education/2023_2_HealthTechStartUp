@@ -40,5 +40,5 @@ protocol SignInInteractorOutput: AnyObject {
 
 protocol SignInRouterInput: AnyObject {
     func openApp()
-    func openOnBoarding()
+    func openOnBoarding(with authType: String)
 }
