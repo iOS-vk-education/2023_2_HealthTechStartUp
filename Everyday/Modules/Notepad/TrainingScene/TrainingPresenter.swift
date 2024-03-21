@@ -60,11 +60,11 @@ extension TrainingPresenter: TrainingViewOutput {
     }
     
     func didSelectRowAt(index: Int) {
-        if !switchStates[index] {
+//        if !switchStates[index] {
             let exercise = workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises[index]
             let exerciseContext = ExerciseContext(moduleOutput: self, exercise: exercise, indexOfSet: indexOfSet)
             router.openExercise(with: exerciseContext)
-        }
+//        }
     }
     
     func didTapStartButton(number: Int) {
@@ -88,6 +88,7 @@ extension TrainingPresenter: ExerciseModuleOutput {
         }
         
         self.workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises[indexOfExercise].result = result
+        switchStates[indexOfExercise] = true
         view?.reloadData()
     }
 }

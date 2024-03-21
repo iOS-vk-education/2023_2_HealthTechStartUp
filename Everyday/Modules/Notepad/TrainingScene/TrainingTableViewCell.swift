@@ -20,7 +20,9 @@ class TrainingTableViewCell: UITableViewCell {
     
     // MARK: - Private properties
     
-    private let checkbox = M13Checkbox()
+    private let checkbox = UILabel()
+    private let circleImageView = UIImageView()
+    private let numberView = UIView()
     private let exerciseNameLabel = UILabel()
     private let resultLabel = UILabel()
     private let startButton = UIButton()
@@ -49,12 +51,23 @@ class TrainingTableViewCell: UITableViewCell {
     
     // MARK: - Interface
 
-    func configure(with viewModel: TrainingTableViewCellViewModel, and index: Int) {
+    func configure(with viewModel: TrainingTableViewCellViewModel, and index: Int, isDone: Bool) {
         exerciseNameLabel.attributedText = viewModel.title
         resultLabel.attributedText = viewModel.result
         startButton.setAttributedTitle(viewModel.startTitle, for: .normal)
+        checkbox.attributedText = viewModel.number
         
         startButton.tag = index
+        
+        checkbox.text = String(index + 1)
+        
+        if isDone {
+            circleImageView.image = viewModel.circleFilled
+            circleImageView.tintColor = Constants.Checkbox.checkedColor
+        } else {
+            circleImageView.image = viewModel.circleFilled
+            circleImageView.tintColor = Constants.Checkbox.uncheckedColor
+        }
     }
     
     func updateResult(with result: String) {
@@ -85,12 +98,14 @@ class TrainingTableViewCell: UITableViewCell {
         checkbox.isUserInteractionEnabled = true
     }
     
-    func uncheckCheckBox() {
-        checkbox.setCheckState(.unchecked, animated: true)
-    }
+//    func uncheckCheckBox() {
+//        checkbox.setCheckState(.unchecked, animated: true)
+//    }
     
     func checkCheckBox() {
-        checkbox.setCheckState(.checked, animated: true)
+//        checkbox.textColor = Constants.Checkbox.checkedColor
+        checkbox.textColor = Constants.Checkbox.checkedColor
+//        checkbox.attributedText.
     }
 }
 
@@ -99,11 +114,23 @@ private extension TrainingTableViewCell {
     // MARK: - Layout
     
     func layout() {
-        checkbox.pin
+        numberView.pin
             .left(Constants.horizontalMargin)
             .width(Constants.Checkbox.width)
             .height(Constants.contentHeight)
             .vCenter()
+        
+        circleImageView.pin
+            .width(Constants.Checkbox.width)
+            .height(Constants.contentHeight)
+            .vCenter()
+            .hCenter()
+        
+        checkbox.pin
+            .width(Constants.Checkbox.width)
+            .height(Constants.contentHeight)
+            .vCenter()
+            .hCenter()
         
         exerciseNameLabel.pin
             .after(of: checkbox)
@@ -130,16 +157,20 @@ private extension TrainingTableViewCell {
     // MARK: - Setup
     
     func setup() {
-        checkbox.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
-        checkbox.stateChangeAnimation = .bounce(.fill)
-        checkbox.tintColor = Constants.Checkbox.tintColor
-        checkbox.setCheckState(.unchecked, animated: true)
+//        checkbox.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
+//        checkbox.stateChangeAnimation = .bounce(.fill)
+//        checkbox.textColor = Constants.Checkbox.uncheckedColor
+//        checkbox.setCheckState(.unchecked, animated: true)
         
         startButton.backgroundColor = Constants.StartButton.backgroundColor
         startButton.layer.cornerRadius = Constants.StartButton.cornerRadius
         startButton.isHidden = true
         
-        contentView.addSubviews(checkbox, exerciseNameLabel, resultLabel, startButton)
+        circleImageView.tintColor = Constants.Checkbox.uncheckedColor
+        checkbox.textAlignment = .center
+        
+        numberView.addSubviews(circleImageView, checkbox)
+        contentView.addSubviews(numberView, exerciseNameLabel, resultLabel, startButton)
     }
     
     // MARK: - Actions
@@ -169,7 +200,8 @@ private extension TrainingTableViewCell {
         static let contentHeight: CGFloat = 40
         
         struct Checkbox {
-            static let tintColor: UIColor = UIColor.UI.accent
+            static let checkedColor: UIColor = UIColor.UI.accent
+            static let uncheckedColor: UIColor = UIColor.gray.withAlphaComponent(0.5)
             static let width: CGFloat = 40
         }
         

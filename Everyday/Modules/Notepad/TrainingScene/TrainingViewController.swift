@@ -50,16 +50,17 @@ private extension TrainingViewController {
     
     func layout() {
         finishButton.pin
-            .top(view.pin.safeArea)
-            .marginTop(Constants.FinishButton.marginTop)
+            .bottom(view.pin.safeArea)
+//            .marginBottom(Constants.FinishButton.marginTop)
             .horizontally(Constants.FinishButton.horizontalMargin)
             .height(Constants.FinishButton.height)
 
         tableView.pin
-            .below(of: finishButton)
-            .marginTop(Constants.TableView.marginTop)
+            .top(view.pin.safeArea)
+//            .marginTop(Constants.TableView.marginTop)
+            .bottom(100)
+            .marginBottom(40)
             .horizontally()
-            .bottom()
     }
     
     // MARK: - Setup
@@ -117,16 +118,15 @@ extension TrainingViewController: UITableViewDataSource {
         
         let exercise = output.getExercise(at: indexPath.row)
         let viewModel = TrainingTableViewCellViewModel(exercise: exercise)
+        let isDone = output.getSwitchState(at: indexPath.row)
         
-        cell.configure(with: viewModel, and: indexPath.row)
+        cell.configure(with: viewModel, and: indexPath.row, isDone: isDone)
         cell.addStartButtonTarget(self, action: #selector(didTapStartButton))
         cell.delegate = self
         
-        if output.getSwitchState(at: indexPath.row) {
-            cell.checkCheckBox()
-        } else {
-            cell.uncheckCheckBox()
-        }
+//        if output.getSwitchState(at: indexPath.row) {
+//            cell.checkCheckBox()
+//        }
         
         return cell
     }
@@ -181,7 +181,7 @@ private extension TrainingViewController {
         struct FinishButton {
             static let backgroundColor: UIColor = UIColor.UI.accent
             static let cornerRadius: CGFloat = 16
-            static let height: CGFloat = 30
+            static let height: CGFloat = 40
             static let marginTop: CGFloat = 40
             static let horizontalMargin: CGFloat = 20
         }
