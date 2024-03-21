@@ -37,5 +37,5 @@ protocol SignUpInteractorOutput: AnyObject {
 }
 
 protocol SignUpRouterInput: AnyObject {
-    func openOnBoarding()
+    func openOnBoarding(with authType: String)
 }

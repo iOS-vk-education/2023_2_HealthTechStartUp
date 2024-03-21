@@ -37,7 +37,13 @@ extension SignUpPresenter: SignUpViewOutput {
         
         ProfileAcknowledgementModel.shared.update(firstname: generator.generateName(),
                                                   lastname: generator.generateSurname())
-        router.openOnBoarding()
+        
+        if CoreDataService.shared.isItemExists(for: "anonym") {
+            view?.showAlert(with: "signed", message: NSMutableAttributedString(string: "AlertManager_signedUp_message".localized))
+            return
+        } else {
+            router.openOnBoarding(with: "anonym")
+        }
     }
     
     func didTapSignUpButton(with email: String?, and password: String?) {
@@ -55,7 +61,12 @@ extension SignUpPresenter: SignUpViewOutput {
         }
         
         ProfileAcknowledgementModel.shared.update(email: email, password: password)
-        router.openOnBoarding()
+        if CoreDataService.shared.isItemExists(for: "email") {
+            view?.showAlert(with: "signed", message: NSMutableAttributedString(string: "AlertManager_signedUp_message".localized))
+            return
+        } else {
+            router.openOnBoarding(with: "email")
+        }
     }
     
     func didTapSignWithVKButton() {
@@ -65,7 +76,12 @@ extension SignUpPresenter: SignUpViewOutput {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    self.router.openOnBoarding()
+                    if CoreDataService.shared.isItemExists(for: "vk") {
+                        self.view?.showAlert(with: "signed", message: NSMutableAttributedString(string: "AlertManager_signedUp_message".localized))
+                        return
+                    } else {
+                        self.router.openOnBoarding(with: "vk")
+                    }
                 case .failure(let error):
                     self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
                 }
@@ -80,7 +96,12 @@ extension SignUpPresenter: SignUpViewOutput {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    self.router.openOnBoarding()
+                    if CoreDataService.shared.isItemExists(for: "google") {
+                        self.view?.showAlert(with: "signed", message: NSMutableAttributedString(string: "AlertManager_signedUp_message".localized))
+                        return
+                    } else {
+                        self.router.openOnBoarding(with: "google")
+                    }
                 case .failure(let error):
                     self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
                 }

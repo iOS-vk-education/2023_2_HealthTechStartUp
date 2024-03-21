@@ -205,6 +205,17 @@
         }
       }
     },
+    "AlertManager_signedUp_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы уже зарегистрированы данным способом. Попробуйте войти"
+          }
+        }
+      }
+    },
     "Back_Button_Title" : {
       "extractionState" : "manual",
       "localizations" : {

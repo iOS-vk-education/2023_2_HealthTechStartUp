@@ -18,16 +18,19 @@ class CoreDataService {
         }
         self.context = appDelegate.persistentContainer.viewContext
     }
-    
-   func getAllItems() {
-       guard let context = context else {
-           fatalError("Unable to reach context")
+        
+    func getAllItems() -> [String]? {
+        guard let context = context else {
+            fatalError("Unable to reach context")
         }
-       
+        
         do {
-            _ = try context.fetch(UserAuthentication.fetchRequest())
+            let items = try context.fetch(UserAuthentication.fetchRequest()) as? [UserAuthentication]
+            let authTypes = items?.compactMap { $0.authType }
+            return authTypes
         } catch {
-            // error
+            print("Error fetching items: \(error)")
+            return nil
         }
     }
     
@@ -86,6 +89,22 @@ class CoreDataService {
             try context.save()
         } catch {
             fatalError("Failed to delete all items with error: \(error)")
+        }
+    }
+    
+    func isItemExists(for key: String) -> Bool {
+        guard let context = context else {
+            fatalError("Unable to reach context")
+        }
+        
+        let fetchRequest: NSFetchRequest<UserAuthentication> = UserAuthentication.fetchRequest()
+        fetchRequest.predicate = NSPredicate(format: "authType == %@", key)
+        
+        do {
+            let items = try context.fetch(fetchRequest)
+            return !items.isEmpty
+        } catch {
+            return false
         }
     }
 }

@@ -297,6 +297,8 @@ extension SignUpViewController: SignUpViewInput {
             AlertManager.showInvalidPasswordAlert(on: self, message: message.string)
         case "network":
             AlertManager.showRegistrationErrorAlert(on: self, message: message.string)
+        case "signed":
+            AlertManager.showSignedUpAlert(on: self, message: message.string)
         default:
             let error = NSError(domain: "Everydaytech.ru", code: 400)
             AlertManager.showRegistrationErrorAlert(on: self, with: error)
