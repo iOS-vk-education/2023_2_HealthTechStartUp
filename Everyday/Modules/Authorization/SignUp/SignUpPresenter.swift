@@ -47,25 +47,25 @@ extension SignUpPresenter: SignUpViewOutput {
         
         ProfileAcknowledgementModel.shared.update(firstname: generator.generateName(),
                                                   lastname: generator.generateSurname())
-        checkAuth(for: "anonym")
+        checkAuth(for: Constants.anonym)
     }
     
     func didTapSignUpButton(with email: String?, and password: String?) {
         AuthModel.shared.whichSign = .common
         
         if !Validator.isValidEmail(for: email ?? "") {
-            view?.showAlert(with: "email", message: NSMutableAttributedString(string: ""))
+            view?.showAlert(with: Constants.email, message: NSMutableAttributedString(string: ""))
             return
         }
         
         let validationErrors = Validator.validatePassword(for: password ?? "")
         if  validationErrors.length > 0 {
-            view?.showAlert(with: "password", message: validationErrors)
+            view?.showAlert(with: Constants.password, message: validationErrors)
             return
         }
         
         ProfileAcknowledgementModel.shared.update(email: email, password: password)
-        checkAuth(for: "email")
+        checkAuth(for: Constants.email)
     }
     
     func didTapSignWithVKButton() {
@@ -75,9 +75,9 @@ extension SignUpPresenter: SignUpViewOutput {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    self.checkAuth(for: "vk")
+                    self.checkAuth(for: Constants.vk)
                 case .failure(let error):
-                    self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
+                    self.view?.showAlert(with: Constants.network, message: NSMutableAttributedString(string: error.localizedDescription))
                 }
             }
         }
@@ -90,12 +90,22 @@ extension SignUpPresenter: SignUpViewOutput {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    self.checkAuth(for: "google")
+                    self.checkAuth(for: Constants.google)
                 case .failure(let error):
-                    self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
+                    self.view?.showAlert(with: Constants.network, message: NSMutableAttributedString(string: error.localizedDescription))
                 }
             }
         }
+    }
+    // MARK: - Constants
+    
+    struct Constants {
+        static let vk: String = "vk"
+        static let google: String = "google"
+        static let email: String = "email"
+        static let anonym: String = "anonym"
+        static let network: String = "network"
+        static let password: String = "password"
     }
 }
 

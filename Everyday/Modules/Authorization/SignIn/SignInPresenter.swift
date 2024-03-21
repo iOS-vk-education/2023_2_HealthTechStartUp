@@ -52,13 +52,13 @@ extension SignInPresenter: SignInViewOutput {
     
     func didTapSignInButton(with email: String?, and password: String?) {
         guard let email = email, Validator.isValidEmail(for: email) else {
-            view?.showAlert(with: "email", message: NSMutableAttributedString(string: "Invalid email"))
+            view?.showAlert(with: Constants.email, message: NSMutableAttributedString(string: Constants.invalidEmail))
             return
         }
         
         let validationErrors = Validator.validatePassword(for: password ?? "")
         if validationErrors.length > 0 {
-            view?.showAlert(with: "password", message: validationErrors)
+            view?.showAlert(with: Constants.password, message: validationErrors)
             return
         }
         
@@ -66,20 +66,20 @@ extension SignInPresenter: SignInViewOutput {
             guard let self = self else {
                 return
             }
-            self.handleLoginResult(signedUp: checkAuth(for: "email"), authType: "email", result: result)
+            self.handleLoginResult(signedUp: checkAuth(for: Constants.email), authType: Constants.email, result: result)
         }
     }
     
     func didTapSignInWithGoogleButton() {
-        performSignIn(signInMethod: .google, authType: "google")
+        performSignIn(signInMethod: .google, authType: Constants.google)
     }
     
     func didTapSignInWithVKButton() {
-        performSignIn(signInMethod: .vk, authType: "vk")
+        performSignIn(signInMethod: .vk, authType: Constants.vk)
     }
     
     func didTapSignInWithAnonymButton() {
-        performSignIn(signInMethod: .anonym, authType: "anonym")
+        performSignIn(signInMethod: .anonym, authType: Constants.anonym)
     }
     
     private func performSignIn(signInMethod: AuthModel.Sign, authType: String) {
@@ -114,6 +114,18 @@ extension SignInPresenter: SignInViewOutput {
     func didLoadView() {
         let viewModel = SignInViewModel()
         view?.configure(with: viewModel)
+    }
+    
+    // MARK: - Constants
+    
+    struct Constants {
+        static let vk: String = "vk"
+        static let google: String = "google"
+        static let email: String = "email"
+        static let anonym: String = "anonym"
+        static let network: String = "network"
+        static let password: String = "password"
+        static let invalidEmail: String = "Invalid email"
     }
 }
 
