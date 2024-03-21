@@ -21,12 +21,14 @@ class ProfileAcknowledgementModel {
     private(set) var schedule: [[DocumentReference]] = []
     private(set) var profileImagePath: String?
     private(set) var profileImage: UIImage?
+    private(set) var measureUnit: String?
 
     private init() { }
 
     func update(firstname: String? = nil, lastname: String? = nil, nickname: String? = nil, email: String? = nil, 
                 password: String? = nil, profileImage: UIImage? = nil, age: String? = nil, gender: String? = nil,
-                weight: String? = nil, schedule: [[DocumentReference]]? = nil, profileImagePath: String? = nil) {
+                weight: String? = nil, schedule: [[DocumentReference]]? = nil, profileImagePath: String? = nil,
+                measureUnit: String? = nil) {
         if let firstname = firstname { self.firstname = firstname }
         if let lastname = lastname { self.lastname = lastname }
         if let nickname = nickname { self.nickname = nickname }
@@ -38,10 +40,11 @@ class ProfileAcknowledgementModel {
         if let schedule = schedule { self.schedule = schedule }
         if let profileImagePath = profileImagePath { self.profileImagePath = profileImagePath }
         if let profileImage = profileImage { self.profileImage = profileImage }
+        if let measureUnit = measureUnit { self.measureUnit = measureUnit}
     }
     
     enum Field {
-        case firstname, lastname, nickname, email, password, profileImagePath, age, gender, weight, schedule, profileImage
+        case firstname, lastname, nickname, email, password, profileImagePath, age, gender, weight, schedule, profileImage, measureUnit
     }
 
     func clear(fields: [Field]) {
@@ -69,6 +72,8 @@ class ProfileAcknowledgementModel {
                 schedule = []
             case .profileImage:
                 profileImage = nil
+            case .measureUnit:
+                measureUnit = nil
             }
         }
     }

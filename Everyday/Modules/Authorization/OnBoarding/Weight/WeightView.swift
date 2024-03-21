@@ -21,7 +21,7 @@ struct WeightView: View {
                 .multilineTextAlignment(.center)
                 .foregroundColor(Color.primaryText)
             
-            DecimalTextField(text: $weight, keyType: .numberPad, placeholder: viewModel.placeholder)
+            DecimalTextField(text: $weight, keyType: .numberPad, placeholder: viewModel.placeholder, selectedSegmentIndex: 0)
                 .frame(width: Constants.TextFieldValues.size.width, height: Constants.TextFieldValues.size.height)
                 .padding(.horizontal, Constants.TextFieldValues.hPadding)
                 .background(Color.gray.opacity(Constants.TextFieldValues.colorOpacity))

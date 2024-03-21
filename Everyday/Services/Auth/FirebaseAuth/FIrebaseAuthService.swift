@@ -143,7 +143,8 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
                         "gender": userRequest.gender ?? "",
                         "weight": userRequest.weight ?? "",
                         "schedule": userRequest.schedule,
-                        "profileImage": path
+                        "profileImage": path,
+                        "measureUnit": userRequest.measureUnit ?? ""
                     ]
                     
                     try await Firestore.firestore().collection("user").document(userId).setData(userData)

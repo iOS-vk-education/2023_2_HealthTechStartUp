@@ -40,11 +40,6 @@ struct SignUpViewModel {
         combinedAttributedString.append(NSAttributedString(string: "SignUp_title_p&p3".localized, attributes: Styles.linkAttributes))
         
         self.privacyPolicyLabel = combinedAttributedString
-        
-        self.vkAuth = "vk"
-        self.googleAuth = "google"
-        self.anonymAuth = "anonym"
-        self.emailAuth = "email"
     }
 }
 
