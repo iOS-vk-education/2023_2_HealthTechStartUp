@@ -8,10 +8,10 @@
 import Foundation
 
 struct PasswordValidationError {
-    static let length = NSAttributedString(string: "Validator_length".localized)
-    static let lowercase = NSAttributedString(string: "Validator_lovercase".localized)
-    static let uppercase = NSAttributedString(string: "Validator_uppercase".localized)
-    static let digit = NSAttributedString(string: "Validator_digit".localized)
+    static let length = "Validator_length".localized
+    static let lowercase = "Validator_lovercase".localized
+    static let uppercase = "Validator_uppercase".localized
+    static let digit = "Validator_digit".localized
 }
 
 final class Validator {
@@ -25,7 +25,7 @@ final class Validator {
         
     static func isValidUsername(for username: String) -> Bool {
         let username = username.trimmingCharacters(in: .whitespacesAndNewlines)
-        let usernameRegEx = "[A-Za-zА-Яа-я0-9]{4,24}"
+        let usernameRegEx = "[A-Za-z0-9]{4,24}"
         let usernamePred = NSPredicate(format: "SELF MATCHES %@", usernameRegEx)
         return usernamePred.evaluate(with: username)
     }
@@ -44,28 +44,25 @@ final class Validator {
         return surnamePred.evaluate(with: surname)
     }
     
-    static func validatePassword(for password: String) -> NSMutableAttributedString {
-        let errors = NSMutableAttributedString()
+    static func validatePassword(for password: String) -> String {
+        var errors = ""
 
         if password.count < 8 || password.count > 32 {
-            errors.append(PasswordValidationError.length)
-            errors.append(NSAttributedString(string: "\n"))
+            errors += PasswordValidationError.length + "\n"
         }
 
         if !password.contains(where: { $0.isLowercase }) {
-            errors.append(PasswordValidationError.lowercase)
-            errors.append(NSAttributedString(string: "\n"))
+            errors += PasswordValidationError.lowercase + "\n"
         }
 
         if !password.contains(where: { $0.isUppercase }) {
-            errors.append(PasswordValidationError.uppercase)
-            errors.append(NSAttributedString(string: "\n"))
+            errors += PasswordValidationError.uppercase + "\n"
         }
 
         if !password.contains(where: { $0.isNumber }) {
-            errors.append(PasswordValidationError.digit)
-            errors.append(NSAttributedString(string: "\n"))
+            errors += PasswordValidationError.digit + "\n"
         }
+
         return errors
     }
 }

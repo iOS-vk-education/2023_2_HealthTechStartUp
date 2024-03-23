@@ -32,6 +32,7 @@ final class ProfileSetupViewModel: ObservableObject {
     let name: String
     let surname: String
     let nickname: String
+    let image: String
     
     let nicknameAlertTitle: String
     let nicknameAlertMessage: String
@@ -55,6 +56,7 @@ final class ProfileSetupViewModel: ObservableObject {
         self.surnameAlertTitle = "Onboarding_invalid_surname_title".localized
         self.surnameAlertMessage = "Onboarding_invalid_surname_message".localized
         self.alertTitle = NSAttributedString(string: "AlertManager_alert_title".localized, attributes: Styles.descriptionAttributes)
+        self.image = "anonymous"
     }
 
     func loadImage() {

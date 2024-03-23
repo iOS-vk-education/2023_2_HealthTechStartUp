@@ -54,6 +54,16 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     public func checkAuthentication() {
         if Auth.auth().currentUser == nil {
+            let authTypeArray: [String] = [KeychainService.loadString(for: "vkAuth") ?? "",
+                                           KeychainService.loadString(for: "googleAuth") ?? "",
+                                           KeychainService.loadString(for: "anonymAuth") ?? "",
+                                           KeychainService.loadString(for: "emailAuth") ?? ""]
+            
+            CoreDataService.shared.deleteAllItems()
+            for authType in authTypeArray where !authType.isEmpty {
+                CoreDataService.shared.createItem(authType: authType)
+            }
+
             self.goToController(with: WelcomeScreenContainer.assemble(with: .init()).viewController)
         } else {
             self.goToController(with: TabBarController())

@@ -13,9 +13,4 @@ final class SettingsRouter {
 }
 
 extension SettingsRouter: SettingsRouterInput {
-    func routeToAuthentication() {
-        if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-            sceneDelegate.checkAuthentication()
-        }
-    }
 }

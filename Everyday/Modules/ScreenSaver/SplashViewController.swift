@@ -13,10 +13,10 @@ final class SplashViewController: UIViewController {
     // swiftlint:disable private_outlet
  
     @IBOutlet weak var logoImageView: UIImageView!
-    @IBOutlet weak var textLabel: UILabel!
+    @IBOutlet weak var quoteLabel: UILabel!
     
     var logoIsHidden: Bool = false
-    var text: String?
+    var text: NSAttributedString?
     
     static let logoImageBig: UIImage = UIImage(named: "logo")!
 
@@ -27,7 +27,12 @@ final class SplashViewController: UIViewController {
         
         view.backgroundColor = .background
         
-        textLabel.text = text
+        quoteLabel.numberOfLines = 0
+        quoteLabel.textAlignment = .center
+        quoteLabel.font = UIFont.boldSystemFont(ofSize: 26)
+        quoteLabel.lineBreakMode = .byWordWrapping
+        quoteLabel.attributedText = text
+                
         logoImageView.isHidden = logoIsHidden
     }
     // swiftlint:enable private_outlet

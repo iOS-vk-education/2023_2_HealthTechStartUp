@@ -11,6 +11,7 @@ struct DecimalTextField: UIViewRepresentable {
     @Binding var text: String
     var keyType: UIKeyboardType
     var placeholder: String
+    var selectedSegmentIndex: Int
 
     func makeUIView(context: Context) -> UITextField {
         let textField = UITextField()
@@ -27,10 +28,10 @@ struct DecimalTextField: UIViewRepresentable {
 
         let segmentItems = ["kg".localized, "pound".localized, "stone".localized]
         let segmentedControl = UISegmentedControl(items: segmentItems)
-        segmentedControl.selectedSegmentIndex = 0
+        segmentedControl.selectedSegmentIndex = selectedSegmentIndex
         let segmentBarItem = UIBarButtonItem(customView: segmentedControl)
 
-        let doneButton = UIBarButtonItem(title: "ready".localized, 
+        let doneButton = UIBarButtonItem(title: "keyboard_toolbar_ready_title".localized, 
                                          style: .done,
                                          target: context.coordinator, action: #selector(context.coordinator.dismissKeyboard))
         doneButton.tintColor = UIColor.white
@@ -46,6 +47,10 @@ struct DecimalTextField: UIViewRepresentable {
 
     func updateUIView(_ uiView: UITextField, context: Context) {
         uiView.text = text
+        
+        if let segmentedControl = uiView.inputAccessoryView?.subviews.first as? UISegmentedControl {
+            segmentedControl.selectedSegmentIndex = selectedSegmentIndex
+        }
     }
 
     func makeCoordinator() -> Coordinator {
@@ -65,6 +70,32 @@ struct DecimalTextField: UIViewRepresentable {
 
         func textFieldDidChangeSelection(_ textField: UITextField) {
             parent.text = textField.text ?? ""
+        }
+        
+        func textField(_ textField: UITextField, shouldChangeCharactersIn range: NSRange, replacementString string: String) -> Bool {
+            let currentText = textField.text ?? ""
+            let newText = (currentText as NSString).replacingCharacters(in: range, with: string)
+            return newText.count <= 3 && newText.rangeOfCharacter(from: CharacterSet.decimalDigits.inverted) == nil
+        }
+        
+        func textFieldDidEndEditing(_ textField: UITextField) {
+            guard let toolbar = textField.inputAccessoryView as? UIToolbar,
+                  let segmentedControl = toolbar.items?.first?.customView as? UISegmentedControl else {
+                return
+            }
+                        
+            let selectedSegmentIndex = segmentedControl.selectedSegmentIndex
+            
+            switch selectedSegmentIndex {
+            case 0:
+                ProfileAcknowledgementModel.shared.update(measureUnit: "kg")
+            case 1:
+                ProfileAcknowledgementModel.shared.update(measureUnit: "lb")
+            case 2:
+                ProfileAcknowledgementModel.shared.update(measureUnit: "st")
+            default:
+                break
+            }
         }
     }
 }

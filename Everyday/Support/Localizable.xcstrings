@@ -205,6 +205,17 @@
         }
       }
     },
+    "AlertManager_signedUp_message" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вы уже зарегистрированы данным способом. Попробуйте войти"
+          }
+        }
+      }
+    },
     "Back_Button_Title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1350,6 +1361,116 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Политика конфидециальности"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лучший помощник"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Анализируй здоровье"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text3" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Записывай тренировки"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text4" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Everyday"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text5" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Улучшайся вместе с нами"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text6" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Лучший проект"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text7" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создавай тренировки"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text8" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Скачивай тренировки"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text9" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Спорт вместе с нами"
+          }
+        }
+      }
+    },
+    "SplashPresenter_text10" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Дома и в зале"
           }
         }
       }
