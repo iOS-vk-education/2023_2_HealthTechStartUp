@@ -148,7 +148,6 @@
 		9E7C19992B8CC3E80006D48C /* NameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C19982B8CC3E80006D48C /* NameGenerator.swift */; };
 		9E7C199B2B8D0EC50006D48C /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C199A2B8D0EC50006D48C /* SignInModel.swift */; };
 		9E7C199D2B8F482E0006D48C /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C199C2B8F482E0006D48C /* KeychainService.swift */; };
-		9EBE66212B91255400EB9DAF /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBE66202B91255400EB9DAF /* SettingsViewModel.swift */; };
 		9EBFD9642BAB077500A1891D /* UserAuthentication+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9622BAB077500A1891D /* UserAuthentication+CoreDataClass.swift */; };
 		9EBFD9652BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9632BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift */; };
 		9EBFD9672BAB273400A1891D /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9662BAB273400A1891D /* CoreDataService.swift */; };
@@ -310,7 +309,6 @@
 		9E7C19982B8CC3E80006D48C /* NameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameGenerator.swift; sourceTree = "<group>"; };
 		9E7C199A2B8D0EC50006D48C /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		9E7C199C2B8F482E0006D48C /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
-		9EBE66202B91255400EB9DAF /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
 		9EBFD9622BAB077500A1891D /* UserAuthentication+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAuthentication+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9EBFD9632BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAuthentication+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9EBFD9662BAB273400A1891D /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
@@ -912,10 +910,22 @@
 			path = ProfileSetup;
 			sourceTree = "<group>";
 		};
+		9EA180172BAF6CE5002F6C80 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				9EE8AE092B7FB8CF001D126F /* SettingsPresenter.swift */,
+				9EE8AE0A2B7FB8CF001D126F /* SettingsRouter.swift */,
+				9EE8AE0B2B7FB8CF001D126F /* SettingsViewController.swift */,
+				9EE8AE0C2B7FB8CF001D126F /* SettingsProtocols.swift */,
+				9EE8AE0D2B7FB8CF001D126F /* SettingsInteractor.swift */,
+				9EE8AE0E2B7FB8CF001D126F /* SettingsContainer.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		9EBE661F2B911F7C00EB9DAF /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				9EBE66202B91255400EB9DAF /* SettingsViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -934,12 +944,7 @@
 			isa = PBXGroup;
 			children = (
 				9EBE661F2B911F7C00EB9DAF /* Models */,
-				9EE8AE092B7FB8CF001D126F /* SettingsPresenter.swift */,
-				9EE8AE0A2B7FB8CF001D126F /* SettingsRouter.swift */,
-				9EE8AE0B2B7FB8CF001D126F /* SettingsViewController.swift */,
-				9EE8AE0C2B7FB8CF001D126F /* SettingsProtocols.swift */,
-				9EE8AE0D2B7FB8CF001D126F /* SettingsInteractor.swift */,
-				9EE8AE0E2B7FB8CF001D126F /* SettingsContainer.swift */,
+				9EA180172BAF6CE5002F6C80 /* Settings */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1230,7 +1235,6 @@
 				9E53FB362B7F87BA00C55A45 /* SceneDelegate.swift in Sources */,
 				9E5B74FD2B7F9A7000E2BDE6 /* SignUpContainer.swift in Sources */,
 				9E5B750B2B7F9A8300E2BDE6 /* SignInViewModel.swift in Sources */,
-				9EBE66212B91255400EB9DAF /* SettingsViewModel.swift in Sources */,
 				9E5B750C2B7F9A8300E2BDE6 /* SignInInteractor.swift in Sources */,
 				9E4F229B2B9F3BDD003E749E /* ExerciseRouter.swift in Sources */,
 				9E7C199B2B8D0EC50006D48C /* SignInModel.swift in Sources */,
