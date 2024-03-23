@@ -43,38 +43,44 @@ final class SignInInteractor {
 }
 
 extension SignInInteractor: SignInInteractorInput {
-    func loginWithGoogle(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void) {
+    func loginWithGoogle(with flag: Bool) {
         guard let viewController = self.viewController else {
-            completion(.failure(SignError.viewControllerNil))
+            output?.authResult(signedUp: flag, service: "google", .failure(SignError.viewControllerNil))
             return
         }
         
-        performAuthAction(flag: flag, viewController: viewController, 
-                          action: flag ? authService.loginWithGoogle : authService.authWithGoogle, completion: completion)
+        performAuthAction(flag: flag, viewController: viewController,
+                          action: flag ? authService.loginWithGoogle : authService.authWithGoogle) { result in
+            self.output?.authResult(signedUp: flag, service: "google", result)
+        }
     }
     
-    func loginWithEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+    func loginWithEmail(with flag: Bool, email: String, password: String) {
         let model = SignInModel(email: email, password: password)
         authService.login(with: model) { result in
-            completion(result)
+            self.output?.authResult(signedUp: flag, service: "email", result)
         }
     }
-    
-    func loginWithVK(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void) {
+
+    func loginWithVK(with flag: Bool) {
         guard let viewController = self.viewController else {
-            completion(.failure(SignError.viewControllerNil))
+            output?.authResult(signedUp: flag, service: "vk", .failure(SignError.viewControllerNil))
             return
         }
         
-        performAuthAction(flag: flag, viewController: viewController, 
-                          action: flag ? authService.loginWithVKID : authService.authWithVKID, completion: completion)
+        performAuthAction(flag: flag, viewController: viewController,
+                          action: flag ? authService.loginWithVKID : authService.authWithVKID) { result in
+            self.output?.authResult(signedUp: flag, service: "vk", result)
+        }
     }
     
-    func loginWithAnonym(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void) {
+    func loginWithAnonym(with flag: Bool) {
         if flag {
-            authService.loginWithAnonym(completion: completion)
+            authService.loginWithAnonym { result in
+                self.output?.authResult(signedUp: flag, service: "anonym", result)
+            }
         } else {
-            completion(.success(()))
+            output?.authResult(signedUp: flag, service: "anonym", .success(()))
         }
     }
     

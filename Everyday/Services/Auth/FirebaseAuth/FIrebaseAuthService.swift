@@ -18,6 +18,7 @@ final class AuthModel {
         case common
         case anonym
         case none
+        case email
     }
     
     var whichSign: Sign = .none

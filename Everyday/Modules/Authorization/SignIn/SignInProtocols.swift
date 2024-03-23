@@ -29,15 +29,16 @@ protocol SignInViewOutput: AnyObject {
 }
 
 protocol SignInInteractorInput: AnyObject {
-    func loginWithEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
-    func loginWithVK(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void)
-    func loginWithGoogle(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void)
-    func loginWithAnonym(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void)
+    func loginWithEmail(with flag: Bool, email: String, password: String)
+    func loginWithVK(with flag: Bool)
+    func loginWithGoogle(with flag: Bool)
+    func loginWithAnonym(with flag: Bool)
     func isAuthExist(for service: String) -> Bool
 }
 
 protocol SignInInteractorOutput: AnyObject {
     func authExistResult(isExists: Bool) -> Bool
+    func authResult(signedUp: Bool, service: String, _ result: Result<Void, Error>)
 }
 
 protocol SignInRouterInput: AnyObject {

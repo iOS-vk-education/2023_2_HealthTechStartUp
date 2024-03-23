@@ -77,6 +77,7 @@ extension SignUpPresenter: SignUpViewOutput {
         AuthModel.shared.whichSign = .google
         interactor.authWithGoogle()
     }
+    
     // MARK: - Constants
     
     struct Constants {

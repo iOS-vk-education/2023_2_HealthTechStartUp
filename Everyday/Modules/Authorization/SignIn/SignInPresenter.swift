@@ -19,22 +19,7 @@ final class SignInPresenter {
         self.router = router
         self.interactor = interactor
     }
-    
-    private func handleLoginResult(signedUp: Bool, authType: String, result: Result<Void, Error>) {
-        DispatchQueue.main.async {
-            switch result {
-            case .success:
-                if signedUp {
-                    self.router.openApp()
-                } else {
-                    self.router.openOnBoarding(with: authType)
-                }
-            case .failure(let error):
-                self.view?.showAlert(with: "network", message: error.localizedDescription)
-            }
-        }
-    }
-    
+        
     private func checkAuth(for service: String) -> Bool {
         return interactor.isAuthExist(for: service)
     }
@@ -59,12 +44,7 @@ extension SignInPresenter: SignInViewOutput {
             return
         }
         
-        interactor.loginWithEmail(email: email, password: password ?? "") { [weak self] result in
-            guard let self = self else {
-                return
-            }
-            self.handleLoginResult(signedUp: checkAuth(for: Constants.email), authType: Constants.email, result: result)
-        }
+        performSignIn(signInMethod: .email, authType: Constants.email, email: email, password: password ?? "")
     }
     
     func didTapSignInWithGoogleButton() {
@@ -79,16 +59,9 @@ extension SignInPresenter: SignInViewOutput {
         performSignIn(signInMethod: .anonym, authType: Constants.anonym)
     }
     
-    private func performSignIn(signInMethod: AuthModel.Sign, authType: String) {
+    private func performSignIn(signInMethod: AuthModel.Sign, authType: String, email: String = "", password: String = "") {
         let signedUp = checkAuth(for: authType)
         AuthModel.shared.whichSign = signInMethod
-        
-        let completion: (Result<Void, Error>) -> Void = { [weak self] result in
-            guard let self = self else {
-                return
-            }
-            self.handleLoginResult(signedUp: signedUp, authType: authType, result: result)
-        }
         
         if signInMethod == .anonym && !signedUp {
             let generator = NameGenerator()
@@ -98,11 +71,13 @@ extension SignInPresenter: SignInViewOutput {
                 
         switch signInMethod {
         case .google:
-            interactor.loginWithGoogle(with: signedUp, completion: completion)
+            interactor.loginWithGoogle(with: signedUp)
         case .vk:
-            interactor.loginWithVK(with: signedUp, completion: completion)
+            interactor.loginWithVK(with: signedUp)
         case .anonym:
-            interactor.loginWithAnonym(with: signedUp, completion: completion)
+            interactor.loginWithAnonym(with: signedUp)
+        case .email:
+            interactor.loginWithEmail(with: signedUp, email: email, password: password)
         default:
             break 
         }
@@ -130,5 +105,20 @@ extension SignInPresenter: SignInViewOutput {
 extension SignInPresenter: SignInInteractorOutput {
     func authExistResult(isExists: Bool) -> Bool {
         return isExists
+    }
+    
+    func authResult(signedUp: Bool, service: String, _ result: Result<Void, Error>) {
+        DispatchQueue.main.async {
+            switch result {
+            case .success:
+                if signedUp {
+                    self.router.openApp()
+                } else {
+                    self.router.openOnBoarding(with: service)
+                }
+            case .failure(let error):
+                self.view?.showAlert(with: Constants.network, message: error.localizedDescription)
+            }
+        }
     }
 }
