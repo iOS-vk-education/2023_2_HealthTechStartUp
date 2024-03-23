@@ -22,7 +22,7 @@ final class SignUpPresenter {
     
     private func checkAuth(for service: String) {
         let message = "AlertManager_signedUp_message"
-        if CoreDataService.shared.isItemExists(for: service) {
+        if interactor.isAuthExist(for: service) {
             view?.showAlert(with: "signed", message: message)
             return
         } else {
@@ -110,4 +110,7 @@ extension SignUpPresenter: SignUpViewOutput {
 }
 
 extension SignUpPresenter: SignUpInteractorOutput {
+    func authExistResult(isExists: Bool) -> Bool {
+        return isExists
+    }
 }

@@ -8,7 +8,16 @@
 import UIKit
 import CoreData
 
-class CoreDataService {
+protocol CoreDataServiceDescription {
+    func getAllItems() -> [String]?
+    func createItem(authType: String)
+    func deleteItem(item: UserAuthentication)
+    func updateItem(item: UserAuthentication, authType: String)
+    func deleteAllItems()
+    func isItemExists(for key: String) -> Bool
+}
+
+class CoreDataService: CoreDataServiceDescription {
     static let shared = CoreDataService()
     let context: NSManagedObjectContext?
     

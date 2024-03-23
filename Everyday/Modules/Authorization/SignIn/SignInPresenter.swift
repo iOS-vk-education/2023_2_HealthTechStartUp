@@ -36,10 +36,7 @@ final class SignInPresenter {
     }
     
     private func checkAuth(for service: String) -> Bool {
-        if CoreDataService.shared.isItemExists(for: service) {
-            return true
-        }
-        return false
+        return interactor.isAuthExist(for: service)
     }
 }
 
@@ -131,4 +128,7 @@ extension SignInPresenter: SignInViewOutput {
 
 // MARK: - SignInInteractorOutput
 extension SignInPresenter: SignInInteractorOutput {
+    func authExistResult(isExists: Bool) -> Bool {
+        return isExists
+    }
 }

@@ -26,9 +26,11 @@ final class SignInInteractor {
     weak var output: SignInInteractorOutput?
     weak var viewController: UIViewController?
     let authService: AuthServiceDescription
+    let coreDataService: CoreDataServiceDescription
     
-    init(authService: AuthServiceDescription) {
+    init(authService: AuthServiceDescription, coreDataService: CoreDataServiceDescription) {
         self.authService = authService
+        self.coreDataService = coreDataService
     }
     
     private func performAuthAction(flag: Bool, viewController: UIViewController, 
@@ -74,5 +76,10 @@ extension SignInInteractor: SignInInteractorInput {
         } else {
             completion(.success(()))
         }
+    }
+    
+    func isAuthExist(for service: String) -> Bool {
+        let isExists = coreDataService.isItemExists(for: service)
+        return ((output?.authExistResult(isExists: isExists)) != nil)
     }
 }

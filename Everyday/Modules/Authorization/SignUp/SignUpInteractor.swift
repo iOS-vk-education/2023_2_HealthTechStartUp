@@ -10,11 +10,13 @@ import UIKit
 
 final class SignUpInteractor {
     let authService: AuthServiceDescription
+    let coreDataService: CoreDataServiceDescription
     weak var viewController: UIViewController?
     weak var output: SignUpInteractorOutput?
     
-    init(authService: AuthServiceDescription) {
+    init(authService: AuthServiceDescription, coreDataService: CoreDataServiceDescription) {
         self.authService = authService
+        self.coreDataService = coreDataService
     }
 }
 
@@ -39,5 +41,10 @@ extension SignUpInteractor: SignUpInteractorInput {
         authService.authWithGoogle(with: viewController) { result in
             completion(result)
         }
+    }
+    
+    func isAuthExist(for service: String) -> Bool {
+        let isExists = coreDataService.isItemExists(for: service)
+        return ((output?.authExistResult(isExists: isExists)) != nil)
     }
 }

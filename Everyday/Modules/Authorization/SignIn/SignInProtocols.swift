@@ -33,9 +33,11 @@ protocol SignInInteractorInput: AnyObject {
     func loginWithVK(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void)
     func loginWithGoogle(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void)
     func loginWithAnonym(with flag: Bool, completion: @escaping (Result<Void, Error>) -> Void)
+    func isAuthExist(for service: String) -> Bool
 }
 
 protocol SignInInteractorOutput: AnyObject {
+    func authExistResult(isExists: Bool) -> Bool
 }
 
 protocol SignInRouterInput: AnyObject {
