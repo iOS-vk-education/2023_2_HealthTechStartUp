@@ -289,16 +289,16 @@ final class SignUpViewController: UIViewController {
 // MARK: - SignUpViewInput
 
 extension SignUpViewController: SignUpViewInput {
-    func showAlert(with key: String, message: NSMutableAttributedString) {
+    func showAlert(with key: String, message: String) {
         switch key {
         case "email":
             AlertManager.showInvalidEmailAlert(on: self)
         case "password":
-            AlertManager.showInvalidPasswordAlert(on: self, message: message.string)
+            AlertManager.showInvalidPasswordAlert(on: self, message: message.localized)
         case "network":
-            AlertManager.showRegistrationErrorAlert(on: self, message: message.string)
+            AlertManager.showRegistrationErrorAlert(on: self, message: message.localized)
         case "signed":
-            AlertManager.showSignedUpAlert(on: self, message: message.string)
+            AlertManager.showSignedUpAlert(on: self, message: message.localized)
         default:
             let error = NSError(domain: "Everydaytech.ru", code: 400)
             AlertManager.showRegistrationErrorAlert(on: self, with: error)

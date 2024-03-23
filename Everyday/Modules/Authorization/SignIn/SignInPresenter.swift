@@ -30,7 +30,7 @@ final class SignInPresenter {
                     self.router.openOnBoarding(with: authType)
                 }
             case .failure(let error):
-                self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
+                self.view?.showAlert(with: "network", message: error.localizedDescription)
             }
         }
     }
@@ -52,12 +52,12 @@ extension SignInPresenter: SignInViewOutput {
     
     func didTapSignInButton(with email: String?, and password: String?) {
         guard let email = email, Validator.isValidEmail(for: email) else {
-            view?.showAlert(with: Constants.email, message: NSMutableAttributedString(string: Constants.invalidEmail))
+            view?.showAlert(with: Constants.email, message: Constants.invalidEmail)
             return
         }
         
         let validationErrors = Validator.validatePassword(for: password ?? "")
-        if validationErrors.length > 0 {
+        if !validationErrors.isEmpty {
             view?.showAlert(with: Constants.password, message: validationErrors)
             return
         }

@@ -8,7 +8,7 @@
 import Security
 import Foundation
 
-class KeychainService {
+final class KeychainService {
     @discardableResult
     static func savePassword(_ password: String, for account: String) -> Bool {
         let passwordData = password.data(using: .utf8)!

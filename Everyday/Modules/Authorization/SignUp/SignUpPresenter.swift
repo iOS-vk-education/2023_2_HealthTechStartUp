@@ -21,7 +21,7 @@ final class SignUpPresenter {
     }
     
     private func checkAuth(for service: String) {
-        let message = NSMutableAttributedString(string: "AlertManager_signedUp_message".localized)
+        let message = "AlertManager_signedUp_message"
         if CoreDataService.shared.isItemExists(for: service) {
             view?.showAlert(with: "signed", message: message)
             return
@@ -54,12 +54,12 @@ extension SignUpPresenter: SignUpViewOutput {
         AuthModel.shared.whichSign = .common
         
         if !Validator.isValidEmail(for: email ?? "") {
-            view?.showAlert(with: Constants.email, message: NSMutableAttributedString(string: ""))
+            view?.showAlert(with: Constants.email, message: "")
             return
         }
         
         let validationErrors = Validator.validatePassword(for: password ?? "")
-        if  validationErrors.length > 0 {
+        if  !validationErrors.isEmpty {
             view?.showAlert(with: Constants.password, message: validationErrors)
             return
         }
@@ -77,7 +77,7 @@ extension SignUpPresenter: SignUpViewOutput {
                 case .success:
                     self.checkAuth(for: Constants.vk)
                 case .failure(let error):
-                    self.view?.showAlert(with: Constants.network, message: NSMutableAttributedString(string: error.localizedDescription))
+                    self.view?.showAlert(with: Constants.network, message: error.localizedDescription)
                 }
             }
         }
@@ -92,7 +92,7 @@ extension SignUpPresenter: SignUpViewOutput {
                 case .success:
                     self.checkAuth(for: Constants.google)
                 case .failure(let error):
-                    self.view?.showAlert(with: Constants.network, message: NSMutableAttributedString(string: error.localizedDescription))
+                    self.view?.showAlert(with: Constants.network, message: error.localizedDescription)
                 }
             }
         }

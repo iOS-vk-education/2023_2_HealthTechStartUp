@@ -17,7 +17,7 @@ protocol SignUpModuleOutput: AnyObject {
 
 protocol SignUpViewInput: AnyObject {
     func configure(with model: SignUpViewModel)
-    func showAlert(with key: String, message: NSMutableAttributedString)
+    func showAlert(with key: String, message: String)
 }
 
 protocol SignUpViewOutput: AnyObject {

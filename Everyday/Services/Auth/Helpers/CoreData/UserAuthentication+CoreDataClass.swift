@@ -10,7 +10,7 @@ import Foundation
 import CoreData
 
 @objc(UserAuthentication)
-public class UserAuthentication: NSManagedObject {
+final public class UserAuthentication: NSManagedObject {
 }
 
 extension UserAuthentication {
