@@ -80,6 +80,6 @@ extension SignInInteractor: SignInInteractorInput {
     
     func isAuthExist(for service: String) -> Bool {
         let isExists = coreDataService.isItemExists(for: service)
-        return ((output?.authExistResult(isExists: isExists)) != nil)
+        return output?.authExistResult(isExists: isExists) ?? false
     }
 }

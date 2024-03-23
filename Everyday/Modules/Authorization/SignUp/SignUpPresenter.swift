@@ -70,32 +70,12 @@ extension SignUpPresenter: SignUpViewOutput {
     
     func didTapSignWithVKButton() {
         AuthModel.shared.whichSign = .vk
-        
-        interactor.authWithVKID { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    self.checkAuth(for: Constants.vk)
-                case .failure(let error):
-                    self.view?.showAlert(with: Constants.network, message: error.localizedDescription)
-                }
-            }
-        }
+        interactor.authWithVKID()
     }
 
     func didTapSignWithGoogleButton() {
         AuthModel.shared.whichSign = .google
-        
-        interactor.authWithGoogle { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    self.checkAuth(for: Constants.google)
-                case .failure(let error):
-                    self.view?.showAlert(with: Constants.network, message: error.localizedDescription)
-                }
-            }
-        }
+        interactor.authWithGoogle()
     }
     // MARK: - Constants
     
@@ -110,6 +90,17 @@ extension SignUpPresenter: SignUpViewOutput {
 }
 
 extension SignUpPresenter: SignUpInteractorOutput {
+    func authResult(service: String, _ result: Result<Void, Error>) {
+        DispatchQueue.main.async {
+            switch result {
+            case .success:
+                self.checkAuth(for: service)
+            case .failure(let error):
+                self.view?.showAlert(with: Constants.network, message: error.localizedDescription)
+            }
+        }
+    }
+    
     func authExistResult(isExists: Bool) -> Bool {
         return isExists
     }
