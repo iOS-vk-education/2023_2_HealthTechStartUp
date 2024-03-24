@@ -7,6 +7,63 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C3B5E6D2BAF77A900CFE490 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E6C2BAF77A900CFE490 /* SettingsTableViewCell.swift */; };
+		8C3B5E6F2BAF77DC00CFE490 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E6E2BAF77DC00CFE490 /* SettingsViewModel.swift */; };
+		8C3B5E712BAF780200CFE490 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E702BAF780200CFE490 /* ProfileViewModel.swift */; };
+		8C3B5E782BAF78D100CFE490 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E722BAF78D100CFE490 /* ProfilePresenter.swift */; };
+		8C3B5E792BAF78D100CFE490 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E732BAF78D100CFE490 /* ProfileRouter.swift */; };
+		8C3B5E7A2BAF78D100CFE490 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E742BAF78D100CFE490 /* ProfileViewController.swift */; };
+		8C3B5E7B2BAF78D100CFE490 /* ProfileProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E752BAF78D100CFE490 /* ProfileProtocols.swift */; };
+		8C3B5E7C2BAF78D100CFE490 /* ProfileInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E762BAF78D100CFE490 /* ProfileInteractor.swift */; };
+		8C3B5E7D2BAF78D100CFE490 /* ProfileContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E772BAF78D100CFE490 /* ProfileContainer.swift */; };
+		8C3B5E7F2BAF793100CFE490 /* ProfileTableViewCellWithTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E7E2BAF793100CFE490 /* ProfileTableViewCellWithTextField.swift */; };
+		8C3B5E812BAF794E00CFE490 /* ProfileTableViewCellWithTitle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E802BAF794E00CFE490 /* ProfileTableViewCellWithTitle.swift */; };
+		8C3B5E832BAF797C00CFE490 /* ThemeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E822BAF797C00CFE490 /* ThemeViewModel.swift */; };
+		8C3B5E8A2BAF798F00CFE490 /* ThemePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E842BAF798F00CFE490 /* ThemePresenter.swift */; };
+		8C3B5E8B2BAF798F00CFE490 /* ThemeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E852BAF798F00CFE490 /* ThemeRouter.swift */; };
+		8C3B5E8C2BAF798F00CFE490 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E862BAF798F00CFE490 /* ThemeViewController.swift */; };
+		8C3B5E8D2BAF798F00CFE490 /* ThemeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E872BAF798F00CFE490 /* ThemeProtocols.swift */; };
+		8C3B5E8E2BAF798F00CFE490 /* ThemeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E882BAF798F00CFE490 /* ThemeInteractor.swift */; };
+		8C3B5E8F2BAF798F00CFE490 /* ThemeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E892BAF798F00CFE490 /* ThemeContainer.swift */; };
+		8C3B5E912BAF79E900CFE490 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E902BAF79E900CFE490 /* ThemeTableViewCell.swift */; };
+		8C3B5E932BAF7A1400CFE490 /* DateAndTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E922BAF7A1400CFE490 /* DateAndTimeViewModel.swift */; };
+		8C3B5E9A2BAF7A2700CFE490 /* DateAndTimePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E942BAF7A2700CFE490 /* DateAndTimePresenter.swift */; };
+		8C3B5E9B2BAF7A2700CFE490 /* DateAndTimeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E952BAF7A2700CFE490 /* DateAndTimeRouter.swift */; };
+		8C3B5E9C2BAF7A2700CFE490 /* DateAndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E962BAF7A2700CFE490 /* DateAndTimeViewController.swift */; };
+		8C3B5E9D2BAF7A2700CFE490 /* DateAndTimeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E972BAF7A2700CFE490 /* DateAndTimeProtocols.swift */; };
+		8C3B5E9E2BAF7A2700CFE490 /* DateAndTimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E982BAF7A2700CFE490 /* DateAndTimeInteractor.swift */; };
+		8C3B5E9F2BAF7A2700CFE490 /* DateAndTimeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E992BAF7A2700CFE490 /* DateAndTimeContainer.swift */; };
+		8C3B5EA12BAF7A8000CFE490 /* DateAndTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EA02BAF7A8000CFE490 /* DateAndTimeTableViewCell.swift */; };
+		8C3B5EA32BAF7BAA00CFE490 /* UnitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EA22BAF7BAA00CFE490 /* UnitsViewModel.swift */; };
+		8C3B5EAA2BAF7BC400CFE490 /* UnitsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EA42BAF7BC400CFE490 /* UnitsPresenter.swift */; };
+		8C3B5EAB2BAF7BC400CFE490 /* UnitsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EA52BAF7BC400CFE490 /* UnitsRouter.swift */; };
+		8C3B5EAC2BAF7BC400CFE490 /* UnitsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EA62BAF7BC400CFE490 /* UnitsViewController.swift */; };
+		8C3B5EAD2BAF7BC400CFE490 /* UnitsProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EA72BAF7BC400CFE490 /* UnitsProtocols.swift */; };
+		8C3B5EAE2BAF7BC400CFE490 /* UnitsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EA82BAF7BC400CFE490 /* UnitsInteractor.swift */; };
+		8C3B5EAF2BAF7BC400CFE490 /* UnitsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EA92BAF7BC400CFE490 /* UnitsContainer.swift */; };
+		8C3B5EB12BAF7C1800CFE490 /* UnitsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EB02BAF7C1800CFE490 /* UnitsTableViewCell.swift */; };
+		8C3B5EB32BAF7C8200CFE490 /* ChangeEmailViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EB22BAF7C8200CFE490 /* ChangeEmailViewModel.swift */; };
+		8C3B5EBA2BAF7CA500CFE490 /* ChangeEmailPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EB42BAF7CA500CFE490 /* ChangeEmailPresenter.swift */; };
+		8C3B5EBB2BAF7CA500CFE490 /* ChangeEmailRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EB52BAF7CA500CFE490 /* ChangeEmailRouter.swift */; };
+		8C3B5EBC2BAF7CA500CFE490 /* ChangeEmailViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EB62BAF7CA500CFE490 /* ChangeEmailViewController.swift */; };
+		8C3B5EBD2BAF7CA500CFE490 /* ChangeEmailProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EB72BAF7CA500CFE490 /* ChangeEmailProtocols.swift */; };
+		8C3B5EBE2BAF7CA500CFE490 /* ChangeEmailInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EB82BAF7CA500CFE490 /* ChangeEmailInteractor.swift */; };
+		8C3B5EBF2BAF7CA500CFE490 /* ChangeEmailContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EB92BAF7CA500CFE490 /* ChangeEmailContainer.swift */; };
+		8C3B5EC12BAF7D2200CFE490 /* ChangePasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EC02BAF7D2200CFE490 /* ChangePasswordViewModel.swift */; };
+		8C3B5EC82BAF7D4300CFE490 /* ChangePasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EC22BAF7D4300CFE490 /* ChangePasswordPresenter.swift */; };
+		8C3B5EC92BAF7D4300CFE490 /* ChangePasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EC32BAF7D4300CFE490 /* ChangePasswordRouter.swift */; };
+		8C3B5ECA2BAF7D4300CFE490 /* ChangePasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EC42BAF7D4300CFE490 /* ChangePasswordViewController.swift */; };
+		8C3B5ECB2BAF7D4300CFE490 /* ChangePasswordProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EC52BAF7D4300CFE490 /* ChangePasswordProtocols.swift */; };
+		8C3B5ECC2BAF7D4300CFE490 /* ChangePasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EC62BAF7D4300CFE490 /* ChangePasswordInteractor.swift */; };
+		8C3B5ECD2BAF7D4300CFE490 /* ChangePasswordContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EC72BAF7D4300CFE490 /* ChangePasswordContainer.swift */; };
+		8C3B5ECF2BAF7D8C00CFE490 /* DeleteAccountViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5ECE2BAF7D8C00CFE490 /* DeleteAccountViewModel.swift */; };
+		8C3B5ED62BAF7DD400CFE490 /* DeleteAccountPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5ED02BAF7DD300CFE490 /* DeleteAccountPresenter.swift */; };
+		8C3B5ED72BAF7DD400CFE490 /* DeleteAccountRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5ED12BAF7DD400CFE490 /* DeleteAccountRouter.swift */; };
+		8C3B5ED82BAF7DD400CFE490 /* DeleteAccountViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5ED22BAF7DD400CFE490 /* DeleteAccountViewController.swift */; };
+		8C3B5ED92BAF7DD400CFE490 /* DeleteAccountProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5ED32BAF7DD400CFE490 /* DeleteAccountProtocols.swift */; };
+		8C3B5EDA2BAF7DD400CFE490 /* DeleteAccountInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5ED42BAF7DD400CFE490 /* DeleteAccountInteractor.swift */; };
+		8C3B5EDB2BAF7DD400CFE490 /* DeleteAccountContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5ED52BAF7DD400CFE490 /* DeleteAccountContainer.swift */; };
+		8C3B5EDE2BAF7EA900CFE490 /* UserDefaultsServiceFoerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EDD2BAF7EA900CFE490 /* UserDefaultsServiceFoerSettings.swift */; };
 		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
 		9E2A8BB22B84F106004A81CF /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 9E2A8BB12B84F106004A81CF /* FirebaseAppCheck */; };
 		9E2A8BB42B84F106004A81CF /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 9E2A8BB32B84F106004A81CF /* FirebaseAppDistribution-Beta */; };
@@ -177,6 +234,63 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C3B5E6C2BAF77A900CFE490 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
+		8C3B5E6E2BAF77DC00CFE490 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
+		8C3B5E702BAF780200CFE490 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		8C3B5E722BAF78D100CFE490 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
+		8C3B5E732BAF78D100CFE490 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
+		8C3B5E742BAF78D100CFE490 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		8C3B5E752BAF78D100CFE490 /* ProfileProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileProtocols.swift; sourceTree = "<group>"; };
+		8C3B5E762BAF78D100CFE490 /* ProfileInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileInteractor.swift; sourceTree = "<group>"; };
+		8C3B5E772BAF78D100CFE490 /* ProfileContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileContainer.swift; sourceTree = "<group>"; };
+		8C3B5E7E2BAF793100CFE490 /* ProfileTableViewCellWithTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCellWithTextField.swift; sourceTree = "<group>"; };
+		8C3B5E802BAF794E00CFE490 /* ProfileTableViewCellWithTitle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileTableViewCellWithTitle.swift; sourceTree = "<group>"; };
+		8C3B5E822BAF797C00CFE490 /* ThemeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewModel.swift; sourceTree = "<group>"; };
+		8C3B5E842BAF798F00CFE490 /* ThemePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemePresenter.swift; sourceTree = "<group>"; };
+		8C3B5E852BAF798F00CFE490 /* ThemeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRouter.swift; sourceTree = "<group>"; };
+		8C3B5E862BAF798F00CFE490 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
+		8C3B5E872BAF798F00CFE490 /* ThemeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocols.swift; sourceTree = "<group>"; };
+		8C3B5E882BAF798F00CFE490 /* ThemeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeInteractor.swift; sourceTree = "<group>"; };
+		8C3B5E892BAF798F00CFE490 /* ThemeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeContainer.swift; sourceTree = "<group>"; };
+		8C3B5E902BAF79E900CFE490 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
+		8C3B5E922BAF7A1400CFE490 /* DateAndTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeViewModel.swift; sourceTree = "<group>"; };
+		8C3B5E942BAF7A2700CFE490 /* DateAndTimePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimePresenter.swift; sourceTree = "<group>"; };
+		8C3B5E952BAF7A2700CFE490 /* DateAndTimeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeRouter.swift; sourceTree = "<group>"; };
+		8C3B5E962BAF7A2700CFE490 /* DateAndTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeViewController.swift; sourceTree = "<group>"; };
+		8C3B5E972BAF7A2700CFE490 /* DateAndTimeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeProtocols.swift; sourceTree = "<group>"; };
+		8C3B5E982BAF7A2700CFE490 /* DateAndTimeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeInteractor.swift; sourceTree = "<group>"; };
+		8C3B5E992BAF7A2700CFE490 /* DateAndTimeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeContainer.swift; sourceTree = "<group>"; };
+		8C3B5EA02BAF7A8000CFE490 /* DateAndTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeTableViewCell.swift; sourceTree = "<group>"; };
+		8C3B5EA22BAF7BAA00CFE490 /* UnitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsViewModel.swift; sourceTree = "<group>"; };
+		8C3B5EA42BAF7BC400CFE490 /* UnitsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsPresenter.swift; sourceTree = "<group>"; };
+		8C3B5EA52BAF7BC400CFE490 /* UnitsRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsRouter.swift; sourceTree = "<group>"; };
+		8C3B5EA62BAF7BC400CFE490 /* UnitsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsViewController.swift; sourceTree = "<group>"; };
+		8C3B5EA72BAF7BC400CFE490 /* UnitsProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsProtocols.swift; sourceTree = "<group>"; };
+		8C3B5EA82BAF7BC400CFE490 /* UnitsInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsInteractor.swift; sourceTree = "<group>"; };
+		8C3B5EA92BAF7BC400CFE490 /* UnitsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsContainer.swift; sourceTree = "<group>"; };
+		8C3B5EB02BAF7C1800CFE490 /* UnitsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsTableViewCell.swift; sourceTree = "<group>"; };
+		8C3B5EB22BAF7C8200CFE490 /* ChangeEmailViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewModel.swift; sourceTree = "<group>"; };
+		8C3B5EB42BAF7CA500CFE490 /* ChangeEmailPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailPresenter.swift; sourceTree = "<group>"; };
+		8C3B5EB52BAF7CA500CFE490 /* ChangeEmailRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailRouter.swift; sourceTree = "<group>"; };
+		8C3B5EB62BAF7CA500CFE490 /* ChangeEmailViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailViewController.swift; sourceTree = "<group>"; };
+		8C3B5EB72BAF7CA500CFE490 /* ChangeEmailProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailProtocols.swift; sourceTree = "<group>"; };
+		8C3B5EB82BAF7CA500CFE490 /* ChangeEmailInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailInteractor.swift; sourceTree = "<group>"; };
+		8C3B5EB92BAF7CA500CFE490 /* ChangeEmailContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailContainer.swift; sourceTree = "<group>"; };
+		8C3B5EC02BAF7D2200CFE490 /* ChangePasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewModel.swift; sourceTree = "<group>"; };
+		8C3B5EC22BAF7D4300CFE490 /* ChangePasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordPresenter.swift; sourceTree = "<group>"; };
+		8C3B5EC32BAF7D4300CFE490 /* ChangePasswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordRouter.swift; sourceTree = "<group>"; };
+		8C3B5EC42BAF7D4300CFE490 /* ChangePasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordViewController.swift; sourceTree = "<group>"; };
+		8C3B5EC52BAF7D4300CFE490 /* ChangePasswordProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordProtocols.swift; sourceTree = "<group>"; };
+		8C3B5EC62BAF7D4300CFE490 /* ChangePasswordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordInteractor.swift; sourceTree = "<group>"; };
+		8C3B5EC72BAF7D4300CFE490 /* ChangePasswordContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordContainer.swift; sourceTree = "<group>"; };
+		8C3B5ECE2BAF7D8C00CFE490 /* DeleteAccountViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewModel.swift; sourceTree = "<group>"; };
+		8C3B5ED02BAF7DD300CFE490 /* DeleteAccountPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountPresenter.swift; sourceTree = "<group>"; };
+		8C3B5ED12BAF7DD400CFE490 /* DeleteAccountRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountRouter.swift; sourceTree = "<group>"; };
+		8C3B5ED22BAF7DD400CFE490 /* DeleteAccountViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountViewController.swift; sourceTree = "<group>"; };
+		8C3B5ED32BAF7DD400CFE490 /* DeleteAccountProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountProtocols.swift; sourceTree = "<group>"; };
+		8C3B5ED42BAF7DD400CFE490 /* DeleteAccountInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountInteractor.swift; sourceTree = "<group>"; };
+		8C3B5ED52BAF7DD400CFE490 /* DeleteAccountContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountContainer.swift; sourceTree = "<group>"; };
+		8C3B5EDD2BAF7EA900CFE490 /* UserDefaultsServiceFoerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsServiceFoerSettings.swift; sourceTree = "<group>"; };
 		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
 		9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
@@ -364,6 +478,181 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C3B5E5D2BAF769E00CFE490 /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5E652BAF772900CFE490 /* Models */,
+				8C3B5E722BAF78D100CFE490 /* ProfilePresenter.swift */,
+				8C3B5E732BAF78D100CFE490 /* ProfileRouter.swift */,
+				8C3B5E742BAF78D100CFE490 /* ProfileViewController.swift */,
+				8C3B5E752BAF78D100CFE490 /* ProfileProtocols.swift */,
+				8C3B5E762BAF78D100CFE490 /* ProfileInteractor.swift */,
+				8C3B5E772BAF78D100CFE490 /* ProfileContainer.swift */,
+				8C3B5E7E2BAF793100CFE490 /* ProfileTableViewCellWithTextField.swift */,
+				8C3B5E802BAF794E00CFE490 /* ProfileTableViewCellWithTitle.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		8C3B5E5E2BAF76C500CFE490 /* Theme */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5E662BAF772F00CFE490 /* Models */,
+				8C3B5E842BAF798F00CFE490 /* ThemePresenter.swift */,
+				8C3B5E852BAF798F00CFE490 /* ThemeRouter.swift */,
+				8C3B5E862BAF798F00CFE490 /* ThemeViewController.swift */,
+				8C3B5E872BAF798F00CFE490 /* ThemeProtocols.swift */,
+				8C3B5E882BAF798F00CFE490 /* ThemeInteractor.swift */,
+				8C3B5E892BAF798F00CFE490 /* ThemeContainer.swift */,
+				8C3B5E902BAF79E900CFE490 /* ThemeTableViewCell.swift */,
+			);
+			path = Theme;
+			sourceTree = "<group>";
+		};
+		8C3B5E5F2BAF76CC00CFE490 /* DateAndTime */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5E672BAF773500CFE490 /* Models */,
+				8C3B5E942BAF7A2700CFE490 /* DateAndTimePresenter.swift */,
+				8C3B5E952BAF7A2700CFE490 /* DateAndTimeRouter.swift */,
+				8C3B5E962BAF7A2700CFE490 /* DateAndTimeViewController.swift */,
+				8C3B5E972BAF7A2700CFE490 /* DateAndTimeProtocols.swift */,
+				8C3B5E982BAF7A2700CFE490 /* DateAndTimeInteractor.swift */,
+				8C3B5E992BAF7A2700CFE490 /* DateAndTimeContainer.swift */,
+				8C3B5EA02BAF7A8000CFE490 /* DateAndTimeTableViewCell.swift */,
+			);
+			path = DateAndTime;
+			sourceTree = "<group>";
+		};
+		8C3B5E602BAF76D800CFE490 /* Units */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5E682BAF773B00CFE490 /* Models */,
+				8C3B5EA42BAF7BC400CFE490 /* UnitsPresenter.swift */,
+				8C3B5EA52BAF7BC400CFE490 /* UnitsRouter.swift */,
+				8C3B5EA62BAF7BC400CFE490 /* UnitsViewController.swift */,
+				8C3B5EA72BAF7BC400CFE490 /* UnitsProtocols.swift */,
+				8C3B5EA82BAF7BC400CFE490 /* UnitsInteractor.swift */,
+				8C3B5EA92BAF7BC400CFE490 /* UnitsContainer.swift */,
+				8C3B5EB02BAF7C1800CFE490 /* UnitsTableViewCell.swift */,
+			);
+			path = Units;
+			sourceTree = "<group>";
+		};
+		8C3B5E612BAF76E200CFE490 /* ChangeEmail */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5E692BAF774000CFE490 /* Models */,
+				8C3B5EB42BAF7CA500CFE490 /* ChangeEmailPresenter.swift */,
+				8C3B5EB52BAF7CA500CFE490 /* ChangeEmailRouter.swift */,
+				8C3B5EB62BAF7CA500CFE490 /* ChangeEmailViewController.swift */,
+				8C3B5EB72BAF7CA500CFE490 /* ChangeEmailProtocols.swift */,
+				8C3B5EB82BAF7CA500CFE490 /* ChangeEmailInteractor.swift */,
+				8C3B5EB92BAF7CA500CFE490 /* ChangeEmailContainer.swift */,
+			);
+			path = ChangeEmail;
+			sourceTree = "<group>";
+		};
+		8C3B5E622BAF76E900CFE490 /* ChangePassword */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5E6A2BAF774600CFE490 /* Models */,
+				8C3B5EC22BAF7D4300CFE490 /* ChangePasswordPresenter.swift */,
+				8C3B5EC32BAF7D4300CFE490 /* ChangePasswordRouter.swift */,
+				8C3B5EC42BAF7D4300CFE490 /* ChangePasswordViewController.swift */,
+				8C3B5EC52BAF7D4300CFE490 /* ChangePasswordProtocols.swift */,
+				8C3B5EC62BAF7D4300CFE490 /* ChangePasswordInteractor.swift */,
+				8C3B5EC72BAF7D4300CFE490 /* ChangePasswordContainer.swift */,
+			);
+			path = ChangePassword;
+			sourceTree = "<group>";
+		};
+		8C3B5E632BAF76FD00CFE490 /* DeleteAccount */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5E6B2BAF774C00CFE490 /* Models */,
+				8C3B5ED02BAF7DD300CFE490 /* DeleteAccountPresenter.swift */,
+				8C3B5ED12BAF7DD400CFE490 /* DeleteAccountRouter.swift */,
+				8C3B5ED22BAF7DD400CFE490 /* DeleteAccountViewController.swift */,
+				8C3B5ED32BAF7DD400CFE490 /* DeleteAccountProtocols.swift */,
+				8C3B5ED42BAF7DD400CFE490 /* DeleteAccountInteractor.swift */,
+				8C3B5ED52BAF7DD400CFE490 /* DeleteAccountContainer.swift */,
+			);
+			path = DeleteAccount;
+			sourceTree = "<group>";
+		};
+		8C3B5E642BAF771200CFE490 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5E6E2BAF77DC00CFE490 /* SettingsViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8C3B5E652BAF772900CFE490 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5E702BAF780200CFE490 /* ProfileViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8C3B5E662BAF772F00CFE490 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5E822BAF797C00CFE490 /* ThemeViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8C3B5E672BAF773500CFE490 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5E922BAF7A1400CFE490 /* DateAndTimeViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8C3B5E682BAF773B00CFE490 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5EA22BAF7BAA00CFE490 /* UnitsViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8C3B5E692BAF774000CFE490 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5EB22BAF7C8200CFE490 /* ChangeEmailViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8C3B5E6A2BAF774600CFE490 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5EC02BAF7D2200CFE490 /* ChangePasswordViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8C3B5E6B2BAF774C00CFE490 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5ECE2BAF7D8C00CFE490 /* DeleteAccountViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8C3B5EDC2BAF7E7B00CFE490 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5EDD2BAF7EA900CFE490 /* UserDefaultsServiceFoerSettings.swift */,
+			);
+			path = UserDefaults;
+			sourceTree = "<group>";
+		};
 		9E1383072BAB03240073622C /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -419,6 +708,7 @@
 		9E4382CB2B83737600C69708 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8C3B5EDC2BAF7E7B00CFE490 /* UserDefaults */,
 				9E4766DE2BA3509300DD31B9 /* HealthKit */,
 				9E4766D62B9F515700DD31B9 /* Storage */,
 				9E4F225D2B9F3B37003E749E /* Day */,
@@ -913,21 +1203,16 @@
 		9EA180172BAF6CE5002F6C80 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				8C3B5E642BAF771200CFE490 /* Models */,
 				9EE8AE092B7FB8CF001D126F /* SettingsPresenter.swift */,
 				9EE8AE0A2B7FB8CF001D126F /* SettingsRouter.swift */,
 				9EE8AE0B2B7FB8CF001D126F /* SettingsViewController.swift */,
 				9EE8AE0C2B7FB8CF001D126F /* SettingsProtocols.swift */,
 				9EE8AE0D2B7FB8CF001D126F /* SettingsInteractor.swift */,
 				9EE8AE0E2B7FB8CF001D126F /* SettingsContainer.swift */,
+				8C3B5E6C2BAF77A900CFE490 /* SettingsTableViewCell.swift */,
 			);
 			path = Settings;
-			sourceTree = "<group>";
-		};
-		9EBE661F2B911F7C00EB9DAF /* Models */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		9EE335972B8F9C3900F532B3 /* ScreenSaver */ = {
@@ -943,7 +1228,13 @@
 		9EE8AE082B7FB8BC001D126F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
-				9EBE661F2B911F7C00EB9DAF /* Models */,
+				8C3B5E632BAF76FD00CFE490 /* DeleteAccount */,
+				8C3B5E622BAF76E900CFE490 /* ChangePassword */,
+				8C3B5E612BAF76E200CFE490 /* ChangeEmail */,
+				8C3B5E602BAF76D800CFE490 /* Units */,
+				8C3B5E5F2BAF76CC00CFE490 /* DateAndTime */,
+				8C3B5E5E2BAF76C500CFE490 /* Theme */,
+				8C3B5E5D2BAF769E00CFE490 /* Profile */,
 				9EA180172BAF6CE5002F6C80 /* Settings */,
 			);
 			path = Settings;
@@ -1108,21 +1399,27 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				8C3B5EBC2BAF7CA500CFE490 /* ChangeEmailViewController.swift in Sources */,
 				9E5B75482B7F9D7600E2BDE6 /* ProfileAcknowledgementViewModel.swift in Sources */,
 				9E4F22732B9F3B8F003E749E /* NotepadProtocols.swift in Sources */,
 				9E5B74F82B7F9A7000E2BDE6 /* SignUpInteractor.swift in Sources */,
+				8C3B5EC12BAF7D2200CFE490 /* ChangePasswordViewModel.swift in Sources */,
 				9E2A8BD12B8543DD004A81CF /* SignUpModel.swift in Sources */,
 				9E5B754D2B7F9D7600E2BDE6 /* ProfileSetupView.swift in Sources */,
+				8C3B5E792BAF78D100CFE490 /* ProfileRouter.swift in Sources */,
 				9EE8AE072B7FB77D001D126F /* TabBarController.swift in Sources */,
 				9E2A8BCF2B854147004A81CF /* Validator.swift in Sources */,
+				8C3B5EAE2BAF7BC400CFE490 /* UnitsInteractor.swift in Sources */,
 				9E4F22D42B9F3C5D003E749E /* ExtraViewModel.swift in Sources */,
 				9E4F22752B9F3B8F003E749E /* NotepadTableViewCell.swift in Sources */,
 				9EE8AE102B7FB8CF001D126F /* SettingsRouter.swift in Sources */,
 				9E4F229A2B9F3BDD003E749E /* ExercisePresenter.swift in Sources */,
+				8C3B5EBF2BAF7CA500CFE490 /* ChangeEmailContainer.swift in Sources */,
 				9E4F22BF2B9F3C2E003E749E /* TimerViewController.swift in Sources */,
 				9E4F227A2B9F3B9B003E749E /* NotepadHeaderViewModel.swift in Sources */,
 				9EBFD9642BAB077500A1891D /* UserAuthentication+CoreDataClass.swift in Sources */,
 				9E4F22AC2B9F3C05003E749E /* ResultsViewController.swift in Sources */,
+				8C3B5EAB2BAF7BC400CFE490 /* UnitsRouter.swift in Sources */,
 				9E5B753E2B7F9D7600E2BDE6 /* WeightViewModel.swift in Sources */,
 				9EE8AE212B7FB905001D126F /* ProgressContainer.swift in Sources */,
 				9E4F22A92B9F3C05003E749E /* ResultsInteractor.swift in Sources */,
@@ -1131,23 +1428,32 @@
 				9E4F227C2B9F3B9B003E749E /* NotepadViewModel.swift in Sources */,
 				9E4F22BE2B9F3C2E003E749E /* TimerProtocols.swift in Sources */,
 				9E5B74FC2B7F9A7000E2BDE6 /* SignUpViewModel.swift in Sources */,
+				8C3B5E7D2BAF78D100CFE490 /* ProfileContainer.swift in Sources */,
 				9EE335992B8F9CCD00F532B3 /* SplashAnimator.swift in Sources */,
+				8C3B5E832BAF797C00CFE490 /* ThemeViewModel.swift in Sources */,
 				9E4F22982B9F3BDD003E749E /* ExerciseProtocols.swift in Sources */,
 				9E5B74ED2B7F99FB00E2BDE6 /* WelcomeScreenViewModel.swift in Sources */,
 				9E5B75382B7F9D7600E2BDE6 /* GenderModel.swift in Sources */,
 				9E5B754B2B7F9D7600E2BDE6 /* ProfileSetupViewModel.swift in Sources */,
 				9E5B75422B7F9D7600E2BDE6 /* AgeController.swift in Sources */,
+				8C3B5E8B2BAF798F00CFE490 /* ThemeRouter.swift in Sources */,
 				9E4F22D12B9F3C51003E749E /* ExtraProtocols.swift in Sources */,
 				9EE8AE1E2B7FB905001D126F /* ProgressViewController.swift in Sources */,
 				9E4F22902B9F3BC4003E749E /* TrainingViewModel.swift in Sources */,
 				9E4F22742B9F3B8F003E749E /* NotepadSectionHeaderView.swift in Sources */,
+				8C3B5E932BAF7A1400CFE490 /* DateAndTimeViewModel.swift in Sources */,
 				9E4F22CE2B9F3C51003E749E /* ExtraContainer.swift in Sources */,
+				8C3B5ED92BAF7DD400CFE490 /* DeleteAccountProtocols.swift in Sources */,
 				9EE8AE392B7FB96E001D126F /* WorkoutProtocols.swift in Sources */,
 				9E4F226E2B9F3B8F003E749E /* NotepadPresenter.swift in Sources */,
 				9EE3359B2B8F9CDC00F532B3 /* SplashViewController.swift in Sources */,
 				9EE8AE132B7FB8CF001D126F /* SettingsInteractor.swift in Sources */,
+				8C3B5E8E2BAF798F00CFE490 /* ThemeInteractor.swift in Sources */,
 				9E5B74F92B7F9A7000E2BDE6 /* SignUpRouter.swift in Sources */,
 				9E4F225F2B9F3B46003E749E /* DayService.swift in Sources */,
+				8C3B5EDE2BAF7EA900CFE490 /* UserDefaultsServiceFoerSettings.swift in Sources */,
+				8C3B5EA12BAF7A8000CFE490 /* DateAndTimeTableViewCell.swift in Sources */,
+				8C3B5E8C2BAF798F00CFE490 /* ThemeViewController.swift in Sources */,
 				9E5B75112B7F9CE300E2BDE6 /* ImagePickerView.swift in Sources */,
 				9E53FB522B7F951400C55A45 /* String+Extension.swift in Sources */,
 				9E4F22BC2B9F3C2E003E749E /* TimerInteractor.swift in Sources */,
@@ -1161,11 +1467,15 @@
 				9EE8AE142B7FB8CF001D126F /* SettingsContainer.swift in Sources */,
 				9E5B75402B7F9D7600E2BDE6 /* PageViewModel.swift in Sources */,
 				9E4F22AF2B9F3C05003E749E /* ResultsProtocols.swift in Sources */,
+				8C3B5E6D2BAF77A900CFE490 /* SettingsTableViewCell.swift in Sources */,
 				9E2A8BC92B850461004A81CF /* FIrebaseAuthService.swift in Sources */,
+				8C3B5EB12BAF7C1800CFE490 /* UnitsTableViewCell.swift in Sources */,
 				9E5B74FE2B7F9A7000E2BDE6 /* SignUpViewController.swift in Sources */,
 				9E5B74EC2B7F99FB00E2BDE6 /* WelcomeScreenViewController.swift in Sources */,
 				9EE8AE362B7FB96E001D126F /* WorkoutPresenter.swift in Sources */,
 				9E4F228A2B9F3BB4003E749E /* TrainingPresenter.swift in Sources */,
+				8C3B5EDA2BAF7DD400CFE490 /* DeleteAccountInteractor.swift in Sources */,
+				8C3B5E8F2BAF798F00CFE490 /* ThemeContainer.swift in Sources */,
 				9E5B75102B7F9CE300E2BDE6 /* UserTextFieldView.swift in Sources */,
 				9EE8AE112B7FB8CF001D126F /* SettingsViewController.swift in Sources */,
 				9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */,
@@ -1173,14 +1483,17 @@
 				9E4F22872B9F3BB4003E749E /* TrainingTableViewCell.swift in Sources */,
 				9EE8AE3B2B7FB96E001D126F /* WorkoutContainer.swift in Sources */,
 				9E4F227B2B9F3B9B003E749E /* NotepadTableViewCellViewModel.swift in Sources */,
+				8C3B5E9D2BAF7A2700CFE490 /* DateAndTimeProtocols.swift in Sources */,
 				9E4F229D2B9F3BDD003E749E /* ExerciseContainer.swift in Sources */,
 				9E4F22B42B9F3C14003E749E /* ResultsViewModel.swift in Sources */,
+				8C3B5E782BAF78D100CFE490 /* ProfilePresenter.swift in Sources */,
 				9E4382D62B83738800C69708 /* GoogleAuthService.swift in Sources */,
 				9EE8AE1C2B7FB905001D126F /* ProgressPresenter.swift in Sources */,
 				9E4F22AB2B9F3C05003E749E /* ResultsRouter.swift in Sources */,
 				9EE8AE1D2B7FB905001D126F /* ProgressRouter.swift in Sources */,
 				9EE8AE382B7FB96E001D126F /* WorkoutViewController.swift in Sources */,
 				9E5B753C2B7F9D7600E2BDE6 /* ContentView.swift in Sources */,
+				8C3B5E7C2BAF78D100CFE490 /* ProfileInteractor.swift in Sources */,
 				9E4F22AE2B9F3C05003E749E /* ResultsTableViewCell.swift in Sources */,
 				9E4F22862B9F3BB4003E749E /* TrainingContainer.swift in Sources */,
 				9E5B75452B7F9D7600E2BDE6 /* AgeView.swift in Sources */,
@@ -1190,16 +1503,27 @@
 				9E5B74FA2B7F9A7000E2BDE6 /* SignUpProtocols.swift in Sources */,
 				9E4766E02BA350B000DD31B9 /* HealthKitService.swift in Sources */,
 				9EE8AE202B7FB905001D126F /* ProgressInteractor.swift in Sources */,
+				8C3B5EAF2BAF7BC400CFE490 /* UnitsContainer.swift in Sources */,
 				9E4F226F2B9F3B8F003E749E /* NotepadContainer.swift in Sources */,
 				9E4F22712B9F3B8F003E749E /* NotepadViewController.swift in Sources */,
 				9E4F22C02B9F3C2E003E749E /* TimerContainer.swift in Sources */,
+				8C3B5ECA2BAF7D4300CFE490 /* ChangePasswordViewController.swift in Sources */,
+				8C3B5E8D2BAF798F00CFE490 /* ThemeProtocols.swift in Sources */,
 				9E4F22AA2B9F3C05003E749E /* ResultsContainer.swift in Sources */,
+				8C3B5ECB2BAF7D4300CFE490 /* ChangePasswordProtocols.swift in Sources */,
+				8C3B5E6F2BAF77DC00CFE490 /* SettingsViewModel.swift in Sources */,
+				8C3B5E8A2BAF798F00CFE490 /* ThemePresenter.swift in Sources */,
 				9E53FB4E2B7F950B00C55A45 /* Color+Extension.swift in Sources */,
 				9E4766DA2B9FC0BD00DD31B9 /* View+Extension.swift in Sources */,
+				8C3B5EC82BAF7D4300CFE490 /* ChangePasswordPresenter.swift in Sources */,
 				9EE8AE372B7FB96E001D126F /* WorkoutRouter.swift in Sources */,
 				9E4F22D02B9F3C51003E749E /* ExtraInteractor.swift in Sources */,
+				8C3B5E7B2BAF78D100CFE490 /* ProfileProtocols.swift in Sources */,
 				9EBFD9652BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift in Sources */,
 				9E4382D52B83738800C69708 /* AuthService.swift in Sources */,
+				8C3B5EBB2BAF7CA500CFE490 /* ChangeEmailRouter.swift in Sources */,
+				8C3B5E712BAF780200CFE490 /* ProfileViewModel.swift in Sources */,
+				8C3B5EBE2BAF7CA500CFE490 /* ChangeEmailInteractor.swift in Sources */,
 				9EE3359D2B8F9CEA00F532B3 /* SplashPresenter.swift in Sources */,
 				9E4766D82B9F516F00DD31B9 /* StorageService.swift in Sources */,
 				9E53FB342B7F87BA00C55A45 /* AppDelegate.swift in Sources */,
@@ -1207,44 +1531,67 @@
 				9E5B75162B7F9D3500E2BDE6 /* GenderButtonView.swift in Sources */,
 				9E4F229C2B9F3BDD003E749E /* ExerciseInteractor.swift in Sources */,
 				9E7C199D2B8F482E0006D48C /* KeychainService.swift in Sources */,
+				8C3B5E9C2BAF7A2700CFE490 /* DateAndTimeViewController.swift in Sources */,
 				9E4382D42B83738800C69708 /* VKIDAuthService.swift in Sources */,
 				9E5B75442B7F9D7600E2BDE6 /* AgeViewModel.swift in Sources */,
 				9E5B74EB2B7F99FB00E2BDE6 /* WelcomeScreenProtocols.swift in Sources */,
 				9E4F22CC2B9F3C51003E749E /* ExtraRouter.swift in Sources */,
 				9E4F228F2B9F3BC4003E749E /* TrainingTableViewCellViewModel.swift in Sources */,
+				8C3B5EAC2BAF7BC400CFE490 /* UnitsViewController.swift in Sources */,
+				8C3B5EBA2BAF7CA500CFE490 /* ChangeEmailPresenter.swift in Sources */,
+				8C3B5E9E2BAF7A2700CFE490 /* DateAndTimeInteractor.swift in Sources */,
 				9E5B754A2B7F9D7600E2BDE6 /* OnBoardingViewController.swift in Sources */,
+				8C3B5ECF2BAF7D8C00CFE490 /* DeleteAccountViewModel.swift in Sources */,
 				9E4F22992B9F3BDD003E749E /* ExerciseViewController.swift in Sources */,
 				9E2A8BCD2B8520B2004A81CF /* AlertManager.swift in Sources */,
+				8C3B5ED82BAF7DD400CFE490 /* DeleteAccountViewController.swift in Sources */,
+				8C3B5E9B2BAF7A2700CFE490 /* DateAndTimeRouter.swift in Sources */,
 				9E4F22A02B9F3BEA003E749E /* ExerciseViewModel.swift in Sources */,
+				8C3B5EC92BAF7D4300CFE490 /* ChangePasswordRouter.swift in Sources */,
 				9EE8AE3A2B7FB96E001D126F /* WorkoutInteractor.swift in Sources */,
 				9E4F22642B9F3B5C003E749E /* User.swift in Sources */,
 				9E4F228B2B9F3BB4003E749E /* TrainingProtocols.swift in Sources */,
 				9E4F22722B9F3B8F003E749E /* NotepadInteractor.swift in Sources */,
 				9E4F22D82B9F3D09003E749E /* CustomError.swift in Sources */,
 				9EE8AE122B7FB8CF001D126F /* SettingsProtocols.swift in Sources */,
+				8C3B5EAD2BAF7BC400CFE490 /* UnitsProtocols.swift in Sources */,
 				9E5B75412B7F9D7600E2BDE6 /* PageView.swift in Sources */,
+				8C3B5EA32BAF7BAA00CFE490 /* UnitsViewModel.swift in Sources */,
 				9E53FB502B7F951000C55A45 /* UIColor+Extension.swift in Sources */,
 				9E53FB4C2B7F950400C55A45 /* UIView+Extension.swift in Sources */,
 				9EBFD9672BAB273400A1891D /* CoreDataService.swift in Sources */,
 				9E5B750D2B7F9A8300E2BDE6 /* SignInPresenter.swift in Sources */,
+				8C3B5E812BAF794E00CFE490 /* ProfileTableViewCellWithTitle.swift in Sources */,
 				9E4F22B32B9F3C14003E749E /* ResultsTableViewCellViewModel.swift in Sources */,
 				9E5B75462B7F9D7600E2BDE6 /* ProfileAcknowledgementView.swift in Sources */,
 				9E5B753D2B7F9D7600E2BDE6 /* DecimalTextFieldView.swift in Sources */,
 				9EE8AE0F2B7FB8CF001D126F /* SettingsPresenter.swift in Sources */,
 				9E7C19972B8BF1340006D48C /* PasswordGenerator.swift in Sources */,
+				8C3B5ED62BAF7DD400CFE490 /* DeleteAccountPresenter.swift in Sources */,
 				9E53FB362B7F87BA00C55A45 /* SceneDelegate.swift in Sources */,
 				9E5B74FD2B7F9A7000E2BDE6 /* SignUpContainer.swift in Sources */,
+				8C3B5EBD2BAF7CA500CFE490 /* ChangeEmailProtocols.swift in Sources */,
 				9E5B750B2B7F9A8300E2BDE6 /* SignInViewModel.swift in Sources */,
+				8C3B5EDB2BAF7DD400CFE490 /* DeleteAccountContainer.swift in Sources */,
 				9E5B750C2B7F9A8300E2BDE6 /* SignInInteractor.swift in Sources */,
+				8C3B5EB32BAF7C8200CFE490 /* ChangeEmailViewModel.swift in Sources */,
 				9E4F229B2B9F3BDD003E749E /* ExerciseRouter.swift in Sources */,
 				9E7C199B2B8D0EC50006D48C /* SignInModel.swift in Sources */,
 				9E4F22C12B9F3C2E003E749E /* TimerRouter.swift in Sources */,
+				8C3B5E9F2BAF7A2700CFE490 /* DateAndTimeContainer.swift in Sources */,
 				9E5B75432B7F9D7600E2BDE6 /* AgeModel.swift in Sources */,
+				8C3B5E9A2BAF7A2700CFE490 /* DateAndTimePresenter.swift in Sources */,
+				8C3B5EAA2BAF7BC400CFE490 /* UnitsPresenter.swift in Sources */,
 				9E4F22882B9F3BB4003E749E /* TrainingRouter.swift in Sources */,
+				8C3B5ED72BAF7DD400CFE490 /* DeleteAccountRouter.swift in Sources */,
 				9E4F22702B9F3B8F003E749E /* NotepadRouter.swift in Sources */,
 				9E5B75392B7F9D7600E2BDE6 /* GenderView.swift in Sources */,
+				8C3B5E7F2BAF793100CFE490 /* ProfileTableViewCellWithTextField.swift in Sources */,
 				9E5B74FB2B7F9A7000E2BDE6 /* SignUpPresenter.swift in Sources */,
+				8C3B5ECC2BAF7D4300CFE490 /* ChangePasswordInteractor.swift in Sources */,
+				8C3B5E912BAF79E900CFE490 /* ThemeTableViewCell.swift in Sources */,
 				9E5B750A2B7F9A8300E2BDE6 /* SignInViewController.swift in Sources */,
+				8C3B5E7A2BAF78D100CFE490 /* ProfileViewController.swift in Sources */,
 				9E4F22AD2B9F3C05003E749E /* ResultsPresenter.swift in Sources */,
 				9E4F22C42B9F3C3C003E749E /* TimerViewModel.swift in Sources */,
 				9E4F22CD2B9F3C51003E749E /* ExtraViewController.swift in Sources */,
@@ -1252,6 +1599,7 @@
 				9EE8AE1F2B7FB905001D126F /* ProgressProtocols.swift in Sources */,
 				9E5B753F2B7F9D7600E2BDE6 /* WeightView.swift in Sources */,
 				9E5B754C2B7F9D7600E2BDE6 /* ProfileSetupModel.swift in Sources */,
+				8C3B5ECD2BAF7D4300CFE490 /* ChangePasswordContainer.swift in Sources */,
 				9E4F22632B9F3B5C003E749E /* Workout.swift in Sources */,
 				9E5B74EE2B7F99FB00E2BDE6 /* WelcomeScreenPresenter.swift in Sources */,
 			);
@@ -1412,7 +1760,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72F47Y7J7T;
+				DEVELOPMENT_TEAM = NS3YD2TYB9;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -1443,7 +1791,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72F47Y7J7T;
+				DEVELOPMENT_TEAM = NS3YD2TYB9;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;

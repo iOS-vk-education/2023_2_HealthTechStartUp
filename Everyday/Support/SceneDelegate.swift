@@ -30,6 +30,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController = viewController
         }
         
+        setTheme()
         splashPresenter?.present()
         
         let delay: TimeInterval = 1.5
@@ -74,7 +75,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         DispatchQueue.main.async { [weak self] in
             let nav = UINavigationController(rootViewController: viewController)
             if viewController is TabBarController {
-                nav.setNavigationBarHidden(true, animated: false)
+                nav.setNavigationBarHidden(false, animated: false)
             }
             nav.modalPresentationStyle = .fullScreen
             self?.window?.rootViewController = nav

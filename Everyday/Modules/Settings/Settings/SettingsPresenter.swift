@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by Михаил on 16.02.2024.
-//  
+//
 //
 
 import Foundation
@@ -25,6 +25,21 @@ extension SettingsPresenter: SettingsModuleInput {
 }
 
 extension SettingsPresenter: SettingsViewOutput {
+    func didTapThemeCell() {
+        router.getThemeView()
+    }
+    
+    func didTapDateAndTimeCell() {
+        router.getDateAndTimeView()
+    }
+    
+    func didTapUnitsCell() {
+        router.getUnitsView()
+    }
+    
+    func didTapProfileCell() {
+        router.getProfileView()
+    }
 }
 
 extension SettingsPresenter: SettingsInteractorOutput {
