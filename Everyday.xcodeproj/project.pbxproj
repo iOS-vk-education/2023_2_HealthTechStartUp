@@ -916,12 +916,12 @@
 		9EE8AE222B7FB91E001D126F /* Notepad */ = {
 			isa = PBXGroup;
 			children = (
-				9E4F22C52B9F3C44003E749E /* ExtraScene */,
+				9E4F22652B9F3B82003E749E /* NotepadScene */,
+				9E4F227D2B9F3BA4003E749E /* TrainingScene */,
+				9E4F22912B9F3BCE003E749E /* ExerciseScene */,
 				9E4F22B52B9F3C20003E749E /* TimerScene */,
 				9E4F22A12B9F3BF8003E749E /* ResultsScene */,
-				9E4F22912B9F3BCE003E749E /* ExerciseScene */,
-				9E4F227D2B9F3BA4003E749E /* TrainingScene */,
-				9E4F22652B9F3B82003E749E /* NotepadScene */,
+				9E4F22C52B9F3C44003E749E /* ExtraScene */,
 			);
 			path = Notepad;
 			sourceTree = "<group>";
