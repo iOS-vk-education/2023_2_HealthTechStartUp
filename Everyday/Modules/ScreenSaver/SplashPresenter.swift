@@ -15,7 +15,9 @@ protocol SplashPresenterDescription: AnyObject {
 final class SplashPresenter: SplashPresenterDescription {
     
     // MARK: - Properties
+    
     private let scene: UIWindowScene
+    private var index: Int = 0
     
     init(scene: UIWindowScene) {
         self.scene = scene
@@ -38,11 +40,14 @@ final class SplashPresenter: SplashPresenterDescription {
         return splashWindow
     }()
     
-    private lazy var text: String? = {
-        let texts = ["Text1", "Text2", "Text3"]
-        let textIndex = Int.random(in: 0..<texts.count)
+    private lazy var text: NSAttributedString? = {
         
-        return texts[textIndex]
+        let texts = SplashText()
+        let textIndex = Int.random(in: 0..<texts.text.count)
+        
+        index = textIndex
+        
+        return texts.text[textIndex]
     }()
     
     // MARK: - Helpers
@@ -57,7 +62,7 @@ final class SplashPresenter: SplashPresenterDescription {
         return splashWindow
     }
         
-    private func splashViewController(with text: String?, logoIsHidden: Bool) -> SplashViewController? {
+    private func splashViewController(with text: NSAttributedString?, logoIsHidden: Bool) -> SplashViewController? {
         let storyboard = UIStoryboard(name: "Main", bundle: nil)
         let viewController = storyboard.instantiateViewController(withIdentifier: "SplashViewController")
         let splashViewController = viewController as? SplashViewController
@@ -76,5 +81,35 @@ final class SplashPresenter: SplashPresenterDescription {
     
     func dismiss(completion: @escaping () -> Void) {
         animator.animateDisappearance(completion: completion)
+    }
+}
+
+// MARK: - extension
+
+struct SplashText {
+    let text: [NSAttributedString]
+    
+    init() {
+        text = [
+            NSAttributedString(string: "SplashPresenter_text1".localized, attributes: Styles.titleAttributes),
+            NSAttributedString(string: "SplashPresenter_text2".localized, attributes: Styles.titleAttributes),
+            NSAttributedString(string: "SplashPresenter_text3".localized, attributes: Styles.titleAttributes),
+            NSAttributedString(string: "SplashPresenter_text4".localized, attributes: Styles.titleAttributes),
+            NSAttributedString(string: "SplashPresenter_text5".localized, attributes: Styles.titleAttributes),
+            NSAttributedString(string: "SplashPresenter_text6".localized, attributes: Styles.titleAttributes),
+            NSAttributedString(string: "SplashPresenter_text7".localized, attributes: Styles.titleAttributes),
+            NSAttributedString(string: "SplashPresenter_text8".localized, attributes: Styles.titleAttributes),
+            NSAttributedString(string: "SplashPresenter_text9".localized, attributes: Styles.titleAttributes),
+            NSAttributedString(string: "SplashPresenter_text10".localized, attributes: Styles.titleAttributes)
+        ]
+    }
+}
+
+private extension SplashText {
+    struct Styles {
+        static let titleAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.Text.primary,
+            .font: UIFont.systemFont(ofSize: 26)
+        ]
     }
 }

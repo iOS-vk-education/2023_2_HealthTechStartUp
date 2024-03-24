@@ -19,6 +19,16 @@ final class SignUpPresenter {
         self.router = router
         self.interactor = interactor
     }
+    
+    private func checkAuth(for service: String) {
+        let message = "AlertManager_signedUp_message"
+        if interactor.isAuthExist(for: service) {
+            view?.showAlert(with: "signed", message: message)
+            return
+        } else {
+            router.openOnBoarding(with: service)
+        }
+    }
 }
 
 extension SignUpPresenter: SignUpModuleInput {
@@ -37,57 +47,62 @@ extension SignUpPresenter: SignUpViewOutput {
         
         ProfileAcknowledgementModel.shared.update(firstname: generator.generateName(),
                                                   lastname: generator.generateSurname())
-        router.openOnBoarding()
+        checkAuth(for: Constants.anonym)
     }
     
     func didTapSignUpButton(with email: String?, and password: String?) {
         AuthModel.shared.whichSign = .common
         
         if !Validator.isValidEmail(for: email ?? "") {
-            view?.showAlert(with: "email", message: NSMutableAttributedString(string: ""))
+            view?.showAlert(with: Constants.email, message: "")
             return
         }
         
         let validationErrors = Validator.validatePassword(for: password ?? "")
-        if  validationErrors.length > 0 {
-            view?.showAlert(with: "password", message: validationErrors)
+        if  !validationErrors.isEmpty {
+            view?.showAlert(with: Constants.password, message: validationErrors)
             return
         }
         
         ProfileAcknowledgementModel.shared.update(email: email, password: password)
-        router.openOnBoarding()
+        checkAuth(for: Constants.email)
     }
     
     func didTapSignWithVKButton() {
         AuthModel.shared.whichSign = .vk
-        
-        interactor.authWithVKID { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    self.router.openOnBoarding()
-                case .failure(let error):
-                    self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
-                }
-            }
-        }
+        interactor.authWithVKID()
     }
 
     func didTapSignWithGoogleButton() {
         AuthModel.shared.whichSign = .google
-        
-        interactor.authWithGoogle { result in
-            DispatchQueue.main.async {
-                switch result {
-                case .success:
-                    self.router.openOnBoarding()
-                case .failure(let error):
-                    self.view?.showAlert(with: "network", message: NSMutableAttributedString(string: error.localizedDescription))
-                }
-            }
-        }
+        interactor.authWithGoogle()
+    }
+    
+    // MARK: - Constants
+    
+    struct Constants {
+        static let vk: String = "vk"
+        static let google: String = "google"
+        static let email: String = "email"
+        static let anonym: String = "anonym"
+        static let network: String = "network"
+        static let password: String = "password"
     }
 }
 
 extension SignUpPresenter: SignUpInteractorOutput {
+    func authResult(service: String, _ result: Result<Void, Error>) {
+        DispatchQueue.main.async {
+            switch result {
+            case .success:
+                self.checkAuth(for: service)
+            case .failure(let error):
+                self.view?.showAlert(with: Constants.network, message: error.localizedDescription)
+            }
+        }
+    }
+    
+    func authExistResult(isExists: Bool) -> Bool {
+        return isExists
+    }
 }

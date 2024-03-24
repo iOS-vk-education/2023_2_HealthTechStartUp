@@ -38,24 +38,27 @@ final class SplashAnimator: SplashAnimatorDescription {
         foregroundSplashWindow.isHidden = false
 
         foregroundSplashViewController.logoImageView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-        foregroundSplashViewController.textLabel.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        foregroundSplashViewController.quoteLabel.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+        
         foregroundSplashViewController.logoImageView.alpha = 0
-        foregroundSplashViewController.textLabel.alpha = 0
+        foregroundSplashViewController.quoteLabel.alpha = 0
 
         UIView.animate(withDuration: 0.5, animations: {
             self.foregroundSplashViewController.logoImageView.transform = .identity
-            self.foregroundSplashViewController.textLabel.transform = .identity
+            self.foregroundSplashViewController.quoteLabel.transform = .identity
+            
             self.foregroundSplashViewController.logoImageView.alpha = 1
-            self.foregroundSplashViewController.textLabel.alpha = 1
+            self.foregroundSplashViewController.quoteLabel.alpha = 1
         })
     }
     
     func animateDisappearance(completion: @escaping () -> Void) {
         UIView.animate(withDuration: 0.5, animations: {
             self.foregroundSplashViewController.logoImageView.alpha = 0
-            self.foregroundSplashViewController.textLabel.alpha = 0
+            self.foregroundSplashViewController.quoteLabel.alpha = 0
+            
             self.foregroundSplashViewController.logoImageView.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
-            self.foregroundSplashViewController.textLabel.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
+            self.foregroundSplashViewController.quoteLabel.transform = CGAffineTransform(scaleX: 0.5, y: 0.5)
         }, completion: { _ in
             self.backgroundSplashWindow.isHidden = true
             self.foregroundSplashWindow.isHidden = true

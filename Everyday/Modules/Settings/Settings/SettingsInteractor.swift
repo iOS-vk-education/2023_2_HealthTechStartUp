@@ -18,9 +18,4 @@ final class SettingsInteractor {
 }
 
 extension SettingsInteractor: SettingsInteractorInput {
-    func logout(completion: @escaping (Result<Void, Error>) -> Void) {
-        authService.logout { result in
-            completion(result)
-        }
-    }
 }

@@ -39,13 +39,20 @@ final class GoogleAuthService: GoogleAuthServiceDescription {
 
             GoogleAuthService.shared.credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: user.accessToken.tokenString)
             
-            ProfileAcknowledgementModel.shared.update(firstname: user.profile?.givenName,
-                                                      lastname: user.profile?.familyName,
-                                                      email: user.profile?.email)
-            
-            // let profilePicUrl = user.profile?.imageURL(withDimension: 320)
-            
-            completion(.success(()))
+            if let profilePicUrl = user.profile?.imageURL(withDimension: Constants.imageDimension) {
+                self.downloadProfileImage(from: profilePicUrl) { image in
+                    guard let image = image else {
+                        completion(.failure(NSError(domain: "DownloadError", code: -2, 
+                                                    userInfo: [NSLocalizedDescriptionKey: "Unable to download profile image"])))
+                        return
+                    }
+                    ProfileAcknowledgementModel.shared.update(firstname: user.profile?.givenName,
+                                                              lastname: user.profile?.familyName,
+                                                              email: user.profile?.email,
+                                                              profileImage: image)
+                }
+                completion(.success(()))
+            }
         }
     }
     
@@ -72,5 +79,22 @@ final class GoogleAuthService: GoogleAuthServiceDescription {
                 completion(.success(()))
             }
         }
+    }
+    
+    func downloadProfileImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil, let image = UIImage(data: data) else {
+                completion(nil)
+                return
+            }
+            completion(image)
+        }.resume()
+    }
+}
+
+// MARK: - Constants
+private extension GoogleAuthService {
+    struct Constants {
+        static let imageDimension: UInt = 320
     }
 }

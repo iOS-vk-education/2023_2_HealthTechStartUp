@@ -58,14 +58,23 @@ final class VKIDAuthService: VKIDAuthServiceDescription {
                 
                 KeychainService.savePassword(password, for: email)
                 
-                ProfileAcknowledgementModel.shared.update(firstname: session.user.firstName,
-                                                          lastname: session.user.lastName,
-                                                          email: email,
-                                                          password: password)
-                
-                // session.user.avatarURL
-                
-                completion(.success(()))
+                if let avatarURL = session.user.avatarURL {
+                    self.downloadProfileImage(from: avatarURL) { image in
+                        guard let image = image else {
+                            completion(.failure(NSError(domain: "DownloadError", code: -2,
+                                                        userInfo: [NSLocalizedDescriptionKey: "Unable to download profile image"])))
+                            return
+                        }
+                        
+                        ProfileAcknowledgementModel.shared.update(firstname: session.user.firstName,
+                                                                  lastname: session.user.lastName,
+                                                                  email: email,
+                                                                  password: password,
+                                                                  profileImage: image)
+                    }
+                    
+                    completion(.success(()))
+                }
             } catch AuthError.cancelled {
                 return                
             } catch {
@@ -106,5 +115,15 @@ final class VKIDAuthService: VKIDAuthServiceDescription {
                 return
             }
         }
+    }
+    
+    func downloadProfileImage(from url: URL, completion: @escaping (UIImage?) -> Void) {
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            guard let data = data, error == nil, let image = UIImage(data: data) else {
+                completion(nil)
+                return
+            }
+            completion(image)
+        }.resume()
     }
 }

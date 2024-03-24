@@ -176,12 +176,14 @@ final class WelcomeScreenViewController: UIViewController {
     
     @objc
     private func didTapSignUpButton() {
+        view.endEditing(true)
         controllersScrollView.setContentOffset(.zero, animated: true)
         activePage = .signUp
     }
     
     @objc
     private func didTapSignInButton() {
+        view.endEditing(true)
         controllersScrollView.setContentOffset(CGPoint(x: controllersScrollView.frame.width, y: .zero), animated: true)
         activePage = .signIn
     }
@@ -244,6 +246,10 @@ extension WelcomeScreenViewController: UIScrollViewDelegate {
     func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
         let pageIndex = round(scrollView.contentOffset.x / view.frame.width)
         activePage = pageIndex == 0 ? .signUp : .signIn
+    }
+    
+    func scrollViewWillBeginDragging(_ scrollView: UIScrollView) {
+        view.endEditing(true)
     }
 }
 

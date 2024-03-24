@@ -18,6 +18,7 @@ final class AuthModel {
         case common
         case anonym
         case none
+        case email
     }
     
     var whichSign: Sign = .none
@@ -120,32 +121,42 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
             return
         }
         
-        updateUserProfile(resultUser: resultUser, userRequest: userRequest, completion: completion)
+       updateUserProfile(resultUser: resultUser, userRequest: userRequest, completion: completion)
     }
     
     private func updateUserProfile(resultUser: User, userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void) {
-        let db = Firestore.firestore()
-        let userData: [String: Any] = [
-            "firstname": userRequest.firstname ?? "",
-            "lastname": userRequest.lastname ?? "",
-            "nickname": userRequest.nickname ?? "",
-            "email": userRequest.email ?? "",
-            "age": userRequest.age ?? "",
-            "gender": userRequest.gender ?? "",
-            "weight": userRequest.weight ?? "",
-            "schedule": userRequest.schedule
-        ]
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(false, NSError(domain: "FirebaseAuthService", code: 0, userInfo: [NSLocalizedDescriptionKey: "UID пользователя не найден"]))
+            return
+        }
         
-        db.collection("user").document(resultUser.uid).setData(userData) { error in
-            if let error = error {
-                completion(false, error)
-            } else {
-                completion(true, nil)
+        if let profileImage = userRequest.profileImage {
+            let storage: StorageServiceDescription = StorageService.shared
+            Task {
+                do {
+                    let (path, _) = try await storage.saveImage(image: profileImage, userId: userId)
+                    let userData: [String: Any] = [
+                        "firstname": userRequest.firstname ?? "",
+                        "lastname": userRequest.lastname ?? "",
+                        "nickname": userRequest.nickname ?? "",
+                        "email": userRequest.email ?? "",
+                        "age": userRequest.age ?? "",
+                        "gender": userRequest.gender ?? "",
+                        "weight": userRequest.weight ?? "",
+                        "schedule": userRequest.schedule,
+                        "profileImage": path,
+                        "measureUnit": userRequest.measureUnit ?? ""
+                    ]
+                    
+                    try await Firestore.firestore().collection("user").document(userId).setData(userData)
+                    completion(true, nil)
+                } catch {
+                    completion(false, error)
+                }
             }
         }
     }
 }
-
 //    
 //    public func forgotPassword(with email: String, completion: @escaping (Error?) -> Void) {
 //        Auth.auth().sendPasswordReset(withEmail: email) { error in
