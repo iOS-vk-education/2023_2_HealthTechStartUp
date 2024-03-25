@@ -123,6 +123,13 @@ extension DateAndTimeViewController: UITableViewDataSource {
         let model = DateAndTimeViewModel()
         
         if indexPath.section == 0 {
+            if indexPath == getSelectedBeginningOfTheWeekIndexPath() {
+                let accessoryView = UIImageView(image: model.accessoryCellImage)
+                accessoryView.tintColor = Constants.accentColor
+                cell.accessoryView = accessoryView
+            } else {
+                cell.accessoryView = nil
+            }
             let viewModel = model.weekStartsSectionModel
             cell.configure(with: viewModel[indexPath.row])
             
@@ -130,6 +137,13 @@ extension DateAndTimeViewController: UITableViewDataSource {
         }
         
         if indexPath.section == 1 {
+            if indexPath == getSelectedTimeFormatIndexPath() {
+                let accessoryView = UIImageView(image: model.accessoryCellImage)
+                accessoryView.tintColor = Constants.accentColor
+                cell.accessoryView = accessoryView
+            } else {
+                cell.accessoryView = nil
+            }
             let viewModel = model.hoursFormatSectionModel
             cell.configure(with: viewModel[indexPath.row])
             
@@ -143,6 +157,16 @@ extension DateAndTimeViewController: UITableViewDataSource {
 extension DateAndTimeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        if indexPath.section == 0 {
+            setBeginningOfTheWeek(indexPath: indexPath)
+        }
+        
+        if indexPath.section == 1 {
+            setTimeFormat(indexPath: indexPath)
+        }
+        
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

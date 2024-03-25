@@ -17,6 +17,8 @@ protocol SettingsModuleOutput: AnyObject {
 }
 
 protocol SettingsViewInput: AnyObject {
+    func reloadData()
+//    func confiure(with: SettingsViewModel)
 }
 
 protocol SettingsViewOutput: AnyObject {

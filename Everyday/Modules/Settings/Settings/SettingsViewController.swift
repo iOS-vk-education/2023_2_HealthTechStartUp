@@ -35,8 +35,9 @@ final class SettingsViewController: UIViewController {
         super.viewDidLoad()
         view.backgroundColor = Constants.backgroundColor
         
-        navBarTitle.attributedText = SettingsViewModel().settingsTitle
-        self.navigationItem.titleView = navBarTitle
+        navigationController?.navigationBar.isHidden = false
+        
+        tableView.reloadData()
         
         setup()
     }
@@ -87,12 +88,18 @@ private extension SettingsViewController {
               let indexPath = tableView.indexPath(for: cell) else {
             return
         }
-        
+        print(indexPath.row, "ipath")
         saveSwitchValue(switchState: sender.isOn, key: indexPath.row)
     }
 }
 
 extension SettingsViewController: SettingsViewInput {
+    func confiure(with model: SettingsViewModel) {
+    }
+    
+    func reloadData() {
+        tableView.reloadData()
+    }
 }
 
 extension SettingsViewController: UITableViewDataSource {
@@ -202,7 +209,7 @@ extension SettingsViewController: UITableViewDelegate {
             default: print("ERROR")
             }
         }
-//        print(indexPath)
+        print(indexPath)
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {

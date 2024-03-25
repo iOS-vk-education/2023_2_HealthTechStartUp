@@ -35,13 +35,17 @@ final class ChangePasswordViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        output.didLoadView()
         
         view.backgroundColor = Constants.backgroundColor
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapWholeView))
+                gestureRecognizer.cancelsTouchesInView = false
+                view.addGestureRecognizer(gestureRecognizer)
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
         self.view.addGestureRecognizer(swipeRight)
         
-        navBarTitle.attributedText = ChangePasswordViewModel().changePasswordTitle
         self.navigationItem.titleView = navBarTitle
         navigationController?.navigationBar.tintColor = Constants.accentColor
         
@@ -76,15 +80,12 @@ private extension ChangePasswordViewController {
     }
     
     func setupFields() {
-        oldPasswordField.attributedPlaceholder = ChangePasswordViewModel().oldPasswordFieldTitle
-        passwordField.attributedPlaceholder = ChangePasswordViewModel().newPasswordFieldTitle
-        
         [oldPasswordField, passwordField].forEach { field in
             let leftView = UIView(frame: CGRect(x: 0,
                                                 y: 0,
                                                 width: 10,
                                                 height: 0))
-            
+            field.autocapitalizationType = .none
             field.backgroundColor = Constants.gray.withAlphaComponent(Constants.TextField.colorOpacity)
             field.layer.cornerRadius = Constants.cornerRadius
             field.attributedPlaceholder = NSAttributedString(
@@ -98,8 +99,9 @@ private extension ChangePasswordViewController {
     
     func setupButtons() {
         confirmButton.backgroundColor = Constants.gray.withAlphaComponent(Constants.TextField.colorOpacity)
-        confirmButton.setAttributedTitle(ChangePasswordViewModel().confirmButtonTitle, for: .normal)
         confirmButton.layer.cornerRadius = Constants.cornerRadius
+        
+        confirmButton.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
     }
     
     // MARK: - Layout
@@ -146,6 +148,19 @@ private extension ChangePasswordViewController {
     // MARK: - Actions
 
     @objc
+    private func didTapWholeView() {
+        view.endEditing(true)
+    }
+    
+    @objc
+    private func didTapConfirmButton() {
+        let oldPassword = self.oldPasswordField.text ?? ""
+        let newPassword = self.passwordField.text ?? ""
+        
+        output.didTapConfirmButton(with: oldPassword, and: newPassword)
+    }
+    
+    @objc
     func swipeFunc(gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .right {
             output.getBack()
@@ -153,7 +168,24 @@ private extension ChangePasswordViewController {
     }
 }
 
+// MARK: - ChangePasswordViewInput
+
 extension ChangePasswordViewController: ChangePasswordViewInput {
+    func showAlert(with key: String, message: String) {
+        switch key {
+        case "password": AlertManager.showInvalidPasswordAlert(on: self, message: message)
+        case "invalidPassword": AlertManager.showInvalidPasswordAlert(on: self)
+        default: let error = NSError(domain: "Everydaytech.ru", code: 400)
+            AlertManager.showSignInErrorAlert(on: self, with: error)
+        }
+    }
+    
+    func configure(with model: ChangePasswordViewModel) {
+        navBarTitle.attributedText = model.changePasswordTitle
+        oldPasswordField.attributedPlaceholder = model.oldPasswordFieldTitle
+        passwordField.attributedPlaceholder = model.newPasswordFieldTitle
+        confirmButton.setAttributedTitle(model.confirmButtonTitle, for: .normal)
+    }
 }
 
         // MARK: - Constants

@@ -15,7 +15,7 @@ final class ChangePasswordContainer {
     
     class func assemble(with context: ChangePasswordContext) -> ChangePasswordContainer {
         let router = ChangePasswordRouter()
-        let interactor = ChangePasswordInteractor()
+        let interactor = ChangePasswordInteractor(authService: AuthService.shared)
         let presenter = ChangePasswordPresenter(router: router, interactor: interactor)
         let viewController = ChangePasswordViewController(output: presenter)
         

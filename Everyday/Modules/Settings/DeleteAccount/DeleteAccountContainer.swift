@@ -15,7 +15,7 @@ final class DeleteAccountContainer {
     
     class func assemble(with context: DeleteAccountContext) -> DeleteAccountContainer {
         let router = DeleteAccountRouter()
-        let interactor = DeleteAccountInteractor()
+        let interactor = DeleteAccountInteractor(authService: AuthService.shared)
         let presenter = DeleteAccountPresenter(router: router, interactor: interactor)
         let viewController = DeleteAccountViewController(output: presenter)
         

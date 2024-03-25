@@ -34,13 +34,18 @@ final class DeleteAccountViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        output.didLoadView()
         
         view.backgroundColor = Constants.backgroundColor
         
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapWholeView))
+                gestureRecognizer.cancelsTouchesInView = false
+                view.addGestureRecognizer(gestureRecognizer)
+        
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
+        
         self.view.addGestureRecognizer(swipeRight)
         
-        navBarTitle.attributedText = DeleteAccountViewModel().deleteAcountTitle
         self.navigationItem.titleView = navBarTitle
         navigationController?.navigationBar.tintColor = Constants.accentColor
         
@@ -75,15 +80,12 @@ private extension DeleteAccountViewController {
     }
     
     func setupFields() {
-        emailField.attributedPlaceholder = DeleteAccountViewModel().emailFielfTitle
-        passwordField.attributedPlaceholder = DeleteAccountViewModel().passwordFieldTitle
-        
         [emailField, passwordField].forEach { field in
             let leftView = UIView(frame: CGRect(x: 0,
                                                 y: 0,
                                                 width: 10,
                                                 height: 0))
-            
+            field.autocapitalizationType = .none
             field.backgroundColor = Constants.gray.withAlphaComponent(Constants.TextField.colorOpacity)
             field.layer.cornerRadius = Constants.cornerRadius
             field.attributedPlaceholder = NSAttributedString(
@@ -97,8 +99,8 @@ private extension DeleteAccountViewController {
     
     func setupButtons() {
         confirmButton.backgroundColor = Constants.gray.withAlphaComponent(Constants.TextField.colorOpacity)
-        confirmButton.setAttributedTitle(DeleteAccountViewModel().deleteButtonTitle, for: .normal)
         confirmButton.layer.cornerRadius = Constants.cornerRadius
+        confirmButton.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
     }
     
     // MARK: - Layout
@@ -143,7 +145,18 @@ private extension DeleteAccountViewController {
     }
     
     // MARK: - Actions
-
+    @objc
+    private func didTapConfirmButton() {
+        let email = self.emailField.text ?? ""
+        let password = self.passwordField.text ?? ""
+        
+        output.didTapConfirmButton(with: email, and: password)
+    }
+    @objc
+    private func didTapWholeView() {
+        view.endEditing(true)
+    }
+    
     @objc
     func swipeFunc(gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .right {
@@ -152,7 +165,22 @@ private extension DeleteAccountViewController {
     }
 }
 
+// MARK: - DeleteAccountViewInput
+
 extension DeleteAccountViewController: DeleteAccountViewInput {
+    func showAlert(with key: String, message: String) {
+        switch key {
+        case "network": AlertManager.showUnknownFetchingUserError(on: self)
+        default: AlertManager.showInvalidPasswordAlert(on: self, message: message)
+        }
+    }
+    
+    func configure(with model: DeleteAccountViewModel) {
+        navBarTitle.attributedText = model.deleteAcountTitle
+        emailField.attributedPlaceholder = model.emailFielfTitle
+        passwordField.attributedPlaceholder = model.passwordFieldTitle
+        confirmButton.setAttributedTitle(model.deleteButtonTitle, for: .normal)
+    }
 }
 
         // MARK: - Constants

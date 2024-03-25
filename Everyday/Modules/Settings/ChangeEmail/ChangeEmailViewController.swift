@@ -34,8 +34,13 @@ final class ChangeEmailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        output.didLoadView()
         
         view.backgroundColor = Constants.backgroundColor
+        
+        let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapWholeView))
+                gestureRecognizer.cancelsTouchesInView = false
+                view.addGestureRecognizer(gestureRecognizer)
         
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
         self.view.addGestureRecognizer(swipeRight)
@@ -75,15 +80,12 @@ private extension ChangeEmailViewController {
     }
     
     func setupFields() {
-        newEmailField.attributedPlaceholder = ChangeEmailViewModel().newEmailFieldTitle
-        passwordField.attributedPlaceholder = ChangeEmailViewModel().passwordFieldTitle
-                
         [newEmailField, passwordField].forEach { field in
             let leftView = UIView(frame: CGRect(x: 0,
                                                 y: 0,
                                                 width: 10,
                                                 height: 0))
-            
+            field.autocapitalizationType = .none
             field.backgroundColor = Constants.gray.withAlphaComponent(Constants.TextField.colorOpacity)
             field.layer.cornerRadius = Constants.cornerRadius
             field.attributedPlaceholder = NSAttributedString(
@@ -97,8 +99,8 @@ private extension ChangeEmailViewController {
     
     func setupButtons() {
         confirmButton.backgroundColor = Constants.gray.withAlphaComponent(Constants.TextField.colorOpacity)
-        confirmButton.setAttributedTitle(ChangeEmailViewModel().confirmButtonTitle, for: .normal)
         confirmButton.layer.cornerRadius = Constants.cornerRadius
+        confirmButton.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
     }
     
     // MARK: - Layout
@@ -145,14 +147,44 @@ private extension ChangeEmailViewController {
     // MARK: - Actions
 
     @objc
+    private func didTapWholeView() {
+        view.endEditing(true)
+    }
+    
+    @objc
     func swipeFunc(gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .right {
             output.getBack()
         }
     }
+    
+    @objc
+    func didTapConfirmButton() {
+        let newEmail = self.newEmailField.text ?? ""
+        let password = self.passwordField.text ?? ""
+        
+        output.didTapConfirmButton(with: newEmail, and: password)
+    }
 }
 
+// MARK: - ChangeEmailViewInput
+
 extension ChangeEmailViewController: ChangeEmailViewInput {
+    func showAlert(with key: String, message: String) {
+        switch key {
+        case "password": AlertManager.showInvalidPasswordAlert(on: self, message: message)
+        case "email": AlertManager.showInvalidEmailAlert(on: self)
+        default: let error = NSError(domain: "Everydaytech.ru", code: 400)
+            AlertManager.showSignInErrorAlert(on: self, with: error)
+        }
+    }
+    
+    func configure(with model: ChangeEmailViewModel) {
+        navBarTitle.attributedText = model.changeEmailTitle
+        newEmailField.attributedPlaceholder = model.newEmailFieldTitle
+        passwordField.attributedPlaceholder = model.passwordFieldTitle
+        confirmButton.setAttributedTitle(model.confirmButtonTitle, for: .normal)
+    }
 }
 
         // MARK: - Constants

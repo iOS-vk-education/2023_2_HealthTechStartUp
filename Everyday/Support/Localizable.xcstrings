@@ -290,13 +290,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Change email"
+            "value" : "Change Email"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Сменить email"
+            "value" : "Изменить Email"
           }
         }
       }
@@ -364,7 +364,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Смена пароля"
+            "value" : "Изменить пароль"
           }
         }
       }
@@ -1496,7 +1496,7 @@
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Изменить email"
+            "value" : "Изменить Email"
           }
         }
       }

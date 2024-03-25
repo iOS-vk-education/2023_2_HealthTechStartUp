@@ -42,7 +42,7 @@ extension SettingsRouter: SettingsRouterInput {
         
         let unitsContainer = UnitsContainer.assemble(with: .init())
         let unitsViewController = unitsContainer.viewController
-        unitsViewController.modalPresentationStyle = .overFullScreen
+        unitsViewController.modalPresentationStyle = .fullScreen
         viewController.navigationController?.pushViewController(unitsViewController, animated: true)
     }
     

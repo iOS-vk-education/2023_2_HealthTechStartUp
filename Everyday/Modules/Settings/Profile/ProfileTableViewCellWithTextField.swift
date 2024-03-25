@@ -37,6 +37,7 @@ final class ProfileTableViewCellWithTextField: UITableViewCell {
     // MARK: - Interface
     
     func configure(with viewModel: NSAttributedString) {
+        textField.autocapitalizationType = .none
         textField.attributedText = viewModel
     }
 }

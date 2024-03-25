@@ -16,13 +16,18 @@ protocol ChangeEmailModuleOutput: AnyObject {
 }
 
 protocol ChangeEmailViewInput: AnyObject {
+    func configure(with: ChangeEmailViewModel)
+    func showAlert(with key: String, message: String)
 }
 
 protocol ChangeEmailViewOutput: AnyObject {
+    func didTapConfirmButton(with email: String?, and password: String?)
+    func didLoadView()
     func getBack()
 }
 
 protocol ChangeEmailInteractorInput: AnyObject {
+    func changeEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 protocol ChangeEmailInteractorOutput: AnyObject {

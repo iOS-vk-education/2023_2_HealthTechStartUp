@@ -13,6 +13,12 @@ final class DeleteAccountRouter {
 }
 
 extension DeleteAccountRouter: DeleteAccountRouterInput {
+    func routeToAuthentication() {
+        if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+            sceneDelegate.checkAuthentication()
+        }
+    }
+    
     func getBackToMainView() {
         guard let viewController = viewController else {
             return

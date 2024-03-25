@@ -17,6 +17,7 @@ struct DateAndTimeViewModel {
     let hoursFormatTitle: NSAttributedString
     let weekStartsSectionModel: [NSAttributedString]
     let hoursFormatSectionModel: [NSAttributedString]
+    let accessoryCellImage: UIImage?
     
     init() {
         self.dateAndTimeTitle = NSAttributedString(string: "DateAndTime_title".localized, attributes: Styles.titleAttributesBold)
@@ -28,6 +29,7 @@ struct DateAndTimeViewModel {
         self.hoursFormatTitle = NSAttributedString(string: "DateAndTime_HoursFormat_title".localized, attributes: Styles.titleAttributes)
         self.weekStartsSectionModel = [sundayTitle, mondayTitle]
         self.hoursFormatSectionModel = [militaryTimeFormatTitle, amPmFormatTitle]
+        self.accessoryCellImage = UIImage(systemName: "circle.fill")?.withRenderingMode(.alwaysOriginal)
     }
 }
 

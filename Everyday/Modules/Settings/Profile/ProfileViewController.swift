@@ -33,6 +33,8 @@ final class ProfileViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        output.didLoadView()
+        
         view.backgroundColor = Constants.backgroundColor
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapWholeView))
@@ -57,13 +59,23 @@ final class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: ProfileViewInput {
-    func configure(with model: ProfileViewModel) {
-//        logoutButton.setAttributedTitle(model.logoutTitle, for: .normal)
+    func configure(with: ProfileViewModel, and userImage: UIImage) {
+        userImageView.image = userImage
     }
     
-    func showAlert() {
-        let error = NSError(domain: "Everydaytech.ru", code: 400)
-        AlertManager.showLogoutError(on: self, with: error)
+    func showAlert(with key: String, message: String) {
+        switch key {
+        case "logout":
+            let error = NSError(domain: "Everydaytech.ru", code: 400)
+            AlertManager.showLogoutError(on: self, with: error)
+        case "getUsernameError": AlertManager.showUnknownFetchingUserError(on: self)
+        case "image": 
+            let error = NSError(domain: "Everydaytech.ru", code: 400)
+            AlertManager.showFetchingUserError(on: self, with: error)
+        default:
+            let error = NSError(domain: "Everydaytech.ru", code: 400)
+            AlertManager.showLogoutError(on: self, with: error)
+        }
     }
 }
 
@@ -99,7 +111,7 @@ private extension ProfileViewController {
     }
     
     func setupImage() {
-        userImageView.image = UIImage(named: "logo")
+        
         userImageView.layer.cornerRadius = UIScreen.main.bounds.size.width * 0.5 / 2
         userImageView.clipsToBounds = true
     }
@@ -135,9 +147,15 @@ private extension ProfileViewController {
     // MARK: Actions
     
     @objc
-      private func didTapWholeView() {
-          view.endEditing(true)
-      }
+    private func editingUserNameDidEnd(username: String) {
+        print(username)
+        output.updateUserName(username: username)
+    }
+    
+    @objc
+    private func didTapWholeView() {
+        view.endEditing(true)
+    }
     
     @objc
     func swipeFunc(gesture: UISwipeGestureRecognizer) {
@@ -170,7 +188,13 @@ extension ProfileViewController: UITableViewDataSource {
                 cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
                 
                 cell.textField.delegate = self
-                cell.configure(with: NSAttributedString(string: "Aboba"))
+                output.getUsername { username in
+                    if let username = username {
+                        cell.configure(with: NSAttributedString(string: username, attributes: Constants.Styles.titleAttributes))
+                    } else {
+                        print("error")
+                    }
+                }
                 return cell
             }
         } else {
@@ -222,6 +246,10 @@ extension ProfileViewController: UITableViewDelegate {
 }
 
 extension ProfileViewController: UITextFieldDelegate {
+    func textFieldDidEndEditing(_ textField: UITextField) {
+        let username = textField.text ?? ""
+        editingUserNameDidEnd(username: username)
+    }
 }
 // MARK: - Constants
 
@@ -232,6 +260,12 @@ private extension ProfileViewController {
         static let textColor: UIColor = UIColor.Text.grayElement
         static let gray: UIColor = .gray
         
+        struct Styles {
+            static let titleAttributes: [NSAttributedString.Key: Any] = [
+                .foregroundColor: UIColor.Text.primary,
+                .font: UIFont.systemFont(ofSize: 16)
+            ]
+        }
         struct TableView {
             static let numberOfSectionsInTableView: Int = 4
             static let numberOfRowsInFirstSectionInTableView = 1
