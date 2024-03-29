@@ -11,10 +11,10 @@ import UIKit
 final class ChangeEmailInteractor {
     weak var output: ChangeEmailInteractorOutput?
     weak var viewController: UIViewController?
-    let authService: AuthServiceDescription
+    let settingsService: SettingsServiceDescription
     
-    init(authService: AuthServiceDescription) {
-        self.authService = authService
+    init(settingsService: SettingsServiceDescription) {
+        self.settingsService = settingsService
     }
     
     private func performAuthAction(flag: Bool, viewController: UIViewController,
@@ -29,7 +29,7 @@ final class ChangeEmailInteractor {
 extension ChangeEmailInteractor: ChangeEmailInteractorInput {
     func changeEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let model = ChangeEmailModel(newEmail: email, password: password)
-        authService.changeEmail(with: model) {result in
+        settingsService.changeEmail(with: model) {result in
             completion(result)
         }
     }

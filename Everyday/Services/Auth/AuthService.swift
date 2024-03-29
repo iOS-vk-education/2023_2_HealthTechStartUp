@@ -18,13 +18,6 @@ protocol AuthServiceDescription {
     func loginWithAnonym(completion: @escaping (Result<Void, Error>) -> Void)
     
     func logout(completion: @escaping (Result<Void, Error>) -> Void)
-    
-    func changeEmail(with userRequest: ChangeEmailModel, completion: @escaping (Result<Void, Error>) -> Void)
-    func changePassword(with userRequest: ChangePasswordModel, completion: @escaping (Result<Void, Error>) -> Void)
-    func deleteAccount(with userRequest: DeleteAccountModel, completion: @escaping (Result<Void, Error>) -> Void)
-    func getUserName(completion: @escaping (Result<Void, Error>, String?) -> Void)
-    func getUserProfileImage(completion: @escaping (Result<Void, Error>, UIImage?) -> Void)
-    func updateUserName(username: String, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 final class AuthService: AuthServiceDescription {
@@ -98,71 +91,6 @@ final class AuthService: AuthServiceDescription {
     
     func logout(completion: @escaping (Result<Void, Error>) -> Void) {
         firebaseAuthService.signOut { success, error in
-            if success {
-                completion(.success(()))
-            } else if let error = error {
-                completion(.failure(error))
-            }
-        }
-    }
-    func updateUserName(username: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        firebaseAuthService.updateNickname(username: username) { success, error in
-            if success {
-                completion(.success(()))
-            } else if let error = error {
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    func getUserProfileImage(completion: @escaping (Result<Void, Error>, UIImage?) -> Void) {
-        firebaseAuthService.fetchUserProfileImage { success, error, userProfileImage in
-            if success {
-                guard let userProfileImage = userProfileImage else {
-                    return
-                }
-                completion(.success(()), userProfileImage)
-            } else if let error = error {
-                completion(.failure(error), nil)
-            }
-        }
-    }
-    
-    func getUserName(completion: @escaping ((Result<Void, Error>), String?) -> Void) {
-        firebaseAuthService.fetchUserName { success, error, username in
-            if success {
-                guard let username = username else {
-                    return
-                }
-                completion(.success(()), username)
-            } else if let error = error {
-                completion(.failure(error), nil)
-            }
-        }
-    }
-    
-    func changeEmail(with userRequest: ChangeEmailModel, completion: @escaping (Result<Void, Error>) -> Void) {
-        firebaseAuthService.updateEmail(with: userRequest) { success, error in
-            if success {
-                completion(.success(()))
-            } else if let error = error {
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    func changePassword(with userRequest: ChangePasswordModel, completion: @escaping (Result<Void, Error>) -> Void) {
-        firebaseAuthService.updatePassword(with: userRequest) { success, error in
-            if success {
-                completion(.success(()))
-            } else if let error = error {
-                completion(.failure(error))
-            }
-        }
-    }
-    
-    func deleteAccount(with userRequest: DeleteAccountModel, completion: @escaping (Result<Void, Error>) -> Void) {
-        firebaseAuthService.deleteAccount(with: userRequest) { success, error  in
             if success {
                 completion(.success(()))
             } else if let error = error {

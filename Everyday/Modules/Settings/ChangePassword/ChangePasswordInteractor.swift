@@ -11,10 +11,10 @@ import UIKit
 final class ChangePasswordInteractor {
     weak var output: ChangePasswordInteractorOutput?
     weak var viewController: UIViewController?
-    let authService: AuthServiceDescription
+    let settingsService: SettingsServiceDescription
     
-    init(authService: AuthServiceDescription) {
-        self.authService = authService
+    init(settingsService: SettingsServiceDescription) {
+        self.settingsService = settingsService
     }
     
     private func performAuthAction(flag: Bool, viewController: UIViewController,
@@ -29,7 +29,7 @@ final class ChangePasswordInteractor {
 extension ChangePasswordInteractor: ChangePasswordInteractorInput {
     func changePassword(oldPassword: String, newPassword: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let model = ChangePasswordModel(oldPassword: oldPassword, newPassword: newPassword)
-        authService.changePassword(with: model) {result in
+        settingsService.changePassword(with: model) {result in
                 completion(result)
         }
     }

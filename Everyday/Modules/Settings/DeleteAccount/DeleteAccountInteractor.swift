@@ -11,10 +11,10 @@ import UIKit
 final class DeleteAccountInteractor {
     weak var output: DeleteAccountInteractorOutput?
     weak var viewController: UIViewController?
-    let authService: AuthServiceDescription
+    let settingsService: SettingsServiceDescription
     
-    init(authService: AuthServiceDescription) {
-        self.authService = authService
+    init(settingsService: SettingsServiceDescription) {
+        self.settingsService = settingsService
     }
     
     private func performAuthAction(flag: Bool, viewController: UIViewController,
@@ -29,7 +29,7 @@ final class DeleteAccountInteractor {
 extension DeleteAccountInteractor: DeleteAccountInteractorInput {
     func deleteAccount(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let model = DeleteAccountModel(email: email, password: password)
-        authService.deleteAccount(with: model) {result in
+        settingsService.deleteAccount(with: model) {result in
             completion(result)
         }
     }

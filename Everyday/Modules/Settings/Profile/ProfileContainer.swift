@@ -15,7 +15,7 @@ final class ProfileContainer {
     
     class func assemble(with context: ProfileContext) -> ProfileContainer {
         let router = ProfileRouter()
-        let interactor = ProfileInteractor(authService: AuthService.shared)
+        let interactor = ProfileInteractor(settingsService: SettingsService.shared, authService: AuthService.shared)
         let presenter = ProfilePresenter(router: router, interactor: interactor)
         let viewController = ProfileViewController(output: presenter)
         

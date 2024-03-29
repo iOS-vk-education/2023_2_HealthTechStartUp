@@ -67,6 +67,8 @@
 		8C3B5EE02BB08DA900CFE490 /* ChangeEmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EDF2BB08DA900CFE490 /* ChangeEmailModel.swift */; };
 		8C3B5EE22BB0BEF800CFE490 /* ChangePasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EE12BB0BEF800CFE490 /* ChangePasswordModel.swift */; };
 		8C3B5EE42BB0EB1300CFE490 /* DeleteAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EE32BB0EB1300CFE490 /* DeleteAccountModel.swift */; };
+		8C3B5EF82BB75C9F00CFE490 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EF72BB75C9F00CFE490 /* FirebaseService.swift */; };
+		8C3B5EFB2BB75DA200CFE490 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EFA2BB75DA200CFE490 /* SettingsService.swift */; };
 		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
 		9E2A8BB22B84F106004A81CF /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 9E2A8BB12B84F106004A81CF /* FirebaseAppCheck */; };
 		9E2A8BB42B84F106004A81CF /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 9E2A8BB32B84F106004A81CF /* FirebaseAppDistribution-Beta */; };
@@ -297,6 +299,8 @@
 		8C3B5EDF2BB08DA900CFE490 /* ChangeEmailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailModel.swift; sourceTree = "<group>"; };
 		8C3B5EE12BB0BEF800CFE490 /* ChangePasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordModel.swift; sourceTree = "<group>"; };
 		8C3B5EE32BB0EB1300CFE490 /* DeleteAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountModel.swift; sourceTree = "<group>"; };
+		8C3B5EF72BB75C9F00CFE490 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
+		8C3B5EFA2BB75DA200CFE490 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
 		9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
@@ -662,6 +666,22 @@
 			path = UserDefaults;
 			sourceTree = "<group>";
 		};
+		8C3B5EF62BB75C7A00CFE490 /* Firebase */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5EF72BB75C9F00CFE490 /* FirebaseService.swift */,
+			);
+			path = Firebase;
+			sourceTree = "<group>";
+		};
+		8C3B5EF92BB75D8D00CFE490 /* Settings */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5EFA2BB75DA200CFE490 /* SettingsService.swift */,
+			);
+			path = Settings;
+			sourceTree = "<group>";
+		};
 		9E1383072BAB03240073622C /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -717,6 +737,8 @@
 		9E4382CB2B83737600C69708 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8C3B5EF92BB75D8D00CFE490 /* Settings */,
+				8C3B5EF62BB75C7A00CFE490 /* Firebase */,
 				8C3B5EDC2BAF7E7B00CFE490 /* UserDefaults */,
 				9E4766DE2BA3509300DD31B9 /* HealthKit */,
 				9E4766D62B9F515700DD31B9 /* Storage */,
@@ -1442,6 +1464,7 @@
 				9EE335992B8F9CCD00F532B3 /* SplashAnimator.swift in Sources */,
 				8C3B5E832BAF797C00CFE490 /* ThemeViewModel.swift in Sources */,
 				9E4F22982B9F3BDD003E749E /* ExerciseProtocols.swift in Sources */,
+				8C3B5EFB2BB75DA200CFE490 /* SettingsService.swift in Sources */,
 				9E5B74ED2B7F99FB00E2BDE6 /* WelcomeScreenViewModel.swift in Sources */,
 				9E5B75382B7F9D7600E2BDE6 /* GenderModel.swift in Sources */,
 				9E5B754B2B7F9D7600E2BDE6 /* ProfileSetupViewModel.swift in Sources */,
@@ -1556,6 +1579,7 @@
 				8C3B5ECF2BAF7D8C00CFE490 /* DeleteAccountViewModel.swift in Sources */,
 				9E4F22992B9F3BDD003E749E /* ExerciseViewController.swift in Sources */,
 				9E2A8BCD2B8520B2004A81CF /* AlertManager.swift in Sources */,
+				8C3B5EF82BB75C9F00CFE490 /* FirebaseService.swift in Sources */,
 				8C3B5ED82BAF7DD400CFE490 /* DeleteAccountViewController.swift in Sources */,
 				8C3B5E9B2BAF7A2700CFE490 /* DateAndTimeRouter.swift in Sources */,
 				9E4F22A02B9F3BEA003E749E /* ExerciseViewModel.swift in Sources */,

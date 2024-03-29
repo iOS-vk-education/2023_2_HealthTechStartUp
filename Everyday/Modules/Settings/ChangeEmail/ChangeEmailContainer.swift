@@ -15,7 +15,7 @@ final class ChangeEmailContainer {
     
     class func assemble(with context: ChangeEmailContext) -> ChangeEmailContainer {
         let router = ChangeEmailRouter()
-        let interactor = ChangeEmailInteractor(authService: AuthService.shared)
+        let interactor = ChangeEmailInteractor(settingsService: SettingsService.shared)
         let presenter = ChangeEmailPresenter(router: router, interactor: interactor)
         let viewController = ChangeEmailViewController(output: presenter)
         
