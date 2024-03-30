@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PhotosUI
 import PinLayout
 
 final class ProfileViewController: UIViewController {
@@ -118,7 +119,7 @@ private extension ProfileViewController {
     
     func setupButton() {
         changeUserImageButton.setAttributedTitle(ProfileViewModel().selectImageTitle, for: .normal)
-        changeUserImageButton.setAttributedTitle(ProfileViewModel().selectImageTitle, for: .normal)
+        changeUserImageButton.addTarget(self, action: #selector(didTapChangeUserImageButton), for: .touchUpInside)
     }
     
     func layout() {
@@ -145,6 +146,16 @@ private extension ProfileViewController {
     }
     
     // MARK: Actions
+    @objc
+    private func didTapChangeUserImageButton() {
+        var configuration = PHPickerConfiguration()
+        configuration.filter = .images
+        configuration.selectionLimit = 1
+        
+        let picker = PHPickerViewController(configuration: configuration)
+        picker.delegate = self
+        present(picker, animated: true)
+    }
     
     @objc
     private func editingUserNameDidEnd(username: String) {
@@ -251,6 +262,29 @@ extension ProfileViewController: UITextFieldDelegate {
         editingUserNameDidEnd(username: username)
     }
 }
+
+extension ProfileViewController: PHPickerViewControllerDelegate {
+    func picker(_ picker: PHPickerViewController, didFinishPicking results: [PHPickerResult]) {
+        dismiss(animated: true)
+        
+        for result in results where result.itemProvider.canLoadObject(ofClass: UIImage.self) {
+            
+            result.itemProvider.loadObject(ofClass: UIImage.self) { (image, error) in
+                if let image = image as? UIImage {
+                    DispatchQueue.main.async {
+                        self.userImageView.image = image
+                        self.output.didTapChangeUserImageButton(image: image, error: nil)
+                    }
+                } else if let error = error {
+                    DispatchQueue.main.async {
+                        self.output.didTapChangeUserImageButton(image: nil, error: error)
+                    }
+                }
+            }
+        }
+    }
+}
+
 // MARK: - Constants
 
 private extension ProfileViewController {

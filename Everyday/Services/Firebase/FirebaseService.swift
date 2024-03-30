@@ -5,7 +5,7 @@
 //  Created by Yaz on 29.03.2024.
 //
 
-import UIKit
+import Foundation
 import FirebaseAuth
 import FirebaseFirestore
 import Firebase
@@ -16,6 +16,10 @@ protocol FirebaseServiceDescription {
     func deleteAccount(with: DeleteAccountModel, completion: @escaping (Bool, Error?) -> Void)
     func fetchUserName(completion: @escaping (Bool, Error?, String?) -> Void)
     func fetchUserProfileImage(completion: @escaping (Bool, Error?, UIImage?) -> Void)
+    func deleteOldImage(completion: @escaping (Bool, Error?) -> Void)
+//    func fetchProfileImagePath(completion: @escaping(Bool, Error?, String?) -> Void)
+    func updateProfileImagePath(path: String, completion: @escaping (Bool, Error?) -> Void)
+    func updateUserImage(image: UIImage, completion: @escaping (Bool, Error?) -> Void)
     func updateNickname(username: String, completion: @escaping (Bool, Error?) -> Void)
 }
 
@@ -24,76 +28,9 @@ final class FirebaseService: FirebaseServiceDescription {
     
     private init() {}
     
-    func updateNickname(username: String, completion: @escaping (Bool, Error?) -> Void) {
-        guard let userUID = Auth.auth().currentUser?.uid else {
-            return
-        }
-        
-        let db = Firestore.firestore()
-
-        let reference = db.collection("user").document(userUID)
-
-        reference.updateData([
-            "nickname": username
-        ])
-    }
-
-    func fetchUserName(completion: @escaping (Bool, Error?, String?) -> Void) {
-        guard let currentUser = Auth.auth().currentUser else {
-            return
-        }
-        let userUID = currentUser.uid
-        
-        let db = Firestore.firestore()
-        db.collection("user")
-            .document(userUID)
-            .getDocument { snapshot, error in
-                if let error = error {
-                    completion(false, error, nil)
-                    return
-                }
-                
-                if let snapshot = snapshot,
-                   let snapshotData = snapshot.data(),
-                   let userName = snapshotData["nickname"] as? String {
-                    completion(true, nil, userName)
-                }
-            }
-    }
-    
-    func deleteAccount(with model: DeleteAccountModel, completion: @escaping (Bool, Error?) -> Void) {
-        guard let currentUser = Auth.auth().currentUser else {
-            return
-        }
-        let userUID = currentUser.uid
-        let credential = EmailAuthProvider.credential(withEmail: model.email, password: model.password)
-        
-        currentUser.reauthenticate(with: credential) { _, error in
-            if let error = error {
-                completion(false, error)
-                return
-            }
-            
-            currentUser.delete { error in
-                if let error = error {
-                    completion(false, error)
-                    return
-                }
-                
-                let db = Firestore.firestore()
-                db.collection("user").document(userUID).delete { error in
-                    if let error = error {
-                        completion(false, error)
-                        return
-                    } else {
-                        completion(true, nil)
-                    }
-                }
-            }
-        }
-    }
     func updateEmail(with model: ChangeEmailModel, completion: @escaping (Bool, Error?) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {
+            completion(false, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не найден"]))
             return
         }
         
@@ -134,6 +71,7 @@ final class FirebaseService: FirebaseServiceDescription {
     
     func updatePassword(with model: ChangePasswordModel, completion: @escaping (Bool, Error?) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {
+            completion(false, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не найден"]))
             return
         }
         
@@ -154,24 +92,191 @@ final class FirebaseService: FirebaseServiceDescription {
         }
     }
     
+    func deleteAccount(with model: DeleteAccountModel, completion: @escaping (Bool, Error?) -> Void) {
+        guard let currentUser = Auth.auth().currentUser else {
+            return
+        }
+        let userUID = currentUser.uid
+        let credential = EmailAuthProvider.credential(withEmail: model.email, password: model.password)
+        
+        currentUser.reauthenticate(with: credential) { _, error in
+            if let error = error {
+                completion(false, error)
+                return
+            }
+            
+            currentUser.delete { error in
+                if let error = error {
+                    completion(false, error)
+                    return
+                }
+                
+                let db = Firestore.firestore()
+                db.collection("user").document(userUID).delete { error in
+                    if let error = error {
+                        completion(false, error)
+                        return
+                    } else {
+                        completion(true, nil)
+                    }
+                }
+            }
+        }
+    }
+    
+    func fetchUserName(completion: @escaping (Bool, Error?, String?) -> Void) {
+        guard let currentUser = Auth.auth().currentUser else {
+            completion(false, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не найден"]), nil)
+            return
+        }
+        let userUID = currentUser.uid
+        
+        let db = Firestore.firestore()
+        db.collection("user")
+            .document(userUID)
+            .getDocument { snapshot, error in
+                if let error = error {
+                    completion(false, error, nil)
+                    return
+                }
+                
+                if let snapshot = snapshot,
+                   let snapshotData = snapshot.data(),
+                   let userName = snapshotData["nickname"] as? String {
+                    completion(true, nil, userName)
+                }
+            }
+    }
+    
     func fetchUserProfileImage(completion: @escaping (Bool, Error?, UIImage?) -> Void) {
         guard let userId = Auth.auth().currentUser?.uid else {
             completion(false, NSError(domain: "FirebaseAuthService", code: 0, userInfo: [NSLocalizedDescriptionKey: "UID пользователя не найден"]), nil)
             return
         }
         
-        let storage: StorageServiceDescription = StorageService.shared
+        let db = Firestore.firestore()
+        db.collection("user")
+            .document(userId)
+            .getDocument { snapshot, error in
+                if let error = error {
+                    completion(false, error, nil)
+                    return
+                }
+                
+                if let snapshot = snapshot,
+                   let snapshotData = snapshot.data(),
+                   let profileImagePath = snapshotData["profileImage"] as? String {
+                    let storage: StorageServiceDescription = StorageService.shared
+                    Task {
+                        do {
+                            try await storage.getImage(path: profileImagePath) { image, error in
+                                if let error = error {
+                                    completion(false, error, nil)
+                                } else {
+                                    completion(true, nil, image)
+                                }
+                            }
+                        } catch {
+                            completion(false, error, nil)
+                        }
+                    }
+                }
+            }
+    }
+    
+    func deleteOldImage(completion: @escaping (Bool, Error?) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(false, NSError(domain: "FirebaseAuthService", code: 0, userInfo: [NSLocalizedDescriptionKey: "UID пользователя не найден"]))
+            return
+        }
+        
+        let db = Firestore.firestore()
+        db.collection("user")
+            .document(userId)
+            .getDocument { snapshot, error in
+                if let error = error {
+                    completion(false, error)
+                    return
+                }
+                
+                if let snapshot = snapshot,
+                   let snapshotData = snapshot.data(),
+                   let profileOldImagePath = snapshotData["profileImage"] as? String {
+                    let storage: StorageServiceDescription = StorageService.shared
+                    Task {
+                        do {
+                            try await storage.deleteOldImage(userId: userId, path: profileOldImagePath)
+                        } catch {
+                            completion(false, error)
+                        }
+                    }
+                }
+            }
+    }
+    
+    func updateProfileImagePath(path: String, completion: @escaping (Bool, Error?) -> Void) {
+        guard let userUID = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        let db = Firestore.firestore()
+
+        let reference = db.collection("user").document(userUID)
+
+        reference.updateData([
+            "profileImage": path
+        ]) { error in
+            if let error = error {
+                completion(false, error)
+            }
+        }
+    }
+    
+    func updateUserImage(image: UIImage, completion: @escaping (Bool, Error?) -> Void) {
+        guard let userId = Auth.auth().currentUser?.uid else {
+            completion(false, NSError(domain: "FirebaseAuthService", code: 0, userInfo: [NSLocalizedDescriptionKey: "UID пользователя не найден"]))
+            return
+        }
+        
         Task {
             do {
-                try await storage.getImage(userId: userId) { image, error in
+                deleteOldImage { _, error in
                     if let error = error {
-                        completion(false, error, nil)
-                    } else {
-                        completion(true, nil, image)
+                        completion(false, error)
                     }
-//                    completion(true, nil, image)
                 }
             }
         }
+        
+            let storage: StorageServiceDescription = StorageService.shared
+        Task {
+            do {
+                let (path, _) = try await storage.saveImage(image: image, userId: userId)
+                updateProfileImagePath(path: path) { _, error in
+                    if let error = error {
+                        completion(false, error)
+                        return
+                    } else {
+                        completion(true, nil)
+                    }
+                }
+            } catch {
+                completion(false, error)
+            }
+        }
+    }
+    
+    func updateNickname(username: String, completion: @escaping (Bool, Error?) -> Void) {
+        guard let userUID = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        let db = Firestore.firestore()
+
+        let reference = db.collection("user").document(userUID)
+
+        reference.updateData([
+            "nickname": username
+        ])
     }
 }

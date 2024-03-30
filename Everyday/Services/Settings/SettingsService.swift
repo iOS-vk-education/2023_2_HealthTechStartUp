@@ -13,6 +13,7 @@ protocol SettingsServiceDescription {
     func deleteAccount(with userRequest: DeleteAccountModel, completion: @escaping (Result<Void, Error>) -> Void)
     func getUserName(completion: @escaping (Result<Void, Error>, String?) -> Void)
     func getUserProfileImage(completion: @escaping (Result<Void, Error>, UIImage?) -> Void)
+    func updateUserImage(image: UIImage, completion: @escaping (Result<Void, Error>) -> Void)
     func updateUserName(username: String, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
@@ -45,6 +46,16 @@ final class SettingsService: SettingsServiceDescription {
                 completion(.success(()), userProfileImage)
             } else if let error = error {
                 completion(.failure(error), nil)
+            }
+        }
+    }
+    
+    func updateUserImage(image: UIImage, completion: @escaping (Result<Void, Error>) -> Void) {
+        firebaseService.updateUserImage(image: image) { success, error in
+            if success {
+                completion(.success(()))
+            } else if let error = error {
+                completion(.failure(error))
             }
         }
     }

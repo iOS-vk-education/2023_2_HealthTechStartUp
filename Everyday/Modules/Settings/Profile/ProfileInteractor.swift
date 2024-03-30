@@ -20,6 +20,12 @@ final class ProfileInteractor {
 }
 
 extension ProfileInteractor: ProfileInteractorInput {
+    func updateUserImage(image: UIImage, completion: @escaping (Result<Void, Error>) -> Void) {
+        settingsService.updateUserImage(image: image) { result in
+            completion(result)
+        }
+    }
+    
     func updateUserName(username: String, completion: @escaping (Result<Void, Error>) -> Void) {
         settingsService.updateUserName(username: username) { result in
             completion(result)

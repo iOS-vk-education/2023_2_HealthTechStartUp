@@ -24,6 +24,7 @@ protocol ProfileViewInput: AnyObject {
 protocol ProfileViewOutput: AnyObject {
     func updateUserName(username: String)
     func getUsername(completion: @escaping (String?) -> Void)
+    func didTapChangeUserImageButton(image: UIImage?, error: Error?)
     func didLoadView()
     func didTapLogoutButton()
     func didTapChangeEmailCell()
@@ -33,6 +34,7 @@ protocol ProfileViewOutput: AnyObject {
 }
 
 protocol ProfileInteractorInput: AnyObject {
+    func updateUserImage(image: UIImage, completion: @escaping (Result<Void, Error>) -> Void)
     func updateUserName(username: String, completion: @escaping (Result<Void, Error>) -> Void)
     func getUserProfileImage(completion: @escaping (Result<Void, Error>, UIImage) -> Void)
     func getUserName(completion: @escaping (Result<Void, Error>, String) -> Void)
