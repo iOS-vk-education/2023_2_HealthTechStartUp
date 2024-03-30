@@ -6,9 +6,14 @@
 //
 
 import Foundation
+import Firebase
 import FirebaseFirestoreSwift
 
-struct Workout: Codable {
+struct Workout: Codable, Comparable {
+    static func < (lhs: Workout, rhs: Workout) -> Bool {
+        return lhs.name < rhs.name
+    }
+    
     @DocumentID var id: String?
     let name: String
     var days: [DayOfWorkout]

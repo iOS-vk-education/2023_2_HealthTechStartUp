@@ -18,24 +18,14 @@ final class DayService: DayServiceDescription {
     private let db = Firestore.firestore()
 
     private init() {}
-
-//    func getDaySchedule(on date: Date, completion: @escaping (Result<[(workout: Workout, indexOfDay: Int)], CustomError>) -> Void) {
-//        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//            let workoutDays = MockSchedule.mockSchedule.daysOfWeek[4]
-//            let result: Result<[(workout: Workout, indexOfDay: Int)], CustomError> = .success(workoutDays) // .failure(.unknownError)
-//            completion(result)
-//        }
-//    }
     
     func getDaySchedule(on date: Date, completion: @escaping (Result<[WorkoutDay], CustomError>) -> Void) {
-//        guard let userUID = Auth.auth().currentUser?.uid else {
-//            completion(.failure(.invalidUser))
-//            return
-//        }
+        guard let userUID = Auth.auth().currentUser?.uid else {
+            completion(.failure(.unknownError))
+            return
+        }
 
-        let userUID = "xWIxNStVG3LdO2TnMN8W"
-
-        db.collection("user")
+        db.collection(Constants.userCollection)
             .document(userUID)
             .getDocument(as: MyUser.self) { result in
                 switch result {
@@ -47,29 +37,34 @@ final class DayService: DayServiceDescription {
                     let group = DispatchGroup()
                     var workoutDays: [WorkoutDay] = []
 
-                    for programReference in programIDs {
+                    for indexOfProgram in 0..<programIDs.count {
                         group.enter()
-                        programReference.getDocument(as: Workout.self) { result in
+                        programIDs[indexOfProgram].getDocument(as: Workout.self) { result in
                             defer {
                                 group.leave()
                             }
 
                             switch result {
                             case .success(let workout):
-                                workoutDays.append(.init(workout: workout, indexOfDay: 0))  // get index from db
+                                guard let indexOfDay = user.schedule?[0].programs[indexOfProgram].indexOfDay else {
+                                    completion(.failure(.unknownError))
+                                    break
+                                }
+                                
+                                workoutDays.append(.init(workout: workout, indexOfDay: indexOfDay))
 
-                            case .failure(let error):
-                                print(error.localizedDescription, "kek")
+                            case .failure:
+                                completion(.failure(.unknownError))
                             }
                         }
                     }
 
                     group.notify(queue: .main) {
-                        completion(.success(workoutDays))
+                        completion(.success(workoutDays.sorted()))
                     }
 
-                case .failure(let error):
-                    print(error.localizedDescription, "lol")
+                case .failure:
+                    completion(.failure(.unknownError))
                 }
             }
     }
@@ -81,5 +76,13 @@ final class DayService: DayServiceDescription {
             let result: Result<[WorkoutDay], CustomError> = .failure(.unknownError)
             completion(result)
         }
+    }
+}
+
+// MARK: - Constants
+
+private extension DayService {
+    struct Constants {
+        static let userCollection = "user"
     }
 }

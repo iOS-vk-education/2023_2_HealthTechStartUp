@@ -19,6 +19,7 @@ struct MyUser: Codable {
     let nickname: String
     let weight: String
     let schedule: [Day]?
+    let history: [Day]?
     
     init() {
         id = nil
@@ -30,12 +31,9 @@ struct MyUser: Codable {
         nickname = ""
         weight = ""
         schedule = nil
+        history = nil
     }
 }
-
-// struct Schedule: Codable {
-//    let dayOfWeek: [Day]
-// }
 
 struct Day: Codable, Hashable {
     let dayOfWeek: String
@@ -47,7 +45,15 @@ struct PartOfWokout: Codable, Hashable {
     let indexOfDay: Int
 }
 
-struct WorkoutDay {
+struct WorkoutDay: Comparable {
+    static func < (lhs: WorkoutDay, rhs: WorkoutDay) -> Bool {
+        return lhs.workout < rhs.workout
+    }
+    
+    static func == (lhs: WorkoutDay, rhs: WorkoutDay) -> Bool {
+        return lhs.workout == rhs.workout
+    }
+    
     var workout: Workout
     let indexOfDay: Int
 }
