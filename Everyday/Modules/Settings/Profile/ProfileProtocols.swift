@@ -17,11 +17,15 @@ protocol ProfileModuleOutput: AnyObject {
 }
 
 protocol ProfileViewInput: AnyObject {
-    func configure(with: ProfileViewModel, and: UIImage)
+    func configure(with: ProfileViewModel)
     func showAlert(with key: String, message: String)
+    func setupProfileImage(image: UIImage)
 }
 
 protocol ProfileViewOutput: AnyObject {
+    func getWhichSing() -> String
+    func getProfileViewModelSingWithEmail() -> ProfileViewModelSingWithEmail
+    func getProfileViewModelSingWithVKOrGoogle() -> ProfileViewModelSingWithVKOrGoogle
     func updateUserName(username: String)
     func getUsername(completion: @escaping (String?) -> Void)
     func didTapChangeUserImageButton(image: UIImage?, error: Error?)

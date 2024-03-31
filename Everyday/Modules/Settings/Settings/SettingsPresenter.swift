@@ -25,6 +25,11 @@ extension SettingsPresenter: SettingsModuleInput {
 }
 
 extension SettingsPresenter: SettingsViewOutput {
+    func getViewModel() -> SettingsViewModel {
+        let viewModel = SettingsViewModel()
+        return viewModel
+    }
+    
     func didTapThemeCell() {
         router.getThemeView()
     }

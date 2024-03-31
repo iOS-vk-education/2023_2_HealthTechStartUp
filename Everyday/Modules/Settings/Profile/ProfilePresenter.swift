@@ -23,7 +23,7 @@ final class ProfilePresenter {
     private func handleFetchUser(result: Result<Void, Error>, userProfileImage: UIImage) {
         switch result {
         case .success:
-            self.view?.configure(with: ProfileViewModel(), and: userProfileImage)
+            self.view?.setupProfileImage(image: userProfileImage)
         case .failure(let error):
             self.view?.showAlert(with: "image", message: error.localizedDescription)
         }
@@ -34,25 +34,20 @@ extension ProfilePresenter: ProfileModuleInput {
 }
 
 extension ProfilePresenter: ProfileViewOutput {
-//    func didTapChangeUserImageButton(image: UIImage?, error: Error?) {
-//        if let error = error {
-//            self.view?.showAlert(with: "nety photo", message: "nety photo ti sho")
-//            print("!!!!")
-//            return
-//        } else if let image = image {
-//            interactor.updateUserImage(image: image) { result in
-//                DispatchQueue.main.async {
-//                    switch result {
-//                    case .success:
-//                        print("")
-//                    case .failure(let error):
-//                        self.view?.showAlert(with: "Image", message: error.localizedDescription)
-//                    }
-//                }
-//            }
-//        }
-//        
-//    }
+    func getWhichSing() -> String {
+        let defaults = UserDefaults.standard
+        return defaults.string(forKey: "WhichSign") ?? "email"
+    }
+    func getProfileViewModelSingWithEmail() -> ProfileViewModelSingWithEmail {
+        let model = ProfileViewModelSingWithEmail()
+        return model
+    }
+    
+    func getProfileViewModelSingWithVKOrGoogle() -> ProfileViewModelSingWithVKOrGoogle {
+        let model = ProfileViewModelSingWithVKOrGoogle()
+        return model
+    }
+    
     func didTapChangeUserImageButton(image: UIImage?, error: Error?) {
         if let error = error {
             self.view?.showAlert(with: "DownloadImageError", message: error.localizedDescription)
@@ -120,6 +115,8 @@ extension ProfilePresenter: ProfileViewOutput {
             }
             self.handleFetchUser(result: result, userProfileImage: userProfileImage)
         }
+        
+        self.view?.configure(with: ProfileViewModel())
     }
     
     func getBack() {

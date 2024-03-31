@@ -22,6 +22,7 @@ protocol SettingsViewInput: AnyObject {
 }
 
 protocol SettingsViewOutput: AnyObject {
+    func getViewModel() -> SettingsViewModel
     func didTapThemeCell()
     func didTapDateAndTimeCell()
     func didTapUnitsCell()

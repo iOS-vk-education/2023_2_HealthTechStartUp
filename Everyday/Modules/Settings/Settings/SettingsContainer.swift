@@ -11,6 +11,7 @@ import UIKit
 final class SettingsContainer {
     let input: SettingsModuleInput
     let viewController: UIViewController
+    
     private(set) weak var router: SettingsRouterInput!
     
     class func assemble(with context: SettingsContext) -> SettingsContainer {

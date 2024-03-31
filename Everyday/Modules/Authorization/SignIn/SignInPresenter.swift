@@ -72,12 +72,16 @@ extension SignInPresenter: SignInViewOutput {
         switch signInMethod {
         case .google:
             interactor.loginWithGoogle(with: signedUp)
+            setWhichSign(signMethod: .google)
         case .vk:
             interactor.loginWithVK(with: signedUp)
+            setWhichSign(signMethod: .vk)
         case .anonym:
             interactor.loginWithAnonym(with: signedUp)
+            setWhichSign(signMethod: .anonym)
         case .email:
             interactor.loginWithEmail(with: signedUp, email: email, password: password)
+            setWhichSign(signMethod: .email)
         default:
             break 
         }

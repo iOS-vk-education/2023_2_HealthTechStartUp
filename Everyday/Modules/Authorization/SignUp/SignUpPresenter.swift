@@ -48,6 +48,7 @@ extension SignUpPresenter: SignUpViewOutput {
         ProfileAcknowledgementModel.shared.update(firstname: generator.generateName(),
                                                   lastname: generator.generateSurname())
         checkAuth(for: Constants.anonym)
+        setWhichSign(signMethod: .anonym)
     }
     
     func didTapSignUpButton(with email: String?, and password: String?) {
@@ -66,16 +67,19 @@ extension SignUpPresenter: SignUpViewOutput {
         
         ProfileAcknowledgementModel.shared.update(email: email, password: password)
         checkAuth(for: Constants.email)
+        setWhichSign(signMethod: .email)
     }
     
     func didTapSignWithVKButton() {
         AuthModel.shared.whichSign = .vk
         interactor.authWithVKID()
+        setWhichSign(signMethod: .vk)
     }
 
     func didTapSignWithGoogleButton() {
         AuthModel.shared.whichSign = .google
         interactor.authWithGoogle()
+        setWhichSign(signMethod: .google)
     }
     
     // MARK: - Constants

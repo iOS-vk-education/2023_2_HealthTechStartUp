@@ -156,9 +156,11 @@ func switchIsOn(key: Int) -> Bool {
 }
 
 func resetUserDefaults() {
-    UserDefaults.standard.set("Auto", forKey: "SelectedTheme")
-    UserDefaults.standard.set("Monday", forKey: "BeginningOfTheWeek")
-    UserDefaults.standard.set("MilitaryTime", forKey: "TimeFormat")
-    UserDefaults.standard.set(true, forKey: switchKeys[0])
-    UserDefaults.standard.set(true, forKey: switchKeys[1])
+    let defaults = UserDefaults.standard
+    defaults.set("Auto", forKey: "SelectedTheme")
+    defaults.set("Monday", forKey: "BeginningOfTheWeek")
+    defaults.set("MilitaryTime", forKey: "TimeFormat")
+    defaults.set(true, forKey: switchKeys[0])
+    defaults.set(true, forKey: switchKeys[1])
+    defaults.set("email", forKey: "WhichSing")
 }

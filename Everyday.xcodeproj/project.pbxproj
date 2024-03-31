@@ -9,7 +9,7 @@
 /* Begin PBXBuildFile section */
 		8C3B5E6D2BAF77A900CFE490 /* SettingsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E6C2BAF77A900CFE490 /* SettingsTableViewCell.swift */; };
 		8C3B5E6F2BAF77DC00CFE490 /* SettingsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E6E2BAF77DC00CFE490 /* SettingsViewModel.swift */; };
-		8C3B5E712BAF780200CFE490 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E702BAF780200CFE490 /* ProfileViewModel.swift */; };
+		8C3B5E712BAF780200CFE490 /* ProfileViewModelSingWithEmail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E702BAF780200CFE490 /* ProfileViewModelSingWithEmail.swift */; };
 		8C3B5E782BAF78D100CFE490 /* ProfilePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E722BAF78D100CFE490 /* ProfilePresenter.swift */; };
 		8C3B5E792BAF78D100CFE490 /* ProfileRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E732BAF78D100CFE490 /* ProfileRouter.swift */; };
 		8C3B5E7A2BAF78D100CFE490 /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E742BAF78D100CFE490 /* ProfileViewController.swift */; };
@@ -63,12 +63,15 @@
 		8C3B5ED92BAF7DD400CFE490 /* DeleteAccountProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5ED32BAF7DD400CFE490 /* DeleteAccountProtocols.swift */; };
 		8C3B5EDA2BAF7DD400CFE490 /* DeleteAccountInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5ED42BAF7DD400CFE490 /* DeleteAccountInteractor.swift */; };
 		8C3B5EDB2BAF7DD400CFE490 /* DeleteAccountContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5ED52BAF7DD400CFE490 /* DeleteAccountContainer.swift */; };
-		8C3B5EDE2BAF7EA900CFE490 /* UserDefaultsServiceFoerSettings.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EDD2BAF7EA900CFE490 /* UserDefaultsServiceFoerSettings.swift */; };
+		8C3B5EDE2BAF7EA900CFE490 /* SettingsUserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EDD2BAF7EA900CFE490 /* SettingsUserDefaultsService.swift */; };
 		8C3B5EE02BB08DA900CFE490 /* ChangeEmailModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EDF2BB08DA900CFE490 /* ChangeEmailModel.swift */; };
 		8C3B5EE22BB0BEF800CFE490 /* ChangePasswordModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EE12BB0BEF800CFE490 /* ChangePasswordModel.swift */; };
 		8C3B5EE42BB0EB1300CFE490 /* DeleteAccountModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EE32BB0EB1300CFE490 /* DeleteAccountModel.swift */; };
 		8C3B5EF82BB75C9F00CFE490 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EF72BB75C9F00CFE490 /* FirebaseService.swift */; };
 		8C3B5EFB2BB75DA200CFE490 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EFA2BB75DA200CFE490 /* SettingsService.swift */; };
+		8C3B5EFD2BB8F2CF00CFE490 /* ProfileViewModelSingWithVKOrGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EFC2BB8F2CF00CFE490 /* ProfileViewModelSingWithVKOrGoogle.swift */; };
+		8C3B5F012BBA058800CFE490 /* AuthUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5F002BBA058800CFE490 /* AuthUserDefaults.swift */; };
+		8C3B5F032BBA158F00CFE490 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5F022BBA158F00CFE490 /* ProfileViewModel.swift */; };
 		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
 		9E2A8BB22B84F106004A81CF /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 9E2A8BB12B84F106004A81CF /* FirebaseAppCheck */; };
 		9E2A8BB42B84F106004A81CF /* FirebaseAppDistribution-Beta in Frameworks */ = {isa = PBXBuildFile; productRef = 9E2A8BB32B84F106004A81CF /* FirebaseAppDistribution-Beta */; };
@@ -241,7 +244,7 @@
 /* Begin PBXFileReference section */
 		8C3B5E6C2BAF77A900CFE490 /* SettingsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewCell.swift; sourceTree = "<group>"; };
 		8C3B5E6E2BAF77DC00CFE490 /* SettingsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsViewModel.swift; sourceTree = "<group>"; };
-		8C3B5E702BAF780200CFE490 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		8C3B5E702BAF780200CFE490 /* ProfileViewModelSingWithEmail.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelSingWithEmail.swift; sourceTree = "<group>"; };
 		8C3B5E722BAF78D100CFE490 /* ProfilePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfilePresenter.swift; sourceTree = "<group>"; };
 		8C3B5E732BAF78D100CFE490 /* ProfileRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileRouter.swift; sourceTree = "<group>"; };
 		8C3B5E742BAF78D100CFE490 /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
@@ -295,12 +298,15 @@
 		8C3B5ED32BAF7DD400CFE490 /* DeleteAccountProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountProtocols.swift; sourceTree = "<group>"; };
 		8C3B5ED42BAF7DD400CFE490 /* DeleteAccountInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountInteractor.swift; sourceTree = "<group>"; };
 		8C3B5ED52BAF7DD400CFE490 /* DeleteAccountContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountContainer.swift; sourceTree = "<group>"; };
-		8C3B5EDD2BAF7EA900CFE490 /* UserDefaultsServiceFoerSettings.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsServiceFoerSettings.swift; sourceTree = "<group>"; };
+		8C3B5EDD2BAF7EA900CFE490 /* SettingsUserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsUserDefaultsService.swift; sourceTree = "<group>"; };
 		8C3B5EDF2BB08DA900CFE490 /* ChangeEmailModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeEmailModel.swift; sourceTree = "<group>"; };
 		8C3B5EE12BB0BEF800CFE490 /* ChangePasswordModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangePasswordModel.swift; sourceTree = "<group>"; };
 		8C3B5EE32BB0EB1300CFE490 /* DeleteAccountModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DeleteAccountModel.swift; sourceTree = "<group>"; };
 		8C3B5EF72BB75C9F00CFE490 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		8C3B5EFA2BB75DA200CFE490 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
+		8C3B5EFC2BB8F2CF00CFE490 /* ProfileViewModelSingWithVKOrGoogle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelSingWithVKOrGoogle.swift; sourceTree = "<group>"; };
+		8C3B5F002BBA058800CFE490 /* AuthUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserDefaults.swift; sourceTree = "<group>"; };
+		8C3B5F022BBA158F00CFE490 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
 		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
 		9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
@@ -602,7 +608,9 @@
 		8C3B5E652BAF772900CFE490 /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				8C3B5E702BAF780200CFE490 /* ProfileViewModel.swift */,
+				8C3B5E702BAF780200CFE490 /* ProfileViewModelSingWithEmail.swift */,
+				8C3B5EFC2BB8F2CF00CFE490 /* ProfileViewModelSingWithVKOrGoogle.swift */,
+				8C3B5F022BBA158F00CFE490 /* ProfileViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -661,7 +669,7 @@
 		8C3B5EDC2BAF7E7B00CFE490 /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
-				8C3B5EDD2BAF7EA900CFE490 /* UserDefaultsServiceFoerSettings.swift */,
+				8C3B5EDD2BAF7EA900CFE490 /* SettingsUserDefaultsService.swift */,
 			);
 			path = UserDefaults;
 			sourceTree = "<group>";
@@ -677,9 +685,27 @@
 		8C3B5EF92BB75D8D00CFE490 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				8C3B5EFE2BBA052300CFE490 /* Helpers */,
+				8C3B5EF62BB75C7A00CFE490 /* Firebase */,
 				8C3B5EFA2BB75DA200CFE490 /* SettingsService.swift */,
 			);
 			path = Settings;
+			sourceTree = "<group>";
+		};
+		8C3B5EFE2BBA052300CFE490 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5EDC2BAF7E7B00CFE490 /* UserDefaults */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
+		8C3B5EFF2BBA056000CFE490 /* UserDefaults */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5F002BBA058800CFE490 /* AuthUserDefaults.swift */,
+			);
+			path = UserDefaults;
 			sourceTree = "<group>";
 		};
 		9E1383072BAB03240073622C /* CoreData */ = {
@@ -716,6 +742,7 @@
 		9E2931842B9F262D00950B15 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8C3B5EFF2BBA056000CFE490 /* UserDefaults */,
 				9E1383072BAB03240073622C /* CoreData */,
 				9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */,
 				9E2A8BCE2B854147004A81CF /* Validator.swift */,
@@ -738,8 +765,6 @@
 			isa = PBXGroup;
 			children = (
 				8C3B5EF92BB75D8D00CFE490 /* Settings */,
-				8C3B5EF62BB75C7A00CFE490 /* Firebase */,
-				8C3B5EDC2BAF7E7B00CFE490 /* UserDefaults */,
 				9E4766DE2BA3509300DD31B9 /* HealthKit */,
 				9E4766D62B9F515700DD31B9 /* Storage */,
 				9E4F225D2B9F3B37003E749E /* Day */,
@@ -1463,6 +1488,7 @@
 				8C3B5E7D2BAF78D100CFE490 /* ProfileContainer.swift in Sources */,
 				9EE335992B8F9CCD00F532B3 /* SplashAnimator.swift in Sources */,
 				8C3B5E832BAF797C00CFE490 /* ThemeViewModel.swift in Sources */,
+				8C3B5EFD2BB8F2CF00CFE490 /* ProfileViewModelSingWithVKOrGoogle.swift in Sources */,
 				9E4F22982B9F3BDD003E749E /* ExerciseProtocols.swift in Sources */,
 				8C3B5EFB2BB75DA200CFE490 /* SettingsService.swift in Sources */,
 				9E5B74ED2B7F99FB00E2BDE6 /* WelcomeScreenViewModel.swift in Sources */,
@@ -1474,6 +1500,7 @@
 				9EE8AE1E2B7FB905001D126F /* ProgressViewController.swift in Sources */,
 				9E4F22902B9F3BC4003E749E /* TrainingViewModel.swift in Sources */,
 				9E4F22742B9F3B8F003E749E /* NotepadSectionHeaderView.swift in Sources */,
+				8C3B5F032BBA158F00CFE490 /* ProfileViewModel.swift in Sources */,
 				8C3B5E932BAF7A1400CFE490 /* DateAndTimeViewModel.swift in Sources */,
 				9E4F22CE2B9F3C51003E749E /* ExtraContainer.swift in Sources */,
 				8C3B5ED92BAF7DD400CFE490 /* DeleteAccountProtocols.swift in Sources */,
@@ -1484,7 +1511,7 @@
 				8C3B5E8E2BAF798F00CFE490 /* ThemeInteractor.swift in Sources */,
 				9E5B74F92B7F9A7000E2BDE6 /* SignUpRouter.swift in Sources */,
 				9E4F225F2B9F3B46003E749E /* DayService.swift in Sources */,
-				8C3B5EDE2BAF7EA900CFE490 /* UserDefaultsServiceFoerSettings.swift in Sources */,
+				8C3B5EDE2BAF7EA900CFE490 /* SettingsUserDefaultsService.swift in Sources */,
 				8C3B5EE42BB0EB1300CFE490 /* DeleteAccountModel.swift in Sources */,
 				8C3B5EA12BAF7A8000CFE490 /* DateAndTimeTableViewCell.swift in Sources */,
 				8C3B5E8C2BAF798F00CFE490 /* ThemeViewController.swift in Sources */,
@@ -1557,7 +1584,7 @@
 				9EBFD9652BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift in Sources */,
 				9E4382D52B83738800C69708 /* AuthService.swift in Sources */,
 				8C3B5EBB2BAF7CA500CFE490 /* ChangeEmailRouter.swift in Sources */,
-				8C3B5E712BAF780200CFE490 /* ProfileViewModel.swift in Sources */,
+				8C3B5E712BAF780200CFE490 /* ProfileViewModelSingWithEmail.swift in Sources */,
 				8C3B5EBE2BAF7CA500CFE490 /* ChangeEmailInteractor.swift in Sources */,
 				9EE3359D2B8F9CEA00F532B3 /* SplashPresenter.swift in Sources */,
 				9E4766D82B9F516F00DD31B9 /* StorageService.swift in Sources */,
@@ -1615,6 +1642,7 @@
 				9E7C199B2B8D0EC50006D48C /* SignInModel.swift in Sources */,
 				9E4F22C12B9F3C2E003E749E /* TimerRouter.swift in Sources */,
 				8C3B5E9F2BAF7A2700CFE490 /* DateAndTimeContainer.swift in Sources */,
+				8C3B5F012BBA058800CFE490 /* AuthUserDefaults.swift in Sources */,
 				9E5B75432B7F9D7600E2BDE6 /* AgeModel.swift in Sources */,
 				8C3B5E9A2BAF7A2700CFE490 /* DateAndTimePresenter.swift in Sources */,
 				8C3B5EAA2BAF7BC400CFE490 /* UnitsPresenter.swift in Sources */,

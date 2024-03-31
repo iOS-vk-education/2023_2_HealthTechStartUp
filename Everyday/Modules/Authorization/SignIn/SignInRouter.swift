@@ -18,9 +18,10 @@ extension SignInRouter: SignInRouterInput {
            let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
            let appViewController = TabBarController()
             appViewController.modalPresentationStyle = .fullScreen
+            let navigationController = UINavigationController(rootViewController: appViewController)
 
             UIView.transition(with: window, duration: 0.5, options: [.transitionCrossDissolve], animations: {
-                window.rootViewController = appViewController
+                window.rootViewController = navigationController
             }, completion: nil)
         }
     }

@@ -45,7 +45,6 @@ final class ProfileViewController: UIViewController {
         let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
         self.view.addGestureRecognizer(swipeRight)
         
-        navBarTitle.attributedText = ProfileViewModel().profileTitle
         self.navigationItem.titleView = navBarTitle
         navigationController?.navigationBar.tintColor = Constants.accentColor
         
@@ -60,9 +59,18 @@ final class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: ProfileViewInput {
-    func configure(with: ProfileViewModel, and userImage: UIImage) {
-        userImageView.image = userImage
+    func configure(with model: ProfileViewModel) {
+        navBarTitle.attributedText = model.profileTitle
+        changeUserImageButton.setAttributedTitle(model.selectImageTitle, for: .normal)
     }
+    
+    func setupProfileImage(image: UIImage) {
+        userImageView.image = image
+    }
+    
+//    func configure(with: ProfileViewModel, and userImage: UIImage) {
+//        userImageView.image = userImage
+//  }
     
     func showAlert(with key: String, message: String) {
         switch key {
@@ -81,6 +89,7 @@ extension ProfileViewController: ProfileViewInput {
 }
 
 private extension ProfileViewController {
+    
     // MARK: - Setup
     
     func setup() {
@@ -112,13 +121,12 @@ private extension ProfileViewController {
     }
     
     func setupImage() {
-        
+        userImageView.contentMode = .scaleAspectFill
         userImageView.layer.cornerRadius = UIScreen.main.bounds.size.width * 0.5 / 2
         userImageView.clipsToBounds = true
     }
     
     func setupButton() {
-        changeUserImageButton.setAttributedTitle(ProfileViewModel().selectImageTitle, for: .normal)
         changeUserImageButton.addTarget(self, action: #selector(didTapChangeUserImageButton), for: .touchUpInside)
     }
     
@@ -146,6 +154,7 @@ private extension ProfileViewController {
     }
     
     // MARK: Actions
+    
     @objc
     private func didTapChangeUserImageButton() {
         var configuration = PHPickerConfiguration()
@@ -178,15 +187,28 @@ private extension ProfileViewController {
 
 extension ProfileViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        Constants.TableView.numberOfSectionsInTableView
-    }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        switch section {
-        case 0: return Constants.TableView.numberOfRowsInFirstSectionInTableView
-        case 1: return Constants.TableView.numberOfRowsInSecondSectionInTableView
-        case 2: return Constants.TableView.numberOfRowsInThirdSectionInTableView
-        case 3: return Constants.TableView.numberOfRowsInFourthSectionInTableView
+        let whichSing = output.getWhichSing()
+        switch whichSing {
+        case "vk", "google":
+            let model = output.getProfileViewModelSingWithVKOrGoogle()
+            return model.sectionsModels.count
+        case "email":
+            let model = output.getProfileViewModelSingWithEmail()
+            return model.sectionsModels.count
         default: return 0
+        }
+    }
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let whichSing = output.getWhichSing()
+        switch whichSing {
+        case "vk", "google":
+            let model = output.getProfileViewModelSingWithVKOrGoogle()
+            return model.sectionsModels[section].count
+        case "email":
+            let model = output.getProfileViewModelSingWithEmail()
+            return model.sectionsModels[section].count
+        default: return 5
         }
     }
     
@@ -213,19 +235,40 @@ extension ProfileViewController: UITableViewDataSource {
             tableView.register(ProfileTableViewCellWithTitle.self, forCellReuseIdentifier: reuseID)
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath) as? ProfileTableViewCellWithTitle {
+                let whichSing = output.getWhichSing()
                 
                 cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
                 if indexPath.section == 1 {
-                    let model = ProfileViewModel().buttonInSecondSectionTitles
-                    cell.configure(with: model[indexPath.row])
+                    switch whichSing {
+                    case "vk", "google":
+                        let model = output.getProfileViewModelSingWithVKOrGoogle()
+                        cell.configure(with: model.sectionsModels[indexPath.section][indexPath.row])
+                    case "email":
+                        let model = output.getProfileViewModelSingWithEmail()
+                        cell.configure(with: model.sectionsModels[indexPath.section][indexPath.row])
+                    default: cell.configure(with: NSAttributedString(string: ""))
+                    }
                 }
                 
                 if indexPath.section == 2 {
-                    cell.configure(with: ProfileViewModel().exitTitle)
+                    switch whichSing {
+                    case "vk", "google":
+                        let model = output.getProfileViewModelSingWithVKOrGoogle()
+                        cell.configure(with: model.sectionsModels[indexPath.section][indexPath.row])
+                    case "email":
+                        let model = output.getProfileViewModelSingWithEmail()
+                        cell.configure(with: model.sectionsModels[indexPath.section][indexPath.row])
+                    default: cell.configure(with: NSAttributedString(string: ""))
+                    }
                 }
                 
                 if indexPath.section == 3 {
-                    cell.configure(with: ProfileViewModel().deleteAccount)
+                    switch whichSing {
+                    case "email":
+                        let model = output.getProfileViewModelSingWithEmail()
+                        cell.configure(with: model.sectionsModels[indexPath.section][indexPath.row])
+                    default: cell.configure(with: NSAttributedString(string: ""))
+                    }
                 }
                 
                 return cell
@@ -238,20 +281,31 @@ extension ProfileViewController: UITableViewDataSource {
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
-        if indexPath.section == 1 {
-            switch indexPath.row {
-            case 0: output.didTapChangeEmailCell()
-            case 1: output.didTapChangePasswordCell()
-            default: return
+        switch output.getWhichSing() {
+        case "vk", "google":
+            if indexPath.section == 1 {
+                output.didTapLogoutButton()
             }
-        }
-        
-        if indexPath.section == 2 {
-            output.didTapLogoutButton()
-        }
-        if indexPath.section == 3 {
-            output.didTapDeleteAccountCell()
+            if indexPath.section == 2 {
+                output.didTapDeleteAccountCell()
+            }
+        case "email":
+            if indexPath.section == 1 {
+                switch indexPath.row {
+                case 0: output.didTapChangeEmailCell()
+                case 1: output.didTapChangePasswordCell()
+                default: return
+                }
+            }
+            
+            if indexPath.section == 2 {
+                output.didTapLogoutButton()
+            }
+            if indexPath.section == 3 {
+                output.didTapDeleteAccountCell()
+            }
+        default:
+            print("чтото не то")
         }
     }
 }

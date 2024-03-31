@@ -36,8 +36,8 @@ final class SettingsViewController: UIViewController {
         view.backgroundColor = Constants.backgroundColor
         
         navigationController?.navigationBar.isHidden = false
-        
-        tableView.reloadData()
+        print(CoreDataService.shared.getAllItems())
+//        tableView.reloadData()
         
         setup()
     }
@@ -108,7 +108,7 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let model = SettingsViewModel()
+        let model = output.getViewModel()
         switch section {
         case 0: return model.generalSettingsSectionCellModel.count
         case 1: return model.profileSettingsSectionCellModel.count
@@ -125,7 +125,7 @@ extension SettingsViewController: UITableViewDataSource {
         cell.selectionStyle = .blue
         cell.accessoryType = .disclosureIndicator
         cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
-        let model = SettingsViewModel()
+        let model = output.getViewModel()
         
         if indexPath.section == 0 && indexPath.row <= 1 {
             let viewModel = model.generalSettingsSectionCellModel
@@ -173,7 +173,7 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        let model = SettingsViewModel()
+        let model = output.getViewModel()
         if section == 3 {
             return model.supportEverydayTitle
         }
@@ -222,7 +222,7 @@ extension SettingsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let model = SettingsViewModel()
+        let model = output.getViewModel()
         let tyInFooterLabel = UILabel()
         tyInFooterLabel.attributedText = model.tyTitle
         tyInFooterLabel.textAlignment = .center
