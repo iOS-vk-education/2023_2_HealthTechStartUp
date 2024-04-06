@@ -24,13 +24,13 @@ enum UIHelper {
     
     static func createSevenColumnFlowLayout(in view: UIView) -> UICollectionViewFlowLayout {
         let width = view.bounds.width
-        let padding: CGFloat = 4
+        let padding: CGFloat = 8
         let minimumItemSpacing: CGFloat = 12
         let availableWidth = width - (padding * 2) - (minimumItemSpacing * 6)
         let itemWidth = availableWidth / 7
         
         let flowLayout = UICollectionViewFlowLayout()
-        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: padding, bottom: 0, right: padding)
+        flowLayout.sectionInset = UIEdgeInsets(top: 0, left: padding + 5, bottom: 0, right: 0)
         flowLayout.itemSize = CGSize(width: itemWidth, height: 60)
         
         flowLayout.scrollDirection = .horizontal
