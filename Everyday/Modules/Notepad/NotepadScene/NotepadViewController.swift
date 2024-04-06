@@ -180,6 +180,17 @@ extension NotepadViewController: UICollectionViewDataSource {
     }
 }
 
+// MARK: - ScrollViewDelegate
+
+extension NotepadViewController: UIScrollViewDelegate {
+    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+        if scrollView == outerCollectionView {
+            let currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
+            print("[DEBUG] Current page: \(currentPage)")
+        }
+    }
+}
+
 // MARK: - TableViewDataSource
 
 extension NotepadViewController: UITableViewDataSource {
