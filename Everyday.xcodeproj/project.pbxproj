@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		9D32E9152BBF06F0008A2BA4 /* WorkoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D32E9142BBF06F0008A2BA4 /* WorkoutCollectionViewCell.swift */; };
+		9D32E9172BBF0AB3008A2BA4 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */; };
 		9D4E4BCD2BB070D200617E5D /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9E5B74CB2B7F963100E2BDE6 /* PinLayout */; };
 		9D4E4BCE2BB070D200617E5D /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9D11F0FF2BA7D53F003CF1F5 /* PinLayout */; };
 		9D4E4BD02BB070D200617E5D /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 9D11F1052BA7D854003CF1F5 /* GoogleSignIn */; };
@@ -19,6 +21,7 @@
 		9D4E4BD72BB070D200617E5D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B042BA8AEFE006AC078 /* FirebaseFirestoreSwift */; };
 		9D4E4BD82BB070D200617E5D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B062BA8AEFE006AC078 /* FirebaseStorage */; };
 		9D4E4BDB2BB0721D00617E5D /* M13Checkbox in Frameworks */ = {isa = PBXBuildFile; productRef = 9D4E4BDA2BB0721D00617E5D /* M13Checkbox */; };
+		9D69D8542BC163E90079D5E9 /* NotepadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69D8532BC163E90079D5E9 /* NotepadCollectionViewCell.swift */; };
 		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
 		9E2A8BB22B84F106004A81CF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		9E2A8BB42B84F106004A81CF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
@@ -185,6 +188,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		9D32E9142BBF06F0008A2BA4 /* WorkoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCollectionViewCell.swift; sourceTree = "<group>"; };
+		9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		9D69D8532BC163E90079D5E9 /* NotepadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadCollectionViewCell.swift; sourceTree = "<group>"; };
 		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
 		9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
@@ -517,6 +523,7 @@
 				9E4F226C2B9F3B8F003E749E /* NotepadSectionHeaderView.swift */,
 				9E4F226D2B9F3B8F003E749E /* NotepadTableViewCell.swift */,
 				9E4F22692B9F3B8F003E749E /* NotepadViewController.swift */,
+				9D69D8532BC163E90079D5E9 /* NotepadCollectionViewCell.swift */,
 			);
 			path = NotepadScene;
 			sourceTree = "<group>";
@@ -649,6 +656,7 @@
 			isa = PBXGroup;
 			children = (
 				9E4F22D62B9F3CF9003E749E /* CustomError */,
+				9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1000,6 +1008,7 @@
 				9EE8AE332B7FB96E001D126F /* WorkoutProtocols.swift */,
 				9EE8AE342B7FB96E001D126F /* WorkoutInteractor.swift */,
 				9EE8AE352B7FB96E001D126F /* WorkoutContainer.swift */,
+				9D32E9142BBF06F0008A2BA4 /* WorkoutCollectionViewCell.swift */,
 			);
 			path = Workout;
 			sourceTree = "<group>";
@@ -1144,6 +1153,7 @@
 				9E4F227C2B9F3B9B003E749E /* NotepadViewModel.swift in Sources */,
 				9E4F22BE2B9F3C2E003E749E /* TimerProtocols.swift in Sources */,
 				9E5B74FC2B7F9A7000E2BDE6 /* SignUpViewModel.swift in Sources */,
+				9D32E9172BBF0AB3008A2BA4 /* UIHelper.swift in Sources */,
 				9EE335992B8F9CCD00F532B3 /* SplashAnimator.swift in Sources */,
 				9E4F22982B9F3BDD003E749E /* ExerciseProtocols.swift in Sources */,
 				9E5B74ED2B7F99FB00E2BDE6 /* WelcomeScreenViewModel.swift in Sources */,
@@ -1196,6 +1206,7 @@
 				9E5B753C2B7F9D7600E2BDE6 /* ContentView.swift in Sources */,
 				9E4F22AE2B9F3C05003E749E /* ResultsTableViewCell.swift in Sources */,
 				9E4F22862B9F3BB4003E749E /* TrainingContainer.swift in Sources */,
+				9D69D8542BC163E90079D5E9 /* NotepadCollectionViewCell.swift in Sources */,
 				9E5B75452B7F9D7600E2BDE6 /* AgeView.swift in Sources */,
 				9E5B75072B7F9A8300E2BDE6 /* SignInProtocols.swift in Sources */,
 				9E5B75472B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift in Sources */,
@@ -1234,6 +1245,7 @@
 				9E4F228B2B9F3BB4003E749E /* TrainingProtocols.swift in Sources */,
 				9E4F22722B9F3B8F003E749E /* NotepadInteractor.swift in Sources */,
 				9E4F22D82B9F3D09003E749E /* CustomError.swift in Sources */,
+				9D32E9152BBF06F0008A2BA4 /* WorkoutCollectionViewCell.swift in Sources */,
 				9EE8AE122B7FB8CF001D126F /* SettingsProtocols.swift in Sources */,
 				9E5B75412B7F9D7600E2BDE6 /* PageView.swift in Sources */,
 				9E53FB502B7F951000C55A45 /* UIColor+Extension.swift in Sources */,
@@ -1429,7 +1441,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Everyday 2.0";
+				INFOPLIST_KEY_CFBundleDisplayName = Everyday;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1442,7 +1454,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.super.Everyday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1466,7 +1478,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
-				INFOPLIST_KEY_CFBundleDisplayName = "Everyday 2.0";
+				INFOPLIST_KEY_CFBundleDisplayName = Everyday;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -1479,7 +1491,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.super.Everyday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
