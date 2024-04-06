@@ -24,6 +24,8 @@ protocol NotepadViewInput: AnyObject {
 
 protocol NotepadViewOutput: AnyObject {
     func didLoadView()
+    func collectionNumberOfItems() -> Int
+    func collectionItem(at index: Int) -> [Date]
     func headerViewState() -> NotepadSectionHeaderState
     func getWorkoutDay(_ number: Int) -> WorkoutDay
     func getWorkout(at indexOfWorkout: Int) -> Workout

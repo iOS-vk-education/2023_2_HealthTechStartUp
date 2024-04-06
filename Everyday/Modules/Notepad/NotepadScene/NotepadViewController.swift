@@ -15,6 +15,8 @@ final class NotepadViewController: UIViewController {
     
     private let output: NotepadViewOutput
     
+    private var outerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    
     private let stateLabel = UILabel()
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private let activityIndicator = UIActivityIndicatorView(style: .large)
@@ -37,11 +39,13 @@ final class NotepadViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        setup()
         output.didLoadView()
+        setup()
     }
     
-    override func viewDidLayoutSubviews() {
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
         layout()
     }
 }
@@ -51,8 +55,13 @@ private extension NotepadViewController {
     // MARK: - Layout
     
     func layout() {
-        stateLabel.pin
+        outerCollectionView.pin
+            .horizontally()
             .top(view.pin.safeArea)
+            .height(60)
+        
+        stateLabel.pin
+            .below(of: outerCollectionView)
             .horizontally(Constants.HeaderLabel.horizontalMargin)
             .height(Constants.HeaderLabel.height)
 
@@ -67,14 +76,35 @@ private extension NotepadViewController {
     
     func setup() {
         setupView()
+        setupOuterCollectionView()
         setupTableView()
         
-        view.addSubviews(stateLabel, tableView)
+        view.addSubviews(outerCollectionView, stateLabel, tableView)
     }
 
     func setupView() {
         view.backgroundColor = Constants.backgroundColor
         navigationItem.leftBarButtonItem = UIBarButtonItem(customView: dateLabel())
+    }
+    
+    func setupOuterCollectionView() {
+        outerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createSingleColumnFlowLayout(in: view))
+        outerCollectionView.dataSource = self
+        outerCollectionView.register(NotepadCollectionViewCell.self, forCellWithReuseIdentifier: NotepadCollectionViewCell.reuseID)
+        
+        outerCollectionView.backgroundColor = .clear
+        
+        outerCollectionView.showsHorizontalScrollIndicator = false
+        outerCollectionView.isPagingEnabled = true
+        
+        DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
+            guard let self else {
+                return
+            }
+            
+            let indexPath = IndexPath(item: 2, section: 0)  // not 2, but current week
+            outerCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+        }
     }
     
     func setupTableView() {
@@ -130,7 +160,27 @@ private extension NotepadViewController {
     }
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - CollectionViewDataSource
+
+extension NotepadViewController: UICollectionViewDataSource {
+    func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
+        output.collectionNumberOfItems()
+    }
+    
+    func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
+        guard let cell = outerCollectionView.dequeueReusableCell(withReuseIdentifier: NotepadCollectionViewCell.reuseID, 
+                                                                 for: indexPath) as? NotepadCollectionViewCell else {
+            return UICollectionViewCell()
+        }
+        
+        let week = output.collectionItem(at: indexPath.item)
+        cell.configure(with: week)
+        
+        return cell
+    }
+}
+
+// MARK: - TableViewDataSource
 
 extension NotepadViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -154,7 +204,7 @@ extension NotepadViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - TableViewDelegate
 
 extension NotepadViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -174,7 +224,7 @@ extension NotepadViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - NotepadViewInput
+// MARK: - ViewInput
 
 extension NotepadViewController: NotepadViewInput {
     func configure(with viewModel: NotepadViewModel) {
