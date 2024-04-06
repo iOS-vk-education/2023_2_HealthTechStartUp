@@ -19,7 +19,7 @@ struct MyUser: Codable {
     let nickname: String
     let weight: String
     let schedule: [Day]?
-    let history: [Day]?
+    let history: [HistoryDay]?
     
     init() {
         id = nil
@@ -33,6 +33,11 @@ struct MyUser: Codable {
         schedule = nil
         history = nil
     }
+}
+
+struct HistoryDay: Codable, Hashable {
+    let date: Date
+    let historyID: DocumentReference
 }
 
 struct Day: Codable, Hashable {
