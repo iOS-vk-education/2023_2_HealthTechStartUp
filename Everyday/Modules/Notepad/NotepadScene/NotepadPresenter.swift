@@ -101,12 +101,6 @@ extension NotepadPresenter: NotepadViewOutput {
         interactor.loadResult(date: Date())
     }
     
-    func extractDate(date: Date, format: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        return formatter.string(from: date)
-    }
-    
     func didTapNewDate(_ date: Date) {
         interactor.loadResult(date: date)
     }
