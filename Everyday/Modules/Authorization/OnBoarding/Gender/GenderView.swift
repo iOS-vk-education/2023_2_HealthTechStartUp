@@ -57,7 +57,7 @@ struct GenderView: View {
             .padding(.bottom, Constants.VStackValues.bPadding)
         }
         .padding(.horizontal)
-        .onChange(of: controller.selectedGender) { newValue in
+        .onChange(of: controller.selectedGender) { _, newValue in
             ProfileAcknowledgementModel.shared.update(gender: newValue.description)
         }
     }

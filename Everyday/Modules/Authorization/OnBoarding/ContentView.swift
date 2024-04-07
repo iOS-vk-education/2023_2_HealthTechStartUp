@@ -67,7 +67,7 @@ struct ContentView: View {
         .onTapGesture {
             hideKeyboard()
         }
-        .onChange(of: pageIndex) { _ in
+        .onChange(of: pageIndex) {
             if isKeyboardVisible {
                 hideKeyboard()
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {

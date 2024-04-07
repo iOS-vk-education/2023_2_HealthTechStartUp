@@ -81,7 +81,7 @@ struct ProfileSetupView: View {
         .clipShape(Circle())
         .overlay(Circle().stroke(Color.primary, lineWidth: Constants.ZStackValues.overlay))
         .padding()
-        .onChange(of: viewModel.inputImage) { newValue in
+        .onChange(of: viewModel.inputImage) { _, newValue in
             ProfileAcknowledgementModel.shared.update(profileImage: newValue)
         }
     }

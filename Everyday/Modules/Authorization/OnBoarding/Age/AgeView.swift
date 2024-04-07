@@ -58,7 +58,7 @@ struct AgeView: View {
             .padding(.bottom, Constants.VStackValues.bPadding)
         }
         .padding(.horizontal)
-        .onChange(of: controller.selectedAge) { newValue in
+        .onChange(of: controller.selectedAge) { _, newValue in
             let selectedAgeData = AgeData(age: newValue)
             ProfileAcknowledgementModel.shared.update(age: selectedAgeData.age.description)
         }
