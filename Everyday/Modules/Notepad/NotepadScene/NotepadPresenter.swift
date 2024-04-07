@@ -91,7 +91,20 @@ private extension NotepadPresenter {
 extension NotepadPresenter: NotepadViewOutput {
     func didLoadView() {
         calendar = fetchWeeklyCalendar()
+
+        let outerIndexPath = IndexPath(item: 2, section: 0)
+        let weekdayIndex = Calendar.current.component(.weekday, from: Date()) - 2
+        let innerIndex = weekdayIndex == -1 ? 6 : weekdayIndex
+        let innerIndexPath = IndexPath(item: innerIndex, section: 0)
+        setSelectedCell((outerIndexPath, innerIndexPath))
+        
         interactor.loadResult(date: Date())
+    }
+    
+    func extractDate(date: Date, format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: date)
     }
     
     func didTapNewDate(_ date: Date) {
