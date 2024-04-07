@@ -8,12 +8,19 @@
 import UIKit
 import PinLayout
 
+protocol NotepadCollectionViewCellDelegate: AnyObject {
+    func didTapInnerCollectionViewCell(_ date: Date)
+}
+
 class NotepadCollectionViewCell: UICollectionViewCell {
     static let reuseID = "NotepadCollectionViewCell"
     
-    private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    weak var delegate: NotepadCollectionViewCellDelegate?
+    
+    private var innerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     
     private var week: [Date] = []
+    private(set) var selectedCellIndexPath: IndexPath?
     
     // MARK: - Init
     
@@ -24,7 +31,9 @@ class NotepadCollectionViewCell: UICollectionViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        
+        setup()
     }
     
     // MARK: - Lifecycle
@@ -37,8 +46,19 @@ class NotepadCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Interface
     
-    func configure(with week: [Date]) {
+    func configure(with week: [Date], and selectedCellIndexPath: IndexPath? = nil) {
         self.week = week
+        self.selectedCellIndexPath = selectedCellIndexPath
+        innerCollectionView.reloadData()
+        
+        selectCollectionViewCellsIfNeeded()
+    }
+    
+    func deselectCell() {
+        if let indexPath = selectedCellIndexPath {
+            innerCollectionView.deselectItem(at: indexPath, animated: false)
+            selectedCellIndexPath = nil
+        }
     }
 }
 
@@ -47,7 +67,7 @@ private extension NotepadCollectionViewCell {
     // MARK: - Layout
     
     func layout() {
-        collectionView.pin.all()
+        innerCollectionView.pin.all()
     }
     
     // MARK: - Setup
@@ -56,7 +76,7 @@ private extension NotepadCollectionViewCell {
         setupView()
         setupCollectionView()
         
-        addSubview(collectionView)
+        addSubview(innerCollectionView)
     }
     
     func setupView() {
@@ -64,16 +84,28 @@ private extension NotepadCollectionViewCell {
     }
     
     func setupCollectionView() {
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createSevenColumnFlowLayout(in: self))
-        collectionView.delegate = self
-        collectionView.dataSource = self
-        collectionView.register(WorkoutCollectionViewCell.self, forCellWithReuseIdentifier: WorkoutCollectionViewCell.reuseID)
+        innerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createSevenColumnFlowLayout(in: self))
+        innerCollectionView.delegate = self
+        innerCollectionView.dataSource = self
+        innerCollectionView.register(WorkoutCollectionViewCell.self, forCellWithReuseIdentifier: WorkoutCollectionViewCell.reuseID)
         
-        collectionView.backgroundColor = .clear
+        innerCollectionView.backgroundColor = .clear
         
-        collectionView.showsHorizontalScrollIndicator = false
+        innerCollectionView.showsHorizontalScrollIndicator = false
+        innerCollectionView.showsVerticalScrollIndicator = false
+    }
+    
+    // MARK: - Helpers
+    
+    func selectCollectionViewCellsIfNeeded() {
+        for indexPath in innerCollectionView.indexPathsForSelectedItems ?? [] {
+            innerCollectionView.deselectItem(at: indexPath, animated: false)
+        }
+        innerCollectionView.selectItem(at: selectedCellIndexPath, animated: false, scrollPosition: [])
     }
 }
+
+// MARK: - CollectionViewDataSource
 
 extension NotepadCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
@@ -93,4 +125,13 @@ extension NotepadCollectionViewCell: UICollectionViewDataSource {
     }
 }
 
-extension NotepadCollectionViewCell: UICollectionViewDelegate {}  // pending date selection handler
+// MARK: - CollectionViewDelegate
+
+extension NotepadCollectionViewCell: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        if selectedCellIndexPath != indexPath {
+            delegate?.didTapInnerCollectionViewCell(week[indexPath.item])
+            selectedCellIndexPath = indexPath
+        }
+    }
+}

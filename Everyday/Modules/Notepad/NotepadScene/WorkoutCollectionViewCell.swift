@@ -15,6 +15,8 @@ class WorkoutCollectionViewCell: UICollectionViewCell {
     private var dayOfWeekLabel = UILabel()
     private var dayOfMonthLabel = UILabel()
     
+    // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
         
@@ -22,14 +24,20 @@ class WorkoutCollectionViewCell: UICollectionViewCell {
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        
+        setup()
     }
+    
+    // MARK: - Lifecycle
     
     override func layoutSubviews() {
         super.layoutSubviews()
         
         layout()
     }
+    
+    // MARK: - Interface
     
     func configure(with date: Date) {
         dayOfWeekLabel.text = extractDate(date: date, format: "EEE")

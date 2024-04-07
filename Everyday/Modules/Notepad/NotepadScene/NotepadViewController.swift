@@ -21,6 +21,9 @@ final class NotepadViewController: UIViewController {
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private let activityIndicator = UIActivityIndicatorView(style: .large)
     
+    private var selectedCell: (outerIndex: IndexPath, innerIndex: IndexPath)?
+    private var shouldDeselectCell: (outerIndex: IndexPath, innerIndex: IndexPath)?
+    
     // MARK: - Init
 
     init(output: NotepadViewOutput) {
@@ -59,9 +62,11 @@ private extension NotepadViewController {
             .horizontally()
             .top(view.pin.safeArea)
             .height(60)
+            .marginTop(20)
         
         stateLabel.pin
             .below(of: outerCollectionView)
+            .marginTop(20)
             .horizontally(Constants.HeaderLabel.horizontalMargin)
             .height(Constants.HeaderLabel.height)
 
@@ -90,11 +95,13 @@ private extension NotepadViewController {
     func setupOuterCollectionView() {
         outerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createSingleColumnFlowLayout(in: view))
         outerCollectionView.dataSource = self
+        outerCollectionView.delegate = self
         outerCollectionView.register(NotepadCollectionViewCell.self, forCellWithReuseIdentifier: NotepadCollectionViewCell.reuseID)
         
         outerCollectionView.backgroundColor = .clear
         
         outerCollectionView.showsHorizontalScrollIndicator = false
+        outerCollectionView.showsVerticalScrollIndicator = false
         outerCollectionView.isPagingEnabled = true
         
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) { [weak self] in
@@ -103,7 +110,7 @@ private extension NotepadViewController {
             }
             
             let indexPath = IndexPath(item: 2, section: 0)  // not 2, but current week
-            outerCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: false)
+            outerCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }
     
@@ -174,19 +181,36 @@ extension NotepadViewController: UICollectionViewDataSource {
         }
         
         let week = output.collectionItem(at: indexPath.item)
-        cell.configure(with: week)
+        var selectedIndexPath: IndexPath?
+        if selectedCell?.outerIndex == indexPath && shouldDeselectCell?.outerIndex != indexPath {
+            selectedIndexPath = selectedCell?.innerIndex
+        }
+        cell.configure(with: week, and: selectedIndexPath)
+        cell.delegate = self
         
         return cell
     }
 }
 
-// MARK: - ScrollViewDelegate
+// MARK: - NotepadCollectionViewCellDelegate
 
-extension NotepadViewController: UIScrollViewDelegate {
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        if scrollView == outerCollectionView {
-            let currentPage = Int(scrollView.contentOffset.x / scrollView.bounds.width)
-            print("[DEBUG] Current page: \(currentPage)")
+extension NotepadViewController: NotepadCollectionViewCellDelegate {
+    func didTapInnerCollectionViewCell(_ date: Date) {
+        shouldDeselectCell = selectedCell
+        if let selectedCell = selectedCell, let cell = outerCollectionView.cellForItem(at: selectedCell.outerIndex) as? NotepadCollectionViewCell {
+            cell.deselectCell()
+        }
+    }
+}
+
+// MARK: - CollectionViewDelegate
+
+extension NotepadViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
+        if let cell = outerCollectionView.cellForItem(at: indexPath) as? NotepadCollectionViewCell {
+            if let innerIndexPath = cell.selectedCellIndexPath {
+                selectedCell = (indexPath, innerIndexPath)
+            }
         }
     }
 }
