@@ -58,12 +58,12 @@ private extension NotepadViewController {
         outerCollectionView.pin
             .horizontally()
             .top(view.pin.safeArea)
-            .height(60)
-            .marginTop(20)
+            .height(Constants.OuterCollectionView.height)
+            .marginTop(Constants.OuterCollectionView.marginTop)
         
         stateLabel.pin
             .below(of: outerCollectionView)
-            .marginTop(20)
+            .marginTop(Constants.HeaderLabel.marginTop)
             .horizontally(Constants.HeaderLabel.horizontalMargin)
             .height(Constants.HeaderLabel.height)
 
@@ -121,6 +121,8 @@ private extension NotepadViewController {
         tableView.delegate = self
         tableView.register(NotepadTableViewCell.self, forCellReuseIdentifier: NotepadTableViewCell.reuseID)
     }
+    
+    // MARK: - Custom Views
     
     func dateLabel() -> UILabel {
         let dateFormatter = DateFormatter()
@@ -298,6 +300,12 @@ private extension NotepadViewController {
         struct HeaderLabel {
             static let height: CGFloat = 30
             static let horizontalMargin: CGFloat = 20
+            static let marginTop: CGFloat = 20
+        }
+        
+        struct OuterCollectionView {
+            static let marginTop: CGFloat = 20
+            static let height: CGFloat = 60
         }
         
         struct TableView {

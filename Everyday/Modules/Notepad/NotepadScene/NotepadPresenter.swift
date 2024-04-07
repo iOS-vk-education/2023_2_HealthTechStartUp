@@ -16,8 +16,6 @@ final class NotepadPresenter {
     private let interactor: NotepadInteractorInput
     
     private var calendar: [[Date]] = []
-    private var currentWeek: [Date] = []  // need it?
-    private var currentDay: Date = Date()  // need it?
     private var selectedCell: (outerIndex: IndexPath, innerIndex: IndexPath)?
     private var shouldDeselectCell: (outerIndex: IndexPath, innerIndex: IndexPath)?
     
@@ -40,12 +38,14 @@ extension NotepadPresenter: NotepadModuleInput {}
 
 private extension NotepadPresenter {
     func fetchWeeklyCalendar() -> [[Date]] {
-        let calendar = Calendar.current  // global?
-        let formatter = DateFormatter()  // move to constants?
-        formatter.dateFormat = "yyyy/MM/dd"  // move to constants
+        let calendar = Calendar.current
+//        let formatter = DateFormatter()
+//        formatter.dateFormat = Constants.DateFormatter.format
         guard
-            let startDate = formatter.date(from: "2024/03/22"),  // fetch from UD
-            let endDate = formatter.date(from: "2024/04/17"),  // fetch from UD
+            let startDate = calendar.date(byAdding: .day, value: -14, to: Date()),  // date of first time entering app
+            // fetch from UD using format: "2024/03/22"
+            // let endDate = formatter.date(from: "2024/04/17")
+            let endDate = calendar.date(byAdding: .day, value: 14, to: Date()),  // date of last training session
             let startWeek = calendar.dateInterval(of: .weekOfMonth, for: startDate),
             let endWeek = calendar.dateInterval(of: .weekOfMonth, for: endDate)
         else {
@@ -83,16 +83,6 @@ private extension NotepadPresenter {
         }
         
         return dateArray
-    }
-    
-    func extractDate(date: Date, format: String) -> String {  // need it?
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        return formatter.string(from: date)
-    }
-    
-    func isToday(date: Date) -> Bool {  // need it?
-        Calendar.current.isDate(Date(), inSameDayAs: date)
     }
 }
 
@@ -197,5 +187,15 @@ extension NotepadPresenter: NotepadInteractorOutput {
     
     func didEndLoading() {
         view?.dismissLoadingView()
+    }
+}
+
+// MARK: - Constants
+
+private extension NotepadPresenter {
+    struct Constants {
+        struct DateFormatter {
+            static let format: String = "yyyy/MM/dd"
+        }
     }
 }

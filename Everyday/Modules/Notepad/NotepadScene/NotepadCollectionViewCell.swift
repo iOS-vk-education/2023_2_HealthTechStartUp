@@ -8,6 +8,8 @@
 import UIKit
 import PinLayout
 
+// MARK: - Delegate Protocol
+
 protocol NotepadCollectionViewCellDelegate: AnyObject {
     func didTapInnerCollectionViewCell(_ date: Date)
 }
@@ -80,7 +82,7 @@ private extension NotepadCollectionViewCell {
     }
     
     func setupView() {
-        backgroundColor = .clear
+        backgroundColor = Constants.backgroundColor
     }
     
     func setupCollectionView() {
@@ -89,7 +91,7 @@ private extension NotepadCollectionViewCell {
         innerCollectionView.dataSource = self
         innerCollectionView.register(WorkoutCollectionViewCell.self, forCellWithReuseIdentifier: WorkoutCollectionViewCell.reuseID)
         
-        innerCollectionView.backgroundColor = .clear
+        innerCollectionView.backgroundColor = Constants.InnerCollectionView.backgroundColor
         
         innerCollectionView.showsHorizontalScrollIndicator = false
         innerCollectionView.showsVerticalScrollIndicator = false
@@ -132,6 +134,18 @@ extension NotepadCollectionViewCell: UICollectionViewDelegate {
         if selectedCellIndexPath != indexPath {
             delegate?.didTapInnerCollectionViewCell(week[indexPath.item])
             selectedCellIndexPath = indexPath
+        }
+    }
+}
+
+// MARK: - Constants
+
+private extension NotepadCollectionViewCell {
+    struct Constants {
+        static let backgroundColor: UIColor = .clear
+        
+        struct InnerCollectionView {
+            static let backgroundColor: UIColor = .clear
         }
     }
 }

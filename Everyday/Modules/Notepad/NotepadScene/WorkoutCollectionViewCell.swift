@@ -40,8 +40,8 @@ class WorkoutCollectionViewCell: UICollectionViewCell {
     // MARK: - Interface
     
     func configure(with date: Date) {
-        dayOfWeekLabel.text = extractDate(date: date, format: "EEE")
-        dayOfMonthLabel.text = extractDate(date: date, format: "dd")
+        dayOfWeekLabel.text = extractDate(date: date, format: Constants.DayOfWeekLabel.format)
+        dayOfMonthLabel.text = extractDate(date: date, format: Constants.DayOfMonthLabel.format)
     }
 }
 
@@ -64,11 +64,11 @@ private extension WorkoutCollectionViewCell {
     }
     
     func setupView() {
-        backgroundColor = .clear
+        backgroundColor = Constants.backgroundColor
         
         let backgroundView = UIView()
-        backgroundView.backgroundColor = UIColor.UI.accent
-        backgroundView.layer.cornerRadius = 8
+        backgroundView.backgroundColor = Constants.BackgroundView.backgroundColor
+        backgroundView.layer.cornerRadius = Constants.BackgroundView.cornerRadius
         selectedBackgroundView = backgroundView
     }
     
@@ -81,8 +81,8 @@ private extension WorkoutCollectionViewCell {
     }
     
     func setupLabels() {
-        dayOfWeekLabel.textColor = UIColor.Text.grayElement
-        dayOfMonthLabel.textColor = UIColor.Text.primary
+        dayOfWeekLabel.textColor = Constants.DayOfWeekLabel.textColor
+        dayOfMonthLabel.textColor = Constants.DayOfMonthLabel.textColor
     }
     
     // MARK: - Helpers
@@ -95,5 +95,28 @@ private extension WorkoutCollectionViewCell {
     
     func isToday(date: Date) -> Bool {
         Calendar.current.isDate(Date(), inSameDayAs: date)
+    }
+}
+
+// MARK: - Constants
+
+private extension WorkoutCollectionViewCell {
+    struct Constants {
+        static let backgroundColor: UIColor = .clear
+        
+        struct BackgroundView {
+            static let backgroundColor: UIColor = UIColor.UI.accent
+            static let cornerRadius: CGFloat = 8
+        }
+        
+        struct DayOfWeekLabel {
+            static let format: String = "EEE"
+            static let textColor: UIColor = UIColor.Text.grayElement
+        }
+        
+        struct DayOfMonthLabel {
+            static let format: String = "dd"
+            static let textColor: UIColor = UIColor.Text.primary
+        }
     }
 }
