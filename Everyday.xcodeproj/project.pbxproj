@@ -522,6 +522,7 @@
 				9E4F22682B9F3B8F003E749E /* NotepadRouter.swift */,
 				9E4F226C2B9F3B8F003E749E /* NotepadSectionHeaderView.swift */,
 				9E4F226D2B9F3B8F003E749E /* NotepadTableViewCell.swift */,
+				9D32E9142BBF06F0008A2BA4 /* WorkoutCollectionViewCell.swift */,
 				9E4F22692B9F3B8F003E749E /* NotepadViewController.swift */,
 				9D69D8532BC163E90079D5E9 /* NotepadCollectionViewCell.swift */,
 			);
@@ -1008,7 +1009,6 @@
 				9EE8AE332B7FB96E001D126F /* WorkoutProtocols.swift */,
 				9EE8AE342B7FB96E001D126F /* WorkoutInteractor.swift */,
 				9EE8AE352B7FB96E001D126F /* WorkoutContainer.swift */,
-				9D32E9142BBF06F0008A2BA4 /* WorkoutCollectionViewCell.swift */,
 			);
 			path = Workout;
 			sourceTree = "<group>";

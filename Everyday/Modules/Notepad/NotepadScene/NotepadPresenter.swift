@@ -18,6 +18,8 @@ final class NotepadPresenter {
     private var calendar: [[Date]] = []
     private var currentWeek: [Date] = []  // need it?
     private var currentDay: Date = Date()  // need it?
+    private var selectedCell: (outerIndex: IndexPath, innerIndex: IndexPath)?
+    private var shouldDeselectCell: (outerIndex: IndexPath, innerIndex: IndexPath)?
     
     private var isResult: Bool = false
     private var workoutDays: [WorkoutDay] = []
@@ -100,6 +102,34 @@ extension NotepadPresenter: NotepadViewOutput {
     func didLoadView() {
         calendar = fetchWeeklyCalendar()
         interactor.loadResult(date: Date())
+    }
+    
+    func getSelectedCell() -> (outerIndex: IndexPath, innerIndex: IndexPath)? {
+        selectedCell
+    }
+    
+    func getShouldDeselectCell() -> (outerIndex: IndexPath, innerIndex: IndexPath)? {
+        shouldDeselectCell
+    }
+    
+    func setSeselectCell(_ indexPaths: (outerIndex: IndexPath, innerIndex: IndexPath)? = nil) {
+        selectedCell = indexPaths
+    }
+    
+    func setShouldDeselectCell(_ indexPaths: (outerIndex: IndexPath, innerIndex: IndexPath)? = nil) {
+        shouldDeselectCell = indexPaths
+    }
+    
+    func getSelectedCellOuterIndexPath() -> IndexPath? {
+        selectedCell?.outerIndex
+    }
+    
+    func getShouldDeselectCellOuterIndexPath() -> IndexPath? {
+        shouldDeselectCell?.outerIndex
+    }
+    
+    func getSelectedCellInnerIndexPath() -> IndexPath? {
+        selectedCell?.innerIndex
     }
     
     func collectionNumberOfItems() -> Int {
