@@ -34,8 +34,6 @@ class WorkoutCollectionViewCell: UICollectionViewCell {
     func configure(with date: Date) {
         dayOfWeekLabel.text = extractDate(date: date, format: "EEE")
         dayOfMonthLabel.text = extractDate(date: date, format: "dd")
-        
-        backgroundColor = isToday(date: date) ? .systemMint : .clear
     }
 }
 
@@ -52,12 +50,18 @@ private extension WorkoutCollectionViewCell {
     func setup() {
         setupView()
         setupStackView()
+        setupLabels()
         
         addSubview(stackView)
     }
     
     func setupView() {
-        layer.cornerRadius = 8
+        backgroundColor = .clear
+        
+        let backgroundView = UIView()
+        backgroundView.backgroundColor = UIColor.UI.accent
+        backgroundView.layer.cornerRadius = 8
+        selectedBackgroundView = backgroundView
     }
     
     func setupStackView() {
@@ -66,6 +70,11 @@ private extension WorkoutCollectionViewCell {
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .center
+    }
+    
+    func setupLabels() {
+        dayOfWeekLabel.textColor = UIColor.Text.grayElement
+        dayOfMonthLabel.textColor = UIColor.Text.primary
     }
     
     // MARK: - Helpers
