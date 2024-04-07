@@ -37,6 +37,22 @@ class WorkoutCollectionViewCell: UICollectionViewCell {
         layout()
     }
     
+    override var isSelected: Bool {
+        didSet {
+            if isSelected {
+                let generator = UISelectionFeedbackGenerator()
+                generator.selectionChanged()
+            }
+            UIView.animate(withDuration: 0.3) { [weak self] in
+                guard let self else {
+                    return
+                }
+                
+                backgroundView?.alpha = self.isSelected ? 1.0 : 0.0
+            }
+        }
+    }
+    
     // MARK: - Interface
     
     func configure(with date: Date) {
@@ -69,7 +85,8 @@ private extension WorkoutCollectionViewCell {
         let backgroundView = UIView()
         backgroundView.backgroundColor = Constants.BackgroundView.backgroundColor
         backgroundView.layer.cornerRadius = Constants.BackgroundView.cornerRadius
-        selectedBackgroundView = backgroundView
+        self.backgroundView = backgroundView
+        self.backgroundView?.alpha = 0.0
     }
     
     func setupStackView() {
