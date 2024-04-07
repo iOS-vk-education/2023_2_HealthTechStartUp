@@ -16,7 +16,6 @@ final class NotepadViewController: UIViewController {
     private let output: NotepadViewOutput
     
     private var outerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
-    
     private let stateLabel = UILabel()
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private let activityIndicator = UIActivityIndicatorView(style: .large)
@@ -34,7 +33,7 @@ final class NotepadViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life cycle
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -197,8 +196,9 @@ extension NotepadViewController: UICollectionViewDataSource {
 
 extension NotepadViewController: NotepadCollectionViewCellDelegate {
     func didTapInnerCollectionViewCell(_ date: Date) {
+        output.didTapNewDate(date)
         output.setShouldDeselectCell(output.getSelectedCell())
-        if let selectedCell = output.getSelectedCell(), 
+        if let selectedCell = output.getSelectedCell(),
             let cell = outerCollectionView.cellForItem(at: selectedCell.outerIndex) as? NotepadCollectionViewCell {
             cell.deselectCell()
         }
@@ -211,7 +211,7 @@ extension NotepadViewController: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
         if let cell = outerCollectionView.cellForItem(at: indexPath) as? NotepadCollectionViewCell {
             if let innerIndexPath = cell.selectedCellIndexPath {
-                output.setSeselectCell((indexPath, innerIndexPath))
+                output.setSelectedCell((indexPath, innerIndexPath))
             }
         }
     }

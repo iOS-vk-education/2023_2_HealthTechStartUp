@@ -24,9 +24,10 @@ protocol NotepadViewInput: AnyObject {
 
 protocol NotepadViewOutput: AnyObject {
     func didLoadView()
+    func didTapNewDate(_ date: Date)
     func getSelectedCell() -> (outerIndex: IndexPath, innerIndex: IndexPath)?
     func getShouldDeselectCell() -> (outerIndex: IndexPath, innerIndex: IndexPath)?
-    func setSeselectCell(_ indexPaths: (outerIndex: IndexPath, innerIndex: IndexPath)?)
+    func setSelectedCell(_ indexPaths: (outerIndex: IndexPath, innerIndex: IndexPath)?)
     func setShouldDeselectCell(_ indexPaths: (outerIndex: IndexPath, innerIndex: IndexPath)?)
     func getSelectedCellOuterIndexPath() -> IndexPath?
     func getShouldDeselectCellOuterIndexPath() -> IndexPath?

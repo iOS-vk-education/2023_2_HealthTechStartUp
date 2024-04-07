@@ -94,6 +94,10 @@ extension NotepadPresenter: NotepadViewOutput {
         interactor.loadResult(date: Date())
     }
     
+    func didTapNewDate(_ date: Date) {
+        interactor.loadResult(date: date)
+    }
+    
     func getSelectedCell() -> (outerIndex: IndexPath, innerIndex: IndexPath)? {
         selectedCell
     }
@@ -102,7 +106,7 @@ extension NotepadPresenter: NotepadViewOutput {
         shouldDeselectCell
     }
     
-    func setSeselectCell(_ indexPaths: (outerIndex: IndexPath, innerIndex: IndexPath)? = nil) {
+    func setSelectedCell(_ indexPaths: (outerIndex: IndexPath, innerIndex: IndexPath)? = nil) {
         selectedCell = indexPaths
     }
     
