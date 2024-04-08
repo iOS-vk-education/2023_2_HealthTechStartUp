@@ -72,19 +72,3 @@ struct WorkoutDay: Comparable {
         return lhs.workout == rhs.workout
     }
 }
-
-struct Schedule1 {
-    let daysOfWeek: [[WorkoutDay]]  // 7 elements (arrays) = 7 days
-}
-
-struct MockSchedule {
-    static let mockSchedule = Schedule1(daysOfWeek: [
-        [],
-        [],
-        [],
-        [],
-        [.init(workout: Mock.mockWorkouts[0], indexOfDay: 0), .init(workout: Mock.mockWorkouts[1], indexOfDay: 0)],
-        [.init(workout: Mock.mockWorkouts[2], indexOfDay: 0)],
-        [.init(workout: Mock.mockWorkouts[0], indexOfDay: 1)]
-    ])
-}
