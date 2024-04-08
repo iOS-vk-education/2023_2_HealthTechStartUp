@@ -7,7 +7,6 @@
 
 import UIKit
 import PinLayout
-import M13Checkbox
 
 // MARK: - Protocols
 
@@ -98,14 +97,8 @@ class TrainingTableViewCell: UITableViewCell {
         checkbox.isUserInteractionEnabled = true
     }
     
-//    func uncheckCheckBox() {
-//        checkbox.setCheckState(.unchecked, animated: true)
-//    }
-    
     func checkCheckBox() {
-//        checkbox.textColor = Constants.Checkbox.checkedColor
         checkbox.textColor = Constants.Checkbox.checkedColor
-//        checkbox.attributedText.
     }
 }
 
@@ -157,11 +150,6 @@ private extension TrainingTableViewCell {
     // MARK: - Setup
     
     func setup() {
-//        checkbox.addTarget(self, action: #selector(switchValueChanged), for: .valueChanged)
-//        checkbox.stateChangeAnimation = .bounce(.fill)
-//        checkbox.textColor = Constants.Checkbox.uncheckedColor
-//        checkbox.setCheckState(.unchecked, animated: true)
-        
         startButton.backgroundColor = Constants.StartButton.backgroundColor
         startButton.layer.cornerRadius = Constants.StartButton.cornerRadius
         startButton.isHidden = true
@@ -171,22 +159,6 @@ private extension TrainingTableViewCell {
         
         numberView.addSubviews(circleImageView, checkbox)
         contentView.addSubviews(numberView, exerciseNameLabel, resultLabel, startButton)
-    }
-    
-    // MARK: - Actions
-    
-    @objc
-    func switchValueChanged(_ sender: M13Checkbox) {
-        var value = false
-        switch sender.checkState {
-        case .unchecked:
-            value = false
-        case .checked:
-            value = true
-        case .mixed:
-            value = false
-        }
-        delegate?.switchCell(self, with: value)
     }
 }
 

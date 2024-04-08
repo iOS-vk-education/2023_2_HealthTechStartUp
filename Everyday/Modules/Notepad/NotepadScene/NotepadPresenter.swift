@@ -39,13 +39,9 @@ extension NotepadPresenter: NotepadModuleInput {}
 private extension NotepadPresenter {
     func fetchWeeklyCalendar() -> [[Date]] {
         let calendar = Calendar.current
-//        let formatter = DateFormatter()
-//        formatter.dateFormat = Constants.DateFormatter.format
         guard
-            let startDate = calendar.date(byAdding: .day, value: -14, to: Date()),  // date of first time entering app
-            // fetch from UD using format: "2024/03/22"
-            // let endDate = formatter.date(from: "2024/04/17")
-            let endDate = calendar.date(byAdding: .day, value: 14, to: Date()),  // date of last training session
+            let startDate = calendar.date(byAdding: .day, value: -14, to: Date()),
+            let endDate = calendar.date(byAdding: .day, value: 14, to: Date()),
             let startWeek = calendar.dateInterval(of: .weekOfMonth, for: startDate),
             let endWeek = calendar.dateInterval(of: .weekOfMonth, for: endDate)
         else {

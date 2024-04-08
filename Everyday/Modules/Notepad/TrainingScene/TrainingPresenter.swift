@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by user on 28.02.2024.
-//  
+//
 //
 
 import Foundation
@@ -47,12 +47,6 @@ extension TrainingPresenter: TrainingViewOutput {
     
     func setSwitchState(at index: Int, with value: Bool) {
         switchStates[index] = value
-        let allSatisfy = switchStates.allSatisfy { $0 }
-        if allSatisfy {
-//            view?.showFinishButton()
-        } else {
-//            view?.hideFinishButton()
-        }
     }
     
     func getSwitchState(at index: Int) -> Bool {
@@ -60,11 +54,9 @@ extension TrainingPresenter: TrainingViewOutput {
     }
     
     func didSelectRowAt(index: Int) {
-//        if !switchStates[index] {
-            let exercise = workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises[index]
-            let exerciseContext = ExerciseContext(moduleOutput: self, exercise: exercise, indexOfSet: indexOfSet)
-            router.openExercise(with: exerciseContext)
-//        }
+        let exercise = workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises[index]
+        let exerciseContext = ExerciseContext(moduleOutput: self, exercise: exercise, indexOfSet: indexOfSet)
+        router.openExercise(with: exerciseContext)
     }
     
     func didTapStartButton(number: Int) {
@@ -103,8 +95,8 @@ extension TrainingPresenter: ResultsModuleOutput {
             return
         }
         
-        switchStates = [Bool](repeating: false, count: workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises.count)
-//        view?.hideFinishButton()
+        switchStates = [Bool](repeating: false,
+                              count: workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises.count)
         view?.reloadData()
     }
 }

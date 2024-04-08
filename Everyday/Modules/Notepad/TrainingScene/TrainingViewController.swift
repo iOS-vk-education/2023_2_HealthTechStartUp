@@ -51,15 +51,12 @@ private extension TrainingViewController {
     func layout() {
         finishButton.pin
             .bottom(view.pin.safeArea)
-//            .marginBottom(Constants.FinishButton.marginTop)
             .horizontally(Constants.FinishButton.horizontalMargin)
             .height(Constants.FinishButton.height)
 
         tableView.pin
             .top(view.pin.safeArea)
-//            .marginTop(Constants.TableView.marginTop)
-            .bottom(100)
-            .marginBottom(40)
+            .above(of: finishButton)
             .horizontally()
     }
     
@@ -123,10 +120,6 @@ extension TrainingViewController: UITableViewDataSource {
         cell.configure(with: viewModel, and: indexPath.row, isDone: isDone)
         cell.addStartButtonTarget(self, action: #selector(didTapStartButton))
         cell.delegate = self
-        
-//        if output.getSwitchState(at: indexPath.row) {
-//            cell.checkCheckBox()
-//        }
         
         return cell
     }

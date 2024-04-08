@@ -1,5 +1,5 @@
 {
-  "originHash" : "8be27870ae0ba515160c1521de84820a3897f2aba6189758f309bfbe9775a53c",
+  "originHash" : "aac5c477e52c1a71809ef32d614b604dedbeaee86848900f99de09a002ab3a25",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -116,15 +116,6 @@
       "state" : {
         "revision" : "43aaef65e0c665daadf848761d560e446d350d3d",
         "version" : "1.22.4"
-      }
-    },
-    {
-      "identity" : "m13checkbox",
-      "kind" : "remoteSourceControl",
-      "location" : "https://github.com/Marxon13/M13Checkbox",
-      "state" : {
-        "revision" : "96ff6c8862db87095315480a56dcebe51e15dac8",
-        "version" : "3.4.1"
       }
     },
     {

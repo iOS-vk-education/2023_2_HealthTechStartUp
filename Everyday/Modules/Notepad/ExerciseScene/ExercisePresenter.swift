@@ -47,8 +47,6 @@ extension ExercisePresenter: ExerciseViewOutput {
     
     func didTapMinusButton() {
         guard
-//            let resultText = resultTextField.text,
-//            let result = Int(resultText),
             result > 0
         else {
             return

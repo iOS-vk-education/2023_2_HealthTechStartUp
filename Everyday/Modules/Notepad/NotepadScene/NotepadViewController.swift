@@ -105,7 +105,7 @@ private extension NotepadViewController {
                 return
             }
             
-            let indexPath = IndexPath(item: 2, section: 0)  // not 2, but current week
+            let indexPath = IndexPath(item: 2, section: 0)
             outerCollectionView.scrollToItem(at: indexPath, at: .centeredHorizontally, animated: true)
         }
     }
