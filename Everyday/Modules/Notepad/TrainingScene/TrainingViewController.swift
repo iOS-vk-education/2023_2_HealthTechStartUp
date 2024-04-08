@@ -91,11 +91,6 @@ private extension TrainingViewController {
     // MARK: - Actions
     
     @objc
-    func didTapStartButton(_ button: UIButton) {
-        output.didTapStartButton(number: button.tag)
-    }
-    
-    @objc
     func didTapFinishButton() {
         output.didTapFinishButton()
     }
@@ -118,8 +113,6 @@ extension TrainingViewController: UITableViewDataSource {
         let isDone = output.getSwitchState(at: indexPath.row)
         
         cell.configure(with: viewModel, and: indexPath.row, isDone: isDone)
-        cell.addStartButtonTarget(self, action: #selector(didTapStartButton))
-        cell.delegate = self
         
         return cell
     }
@@ -130,18 +123,6 @@ extension TrainingViewController: UITableViewDataSource {
 extension TrainingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         output.didSelectRowAt(index: indexPath.row)
-    }
-}
-
-// MARK: - SwitchTableViewCellDelegate
-
-extension TrainingViewController: SwitchTableViewCellDelegate {
-    func switchCell(_ cell: TrainingTableViewCell, with value: Bool) {
-        guard let indexPath = tableView.indexPath(for: cell) else {
-            return
-        }
-        
-        output.setSwitchState(at: indexPath.row, with: value)
     }
 }
 

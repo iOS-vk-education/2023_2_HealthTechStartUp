@@ -45,22 +45,12 @@ extension TrainingPresenter: TrainingViewOutput {
         workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises[index]
     }
     
-    func setSwitchState(at index: Int, with value: Bool) {
-        switchStates[index] = value
-    }
-    
     func getSwitchState(at index: Int) -> Bool {
         switchStates[index]
     }
     
     func didSelectRowAt(index: Int) {
         let exercise = workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises[index]
-        let exerciseContext = ExerciseContext(moduleOutput: self, exercise: exercise, indexOfSet: indexOfSet)
-        router.openExercise(with: exerciseContext)
-    }
-    
-    func didTapStartButton(number: Int) {
-        let exercise = workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises[number]
         let exerciseContext = ExerciseContext(moduleOutput: self, exercise: exercise, indexOfSet: indexOfSet)
         router.openExercise(with: exerciseContext)
     }

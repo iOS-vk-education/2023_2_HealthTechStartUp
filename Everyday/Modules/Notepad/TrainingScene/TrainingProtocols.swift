@@ -26,10 +26,8 @@ protocol TrainingViewOutput: AnyObject {
     func didLoadView()
     func numberOfRowsInSection(_ section: Int) -> Int
     func getExercise(at index: Int) -> Exercise
-    func setSwitchState(at index: Int, with value: Bool)
     func getSwitchState(at index: Int) -> Bool
     func didSelectRowAt(index: Int)
-    func didTapStartButton(number: Int)
     func didTapFinishButton()
 }
 
