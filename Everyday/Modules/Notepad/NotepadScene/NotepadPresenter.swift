@@ -185,6 +185,9 @@ extension NotepadPresenter: NotepadInteractorOutput {
     func didLoadDay(with workoutDays: [WorkoutDay], _ isResult: Bool) {
         self.workoutDays = workoutDays
         self.isResult = isResult
+        for i in 0..<isCollapsed.count {
+            isCollapsed[i] = true
+        }
         
         let viewModel = NotepadViewModel(isResult: isResult)
         view?.configure(with: viewModel)
