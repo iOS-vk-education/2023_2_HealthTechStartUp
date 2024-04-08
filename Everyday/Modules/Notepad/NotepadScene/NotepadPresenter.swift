@@ -93,8 +93,7 @@ extension NotepadPresenter: NotepadViewOutput {
         calendar = fetchWeeklyCalendar()
 
         let outerIndexPath = IndexPath(item: 2, section: 0)
-        let weekdayIndex = Calendar.current.component(.weekday, from: Date()) - 2
-        let innerIndex = weekdayIndex == -1 ? 6 : weekdayIndex
+        let innerIndex = CalendarService.shared.getWeekdayIndex(from: Date())
         let innerIndexPath = IndexPath(item: innerIndex, section: 0)
         setSelectedCell((outerIndexPath, innerIndexPath))
         

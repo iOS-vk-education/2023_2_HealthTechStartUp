@@ -22,6 +22,7 @@
 		9D4E4BD82BB070D200617E5D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B062BA8AEFE006AC078 /* FirebaseStorage */; };
 		9D4E4BDB2BB0721D00617E5D /* M13Checkbox in Frameworks */ = {isa = PBXBuildFile; productRef = 9D4E4BDA2BB0721D00617E5D /* M13Checkbox */; };
 		9D69D8542BC163E90079D5E9 /* NotepadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69D8532BC163E90079D5E9 /* NotepadCollectionViewCell.swift */; };
+		9DDEBFCF2BC42C8100E9347D /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDEBFCE2BC42C8100E9347D /* CalendarService.swift */; };
 		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
 		9E2A8BB22B84F106004A81CF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		9E2A8BB42B84F106004A81CF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
@@ -191,6 +192,7 @@
 		9D32E9142BBF06F0008A2BA4 /* WorkoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		9D69D8532BC163E90079D5E9 /* NotepadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadCollectionViewCell.swift; sourceTree = "<group>"; };
+		9DDEBFCE2BC42C8100E9347D /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
 		9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
@@ -386,6 +388,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9DDEBFCD2BC42C6A00E9347D /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				9DDEBFCE2BC42C8100E9347D /* CalendarService.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
 		9E1383072BAB03240073622C /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -441,6 +451,7 @@
 		9E4382CB2B83737600C69708 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				9DDEBFCD2BC42C6A00E9347D /* Calendar */,
 				9E4766DE2BA3509300DD31B9 /* HealthKit */,
 				9E4766D62B9F515700DD31B9 /* Storage */,
 				9E4F225D2B9F3B37003E749E /* Day */,
@@ -1233,6 +1244,7 @@
 				9E7C199D2B8F482E0006D48C /* KeychainService.swift in Sources */,
 				9E4382D42B83738800C69708 /* VKIDAuthService.swift in Sources */,
 				9E5B75442B7F9D7600E2BDE6 /* AgeViewModel.swift in Sources */,
+				9DDEBFCF2BC42C8100E9347D /* CalendarService.swift in Sources */,
 				9E5B74EB2B7F99FB00E2BDE6 /* WelcomeScreenProtocols.swift in Sources */,
 				9E4F22CC2B9F3C51003E749E /* ExtraRouter.swift in Sources */,
 				9E4F228F2B9F3BC4003E749E /* TrainingTableViewCellViewModel.swift in Sources */,
