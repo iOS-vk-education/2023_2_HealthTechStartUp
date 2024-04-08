@@ -9,6 +9,8 @@ import Foundation
 
 protocol CalendarServiceDescription {
     func getWeekdayIndex(from date: Date) -> Int
+    func extractDate(date: Date, format: String) -> String
+    func isToday(date: Date) -> Bool
 }
 
 final class CalendarService: CalendarServiceDescription {
@@ -23,5 +25,15 @@ final class CalendarService: CalendarServiceDescription {
         let localIndex = weekdayIndex == -1 ? 6 : weekdayIndex
         
         return localIndex
+    }
+    
+    func extractDate(date: Date, format: String) -> String {
+        let formatter = DateFormatter()
+        formatter.dateFormat = format
+        return formatter.string(from: date)
+    }
+    
+    func isToday(date: Date) -> Bool {
+        calendar.isDate(Date(), inSameDayAs: date)
     }
 }

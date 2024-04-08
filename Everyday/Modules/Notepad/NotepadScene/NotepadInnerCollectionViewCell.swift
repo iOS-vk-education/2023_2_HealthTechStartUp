@@ -12,7 +12,7 @@ class NotepadInnerCollectionViewCell: UICollectionViewCell {
     static let reuseID = "NotepadInnerCollectionViewCell"
     
     private var stackView = UIStackView()
-    private var dayOfWeekLabel = UILabel()
+    private var weekdayLabel = UILabel()
     private var dayOfMonthLabel = UILabel()
     
     // MARK: - Init
@@ -55,9 +55,9 @@ class NotepadInnerCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Interface
     
-    func configure(with date: Date) {
-        dayOfWeekLabel.text = extractDate(date: date, format: Constants.DayOfWeekLabel.format)
-        dayOfMonthLabel.text = extractDate(date: date, format: Constants.DayOfMonthLabel.format)
+    func configure(with viewModel: NotepadInnerCollectionViewCellViewModel) {
+        weekdayLabel.attributedText = viewModel.weekday
+        dayOfMonthLabel.attributedText = viewModel.dayOfMonth
     }
 }
 
@@ -74,7 +74,6 @@ private extension NotepadInnerCollectionViewCell {
     func setup() {
         setupView()
         setupStackView()
-        setupLabels()
         
         addSubview(stackView)
     }
@@ -90,28 +89,11 @@ private extension NotepadInnerCollectionViewCell {
     }
     
     func setupStackView() {
-        stackView.addArrangedSubview(dayOfWeekLabel)
+        stackView.addArrangedSubview(weekdayLabel)
         stackView.addArrangedSubview(dayOfMonthLabel)
         stackView.axis = .vertical
         stackView.distribution = .fillEqually
         stackView.alignment = .center
-    }
-    
-    func setupLabels() {
-        dayOfWeekLabel.textColor = Constants.DayOfWeekLabel.textColor
-        dayOfMonthLabel.textColor = Constants.DayOfMonthLabel.textColor
-    }
-    
-    // MARK: - Helpers
-    
-    func extractDate(date: Date, format: String) -> String {
-        let formatter = DateFormatter()
-        formatter.dateFormat = format
-        return formatter.string(from: date)
-    }
-    
-    func isToday(date: Date) -> Bool {
-        Calendar.current.isDate(Date(), inSameDayAs: date)
     }
 }
 
@@ -129,14 +111,14 @@ private extension NotepadInnerCollectionViewCell {
             static let animationDuration: TimeInterval = 0.3
         }
         
-        struct DayOfWeekLabel {
-            static let format: String = "EEE"
-            static let textColor: UIColor = UIColor.Text.grayElement
-        }
-        
-        struct DayOfMonthLabel {
-            static let format: String = "dd"
-            static let textColor: UIColor = UIColor.Text.primary
-        }
+//        struct DayOfWeekLabel {
+//            static let format: String = "EEE"
+//            static let textColor: UIColor = UIColor.Text.grayElement
+//        }
+//        
+//        struct DayOfMonthLabel {
+//            static let format: String = "dd"
+//            static let textColor: UIColor = UIColor.Text.primary
+//        }
     }
 }

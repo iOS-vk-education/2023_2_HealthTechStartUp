@@ -121,7 +121,8 @@ extension NotepadOuterCollectionViewCell: UICollectionViewDataSource {
         }
         
         let date = week[indexPath.item]
-        cell.configure(with: date)
+        let viewModel = NotepadInnerCollectionViewCellViewModel(date: date)
+        cell.configure(with: viewModel)
         
         return cell
     }

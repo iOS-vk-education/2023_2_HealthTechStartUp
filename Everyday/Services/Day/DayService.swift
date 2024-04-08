@@ -134,12 +134,3 @@ private extension DayService {
         static let userCollection = "user"
     }
 }
-
-extension Date {
-    var onlyDate: Date? {
-        let calendar = Calendar.current
-        var dateComponents = calendar.dateComponents([.year, .month, .day], from: self)
-        dateComponents.timeZone = TimeZone.current
-        return calendar.date(from: dateComponents)
-    }
-}

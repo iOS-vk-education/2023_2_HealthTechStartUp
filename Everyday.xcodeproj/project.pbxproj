@@ -9,6 +9,8 @@
 /* Begin PBXBuildFile section */
 		9D15BE242BC456CC004FC560 /* NotepadOuterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE232BC456CC004FC560 /* NotepadOuterCollectionViewCell.swift */; };
 		9D15BE262BC457D1004FC560 /* NotepadInnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE252BC457D1004FC560 /* NotepadInnerCollectionViewCell.swift */; };
+		9D15BE282BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE272BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift */; };
+		9D15BE2A2BC48603004FC560 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE292BC48603004FC560 /* Date+Extension.swift */; };
 		9D32E9172BBF0AB3008A2BA4 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */; };
 		9D4E4BCD2BB070D200617E5D /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9E5B74CB2B7F963100E2BDE6 /* PinLayout */; };
 		9D4E4BCE2BB070D200617E5D /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9D11F0FF2BA7D53F003CF1F5 /* PinLayout */; };
@@ -178,6 +180,8 @@
 /* Begin PBXFileReference section */
 		9D15BE232BC456CC004FC560 /* NotepadOuterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadOuterCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D15BE252BC457D1004FC560 /* NotepadInnerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadInnerCollectionViewCell.swift; sourceTree = "<group>"; };
+		9D15BE272BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadInnerCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		9D15BE292BC48603004FC560 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		9DDEBFCE2BC42C8100E9347D /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -520,6 +524,7 @@
 				9E4F22772B9F3B9B003E749E /* NotepadHeaderViewModel.swift */,
 				9E4F22782B9F3B9B003E749E /* NotepadTableViewCellViewModel.swift */,
 				9E4F22792B9F3B9B003E749E /* NotepadViewModel.swift */,
+				9D15BE272BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -709,6 +714,7 @@
 				9E53FB4D2B7F950B00C55A45 /* Color+Extension.swift */,
 				9E53FB4B2B7F950400C55A45 /* UIView+Extension.swift */,
 				9E4766D92B9FC0BD00DD31B9 /* View+Extension.swift */,
+				9D15BE292BC48603004FC560 /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1207,6 +1213,7 @@
 				9EE8AE372B7FB96E001D126F /* WorkoutRouter.swift in Sources */,
 				9E4F22D02B9F3C51003E749E /* ExtraInteractor.swift in Sources */,
 				9EBFD9652BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift in Sources */,
+				9D15BE2A2BC48603004FC560 /* Date+Extension.swift in Sources */,
 				9E4382D52B83738800C69708 /* AuthService.swift in Sources */,
 				9EE3359D2B8F9CEA00F532B3 /* SplashPresenter.swift in Sources */,
 				9E4766D82B9F516F00DD31B9 /* StorageService.swift in Sources */,
@@ -1240,6 +1247,7 @@
 				9E5B75462B7F9D7600E2BDE6 /* ProfileAcknowledgementView.swift in Sources */,
 				9E5B753D2B7F9D7600E2BDE6 /* DecimalTextFieldView.swift in Sources */,
 				9EE8AE0F2B7FB8CF001D126F /* SettingsPresenter.swift in Sources */,
+				9D15BE282BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift in Sources */,
 				9E7C19972B8BF1340006D48C /* PasswordGenerator.swift in Sources */,
 				9E53FB362B7F87BA00C55A45 /* SceneDelegate.swift in Sources */,
 				9E5B74FD2B7F9A7000E2BDE6 /* SignUpContainer.swift in Sources */,
