@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		9D32E9152BBF06F0008A2BA4 /* WorkoutCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D32E9142BBF06F0008A2BA4 /* WorkoutCollectionViewCell.swift */; };
+		9D15BE242BC456CC004FC560 /* NotepadOuterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE232BC456CC004FC560 /* NotepadOuterCollectionViewCell.swift */; };
+		9D15BE262BC457D1004FC560 /* NotepadInnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE252BC457D1004FC560 /* NotepadInnerCollectionViewCell.swift */; };
 		9D32E9172BBF0AB3008A2BA4 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */; };
 		9D4E4BCD2BB070D200617E5D /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9E5B74CB2B7F963100E2BDE6 /* PinLayout */; };
 		9D4E4BCE2BB070D200617E5D /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9D11F0FF2BA7D53F003CF1F5 /* PinLayout */; };
@@ -20,7 +21,6 @@
 		9D4E4BD62BB070D200617E5D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B022BA8AEFE006AC078 /* FirebaseFirestore */; };
 		9D4E4BD72BB070D200617E5D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B042BA8AEFE006AC078 /* FirebaseFirestoreSwift */; };
 		9D4E4BD82BB070D200617E5D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B062BA8AEFE006AC078 /* FirebaseStorage */; };
-		9D69D8542BC163E90079D5E9 /* NotepadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69D8532BC163E90079D5E9 /* NotepadCollectionViewCell.swift */; };
 		9DDEBFCF2BC42C8100E9347D /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDEBFCE2BC42C8100E9347D /* CalendarService.swift */; };
 		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
 		9E2A8BC92B850461004A81CF /* FIrebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */; };
@@ -176,9 +176,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		9D32E9142BBF06F0008A2BA4 /* WorkoutCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WorkoutCollectionViewCell.swift; sourceTree = "<group>"; };
+		9D15BE232BC456CC004FC560 /* NotepadOuterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadOuterCollectionViewCell.swift; sourceTree = "<group>"; };
+		9D15BE252BC457D1004FC560 /* NotepadInnerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadInnerCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
-		9D69D8532BC163E90079D5E9 /* NotepadCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadCollectionViewCell.swift; sourceTree = "<group>"; };
 		9DDEBFCE2BC42C8100E9347D /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
@@ -507,9 +507,9 @@
 				9E4F22682B9F3B8F003E749E /* NotepadRouter.swift */,
 				9E4F226C2B9F3B8F003E749E /* NotepadSectionHeaderView.swift */,
 				9E4F226D2B9F3B8F003E749E /* NotepadTableViewCell.swift */,
-				9D32E9142BBF06F0008A2BA4 /* WorkoutCollectionViewCell.swift */,
 				9E4F22692B9F3B8F003E749E /* NotepadViewController.swift */,
-				9D69D8532BC163E90079D5E9 /* NotepadCollectionViewCell.swift */,
+				9D15BE232BC456CC004FC560 /* NotepadOuterCollectionViewCell.swift */,
+				9D15BE252BC457D1004FC560 /* NotepadInnerCollectionViewCell.swift */,
 			);
 			path = NotepadScene;
 			sourceTree = "<group>";
@@ -1190,7 +1190,6 @@
 				9E5B753C2B7F9D7600E2BDE6 /* ContentView.swift in Sources */,
 				9E4F22AE2B9F3C05003E749E /* ResultsTableViewCell.swift in Sources */,
 				9E4F22862B9F3BB4003E749E /* TrainingContainer.swift in Sources */,
-				9D69D8542BC163E90079D5E9 /* NotepadCollectionViewCell.swift in Sources */,
 				9E5B75452B7F9D7600E2BDE6 /* AgeView.swift in Sources */,
 				9E5B75072B7F9A8300E2BDE6 /* SignInProtocols.swift in Sources */,
 				9E5B75472B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift in Sources */,
@@ -1203,6 +1202,7 @@
 				9E4F22C02B9F3C2E003E749E /* TimerContainer.swift in Sources */,
 				9E4F22AA2B9F3C05003E749E /* ResultsContainer.swift in Sources */,
 				9E53FB4E2B7F950B00C55A45 /* Color+Extension.swift in Sources */,
+				9D15BE262BC457D1004FC560 /* NotepadInnerCollectionViewCell.swift in Sources */,
 				9E4766DA2B9FC0BD00DD31B9 /* View+Extension.swift in Sources */,
 				9EE8AE372B7FB96E001D126F /* WorkoutRouter.swift in Sources */,
 				9E4F22D02B9F3C51003E749E /* ExtraInteractor.swift in Sources */,
@@ -1230,7 +1230,6 @@
 				9E4F228B2B9F3BB4003E749E /* TrainingProtocols.swift in Sources */,
 				9E4F22722B9F3B8F003E749E /* NotepadInteractor.swift in Sources */,
 				9E4F22D82B9F3D09003E749E /* CustomError.swift in Sources */,
-				9D32E9152BBF06F0008A2BA4 /* WorkoutCollectionViewCell.swift in Sources */,
 				9EE8AE122B7FB8CF001D126F /* SettingsProtocols.swift in Sources */,
 				9E5B75412B7F9D7600E2BDE6 /* PageView.swift in Sources */,
 				9E53FB502B7F951000C55A45 /* UIColor+Extension.swift in Sources */,
@@ -1254,6 +1253,7 @@
 				9E4F22702B9F3B8F003E749E /* NotepadRouter.swift in Sources */,
 				9E5B75392B7F9D7600E2BDE6 /* GenderView.swift in Sources */,
 				9E5B74FB2B7F9A7000E2BDE6 /* SignUpPresenter.swift in Sources */,
+				9D15BE242BC456CC004FC560 /* NotepadOuterCollectionViewCell.swift in Sources */,
 				9E5B750A2B7F9A8300E2BDE6 /* SignInViewController.swift in Sources */,
 				9E4F22AD2B9F3C05003E749E /* ResultsPresenter.swift in Sources */,
 				9E4F22C42B9F3C3C003E749E /* TimerViewModel.swift in Sources */,

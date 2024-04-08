@@ -1,8 +1,8 @@
 //
-//  NotepadCollectionViewCell.swift
+//  NotepadOuterCollectionViewCell.swift
 //  Everyday
 //
-//  Created by Alexander on 06.04.2024.
+//  Created by Alexander on 08.04.2024.
 //
 
 import UIKit
@@ -10,14 +10,14 @@ import PinLayout
 
 // MARK: - Delegate Protocol
 
-protocol NotepadCollectionViewCellDelegate: AnyObject {
+protocol NotepadOuterCollectionViewCellDelegate: AnyObject {
     func didTapInnerCollectionViewCell(_ date: Date)
 }
 
-class NotepadCollectionViewCell: UICollectionViewCell {
-    static let reuseID = "NotepadCollectionViewCell"
+class NotepadOuterCollectionViewCell: UICollectionViewCell {
+    static let reuseID = "NotepadOuterCollectionViewCell"
     
-    weak var delegate: NotepadCollectionViewCellDelegate?
+    weak var delegate: NotepadOuterCollectionViewCellDelegate?
     
     private var innerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     
@@ -64,7 +64,7 @@ class NotepadCollectionViewCell: UICollectionViewCell {
     }
 }
 
-private extension NotepadCollectionViewCell {
+private extension NotepadOuterCollectionViewCell {
     
     // MARK: - Layout
     
@@ -89,7 +89,7 @@ private extension NotepadCollectionViewCell {
         innerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createSevenColumnFlowLayout(in: self))
         innerCollectionView.delegate = self
         innerCollectionView.dataSource = self
-        innerCollectionView.register(WorkoutCollectionViewCell.self, forCellWithReuseIdentifier: WorkoutCollectionViewCell.reuseID)
+        innerCollectionView.register(NotepadInnerCollectionViewCell.self, forCellWithReuseIdentifier: NotepadInnerCollectionViewCell.reuseID)
         
         innerCollectionView.backgroundColor = Constants.InnerCollectionView.backgroundColor
         
@@ -109,14 +109,14 @@ private extension NotepadCollectionViewCell {
 
 // MARK: - CollectionViewDataSource
 
-extension NotepadCollectionViewCell: UICollectionViewDataSource {
+extension NotepadOuterCollectionViewCell: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         week.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: WorkoutCollectionViewCell.reuseID, 
-                                                            for: indexPath) as? WorkoutCollectionViewCell else {
+        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: NotepadInnerCollectionViewCell.reuseID,
+                                                            for: indexPath) as? NotepadInnerCollectionViewCell else {
             return UICollectionViewCell()
         }
         
@@ -129,7 +129,7 @@ extension NotepadCollectionViewCell: UICollectionViewDataSource {
 
 // MARK: - CollectionViewDelegate
 
-extension NotepadCollectionViewCell: UICollectionViewDelegate {
+extension NotepadOuterCollectionViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if selectedCellIndexPath != indexPath {
             delegate?.didTapInnerCollectionViewCell(week[indexPath.item])
@@ -140,7 +140,7 @@ extension NotepadCollectionViewCell: UICollectionViewDelegate {
 
 // MARK: - Constants
 
-private extension NotepadCollectionViewCell {
+private extension NotepadOuterCollectionViewCell {
     struct Constants {
         static let backgroundColor: UIColor = .clear
         

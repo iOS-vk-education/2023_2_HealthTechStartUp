@@ -1,15 +1,15 @@
 //
-//  WorkoutCollectionViewCell.swift
+//  NotepadInnerCollectionViewCell.swift
 //  Everyday
 //
-//  Created by Alexander on 04.04.2024.
+//  Created by Alexander on 08.04.2024.
 //
 
 import UIKit
 import PinLayout
 
-class WorkoutCollectionViewCell: UICollectionViewCell {
-    static let reuseID = "WorkoutCollectionViewCell"
+class NotepadInnerCollectionViewCell: UICollectionViewCell {
+    static let reuseID = "NotepadInnerCollectionViewCell"
     
     private var stackView = UIStackView()
     private var dayOfWeekLabel = UILabel()
@@ -43,12 +43,12 @@ class WorkoutCollectionViewCell: UICollectionViewCell {
                 let generator = UISelectionFeedbackGenerator()
                 generator.selectionChanged()
             }
-            UIView.animate(withDuration: 0.3) { [weak self] in
+            UIView.animate(withDuration: Constants.BackgroundView.animationDuration) { [weak self] in
                 guard let self else {
                     return
                 }
                 
-                backgroundView?.alpha = self.isSelected ? 1.0 : 0.0
+                backgroundView?.alpha = self.isSelected ? Constants.BackgroundView.endAlpha : Constants.BackgroundView.startAlpha
             }
         }
     }
@@ -61,7 +61,7 @@ class WorkoutCollectionViewCell: UICollectionViewCell {
     }
 }
 
-private extension WorkoutCollectionViewCell {
+private extension NotepadInnerCollectionViewCell {
     
     // MARK: - Layout
     
@@ -86,7 +86,7 @@ private extension WorkoutCollectionViewCell {
         backgroundView.backgroundColor = Constants.BackgroundView.backgroundColor
         backgroundView.layer.cornerRadius = Constants.BackgroundView.cornerRadius
         self.backgroundView = backgroundView
-        self.backgroundView?.alpha = 0.0
+        self.backgroundView?.alpha = Constants.BackgroundView.startAlpha
     }
     
     func setupStackView() {
@@ -117,13 +117,16 @@ private extension WorkoutCollectionViewCell {
 
 // MARK: - Constants
 
-private extension WorkoutCollectionViewCell {
+private extension NotepadInnerCollectionViewCell {
     struct Constants {
         static let backgroundColor: UIColor = .clear
         
         struct BackgroundView {
             static let backgroundColor: UIColor = UIColor.UI.accent
             static let cornerRadius: CGFloat = 8
+            static let startAlpha: CGFloat = 0.0
+            static let endAlpha: CGFloat = 1.0
+            static let animationDuration: TimeInterval = 0.3
         }
         
         struct DayOfWeekLabel {
