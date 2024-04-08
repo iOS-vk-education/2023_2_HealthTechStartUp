@@ -37,7 +37,7 @@ struct MyUser: Codable {
 
 struct HistoryDay: Codable, Hashable {
     let date: Date
-    let historyID: DocumentReference
+    let historyID: [PartOfWokout]
 }
 
 struct Day: Codable, Hashable {

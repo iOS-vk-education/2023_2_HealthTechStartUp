@@ -72,12 +72,58 @@ final class DayService: DayServiceDescription {
     }
     
     func getDayResults(on date: Date, completion: @escaping (Result<[WorkoutDay], CustomError>) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//            let workoutDays = MockSchedule.mockSchedule.daysOfWeek[4]
-//            let result: Result<[WorkoutDay], CustomError> = .success(workoutDays)
-            let result: Result<[WorkoutDay], CustomError> = .failure(.unknownError)
-            completion(result)
+        guard let userUID = Auth.auth().currentUser?.uid else {
+            completion(.failure(.unknownError))
+            return
         }
+
+        db.collection(Constants.userCollection)
+            .document(userUID)
+            .getDocument(as: MyUser.self) { result in
+                switch result {
+                case .success(let user):
+                    guard let history = user.history else {
+                        completion(.failure(.unknownError))
+                        return
+                    }
+                    guard let dayHistory = history.filter({ $0.date.onlyDate == date.onlyDate }).first else {
+                        completion(.failure(.unknownError))
+                        return
+                    }
+                    let historyIDs: [DocumentReference] = dayHistory.historyID.map { $0.programID }
+
+                    let group = DispatchGroup()
+                    var workoutDays: [WorkoutDay] = Array(repeating: WorkoutDay(), count: historyIDs.count)
+
+                    for indexOfProgram in 0..<historyIDs.count {
+                        group.enter()
+                        historyIDs[indexOfProgram].getDocument(as: Workout.self) { result in
+                            defer {
+                                group.leave()
+                            }
+
+                            switch result {
+                            case .success(let workout):
+                                let indexOfDay = dayHistory.historyID[indexOfProgram].indexOfDay
+                                workoutDays[indexOfProgram] = .init(workout: workout, indexOfDay: indexOfDay)
+                                
+                            case .failure:
+                                completion(.failure(.unknownError))
+                                return
+                            }
+                        }
+                    }
+
+                    group.notify(queue: .main) {
+                        completion(.success(workoutDays))
+                        return
+                    }
+
+                case .failure:
+                    completion(.failure(.unknownError))
+                    return
+                }
+            }
     }
 }
 
@@ -86,5 +132,14 @@ final class DayService: DayServiceDescription {
 private extension DayService {
     struct Constants {
         static let userCollection = "user"
+    }
+}
+
+extension Date {
+    var onlyDate: Date? {
+        let calendar = Calendar.current
+        var dateComponents = calendar.dateComponents([.year, .month, .day], from: self)
+        dateComponents.timeZone = TimeZone.current
+        return calendar.date(from: dateComponents)
     }
 }
