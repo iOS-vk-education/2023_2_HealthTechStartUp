@@ -10,13 +10,25 @@ import Firebase
 import FirebaseFirestoreSwift
 
 struct Workout: Codable, Comparable {
-    static func < (lhs: Workout, rhs: Workout) -> Bool {
-        return lhs.name < rhs.name
-    }
-    
     @DocumentID var id: String?
     let name: String
     var days: [DayOfWorkout]
+    
+    init() {
+        id = nil
+        name = ""
+        days = []
+    }
+    
+    init(id: String? = nil, name: String, days: [DayOfWorkout]) {
+        self.id = id
+        self.name = name
+        self.days = days
+    }
+
+    static func < (lhs: Workout, rhs: Workout) -> Bool {
+        return lhs.name < rhs.name
+    }
 }
 
 struct DayOfWorkout: Codable, Hashable {

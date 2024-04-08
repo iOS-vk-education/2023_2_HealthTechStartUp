@@ -51,6 +51,19 @@ struct PartOfWokout: Codable, Hashable {
 }
 
 struct WorkoutDay: Comparable {
+    var workout: Workout
+    let indexOfDay: Int
+    
+    init() {
+        workout = Workout()
+        indexOfDay = 0
+    }
+    
+    init(workout: Workout, indexOfDay: Int) {
+        self.workout = workout
+        self.indexOfDay = indexOfDay
+    }
+    
     static func < (lhs: WorkoutDay, rhs: WorkoutDay) -> Bool {
         return lhs.workout < rhs.workout
     }
@@ -58,9 +71,6 @@ struct WorkoutDay: Comparable {
     static func == (lhs: WorkoutDay, rhs: WorkoutDay) -> Bool {
         return lhs.workout == rhs.workout
     }
-    
-    var workout: Workout
-    let indexOfDay: Int
 }
 
 struct Schedule1 {

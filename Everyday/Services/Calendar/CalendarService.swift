@@ -19,7 +19,7 @@ final class CalendarService: CalendarServiceDescription {
     private init() {}
     
     func getWeekdayIndex(from date: Date) -> Int {
-        let weekdayIndex = calendar.component(.weekday, from: Date()) - 2
+        let weekdayIndex = calendar.component(.weekday, from: date) - 2
         let localIndex = weekdayIndex == -1 ? 6 : weekdayIndex
         
         return localIndex

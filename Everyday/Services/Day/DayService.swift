@@ -30,12 +30,18 @@ final class DayService: DayServiceDescription {
             .getDocument(as: MyUser.self) { result in
                 switch result {
                 case .success(let user):
+                    guard let schedule = user.schedule else {
+                        completion(.failure(.unknownError))
+                        return
+                    }
                     var programIDs: [DocumentReference] = []
-                    user.schedule?[0].programs.forEach { partOfWorkout in  // date instead of 0
+                    let dayIndex = CalendarService.shared.getWeekdayIndex(from: date)
+                    let dayPrograms = schedule[dayIndex]
+                    dayPrograms.programs.forEach { partOfWorkout in
                         programIDs.append(partOfWorkout.programID)
                     }
                     let group = DispatchGroup()
-                    var workoutDays: [WorkoutDay] = []
+                    var workoutDays: [WorkoutDay] = Array(repeating: WorkoutDay(), count: programIDs.count)
 
                     for indexOfProgram in 0..<programIDs.count {
                         group.enter()
@@ -46,13 +52,9 @@ final class DayService: DayServiceDescription {
 
                             switch result {
                             case .success(let workout):
-                                guard let indexOfDay = user.schedule?[0].programs[indexOfProgram].indexOfDay else {
-                                    completion(.failure(.unknownError))
-                                    break
-                                }
+                                let indexOfDay = dayPrograms.programs[indexOfProgram].indexOfDay
+                                workoutDays[indexOfProgram] = .init(workout: workout, indexOfDay: indexOfDay)
                                 
-                                workoutDays.append(.init(workout: workout, indexOfDay: indexOfDay))
-
                             case .failure:
                                 completion(.failure(.unknownError))
                             }
@@ -60,7 +62,7 @@ final class DayService: DayServiceDescription {
                     }
 
                     group.notify(queue: .main) {
-                        completion(.success(workoutDays.sorted()))
+                        completion(.success(workoutDays))
                     }
 
                 case .failure:
