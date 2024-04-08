@@ -19,6 +19,7 @@ final class NotepadViewController: UIViewController {
     private let stateLabel = UILabel()
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private let activityIndicator = UIActivityIndicatorView(style: .large)
+    private let emptyStateView = NotepadEmptyStateView()
     
     // MARK: - Init
 
@@ -270,6 +271,24 @@ extension NotepadViewController: NotepadViewInput {
     
     func reloadData() {
         tableView.reloadData()
+    }
+    
+    func showEmptyStateView() {
+        stateLabel.text = ""
+        view.addSubview(emptyStateView)
+        
+        emptyStateView.pin
+            .below(of: outerCollectionView)
+            .horizontally()
+            .bottom(view.pin.safeArea)
+    }
+    
+    func dismissEmptyStateView() {
+        guard emptyStateView.superview != nil else {
+            return
+        }
+        
+        emptyStateView.removeFromSuperview()
     }
     
     func showLoadingView() {

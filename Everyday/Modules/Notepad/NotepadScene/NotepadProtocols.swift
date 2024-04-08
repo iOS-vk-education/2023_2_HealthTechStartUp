@@ -20,6 +20,8 @@ protocol NotepadViewInput: AnyObject {
     func reloadData()
     func showLoadingView()
     func dismissLoadingView()
+    func showEmptyStateView()
+    func dismissEmptyStateView()
 }
 
 protocol NotepadViewOutput: AnyObject {

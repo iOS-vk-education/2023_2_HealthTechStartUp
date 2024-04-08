@@ -185,9 +185,15 @@ extension NotepadPresenter: NotepadInteractorOutput {
             isCollapsed[i] = true
         }
         
-        let viewModel = NotepadViewModel(isResult: isResult)
-        view?.configure(with: viewModel)
         view?.reloadData()
+        
+        if !workoutDays.isEmpty {
+            view?.dismissEmptyStateView()
+            let viewModel = NotepadViewModel(isResult: isResult)
+            view?.configure(with: viewModel)
+        } else {
+            view?.showEmptyStateView()
+        }
     }
     
     func didStartLoading() {
