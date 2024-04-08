@@ -24,16 +24,6 @@
 		9D69D8542BC163E90079D5E9 /* NotepadCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D69D8532BC163E90079D5E9 /* NotepadCollectionViewCell.swift */; };
 		9DDEBFCF2BC42C8100E9347D /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDEBFCE2BC42C8100E9347D /* CalendarService.swift */; };
 		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
-		9E2A8BB22B84F106004A81CF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9E2A8BB42B84F106004A81CF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9E2A8BB62B84F106004A81CF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9E2A8BB82B84F106004A81CF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9E2A8BBA2B84F106004A81CF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9E2A8BBC2B84F106004A81CF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9E2A8BBE2B84F106004A81CF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9E2A8BC02B84F106004A81CF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9E2A8BC22B84F106004A81CF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9E2A8BC42B84F106004A81CF /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		9E2A8BC92B850461004A81CF /* FIrebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */; };
 		9E2A8BCD2B8520B2004A81CF /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */; };
 		9E2A8BCF2B854147004A81CF /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BCE2B854147004A81CF /* Validator.swift */; };
@@ -42,8 +32,6 @@
 		9E4382D42B83738800C69708 /* VKIDAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4382CF2B83738800C69708 /* VKIDAuthService.swift */; };
 		9E4382D52B83738800C69708 /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4382D02B83738800C69708 /* AuthService.swift */; };
 		9E4382D62B83738800C69708 /* GoogleAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4382D22B83738800C69708 /* GoogleAuthService.swift */; };
-		9E4382D92B83746B00C69708 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9E4382DB2B83746B00C69708 /* (null) in Frameworks */ = {isa = PBXBuildFile; };
 		9E4766D82B9F516F00DD31B9 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4766D72B9F516F00DD31B9 /* StorageService.swift */; };
 		9E4766DA2B9FC0BD00DD31B9 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4766D92B9FC0BD00DD31B9 /* View+Extension.swift */; };
 		9E4766DD2BA3501700DD31B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E4766DC2BA3501700DD31B9 /* GoogleService-Info.plist */; };
@@ -370,18 +358,6 @@
 				9D4E4BCE2BB070D200617E5D /* PinLayout in Frameworks */,
 				9D4E4BCD2BB070D200617E5D /* PinLayout in Frameworks */,
 				9D4E4BDB2BB0721D00617E5D /* M13Checkbox in Frameworks */,
-				9E2A8BBE2B84F106004A81CF /* (null) in Frameworks */,
-				9E4382DB2B83746B00C69708 /* (null) in Frameworks */,
-				9E2A8BBA2B84F106004A81CF /* (null) in Frameworks */,
-				9E2A8BC02B84F106004A81CF /* (null) in Frameworks */,
-				9E4382D92B83746B00C69708 /* (null) in Frameworks */,
-				9E2A8BBC2B84F106004A81CF /* (null) in Frameworks */,
-				9E2A8BC22B84F106004A81CF /* (null) in Frameworks */,
-				9E2A8BB62B84F106004A81CF /* (null) in Frameworks */,
-				9E2A8BC42B84F106004A81CF /* (null) in Frameworks */,
-				9E2A8BB22B84F106004A81CF /* (null) in Frameworks */,
-				9E2A8BB42B84F106004A81CF /* (null) in Frameworks */,
-				9E2A8BB82B84F106004A81CF /* (null) in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1081,6 +1057,7 @@
 			knownRegions = (
 				en,
 				ru,
+				Base,
 			);
 			mainGroup = 9E53FB272B7F87BA00C55A45;
 			packageReferences = (
