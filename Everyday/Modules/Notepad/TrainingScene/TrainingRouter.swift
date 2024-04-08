@@ -44,25 +44,26 @@ extension TrainingRouter: TrainingRouterInput {
     }
     
     func openExtra() {
-        if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
-           let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
-            let viewController = ExtraContainer.assemble(with: .init()).viewController
-            viewController.modalPresentationStyle = .fullScreen
-            UIView.transition(with: window, duration: 0.5, options: [.transitionCrossDissolve], animations: {
-                window.rootViewController = viewController
-            }, completion: nil)
+        guard
+            let viewController = viewController,
+            let navigationController = viewController.navigationController
+        else {
+            return
         }
+        
+        let extraContainer = ExtraContainer.assemble(with: .init())
+        navigationController.pushViewController(extraContainer.viewController, animated: true)
     }
     
     func openNotepad() {
-        if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
-           let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
-            let viewController = NotepadContainer.assemble(with: .init()).viewController
-            viewController.modalPresentationStyle = .fullScreen
-            UIView.transition(with: window, duration: 0.5, options: [.transitionCrossDissolve], animations: {
-                window.rootViewController = viewController
-            }, completion: nil)
+        guard
+            let viewController = viewController,
+            let navigationController = viewController.navigationController
+        else {
+            return
         }
+        
+        navigationController.popToRootViewController(animated: true)
     }
 }
 
