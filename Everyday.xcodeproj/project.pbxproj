@@ -370,6 +370,14 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		9D9517162BC58A46004EB96A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		9DDEBFCD2BC42C6A00E9347D /* Calendar */ = {
 			isa = PBXGroup;
 			children = (
@@ -507,6 +515,7 @@
 		9E4F22652B9F3B82003E749E /* NotepadScene */ = {
 			isa = PBXGroup;
 			children = (
+				9D9517162BC58A46004EB96A /* Helpers */,
 				9E4F22762B9F3B93003E749E /* Models */,
 				9E4F22672B9F3B8F003E749E /* NotepadContainer.swift */,
 				9E4F226A2B9F3B8F003E749E /* NotepadInteractor.swift */,
@@ -653,7 +662,6 @@
 			isa = PBXGroup;
 			children = (
 				9E4F22D62B9F3CF9003E749E /* CustomError */,
-				9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
