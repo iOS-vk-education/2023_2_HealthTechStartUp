@@ -24,6 +24,8 @@ final class ExtraContainer {
         
         interactor.output = presenter
         
+        router.viewController = viewController
+        
         return ExtraContainer(view: viewController, input: presenter, router: router)
     }
     

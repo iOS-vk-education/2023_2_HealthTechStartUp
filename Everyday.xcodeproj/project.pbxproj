@@ -27,6 +27,8 @@
 		9D4E4BD62BB070D200617E5D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B022BA8AEFE006AC078 /* FirebaseFirestore */; };
 		9D4E4BD72BB070D200617E5D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B042BA8AEFE006AC078 /* FirebaseFirestoreSwift */; };
 		9D4E4BD82BB070D200617E5D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B062BA8AEFE006AC078 /* FirebaseStorage */; };
+		9D9517132BC57566004EB96A /* ExtraTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9517122BC57566004EB96A /* ExtraTableViewCell.swift */; };
+		9D9517152BC5786B004EB96A /* ExtraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9517142BC5786B004EB96A /* ExtraViewModel.swift */; };
 		9DDEBFCF2BC42C8100E9347D /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDEBFCE2BC42C8100E9347D /* CalendarService.swift */; };
 		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
 		9E2A8BC92B850461004A81CF /* FIrebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */; };
@@ -190,6 +192,8 @@
 		9D15BE312BC4A1C7004FC560 /* ExtraTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		9D15BE342BC4A518004FC560 /* Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extra.swift; sourceTree = "<group>"; };
 		9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		9D9517122BC57566004EB96A /* ExtraTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraTableViewCell.swift; sourceTree = "<group>"; };
+		9D9517142BC5786B004EB96A /* ExtraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViewModel.swift; sourceTree = "<group>"; };
 		9DDEBFCE2BC42C8100E9347D /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
@@ -648,6 +652,7 @@
 				9E4F22CB2B9F3C51003E749E /* ExtraProtocols.swift */,
 				9E4F22C62B9F3C50003E749E /* ExtraRouter.swift */,
 				9E4F22C72B9F3C50003E749E /* ExtraViewController.swift */,
+				9D9517122BC57566004EB96A /* ExtraTableViewCell.swift */,
 			);
 			path = ExtraScene;
 			sourceTree = "<group>";
@@ -656,6 +661,7 @@
 			isa = PBXGroup;
 			children = (
 				9D15BE312BC4A1C7004FC560 /* ExtraTableViewCellViewModel.swift */,
+				9D9517142BC5786B004EB96A /* ExtraViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1199,6 +1205,7 @@
 				9D15BE322BC4A1C7004FC560 /* ExtraTableViewCellViewModel.swift in Sources */,
 				9E5B75102B7F9CE300E2BDE6 /* UserTextFieldView.swift in Sources */,
 				9EE8AE112B7FB8CF001D126F /* SettingsViewController.swift in Sources */,
+				9D9517132BC57566004EB96A /* ExtraTableViewCell.swift in Sources */,
 				9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */,
 				9E5B75082B7F9A8300E2BDE6 /* SignInContainer.swift in Sources */,
 				9E4F22872B9F3BB4003E749E /* TrainingTableViewCell.swift in Sources */,
@@ -1260,6 +1267,7 @@
 				9E5B75412B7F9D7600E2BDE6 /* PageView.swift in Sources */,
 				9E53FB502B7F951000C55A45 /* UIColor+Extension.swift in Sources */,
 				9E53FB4C2B7F950400C55A45 /* UIView+Extension.swift in Sources */,
+				9D9517152BC5786B004EB96A /* ExtraViewModel.swift in Sources */,
 				9EBFD9672BAB273400A1891D /* CoreDataService.swift in Sources */,
 				9E5B750D2B7F9A8300E2BDE6 /* SignInPresenter.swift in Sources */,
 				9E4F22B32B9F3C14003E749E /* ResultsTableViewCellViewModel.swift in Sources */,

@@ -18,8 +18,6 @@ protocol TrainingModuleOutput: AnyObject {
 protocol TrainingViewInput: AnyObject {
     func configure(with viewModel: TrainingViewModel)
     func reloadData()
-    func showFinishButton()
-    func hideFinishButton()
 }
 
 protocol TrainingViewOutput: AnyObject {

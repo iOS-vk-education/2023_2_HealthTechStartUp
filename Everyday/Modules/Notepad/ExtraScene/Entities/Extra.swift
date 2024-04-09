@@ -7,7 +7,7 @@
 
 import Foundation
 
-enum ExtraViewType: String {
+enum ExtraViewType: String, CaseIterable {
     case photo = "Add photo"
     case state = "Note how you feel"
     case heart = "Heart rate variability"

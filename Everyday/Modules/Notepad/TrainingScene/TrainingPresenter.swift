@@ -81,7 +81,7 @@ extension TrainingPresenter: ResultsModuleOutput {
         if workoutDay.workout.days[workoutDay.indexOfDay].sets.count > index + 1 {
             self.indexOfSet = index + 1
         } else {
-            router.openNotepad()
+            router.openExtra()
             return
         }
         

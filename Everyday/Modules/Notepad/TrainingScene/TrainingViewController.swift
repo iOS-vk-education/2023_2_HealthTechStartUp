@@ -40,7 +40,9 @@ final class TrainingViewController: UIViewController {
         setup()
     }
     
-    override func viewDidLayoutSubviews() {
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        
         layout()
     }
 }
@@ -96,7 +98,7 @@ private extension TrainingViewController {
     }
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - TableViewDataSource
 
 extension TrainingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -118,7 +120,7 @@ extension TrainingViewController: UITableViewDataSource {
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - TableViewDelegate
 
 extension TrainingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -131,14 +133,6 @@ extension TrainingViewController: UITableViewDelegate {
 extension TrainingViewController: TrainingViewInput {
     func configure(with viewModel: TrainingViewModel) {
         finishButton.setAttributedTitle(viewModel.finishTitle, for: .normal)
-    }
-    
-    func showFinishButton() {
-        finishButton.isHidden = false
-    }
-    
-    func hideFinishButton() {
-        finishButton.isHidden = true
     }
     
     func reloadData() {    

@@ -14,10 +14,10 @@ struct ExtraTableViewCellViewModel {
     let circle: UIImage?
     let circleFilled: UIImage?
     
-    init(exercise: Exercise) {
-        let titleLabelTitle = exercise.name
+    init(viewType: ExtraViewType) {
+        let titleLabelTitle = viewType.rawValue
         let titleLabelAttributedString = NSAttributedString(string: titleLabelTitle, attributes: Styles.titleAttributes)
-        let resultLabelTitle = exercise.result
+        let resultLabelTitle = ""
         let resultLabelAttributedString = NSAttributedString(string: resultLabelTitle, attributes: Styles.resultAttributes)
         let numberLabelTitle = "0"
         let numberLabelAttributedString = NSAttributedString(string: numberLabelTitle, attributes: Styles.resultAttributes)
