@@ -27,7 +27,7 @@ final class DayService: DayServiceDescription {
 
         db.collection(Constants.userCollection)
             .document(userUID)
-            .getDocument(as: MyUser.self) { result in
+            .getDocument(as: NotepadUser.self) { result in
                 switch result {
                 case .success(let user):
                     guard let schedule = user.schedule else {
@@ -79,7 +79,7 @@ final class DayService: DayServiceDescription {
 
         db.collection(Constants.userCollection)
             .document(userUID)
-            .getDocument(as: MyUser.self) { result in
+            .getDocument(as: NotepadUser.self) { result in
                 switch result {
                 case .success(let user):
                     guard let history = user.history else {
