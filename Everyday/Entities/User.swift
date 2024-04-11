@@ -9,27 +9,13 @@ import Foundation
 import Firebase
 import FirebaseFirestoreSwift
 
-struct MyUser: Codable {
+struct NotepadUser: Codable {
     @DocumentID var id: String?
-    let age: String
-    let email: String
-    let firstname: String
-    let gender: String
-    let lastname: String
-    let nickname: String
-    let weight: String
     let schedule: [Day]?
     let history: [HistoryDay]?
     
     init() {
         id = nil
-        age = ""
-        email = ""
-        firstname = ""
-        gender = ""
-        lastname = ""
-        nickname = ""
-        weight = ""
         schedule = nil
         history = nil
     }

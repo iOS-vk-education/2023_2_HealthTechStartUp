@@ -110,15 +110,5 @@ private extension NotepadInnerCollectionViewCell {
             static let endAlpha: CGFloat = 1.0
             static let animationDuration: TimeInterval = 0.3
         }
-        
-//        struct DayOfWeekLabel {
-//            static let format: String = "EEE"
-//            static let textColor: UIColor = UIColor.Text.grayElement
-//        }
-//        
-//        struct DayOfMonthLabel {
-//            static let format: String = "dd"
-//            static let textColor: UIColor = UIColor.Text.primary
-//        }
     }
 }
