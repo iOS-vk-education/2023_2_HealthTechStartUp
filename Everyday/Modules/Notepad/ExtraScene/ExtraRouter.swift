@@ -14,19 +14,27 @@ final class ExtraRouter {
 
 private extension ExtraRouter {
     func photoViewController() -> UIViewController {
-        return UIViewController()
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .systemMint
+        return viewController
     }
     
     func stateViewController() -> UIViewController {
-        return UIViewController()
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .systemMint
+        return viewController
     }
     
     func heartViewController() -> UIViewController {
-        return UIViewController()
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .systemMint
+        return viewController
     }
     
     func weightViewController() -> UIViewController {
-        return UIViewController()
+        let viewController = UIViewController()
+        viewController.view.backgroundColor = .systemMint
+        return viewController
     }
 }
 
