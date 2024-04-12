@@ -45,7 +45,6 @@ extension DeleteAccountPresenter: DeleteAccountViewOutput {
                 }
                 self.handleDeleteAccountResult(result: result)
             }
-//            router.routeToAuthentication()
     }
     
     func didLoadView() {

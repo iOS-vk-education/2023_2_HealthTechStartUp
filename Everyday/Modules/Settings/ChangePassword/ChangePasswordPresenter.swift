@@ -50,7 +50,6 @@ extension ChangePasswordPresenter: ChangePasswordViewOutput {
                 }
                 self.handleChangePasswordResult(result: result)
             }
-            self.router.getBackToMainView()
         }
     }
     

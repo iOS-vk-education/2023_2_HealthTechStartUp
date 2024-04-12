@@ -50,7 +50,7 @@ final class UnitsViewController: UIViewController {
         }
     }
 
-// MARK: - SetupUI
+// MARK: - Setup
 
 private extension UnitsViewController {
     

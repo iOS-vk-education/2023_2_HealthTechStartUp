@@ -10,7 +10,6 @@ import UIKit
 protocol SettingsServiceDescription {
     func changeEmail(with userRequest: ChangeEmailModel, completion: @escaping (Result<Void, Error>) -> Void)
     func changePassword(with userRequest: ChangePasswordModel, completion: @escaping (Result<Void, Error>) -> Void)
-//    func deleteAccount(with userRequest: DeleteAccountModel, completion: @escaping (Result<Void, Error>) -> Void)
     func getUserName(completion: @escaping (Result<Void, Error>, String?) -> Void)
     func getUserProfileImage(completion: @escaping (Result<Void, Error>, UIImage?) -> Void)
     func deleteEmailAccount(with userRequest: DeleteAccountModel, whichSign: String, completion: @escaping (Result<Void, Error>) -> Void)

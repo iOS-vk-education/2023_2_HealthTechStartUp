@@ -321,12 +321,6 @@ extension ProfileViewController: UITableViewDelegate {
             return UIView()
         }
     }
-    
-//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-//        if section == 0 {
-//            return tableView.footerView(forSection: 0)?.heightAnchor
-//        }
-//    }
 }
 
 extension ProfileViewController: UITextFieldDelegate {

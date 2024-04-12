@@ -63,7 +63,7 @@ final class DeleteAccountViewController: UIViewController {
 
 private extension DeleteAccountViewController {
     
-    // MARK: - SetupUI
+    // MARK: - Setup
     
     func setup() {
         setupScrollView()

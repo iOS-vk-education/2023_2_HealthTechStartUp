@@ -63,7 +63,7 @@ final class ChangePasswordViewController: UIViewController {
 
 private extension ChangePasswordViewController {
     
-    // MARK: - SetupUI
+    // MARK: - Setup
     
     func setup() {
         setupScrollView()

@@ -49,7 +49,6 @@ extension ChangeEmailPresenter: ChangeEmailViewOutput {
                 }
                 self.handleLoginResult(result: result)
             }
-            self.router.getBackToMainView()
         }
     }
     

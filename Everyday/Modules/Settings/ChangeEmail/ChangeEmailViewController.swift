@@ -61,7 +61,7 @@ final class ChangeEmailViewController: UIViewController {
     }
 }
 
-// MARK: - SetupUI
+// MARK: - Setup
 
 private extension ChangeEmailViewController {
     

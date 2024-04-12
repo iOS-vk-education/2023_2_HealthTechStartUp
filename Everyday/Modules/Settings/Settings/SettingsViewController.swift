@@ -36,9 +36,7 @@ final class SettingsViewController: UIViewController {
         view.backgroundColor = Constants.backgroundColor
         
         navigationController?.navigationBar.isHidden = false
-//        print("view did load")
         print(CoreDataService.shared.getAllItems())
-//        tableView.reloadData()
         
         setup()
     }
@@ -96,12 +94,6 @@ private extension SettingsViewController {
 }
 
 extension SettingsViewController: SettingsViewInput {
-    func confiure(with model: SettingsViewModel) {
-    }
-    
-    func reloadData() {
-        tableView.reloadData()
-    }
 }
 
 extension SettingsViewController: UITableViewDataSource {
@@ -212,7 +204,6 @@ extension SettingsViewController: UITableViewDelegate {
             default: print("ERROR")
             }
         }
-        print(indexPath)
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
