@@ -130,8 +130,8 @@ extension DateAndTimeViewController: UITableViewDataSource {
             } else {
                 cell.accessoryView = nil
             }
-            let viewModel = model.weekStartsSectionModel
-            cell.configure(with: viewModel[indexPath.row])
+            let cellTitles = model.weekStartsSectionModel
+            cell.configure(with: cellTitles[indexPath.row])
             
             return cell
         }
@@ -144,8 +144,8 @@ extension DateAndTimeViewController: UITableViewDataSource {
             } else {
                 cell.accessoryView = nil
             }
-            let viewModel = model.hoursFormatSectionModel
-            cell.configure(with: viewModel[indexPath.row])
+            let cellTitles = model.hoursFormatSectionModel
+            cell.configure(with: cellTitles[indexPath.row])
             
             return cell
         }

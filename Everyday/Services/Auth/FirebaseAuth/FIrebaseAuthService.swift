@@ -11,7 +11,6 @@ import FirebaseFirestore
 
 final class AuthModel {
     static let shared = AuthModel()
-//    public static let shared = AuthModel()
     
     enum Sign {
         case vk

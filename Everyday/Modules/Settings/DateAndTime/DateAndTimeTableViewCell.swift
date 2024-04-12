@@ -36,8 +36,8 @@ final class DateAndTimeTableViewCell: UITableViewCell {
 
     // MARK: - Interface
     
-    func configure(with viewModel: NSAttributedString) {
-        cellTitle.attributedText = viewModel
+    func configure(with title: NSAttributedString) {
+        cellTitle.attributedText = title
     }
 }
 

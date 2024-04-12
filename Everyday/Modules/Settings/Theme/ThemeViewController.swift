@@ -138,15 +138,15 @@ extension ThemeViewController: UITableViewDataSource {
         }
         
         if indexPath.section == 0 {
-            let viewModel = model.autoThemeTitle
-            cell.configure(with: viewModel)
+            let cellTitle = model.autoThemeTitle
+            cell.configure(with: cellTitle)
             
             return cell
         }
         
         if indexPath.section == 1 {
-            let viewModel = model.darkOrLightSectionSellModel
-            cell.configure(with: viewModel[indexPath.row])
+            let cellTitles = model.darkOrLightSectionSellModel
+            cell.configure(with: cellTitles[indexPath.row])
             
             return cell
         }
