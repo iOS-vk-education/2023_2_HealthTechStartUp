@@ -43,13 +43,15 @@ extension ChangePasswordPresenter: ChangePasswordViewOutput {
             view?.showAlert(with: Constants.invalidPassword, message: validationErrors)
         }
         
-        interactor.changePassword(oldPassword: oldPassword ?? "", newPassword: newPassword ?? "") { [weak self] result in
-            guard let self = self else {
-                return
+        DispatchQueue.main.async {
+            self.interactor.changePassword(oldPassword: oldPassword ?? "", newPassword: newPassword ?? "") { [weak self] result in
+                guard let self = self else {
+                    return
+                }
+                self.handleChangePasswordResult(result: result)
             }
-            self.handleChangePasswordResult(result: result)
+            self.router.getBackToMainView()
         }
-        router.getBackToMainView()
     }
     
     func didLoadView() {

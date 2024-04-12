@@ -25,7 +25,7 @@ extension UnitsPresenter: UnitsModuleInput {
 }
 
 extension UnitsPresenter: UnitsViewOutput {
-    func getBack() {
+    func didSwipe() {
         router.getBackToMainView()
     }
 }

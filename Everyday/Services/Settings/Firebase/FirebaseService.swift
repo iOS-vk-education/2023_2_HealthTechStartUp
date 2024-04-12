@@ -6,146 +6,257 @@
 //
 
 import Foundation
-import FirebaseAuth
-import FirebaseFirestore
 import Firebase
 
 protocol FirebaseServiceDescription {
     func updateEmail(with: ChangeEmailModel, completion: @escaping (Bool, Error?) -> Void)
     func updatePassword(with: ChangePasswordModel, completion: @escaping (Bool, Error?) -> Void)
-    func deleteAccount(with: DeleteAccountModel, completion: @escaping (Bool, Error?) -> Void)
     func fetchUserName(completion: @escaping (Bool, Error?, String?) -> Void)
     func fetchUserProfileImage(completion: @escaping (Bool, Error?, UIImage?) -> Void)
     func deleteOldImage(completion: @escaping (Bool, Error?) -> Void)
-//    func fetchProfileImagePath(completion: @escaping(Bool, Error?, String?) -> Void)
     func updateProfileImagePath(path: String, completion: @escaping (Bool, Error?) -> Void)
+    func deleteEmailAccount(email: String, password: String, completion: @escaping (Bool, Error?) -> Void)
+    func deleteAnonymAccount(completion: @escaping (Bool, Error?) -> Void)
+    func deleteVkAccount(completion: @escaping (Bool, Error?) -> Void)
     func updateUserImage(image: UIImage, completion: @escaping (Bool, Error?) -> Void)
     func updateNickname(username: String, completion: @escaping (Bool, Error?) -> Void)
+    func currentUser(completion: @escaping (User?, Error?) -> Void)
+    func changeFieldInFireBase(field: String, value: String, completion: @escaping (Bool, Error?) -> Void)
+    func deleteUserInFirebase(user: User, userId: String, completion: @escaping(Bool, Error?) -> Void)
 }
 
-final class FirebaseService: FirebaseServiceDescription {
+final class FirebaseService {
     public static let shared = FirebaseService()
+    private let db = Firestore.firestore()
     
     private init() {}
+}
+
+extension FirebaseService: FirebaseServiceDescription {
     
+    func currentUser(completion: @escaping (User?, Error?) -> Void) {
+        guard let currentUser = Auth.auth().currentUser else {
+            completion(nil, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не найден"]))
+            return
+        }
+        completion(currentUser, nil)
+    }
+    
+    func changeFieldInFireBase(field: String, value: String, completion: @escaping (Bool, Error?) -> Void) {
+        guard let userUID = Auth.auth().currentUser?.uid else {
+            return
+        }
+        
+        let reference = db.collection(Constants.user).document(userUID)
+
+        reference.updateData([
+            field: value
+        ]) { error in
+            guard error != nil else {
+                completion(false, error)
+                return
+            }
+            completion(true, nil)
+        }
+    }
+    
+    func deleteUserInFirebase(user: User, userId: String, completion: @escaping (Bool, Error?) -> Void) {
+        user.delete { error in
+            guard error != nil else {
+                completion(false, error)
+                return
+            }
+        }
+        self.db.collection(Constants.user).document(userId).delete { error in
+            guard error != nil else {
+                completion(false, error)
+                return
+            }
+            self.deleteOldImage { _, error in
+                guard error != nil else {
+                    completion(false, error)
+                    return
+                }
+                completion(true, nil)
+            }
+        }
+    }
+
     func updateEmail(with model: ChangeEmailModel, completion: @escaping (Bool, Error?) -> Void) {
-        guard let currentUser = Auth.auth().currentUser else {
-            completion(false, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не найден"]))
-            return
-        }
-        
-        let credential = EmailAuthProvider.credential(withEmail: currentUser.email!, password: model.password)
-        
-        currentUser.reauthenticate(with: credential) { _, error in
-            if let error = error {
+        self.currentUser { user, error in
+            guard let currentUser = user else {
                 completion(false, error)
                 return
             }
             
-            currentUser.sendEmailVerification(beforeUpdatingEmail: model.newEmail) { error in
-                if let error = error {
-                    completion(false, error)
-                    return
-                }
-                guard let userUID = Auth.auth().currentUser?.uid else {
-                    return
-                }
-                
-                let db = Firestore.firestore()
-
-                let reference = db.collection("user").document(userUID)
-
-                reference.updateData([
-                    "email": model.newEmail
-                ])
-            }
+            let credential = EmailAuthProvider.credential(withEmail: currentUser.email!, password: model.password)
             
-            currentUser.reload {error in
-                if let error = error {
-                    completion(false, error)
-                    return
-                }
-            }
-        }
-    }
-    
-    func updatePassword(with model: ChangePasswordModel, completion: @escaping (Bool, Error?) -> Void) {
-        guard let currentUser = Auth.auth().currentUser else {
-            completion(false, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не найден"]))
-            return
-        }
-        
-        let credential = EmailAuthProvider.credential(withEmail: currentUser.email!, password: model.oldPassword)
-        
-        currentUser.reauthenticate(with: credential) { _, error in
-            if let error = error {
-                completion(false, error)
-                return
-            }
-            
-            currentUser.updatePassword(to: model.newPassword) { error in
-                if let error = error {
-                    completion(false, error)
-                    return
-                }
-            }
-        }
-    }
-    
-    func deleteAccount(with model: DeleteAccountModel, completion: @escaping (Bool, Error?) -> Void) {
-        guard let currentUser = Auth.auth().currentUser else {
-            return
-        }
-        let userUID = currentUser.uid
-        let credential = EmailAuthProvider.credential(withEmail: model.email, password: model.password)
-        
-        currentUser.reauthenticate(with: credential) { _, error in
-            if let error = error {
-                completion(false, error)
-                return
-            }
-            
-            currentUser.delete { error in
-                if let error = error {
+            currentUser.reauthenticate(with: credential) { _, error in
+                guard error == nil else {
                     completion(false, error)
                     return
                 }
                 
-                let db = Firestore.firestore()
-                db.collection("user").document(userUID).delete { error in
+                currentUser.sendEmailVerification(beforeUpdatingEmail: model.newEmail) { error in
                     if let error = error {
                         completion(false, error)
                         return
-                    } else {
+                    }
+                    guard (Auth.auth().currentUser?.uid) != nil else {
+                        completion(false, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не найден"]))
+                        return()
+                    }
+                    
+                    self.changeFieldInFireBase(field: Constants.email, value: model.newEmail) { _, error in
+                        guard error == nil else {
+                            completion(false, error)
+                            return
+                        }
                         completion(true, nil)
+                    }
+                }
+                
+                currentUser.reload {error in
+                    guard error == nil else {
+                        completion(false, error)
+                        return
                     }
                 }
             }
         }
     }
     
-    func fetchUserName(completion: @escaping (Bool, Error?, String?) -> Void) {
-        guard let currentUser = Auth.auth().currentUser else {
-            completion(false, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не найден"]), nil)
-            return
-        }
-        let userUID = currentUser.uid
-        
-        let db = Firestore.firestore()
-        db.collection("user")
-            .document(userUID)
-            .getDocument { snapshot, error in
-                if let error = error {
-                    completion(false, error, nil)
+    func updatePassword(with model: ChangePasswordModel, completion: @escaping (Bool, Error?) -> Void) {
+        self.currentUser { user, error in
+            guard let currentUser = user else {
+                completion(false, error)
+                return
+            }
+            
+            let credential = EmailAuthProvider.credential(withEmail: currentUser.email!, password: model.oldPassword)
+            
+            currentUser.reauthenticate(with: credential) { _, error in
+                guard error == nil else {
+                    completion(false, error)
                     return
                 }
                 
-                if let snapshot = snapshot,
-                   let snapshotData = snapshot.data(),
-                   let userName = snapshotData["nickname"] as? String {
-                    completion(true, nil, userName)
+                currentUser.updatePassword(to: model.newPassword) { error in
+                    guard error != nil else {
+                        completion(false, error)
+                        return
+                    }
+                    completion(true, nil)
                 }
             }
+        }
+    }
+    
+    func deleteAnonymAccount(completion: @escaping (Bool, Error?) -> Void) {
+        if let currentUser = Auth.auth().currentUser {
+            let userId = currentUser.uid
+            if currentUser.isAnonymous {
+                deleteUserInFirebase(user: currentUser, userId: userId) { _, error in
+                    guard error == nil else {
+                        completion(false, error)
+                        return
+                    }
+                    completion(true, nil)
+                }
+            } else {
+                completion(false, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не анонимный"]))
+            }
+        } else {
+            completion(false, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не найден"]))
+        }
+    }
+    
+    func deleteVkAccount(completion: @escaping (Bool, Error?) -> Void) {
+        guard let currentUser = Auth.auth().currentUser else {
+            completion(false, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не найден"]))
+            return
+        }
+        
+        let userId = currentUser.uid
+        
+        deleteUserInFirebase(user: currentUser, userId: userId) { _, error in
+            guard error == nil else {
+                completion(false, error)
+                return
+            }
+            completion(true, nil)
+        }
+    }
+
+    func deleteEmailAccount(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+        self.currentUser { user, error in
+            guard let currentUser = user else {
+                completion(false, error)
+                return
+            }
+            let userId = currentUser.uid
+            
+            let credential = EmailAuthProvider.credential(withEmail: email, password: password)
+        
+            currentUser.reauthenticate(with: credential) { _, error in
+                guard error != nil else {
+                    completion(false, error)
+                    return
+                }
+                
+                self.deleteUserInFirebase(user: currentUser, userId: userId) { _, error in
+                    guard error != nil else {
+                        completion(false, error)
+                        return
+                    }
+                    completion(true, nil)
+                }
+            }
+        }
+    }
+    
+    func deleteAnonymOrGoogleAccount(userUID: String, currentUser: User, whichSign: String, completion: @escaping (Bool, Error?) -> Void) {
+        currentUser.delete { error in
+            guard error == nil else {
+                completion(false, error)
+                return
+            }
+            
+            self.db.collection(Constants.user).document(userUID).delete { error in
+                guard error == nil else {
+                    completion(false, error)
+                    return
+                }
+                completion(true, nil)
+            }
+        }
+    }
+    
+    func fetchUserName(completion: @escaping (Bool, Error?, String?) -> Void) {
+        self.currentUser { user, error in
+            guard let currentUser = user else {
+                completion(false, error, nil)
+                return
+            }
+            
+            let userUID = currentUser.uid
+            
+            let db = Firestore.firestore()
+            db.collection(Constants.user)
+                .document(userUID)
+                .getDocument { snapshot, error in
+                    guard error == nil else {
+                        completion(false, error, nil)
+                        return
+                    }
+                    
+                    if let snapshot = snapshot,
+                       let snapshotData = snapshot.data(),
+                       let userName = snapshotData[Constants.nickname] as? String {
+                        completion(true, nil, userName)
+                    }
+                }
+        }
     }
     
     func fetchUserProfileImage(completion: @escaping (Bool, Error?, UIImage?) -> Void) {
@@ -155,26 +266,26 @@ final class FirebaseService: FirebaseServiceDescription {
         }
         
         let db = Firestore.firestore()
-        db.collection("user")
+        db.collection(Constants.user)
             .document(userId)
             .getDocument { snapshot, error in
-                if let error = error {
+                guard error == nil else {
                     completion(false, error, nil)
                     return
                 }
                 
                 if let snapshot = snapshot,
                    let snapshotData = snapshot.data(),
-                   let profileImagePath = snapshotData["profileImage"] as? String {
+                   let profileImagePath = snapshotData[Constants.profileImage] as? String {
                     let storage: StorageServiceDescription = StorageService.shared
                     Task {
                         do {
                             try await storage.getImage(path: profileImagePath) { image, error in
-                                if let error = error {
+                                guard error == nil else {
                                     completion(false, error, nil)
-                                } else {
-                                    completion(true, nil, image)
+                                    return
                                 }
+                                completion(true, nil, image)
                             }
                         } catch {
                             completion(false, error, nil)
@@ -191,17 +302,17 @@ final class FirebaseService: FirebaseServiceDescription {
         }
         
         let db = Firestore.firestore()
-        db.collection("user")
+        db.collection(Constants.user)
             .document(userId)
             .getDocument { snapshot, error in
-                if let error = error {
+                guard error == nil else {
                     completion(false, error)
                     return
                 }
                 
                 if let snapshot = snapshot,
                    let snapshotData = snapshot.data(),
-                   let profileOldImagePath = snapshotData["profileImage"] as? String {
+                   let profileOldImagePath = snapshotData[Constants.profileImage] as? String {
                     let storage: StorageServiceDescription = StorageService.shared
                     Task {
                         do {
@@ -215,20 +326,12 @@ final class FirebaseService: FirebaseServiceDescription {
     }
     
     func updateProfileImagePath(path: String, completion: @escaping (Bool, Error?) -> Void) {
-        guard let userUID = Auth.auth().currentUser?.uid else {
-            return
-        }
-        
-        let db = Firestore.firestore()
-
-        let reference = db.collection("user").document(userUID)
-
-        reference.updateData([
-            "profileImage": path
-        ]) { error in
-            if let error = error {
+        changeFieldInFireBase(field: Constants.profileImage, value: path) { _, error in
+            guard error == nil else {
                 completion(false, error)
+                return
             }
+            completion(true, nil)
         }
     }
     
@@ -241,9 +344,11 @@ final class FirebaseService: FirebaseServiceDescription {
         Task {
             do {
                 deleteOldImage { _, error in
-                    if let error = error {
+                    guard error == nil else {
                         completion(false, error)
+                        return
                     }
+                    completion(true, nil)
                 }
             }
         }
@@ -253,12 +358,11 @@ final class FirebaseService: FirebaseServiceDescription {
             do {
                 let (path, _) = try await storage.saveImage(image: image, userId: userId)
                 updateProfileImagePath(path: path) { _, error in
-                    if let error = error {
+                    guard error == nil else {
                         completion(false, error)
                         return
-                    } else {
-                        completion(true, nil)
                     }
+                    completion(true, nil)
                 }
             } catch {
                 completion(false, error)
@@ -267,16 +371,21 @@ final class FirebaseService: FirebaseServiceDescription {
     }
     
     func updateNickname(username: String, completion: @escaping (Bool, Error?) -> Void) {
-        guard let userUID = Auth.auth().currentUser?.uid else {
-            return
+        changeFieldInFireBase(field: Constants.nickname, value: username) { _, error in
+            guard error == nil else {
+                completion(false, error)
+                return
+            }
+            completion(true, nil)
         }
-        
-        let db = Firestore.firestore()
+    }
+}
 
-        let reference = db.collection("user").document(userUID)
-
-        reference.updateData([
-            "nickname": username
-        ])
+private extension FirebaseService {
+    struct Constants {
+        static let user = "user"
+        static let nickname = "nickname"
+        static let profileImage = "profileImage"
+        static let email = "email"
     }
 }

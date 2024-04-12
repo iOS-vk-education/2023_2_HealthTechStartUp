@@ -25,7 +25,7 @@ extension ThemePresenter: ThemeModuleInput {
 }
 
 extension ThemePresenter: ThemeViewOutput {
-    func getBack() {
+    func didSwipe() {
         router.getBackToMainView()
     }
 }

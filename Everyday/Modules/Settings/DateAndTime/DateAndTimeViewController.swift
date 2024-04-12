@@ -36,8 +36,8 @@ final class DateAndTimeViewController: UIViewController {
         
         view.backgroundColor = Constants.backgroundColor
         
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
-        self.view.addGestureRecognizer(swipeRight)
+        let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
+        self.view.addGestureRecognizer(swipeRightGestureRecognizer)
         
         navBarTitle.attributedText = DateAndTimeViewModel().dateAndTimeTitle
         self.navigationItem.titleView = navBarTitle
@@ -48,7 +48,7 @@ final class DateAndTimeViewController: UIViewController {
         setup()
     }
     
-    override func viewDidLayoutSubviews() {
+    override func viewWillLayoutSubviews() {
         layout()
     }
 }
@@ -90,7 +90,7 @@ private extension DateAndTimeViewController {
     @objc
     func swipeFunc(gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .right {
-            output.getBack()
+            output.didSwipe()
         }
     }
 }
@@ -121,9 +121,9 @@ extension DateAndTimeViewController: UITableViewDataSource {
         cell.selectionStyle = .blue
         cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
         let model = DateAndTimeViewModel()
-        
+        let settingsUserDefaultService = SettingsUserDefaultsService.shared
         if indexPath.section == 0 {
-            if indexPath == getSelectedBeginningOfTheWeekIndexPath() {
+            if indexPath == settingsUserDefaultService.getSelectedBeginningOfTheWeekIndexPath() {
                 let accessoryView = UIImageView(image: model.accessoryCellImage)
                 accessoryView.tintColor = Constants.accentColor
                 cell.accessoryView = accessoryView
@@ -137,7 +137,7 @@ extension DateAndTimeViewController: UITableViewDataSource {
         }
         
         if indexPath.section == 1 {
-            if indexPath == getSelectedTimeFormatIndexPath() {
+            if indexPath == settingsUserDefaultService.getSelectedTimeFormatIndexPath() {
                 let accessoryView = UIImageView(image: model.accessoryCellImage)
                 accessoryView.tintColor = Constants.accentColor
                 cell.accessoryView = accessoryView
@@ -156,14 +156,15 @@ extension DateAndTimeViewController: UITableViewDataSource {
 
 extension DateAndTimeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let settingsUserDefaultService = SettingsUserDefaultsService.shared
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 0 {
-            setBeginningOfTheWeek(indexPath: indexPath)
+            settingsUserDefaultService.setBeginningOfTheWeek(indexPath: indexPath)
         }
         
         if indexPath.section == 1 {
-            setTimeFormat(indexPath: indexPath)
+            settingsUserDefaultService.setTimeFormat(indexPath: indexPath)
         }
         
         tableView.reloadData()

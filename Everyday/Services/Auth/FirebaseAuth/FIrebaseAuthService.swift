@@ -33,7 +33,6 @@ protocol FirebaseAuthServiceDescription {
     func login(with userRequest: SignInModel, completion: @escaping(Bool, Error?) -> Void)
     func anonymLogin(completion: @escaping (Bool, Error?) -> Void)
     func signOut(completion: @escaping (Bool, Error?) -> Void)
-    // func forgotPassword(with email: String, completion: @escaping (Error?) -> Void)
 }
 
 final class FirebaseAuthService: FirebaseAuthServiceDescription {
@@ -157,9 +156,3 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
         }
     }
 }
-//
-//    public func forgotPassword(with email: String, completion: @escaping (Error?) -> Void) {
-//        Auth.auth().sendPasswordReset(withEmail: email) { error in
-//            completion(error)
-//        }
-//    }

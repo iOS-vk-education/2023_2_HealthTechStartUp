@@ -19,7 +19,7 @@ protocol DateAndTimeViewInput: AnyObject {
 }
 
 protocol DateAndTimeViewOutput: AnyObject {
-    func getBack()
+    func didSwipe()
 }
 
 protocol DateAndTimeInteractorInput: AnyObject {

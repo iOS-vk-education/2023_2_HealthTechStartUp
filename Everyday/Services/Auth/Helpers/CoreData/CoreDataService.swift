@@ -13,6 +13,7 @@ protocol CoreDataServiceDescription {
     func createItem(authType: String)
     func deleteItem(item: UserAuthentication)
     func updateItem(item: UserAuthentication, authType: String)
+    func deleteAuthType(authType: String)
     func deleteAllItems()
     func isItemExists(for key: String) -> Bool
 }
@@ -69,6 +70,28 @@ class CoreDataService: CoreDataServiceDescription {
         } catch {
             // error
         }
+    }
+    
+    func deleteAuthType(authType: String) {
+        guard let context = CoreDataService.shared.context else {
+                    print("Context is unavailable")
+                    return
+                }
+                
+                let fetchRequest: NSFetchRequest<UserAuthentication> = UserAuthentication.fetchRequest()
+                fetchRequest.predicate = NSPredicate(format: "authType == %@", authType)
+                
+                do {
+                    let items = try context.fetch(fetchRequest)
+                    if let itemToDelete = items.first {
+                        CoreDataService.shared.deleteItem(item: itemToDelete)
+                        print("Item \(authType) deleted successfully")
+                    } else {
+                        print("No item found with authType \(authType)")
+                    }
+                } catch let error as NSError {
+                    print("Could not fetch or delete \(authType): \(error), \(error.userInfo)")
+                }
     }
     
     func updateItem(item: UserAuthentication, authType: String) {

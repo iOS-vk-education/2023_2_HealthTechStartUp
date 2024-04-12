@@ -28,9 +28,20 @@ final class DeleteAccountInteractor {
 
 extension DeleteAccountInteractor: DeleteAccountInteractorInput {
     func deleteAccount(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        let model = DeleteAccountModel(email: email, password: password)
-        settingsService.deleteAccount(with: model) {result in
-            completion(result)
+        let whichSign = UserDefaults.standard.string(forKey: "WhichSign")
+
+        switch whichSign {
+        case "email":
+            let model = DeleteAccountModel(email: email, password: password)
+            settingsService.deleteEmailAccount(with: model, whichSign: whichSign!) { result in
+                completion(result)
+            }
+        case "anonym":
+            settingsService.deleteAnonymAccount(with: whichSign!) { result in
+                completion(result)
+            }
+        default:
+            print("deleteAccount Error")
         }
     }
 }

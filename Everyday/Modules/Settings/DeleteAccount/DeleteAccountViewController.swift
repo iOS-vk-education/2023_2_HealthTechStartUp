@@ -63,6 +63,8 @@ final class DeleteAccountViewController: UIViewController {
 
 private extension DeleteAccountViewController {
     
+    // MARK: - SetupUI
+    
     func setup() {
         setupScrollView()
         setupContentView()
@@ -145,6 +147,7 @@ private extension DeleteAccountViewController {
     }
     
     // MARK: - Actions
+    
     @objc
     private func didTapConfirmButton() {
         let email = self.emailField.text ?? ""
@@ -183,7 +186,7 @@ extension DeleteAccountViewController: DeleteAccountViewInput {
     }
 }
 
-        // MARK: - Constants
+// MARK: - Constants
 
 private extension DeleteAccountViewController {
     struct Constants {

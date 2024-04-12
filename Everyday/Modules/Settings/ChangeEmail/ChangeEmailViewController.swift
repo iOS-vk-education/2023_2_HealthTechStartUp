@@ -61,6 +61,8 @@ final class ChangeEmailViewController: UIViewController {
     }
 }
 
+// MARK: - SetupUI
+
 private extension ChangeEmailViewController {
     
     func setup() {
@@ -187,7 +189,7 @@ extension ChangeEmailViewController: ChangeEmailViewInput {
     }
 }
 
-        // MARK: - Constants
+// MARK: - Constants
 
 private extension ChangeEmailViewController {
     struct Constants {

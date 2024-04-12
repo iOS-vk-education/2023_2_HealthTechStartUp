@@ -24,7 +24,8 @@ final class DeleteAccountPresenter {
         DispatchQueue.main.async {
             switch result {
             case .success:
-                resetUserDefaults()
+                SettingsUserDefaultsService.shared.resetUserDefaults()
+                SettingsUserDefaultsService.shared.setAutoTheme()
                 self.router.routeToAuthentication()
             case .failure(let error):
                 self.view?.showAlert(with: "network", message: error.localizedDescription)
@@ -38,12 +39,13 @@ extension DeleteAccountPresenter: DeleteAccountModuleInput {
 
 extension DeleteAccountPresenter: DeleteAccountViewOutput {
     func didTapConfirmButton(with email: String?, and password: String?) {
-        interactor.deleteAccount(email: email ?? "", password: password ?? "") { [weak self] result in
-            guard let self = self else {
-                return
+            interactor.deleteAccount(email: email ?? "", password: password ?? "") { [weak self] result in
+                guard let self = self else {
+                    return
+                }
+                self.handleDeleteAccountResult(result: result)
             }
-            self.handleDeleteAccountResult(result: result)
-        }
+//            router.routeToAuthentication()
     }
     
     func didLoadView() {

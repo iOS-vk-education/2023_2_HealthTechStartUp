@@ -63,6 +63,8 @@ final class ChangePasswordViewController: UIViewController {
 
 private extension ChangePasswordViewController {
     
+    // MARK: - SetupUI
+    
     func setup() {
         setupScrollView()
         setupContentView()
@@ -188,7 +190,7 @@ extension ChangePasswordViewController: ChangePasswordViewInput {
     }
 }
 
-        // MARK: - Constants
+// MARK: - Constants
 
 private extension ChangePasswordViewController {
     struct Constants {

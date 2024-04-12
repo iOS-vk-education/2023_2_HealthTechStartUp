@@ -19,7 +19,7 @@ protocol UnitsViewInput: AnyObject {
 }
 
 protocol UnitsViewOutput: AnyObject {
-    func getBack()
+    func didSwipe()
 }
 
 protocol UnitsInteractorInput: AnyObject {

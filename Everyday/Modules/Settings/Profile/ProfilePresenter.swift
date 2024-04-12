@@ -85,10 +85,11 @@ extension ProfilePresenter: ProfileViewOutput {
 
     func didTapLogoutButton() {
         interactor.logout { result in
+            SettingsUserDefaultsService.shared.setAutoTheme()
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    resetUserDefaults()
+                    SettingsUserDefaultsService.shared.resetUserDefaults()
                     self.router.routeToAuthentication()
                 case .failure(let error):
                     self.view?.showAlert(with: "logout", message: error.localizedDescription)
@@ -119,7 +120,7 @@ extension ProfilePresenter: ProfileViewOutput {
         self.view?.configure(with: ProfileViewModel())
     }
     
-    func getBack() {
+    func didSwipe() {
         router.getBackToMainView()
     }
     

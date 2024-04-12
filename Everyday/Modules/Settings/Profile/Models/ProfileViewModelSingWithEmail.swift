@@ -15,12 +15,12 @@ struct ProfileViewModelSingWithEmail {
     let deleteAccount: NSAttributedString
     let sectionsModels: [[NSAttributedString]]
     init() {
-        self.discriptionUsernameTitle = NSAttributedString(string: "Profile_DiscriptionUsername".localized, attributes: Styles.titleAttributes)
+        self.discriptionUsernameTitle = NSAttributedString(string: "Profile_DiscriptionUsername_title".localized, attributes: Styles.titleAttributes)
         self.changeEmailTitle = NSAttributedString(string: "Profile_ChangeEmail_title".localized, attributes: Styles.titleAttributes)
         self.changePasswordTitle = NSAttributedString(string: "Profile_ChangePassword_title".localized, attributes: Styles.titleAttributes)
         self.exitTitle = NSAttributedString(string: "Profile_Exit_title".localized, attributes: Styles.titleAttributes)
         self.deleteAccount = NSAttributedString(string: "Profile_DeleteAccount_title".localized, attributes: Styles.titleAttributesRed)
-        self.sectionsModels = [[discriptionUsernameTitle], [changeEmailTitle, changeEmailTitle], [exitTitle], [deleteAccount]]
+        self.sectionsModels = [[discriptionUsernameTitle], [changeEmailTitle, changePasswordTitle], [exitTitle], [deleteAccount]]
     }
 }
 

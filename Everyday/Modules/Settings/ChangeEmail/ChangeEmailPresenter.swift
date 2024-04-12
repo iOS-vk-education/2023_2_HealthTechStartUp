@@ -42,13 +42,15 @@ extension ChangeEmailPresenter: ChangeEmailViewOutput {
             return
         }
         
-        interactor.changeEmail(email: email, password: password ?? "") { [weak self] result in
-            guard let self = self else {
-                return
+        DispatchQueue.main.async {
+            self.interactor.changeEmail(email: email, password: password ?? "") { [weak self] result in
+                guard let self = self else {
+                    return
+                }
+                self.handleLoginResult(result: result)
             }
-            self.handleLoginResult(result: result)
+            self.router.getBackToMainView()
         }
-        router.getBackToMainView()
     }
     
     func didLoadView() {

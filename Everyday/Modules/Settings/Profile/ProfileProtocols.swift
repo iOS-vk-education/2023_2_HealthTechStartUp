@@ -34,7 +34,7 @@ protocol ProfileViewOutput: AnyObject {
     func didTapChangeEmailCell()
     func didTapChangePasswordCell()
     func didTapDeleteAccountCell()
-    func getBack()
+    func didSwipe()
 }
 
 protocol ProfileInteractorInput: AnyObject {

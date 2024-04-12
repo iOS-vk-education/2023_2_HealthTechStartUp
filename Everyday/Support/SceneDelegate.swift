@@ -30,7 +30,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             window?.rootViewController = viewController
         }
         
-        setTheme()
+        SettingsUserDefaultsService.shared.setTheme()
+        
         splashPresenter?.present()
         
         let delay: TimeInterval = 1.5

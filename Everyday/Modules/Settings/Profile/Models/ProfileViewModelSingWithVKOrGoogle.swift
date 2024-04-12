@@ -13,7 +13,7 @@ struct ProfileViewModelSingWithVKOrGoogle {
     let deleteAccount: NSAttributedString
     let sectionsModels: [[NSAttributedString]]
     init() {
-        self.discriptionUsernameTitle = NSAttributedString(string: "Profile_DiscriptionUsername".localized, attributes: Styles.titleAttributes)
+        self.discriptionUsernameTitle = NSAttributedString(string: "Profile_DiscriptionUsername_title".localized, attributes: Styles.titleAttributes)
         self.exitTitle = NSAttributedString(string: "Profile_Exit_title".localized, attributes: Styles.titleAttributes)
         self.deleteAccount = NSAttributedString(string: "Profile_DeleteAccount_title".localized, attributes: Styles.titleAttributesRed)
         self.sectionsModels = [[discriptionUsernameTitle], [exitTitle], [deleteAccount]]

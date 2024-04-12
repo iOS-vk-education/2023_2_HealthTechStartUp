@@ -28,13 +28,13 @@ final class UnitsViewController: UIViewController {
             fatalError("init(coder:) has not been implemented")
         }
 
-        override func viewDidLoad() {
+    override func viewDidLoad() {
             super.viewDidLoad()
             
             view.backgroundColor = Constants.backgroundColor
             
-            let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
-            self.view.addGestureRecognizer(swipeRight)
+            let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
+            self.view.addGestureRecognizer(swipeRightGestureRecognizer)
             
             navBarTitle.attributedText = UnitsViewModel().unitsTitle
             self.navigationItem.titleView = navBarTitle
@@ -45,10 +45,12 @@ final class UnitsViewController: UIViewController {
             setup()
         }
         
-        override func viewDidLayoutSubviews() {
+        override func viewWillLayoutSubviews() {
             layout()
         }
     }
+
+// MARK: - SetupUI
 
 private extension UnitsViewController {
     
@@ -85,20 +87,17 @@ private extension UnitsViewController {
     // MARK: - Actions
     
     @objc
-    func didTapCloseButton() {
-        output.getBack()
-    }
-    
-    @objc
     func swipeFunc(gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .right {
-            output.getBack()
+            output.didSwipe()
         }
     }
 }
 
 extension UnitsViewController: UnitsViewInput {
 }
+
+// MARK: - UITableViewDataSource
 
 extension UnitsViewController: UITableViewDataSource {
     
@@ -107,7 +106,7 @@ extension UnitsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        Constants.TableView.rowsInSectionsInTableView
+        return Constants.TableView.rowsInSectionsInTableView
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -115,8 +114,9 @@ extension UnitsViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: UnitsTableViewCell.reuseID, for: indexPath) as? UnitsTableViewCell else {
             return UITableViewCell()
         }
-        cell.selectionStyle = .blue
+        
         cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
+        
         let model = UnitsViewModel()
         
         if indexPath.section == 0 {
@@ -150,6 +150,8 @@ extension UnitsViewController: UITableViewDataSource {
         return UITableViewCell()
     }
 }
+
+// MARK: - UITableViewDelegate
 
 extension UnitsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
@@ -208,7 +210,7 @@ extension UnitsViewController: UITableViewDelegate {
     }
 }
 
-    // MARK: - Constants
+// MARK: - Constants
 
 private extension UnitsViewController {
     struct Constants {

@@ -37,8 +37,8 @@ final class ThemeViewController: UIViewController {
         
         view.backgroundColor = Constants.backgroundColor
         
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
-        self.view.addGestureRecognizer(swipeRight)
+        let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
+        self.view.addGestureRecognizer(swipeRightGestureRecognizer)
         
         navBarTitle.attributedText = ThemeViewModel().themeTitle
         self.navigationItem.titleView = navBarTitle
@@ -49,7 +49,7 @@ final class ThemeViewController: UIViewController {
         setup()
     }
     
-    override func viewDidLayoutSubviews() {
+    override func viewWillLayoutSubviews() {
         layout()
     }
 }
@@ -87,7 +87,8 @@ private extension ThemeViewController {
     }
     
     func getIndexPath() -> IndexPath {
-        switch getSelectedTheme() {
+        let settingsUserDefaultService = SettingsUserDefaultsService.shared
+        switch settingsUserDefaultService.getSelectedTheme() {
         case "Dark": return [1, 0]
         case "Light": return [1, 1]
         default: return [0, 0]
@@ -97,14 +98,9 @@ private extension ThemeViewController {
     // MARK: - Actions
     
     @objc
-    func didTapCloseButton() {
-        output.getBack()
-    }
-    
-    @objc
     func swipeFunc(gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .right {
-            output.getBack()
+            output.didSwipe()
         }
     }
 }
@@ -162,16 +158,16 @@ extension ThemeViewController: UITableViewDataSource {
 extension ThemeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        
+        let settingsUserDefaultService = SettingsUserDefaultsService.shared
         if indexPath.section == 0 {
-           setAutoTheme()
+            settingsUserDefaultService.setAutoTheme()
         }
         
         if indexPath.section == 1 {
-            if indexPath.row == 0 {
-                setDarkTheme()
-            } else {
-                setLightTheme()
+            switch indexPath.row {
+            case 0: settingsUserDefaultService.setDarkTheme()
+            case 1: settingsUserDefaultService.setLightTheme()
+            default: settingsUserDefaultService.setAutoTheme()
             }
         }
 

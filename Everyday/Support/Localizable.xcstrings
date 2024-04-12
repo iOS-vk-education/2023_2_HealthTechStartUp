@@ -1540,14 +1540,14 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Enter your name and, if you wish, add a photo for your profile"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Укажите имя и, если хотите, добавьте фотографию для Вашего профиля"
+            "value" : "Укажите имя и добавьте фотографию"
           }
         }
       }

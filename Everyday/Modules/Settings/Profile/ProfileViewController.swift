@@ -180,7 +180,7 @@ private extension ProfileViewController {
     @objc
     func swipeFunc(gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .right {
-            output.getBack()
+            output.didSwipe()
         }
     }
 }
@@ -189,7 +189,7 @@ extension ProfileViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
         let whichSing = output.getWhichSing()
         switch whichSing {
-        case "vk", "google":
+        case "vk", "google", "anonym":
             let model = output.getProfileViewModelSingWithVKOrGoogle()
             return model.sectionsModels.count
         case "email":
@@ -202,7 +202,7 @@ extension ProfileViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let whichSing = output.getWhichSing()
         switch whichSing {
-        case "vk", "google":
+        case "vk", "google", "anonym":
             let model = output.getProfileViewModelSingWithVKOrGoogle()
             return model.sectionsModels[section].count
         case "email":
@@ -240,7 +240,7 @@ extension ProfileViewController: UITableViewDataSource {
                 cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
                 if indexPath.section == 1 {
                     switch whichSing {
-                    case "vk", "google":
+                    case "vk", "google", "anonym":
                         let model = output.getProfileViewModelSingWithVKOrGoogle()
                         cell.configure(with: model.sectionsModels[indexPath.section][indexPath.row])
                     case "email":
@@ -252,7 +252,7 @@ extension ProfileViewController: UITableViewDataSource {
                 
                 if indexPath.section == 2 {
                     switch whichSing {
-                    case "vk", "google":
+                    case "vk", "google", "anonym":
                         let model = output.getProfileViewModelSingWithVKOrGoogle()
                         cell.configure(with: model.sectionsModels[indexPath.section][indexPath.row])
                     case "email":
@@ -282,7 +282,7 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch output.getWhichSing() {
-        case "vk", "google":
+        case "vk", "google", "anonym":
             if indexPath.section == 1 {
                 output.didTapLogoutButton()
             }
@@ -305,9 +305,28 @@ extension ProfileViewController: UITableViewDelegate {
                 output.didTapDeleteAccountCell()
             }
         default:
-            print("чтото не то")
+            print("ErrorInSettings")
         }
     }
+    
+    func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
+        let model = output.getProfileViewModelSingWithEmail().sectionsModels
+        let userNameDescription = UILabel()
+        userNameDescription.attributedText = model[0][0]
+        userNameDescription.textAlignment = .center
+        
+        if section == 0 {
+            return userNameDescription
+        } else {
+            return UIView()
+        }
+    }
+    
+//    func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
+//        if section == 0 {
+//            return tableView.footerView(forSection: 0)?.heightAnchor
+//        }
+//    }
 }
 
 extension ProfileViewController: UITextFieldDelegate {

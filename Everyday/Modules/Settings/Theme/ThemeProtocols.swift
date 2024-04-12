@@ -19,7 +19,7 @@ protocol ThemeViewInput: AnyObject {
 }
 
 protocol ThemeViewOutput: AnyObject {
-    func getBack()
+    func didSwipe()
 }
 
 protocol ThemeInteractorInput: AnyObject {

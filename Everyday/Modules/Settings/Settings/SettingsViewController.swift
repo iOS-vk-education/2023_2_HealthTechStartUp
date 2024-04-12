@@ -36,6 +36,7 @@ final class SettingsViewController: UIViewController {
         view.backgroundColor = Constants.backgroundColor
         
         navigationController?.navigationBar.isHidden = false
+//        print("view did load")
         print(CoreDataService.shared.getAllItems())
 //        tableView.reloadData()
         
@@ -82,14 +83,15 @@ private extension SettingsViewController {
     }
 
     // MARK: - Actions
+    
     @objc
     func switchValueChanged(_ sender: UISwitch) {
+        let settingsUserDefaultService = SettingsUserDefaultsService.shared
         guard let cell = sender.superview as? UITableViewCell,
               let indexPath = tableView.indexPath(for: cell) else {
             return
         }
-        print(indexPath.row, "ipath")
-        saveSwitchValue(switchState: sender.isOn, key: indexPath.row)
+        settingsUserDefaultService.saveSwitchValue(switchState: sender.isOn, key: indexPath.row)
     }
 }
 
@@ -126,13 +128,14 @@ extension SettingsViewController: UITableViewDataSource {
         cell.accessoryType = .disclosureIndicator
         cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
         let model = output.getViewModel()
+        let settingsUserDefaultService = SettingsUserDefaultsService.shared
         
         if indexPath.section == 0 && indexPath.row <= 1 {
             let viewModel = model.generalSettingsSectionCellModel
             cell.configure(with: viewModel[indexPath.row])
             
             let switchControl = UISwitch()
-            switchControl.isOn = switchIsOn(key: indexPath.row)
+            switchControl.isOn = settingsUserDefaultService.switchIsOn(key: indexPath.row)
             switchControl.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
             
             cell.accessoryView = switchControl
@@ -223,12 +226,12 @@ extension SettingsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let model = output.getViewModel()
-        let tyInFooterLabel = UILabel()
-        tyInFooterLabel.attributedText = model.tyTitle
-        tyInFooterLabel.textAlignment = .center
+        let tableViewFooterLabel = UILabel()
+        tableViewFooterLabel.attributedText = model.tyTitle
+        tableViewFooterLabel.textAlignment = .center
         
         if section == 3 {
-            return tyInFooterLabel
+            return tableViewFooterLabel
         } else {
             return UIView()
         }

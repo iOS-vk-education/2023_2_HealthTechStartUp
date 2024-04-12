@@ -25,7 +25,7 @@ extension DateAndTimePresenter: DateAndTimeModuleInput {
 }
 
 extension DateAndTimePresenter: DateAndTimeViewOutput {
-    func getBack() {
+    func didSwipe() {
         router.getBackToMainView()
     }
 }
