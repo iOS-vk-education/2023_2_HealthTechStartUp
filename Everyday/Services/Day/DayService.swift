@@ -34,12 +34,16 @@ final class DayService: DayServiceDescription {
                         completion(.failure(.unknownError))
                         return
                     }
-                    var programIDs: [DocumentReference] = []
+                    
                     let dayIndex = CalendarService.shared.getWeekdayIndex(from: date)
-                    let dayPrograms = schedule[dayIndex]
-                    dayPrograms.programs.forEach { partOfWorkout in
-                        programIDs.append(partOfWorkout.programID)
+                    guard schedule.count > dayIndex else {
+                        completion(.failure(.unknownError))
+                        return
                     }
+                    
+                    let dayPrograms = schedule[dayIndex]
+                    
+                    let programIDs = dayPrograms.programs.map { $0.programID }
                     let group = DispatchGroup()
                     var workoutDays: [WorkoutDay] = Array(repeating: WorkoutDay(), count: programIDs.count)
 
