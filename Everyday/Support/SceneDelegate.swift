@@ -73,9 +73,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     private func goToController(with viewController: UIViewController) {
         DispatchQueue.main.async { [weak self] in
             let nav = UINavigationController(rootViewController: viewController)
-            if viewController is TabBarController {
-                nav.setNavigationBarHidden(true, animated: false)
-            }
             nav.modalPresentationStyle = .fullScreen
             self?.window?.rootViewController = nav
         }

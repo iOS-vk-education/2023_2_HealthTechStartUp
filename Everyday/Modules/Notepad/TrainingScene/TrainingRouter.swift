@@ -20,6 +20,15 @@ extension TrainingRouter: TrainingRouterInput {
         
         let exerciseContainer = ExerciseContainer.assemble(with: exerciseContext)
         let exerciseViewController = exerciseContainer.viewController
+        
+        if let sheet = exerciseViewController.sheetPresentationController {
+            sheet.detents = [
+                .custom(resolver: { _ in
+                    return Constants.sheetHeight
+                })
+            ]
+        }
+        
         viewController.present(exerciseViewController, animated: true)
     }
     
@@ -35,13 +44,31 @@ extension TrainingRouter: TrainingRouterInput {
     }
     
     func openExtra() {
-        if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
-           let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
-            let viewController = ExtraContainer.assemble(with: .init()).viewController
-            viewController.modalPresentationStyle = .fullScreen
-            UIView.transition(with: window, duration: 0.5, options: [.transitionCrossDissolve], animations: {
-                window.rootViewController = viewController
-            }, completion: nil)
+        guard
+            let viewController = viewController,
+            let navigationController = viewController.navigationController
+        else {
+            return
         }
+        
+        let extraContainer = ExtraContainer.assemble(with: .init())
+        navigationController.pushViewController(extraContainer.viewController, animated: true)
+    }
+    
+    func openNotepad() {
+        guard
+            let viewController = viewController,
+            let navigationController = viewController.navigationController
+        else {
+            return
+        }
+        
+        navigationController.popToRootViewController(animated: true)
+    }
+}
+
+private extension TrainingRouter {
+    struct Constants {
+        static let sheetHeight: CGFloat = 250
     }
 }

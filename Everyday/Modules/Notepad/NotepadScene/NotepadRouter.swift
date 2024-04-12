@@ -14,13 +14,14 @@ final class NotepadRouter {
 
 extension NotepadRouter: NotepadRouterInput {    
     func openTraining(with trainingContext: TrainingContext) {
-        if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
-           let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
-            let viewController = TrainingContainer.assemble(with: trainingContext).viewController
-            viewController.modalPresentationStyle = .fullScreen
-            UIView.transition(with: window, duration: 0.5, options: [.transitionCrossDissolve], animations: {
-                window.rootViewController = viewController
-            }, completion: nil)
+        guard
+            let viewController = viewController,
+            let navigationController = viewController.navigationController
+        else {
+            return
         }
+        
+        let trainingContainer = TrainingContainer.assemble(with: trainingContext)
+        navigationController.pushViewController(trainingContainer.viewController, animated: true)
     }
 }

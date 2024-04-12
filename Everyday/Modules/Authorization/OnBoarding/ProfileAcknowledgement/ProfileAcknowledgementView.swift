@@ -1,6 +1,6 @@
 import SwiftUI
 
-struct ProfileAcknowledgementView: View {
+ struct ProfileAcknowledgementView: View {
     
     // MARK: - properties
     
@@ -227,11 +227,11 @@ struct ProfileAcknowledgementView: View {
         
         viewModel.showingAlert = true
     }
-}
+ }
 
-// MARK: - extensions
+ // MARK: - extensions
 
-private extension ProfileAcknowledgementView {
+ private extension ProfileAcknowledgementView {
     struct Constants {
         
         static let primaryText = Color.primaryText
@@ -263,4 +263,4 @@ private extension ProfileAcknowledgementView {
             static let colorOpacity: CGFloat = 0.1
         }
     }
-}
+ }

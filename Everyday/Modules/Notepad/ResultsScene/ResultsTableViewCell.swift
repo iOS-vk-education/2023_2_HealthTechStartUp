@@ -144,7 +144,7 @@ private extension ResultsTableViewCell {
             return
         }
         
-        if resultText.isEmpty || !resultText.allSatisfy({ $0.isNumber }) || Int(resultText) ?? 0 < 0 {
+        if resultText.isEmpty || !resultText.isNumber || Int(resultText) ?? 0 < 0 {
             resultTextField.text = "0"
         }
     }
@@ -165,7 +165,7 @@ private extension ResultsTableViewCell {
         
         struct ResultTextField {
             static let textColor: UIColor = UIColor.Text.primary
-            static let width: CGFloat = 40
+            static let width: CGFloat = 50
             static let height: CGFloat = 20
         }
         

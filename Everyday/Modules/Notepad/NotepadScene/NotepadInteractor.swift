@@ -32,13 +32,13 @@ extension NotepadInteractor: NotepadInteractorInput {
                 self.output?.didEndLoading()
                 self.output?.didLoadDay(with: workoutDays, true)
             case .failure:
-                self.loadSchedule()
+                self.loadSchedule(date: date)
             }
         }
     }
     
-    func loadSchedule() {
-        dayManager.getDaySchedule { [weak self] result in
+    func loadSchedule(date: Date) {
+        dayManager.getDaySchedule(on: date) { [weak self] result in
             guard let self else {
                 return
             }
@@ -48,7 +48,7 @@ extension NotepadInteractor: NotepadInteractorInput {
             case .success(let workoutDays):
                 self.output?.didLoadDay(with: workoutDays, false)
             case .failure:
-                break
+                self.output?.didLoadDay(with: [], false)
             }
         }
     }

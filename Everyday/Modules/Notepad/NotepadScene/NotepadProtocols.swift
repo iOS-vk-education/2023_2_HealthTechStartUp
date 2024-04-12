@@ -20,12 +20,24 @@ protocol NotepadViewInput: AnyObject {
     func reloadData()
     func showLoadingView()
     func dismissLoadingView()
+    func showEmptyStateView()
+    func dismissEmptyStateView()
 }
 
 protocol NotepadViewOutput: AnyObject {
     func didLoadView()
+    func didTapNewDate(_ date: Date)
+    func getSelectedCell() -> (outerIndex: IndexPath, innerIndex: IndexPath)?
+    func getShouldDeselectCell() -> (outerIndex: IndexPath, innerIndex: IndexPath)?
+    func setSelectedCell(_ indexPaths: (outerIndex: IndexPath, innerIndex: IndexPath)?)
+    func setShouldDeselectCell(_ indexPaths: (outerIndex: IndexPath, innerIndex: IndexPath)?)
+    func getSelectedCellOuterIndexPath() -> IndexPath?
+    func getShouldDeselectCellOuterIndexPath() -> IndexPath?
+    func getSelectedCellInnerIndexPath() -> IndexPath?
+    func collectionNumberOfItems() -> Int
+    func collectionItem(at index: Int) -> [Date]
     func headerViewState() -> NotepadSectionHeaderState
-    func getWorkoutDay(_ number: Int) -> (workout: Workout, indexOfDay: Int)
+    func getWorkoutDay(_ number: Int) -> WorkoutDay
     func getWorkout(at indexOfWorkout: Int) -> Workout
     func getExercises(at indexOfSection: Int) -> [Exercise]
     func getExercise(at indexOfSection: Int, at indexOfRow: Int) -> Exercise
@@ -36,12 +48,12 @@ protocol NotepadViewOutput: AnyObject {
 }
 
 protocol NotepadInteractorInput: AnyObject {
-    func loadSchedule()
+    func loadSchedule(date: Date)
     func loadResult(date: Date)
 }
 
 protocol NotepadInteractorOutput: AnyObject {
-    func didLoadDay(with workoutDays: [(workout: Workout, indexOfDay: Int)], _ isResult: Bool)
+    func didLoadDay(with workoutDays: [WorkoutDay], _ isResult: Bool)
     func didStartLoading()
     func didEndLoading()
 }

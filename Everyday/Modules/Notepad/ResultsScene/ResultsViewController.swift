@@ -62,9 +62,9 @@ private extension ResultsViewController {
         
         closeButton.pin
             .top(Constants.CloseButton.padding)
-            .right(Constants.CloseButton.padding)
+            .left(Constants.CloseButton.padding)
             .width(Constants.CloseButton.width)
-            .height(Constants.contentHeight)
+            .height(Constants.CloseButton.height)
         
         titleLabel.pin
             .top()
@@ -249,6 +249,7 @@ private extension ResultsViewController {
         struct CloseButton {
             static let padding: CGFloat = 8
             static let width: CGFloat = 40
+            static let height: CGFloat = 40
         }
         
         struct TitleLabel {
