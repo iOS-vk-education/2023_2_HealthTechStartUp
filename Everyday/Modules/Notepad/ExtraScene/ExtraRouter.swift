@@ -12,57 +12,38 @@ final class ExtraRouter {
     weak var viewController: ExtraViewController?
 }
 
-private extension ExtraRouter {
-    func photoViewController() -> UIViewController {
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .systemMint
-        return viewController
-    }
-    
-    func stateViewController() -> UIViewController {
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .systemMint
-        return viewController
-    }
-    
-    func heartViewController() -> UIViewController {
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .systemMint
-        return viewController
-    }
-    
-    func weightViewController() -> UIViewController {
-        let viewController = UIViewController()
-        viewController.view.backgroundColor = .systemMint
-        return viewController
-    }
-}
-
 extension ExtraRouter: ExtraRouterInput {
     func showView(with type: ExtraViewType) {
         guard let viewController = viewController else {
             return
         }
         
-        let presentedViewController: UIViewController?
+        let moduleType: SheetType?
+        var sheetSize: CGFloat?
         switch type {
         case .photo:
-            presentedViewController = photoViewController()
+            moduleType = SheetType.camera(viewModel: .init())
         case .state:
-            presentedViewController = stateViewController()
+            moduleType = SheetType.conditionChoice(viewModel: .init())
+            sheetSize = Constants.smallSheetHeight
         case .heart:
-            presentedViewController = heartViewController()
+            moduleType = SheetType.heartRateVariability(viewModel: .init())
         case .weight:
-            presentedViewController = weightViewController()
+            moduleType = SheetType.weightMeasurement(viewModel: .init())
+            sheetSize = Constants.smallSheetHeight
         }
-        guard let presentedViewController else {
+        guard let moduleType else {
             return
         }
         
-        if let sheet = presentedViewController.sheetPresentationController {
+        let context = SheetContext(type: moduleType)
+        let container = SheetContainer.assemble(with: context)
+        let presentedViewController = container.viewController
+        
+        if let sheet = presentedViewController.sheetPresentationController, sheetSize != nil {
             sheet.detents = [
                 .custom(resolver: { _ in
-                    return Constants.sheetHeight
+                    return sheetSize
                 })
             ]
         }
@@ -84,6 +65,6 @@ extension ExtraRouter: ExtraRouterInput {
 
 private extension ExtraRouter {
     struct Constants {
-        static let sheetHeight: CGFloat = 250
+        static let smallSheetHeight: CGFloat = 250
     }
 }

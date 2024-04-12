@@ -15,6 +15,8 @@
 		9D15BE302BC4945F004FC560 /* NotepadEmptyStateViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE2F2BC4945F004FC560 /* NotepadEmptyStateViewViewModel.swift */; };
 		9D15BE322BC4A1C7004FC560 /* ExtraTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE312BC4A1C7004FC560 /* ExtraTableViewCellViewModel.swift */; };
 		9D15BE352BC4A518004FC560 /* Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE342BC4A518004FC560 /* Extra.swift */; };
+		9D1C38972BC9BEE400A806A5 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C38962BC9BEE400A806A5 /* CameraView.swift */; };
+		9D1C389A2BC9C73200A806A5 /* SheetBaseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C38992BC9C73200A806A5 /* SheetBaseViewModel.swift */; };
 		9D32E9172BBF0AB3008A2BA4 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */; };
 		9D4E4BCD2BB070D200617E5D /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9E5B74CB2B7F963100E2BDE6 /* PinLayout */; };
 		9D4E4BCE2BB070D200617E5D /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9D11F0FF2BA7D53F003CF1F5 /* PinLayout */; };
@@ -22,11 +24,20 @@
 		9D4E4BD12BB070D200617E5D /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9D11F1072BA7D854003CF1F5 /* GoogleSignInSwift */; };
 		9D4E4BD22BB070D200617E5D /* VKID in Frameworks */ = {isa = PBXBuildFile; productRef = 9D11F10A2BA7D8CF003CF1F5 /* VKID */; };
 		9D4E4BD32BB070D200617E5D /* VKIDCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9D11F10C2BA7D8CF003CF1F5 /* VKIDCore */; };
-		9D4E4BD42BB070D200617E5D /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61AFE2BA8AEFE006AC078 /* FirebaseAppCheck */; };
 		9D4E4BD52BB070D200617E5D /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B002BA8AEFE006AC078 /* FirebaseAuth */; };
 		9D4E4BD62BB070D200617E5D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B022BA8AEFE006AC078 /* FirebaseFirestore */; };
 		9D4E4BD72BB070D200617E5D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B042BA8AEFE006AC078 /* FirebaseFirestoreSwift */; };
 		9D4E4BD82BB070D200617E5D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B062BA8AEFE006AC078 /* FirebaseStorage */; };
+		9D71328D2BC923DE00B5ACF8 /* SheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132872BC923DE00B5ACF8 /* SheetPresenter.swift */; };
+		9D71328E2BC923DE00B5ACF8 /* SheetRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132882BC923DE00B5ACF8 /* SheetRouter.swift */; };
+		9D71328F2BC923DE00B5ACF8 /* SheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132892BC923DE00B5ACF8 /* SheetViewController.swift */; };
+		9D7132902BC923DE00B5ACF8 /* SheetProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D71328A2BC923DE00B5ACF8 /* SheetProtocols.swift */; };
+		9D7132912BC923DE00B5ACF8 /* SheetInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D71328B2BC923DE00B5ACF8 /* SheetInteractor.swift */; };
+		9D7132922BC923DE00B5ACF8 /* SheetContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D71328C2BC923DE00B5ACF8 /* SheetContainer.swift */; };
+		9D7132DD2BC93CF300B5ACF8 /* SheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132DC2BC93CF300B5ACF8 /* SheetType.swift */; };
+		9D7132E02BC93E5500B5ACF8 /* SheetBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132DF2BC93E5500B5ACF8 /* SheetBaseView.swift */; };
+		9D7132E42BC944C300B5ACF8 /* WeigthMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132E32BC944C300B5ACF8 /* WeigthMeasureView.swift */; };
+		9D7132E62BC9453200B5ACF8 /* StateChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132E52BC9453200B5ACF8 /* StateChoiceView.swift */; };
 		9D9517132BC57566004EB96A /* ExtraTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9517122BC57566004EB96A /* ExtraTableViewCell.swift */; };
 		9D9517152BC5786B004EB96A /* ExtraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9517142BC5786B004EB96A /* ExtraViewModel.swift */; };
 		9DDEBFCF2BC42C8100E9347D /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDEBFCE2BC42C8100E9347D /* CalendarService.swift */; };
@@ -191,7 +202,19 @@
 		9D15BE2F2BC4945F004FC560 /* NotepadEmptyStateViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadEmptyStateViewViewModel.swift; sourceTree = "<group>"; };
 		9D15BE312BC4A1C7004FC560 /* ExtraTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		9D15BE342BC4A518004FC560 /* Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extra.swift; sourceTree = "<group>"; };
+		9D1C38962BC9BEE400A806A5 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
+		9D1C38992BC9C73200A806A5 /* SheetBaseViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetBaseViewModel.swift; sourceTree = "<group>"; };
 		9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		9D7132872BC923DE00B5ACF8 /* SheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPresenter.swift; sourceTree = "<group>"; };
+		9D7132882BC923DE00B5ACF8 /* SheetRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetRouter.swift; sourceTree = "<group>"; };
+		9D7132892BC923DE00B5ACF8 /* SheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewController.swift; sourceTree = "<group>"; };
+		9D71328A2BC923DE00B5ACF8 /* SheetProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetProtocols.swift; sourceTree = "<group>"; };
+		9D71328B2BC923DE00B5ACF8 /* SheetInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetInteractor.swift; sourceTree = "<group>"; };
+		9D71328C2BC923DE00B5ACF8 /* SheetContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetContainer.swift; sourceTree = "<group>"; };
+		9D7132DC2BC93CF300B5ACF8 /* SheetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetType.swift; sourceTree = "<group>"; };
+		9D7132DF2BC93E5500B5ACF8 /* SheetBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetBaseView.swift; sourceTree = "<group>"; };
+		9D7132E32BC944C300B5ACF8 /* WeigthMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeigthMeasureView.swift; sourceTree = "<group>"; };
+		9D7132E52BC9453200B5ACF8 /* StateChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateChoiceView.swift; sourceTree = "<group>"; };
 		9D9517122BC57566004EB96A /* ExtraTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraTableViewCell.swift; sourceTree = "<group>"; };
 		9D9517142BC5786B004EB96A /* ExtraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViewModel.swift; sourceTree = "<group>"; };
 		9DDEBFCE2BC42C8100E9347D /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
@@ -363,7 +386,6 @@
 				9D4E4BD72BB070D200617E5D /* FirebaseFirestoreSwift in Frameworks */,
 				9D4E4BD62BB070D200617E5D /* FirebaseFirestore in Frameworks */,
 				9D4E4BD52BB070D200617E5D /* FirebaseAuth in Frameworks */,
-				9D4E4BD42BB070D200617E5D /* FirebaseAppCheck in Frameworks */,
 				9D4E4BD32BB070D200617E5D /* VKIDCore in Frameworks */,
 				9D4E4BD22BB070D200617E5D /* VKID in Frameworks */,
 				9D4E4BD12BB070D200617E5D /* GoogleSignInSwift in Frameworks */,
@@ -376,20 +398,63 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		9D9517162BC58A46004EB96A /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		9D15BE332BC4A507004FC560 /* Entities */ = {
 			isa = PBXGroup;
 			children = (
 				9D15BE342BC4A518004FC560 /* Extra.swift */,
 			);
 			path = Entities;
+			sourceTree = "<group>";
+		};
+		9D1C38982BC9C72000A806A5 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9D1C38992BC9C73200A806A5 /* SheetBaseViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9D7132862BC923C400B5ACF8 /* SheetScene */ = {
+			isa = PBXGroup;
+			children = (
+				9D1C38982BC9C72000A806A5 /* Models */,
+				9D7132DE2BC93E2300B5ACF8 /* Views */,
+				9D7132DB2BC93CD800B5ACF8 /* Entities */,
+				9D7132872BC923DE00B5ACF8 /* SheetPresenter.swift */,
+				9D7132882BC923DE00B5ACF8 /* SheetRouter.swift */,
+				9D7132892BC923DE00B5ACF8 /* SheetViewController.swift */,
+				9D71328A2BC923DE00B5ACF8 /* SheetProtocols.swift */,
+				9D71328B2BC923DE00B5ACF8 /* SheetInteractor.swift */,
+				9D71328C2BC923DE00B5ACF8 /* SheetContainer.swift */,
+			);
+			path = SheetScene;
+			sourceTree = "<group>";
+		};
+		9D7132DB2BC93CD800B5ACF8 /* Entities */ = {
+			isa = PBXGroup;
+			children = (
+				9D7132DC2BC93CF300B5ACF8 /* SheetType.swift */,
+			);
+			path = Entities;
+			sourceTree = "<group>";
+		};
+		9D7132DE2BC93E2300B5ACF8 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9D7132DF2BC93E5500B5ACF8 /* SheetBaseView.swift */,
+				9D7132E32BC944C300B5ACF8 /* WeigthMeasureView.swift */,
+				9D7132E52BC9453200B5ACF8 /* StateChoiceView.swift */,
+				9D1C38962BC9BEE400A806A5 /* CameraView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9D9517162BC58A46004EB96A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 		9DDEBFCD2BC42C6A00E9347D /* Calendar */ = {
@@ -1017,6 +1082,7 @@
 				9E4F22912B9F3BCE003E749E /* ExerciseScene */,
 				9E4F22B52B9F3C20003E749E /* TimerScene */,
 				9E4F22A12B9F3BF8003E749E /* ResultsScene */,
+				9D7132862BC923C400B5ACF8 /* SheetScene */,
 				9E4F22C52B9F3C44003E749E /* ExtraScene */,
 			);
 			path = Notepad;
@@ -1059,7 +1125,6 @@
 				9D11F1072BA7D854003CF1F5 /* GoogleSignInSwift */,
 				9D11F10A2BA7D8CF003CF1F5 /* VKID */,
 				9D11F10C2BA7D8CF003CF1F5 /* VKIDCore */,
-				9DE61AFE2BA8AEFE006AC078 /* FirebaseAppCheck */,
 				9DE61B002BA8AEFE006AC078 /* FirebaseAuth */,
 				9DE61B022BA8AEFE006AC078 /* FirebaseFirestore */,
 				9DE61B042BA8AEFE006AC078 /* FirebaseFirestoreSwift */,
@@ -1166,10 +1231,13 @@
 				9EBFD9642BAB077500A1891D /* UserAuthentication+CoreDataClass.swift in Sources */,
 				9E4F22AC2B9F3C05003E749E /* ResultsViewController.swift in Sources */,
 				9E5B753E2B7F9D7600E2BDE6 /* WeightViewModel.swift in Sources */,
+				9D1C38972BC9BEE400A806A5 /* CameraView.swift in Sources */,
 				9EE8AE212B7FB905001D126F /* ProgressContainer.swift in Sources */,
 				9E4F22A92B9F3C05003E749E /* ResultsInteractor.swift in Sources */,
+				9D7132E62BC9453200B5ACF8 /* StateChoiceView.swift in Sources */,
 				9E4F22892B9F3BB4003E749E /* TrainingInteractor.swift in Sources */,
 				9D15BE2E2BC48D3F004FC560 /* NotepadEmptyStateView.swift in Sources */,
+				9D7132DD2BC93CF300B5ACF8 /* SheetType.swift in Sources */,
 				9E4F22852B9F3BB4003E749E /* TrainingViewController.swift in Sources */,
 				9E4F227C2B9F3B9B003E749E /* NotepadViewModel.swift in Sources */,
 				9E4F22BE2B9F3C2E003E749E /* TimerProtocols.swift in Sources */,
@@ -1188,11 +1256,13 @@
 				9E4F22CE2B9F3C51003E749E /* ExtraContainer.swift in Sources */,
 				9EE8AE392B7FB96E001D126F /* WorkoutProtocols.swift in Sources */,
 				9E4F226E2B9F3B8F003E749E /* NotepadPresenter.swift in Sources */,
+				9D7132E02BC93E5500B5ACF8 /* SheetBaseView.swift in Sources */,
 				9EE3359B2B8F9CDC00F532B3 /* SplashViewController.swift in Sources */,
 				9EE8AE132B7FB8CF001D126F /* SettingsInteractor.swift in Sources */,
 				9E5B74F92B7F9A7000E2BDE6 /* SignUpRouter.swift in Sources */,
 				9E4F225F2B9F3B46003E749E /* DayService.swift in Sources */,
 				9E5B75112B7F9CE300E2BDE6 /* ImagePickerView.swift in Sources */,
+				9D1C389A2BC9C73200A806A5 /* SheetBaseViewModel.swift in Sources */,
 				9E53FB522B7F951400C55A45 /* String+Extension.swift in Sources */,
 				9E4F22BC2B9F3C2E003E749E /* TimerInteractor.swift in Sources */,
 				9E5B74EA2B7F99FB00E2BDE6 /* WelcomeScreenRouter.swift in Sources */,
@@ -1250,6 +1320,7 @@
 				9E4382D52B83738800C69708 /* AuthService.swift in Sources */,
 				9EE3359D2B8F9CEA00F532B3 /* SplashPresenter.swift in Sources */,
 				9E4766D82B9F516F00DD31B9 /* StorageService.swift in Sources */,
+				9D7132E42BC944C300B5ACF8 /* WeigthMeasureView.swift in Sources */,
 				9E53FB342B7F87BA00C55A45 /* AppDelegate.swift in Sources */,
 				9E4F22CF2B9F3C51003E749E /* ExtraPresenter.swift in Sources */,
 				9E5B75162B7F9D3500E2BDE6 /* GenderButtonView.swift in Sources */,
@@ -1297,6 +1368,12 @@
 				9E4F22702B9F3B8F003E749E /* NotepadRouter.swift in Sources */,
 				9E5B75392B7F9D7600E2BDE6 /* GenderView.swift in Sources */,
 				9E5B74FB2B7F9A7000E2BDE6 /* SignUpPresenter.swift in Sources */,
+				9D71328D2BC923DE00B5ACF8 /* SheetPresenter.swift in Sources */,
+				9D71328E2BC923DE00B5ACF8 /* SheetRouter.swift in Sources */,
+				9D71328F2BC923DE00B5ACF8 /* SheetViewController.swift in Sources */,
+				9D7132902BC923DE00B5ACF8 /* SheetProtocols.swift in Sources */,
+				9D7132912BC923DE00B5ACF8 /* SheetInteractor.swift in Sources */,
+				9D7132922BC923DE00B5ACF8 /* SheetContainer.swift in Sources */,
 				9D15BE242BC456CC004FC560 /* NotepadOuterCollectionViewCell.swift in Sources */,
 				9E5B750A2B7F9A8300E2BDE6 /* SignInViewController.swift in Sources */,
 				9E4F22AD2B9F3C05003E749E /* ResultsPresenter.swift in Sources */,
@@ -1615,11 +1692,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 9D11F1092BA7D8CF003CF1F5 /* XCRemoteSwiftPackageReference "vkid-ios-sdk" */;
 			productName = VKIDCore;
-		};
-		9DE61AFE2BA8AEFE006AC078 /* FirebaseAppCheck */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9DE61AFD2BA8AEFE006AC078 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAppCheck;
 		};
 		9DE61B002BA8AEFE006AC078 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;

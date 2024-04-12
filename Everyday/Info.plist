@@ -38,5 +38,7 @@
 			</array>
 		</dict>
 	</dict>
+	<key>NSCameraUsageDescription</key>
+	<string>Please! I need camera!</string>
 </dict>
 </plist>
