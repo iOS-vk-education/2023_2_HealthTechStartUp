@@ -39,7 +39,6 @@ final class ExerciseViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         output.didLoadView()
         setup()
     }
@@ -104,18 +103,17 @@ private extension ExerciseViewController {
         setupMinusButton()
         setupCloseButton()
         setupSaveButton()
-        
-        resultView.addSubview(resultLabel)
-        view.addSubviews(plusButton, minusButton, closeButton, resultView, saveButton)
     }
     
     func setupView() {
         view.backgroundColor = Constants.backgroundColor
+        view.addSubviews(plusButton, minusButton, closeButton, resultView, saveButton)
     }
     
     func setupResultView() {
         resultView.backgroundColor = Constants.ResultView.backgroundColor
         resultView.layer.cornerRadius = Constants.ResultView.cornerRadius
+        resultView.addSubview(resultLabel)
     }
     
     func setupResultLabel() {

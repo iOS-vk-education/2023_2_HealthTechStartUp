@@ -12,6 +12,8 @@ class WeightMeasurementView: UIView {
     
     // MARK: - Private Properties
     
+    weak var output: WeightMeasurementViewOutput?
+    
     private let textField = UITextField()
     private let minusButton = UIButton()
     private let plusButton = UIButton()
@@ -28,12 +30,9 @@ class WeightMeasurementView: UIView {
         setup()
     }
     
-    convenience init(weight: Double?) {
+    convenience init(weight: Double? = nil) {
         self.init(frame: .zero)
-        let viewModel = WeightMeasurementViewModel(value: weight)
-        minusButton.isHidden = true
-        plusButton.isHidden = true
-        configure(with: viewModel)
+        setupWeightView()
     }
     
     // MARK: - Lifecycle
@@ -103,14 +102,6 @@ private extension WeightMeasurementView {
         plusButton.tintColor = Constants.Button.backgroundColor
         plusButton.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
     }
-    
-    // MARK: - Configure
-    
-    func configure(with viewModel: WeightMeasurementViewModel) {
-        textField.attributedText = viewModel.value
-        minusButton.setImage(viewModel.minusImage, for: .normal)
-        plusButton.setImage(viewModel.plusImage, for: .normal)
-    }
 
     // MARK: - Actions
     
@@ -162,6 +153,27 @@ private extension WeightMeasurementView {
     @objc
     func dismissKeyboard() {
         endEditing(true)
+    }
+    
+    // MARK: - Helpers
+    
+    func setupWeightView() {
+        minusButton.isHidden = true
+        plusButton.isHidden = true
+    }
+}
+
+// MARK: - ViewInput
+
+protocol WeightMeasurementViewInput: AnyObject {
+    func configure(with viewModel: WeightMeasurementViewModel)
+}
+
+extension WeightMeasurementView: WeightMeasurementViewInput {
+    func configure(with viewModel: WeightMeasurementViewModel) {
+        textField.attributedText = viewModel.value
+        minusButton.setImage(viewModel.minusImage, for: .normal)
+        plusButton.setImage(viewModel.plusImage, for: .normal)
     }
 }
 

@@ -38,6 +38,10 @@
 		9D7D9A792BCC0D3E00089A14 /* WeightMeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A782BCC0D3E00089A14 /* WeightMeasurementView.swift */; };
 		9D7D9A7B2BCC0E1300089A14 /* WeightMeasurementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A7A2BCC0E1300089A14 /* WeightMeasurementViewModel.swift */; };
 		9D7D9A7E2BCC4AB200089A14 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A7D2BCC4AB200089A14 /* EmptyStateView.swift */; };
+		9D7D9A852BCC52DB00089A14 /* SheetPresenter+CameraViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A842BCC52DB00089A14 /* SheetPresenter+CameraViewOutput.swift */; };
+		9D7D9A872BCC52ED00089A14 /* SheetPresenter+ConditionChoiceViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A862BCC52ED00089A14 /* SheetPresenter+ConditionChoiceViewOutput.swift */; };
+		9D7D9A892BCC532100089A14 /* SheetPresenter+WeightMeasurementViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A882BCC532100089A14 /* SheetPresenter+WeightMeasurementViewOutput.swift */; };
+		9D7D9A8B2BCC54D200089A14 /* SheetPresenter+HeartRateVariabilityViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A8A2BCC54D200089A14 /* SheetPresenter+HeartRateVariabilityViewOutput.swift */; };
 		9D9517132BC57566004EB96A /* ExtraTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9517122BC57566004EB96A /* ExtraTableViewCell.swift */; };
 		9D9517152BC5786B004EB96A /* ExtraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9517142BC5786B004EB96A /* ExtraViewModel.swift */; };
 		9DA0936D2BCB11AA009825F9 /* ConditionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0936C2BCB11AA009825F9 /* ConditionViewCell.swift */; };
@@ -217,6 +221,10 @@
 		9D7D9A782BCC0D3E00089A14 /* WeightMeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightMeasurementView.swift; sourceTree = "<group>"; };
 		9D7D9A7A2BCC0E1300089A14 /* WeightMeasurementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightMeasurementViewModel.swift; sourceTree = "<group>"; };
 		9D7D9A7D2BCC4AB200089A14 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		9D7D9A842BCC52DB00089A14 /* SheetPresenter+CameraViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetPresenter+CameraViewOutput.swift"; sourceTree = "<group>"; };
+		9D7D9A862BCC52ED00089A14 /* SheetPresenter+ConditionChoiceViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetPresenter+ConditionChoiceViewOutput.swift"; sourceTree = "<group>"; };
+		9D7D9A882BCC532100089A14 /* SheetPresenter+WeightMeasurementViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetPresenter+WeightMeasurementViewOutput.swift"; sourceTree = "<group>"; };
+		9D7D9A8A2BCC54D200089A14 /* SheetPresenter+HeartRateVariabilityViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetPresenter+HeartRateVariabilityViewOutput.swift"; sourceTree = "<group>"; };
 		9D9517122BC57566004EB96A /* ExtraTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraTableViewCell.swift; sourceTree = "<group>"; };
 		9D9517142BC5786B004EB96A /* ExtraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViewModel.swift; sourceTree = "<group>"; };
 		9DA0936C2BCB11AA009825F9 /* ConditionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionViewCell.swift; sourceTree = "<group>"; };
@@ -423,6 +431,7 @@
 		9D7132862BC923C400B5ACF8 /* SheetScene */ = {
 			isa = PBXGroup;
 			children = (
+				9D7D9A822BCC527900089A14 /* Extensions */,
 				9DA0936B2BCB118E009825F9 /* Views */,
 				9D1C38982BC9C72000A806A5 /* Models */,
 				9D7132DE2BC93E2300B5ACF8 /* SheetViews */,
@@ -483,6 +492,17 @@
 				9E4F22C52B9F3C44003E749E /* ExtraScene */,
 			);
 			path = Scenes;
+			sourceTree = "<group>";
+		};
+		9D7D9A822BCC527900089A14 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				9D7D9A842BCC52DB00089A14 /* SheetPresenter+CameraViewOutput.swift */,
+				9D7D9A862BCC52ED00089A14 /* SheetPresenter+ConditionChoiceViewOutput.swift */,
+				9D7D9A8A2BCC54D200089A14 /* SheetPresenter+HeartRateVariabilityViewOutput.swift */,
+				9D7D9A882BCC532100089A14 /* SheetPresenter+WeightMeasurementViewOutput.swift */,
+			);
+			path = Extensions;
 			sourceTree = "<group>";
 		};
 		9D9517162BC58A46004EB96A /* Helpers */ = {
@@ -1281,6 +1301,7 @@
 				9E5B74FC2B7F9A7000E2BDE6 /* SignUpViewModel.swift in Sources */,
 				9D32E9172BBF0AB3008A2BA4 /* UIHelper.swift in Sources */,
 				9EE335992B8F9CCD00F532B3 /* SplashAnimator.swift in Sources */,
+				9D7D9A872BCC52ED00089A14 /* SheetPresenter+ConditionChoiceViewOutput.swift in Sources */,
 				9E4F22982B9F3BDD003E749E /* ExerciseProtocols.swift in Sources */,
 				9E5B74ED2B7F99FB00E2BDE6 /* WelcomeScreenViewModel.swift in Sources */,
 				9E5B75382B7F9D7600E2BDE6 /* GenderModel.swift in Sources */,
@@ -1311,8 +1332,10 @@
 				9E4382D32B83738800C69708 /* InfoPlist.swift in Sources */,
 				9E5B74E92B7F99FB00E2BDE6 /* WelcomeScreenContainer.swift in Sources */,
 				9EE8AE142B7FB8CF001D126F /* SettingsContainer.swift in Sources */,
+				9D7D9A852BCC52DB00089A14 /* SheetPresenter+CameraViewOutput.swift in Sources */,
 				9E5B75402B7F9D7600E2BDE6 /* PageViewModel.swift in Sources */,
 				9E4F22AF2B9F3C05003E749E /* ResultsProtocols.swift in Sources */,
+				9D7D9A892BCC532100089A14 /* SheetPresenter+WeightMeasurementViewOutput.swift in Sources */,
 				9E2A8BC92B850461004A81CF /* FIrebaseAuthService.swift in Sources */,
 				9E5B74FE2B7F9A7000E2BDE6 /* SignUpViewController.swift in Sources */,
 				9E5B74EC2B7F99FB00E2BDE6 /* WelcomeScreenViewController.swift in Sources */,
@@ -1385,6 +1408,7 @@
 				9E5B75412B7F9D7600E2BDE6 /* PageView.swift in Sources */,
 				9E53FB502B7F951000C55A45 /* UIColor+Extension.swift in Sources */,
 				9E53FB4C2B7F950400C55A45 /* UIView+Extension.swift in Sources */,
+				9D7D9A8B2BCC54D200089A14 /* SheetPresenter+HeartRateVariabilityViewOutput.swift in Sources */,
 				9D9517152BC5786B004EB96A /* ExtraViewModel.swift in Sources */,
 				9EBFD9672BAB273400A1891D /* CoreDataService.swift in Sources */,
 				9E5B750D2B7F9A8300E2BDE6 /* SignInPresenter.swift in Sources */,

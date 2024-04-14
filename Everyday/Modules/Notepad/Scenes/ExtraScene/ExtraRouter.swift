@@ -64,11 +64,6 @@ private extension ExtraRouter {
         }
         return presentedViewController
     }
-    
-    @objc 
-    func handleSwipeGesture(for viewController: UIViewController) {
-        viewController.dismiss(animated: true, completion: nil)
-    }
 }
 
 extension ExtraRouter: ExtraRouterInput {

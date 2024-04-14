@@ -12,6 +12,8 @@ class ConditionChoiceView: UIView {
     
     // MARK: - Private Properties
     
+    weak var output: ConditionChoiceViewOutput?
+    
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     private let selectedConditionIndex: Int? = nil
     
@@ -29,8 +31,7 @@ class ConditionChoiceView: UIView {
     
     convenience init(condition: Condition? = nil) {
         self.init(frame: .zero)
-        
-        // do smth
+        // do smth with condition
     }
     
     // MARK: - Lifecycle
@@ -61,6 +62,7 @@ private extension ConditionChoiceView {
     
     func setupView() {
         backgroundColor = Constants.backgroundColor
+        addSubview(collectionView)
     }
     
     func setupCollectionView() {
@@ -73,8 +75,6 @@ private extension ConditionChoiceView {
         collectionView.backgroundColor = Constants.CollectionView.backgroundColor
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
-        
-        addSubview(collectionView)
     }
 }
 
@@ -119,6 +119,14 @@ extension ConditionChoiceView: UICollectionViewDataSource {
         
         return cell
     }
+}
+
+// MARK: - ViewInput
+
+protocol ConditionChoiceViewInput: AnyObject {
+}
+
+extension CameraView: ConditionChoiceViewInput {
 }
 
 // MARK: - Constants

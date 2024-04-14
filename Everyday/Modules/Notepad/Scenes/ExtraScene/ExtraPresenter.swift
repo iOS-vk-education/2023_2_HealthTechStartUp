@@ -18,6 +18,8 @@ final class ExtraPresenter {
     private var viewTypes: [ExtraViewType] = []
     private var switchStates: [Bool] = []
     
+    private var data: [SheetType] = []
+    
     init(router: ExtraRouterInput, interactor: ExtraInteractorInput) {
         self.router = router
         self.interactor = interactor

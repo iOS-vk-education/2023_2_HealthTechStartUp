@@ -36,12 +36,12 @@ extension ExercisePresenter: ExerciseViewOutput {
         view?.configure(with: viewModel)
     }
     
-    func didTapSaveButton() {
-        moduleOutput?.setResult(of: exercise.name, with: String(result), at: indexOfSet)
+    func didTapCloseButton() {
         router.closeExercise()
     }
     
-    func didTapCloseButton() {
+    func didTapSaveButton() {
+        moduleOutput?.setResult(of: exercise.name, with: String(result), at: indexOfSet)
         router.closeExercise()
     }
     

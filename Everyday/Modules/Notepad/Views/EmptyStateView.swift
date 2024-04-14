@@ -20,11 +20,13 @@ final class EmptyStateView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         setup()
+        configure()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
         setup()
+        configure()
     }
     
     // MARK: - Lifecycle
@@ -32,13 +34,6 @@ final class EmptyStateView: UIView {
     override func layoutSubviews() {
         super.layoutSubviews()
         layout()
-    }
-    
-    // MARK: - Interface
-    
-    func configure(with viewModel: EmptyStateViewViewModel) {
-        imageView.image = viewModel.logoImage
-        titleLabel.attributedText = viewModel.title
     }
 }
 
@@ -73,6 +68,14 @@ private extension EmptyStateView {
     
     func setupLabel() {
         titleLabel.textAlignment = .center
+    }
+    
+    // MARK: - Configure
+    
+    func configure() {
+        let viewModel = EmptyStateViewViewModel()
+        imageView.image = viewModel.logoImage
+        titleLabel.attributedText = viewModel.title
     }
 }
 

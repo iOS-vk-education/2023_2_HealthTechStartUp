@@ -13,8 +13,10 @@ class CameraView: UIView {
     
     // MARK: - Private Properties
     
+    weak var output: CameraViewOutput?
+    
     private var session: AVCaptureSession?
-    private let output = AVCapturePhotoOutput()
+    private let photoOutput = AVCapturePhotoOutput()
     private let previewLayer = AVCaptureVideoPreviewLayer()
     private let shutterButton = UIButton()
     
@@ -30,11 +32,15 @@ class CameraView: UIView {
         setup()
     }
     
+    convenience init(image: UIImage? = nil) {
+        self.init(frame: .zero)
+        // do smth with image
+    }
+    
     // MARK: - Lifecycle
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         layout()
     }
 }
@@ -90,8 +96,8 @@ private extension CameraView {
                     session.addInput(input)
                 }
                 
-                if session.canAddOutput(output) {
-                    session.addOutput(output)
+                if session.canAddOutput(photoOutput) {
+                    session.addOutput(photoOutput)
                 }
                 
                 previewLayer.videoGravity = .resizeAspectFill
@@ -153,7 +159,7 @@ private extension CameraView {
             return
         }
         
-        output.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
+        photoOutput.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
     }
 }
 
@@ -174,6 +180,14 @@ extension CameraView: AVCapturePhotoCaptureDelegate {
         
         self.addSubview(imageView)
     }
+}
+
+// MARK: - ViewInput
+
+protocol CameraViewInput: AnyObject {
+}
+
+extension CameraView: CameraViewInput {
 }
 
 // MARK: - Constants

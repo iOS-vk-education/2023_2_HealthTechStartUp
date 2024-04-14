@@ -8,18 +8,20 @@
 
 import Foundation
 
-final class SheetPresenter {
+final class SheetPresenter<ContentViewInput: AnyObject> {
     weak var view: SheetViewInput?
     weak var moduleOutput: SheetModuleOutput?
     
     private let router: SheetRouterInput
     private let interactor: SheetInteractorInput
     private let moduleType: SheetType
+    private let contentView: ContentViewInput
     
-    init(router: SheetRouterInput, interactor: SheetInteractorInput, moduleType: SheetType) {
+    init(router: SheetRouterInput, interactor: SheetInteractorInput, moduleType: SheetType, contentView: ContentViewInput) {
         self.router = router
         self.interactor = interactor
         self.moduleType = moduleType
+        self.contentView = contentView
     }
 }
 

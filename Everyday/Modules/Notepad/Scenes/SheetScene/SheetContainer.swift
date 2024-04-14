@@ -16,8 +16,21 @@ final class SheetContainer {
     class func assemble(with context: SheetContext) -> SheetContainer {
         let router = SheetRouter()
         let interactor = SheetInteractor()
-        let presenter = SheetPresenter(router: router, interactor: interactor, moduleType: context.type)
-        let viewController = SheetViewController(output: presenter, type: context.type)
+        
+        var contentView = UIView()
+        switch context.type {
+        case .camera(let cameraModel):
+            contentView = CameraView(image: cameraModel.image)
+        case .conditionChoice(let conditionChoiceViewModel):
+            contentView = ConditionChoiceView(condition: conditionChoiceViewModel.condition)
+        case .heartRateVariability:
+            contentView = EmptyStateView()
+        case .weightMeasurement(let weightMeasurementViewModel):
+            contentView = WeightMeasurementView(weight: weightMeasurementViewModel.weight)
+        }
+        
+        let presenter = SheetPresenter(router: router, interactor: interactor, moduleType: context.type, contentView: contentView)
+        let viewController = SheetViewController(output: presenter, contentView: contentView)
         
         presenter.view = viewController
         presenter.moduleOutput = context.moduleOutput

@@ -31,29 +31,8 @@ final class SheetViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    convenience init(output: SheetViewOutput, type: SheetType) {
+    convenience init(output: SheetViewOutput, contentView: UIView) {
         self.init(output: output)
-        
-        let contentView: UIView?
-        switch type {
-        case .camera:
-            contentView = CameraView()
-        case .conditionChoice(let conditionChoiceViewModel):
-            contentView = ConditionChoiceView(condition: conditionChoiceViewModel.condition)
-        case .heartRateVariability:
-            contentView = EmptyStateView()
-            if let contentView = contentView as? EmptyStateView {
-                let viewModel = EmptyStateViewViewModel()
-                contentView.configure(with: viewModel)
-            }
-        case .weightMeasurement(let weightMeasurementViewModel):
-            contentView = WeightMeasurementView(weight: weightMeasurementViewModel.weight)
-        }
-        guard let contentView else {
-            // handle this case
-            return
-        }
-        
         self.contentView = contentView
     }
     
