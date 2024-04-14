@@ -27,7 +27,6 @@ final class ResultsViewController: UIViewController {
 
     init(output: ResultsViewOutput) {
         self.output = output
-
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -45,9 +44,8 @@ final class ResultsViewController: UIViewController {
         setup()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
-        
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         layout()
     }
 }

@@ -44,7 +44,8 @@ final class ExerciseViewController: UIViewController {
         setup()
     }
     
-    override func viewDidLayoutSubviews() {
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
         layout()
     }
 }

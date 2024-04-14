@@ -8,28 +8,28 @@
 import UIKit
 
 enum SheetType {
-    case camera(viewModel: CameraViewModel)
-    case weightMeasurement(viewModel: WeightMeasurementViewModel)
-    case conditionChoice(viewModel: ConditionChoiceViewModel)
-    case heartRateVariability(viewModel: HeartRateVariabilityViewModel)
+    case camera(model: CameraModel)
+    case weightMeasurement(model: WeightMeasurementModel)
+    case conditionChoice(model: ConditionChoiceModel)
+    case heartRateVariability(model: HeartRateVariabilityModel)
 }
 
-struct CameraViewModel {
+struct CameraModel {
     var image: UIImage?
     var status: String = "Photo wasn't saved."
 }
 
-struct WeightMeasurementViewModel {
+struct WeightMeasurementModel {
     var weight: Double?
     var status: String = "Weight wasn't measured."
 }
 
-struct ConditionChoiceViewModel {
+struct ConditionChoiceModel {
     var condition: Condition?
     var status: String = "Condition wasn't chosen."
 }
 
-struct HeartRateVariabilityViewModel {
+struct HeartRateVariabilityModel {
     var heartRateVariability: HeartRateVariability?
     var status: String = "No data saved."
 }

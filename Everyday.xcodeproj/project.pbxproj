@@ -35,8 +35,9 @@
 		9D7132912BC923DE00B5ACF8 /* SheetInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D71328B2BC923DE00B5ACF8 /* SheetInteractor.swift */; };
 		9D7132922BC923DE00B5ACF8 /* SheetContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D71328C2BC923DE00B5ACF8 /* SheetContainer.swift */; };
 		9D7132DD2BC93CF300B5ACF8 /* SheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132DC2BC93CF300B5ACF8 /* SheetType.swift */; };
-		9D7132E42BC944C300B5ACF8 /* WeigthMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132E32BC944C300B5ACF8 /* WeigthMeasureView.swift */; };
 		9D7132E62BC9453200B5ACF8 /* ConditionChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132E52BC9453200B5ACF8 /* ConditionChoiceView.swift */; };
+		9D7D9A792BCC0D3E00089A14 /* WeightMeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A782BCC0D3E00089A14 /* WeightMeasurementView.swift */; };
+		9D7D9A7B2BCC0E1300089A14 /* WeightMeasurementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A7A2BCC0E1300089A14 /* WeightMeasurementViewModel.swift */; };
 		9D9517132BC57566004EB96A /* ExtraTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9517122BC57566004EB96A /* ExtraTableViewCell.swift */; };
 		9D9517152BC5786B004EB96A /* ExtraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9517142BC5786B004EB96A /* ExtraViewModel.swift */; };
 		9DA0936D2BCB11AA009825F9 /* ConditionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0936C2BCB11AA009825F9 /* ConditionViewCell.swift */; };
@@ -213,8 +214,9 @@
 		9D71328B2BC923DE00B5ACF8 /* SheetInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetInteractor.swift; sourceTree = "<group>"; };
 		9D71328C2BC923DE00B5ACF8 /* SheetContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetContainer.swift; sourceTree = "<group>"; };
 		9D7132DC2BC93CF300B5ACF8 /* SheetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetType.swift; sourceTree = "<group>"; };
-		9D7132E32BC944C300B5ACF8 /* WeigthMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeigthMeasureView.swift; sourceTree = "<group>"; };
 		9D7132E52BC9453200B5ACF8 /* ConditionChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionChoiceView.swift; sourceTree = "<group>"; };
+		9D7D9A782BCC0D3E00089A14 /* WeightMeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightMeasurementView.swift; sourceTree = "<group>"; };
+		9D7D9A7A2BCC0E1300089A14 /* WeightMeasurementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightMeasurementViewModel.swift; sourceTree = "<group>"; };
 		9D9517122BC57566004EB96A /* ExtraTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraTableViewCell.swift; sourceTree = "<group>"; };
 		9D9517142BC5786B004EB96A /* ExtraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViewModel.swift; sourceTree = "<group>"; };
 		9DA0936C2BCB11AA009825F9 /* ConditionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionViewCell.swift; sourceTree = "<group>"; };
@@ -413,6 +415,7 @@
 			children = (
 				9D1C38992BC9C73200A806A5 /* SheetViewModel.swift */,
 				9DA0936E2BCB134E009825F9 /* ConditionCellViewModel.swift */,
+				9D7D9A7A2BCC0E1300089A14 /* WeightMeasurementViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -445,9 +448,9 @@
 		9D7132DE2BC93E2300B5ACF8 /* SheetViews */ = {
 			isa = PBXGroup;
 			children = (
-				9D7132E32BC944C300B5ACF8 /* WeigthMeasureView.swift */,
-				9D7132E52BC9453200B5ACF8 /* ConditionChoiceView.swift */,
 				9D1C38962BC9BEE400A806A5 /* CameraView.swift */,
+				9D7132E52BC9453200B5ACF8 /* ConditionChoiceView.swift */,
+				9D7D9A782BCC0D3E00089A14 /* WeightMeasurementView.swift */,
 			);
 			path = SheetViews;
 			sourceTree = "<group>";
@@ -1259,6 +1262,7 @@
 				9E5B74ED2B7F99FB00E2BDE6 /* WelcomeScreenViewModel.swift in Sources */,
 				9E5B75382B7F9D7600E2BDE6 /* GenderModel.swift in Sources */,
 				9E5B754B2B7F9D7600E2BDE6 /* ProfileSetupViewModel.swift in Sources */,
+				9D7D9A792BCC0D3E00089A14 /* WeightMeasurementView.swift in Sources */,
 				9E5B75422B7F9D7600E2BDE6 /* AgeController.swift in Sources */,
 				9E4F22D12B9F3C51003E749E /* ExtraProtocols.swift in Sources */,
 				9EE8AE1E2B7FB905001D126F /* ProgressViewController.swift in Sources */,
@@ -1331,13 +1335,13 @@
 				9E4382D52B83738800C69708 /* AuthService.swift in Sources */,
 				9EE3359D2B8F9CEA00F532B3 /* SplashPresenter.swift in Sources */,
 				9E4766D82B9F516F00DD31B9 /* StorageService.swift in Sources */,
-				9D7132E42BC944C300B5ACF8 /* WeigthMeasureView.swift in Sources */,
 				9E53FB342B7F87BA00C55A45 /* AppDelegate.swift in Sources */,
 				9E4F22CF2B9F3C51003E749E /* ExtraPresenter.swift in Sources */,
 				9E5B75162B7F9D3500E2BDE6 /* GenderButtonView.swift in Sources */,
 				9E4F229C2B9F3BDD003E749E /* ExerciseInteractor.swift in Sources */,
 				9E7C199D2B8F482E0006D48C /* KeychainService.swift in Sources */,
 				9E4382D42B83738800C69708 /* VKIDAuthService.swift in Sources */,
+				9D7D9A7B2BCC0E1300089A14 /* WeightMeasurementViewModel.swift in Sources */,
 				9E5B75442B7F9D7600E2BDE6 /* AgeViewModel.swift in Sources */,
 				9DDEBFCF2BC42C8100E9347D /* CalendarService.swift in Sources */,
 				9E5B74EB2B7F99FB00E2BDE6 /* WelcomeScreenProtocols.swift in Sources */,

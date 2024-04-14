@@ -22,7 +22,6 @@ class ResultsTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setup()
     }
     
@@ -34,7 +33,6 @@ class ResultsTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         layout()
     }
     
@@ -85,12 +83,11 @@ private extension ResultsTableViewCell {
         setupMinusButton()
         setupPlusButton()
         setupResultTextField()
-        
-        contentView.addSubviews(exerciseNameLabel, plusButton, resultTextField, minusButton)
     }
     
     func setupView() {
         contentView.backgroundColor = Constants.backgroundColor
+        contentView.addSubviews(exerciseNameLabel, plusButton, resultTextField, minusButton)
     }
     
     func setupMinusButton() {
@@ -116,36 +113,45 @@ private extension ResultsTableViewCell {
     @objc
     func didTapMinusButton() {
         guard
-            let resultText = resultTextField.text,
-            let result = Int(resultText),
+            let attributedText = resultTextField.attributedText,
+            let result = Int(attributedText.string),
             result > 0
         else {
             return
         }
         
-        resultTextField.text = String(result - 1)
+        let newAttributedText = NSMutableAttributedString(attributedString: attributedText)
+        newAttributedText.mutableString.setString(String(result - 1))
+        resultTextField.attributedText = newAttributedText
     }
     
     @objc
     func didTapPlusButton() {
         guard
-            let resultText = resultTextField.text,
-            let result = Int(resultText)
+            let attributedText = resultTextField.attributedText,
+            let result = Int(attributedText.string)
         else {
             return
         }
         
-        resultTextField.text = String(result + 1)
+        let newAttributedText = NSMutableAttributedString(attributedString: attributedText)
+        newAttributedText.mutableString.setString(String(result + 1))
+        resultTextField.attributedText = newAttributedText
     }
     
     @objc
     func didEndEditingTextField() {
-        guard let resultText = resultTextField.text else {
+        guard
+            let attributedText = resultTextField.attributedText
+        else {
             return
         }
         
+        let resultText = attributedText.string
         if resultText.isEmpty || !resultText.isNumber || Int(resultText) ?? 0 < 0 {
-            resultTextField.text = "0"
+            let resultLabelTitle = "0"
+            let resultLabelAttributedString = NSAttributedString(string: resultLabelTitle, attributes: Styles.resultAttributes)
+            resultTextField.attributedText = resultLabelAttributedString
         }
     }
 }
@@ -174,5 +180,12 @@ private extension ResultsTableViewCell {
             static let width: CGFloat = 20
             static let height: CGFloat = 20
         }
+    }
+    
+    struct Styles {
+        static let resultAttributes: [NSAttributedString.Key: Any] = [
+            .foregroundColor: UIColor.Text.primary,
+            .font: UIFont.systemFont(ofSize: 16, weight: .regular)
+        ]
     }
 }

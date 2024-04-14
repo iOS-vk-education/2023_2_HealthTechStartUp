@@ -14,21 +14,17 @@ final class ExtraRouter {
 
 private extension ExtraRouter {
     func cameraViewController() -> UIViewController {
-        let moduleType = SheetType.camera(viewModel: .init())
+        let moduleType = SheetType.camera(model: .init())
         let context = SheetContext(type: moduleType)
         let container = SheetContainer.assemble(with: context)
         let presentedViewController = container.viewController
         presentedViewController.modalPresentationStyle = .overFullScreen
         
-//        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
-//        swipeGesture.direction = .down
-//        presentedViewController.view.addGestureRecognizer(swipeGesture)
-        
         return presentedViewController
     }
     
     func stateViewController() -> UIViewController {
-        let moduleType = SheetType.conditionChoice(viewModel: .init())
+        let moduleType = SheetType.conditionChoice(model: .init())
         let sheetSize = Constants.smallSheetHeight
         let context = SheetContext(type: moduleType)
         let container = SheetContainer.assemble(with: context)
@@ -44,21 +40,17 @@ private extension ExtraRouter {
     }
     
     func heartViewController() -> UIViewController {
-        let moduleType = SheetType.heartRateVariability(viewModel: .init())
+        let moduleType = SheetType.heartRateVariability(model: .init())
         let context = SheetContext(type: moduleType)
         let container = SheetContainer.assemble(with: context)
         let presentedViewController = container.viewController
         presentedViewController.modalPresentationStyle = .overFullScreen
         
-//        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
-//        swipeGesture.direction = .down
-//        presentedViewController.view.addGestureRecognizer(swipeGesture)
-        
         return presentedViewController
     }
     
     func weightViewController() -> UIViewController {
-        let moduleType = SheetType.weightMeasurement(viewModel: .init())
+        let moduleType = SheetType.weightMeasurement(model: .init())
         let sheetSize = Constants.smallSheetHeight
         let context = SheetContext(type: moduleType)
         let container = SheetContainer.assemble(with: context)

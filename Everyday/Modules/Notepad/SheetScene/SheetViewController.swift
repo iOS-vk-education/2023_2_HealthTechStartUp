@@ -36,14 +36,14 @@ final class SheetViewController: UIViewController {
         
         let contentView: UIView?
         switch type {
-        case .weightMeasurement(let weightMeasurementViewModel):
-            contentView = WeightMeasureView(weight: weightMeasurementViewModel.weight)
+        case .camera:
+            contentView = CameraView()
         case .conditionChoice(let conditionChoiceViewModel):
             contentView = ConditionChoiceView(condition: conditionChoiceViewModel.condition)
-        case .heartRateVariability(let heartRateVariabilityViewModel):
+        case .heartRateVariability:
             contentView = UIView()  // fix this
-        case .camera(let cameraViewModel):
-            contentView = CameraView()
+        case .weightMeasurement(let weightMeasurementViewModel):
+            contentView = WeightMeasurementView(weight: weightMeasurementViewModel.weight)
         }
         guard let contentView else {
             // handle this case
