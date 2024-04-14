@@ -13,8 +13,8 @@ struct ForgotPasswordViewModel {
     let confirmButtonTitle: NSAttributedString
     
     init() {
-        self.forgotPasswordTitle = NSAttributedString(string: "Забыл пароль", attributes: Styles.titleAttributesBold)
-        self.emailFieldTitle = NSAttributedString(string: "Введите вашу почту", attributes: Styles.titleAttributes)
+        self.forgotPasswordTitle = NSAttributedString(string: "ForgotPassword_title", attributes: Styles.titleAttributesBold)
+        self.emailFieldTitle = NSAttributedString(string: "ForgotPassword_EmailField_title", attributes: Styles.titleAttributes)
         self.confirmButtonTitle = NSAttributedString(string: "Восстановить", attributes: Styles.titleAttributes)
     }
 }
