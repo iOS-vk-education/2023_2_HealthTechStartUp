@@ -16,9 +16,11 @@ protocol SheetModuleOutput: AnyObject {
 }
 
 protocol SheetViewInput: AnyObject {
+    func configure(with viewModel: SheetViewModel)
 }
 
 protocol SheetViewOutput: AnyObject {
+    func didLoadView()
 }
 
 protocol SheetWeightViewOutput: AnyObject {

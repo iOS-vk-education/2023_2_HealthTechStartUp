@@ -9,7 +9,14 @@
 import UIKit
 
 final class SheetViewController: UIViewController {
+    
+    // MARK: - Private Properties
+    
     private let output: SheetViewOutput
+    
+    private let closeButton = UIButton()
+    private let saveButton = UIButton()
+    private var contentView = UIView()
     
     // MARK: - Init
 
@@ -41,9 +48,8 @@ final class SheetViewController: UIViewController {
             // handle this case
             return
         }
-                
-        let view = SheetBaseView(contentView: contentView)
-        self.view = view
+        
+        self.contentView = contentView
     }
     
     // MARK: - Lifecycle
@@ -51,30 +57,81 @@ final class SheetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
+        output.didLoadView()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        super.viewWillLayoutSubviews()
+        layout()
     }
 }
 
 private extension SheetViewController {
     
+    // MARK: - Layout
+    
+    func layout() {
+        closeButton.pin
+            .top(Constants.Button.padding)
+            .left(Constants.Button.padding)
+            .width(Constants.Button.width)
+            .height(Constants.Button.height)
+        
+        saveButton.pin
+            .top(Constants.Button.padding)
+            .right(Constants.Button.padding)
+            .width(Constants.Button.width)
+            .height(Constants.Button.height)
+        
+        contentView.pin
+            .below(of: [closeButton, saveButton])
+            .bottom()
+            .horizontally()
+    }
+    
     // MARK: - Setup
     
     func setup() {
-        view.backgroundColor = .systemMint
-        
-        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
-        swipeGesture.direction = .down
-        view.addGestureRecognizer(swipeGesture)
+        setupView()
+        setupCloseButton()
+        setupSaveButton()
     }
     
-    // MARK: - Actions
+    func setupView() {
+        view.backgroundColor = Constants.backgroundColor
+        
+        view.addSubviews(closeButton, saveButton, contentView)
+    }
     
-    @objc
-    func handleSwipeGesture() {
-        dismiss(animated: true, completion: nil)
+    func setupCloseButton() {
+        closeButton.tintColor = Constants.Button.backgroundColor
+    }
+    
+    func setupSaveButton() {
+        saveButton.tintColor = Constants.Button.backgroundColor
     }
 }
 
 // MARK: - ViewInput
 
 extension SheetViewController: SheetViewInput {
+    func configure(with viewModel: SheetViewModel) {
+        closeButton.setImage(viewModel.closeImage, for: .normal)
+        saveButton.setImage(viewModel.saveImage, for: .normal)
+    }
+}
+
+// MARK: - Constants
+
+private extension SheetViewController {
+    struct Constants {
+        static let backgroundColor: UIColor = .background
+        
+        struct Button {
+            static let backgroundColor: UIColor = .UI.accent
+            static let padding: CGFloat = 8
+            static let width: CGFloat = 40
+            static let height: CGFloat = 40
+        }
+    }
 }

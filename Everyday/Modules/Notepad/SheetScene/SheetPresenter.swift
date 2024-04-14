@@ -27,6 +27,10 @@ extension SheetPresenter: SheetModuleInput {
 }
 
 extension SheetPresenter: SheetViewOutput {
+    func didLoadView() {
+        let viewModel = SheetViewModel()
+        view?.configure(with: viewModel)
+    }
 }
 
 extension SheetPresenter: SheetWeightViewOutput {

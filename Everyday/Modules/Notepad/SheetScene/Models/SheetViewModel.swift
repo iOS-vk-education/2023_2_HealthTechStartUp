@@ -1,5 +1,5 @@
 //
-//  SheetBaseViewModel.swift
+//  SheetViewModel.swift
 //  Everyday
 //
 //  Created by Alexander on 12.04.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct SheetBaseViewModel {
+struct SheetViewModel {
     let title: NSAttributedString
     let closeImage: UIImage?
     let saveImage: UIImage?
@@ -26,7 +26,7 @@ struct SheetBaseViewModel {
     }
 }
 
-private extension SheetBaseViewModel {
+private extension SheetViewModel {
     struct Styles {
         static let titleAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 16, weight: .regular)
