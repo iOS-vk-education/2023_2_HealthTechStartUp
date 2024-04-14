@@ -59,11 +59,11 @@ private extension EmptyStateView {
     func setup() {
         setupView()
         setupLabel()
+        addSubviews(imageView, titleLabel)
     }
     
     func setupView() {
         backgroundColor = Constants.backgroundColor
-        addSubviews(imageView, titleLabel)
     }
     
     func setupLabel() {

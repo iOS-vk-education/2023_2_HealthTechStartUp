@@ -77,12 +77,8 @@ private extension SheetViewController {
     // MARK: - Setup
     
     func setup() {
-        setupView()
         setupCloseButton()
         setupSaveButton()
-    }
-    
-    func setupView() {
         view.addSubviews(closeButton, saveButton, contentView)
     }
     

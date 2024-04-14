@@ -80,7 +80,6 @@ private extension NotepadViewController {
         setupView()
         setupOuterCollectionView()
         setupTableView()
-        
         view.addSubviews(outerCollectionView, stateLabel, tableView)
     }
 
@@ -302,10 +301,6 @@ extension NotepadViewController: NotepadViewInput {
     }
     
     func dismissLoadingView() {
-        guard emptyStateView.superview != nil else {
-            return
-        }
-        
         activityIndicator.removeFromSuperview()
     }
 }

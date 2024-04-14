@@ -12,7 +12,7 @@ class WeightMeasurementView: UIView {
     
     // MARK: - Private Properties
     
-    weak var output: WeightMeasurementViewOutput?
+    var output: WeightMeasurementViewOutput?
     
     private let textField = UITextField()
     private let minusButton = UIButton()
@@ -30,8 +30,9 @@ class WeightMeasurementView: UIView {
         setup()
     }
     
-    convenience init(weight: Double? = nil) {
+    convenience init(weight: Double? = nil, output: WeightMeasurementViewOutput) {
         self.init(frame: .zero)
+        self.output = output
         setupWeightView()
     }
     
@@ -76,19 +77,21 @@ private extension WeightMeasurementView {
         setupTextField()
         setupPlusButton()
         setupMinusButton()
+        addSubviews(textField, minusButton, plusButton)
     }
     
     func setupView() {
         backgroundColor = Constants.backgroundColor
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(dismissKeyboard))
         addGestureRecognizer(tapGesture)
-        addSubviews(textField, minusButton, plusButton)
     }
     
     func setupTextField() {
         textField.backgroundColor = Constants.TextField.backgroundColor
         textField.layer.cornerRadius = Constants.TextField.cornerRadius
         textField.textAlignment = .center
+        textField.textColor = Constants.TextField.textColor
+        textField.font = UIFont.systemFont(ofSize: 72, weight: .bold)
         textField.keyboardType = .numberPad
         textField.addTarget(self, action: #selector(didEndEditingTextField), for: .editingDidEnd)
     }
@@ -192,10 +195,11 @@ private extension WeightMeasurementView {
         
         struct TextField {
             static let backgroundColor: UIColor = UIColor.Text.primary
+            static let textColor: UIColor = UIColor.UI.accent
             static let padding: CGFloat = 32
             static let cornerRadius: CGFloat = 16
             static let height: CGFloat = 100
-            static let defaultValue: Double = 0
+            static let defaultValue: Double = 0.0
         }
     }
     

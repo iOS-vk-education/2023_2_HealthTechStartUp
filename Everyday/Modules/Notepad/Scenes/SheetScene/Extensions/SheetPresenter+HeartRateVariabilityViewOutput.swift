@@ -8,7 +8,12 @@
 import Foundation
 
 protocol HeartRateVariabilityViewOutput: AnyObject {
+    func didLoadHeartRateVariabilityView(with heartRateVariability: HeartRateVariability?)
 }
 
 extension SheetPresenter: HeartRateVariabilityViewOutput {
+    func didLoadHeartRateVariabilityView(with heartRateVariability: HeartRateVariability? = nil) {
+//        let viewModel = WeightMeasurementViewModel(value: weight)
+//        contentView?.configure(with: viewModel)
+    }
 }

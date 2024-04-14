@@ -69,7 +69,6 @@ private extension ExtraViewController {
         setupView()
         setupFinishButton()
         setupTableView()
-        
         view.addSubviews(finishButton, tableView)
     }
     

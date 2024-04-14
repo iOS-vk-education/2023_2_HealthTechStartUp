@@ -65,7 +65,7 @@ final class ConditionViewCell: UICollectionViewCell {
         }
     }
     
-    // MARK: - Configure
+    // MARK: - Interface
     
     func configure(with viewModel: ConditionCellViewModel) {
         imageView.image = viewModel.conditionImage
@@ -91,12 +91,11 @@ private extension ConditionViewCell {
         setupStackView()
         setupImageView()
         setupTitleLabel()
+        addSubview(stackView)
     }
     
     func setupView() {
         backgroundColor = Constants.backgroundColor
-        
-        addSubview(stackView)
     }
     
     func setupStackView() {

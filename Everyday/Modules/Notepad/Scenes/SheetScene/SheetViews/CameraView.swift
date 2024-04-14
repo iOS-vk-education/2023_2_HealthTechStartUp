@@ -13,7 +13,7 @@ class CameraView: UIView {
     
     // MARK: - Private Properties
     
-    weak var output: CameraViewOutput?
+    var output: CameraViewOutput?
     
     private var session: AVCaptureSession?
     private let photoOutput = AVCapturePhotoOutput()
@@ -32,9 +32,10 @@ class CameraView: UIView {
         setup()
     }
     
-    convenience init(image: UIImage? = nil) {
+    convenience init(image: UIImage? = nil, output: CameraViewOutput) {
         self.init(frame: .zero)
-        // do smth with image
+        self.output = output
+        output.didLoadCameraView(with: image)
     }
     
     // MARK: - Lifecycle
@@ -67,12 +68,12 @@ private extension CameraView {
         setupPreviewLayer()
         checkCameraPermissions()
         
-        self.layer.addSublayer(previewLayer)
-        self.addSubview(shutterButton)
+        layer.addSublayer(previewLayer)
+        addSubview(shutterButton)
     }
     
     func setupView() {
-        self.backgroundColor = .clear
+        backgroundColor = .clear
     }
     
     func setupPreviewLayer() {
@@ -178,7 +179,7 @@ extension CameraView: AVCapturePhotoCaptureDelegate {
         imageView.contentMode = .scaleAspectFill
         imageView.frame = self.bounds
         
-        self.addSubview(imageView)
+        addSubview(imageView)
     }
 }
 

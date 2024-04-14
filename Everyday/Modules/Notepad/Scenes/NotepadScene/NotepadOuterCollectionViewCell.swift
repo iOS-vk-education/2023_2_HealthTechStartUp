@@ -77,7 +77,6 @@ private extension NotepadOuterCollectionViewCell {
     func setup() {
         setupView()
         setupCollectionView()
-        
         addSubview(innerCollectionView)
     }
     

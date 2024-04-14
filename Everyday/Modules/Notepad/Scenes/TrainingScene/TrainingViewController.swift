@@ -68,7 +68,6 @@ private extension TrainingViewController {
         setupView()
         setupFinishButton()
         setupTableView()
-        
         view.addSubviews(finishButton, tableView)
     }
 

@@ -8,12 +8,19 @@
 import Foundation
 
 protocol WeightMeasurementViewOutput: AnyObject {
-    func didLoadWeightMeasurementView(with weight: Double?)
+    func didLoadWeightMeasurementView()
 }
 
 extension SheetPresenter: WeightMeasurementViewOutput {
-    func didLoadWeightMeasurementView(with weight: Double? = nil) {
+    func didLoadWeightMeasurementView() {
+        var weight: Double?
+        switch moduleType {
+        case .weightMeasurement(let weightMeasurementModel):
+            weight = weightMeasurementModel.weight
+        default:
+            break
+        }
         let viewModel = WeightMeasurementViewModel(value: weight)
-        contentView.configure(with: viewModel)
+        weightMeasurementView?.configure(with: viewModel)
     }
 }

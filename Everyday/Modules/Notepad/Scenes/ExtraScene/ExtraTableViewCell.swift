@@ -103,7 +103,6 @@ private extension ExtraTableViewCell {
     func setup() {
         circleImageView.tintColor = Constants.CounterLabel.uncheckedColor
         counterLabel.textAlignment = .center
-        
         numberView.addSubviews(circleImageView, counterLabel)
         contentView.addSubviews(numberView, exerciseNameLabel, resultLabel)
     }

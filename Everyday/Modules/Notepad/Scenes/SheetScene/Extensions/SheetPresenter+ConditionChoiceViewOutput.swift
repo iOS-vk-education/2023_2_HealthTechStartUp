@@ -8,7 +8,12 @@
 import Foundation
 
 protocol ConditionChoiceViewOutput: AnyObject {
+    func didLoadConditionChoiceView(with condition: Condition?)
 }
 
 extension SheetPresenter: ConditionChoiceViewOutput {
+    func didLoadConditionChoiceView(with condition: Condition? = nil) {
+//        let viewModel = WeightMeasurementViewModel(value: weight)
+//        contentView?.configure(with: viewModel)
+    }
 }

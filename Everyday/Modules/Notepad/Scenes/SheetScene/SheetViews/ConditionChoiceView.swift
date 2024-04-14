@@ -12,7 +12,7 @@ class ConditionChoiceView: UIView {
     
     // MARK: - Private Properties
     
-    weak var output: ConditionChoiceViewOutput?
+    var output: ConditionChoiceViewOutput?
     
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     private let selectedConditionIndex: Int? = nil
@@ -29,9 +29,9 @@ class ConditionChoiceView: UIView {
         setup()
     }
     
-    convenience init(condition: Condition? = nil) {
+    convenience init(condition: Condition? = nil, output: ConditionChoiceViewOutput) {
         self.init(frame: .zero)
-        // do smth with condition
+        self.output = output
     }
     
     // MARK: - Lifecycle
@@ -58,11 +58,11 @@ private extension ConditionChoiceView {
     func setup() {
         setupView()
         setupCollectionView()
+        addSubview(collectionView)
     }
     
     func setupView() {
         backgroundColor = Constants.backgroundColor
-        addSubview(collectionView)
     }
     
     func setupCollectionView() {
@@ -126,7 +126,7 @@ extension ConditionChoiceView: UICollectionViewDataSource {
 protocol ConditionChoiceViewInput: AnyObject {
 }
 
-extension CameraView: ConditionChoiceViewInput {
+extension ConditionChoiceView: ConditionChoiceViewInput {
 }
 
 // MARK: - Constants
