@@ -11,7 +11,6 @@
 		9D15BE262BC457D1004FC560 /* NotepadInnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE252BC457D1004FC560 /* NotepadInnerCollectionViewCell.swift */; };
 		9D15BE282BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE272BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift */; };
 		9D15BE2A2BC48603004FC560 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE292BC48603004FC560 /* Date+Extension.swift */; };
-		9D15BE2E2BC48D3F004FC560 /* NotepadEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE2D2BC48D3F004FC560 /* NotepadEmptyStateView.swift */; };
 		9D15BE302BC4945F004FC560 /* EmptyStateViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE2F2BC4945F004FC560 /* EmptyStateViewViewModel.swift */; };
 		9D15BE322BC4A1C7004FC560 /* ExtraTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE312BC4A1C7004FC560 /* ExtraTableViewCellViewModel.swift */; };
 		9D15BE352BC4A518004FC560 /* Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE342BC4A518004FC560 /* Extra.swift */; };
@@ -201,7 +200,6 @@
 		9D15BE252BC457D1004FC560 /* NotepadInnerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadInnerCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D15BE272BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadInnerCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		9D15BE292BC48603004FC560 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
-		9D15BE2D2BC48D3F004FC560 /* NotepadEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadEmptyStateView.swift; sourceTree = "<group>"; };
 		9D15BE2F2BC4945F004FC560 /* EmptyStateViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateViewViewModel.swift; sourceTree = "<group>"; };
 		9D15BE312BC4A1C7004FC560 /* ExtraTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		9D15BE342BC4A518004FC560 /* Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extra.swift; sourceTree = "<group>"; };
@@ -648,7 +646,6 @@
 				9E4F226B2B9F3B8F003E749E /* NotepadProtocols.swift */,
 				9E4F22682B9F3B8F003E749E /* NotepadRouter.swift */,
 				9E4F22692B9F3B8F003E749E /* NotepadViewController.swift */,
-				9D15BE2D2BC48D3F004FC560 /* NotepadEmptyStateView.swift */,
 				9E4F226C2B9F3B8F003E749E /* NotepadSectionHeaderView.swift */,
 				9E4F226D2B9F3B8F003E749E /* NotepadTableViewCell.swift */,
 				9D15BE232BC456CC004FC560 /* NotepadOuterCollectionViewCell.swift */,
@@ -1277,7 +1274,6 @@
 				9E4F22A92B9F3C05003E749E /* ResultsInteractor.swift in Sources */,
 				9D7132E62BC9453200B5ACF8 /* ConditionChoiceView.swift in Sources */,
 				9E4F22892B9F3BB4003E749E /* TrainingInteractor.swift in Sources */,
-				9D15BE2E2BC48D3F004FC560 /* NotepadEmptyStateView.swift in Sources */,
 				9D7132DD2BC93CF300B5ACF8 /* SheetType.swift in Sources */,
 				9E4F22852B9F3BB4003E749E /* TrainingViewController.swift in Sources */,
 				9E4F227C2B9F3B9B003E749E /* NotepadViewModel.swift in Sources */,
