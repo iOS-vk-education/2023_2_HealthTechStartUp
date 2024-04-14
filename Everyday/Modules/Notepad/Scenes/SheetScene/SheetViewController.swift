@@ -41,7 +41,11 @@ final class SheetViewController: UIViewController {
         case .conditionChoice(let conditionChoiceViewModel):
             contentView = ConditionChoiceView(condition: conditionChoiceViewModel.condition)
         case .heartRateVariability:
-            contentView = UIView()  // fix this
+            contentView = EmptyStateView()
+            if let contentView = contentView as? EmptyStateView {
+                let viewModel = EmptyStateViewViewModel()
+                contentView.configure(with: viewModel)
+            }
         case .weightMeasurement(let weightMeasurementViewModel):
             contentView = WeightMeasurementView(weight: weightMeasurementViewModel.weight)
         }

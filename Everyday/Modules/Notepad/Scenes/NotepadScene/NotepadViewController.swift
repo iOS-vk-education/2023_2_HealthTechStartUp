@@ -281,6 +281,9 @@ extension NotepadViewController: NotepadViewInput {
             .below(of: outerCollectionView)
             .horizontally()
             .bottom(view.pin.safeArea)
+        
+        let viewModel = EmptyStateViewViewModel()
+        emptyStateView.configure(with: viewModel)
     }
     
     func dismissEmptyStateView() {

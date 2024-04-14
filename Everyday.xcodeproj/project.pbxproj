@@ -12,7 +12,7 @@
 		9D15BE282BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE272BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift */; };
 		9D15BE2A2BC48603004FC560 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE292BC48603004FC560 /* Date+Extension.swift */; };
 		9D15BE2E2BC48D3F004FC560 /* NotepadEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE2D2BC48D3F004FC560 /* NotepadEmptyStateView.swift */; };
-		9D15BE302BC4945F004FC560 /* NotepadEmptyStateViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE2F2BC4945F004FC560 /* NotepadEmptyStateViewViewModel.swift */; };
+		9D15BE302BC4945F004FC560 /* EmptyStateViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE2F2BC4945F004FC560 /* EmptyStateViewViewModel.swift */; };
 		9D15BE322BC4A1C7004FC560 /* ExtraTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE312BC4A1C7004FC560 /* ExtraTableViewCellViewModel.swift */; };
 		9D15BE352BC4A518004FC560 /* Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE342BC4A518004FC560 /* Extra.swift */; };
 		9D1C38972BC9BEE400A806A5 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C38962BC9BEE400A806A5 /* CameraView.swift */; };
@@ -38,6 +38,7 @@
 		9D7132E62BC9453200B5ACF8 /* ConditionChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132E52BC9453200B5ACF8 /* ConditionChoiceView.swift */; };
 		9D7D9A792BCC0D3E00089A14 /* WeightMeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A782BCC0D3E00089A14 /* WeightMeasurementView.swift */; };
 		9D7D9A7B2BCC0E1300089A14 /* WeightMeasurementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A7A2BCC0E1300089A14 /* WeightMeasurementViewModel.swift */; };
+		9D7D9A7E2BCC4AB200089A14 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A7D2BCC4AB200089A14 /* EmptyStateView.swift */; };
 		9D9517132BC57566004EB96A /* ExtraTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9517122BC57566004EB96A /* ExtraTableViewCell.swift */; };
 		9D9517152BC5786B004EB96A /* ExtraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9517142BC5786B004EB96A /* ExtraViewModel.swift */; };
 		9DA0936D2BCB11AA009825F9 /* ConditionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0936C2BCB11AA009825F9 /* ConditionViewCell.swift */; };
@@ -201,7 +202,7 @@
 		9D15BE272BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadInnerCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		9D15BE292BC48603004FC560 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		9D15BE2D2BC48D3F004FC560 /* NotepadEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadEmptyStateView.swift; sourceTree = "<group>"; };
-		9D15BE2F2BC4945F004FC560 /* NotepadEmptyStateViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadEmptyStateViewViewModel.swift; sourceTree = "<group>"; };
+		9D15BE2F2BC4945F004FC560 /* EmptyStateViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateViewViewModel.swift; sourceTree = "<group>"; };
 		9D15BE312BC4A1C7004FC560 /* ExtraTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		9D15BE342BC4A518004FC560 /* Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extra.swift; sourceTree = "<group>"; };
 		9D1C38962BC9BEE400A806A5 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
@@ -217,6 +218,7 @@
 		9D7132E52BC9453200B5ACF8 /* ConditionChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionChoiceView.swift; sourceTree = "<group>"; };
 		9D7D9A782BCC0D3E00089A14 /* WeightMeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightMeasurementView.swift; sourceTree = "<group>"; };
 		9D7D9A7A2BCC0E1300089A14 /* WeightMeasurementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightMeasurementViewModel.swift; sourceTree = "<group>"; };
+		9D7D9A7D2BCC4AB200089A14 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		9D9517122BC57566004EB96A /* ExtraTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraTableViewCell.swift; sourceTree = "<group>"; };
 		9D9517142BC5786B004EB96A /* ExtraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViewModel.swift; sourceTree = "<group>"; };
 		9DA0936C2BCB11AA009825F9 /* ConditionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionViewCell.swift; sourceTree = "<group>"; };
@@ -455,6 +457,36 @@
 			path = SheetViews;
 			sourceTree = "<group>";
 		};
+		9D7D9A7C2BCC4A9D00089A14 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9D7D9A7D2BCC4AB200089A14 /* EmptyStateView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		9D7D9A802BCC4B5500089A14 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9D15BE2F2BC4945F004FC560 /* EmptyStateViewViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9D7D9A812BCC4B8800089A14 /* Scenes */ = {
+			isa = PBXGroup;
+			children = (
+				9E4F22652B9F3B82003E749E /* NotepadScene */,
+				9E4F227D2B9F3BA4003E749E /* TrainingScene */,
+				9E4F22912B9F3BCE003E749E /* ExerciseScene */,
+				9E4F22B52B9F3C20003E749E /* TimerScene */,
+				9E4F22A12B9F3BF8003E749E /* ResultsScene */,
+				9D7132862BC923C400B5ACF8 /* SheetScene */,
+				9E4F22C52B9F3C44003E749E /* ExtraScene */,
+			);
+			path = Scenes;
+			sourceTree = "<group>";
+		};
 		9D9517162BC58A46004EB96A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -632,7 +664,6 @@
 				9E4F22782B9F3B9B003E749E /* NotepadTableViewCellViewModel.swift */,
 				9E4F22792B9F3B9B003E749E /* NotepadViewModel.swift */,
 				9D15BE272BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift */,
-				9D15BE2F2BC4945F004FC560 /* NotepadEmptyStateViewViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1091,13 +1122,9 @@
 		9EE8AE222B7FB91E001D126F /* Notepad */ = {
 			isa = PBXGroup;
 			children = (
-				9E4F22652B9F3B82003E749E /* NotepadScene */,
-				9E4F227D2B9F3BA4003E749E /* TrainingScene */,
-				9E4F22912B9F3BCE003E749E /* ExerciseScene */,
-				9E4F22B52B9F3C20003E749E /* TimerScene */,
-				9E4F22A12B9F3BF8003E749E /* ResultsScene */,
-				9D7132862BC923C400B5ACF8 /* SheetScene */,
-				9E4F22C52B9F3C44003E749E /* ExtraScene */,
+				9D7D9A802BCC4B5500089A14 /* Models */,
+				9D7D9A7C2BCC4A9D00089A14 /* Views */,
+				9D7D9A812BCC4B8800089A14 /* Scenes */,
 			);
 			path = Notepad;
 			sourceTree = "<group>";
@@ -1308,6 +1335,7 @@
 				9E4F22B42B9F3C14003E749E /* ResultsViewModel.swift in Sources */,
 				9E4382D62B83738800C69708 /* GoogleAuthService.swift in Sources */,
 				9EE8AE1C2B7FB905001D126F /* ProgressPresenter.swift in Sources */,
+				9D7D9A7E2BCC4AB200089A14 /* EmptyStateView.swift in Sources */,
 				9E4F22AB2B9F3C05003E749E /* ResultsRouter.swift in Sources */,
 				9EE8AE1D2B7FB905001D126F /* ProgressRouter.swift in Sources */,
 				9EE8AE382B7FB96E001D126F /* WorkoutViewController.swift in Sources */,
@@ -1357,7 +1385,7 @@
 				9E4F22722B9F3B8F003E749E /* NotepadInteractor.swift in Sources */,
 				9E4F22D82B9F3D09003E749E /* CustomError.swift in Sources */,
 				9EE8AE122B7FB8CF001D126F /* SettingsProtocols.swift in Sources */,
-				9D15BE302BC4945F004FC560 /* NotepadEmptyStateViewViewModel.swift in Sources */,
+				9D15BE302BC4945F004FC560 /* EmptyStateViewViewModel.swift in Sources */,
 				9E5B75412B7F9D7600E2BDE6 /* PageView.swift in Sources */,
 				9E53FB502B7F951000C55A45 /* UIColor+Extension.swift in Sources */,
 				9E53FB4C2B7F950400C55A45 /* UIView+Extension.swift in Sources */,

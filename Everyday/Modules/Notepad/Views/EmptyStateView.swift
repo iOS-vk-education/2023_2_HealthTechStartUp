@@ -1,36 +1,48 @@
 //
-//  NotepadEmptyStateView.swift
+//  EmptyStateView.swift
 //  Everyday
 //
-//  Created by Alexander on 08.04.2024.
+//  Created by Alexander on 14.04.2024.
 //
 
 import UIKit
 import PinLayout
 
-class NotepadEmptyStateView: UIView {
+final class EmptyStateView: UIView {
+    
+    // MARK: - Private Properties
+    
     private let titleLabel = UILabel()
     private let imageView = UIImageView()
     
+    // MARK: - Init
+    
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setup()
-        configure()
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        setup()
     }
+    
+    // MARK: - Lifecycle
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         layout()
+    }
+    
+    // MARK: - Interface
+    
+    func configure(with viewModel: EmptyStateViewViewModel) {
+        imageView.image = viewModel.logoImage
+        titleLabel.attributedText = viewModel.title
     }
 }
 
-private extension NotepadEmptyStateView {
+private extension EmptyStateView {
     
     // MARK: - Layout
     
@@ -50,26 +62,26 @@ private extension NotepadEmptyStateView {
     // MARK: - Setup
     
     func setup() {
+        setupView()
         setupLabel()
-        
+    }
+    
+    func setupView() {
+        backgroundColor = Constants.backgroundColor
         addSubviews(imageView, titleLabel)
     }
     
     func setupLabel() {
         titleLabel.textAlignment = .center
     }
-    
-    // MARK: - Configure
-    
-    func configure() {
-        let viewModel = NotepadEmptyStateViewViewModel()
-        imageView.image = viewModel.logoImage
-        titleLabel.attributedText = viewModel.title
-    }
 }
 
-private extension NotepadEmptyStateView {
+// MARK: - Constants
+
+private extension EmptyStateView {
     struct Constants {
+        static let backgroundColor: UIColor = UIColor.background
+        
         struct ImageView {
             static let marginTop: CGFloat = 100
             static let size: CGFloat = 300

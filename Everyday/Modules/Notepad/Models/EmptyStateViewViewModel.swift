@@ -1,5 +1,5 @@
 //
-//  NotepadEmptyStateViewViewModel.swift
+//  EmptyStateViewViewModel.swift
 //  Everyday
 //
 //  Created by Alexander on 09.04.2024.
@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct NotepadEmptyStateViewViewModel {
+struct EmptyStateViewViewModel {
     let title: NSAttributedString
     let logoImage: UIImage?
     
@@ -22,7 +22,7 @@ struct NotepadEmptyStateViewViewModel {
     }
 }
 
-private extension NotepadEmptyStateViewViewModel {
+private extension EmptyStateViewViewModel {
     struct Styles {
         static let titleAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.Text.primary,

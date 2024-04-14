@@ -153,7 +153,7 @@ private extension WeightMeasurementView {
         
         let resultText = attributedText.string
         if resultText.isEmpty || !resultText.isDouble || Int(resultText) ?? 0 < 0 {
-            let valueTextFieldTitle = "0.0"
+            let valueTextFieldTitle = String(Constants.TextField.defaultValue)
             let valueTextFieldAttributedString = NSAttributedString(string: valueTextFieldTitle, attributes: Styles.valueAttributes)
             textField.attributedText = valueTextFieldAttributedString
         }
