@@ -24,6 +24,7 @@ final class ChangePasswordPresenter {
         DispatchQueue.main.async {
             switch result {
             case .success:
+                print("success")
                 self.router.getBackToMainView()
             case .failure(let error):
                 self.view?.showAlert(with: "network", message: error.localizedDescription)
@@ -60,6 +61,10 @@ extension ChangePasswordPresenter: ChangePasswordViewOutput {
     
     func getBack() {
         router.getBackToMainView()
+    }
+    
+    func didTapOnForgotPasswordButton() {
+        router.getForgotPasswordView()
     }
     
     struct Constants {

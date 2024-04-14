@@ -23,7 +23,7 @@ protocol ProfileViewInput: AnyObject {
 }
 
 protocol ProfileViewOutput: AnyObject {
-    func getWhichSing() -> String
+    func getWhichSign() -> String
     func getProfileViewModelSingWithEmail() -> ProfileViewModelSingWithEmail
     func getProfileViewModelSingWithVKOrGoogle() -> ProfileViewModelSingWithVKOrGoogle
     func updateUserName(username: String)

@@ -40,6 +40,14 @@ extension DeleteAccountInteractor: DeleteAccountInteractorInput {
             settingsService.deleteAnonymAccount(with: whichSign!) { result in
                 completion(result)
             }
+        case "google":
+            settingsService.deleteGoogleAccount(with: whichSign!) { result in
+                completion(result)
+            }
+        case "vk":
+            settingsService.deleteVkAccount(with: whichSign!) { result in
+                completion(result)
+            }
         default:
             print("deleteAccount Error")
         }

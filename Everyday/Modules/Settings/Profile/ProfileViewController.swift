@@ -168,7 +168,6 @@ private extension ProfileViewController {
     
     @objc
     private func editingUserNameDidEnd(username: String) {
-        print(username)
         output.updateUserName(username: username)
     }
     
@@ -187,7 +186,7 @@ private extension ProfileViewController {
 
 extension ProfileViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
-        let whichSing = output.getWhichSing()
+        let whichSing = output.getWhichSign()
         switch whichSing {
         case "vk", "google", "anonym":
             let model = output.getProfileViewModelSingWithVKOrGoogle()
@@ -200,7 +199,7 @@ extension ProfileViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        let whichSing = output.getWhichSing()
+        let whichSing = output.getWhichSign()
         switch whichSing {
         case "vk", "google", "anonym":
             let model = output.getProfileViewModelSingWithVKOrGoogle()
@@ -235,7 +234,7 @@ extension ProfileViewController: UITableViewDataSource {
             tableView.register(ProfileTableViewCellWithTitle.self, forCellReuseIdentifier: reuseID)
             
             if let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath) as? ProfileTableViewCellWithTitle {
-                let whichSing = output.getWhichSing()
+                let whichSing = output.getWhichSign()
                 
                 cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
                 if indexPath.section == 1 {
@@ -281,7 +280,7 @@ extension ProfileViewController: UITableViewDataSource {
 extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        switch output.getWhichSing() {
+        switch output.getWhichSign() {
         case "vk", "google", "anonym":
             if indexPath.section == 1 {
                 output.didTapLogoutButton()

@@ -22,6 +22,7 @@ protocol SignInViewInput: AnyObject {
 
 protocol SignInViewOutput: AnyObject {
     func didLoadView()
+    func didTapOnForgotPassword()
     func didTapSignInButton(with email: String?, and password: String?)
     func didTapSignInWithGoogleButton()
     func didTapSignInWithVKButton()
@@ -42,6 +43,7 @@ protocol SignInInteractorOutput: AnyObject {
 }
 
 protocol SignInRouterInput: AnyObject {
+    func routeToForgotPasswordView()
     func openApp()
     func openOnBoarding(with authType: String)
 }

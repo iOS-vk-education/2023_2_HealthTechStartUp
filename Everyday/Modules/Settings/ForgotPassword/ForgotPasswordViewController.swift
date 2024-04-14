@@ -1,32 +1,28 @@
 //
-//  ChangeEmailViewController.swift
+//  ForgotPasswordViewController.swift
 //  Everyday
 //
-//  Created by Yaz on 12.03.2024.
-//
+//  Created by Yaz on 14.04.2024.
 //
 
 import UIKit
 import PinLayout
 
-final class ChangeEmailViewController: UIViewController {
-    // MARK: - Private properties
+final class ForgotPasswordViewController: UIViewController {
+    private let output: ForgotPasswordViewOutput
     
-    private let output: ChangeEmailViewOutput
-    
-    private let passwordField = UITextField()
-    private let newEmailField = UITextField()
-    private let confirmButton = UIButton()
-    private let forgotPasswordButton = UIButton()
     private let scrollView = UIScrollView()
     private let contentView = UIView()
+    private let emailField = UITextField()
+    private let confirmButton = UIButton()
     let navBarTitle = UILabel()
     
-    init(output: ChangeEmailViewOutput) {
+    init(output: ForgotPasswordViewOutput) {
         self.output = output
         
         super.init(nibName: nil, bundle: nil)
     }
+    //    ForgotPassword
     
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
@@ -56,20 +52,19 @@ final class ChangeEmailViewController: UIViewController {
         setup()
     }
     
-    override func viewDidLayoutSubviews() {
+    override func viewWillLayoutSubviews() {
         layout()
     }
 }
-
 // MARK: - Setup
 
-private extension ChangeEmailViewController {
+private extension ForgotPasswordViewController {
     
     func setup() {
         setupScrollView()
         setupContentView()
-        setupFields()
-        setupButtons()
+        setupField()
+        setupButton()
     }
     
     func setupScrollView() {
@@ -78,33 +73,29 @@ private extension ChangeEmailViewController {
     }
     
     func setupContentView() {
-        contentView.addSubviews(newEmailField, passwordField, confirmButton, forgotPasswordButton)
+        contentView.addSubviews(emailField, confirmButton)
     }
     
-    func setupFields() {
-        [newEmailField, passwordField].forEach { field in
-            let leftView = UIView(frame: CGRect(x: 0,
-                                                y: 0,
-                                                width: 10,
-                                                height: 0))
-            field.autocapitalizationType = .none
-            field.backgroundColor = Constants.gray.withAlphaComponent(Constants.TextField.colorOpacity)
-            field.layer.cornerRadius = Constants.cornerRadius
-            field.attributedPlaceholder = NSAttributedString(
-                string: field.placeholder ?? "",
-                attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
-            )
-            field.leftView = leftView
-            field.leftViewMode = .always
-        }
+    func setupField() {
+        let leftView = UIView(frame: CGRect(x: 0,
+                                            y: 0,
+                                            width: 10,
+                                            height: 0))
+        emailField.autocapitalizationType = .none
+        emailField.backgroundColor = Constants.gray.withAlphaComponent(Constants.TextField.colorOpacity)
+        emailField.layer.cornerRadius = Constants.cornerRadius
+        emailField.attributedPlaceholder = NSAttributedString(
+            string: emailField.placeholder ?? "",
+            attributes: [NSAttributedString.Key.foregroundColor: UIColor.gray]
+        )
+        emailField.leftView = leftView
+        emailField.leftViewMode = .always
     }
     
-    func setupButtons() {
+    func setupButton() {
         confirmButton.backgroundColor = Constants.gray.withAlphaComponent(Constants.TextField.colorOpacity)
         confirmButton.layer.cornerRadius = Constants.cornerRadius
         confirmButton.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
-        
-        forgotPasswordButton.addTarget(self, action: #selector(didTapForgotPasswordButton), for: .touchUpInside)
     }
     
     // MARK: - Layout
@@ -120,7 +111,7 @@ private extension ChangeEmailViewController {
             .horizontally()
             .bottom(to: scrollView.edge.bottom)
         
-        newEmailField.pin
+        emailField.pin
             .left()
             .right()
             .top(to: contentView.edge.top)
@@ -129,30 +120,14 @@ private extension ChangeEmailViewController {
             .marginRight(Constants.TextField.margin)
             .marginLeft(Constants.TextField.margin)
         
-        passwordField.pin
-            .left()
-            .right()
-            .top(to: newEmailField.edge.bottom)
-            .height(Constants.TextField.height)
-            .marginTop(Constants.TextField.marginTop)
-            .marginRight(Constants.TextField.margin)
-            .marginLeft(Constants.TextField.margin)
-        
         confirmButton.pin
             .left()
             .right()
-            .top(to: passwordField.edge.bottom)
+            .top(to: emailField.edge.bottom)
             .height(Constants.Button.height)
             .marginTop(Constants.Button.marginTop)
             .marginRight(Constants.Button.margin)
             .marginLeft(Constants.Button.margin)
-        
-        forgotPasswordButton.pin
-            .hCenter()
-            .height(Constants.Button.height)
-            .width(Constants.Button.width)
-            .marginBottom(Constants.Button.marginBottom)
-            .bottom(to: contentView.edge.bottom)
     }
     
     // MARK: - Actions
@@ -171,42 +146,27 @@ private extension ChangeEmailViewController {
     
     @objc
     func didTapConfirmButton() {
-        let newEmail = self.newEmailField.text ?? ""
-        let password = self.passwordField.text ?? ""
-        
-        output.didTapConfirmButton(with: newEmail, and: password)
-    }
-    
-    @objc
-    func didTapForgotPasswordButton() {
-        output.didTapOnForgotPasswordButton()
+        let email = self.emailField.text ?? ""
+        output.didTapConfirmButton(with: email)
     }
 }
 
 // MARK: - ChangeEmailViewInput
 
-extension ChangeEmailViewController: ChangeEmailViewInput {
+extension ForgotPasswordViewController: ForgotPasswordViewInput {
     func showAlert(with key: String, message: String) {
-        switch key {
-        case "password": AlertManager.showInvalidPasswordAlert(on: self, message: message)
-        case "email": AlertManager.showInvalidEmailAlert(on: self)
-        default: let error = NSError(domain: "Everydaytech.ru", code: 400)
-            AlertManager.showSignInErrorAlert(on: self, with: error)
-        }
     }
     
-    func configure(with model: ChangeEmailViewModel) {
-        navBarTitle.attributedText = model.changeEmailTitle
-        newEmailField.attributedPlaceholder = model.newEmailFieldTitle
-        passwordField.attributedPlaceholder = model.passwordFieldTitle
+    func configure(with model: ForgotPasswordViewModel) {
+        navBarTitle.attributedText = model.forgotPasswordTitle
+        emailField.attributedPlaceholder = model.emailFieldTitle
         confirmButton.setAttributedTitle(model.confirmButtonTitle, for: .normal)
-        forgotPasswordButton.setAttributedTitle(model.forgotPasswordTitle, for: .normal)
     }
 }
 
 // MARK: - Constants
 
-private extension ChangeEmailViewController {
+private extension ForgotPasswordViewController {
     struct Constants {
         static let backgroundColor: UIColor = .background
         static let accentColor: UIColor = UIColor.UI.accent
@@ -227,9 +187,8 @@ private extension ChangeEmailViewController {
             static let margin: CGFloat = 20
             static let colorOpacity: CGFloat = 0.1
             static let marginTop: CGFloat = 60
-            static let marginBottom: CGFloat = 50
+            static let matginBottom: CGFloat = 50
             static let height: CGFloat = 50
-            static let width: CGFloat = 200
         }
     }
 }

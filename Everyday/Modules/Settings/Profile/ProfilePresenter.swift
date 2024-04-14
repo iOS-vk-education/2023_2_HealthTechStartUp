@@ -34,10 +34,11 @@ extension ProfilePresenter: ProfileModuleInput {
 }
 
 extension ProfilePresenter: ProfileViewOutput {
-    func getWhichSing() -> String {
+    func getWhichSign() -> String {
         let defaults = UserDefaults.standard
         return defaults.string(forKey: "WhichSign") ?? "email"
     }
+    
     func getProfileViewModelSingWithEmail() -> ProfileViewModelSingWithEmail {
         let model = ProfileViewModelSingWithEmail()
         return model
@@ -75,7 +76,8 @@ extension ProfilePresenter: ProfileViewOutput {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-                    self.router.getBackToMainView()
+//                    self.router.getBackToMainView()
+                    print("save in userDefaults")
                 case .failure(let error):
                     self.view?.showAlert(with: "network", message: error.localizedDescription)
                 }

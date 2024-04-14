@@ -24,6 +24,7 @@ protocol ChangePasswordViewOutput: AnyObject {
     func didTapConfirmButton(with oldPassword: String?, and newPassword: String?)
     func didLoadView()
     func getBack()
+    func didTapOnForgotPasswordButton()
 }
 
 protocol ChangePasswordInteractorInput: AnyObject {
@@ -35,4 +36,5 @@ protocol ChangePasswordInteractorOutput: AnyObject {
 
 protocol ChangePasswordRouterInput: AnyObject {
     func getBackToMainView()
+    func getForgotPasswordView()
 }

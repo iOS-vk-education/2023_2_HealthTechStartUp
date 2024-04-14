@@ -38,6 +38,11 @@ extension DeleteAccountPresenter: DeleteAccountModuleInput {
 }
 
 extension DeleteAccountPresenter: DeleteAccountViewOutput {
+    func getWhichSign() -> String {
+        let defaults = UserDefaults.standard
+        return defaults.string(forKey: "WhichSign") ?? "email"
+    }
+    
     func didTapConfirmButton(with email: String?, and password: String?) {
             interactor.deleteAccount(email: email ?? "", password: password ?? "") { [weak self] result in
                 guard let self = self else {
@@ -54,6 +59,10 @@ extension DeleteAccountPresenter: DeleteAccountViewOutput {
     
     func getBack() {
         router.getBackToMainView()
+    }
+    
+    func didTapOnForgotPasswordButton() {
+        router.getForgotPasswordView()
     }
     
     struct Constants {

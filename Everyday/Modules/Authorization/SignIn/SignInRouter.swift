@@ -12,7 +12,18 @@ final class SignInRouter {
     weak var viewController: SignInViewController?
 }
 
-extension SignInRouter: SignInRouterInput {    
+extension SignInRouter: SignInRouterInput {
+    func routeToForgotPasswordView() {
+        guard let viewController = viewController else {
+            return
+        }
+        
+        let forgotPasswordContainer = ForgotPasswordContainer.assemble(with: .init())
+        let forgotPasswordViewController = forgotPasswordContainer.viewController
+        forgotPasswordViewController.modalPresentationStyle = .automatic
+        viewController.present(forgotPasswordViewController, animated: true)
+    }
+    
     func openApp() {
         if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
            let window = windowScene.windows.first(where: { $0.isKeyWindow }) {

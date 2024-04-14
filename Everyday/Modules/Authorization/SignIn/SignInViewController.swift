@@ -256,6 +256,7 @@ final class SignInViewController: UIViewController {
 
     @objc
     private func didTapOnForgotPassword() {
+        output.didTapOnForgotPassword()
     }
 
     @objc

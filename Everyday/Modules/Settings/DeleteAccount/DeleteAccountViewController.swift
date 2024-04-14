@@ -17,9 +17,10 @@ final class DeleteAccountViewController: UIViewController {
     private let passwordField = UITextField()
     private let emailField = UITextField()
     private let confirmButton = UIButton()
-    private let forgotPasswordButton = UIButton(type: .custom)
+    private let forgotPasswordButton = UIButton()
     private let scrollView = UIScrollView()
     private let contentView = UIView()
+    private let discriprionLabel = UILabel()
     let navBarTitle = UILabel()
     init(output: DeleteAccountViewOutput) {
         self.output = output
@@ -57,7 +58,12 @@ final class DeleteAccountViewController: UIViewController {
     }
     
     override func viewDidLayoutSubviews() {
-        layout()
+        switch output.getWhichSign() {
+        case "vk", "google", "anonym": layoutForOtherNonEmailSign()
+        case "email": layoutForSignWithEmail()
+        default:
+            print("Sign method error")
+        }
     }
 }
 
@@ -70,6 +76,7 @@ private extension DeleteAccountViewController {
         setupContentView()
         setupFields()
         setupButtons()
+        setupLabel()
     }
     
     func setupScrollView() {
@@ -78,7 +85,7 @@ private extension DeleteAccountViewController {
     }
     
     func setupContentView() {
-        contentView.addSubviews(emailField, passwordField, confirmButton, forgotPasswordButton)
+        contentView.addSubviews(emailField, passwordField, confirmButton, forgotPasswordButton, discriprionLabel)
     }
     
     func setupFields() {
@@ -102,12 +109,26 @@ private extension DeleteAccountViewController {
     func setupButtons() {
         confirmButton.backgroundColor = Constants.gray.withAlphaComponent(Constants.TextField.colorOpacity)
         confirmButton.layer.cornerRadius = Constants.cornerRadius
+        
         confirmButton.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
+
+        if output.getWhichSign() == Constants.emailSignMethod {
+            forgotPasswordButton.isHidden = false
+        } else {
+            forgotPasswordButton.isHidden = true
+        }
+        
+        forgotPasswordButton.addTarget(self, action: #selector(didTapForgotPasswordButton), for: .touchUpInside)
+    }
+    
+    func setupLabel() {
+        discriprionLabel.textAlignment = .center
+        discriprionLabel.numberOfLines = .max
     }
     
     // MARK: - Layout
     
-    func layout() {
+    func layoutForSignWithEmail() {
         scrollView.pin
             .top(view.pin.safeArea)
             .horizontally()
@@ -144,6 +165,43 @@ private extension DeleteAccountViewController {
             .marginTop(Constants.Button.marginTop)
             .marginRight(Constants.Button.margin)
             .marginLeft(Constants.Button.margin)
+        
+        forgotPasswordButton.pin
+            .hCenter()
+            .height(Constants.Button.height)
+            .width(Constants.Button.width)
+            .marginBottom(Constants.Button.marginBottom)
+            .bottom(to: contentView.edge.bottom)
+    }
+    
+    func layoutForOtherNonEmailSign() {
+        scrollView.pin
+            .top(view.pin.safeArea)
+            .horizontally()
+            .bottom(view.pin.safeArea)
+        
+        contentView.pin
+            .top(to: scrollView.edge.top)
+            .horizontally()
+            .bottom(to: scrollView.edge.bottom)
+        
+        confirmButton.pin
+            .left()
+            .right()
+            .top(to: contentView.edge.top)
+            .height(Constants.Button.height)
+            .marginTop(Constants.Button.marginTop)
+            .marginRight(Constants.Button.margin)
+            .marginLeft(Constants.Button.margin)
+        
+        discriprionLabel.pin
+            .left()
+            .right()
+            .top(to: confirmButton.edge.bottom)
+            .height(Constants.Label.height)
+            .marginTop(Constants.Label.marginTop)
+            .marginRight(Constants.Label.margin)
+            .marginLeft(Constants.Label.margin)
     }
     
     // MARK: - Actions
@@ -166,6 +224,11 @@ private extension DeleteAccountViewController {
             output.getBack()
         }
     }
+    
+    @objc
+    func didTapForgotPasswordButton() {
+        output.didTapOnForgotPasswordButton()
+    }
 }
 
 // MARK: - DeleteAccountViewInput
@@ -183,6 +246,8 @@ extension DeleteAccountViewController: DeleteAccountViewInput {
         emailField.attributedPlaceholder = model.emailFielfTitle
         passwordField.attributedPlaceholder = model.passwordFieldTitle
         confirmButton.setAttributedTitle(model.deleteButtonTitle, for: .normal)
+        discriprionLabel.attributedText = model.discriptionForDelete
+        forgotPasswordButton.setAttributedTitle(model.forgotPasswordTitle, for: .normal)
     }
 }
 
@@ -190,6 +255,7 @@ extension DeleteAccountViewController: DeleteAccountViewInput {
 
 private extension DeleteAccountViewController {
     struct Constants {
+        static let emailSignMethod: String = "email"
         static let backgroundColor: UIColor = .background
         static let accentColor: UIColor = UIColor.UI.accent
         static let textColor: UIColor = UIColor.Text.primary
@@ -201,16 +267,24 @@ private extension DeleteAccountViewController {
             static let margin: CGFloat = 20
             static let colorOpacity: CGFloat = 0.1
             static let marginTop: CGFloat = 10
-            static let matginBottom: CGFloat = 50
+            static let marginBottom: CGFloat = 50
             static let height: CGFloat = 50
+            static let width: CGFloat = 200
         }
         
         struct Button {
             static let margin: CGFloat = 20
             static let colorOpacity: CGFloat = 0.1
             static let marginTop: CGFloat = 60
-            static let matginBottom: CGFloat = 50
+            static let marginBottom: CGFloat = 50
             static let height: CGFloat = 50
+            static let width: CGFloat = 200
+        }
+        
+        struct Label {
+            static let margin: CGFloat = 20
+            static let marginTop: CGFloat = 20
+            static let height: CGFloat = 100
         }
     }
 }

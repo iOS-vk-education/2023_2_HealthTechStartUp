@@ -24,6 +24,7 @@ protocol SettingsUserDefaultsServiceDescription {
     func switchIsOn(key: Int) -> Bool
     func resetUserDefaults()
 }
+
 final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription {
     public static let shared = SettingsUserDefaultsService()
     
@@ -34,9 +35,9 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
         
         switch indexPath {
         case [0, 0]:
-            defaults.set(Constants.dateAndTimeKeys[0], forKey: "BeginningOfTheWeek")
+            defaults.set(Constants.dateAndTimeKeys[0], forKey: Constants.beginningOfTheWeekKey)
         default:
-            defaults.set(Constants.dateAndTimeKeys[1], forKey: "BeginningOfTheWeek")
+            defaults.set(Constants.dateAndTimeKeys[1], forKey: Constants.beginningOfTheWeekKey)
         }
     }
 
@@ -45,15 +46,15 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
         
         switch indexPath {
         case [1, 1]:
-            defaults.set(Constants.dateAndTimeKeys[3], forKey: "TimeFormat")
+            defaults.set(Constants.dateAndTimeKeys[3], forKey: Constants.timeFormat)
         default:
-            defaults.set(Constants.dateAndTimeKeys[2], forKey: "TimeFormat")
+            defaults.set(Constants.dateAndTimeKeys[2], forKey: Constants.timeFormat)
         }
     }
 
     func getSelectedTimeFormatIndexPath() -> IndexPath {
         let defaults = UserDefaults.standard
-        let currentFormat = defaults.string(forKey: "TimeFormat")
+        let currentFormat = defaults.string(forKey: Constants.timeFormat)
         
         switch currentFormat {
         case Constants.dateAndTimeKeys[3]:
@@ -64,7 +65,7 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
 
     func getSelectedBeginningOfTheWeekIndexPath() -> IndexPath {
         let defaults = UserDefaults.standard
-        let currentFormat = defaults.string(forKey: "BeginningOfTheWeek")
+        let currentFormat = defaults.string(forKey: Constants.beginningOfTheWeekKey)
         
         switch currentFormat {
         case Constants.dateAndTimeKeys[0]:
@@ -74,12 +75,12 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
     }
         
     func getSelectedTheme() -> String? {
-        return UserDefaults.standard.string(forKey: "SelectedTheme")
+        return UserDefaults.standard.string(forKey: Constants.themeKey)
     }
 
     func setAutoTheme() {
         let defaults = UserDefaults.standard
-        defaults.set(Constants.themeKeys[0], forKey: "SelectedTheme")
+        defaults.set(Constants.themeKeys[0], forKey: Constants.themeKey)
         if #available(iOS 13.0, *) {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                 if let window = windowScene.windows.first {
@@ -93,7 +94,7 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
 
     func setDarkTheme() {
         let defaults = UserDefaults.standard
-        defaults.set(Constants.themeKeys[1], forKey: "SelectedTheme")
+        defaults.set(Constants.themeKeys[1], forKey: Constants.themeKey)
         if #available(iOS 13.0, *) {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                 if let window = windowScene.windows.first {
@@ -107,7 +108,7 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
 
     func setLightTheme() {
         let defaults = UserDefaults.standard
-        defaults.set(Constants.themeKeys[2], forKey: "SelectedTheme")
+        defaults.set(Constants.themeKeys[2], forKey: Constants.themeKey)
         if #available(iOS 13.0, *) {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
                 if let window = windowScene.windows.first {
@@ -173,9 +174,9 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
 
     func resetUserDefaults() {
         let defaults = UserDefaults.standard
-        defaults.set("Auto", forKey: "SelectedTheme")
-        defaults.set("Monday", forKey: "BeginningOfTheWeek")
-        defaults.set("MilitaryTime", forKey: "TimeFormat")
+        defaults.set("Auto", forKey: Constants.themeKey)
+        defaults.set("Monday", forKey: Constants.beginningOfTheWeekKey)
+        defaults.set("MilitaryTime", forKey: Constants.timeFormat)
         defaults.set(true, forKey: Constants.switchKeys[0])
         defaults.set(true, forKey: Constants.switchKeys[1])
         defaults.set("email", forKey: "WhichSign")
@@ -184,6 +185,9 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
 
 private extension SettingsUserDefaultsService {
     struct Constants {
+        static let themeKey = "SelectedTheme"
+        static let beginningOfTheWeekKey = "BeginningOfTheWeek"
+        static let timeFormat = "TimeFormat"
         static let themeKeys = ["Auto", "Dark", "Light"]
         static let switchKeys = ["soundSwitchIsEnabled", "autolockSwitchIsEnabled"]
         static let dateAndTimeKeys = ["Sunday", "Monday", "MilitaryTime", "AM/PM"]

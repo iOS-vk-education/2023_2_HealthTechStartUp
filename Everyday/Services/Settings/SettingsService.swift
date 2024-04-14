@@ -14,8 +14,11 @@ protocol SettingsServiceDescription {
     func getUserProfileImage(completion: @escaping (Result<Void, Error>, UIImage?) -> Void)
     func deleteEmailAccount(with userRequest: DeleteAccountModel, whichSign: String, completion: @escaping (Result<Void, Error>) -> Void)
     func deleteAnonymAccount(with whichSign: String, completion: @escaping (Result<Void, Error>) -> Void)
+    func deleteGoogleAccount(with whichSign: String, completion: @escaping (Result<Void, Error>) -> Void)
+    func deleteVkAccount(with whichSign: String, completion: @escaping (Result<Void, Error>) -> Void)
     func updateUserImage(image: UIImage, completion: @escaping (Result<Void, Error>) -> Void)
     func updateUserName(username: String, completion: @escaping (Result<Void, Error>) -> Void)
+    func sendForgotPasswordMessage(email: String, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 final class SettingsService: SettingsServiceDescription {
@@ -108,8 +111,43 @@ final class SettingsService: SettingsServiceDescription {
         }
     }
     
+    func deleteGoogleAccount(with whichSign: String, completion: @escaping (Result<Void, any Error>) -> Void) {
+        let coreData = CoreDataService.shared
+        firebaseService.deleteGoogleAccount { success, error in
+            if let error = error {
+                completion(.failure(error))
+            } else if success {
+                coreData.deleteAuthType(authType: whichSign)
+                completion(.success(()))
+            }
+        }
+    }
+    
+    func deleteVkAccount(with whichSign: String, completion: @escaping (Result<Void, any Error>) -> Void) {
+        let coreData = CoreDataService.shared
+        firebaseService.deleteVkAccount { success, error in
+            if let error = error {
+                completion(.failure(error))
+            } else if success {
+                KeychainService.clearAll()
+                coreData.deleteAuthType(authType: whichSign)
+                completion(.success(()))
+            }
+        }
+    }
+    
     func changePassword(with userRequest: ChangePasswordModel, completion: @escaping (Result<Void, Error>) -> Void) {
         firebaseService.updatePassword(with: userRequest) { success, error in
+            if let error = error {
+                completion(.failure(error))
+            } else if success {
+                completion(.success(()))
+            }
+        }
+    }
+    
+    func sendForgotPasswordMessage(email: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        firebaseService.resetPassword(email: email) { success, error in
             if let error = error {
                 completion(.failure(error))
             } else if success {

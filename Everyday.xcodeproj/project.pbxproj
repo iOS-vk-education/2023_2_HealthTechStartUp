@@ -76,8 +76,15 @@
 		8C3B5EF82BB75C9F00CFE490 /* FirebaseService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EF72BB75C9F00CFE490 /* FirebaseService.swift */; };
 		8C3B5EFB2BB75DA200CFE490 /* SettingsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EFA2BB75DA200CFE490 /* SettingsService.swift */; };
 		8C3B5EFD2BB8F2CF00CFE490 /* ProfileViewModelSingWithVKOrGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EFC2BB8F2CF00CFE490 /* ProfileViewModelSingWithVKOrGoogle.swift */; };
-		8C3B5F012BBA058800CFE490 /* AuthUserDefaults.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5F002BBA058800CFE490 /* AuthUserDefaults.swift */; };
+		8C3B5F012BBA058800CFE490 /* AuthUserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5F002BBA058800CFE490 /* AuthUserDefaultsService.swift */; };
 		8C3B5F032BBA158F00CFE490 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5F022BBA158F00CFE490 /* ProfileViewModel.swift */; };
+		8CBF07A52BCC5B38005D1E0D /* ForgotPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07A42BCC5B38005D1E0D /* ForgotPasswordPresenter.swift */; };
+		8CBF07A72BCC5B4C005D1E0D /* ForgotPasswordContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07A62BCC5B4C005D1E0D /* ForgotPasswordContainer.swift */; };
+		8CBF07A92BCC5B5E005D1E0D /* ForgotPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07A82BCC5B5E005D1E0D /* ForgotPasswordInteractor.swift */; };
+		8CBF07AB2BCC5B72005D1E0D /* ForgotPasswordProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07AA2BCC5B72005D1E0D /* ForgotPasswordProtocols.swift */; };
+		8CBF07AD2BCC5B8B005D1E0D /* ForgotPasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07AC2BCC5B8B005D1E0D /* ForgotPasswordRouter.swift */; };
+		8CBF07AF2BCC5B9D005D1E0D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07AE2BCC5B9D005D1E0D /* ForgotPasswordViewController.swift */; };
+		8CBF07B22BCC66C4005D1E0D /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07B12BCC66C4005D1E0D /* ForgotPasswordViewModel.swift */; };
 		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
 		9E2A8BC92B850461004A81CF /* FIrebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */; };
 		9E2A8BCD2B8520B2004A81CF /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */; };
@@ -300,8 +307,15 @@
 		8C3B5EF72BB75C9F00CFE490 /* FirebaseService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FirebaseService.swift; sourceTree = "<group>"; };
 		8C3B5EFA2BB75DA200CFE490 /* SettingsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		8C3B5EFC2BB8F2CF00CFE490 /* ProfileViewModelSingWithVKOrGoogle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelSingWithVKOrGoogle.swift; sourceTree = "<group>"; };
-		8C3B5F002BBA058800CFE490 /* AuthUserDefaults.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserDefaults.swift; sourceTree = "<group>"; };
+		8C3B5F002BBA058800CFE490 /* AuthUserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserDefaultsService.swift; sourceTree = "<group>"; };
 		8C3B5F022BBA158F00CFE490 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		8CBF07A42BCC5B38005D1E0D /* ForgotPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPresenter.swift; sourceTree = "<group>"; };
+		8CBF07A62BCC5B4C005D1E0D /* ForgotPasswordContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordContainer.swift; sourceTree = "<group>"; };
+		8CBF07A82BCC5B5E005D1E0D /* ForgotPasswordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordInteractor.swift; sourceTree = "<group>"; };
+		8CBF07AA2BCC5B72005D1E0D /* ForgotPasswordProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordProtocols.swift; sourceTree = "<group>"; };
+		8CBF07AC2BCC5B8B005D1E0D /* ForgotPasswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordRouter.swift; sourceTree = "<group>"; };
+		8CBF07AE2BCC5B9D005D1E0D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
+		8CBF07B12BCC66C4005D1E0D /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
 		9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
@@ -700,9 +714,31 @@
 		8C3B5EFF2BBA056000CFE490 /* UserDefaults */ = {
 			isa = PBXGroup;
 			children = (
-				8C3B5F002BBA058800CFE490 /* AuthUserDefaults.swift */,
+				8C3B5F002BBA058800CFE490 /* AuthUserDefaultsService.swift */,
 			);
 			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		8CBF079F2BCC587A005D1E0D /* ForgotPassword */ = {
+			isa = PBXGroup;
+			children = (
+				8CBF07B02BCC66A0005D1E0D /* Models */,
+				8CBF07A42BCC5B38005D1E0D /* ForgotPasswordPresenter.swift */,
+				8CBF07A62BCC5B4C005D1E0D /* ForgotPasswordContainer.swift */,
+				8CBF07A82BCC5B5E005D1E0D /* ForgotPasswordInteractor.swift */,
+				8CBF07AA2BCC5B72005D1E0D /* ForgotPasswordProtocols.swift */,
+				8CBF07AC2BCC5B8B005D1E0D /* ForgotPasswordRouter.swift */,
+				8CBF07AE2BCC5B9D005D1E0D /* ForgotPasswordViewController.swift */,
+			);
+			path = ForgotPassword;
+			sourceTree = "<group>";
+		};
+		8CBF07B02BCC66A0005D1E0D /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8CBF07B12BCC66C4005D1E0D /* ForgotPasswordViewModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		9E1383072BAB03240073622C /* CoreData */ = {
@@ -1282,6 +1318,7 @@
 		9EE8AE082B7FB8BC001D126F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				8CBF079F2BCC587A005D1E0D /* ForgotPassword */,
 				8C3B5E632BAF76FD00CFE490 /* DeleteAccount */,
 				8C3B5E622BAF76E900CFE490 /* ChangePassword */,
 				8C3B5E612BAF76E200CFE490 /* ChangeEmail */,
@@ -1498,6 +1535,7 @@
 				9E4F22CE2B9F3C51003E749E /* ExtraContainer.swift in Sources */,
 				8C3B5ED92BAF7DD400CFE490 /* DeleteAccountProtocols.swift in Sources */,
 				9EE8AE392B7FB96E001D126F /* WorkoutProtocols.swift in Sources */,
+				8CBF07AD2BCC5B8B005D1E0D /* ForgotPasswordRouter.swift in Sources */,
 				9E4F226E2B9F3B8F003E749E /* NotepadPresenter.swift in Sources */,
 				9EE3359B2B8F9CDC00F532B3 /* SplashViewController.swift in Sources */,
 				9EE8AE132B7FB8CF001D126F /* SettingsInteractor.swift in Sources */,
@@ -1518,6 +1556,7 @@
 				9E5B753B2B7F9D7600E2BDE6 /* GenderController.swift in Sources */,
 				9E4382D32B83738800C69708 /* InfoPlist.swift in Sources */,
 				9E5B74E92B7F99FB00E2BDE6 /* WelcomeScreenContainer.swift in Sources */,
+				8CBF07A72BCC5B4C005D1E0D /* ForgotPasswordContainer.swift in Sources */,
 				9EE8AE142B7FB8CF001D126F /* SettingsContainer.swift in Sources */,
 				9E5B75402B7F9D7600E2BDE6 /* PageViewModel.swift in Sources */,
 				9E4F22AF2B9F3C05003E749E /* ResultsProtocols.swift in Sources */,
@@ -1568,6 +1607,7 @@
 				8C3B5ECB2BAF7D4300CFE490 /* ChangePasswordProtocols.swift in Sources */,
 				8C3B5E6F2BAF77DC00CFE490 /* SettingsViewModel.swift in Sources */,
 				8C3B5E8A2BAF798F00CFE490 /* ThemePresenter.swift in Sources */,
+				8CBF07A52BCC5B38005D1E0D /* ForgotPasswordPresenter.swift in Sources */,
 				9E53FB4E2B7F950B00C55A45 /* Color+Extension.swift in Sources */,
 				9E4766DA2B9FC0BD00DD31B9 /* View+Extension.swift in Sources */,
 				8C3B5EC82BAF7D4300CFE490 /* ChangePasswordPresenter.swift in Sources */,
@@ -1576,9 +1616,11 @@
 				8C3B5E7B2BAF78D100CFE490 /* ProfileProtocols.swift in Sources */,
 				9EBFD9652BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift in Sources */,
 				9E4382D52B83738800C69708 /* AuthService.swift in Sources */,
+				8CBF07A92BCC5B5E005D1E0D /* ForgotPasswordInteractor.swift in Sources */,
 				8C3B5EBB2BAF7CA500CFE490 /* ChangeEmailRouter.swift in Sources */,
 				8C3B5E712BAF780200CFE490 /* ProfileViewModelSingWithEmail.swift in Sources */,
 				8C3B5EBE2BAF7CA500CFE490 /* ChangeEmailInteractor.swift in Sources */,
+				8CBF07AB2BCC5B72005D1E0D /* ForgotPasswordProtocols.swift in Sources */,
 				9EE3359D2B8F9CEA00F532B3 /* SplashPresenter.swift in Sources */,
 				9E4766D82B9F516F00DD31B9 /* StorageService.swift in Sources */,
 				9E53FB342B7F87BA00C55A45 /* AppDelegate.swift in Sources */,
@@ -1613,6 +1655,7 @@
 				8C3B5EAD2BAF7BC400CFE490 /* UnitsProtocols.swift in Sources */,
 				9E5B75412B7F9D7600E2BDE6 /* PageView.swift in Sources */,
 				8C3B5EA32BAF7BAA00CFE490 /* UnitsViewModel.swift in Sources */,
+				8CBF07B22BCC66C4005D1E0D /* ForgotPasswordViewModel.swift in Sources */,
 				9E53FB502B7F951000C55A45 /* UIColor+Extension.swift in Sources */,
 				9E53FB4C2B7F950400C55A45 /* UIView+Extension.swift in Sources */,
 				9EBFD9672BAB273400A1891D /* CoreDataService.swift in Sources */,
@@ -1635,7 +1678,7 @@
 				9E7C199B2B8D0EC50006D48C /* SignInModel.swift in Sources */,
 				9E4F22C12B9F3C2E003E749E /* TimerRouter.swift in Sources */,
 				8C3B5E9F2BAF7A2700CFE490 /* DateAndTimeContainer.swift in Sources */,
-				8C3B5F012BBA058800CFE490 /* AuthUserDefaults.swift in Sources */,
+				8C3B5F012BBA058800CFE490 /* AuthUserDefaultsService.swift in Sources */,
 				9E5B75432B7F9D7600E2BDE6 /* AgeModel.swift in Sources */,
 				8C3B5E9A2BAF7A2700CFE490 /* DateAndTimePresenter.swift in Sources */,
 				8C3B5EAA2BAF7BC400CFE490 /* UnitsPresenter.swift in Sources */,
@@ -1647,6 +1690,7 @@
 				9E5B74FB2B7F9A7000E2BDE6 /* SignUpPresenter.swift in Sources */,
 				8C3B5ECC2BAF7D4300CFE490 /* ChangePasswordInteractor.swift in Sources */,
 				8C3B5E912BAF79E900CFE490 /* ThemeTableViewCell.swift in Sources */,
+				8CBF07AF2BCC5B9D005D1E0D /* ForgotPasswordViewController.swift in Sources */,
 				9E5B750A2B7F9A8300E2BDE6 /* SignInViewController.swift in Sources */,
 				8C3B5E7A2BAF78D100CFE490 /* ProfileViewController.swift in Sources */,
 				9E4F22AD2B9F3C05003E749E /* ResultsPresenter.swift in Sources */,
@@ -1817,7 +1861,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = NS3YD2TYB9;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -1832,7 +1876,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Health.Everyday;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Health.Everydayyy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1848,7 +1892,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = NS3YD2TYB9;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -1863,7 +1907,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Health.Everyday;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Health.Everydayyy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

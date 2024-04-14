@@ -16,14 +16,6 @@ final class ChangeEmailInteractor {
     init(settingsService: SettingsServiceDescription) {
         self.settingsService = settingsService
     }
-    
-    private func performAuthAction(flag: Bool, viewController: UIViewController,
-                                   action: (_ viewController: UIViewController, _ completion: @escaping (Result<Void, Error>) -> Void) -> Void,
-                                   completion: @escaping (Result<Void, Error>) -> Void) {
-        action(viewController) { result in
-            completion(result)
-        }
-    }
 }
 
 extension ChangeEmailInteractor: ChangeEmailInteractorInput {

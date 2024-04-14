@@ -11,44 +11,44 @@ import PinLayout
 
 final class UnitsViewController: UIViewController {
     private let output: UnitsViewOutput
+    
+    private let tableView = UITableView(frame: .zero, style: .insetGrouped)
+    private let navBarTitle = UILabel()
+    
+    // MARK: - lifecycle
+    
+    init(output: UnitsViewOutput) {
+        self.output = output
         
-        private let tableView = UITableView(frame: .zero, style: .insetGrouped)
-        private let navBarTitle = UILabel()
-
-        // MARK: - lifecycle
-        
-        init(output: UnitsViewOutput) {
-            self.output = output
-
-            super.init(nibName: nil, bundle: nil)
-        }
-
-        @available(*, unavailable)
-        required init?(coder aDecoder: NSCoder) {
-            fatalError("init(coder:) has not been implemented")
-        }
-
-    override func viewDidLoad() {
-            super.viewDidLoad()
-            
-            view.backgroundColor = Constants.backgroundColor
-            
-            let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
-            self.view.addGestureRecognizer(swipeRightGestureRecognizer)
-            
-            navBarTitle.attributedText = UnitsViewModel().unitsTitle
-            self.navigationItem.titleView = navBarTitle
-            navigationController?.navigationBar.tintColor = Constants.accentColor
-            
-            navigationController?.navigationBar.isHidden = false
-            
-            setup()
-        }
-        
-        override func viewWillLayoutSubviews() {
-            layout()
-        }
+        super.init(nibName: nil, bundle: nil)
     }
+    
+    @available(*, unavailable)
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        view.backgroundColor = Constants.backgroundColor
+        
+        let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
+        self.view.addGestureRecognizer(swipeRightGestureRecognizer)
+        
+        navBarTitle.attributedText = UnitsViewModel().unitsTitle
+        self.navigationItem.titleView = navBarTitle
+        navigationController?.navigationBar.tintColor = Constants.accentColor
+        
+        navigationController?.navigationBar.isHidden = false
+        
+        setup()
+    }
+    
+    override func viewWillLayoutSubviews() {
+        layout()
+    }
+}
 
 // MARK: - Setup
 
@@ -193,7 +193,7 @@ extension UnitsViewController: UITableViewDelegate {
         footerView.attributedText = UnitsViewModel().aboutUnitsTitle
         footerView.textAlignment = .center
         footerView.numberOfLines = .max
-
+        
         if section == 3 {
             return footerView
         } else {

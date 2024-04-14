@@ -12,13 +12,17 @@ struct ChangeEmailViewModel {
     let newEmailFieldTitle: NSAttributedString
     let passwordFieldTitle: NSAttributedString
     let confirmButtonTitle: NSAttributedString
+    let forgotPasswordTitle: NSAttributedString
+    
     init() {
         self.changeEmailTitle = NSAttributedString(string: "ChangeEmail_title".localized, attributes: Styles.titleAttributesBold)
         self.newEmailFieldTitle = NSAttributedString(string: "ChangeEmail_NewEmailField_title".localized, attributes: Styles.titleAttributes)
         self.passwordFieldTitle = NSAttributedString(string: "ChangeEmail_PasswordField_title".localized, attributes: Styles.titleAttributes)
         self.confirmButtonTitle = NSAttributedString(string: "ChangeEmail_ConfirmButton_title".localized, attributes: Styles.titleAttributes)
+        self.forgotPasswordTitle = NSAttributedString(string: "ForgotPassword_title".localized, attributes: Styles.titleAttributes)
     }
 }
+
 private extension ChangeEmailViewModel {
     struct Styles {
         static let titleAttributes: [NSAttributedString.Key: Any] = [

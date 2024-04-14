@@ -11,11 +11,16 @@ struct DeleteAccountViewModel {
     let emailFielfTitle: NSAttributedString
     let passwordFieldTitle: NSAttributedString
     let deleteButtonTitle: NSAttributedString
+    let discriptionForDelete: NSAttributedString
+    let forgotPasswordTitle: NSAttributedString
+    
     init() {
         self.deleteAcountTitle = NSAttributedString(string: "DeleteAccount_title".localized, attributes: Styles.titleAttributesBold)
         self.emailFielfTitle = NSAttributedString(string: "DeleteAccount_EmailField_title".localized, attributes: Styles.titleAttributes)
         self.passwordFieldTitle = NSAttributedString(string: "DeleteAccount_PasswordField_title".localized, attributes: Styles.titleAttributes)
         self.deleteButtonTitle = NSAttributedString(string: "DeleteAccount_Delete_title".localized, attributes: Styles.titleAttributesRed)
+        self.discriptionForDelete = NSAttributedString(string: "DeleteAccount_toDeleteAccount_title".localized, attributes: Styles.titleAttributes)
+        self.forgotPasswordTitle = NSAttributedString(string: "ForgotPassword_title".localized, attributes: Styles.titleAttributes)
     }
 }
 

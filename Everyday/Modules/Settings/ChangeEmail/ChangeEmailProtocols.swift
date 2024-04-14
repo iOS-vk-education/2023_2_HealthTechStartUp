@@ -24,6 +24,7 @@ protocol ChangeEmailViewOutput: AnyObject {
     func didTapConfirmButton(with email: String?, and password: String?)
     func didLoadView()
     func getBack()
+    func didTapOnForgotPasswordButton()
 }
 
 protocol ChangeEmailInteractorInput: AnyObject {
@@ -35,4 +36,5 @@ protocol ChangeEmailInteractorOutput: AnyObject {
 
 protocol ChangeEmailRouterInput: AnyObject {
     func getBackToMainView()
+    func getForgotPasswordView()
 }

@@ -18,7 +18,7 @@ final class ChangePasswordViewController: UIViewController {
     private let passwordField = UITextField()
     private let oldPasswordField = UITextField()
     private let confirmButton = UIButton()
-    private let forgotPasswordButton = UIButton(type: .custom)
+    private let forgotPasswordButton = UIButton()
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     let navBarTitle = UILabel()
@@ -104,6 +104,8 @@ private extension ChangePasswordViewController {
         confirmButton.layer.cornerRadius = Constants.cornerRadius
         
         confirmButton.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
+        
+        forgotPasswordButton.addTarget(self, action: #selector(didTapForgotPasswordButton), for: .touchUpInside)
     }
     
     // MARK: - Layout
@@ -145,6 +147,13 @@ private extension ChangePasswordViewController {
             .marginTop(Constants.Button.marginTop)
             .marginRight(Constants.Button.margin)
             .marginLeft(Constants.Button.margin)
+        
+        forgotPasswordButton.pin
+            .hCenter()
+            .height(Constants.Button.height)
+            .width(Constants.Button.width)
+            .marginBottom(Constants.Button.marginBottom)
+            .bottom(to: contentView.edge.bottom)
     }
     
     // MARK: - Actions
@@ -168,6 +177,11 @@ private extension ChangePasswordViewController {
             output.getBack()
         }
     }
+    
+    @objc
+    func didTapForgotPasswordButton() {
+        output.didTapOnForgotPasswordButton()
+    }
 }
 
 // MARK: - ChangePasswordViewInput
@@ -187,6 +201,7 @@ extension ChangePasswordViewController: ChangePasswordViewInput {
         oldPasswordField.attributedPlaceholder = model.oldPasswordFieldTitle
         passwordField.attributedPlaceholder = model.newPasswordFieldTitle
         confirmButton.setAttributedTitle(model.confirmButtonTitle, for: .normal)
+        forgotPasswordButton.setAttributedTitle(model.forgotPasswordTitle, for: .normal)
     }
 }
 
@@ -213,8 +228,9 @@ private extension ChangePasswordViewController {
             static let margin: CGFloat = 20
             static let colorOpacity: CGFloat = 0.1
             static let marginTop: CGFloat = 60
-            static let matginBottom: CGFloat = 50
+            static let marginBottom: CGFloat = 50
             static let height: CGFloat = 50
+            static let width: CGFloat = 200
         }
     }
 }

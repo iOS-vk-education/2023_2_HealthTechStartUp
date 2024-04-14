@@ -7,22 +7,26 @@
 
 import Foundation
 import Firebase
+import FirebaseAuth
 
 protocol FirebaseServiceDescription {
     func updateEmail(with: ChangeEmailModel, completion: @escaping (Bool, Error?) -> Void)
     func updatePassword(with: ChangePasswordModel, completion: @escaping (Bool, Error?) -> Void)
     func fetchUserName(completion: @escaping (Bool, Error?, String?) -> Void)
     func fetchUserProfileImage(completion: @escaping (Bool, Error?, UIImage?) -> Void)
-    func deleteOldImage(completion: @escaping (Bool, Error?) -> Void)
+    func deleteOldImage(userId: String, completion: @escaping (Bool, Error?) -> Void)
     func updateProfileImagePath(path: String, completion: @escaping (Bool, Error?) -> Void)
     func deleteEmailAccount(email: String, password: String, completion: @escaping (Bool, Error?) -> Void)
     func deleteAnonymAccount(completion: @escaping (Bool, Error?) -> Void)
+    func deleteGoogleAccount(completion: @escaping (Bool, Error?) -> Void)
     func deleteVkAccount(completion: @escaping (Bool, Error?) -> Void)
     func updateUserImage(image: UIImage, completion: @escaping (Bool, Error?) -> Void)
     func updateNickname(username: String, completion: @escaping (Bool, Error?) -> Void)
     func currentUser(completion: @escaping (User?, Error?) -> Void)
     func changeFieldInFireBase(field: String, value: String, completion: @escaping (Bool, Error?) -> Void)
     func deleteUserInFirebase(user: User, userId: String, completion: @escaping(Bool, Error?) -> Void)
+    func signOut(completion: @escaping (Bool, Error?) -> Void)
+    func resetPassword(email: String, completion: @escaping(Bool, Error?) -> Void)
 }
 
 final class FirebaseService {
@@ -48,11 +52,11 @@ extension FirebaseService: FirebaseServiceDescription {
         }
         
         let reference = db.collection(Constants.user).document(userUID)
-
+        
         reference.updateData([
             field: value
         ]) { error in
-            guard error != nil else {
+            guard error == nil else {
                 completion(false, error)
                 return
             }
@@ -60,20 +64,30 @@ extension FirebaseService: FirebaseServiceDescription {
         }
     }
     
+    func signOut(completion: @escaping (Bool, Error?) -> Void) {
+        do {
+            try Auth.auth().signOut()
+            completion(true, nil)
+        } catch let error {
+            completion(false, error)
+        }
+    }
+    
     func deleteUserInFirebase(user: User, userId: String, completion: @escaping (Bool, Error?) -> Void) {
         user.delete { error in
-            guard error != nil else {
+            guard error == nil else {
                 completion(false, error)
                 return
             }
         }
-        self.db.collection(Constants.user).document(userId).delete { error in
-            guard error != nil else {
+        
+        self.deleteOldImage(userId: userId) { _, error in
+            guard error == nil else {
                 completion(false, error)
                 return
             }
-            self.deleteOldImage { _, error in
-                guard error != nil else {
+            self.db.collection(Constants.user).document(userId).delete { error in
+                guard error == nil else {
                     completion(false, error)
                     return
                 }
@@ -81,7 +95,7 @@ extension FirebaseService: FirebaseServiceDescription {
             }
         }
     }
-
+    
     func updateEmail(with model: ChangeEmailModel, completion: @escaping (Bool, Error?) -> Void) {
         self.currentUser { user, error in
             guard let currentUser = user else {
@@ -142,7 +156,7 @@ extension FirebaseService: FirebaseServiceDescription {
                 }
                 
                 currentUser.updatePassword(to: model.newPassword) { error in
-                    guard error != nil else {
+                    guard error == nil else {
                         completion(false, error)
                         return
                     }
@@ -187,7 +201,28 @@ extension FirebaseService: FirebaseServiceDescription {
             completion(true, nil)
         }
     }
-
+    
+    func deleteGoogleAccount(completion: @escaping (Bool, Error?) -> Void) {
+        self.currentUser { user, error in
+            guard let currentUser = user else {
+                completion(false, error)
+                return
+            }
+            let userId = currentUser.uid
+            
+            if currentUser.providerData.contains(where: { $0.providerID == "google.com" }) {
+                self.deleteUserInFirebase(user: currentUser, userId: userId) { _, error in
+                    guard error == nil else {
+                        completion(false, error)
+                        return
+                    }
+                    completion(true, nil)
+                }
+            }
+        }
+            completion(false, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не найден"]))
+    }
+    
     func deleteEmailAccount(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
         self.currentUser { user, error in
             guard let currentUser = user else {
@@ -197,37 +232,20 @@ extension FirebaseService: FirebaseServiceDescription {
             let userId = currentUser.uid
             
             let credential = EmailAuthProvider.credential(withEmail: email, password: password)
-        
+            
             currentUser.reauthenticate(with: credential) { _, error in
-                guard error != nil else {
+                guard error == nil else {
                     completion(false, error)
                     return
                 }
                 
                 self.deleteUserInFirebase(user: currentUser, userId: userId) { _, error in
-                    guard error != nil else {
+                    guard error == nil else {
                         completion(false, error)
                         return
                     }
                     completion(true, nil)
                 }
-            }
-        }
-    }
-    
-    func deleteAnonymOrGoogleAccount(userUID: String, currentUser: User, whichSign: String, completion: @escaping (Bool, Error?) -> Void) {
-        currentUser.delete { error in
-            guard error == nil else {
-                completion(false, error)
-                return
-            }
-            
-            self.db.collection(Constants.user).document(userUID).delete { error in
-                guard error == nil else {
-                    completion(false, error)
-                    return
-                }
-                completion(true, nil)
             }
         }
     }
@@ -295,11 +313,9 @@ extension FirebaseService: FirebaseServiceDescription {
             }
     }
     
-    func deleteOldImage(completion: @escaping (Bool, Error?) -> Void) {
-        guard let userId = Auth.auth().currentUser?.uid else {
-            completion(false, NSError(domain: "FirebaseAuthService", code: 0, userInfo: [NSLocalizedDescriptionKey: "UID пользователя не найден"]))
-            return
-        }
+    func deleteOldImage(userId: String, completion: @escaping (Bool, Error?) -> Void) {
+        var isImageDeleted = false
+        let lock = NSLock()
         
         let db = Firestore.firestore()
         db.collection(Constants.user)
@@ -313,10 +329,22 @@ extension FirebaseService: FirebaseServiceDescription {
                 if let snapshot = snapshot,
                    let snapshotData = snapshot.data(),
                    let profileOldImagePath = snapshotData[Constants.profileImage] as? String {
+                    lock.lock()
+                    defer {
+                        lock.unlock()
+                    }
+                    
+                    guard !isImageDeleted else {
+                        completion(true, nil)
+                        return
+                    }
+                    
                     let storage: StorageServiceDescription = StorageService.shared
                     Task {
                         do {
                             try await storage.deleteOldImage(userId: userId, path: profileOldImagePath)
+                            isImageDeleted = true
+                            completion(true, nil)
                         } catch {
                             completion(false, error)
                         }
@@ -343,7 +371,7 @@ extension FirebaseService: FirebaseServiceDescription {
         
         Task {
             do {
-                deleteOldImage { _, error in
+                deleteOldImage(userId: userId) { _, error in
                     guard error == nil else {
                         completion(false, error)
                         return
@@ -353,7 +381,7 @@ extension FirebaseService: FirebaseServiceDescription {
             }
         }
         
-            let storage: StorageServiceDescription = StorageService.shared
+        let storage: StorageServiceDescription = StorageService.shared
         Task {
             do {
                 let (path, _) = try await storage.saveImage(image: image, userId: userId)
@@ -372,6 +400,16 @@ extension FirebaseService: FirebaseServiceDescription {
     
     func updateNickname(username: String, completion: @escaping (Bool, Error?) -> Void) {
         changeFieldInFireBase(field: Constants.nickname, value: username) { _, error in
+            guard error == nil else {
+                completion(false, error)
+                return
+            }
+            completion(true, nil)
+        }
+    }
+    
+    func resetPassword(email: String, completion: @escaping (Bool, Error?) -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
             guard error == nil else {
                 completion(false, error)
                 return

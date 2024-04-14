@@ -12,11 +12,14 @@ struct ChangePasswordViewModel {
     let oldPasswordFieldTitle: NSAttributedString
     let newPasswordFieldTitle: NSAttributedString
     let confirmButtonTitle: NSAttributedString
+    let forgotPasswordTitle: NSAttributedString
+    
     init() {
         self.changePasswordTitle = NSAttributedString(string: "ChangePassword_title".localized, attributes: Styles.titleAttributesBold)
         self.oldPasswordFieldTitle = NSAttributedString(string: "ChangePassword_OldPasswordField_title".localized, attributes: Styles.titleAttributes)
         self.newPasswordFieldTitle = NSAttributedString(string: "ChangePassword_NewPasswordField_title".localized, attributes: Styles.titleAttributes)
         self.confirmButtonTitle = NSAttributedString(string: "ChangePassword_ConfirmButton_title".localized, attributes: Styles.titleAttributes)
+        self.forgotPasswordTitle = NSAttributedString(string: "ForgotPassword_title".localized, attributes: Styles.titleAttributes)
     }
 }
 private extension ChangePasswordViewModel {

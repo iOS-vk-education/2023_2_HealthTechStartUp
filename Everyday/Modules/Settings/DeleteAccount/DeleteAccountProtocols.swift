@@ -21,9 +21,11 @@ protocol DeleteAccountViewInput: AnyObject {
 }
 
 protocol DeleteAccountViewOutput: AnyObject {
+    func getWhichSign() -> String
     func didTapConfirmButton(with email: String?, and password: String?)
     func didLoadView()
     func getBack()
+    func didTapOnForgotPasswordButton()
 }
 
 protocol DeleteAccountInteractorInput: AnyObject {
@@ -36,4 +38,5 @@ protocol DeleteAccountInteractorOutput: AnyObject {
 protocol DeleteAccountRouterInput: AnyObject {
     func routeToAuthentication()
     func getBackToMainView()
+    func getForgotPasswordView()
 }

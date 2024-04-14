@@ -556,6 +556,40 @@
         }
       }
     },
+    "DeleteAccount_toDeleteAccount_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Deleting your account will result in complete loss of your data"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Удаление аккаунта приведет к полной потере Ваших данных"
+          }
+        }
+      }
+    },
+    "ForgotPassword_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Forgot password"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Забыл пароль"
+          }
+        }
+      }
+    },
     "Journal_Plan_Title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1540,8 +1574,8 @@
       "localizations" : {
         "en" : {
           "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Enter your name and, if you wish, add a photo for your profile"
+            "state" : "translated",
+            "value" : "Enter your name and add a photo"
           }
         },
         "ru" : {

@@ -13,6 +13,17 @@ final class ChangePasswordRouter {
 }
 
 extension ChangePasswordRouter: ChangePasswordRouterInput {
+    func getForgotPasswordView() {
+        guard let viewController = viewController else {
+            return
+        }
+        
+        let forgotPasswordContainer = ForgotPasswordContainer.assemble(with: .init())
+        let forgotPasswordViewController = forgotPasswordContainer.viewController
+        forgotPasswordViewController.modalPresentationStyle = .overFullScreen
+        viewController.navigationController?.pushViewController(forgotPasswordViewController, animated: true)
+    }
+    
     func getBackToMainView() {
         guard let viewController = viewController else {
             return

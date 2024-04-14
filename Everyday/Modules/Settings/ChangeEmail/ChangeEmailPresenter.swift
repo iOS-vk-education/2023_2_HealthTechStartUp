@@ -36,6 +36,10 @@ extension ChangeEmailPresenter: ChangeEmailModuleInput {
 }
 
 extension ChangeEmailPresenter: ChangeEmailViewOutput {
+    func didTapOnForgotPasswordButton() {
+        router.getForgotPasswordView()
+    }
+    
     func didTapConfirmButton(with email: String?, and password: String?) {
         guard let email = email, Validator.isValidEmail(for: email) else {
             view?.showAlert(with: Constants.email, message: Constants.invalidEmail)

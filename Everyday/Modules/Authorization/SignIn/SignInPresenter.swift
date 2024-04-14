@@ -31,6 +31,9 @@ extension SignInPresenter: SignInModuleInput {
 
 // MARK: - SignInViewOutput
 extension SignInPresenter: SignInViewOutput {
+    func didTapOnForgotPassword() {
+        router.routeToForgotPasswordView()
+    }
     
     func didTapSignInButton(with email: String?, and password: String?) {
         guard let email = email, Validator.isValidEmail(for: email) else {
@@ -72,16 +75,16 @@ extension SignInPresenter: SignInViewOutput {
         switch signInMethod {
         case .google:
             interactor.loginWithGoogle(with: signedUp)
-            setWhichSign(signMethod: .google)
+            AuthUserDefaultsService.shared.setWhichSign(signMethod: .google)
         case .vk:
             interactor.loginWithVK(with: signedUp)
-            setWhichSign(signMethod: .vk)
+            AuthUserDefaultsService.shared.setWhichSign(signMethod: .vk)
         case .anonym:
             interactor.loginWithAnonym(with: signedUp)
-            setWhichSign(signMethod: .anonym)
+            AuthUserDefaultsService.shared.setWhichSign(signMethod: .anonym)
         case .email:
             interactor.loginWithEmail(with: signedUp, email: email, password: password)
-            setWhichSign(signMethod: .email)
+            AuthUserDefaultsService.shared.setWhichSign(signMethod: .email)
         default:
             break 
         }
