@@ -28,8 +28,17 @@ extension SheetPresenter: SheetModuleInput {
 
 extension SheetPresenter: SheetViewOutput {
     func didLoadView() {
-        let viewModel = SheetViewModel()
+        let viewModel = SheetViewModel(sheetType: moduleType)
         view?.configure(with: viewModel)
+    }
+    
+    func didTapCloseButton() {
+        router.dismissSheet()
+    }
+    
+    func didTapSaveButton() {
+//        moduleOutput?.setResult(of: exercise.name, with: String(result), at: indexOfSet)
+        router.dismissSheet()
     }
 }
 

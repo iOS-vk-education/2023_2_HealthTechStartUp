@@ -24,6 +24,8 @@ final class SheetContainer {
         
         interactor.output = presenter
         
+        router.viewController = viewController
+        
         return SheetContainer(view: viewController, input: presenter, router: router)
     }
     

@@ -9,7 +9,15 @@
 import UIKit
 
 final class SheetRouter {
+    weak var viewController: SheetViewController?
 }
 
 extension SheetRouter: SheetRouterInput {
+    func dismissSheet() {
+        guard let viewController = viewController else {
+            return
+        }
+        
+        viewController.dismiss(animated: true)
+    }
 }

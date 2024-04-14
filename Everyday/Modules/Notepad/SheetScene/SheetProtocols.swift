@@ -21,6 +21,8 @@ protocol SheetViewInput: AnyObject {
 
 protocol SheetViewOutput: AnyObject {
     func didLoadView()
+    func didTapCloseButton()
+    func didTapSaveButton()
 }
 
 protocol SheetWeightViewOutput: AnyObject {
@@ -36,4 +38,5 @@ protocol SheetInteractorOutput: AnyObject {
 }
 
 protocol SheetRouterInput: AnyObject {
+    func dismissSheet()
 }

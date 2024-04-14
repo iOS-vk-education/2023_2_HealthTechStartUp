@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import PinLayout
 
 final class SheetViewController: UIViewController {
     
@@ -72,19 +73,20 @@ private extension SheetViewController {
     
     func layout() {
         closeButton.pin
-            .top(Constants.Button.padding)
+            .top(Constants.Button.padding + view.pin.safeArea.top)
             .left(Constants.Button.padding)
             .width(Constants.Button.width)
             .height(Constants.Button.height)
         
         saveButton.pin
-            .top(Constants.Button.padding)
+            .top(Constants.Button.padding + view.pin.safeArea.top)
             .right(Constants.Button.padding)
             .width(Constants.Button.width)
             .height(Constants.Button.height)
         
         contentView.pin
             .below(of: [closeButton, saveButton])
+            .marginTop(Constants.Button.padding)
             .bottom()
             .horizontally()
     }
@@ -98,17 +100,29 @@ private extension SheetViewController {
     }
     
     func setupView() {
-        view.backgroundColor = Constants.backgroundColor
-        
         view.addSubviews(closeButton, saveButton, contentView)
     }
     
     func setupCloseButton() {
         closeButton.tintColor = Constants.Button.backgroundColor
+        closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
     }
     
     func setupSaveButton() {
         saveButton.tintColor = Constants.Button.backgroundColor
+        saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
+    }
+
+    // MARK: - Actions
+    
+    @objc
+    func didTapCloseButton() {
+        output.didTapCloseButton()
+    }
+    
+    @objc
+    func didTapSaveButton() {
+        output.didTapSaveButton()
     }
 }
 
@@ -116,6 +130,7 @@ private extension SheetViewController {
 
 extension SheetViewController: SheetViewInput {
     func configure(with viewModel: SheetViewModel) {
+        view.backgroundColor = viewModel.backgroundColor
         closeButton.setImage(viewModel.closeImage, for: .normal)
         saveButton.setImage(viewModel.saveImage, for: .normal)
     }
@@ -125,8 +140,6 @@ extension SheetViewController: SheetViewInput {
 
 private extension SheetViewController {
     struct Constants {
-        static let backgroundColor: UIColor = .background
-        
         struct Button {
             static let backgroundColor: UIColor = .UI.accent
             static let padding: CGFloat = 8
