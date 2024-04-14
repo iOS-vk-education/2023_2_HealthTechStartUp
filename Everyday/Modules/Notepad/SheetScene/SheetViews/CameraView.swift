@@ -66,11 +66,12 @@ private extension CameraView {
     }
     
     func setupView() {
-        self.backgroundColor = Constants.backgroundColor
+        self.backgroundColor = .clear
     }
     
     func setupPreviewLayer() {
         previewLayer.backgroundColor = Constants.PreviewLayer.backgroundColor.cgColor
+        previewLayer.cornerRadius = 16
     }
     
     func setupShutterButton() {

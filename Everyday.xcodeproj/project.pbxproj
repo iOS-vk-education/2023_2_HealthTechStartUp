@@ -37,9 +37,11 @@
 		9D7132DD2BC93CF300B5ACF8 /* SheetType.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132DC2BC93CF300B5ACF8 /* SheetType.swift */; };
 		9D7132E02BC93E5500B5ACF8 /* SheetBaseView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132DF2BC93E5500B5ACF8 /* SheetBaseView.swift */; };
 		9D7132E42BC944C300B5ACF8 /* WeigthMeasureView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132E32BC944C300B5ACF8 /* WeigthMeasureView.swift */; };
-		9D7132E62BC9453200B5ACF8 /* StateChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132E52BC9453200B5ACF8 /* StateChoiceView.swift */; };
+		9D7132E62BC9453200B5ACF8 /* ConditionChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132E52BC9453200B5ACF8 /* ConditionChoiceView.swift */; };
 		9D9517132BC57566004EB96A /* ExtraTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9517122BC57566004EB96A /* ExtraTableViewCell.swift */; };
 		9D9517152BC5786B004EB96A /* ExtraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D9517142BC5786B004EB96A /* ExtraViewModel.swift */; };
+		9DA0936D2BCB11AA009825F9 /* ConditionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0936C2BCB11AA009825F9 /* ConditionViewCell.swift */; };
+		9DA0936F2BCB134E009825F9 /* ConditionCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DA0936E2BCB134E009825F9 /* ConditionCellViewModel.swift */; };
 		9DDEBFCF2BC42C8100E9347D /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDEBFCE2BC42C8100E9347D /* CalendarService.swift */; };
 		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
 		9E2A8BC92B850461004A81CF /* FIrebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */; };
@@ -214,9 +216,11 @@
 		9D7132DC2BC93CF300B5ACF8 /* SheetType.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetType.swift; sourceTree = "<group>"; };
 		9D7132DF2BC93E5500B5ACF8 /* SheetBaseView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetBaseView.swift; sourceTree = "<group>"; };
 		9D7132E32BC944C300B5ACF8 /* WeigthMeasureView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeigthMeasureView.swift; sourceTree = "<group>"; };
-		9D7132E52BC9453200B5ACF8 /* StateChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StateChoiceView.swift; sourceTree = "<group>"; };
+		9D7132E52BC9453200B5ACF8 /* ConditionChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionChoiceView.swift; sourceTree = "<group>"; };
 		9D9517122BC57566004EB96A /* ExtraTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraTableViewCell.swift; sourceTree = "<group>"; };
 		9D9517142BC5786B004EB96A /* ExtraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraViewModel.swift; sourceTree = "<group>"; };
+		9DA0936C2BCB11AA009825F9 /* ConditionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionViewCell.swift; sourceTree = "<group>"; };
+		9DA0936E2BCB134E009825F9 /* ConditionCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionCellViewModel.swift; sourceTree = "<group>"; };
 		9DDEBFCE2BC42C8100E9347D /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
 		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
@@ -410,6 +414,7 @@
 			isa = PBXGroup;
 			children = (
 				9D1C38992BC9C73200A806A5 /* SheetBaseViewModel.swift */,
+				9DA0936E2BCB134E009825F9 /* ConditionCellViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -417,8 +422,9 @@
 		9D7132862BC923C400B5ACF8 /* SheetScene */ = {
 			isa = PBXGroup;
 			children = (
+				9DA0936B2BCB118E009825F9 /* Views */,
 				9D1C38982BC9C72000A806A5 /* Models */,
-				9D7132DE2BC93E2300B5ACF8 /* Views */,
+				9D7132DE2BC93E2300B5ACF8 /* SheetViews */,
 				9D7132DB2BC93CD800B5ACF8 /* Entities */,
 				9D7132872BC923DE00B5ACF8 /* SheetPresenter.swift */,
 				9D7132882BC923DE00B5ACF8 /* SheetRouter.swift */,
@@ -438,15 +444,15 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		9D7132DE2BC93E2300B5ACF8 /* Views */ = {
+		9D7132DE2BC93E2300B5ACF8 /* SheetViews */ = {
 			isa = PBXGroup;
 			children = (
 				9D7132DF2BC93E5500B5ACF8 /* SheetBaseView.swift */,
 				9D7132E32BC944C300B5ACF8 /* WeigthMeasureView.swift */,
-				9D7132E52BC9453200B5ACF8 /* StateChoiceView.swift */,
+				9D7132E52BC9453200B5ACF8 /* ConditionChoiceView.swift */,
 				9D1C38962BC9BEE400A806A5 /* CameraView.swift */,
 			);
-			path = Views;
+			path = SheetViews;
 			sourceTree = "<group>";
 		};
 		9D9517162BC58A46004EB96A /* Helpers */ = {
@@ -455,6 +461,14 @@
 				9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */,
 			);
 			path = Helpers;
+			sourceTree = "<group>";
+		};
+		9DA0936B2BCB118E009825F9 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9DA0936C2BCB11AA009825F9 /* ConditionViewCell.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 		9DDEBFCD2BC42C6A00E9347D /* Calendar */ = {
@@ -1234,7 +1248,7 @@
 				9D1C38972BC9BEE400A806A5 /* CameraView.swift in Sources */,
 				9EE8AE212B7FB905001D126F /* ProgressContainer.swift in Sources */,
 				9E4F22A92B9F3C05003E749E /* ResultsInteractor.swift in Sources */,
-				9D7132E62BC9453200B5ACF8 /* StateChoiceView.swift in Sources */,
+				9D7132E62BC9453200B5ACF8 /* ConditionChoiceView.swift in Sources */,
 				9E4F22892B9F3BB4003E749E /* TrainingInteractor.swift in Sources */,
 				9D15BE2E2BC48D3F004FC560 /* NotepadEmptyStateView.swift in Sources */,
 				9D7132DD2BC93CF300B5ACF8 /* SheetType.swift in Sources */,
@@ -1258,6 +1272,7 @@
 				9E4F226E2B9F3B8F003E749E /* NotepadPresenter.swift in Sources */,
 				9D7132E02BC93E5500B5ACF8 /* SheetBaseView.swift in Sources */,
 				9EE3359B2B8F9CDC00F532B3 /* SplashViewController.swift in Sources */,
+				9DA0936D2BCB11AA009825F9 /* ConditionViewCell.swift in Sources */,
 				9EE8AE132B7FB8CF001D126F /* SettingsInteractor.swift in Sources */,
 				9E5B74F92B7F9A7000E2BDE6 /* SignUpRouter.swift in Sources */,
 				9E4F225F2B9F3B46003E749E /* DayService.swift in Sources */,
@@ -1359,6 +1374,7 @@
 				9E5B74FD2B7F9A7000E2BDE6 /* SignUpContainer.swift in Sources */,
 				9D15BE352BC4A518004FC560 /* Extra.swift in Sources */,
 				9E5B750B2B7F9A8300E2BDE6 /* SignInViewModel.swift in Sources */,
+				9DA0936F2BCB134E009825F9 /* ConditionCellViewModel.swift in Sources */,
 				9E5B750C2B7F9A8300E2BDE6 /* SignInInteractor.swift in Sources */,
 				9E4F229B2B9F3BDD003E749E /* ExerciseRouter.swift in Sources */,
 				9E7C199B2B8D0EC50006D48C /* SignInModel.swift in Sources */,
@@ -1549,6 +1565,7 @@
 				INFOPLIST_FILE = Everyday/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Everyday;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please! I need camera!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1560,7 +1577,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.super.Everyday;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Health.Everyday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1586,6 +1603,7 @@
 				INFOPLIST_FILE = Everyday/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Everyday;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "Please! I need camera!";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1597,7 +1615,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.super.Everyday;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Health.Everyday;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

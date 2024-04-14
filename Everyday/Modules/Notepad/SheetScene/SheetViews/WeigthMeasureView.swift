@@ -28,8 +28,12 @@ class WeightMeasureView: UIView {
     
     convenience init(weight: Double? = nil) {
         self.init(frame: .zero)
-        let textFieldPlaceholder = weight ?? Constants.TextField.defaultValue
-        self.textField.placeholder = String(textFieldPlaceholder)
+        
+        if let weight = weight {
+            self.textField.placeholder = String(weight)
+        } else {
+            self.textField.placeholder = String(Constants.TextField.defaultValue)
+        }
     }
     
     // MARK: - Lifecycle

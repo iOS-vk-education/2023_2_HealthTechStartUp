@@ -12,40 +12,92 @@ final class ExtraRouter {
     weak var viewController: ExtraViewController?
 }
 
+private extension ExtraRouter {
+    func cameraViewController() -> UIViewController {
+        let moduleType = SheetType.camera(viewModel: .init())
+        let context = SheetContext(type: moduleType)
+        let container = SheetContainer.assemble(with: context)
+        let presentedViewController = container.viewController
+        presentedViewController.modalPresentationStyle = .overFullScreen
+        
+//        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
+//        swipeGesture.direction = .down
+//        presentedViewController.view.addGestureRecognizer(swipeGesture)
+        
+        return presentedViewController
+    }
+    
+    func stateViewController() -> UIViewController {
+        let moduleType = SheetType.conditionChoice(viewModel: .init())
+        let sheetSize = Constants.smallSheetHeight
+        let context = SheetContext(type: moduleType)
+        let container = SheetContainer.assemble(with: context)
+        let presentedViewController = container.viewController
+        if let sheet = presentedViewController.sheetPresentationController {
+            sheet.detents = [
+                .custom(resolver: { _ in
+                    return sheetSize
+                })
+            ]
+        }
+        return presentedViewController
+    }
+    
+    func heartViewController() -> UIViewController {
+        let moduleType = SheetType.heartRateVariability(viewModel: .init())
+        let context = SheetContext(type: moduleType)
+        let container = SheetContainer.assemble(with: context)
+        let presentedViewController = container.viewController
+        presentedViewController.modalPresentationStyle = .overFullScreen
+        
+//        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
+//        swipeGesture.direction = .down
+//        presentedViewController.view.addGestureRecognizer(swipeGesture)
+        
+        return presentedViewController
+    }
+    
+    func weightViewController() -> UIViewController {
+        let moduleType = SheetType.weightMeasurement(viewModel: .init())
+        let sheetSize = Constants.smallSheetHeight
+        let context = SheetContext(type: moduleType)
+        let container = SheetContainer.assemble(with: context)
+        let presentedViewController = container.viewController
+        if let sheet = presentedViewController.sheetPresentationController {
+            sheet.detents = [
+                .custom(resolver: { _ in
+                    return sheetSize
+                })
+            ]
+        }
+        return presentedViewController
+    }
+    
+    @objc 
+    func handleSwipeGesture(for viewController: UIViewController) {
+        viewController.dismiss(animated: true, completion: nil)
+    }
+}
+
 extension ExtraRouter: ExtraRouterInput {
     func showView(with type: ExtraViewType) {
         guard let viewController = viewController else {
             return
         }
         
-        let moduleType: SheetType?
-        var sheetSize: CGFloat?
+        let presentedViewController: UIViewController?
         switch type {
         case .photo:
-            moduleType = SheetType.camera(viewModel: .init())
+            presentedViewController = cameraViewController()
         case .state:
-            moduleType = SheetType.conditionChoice(viewModel: .init())
-            sheetSize = Constants.smallSheetHeight
+            presentedViewController = stateViewController()
         case .heart:
-            moduleType = SheetType.heartRateVariability(viewModel: .init())
+            presentedViewController = heartViewController()
         case .weight:
-            moduleType = SheetType.weightMeasurement(viewModel: .init())
-            sheetSize = Constants.smallSheetHeight
+            presentedViewController = weightViewController()
         }
-        guard let moduleType else {
+        guard let presentedViewController else {
             return
-        }
-        
-        let context = SheetContext(type: moduleType)
-        let container = SheetContainer.assemble(with: context)
-        let presentedViewController = container.viewController
-        
-        if let sheet = presentedViewController.sheetPresentationController, sheetSize != nil {
-            sheet.detents = [
-                .custom(resolver: { _ in
-                    return sheetSize
-                })
-            ]
         }
         
         viewController.present(presentedViewController, animated: true)

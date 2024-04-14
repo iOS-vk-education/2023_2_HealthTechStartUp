@@ -15,7 +15,6 @@ final class SheetViewController: UIViewController {
 
     init(output: SheetViewOutput) {
         self.output = output
-
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -32,7 +31,7 @@ final class SheetViewController: UIViewController {
         case .weightMeasurement(let weightMeasurementViewModel):
             contentView = WeightMeasureView(weight: weightMeasurementViewModel.weight)
         case .conditionChoice(let conditionChoiceViewModel):
-            contentView = StateChoiceView(isGood: true)  // fix this
+            contentView = ConditionChoiceView(condition: conditionChoiceViewModel.condition)
         case .heartRateVariability(let heartRateVariabilityViewModel):
             contentView = UIView()  // fix this
         case .camera(let cameraViewModel):
@@ -51,7 +50,6 @@ final class SheetViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         setup()
     }
 }
@@ -62,6 +60,17 @@ private extension SheetViewController {
     
     func setup() {
         view.backgroundColor = .systemMint
+        
+        let swipeGesture = UISwipeGestureRecognizer(target: self, action: #selector(handleSwipeGesture))
+        swipeGesture.direction = .down
+        view.addGestureRecognizer(swipeGesture)
+    }
+    
+    // MARK: - Actions
+    
+    @objc
+    func handleSwipeGesture() {
+        dismiss(animated: true, completion: nil)
     }
 }
 

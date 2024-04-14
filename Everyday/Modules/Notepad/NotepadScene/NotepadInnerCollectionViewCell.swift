@@ -48,7 +48,7 @@ class NotepadInnerCollectionViewCell: UICollectionViewCell {
                     return
                 }
                 
-                backgroundView?.alpha = self.isSelected ? Constants.BackgroundView.endAlpha : Constants.BackgroundView.startAlpha
+                backgroundView?.alpha = isSelected ? Constants.BackgroundView.endAlpha : Constants.BackgroundView.startAlpha
             }
         }
     }

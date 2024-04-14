@@ -35,9 +35,9 @@ struct HeartRateVariabilityViewModel {
 }
 
 enum Condition: String, CaseIterable {
-    case bad = "Bad"
-    case ok = "Ok"
-    case great = "Great"
+    case tired = "figure.roll"
+    case ok = "medal"
+    case great = "trophy"
 }
 
 struct HeartRateVariability {
