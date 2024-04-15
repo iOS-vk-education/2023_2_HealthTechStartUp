@@ -17,6 +17,8 @@
 		9D1C38972BC9BEE400A806A5 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C38962BC9BEE400A806A5 /* CameraView.swift */; };
 		9D1C389A2BC9C73200A806A5 /* SheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C38992BC9C73200A806A5 /* SheetViewModel.swift */; };
 		9D32E9172BBF0AB3008A2BA4 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */; };
+		9D408CBD2BCDD77B00B770F9 /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D408CBC2BCDD77B00B770F9 /* DTO.swift */; };
+		9D408CBF2BCDD78100B770F9 /* Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D408CBE2BCDD78100B770F9 /* Domain.swift */; };
 		9D4E4BCD2BB070D200617E5D /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9E5B74CB2B7F963100E2BDE6 /* PinLayout */; };
 		9D4E4BCE2BB070D200617E5D /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9D11F0FF2BA7D53F003CF1F5 /* PinLayout */; };
 		9D4E4BD02BB070D200617E5D /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 9D11F1052BA7D854003CF1F5 /* GoogleSignIn */; };
@@ -210,6 +212,8 @@
 		9D1C38962BC9BEE400A806A5 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
 		9D1C38992BC9C73200A806A5 /* SheetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewModel.swift; sourceTree = "<group>"; };
 		9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		9D408CBC2BCDD77B00B770F9 /* DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
+		9D408CBE2BCDD78100B770F9 /* Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
 		9D7132872BC923DE00B5ACF8 /* SheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPresenter.swift; sourceTree = "<group>"; };
 		9D7132882BC923DE00B5ACF8 /* SheetRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetRouter.swift; sourceTree = "<group>"; };
 		9D7132892BC923DE00B5ACF8 /* SheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewController.swift; sourceTree = "<group>"; };
@@ -424,6 +428,15 @@
 				9D1C38992BC9C73200A806A5 /* SheetViewModel.swift */,
 				9DA0936E2BCB134E009825F9 /* ConditionCellViewModel.swift */,
 				9D7D9A7A2BCC0E1300089A14 /* WeightMeasurementViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		9D408CBB2BCDD73000B770F9 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9D408CBC2BCDD77B00B770F9 /* DTO.swift */,
+				9D408CBE2BCDD78100B770F9 /* Domain.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -838,6 +851,7 @@
 			isa = PBXGroup;
 			children = (
 				9E4766DB2BA34F1E00DD31B9 /* Everyday.entitlements */,
+				9D408CBB2BCDD73000B770F9 /* Models */,
 				9E2931822B9F25FB00950B15 /* UI */,
 				9E4F22D52B9F3CEF003E749E /* Helpers */,
 				9E4F22602B9F3B4F003E749E /* Entities */,
@@ -1300,6 +1314,7 @@
 				9E4F22BE2B9F3C2E003E749E /* TimerProtocols.swift in Sources */,
 				9E5B74FC2B7F9A7000E2BDE6 /* SignUpViewModel.swift in Sources */,
 				9D32E9172BBF0AB3008A2BA4 /* UIHelper.swift in Sources */,
+				9D408CBF2BCDD78100B770F9 /* Domain.swift in Sources */,
 				9EE335992B8F9CCD00F532B3 /* SplashAnimator.swift in Sources */,
 				9D7D9A872BCC52ED00089A14 /* SheetPresenter+ConditionChoiceViewOutput.swift in Sources */,
 				9E4F22982B9F3BDD003E749E /* ExerciseProtocols.swift in Sources */,
@@ -1317,6 +1332,7 @@
 				9E4F226E2B9F3B8F003E749E /* NotepadPresenter.swift in Sources */,
 				9EE3359B2B8F9CDC00F532B3 /* SplashViewController.swift in Sources */,
 				9DA0936D2BCB11AA009825F9 /* ConditionViewCell.swift in Sources */,
+				9D408CBD2BCDD77B00B770F9 /* DTO.swift in Sources */,
 				9EE8AE132B7FB8CF001D126F /* SettingsInteractor.swift in Sources */,
 				9E5B74F92B7F9A7000E2BDE6 /* SignUpRouter.swift in Sources */,
 				9E4F225F2B9F3B46003E749E /* DayService.swift in Sources */,
