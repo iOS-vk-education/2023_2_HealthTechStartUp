@@ -10,9 +10,9 @@ import PinLayout
 
 class ConditionChoiceView: UIView {
     
-    // MARK: - Private Properties
-    
     var output: ConditionChoiceViewOutput?
+    
+    // MARK: - Private Properties
     
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     private let selectedConditionIndex: Int? = nil
@@ -32,6 +32,16 @@ class ConditionChoiceView: UIView {
     convenience init(condition: Condition? = nil, output: ConditionChoiceViewOutput) {
         self.init(frame: .zero)
         self.output = output
+        
+        if
+            let condition = condition,
+            let index = Condition.allCases.firstIndex(of: condition)
+        {
+            let indexPath = IndexPath(item: index, section: 0)
+            collectionView.selectItem(at: indexPath, 
+                                      animated: false,
+                                      scrollPosition: .centeredHorizontally)
+        }
     }
     
     // MARK: - Lifecycle
@@ -81,6 +91,9 @@ private extension ConditionChoiceView {
 // MARK: - UICollectionViewDelegate
 
 extension ConditionChoiceView: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        output?.didSelectItemAt(index: indexPath.item)
+    }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout

@@ -36,6 +36,6 @@ protocol ExtraInteractorOutput: AnyObject {
 }
 
 protocol ExtraRouterInput: AnyObject {
-    func showView(with type: ExtraViewType)
+    func showView(_ type: ExtraViewType, with context: SheetType)
     func openNotepad()
 }

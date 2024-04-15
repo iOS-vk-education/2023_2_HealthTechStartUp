@@ -11,9 +11,9 @@ import AVFoundation
 
 class CameraView: UIView {
     
-    // MARK: - Private Properties
-    
     var output: CameraViewOutput?
+    
+    // MARK: - Private Properties
     
     private var session: AVCaptureSession?
     private let photoOutput = AVCapturePhotoOutput()

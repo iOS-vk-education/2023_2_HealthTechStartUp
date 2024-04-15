@@ -25,7 +25,6 @@ final class NotepadViewController: UIViewController {
 
     init(output: NotepadViewOutput) {
         self.output = output
-
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -38,14 +37,12 @@ final class NotepadViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         output.didLoadView()
         setup()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
         layout()
     }
 }
@@ -112,10 +109,12 @@ private extension NotepadViewController {
     
     func setupTableView() {
         tableView.backgroundColor = Constants.backgroundColor
-        tableView.contentInset = UIEdgeInsets(top: Constants.TableView.contentInsetTop,
-                                              left: Constants.TableView.contentInsetLeft,
-                                              bottom: Constants.TableView.contentInsetBottom,
-                                              right: Constants.TableView.contentInsetRight)
+        tableView.contentInset = UIEdgeInsets(
+            top: Constants.TableView.contentInsetTop,
+            left: Constants.TableView.contentInsetLeft,
+            bottom: Constants.TableView.contentInsetBottom,
+            right: Constants.TableView.contentInsetRight
+        )
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(NotepadTableViewCell.self, forCellReuseIdentifier: NotepadTableViewCell.reuseID)

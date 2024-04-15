@@ -9,6 +9,7 @@ import Foundation
 
 protocol WeightMeasurementViewOutput: AnyObject {
     func didLoadWeightMeasurementView()
+    func didEditTextField(with weight: Double?)
 }
 
 extension SheetPresenter: WeightMeasurementViewOutput {
@@ -22,5 +23,13 @@ extension SheetPresenter: WeightMeasurementViewOutput {
         }
         let viewModel = WeightMeasurementViewModel(value: weight)
         weightMeasurementView?.configure(with: viewModel)
+    }
+    
+    func didEditTextField(with weight: Double?) {
+        let weightMeasurementModel: WeightMeasurementModel = .init(
+            weight: weight,
+            status: "New weight set"
+        )
+        moduleType = .weightMeasurement(model: weightMeasurementModel)
     }
 }

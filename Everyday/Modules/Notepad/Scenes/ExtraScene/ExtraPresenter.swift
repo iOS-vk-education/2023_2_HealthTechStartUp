@@ -17,7 +17,6 @@ final class ExtraPresenter {
     
     private var viewTypes: [ExtraViewType] = []
     private var switchStates: [Bool] = []
-    
     private var data: [SheetType] = []
     
     init(router: ExtraRouterInput, interactor: ExtraInteractorInput) {
@@ -29,13 +28,39 @@ final class ExtraPresenter {
 extension ExtraPresenter: ExtraModuleInput {
 }
 
+private extension ExtraPresenter {
+    
+    // MARK: - Helpers
+    
+    func initProperties() {
+        initViewTypes()
+        initSwitchStates()
+        initData()
+    }
+    
+    func initViewTypes() {
+        viewTypes = ExtraViewType.allCases
+    }
+    
+    func initSwitchStates() {
+        switchStates = [Bool](repeating: false, count: viewTypes.count)
+    }
+    
+    func initData() {
+        data = [
+            .camera(model: .init()),
+            .conditionChoice(model: .init()),
+            .heartRateVariability(model: .init()),
+            .weightMeasurement(model: .init())
+        ]
+    }
+}
+
 extension ExtraPresenter: ExtraViewOutput {
     func didLoadView() {
+        initProperties()
         let viewModel = ExtraViewModel()
         view?.configure(with: viewModel)
-        viewTypes = ExtraViewType.allCases
-        switchStates = [Bool](repeating: false, 
-                              count: viewTypes.count)
         view?.reloadData()
     }
     
@@ -52,11 +77,21 @@ extension ExtraPresenter: ExtraViewOutput {
     }
     
     func didSelectRowAt(index: Int) {
-        router.showView(with: viewTypes[index])
+        router.showView(viewTypes[index], with: data[index])
     }
     
     func didTapFinishButton() {
         router.openNotepad()
+    }
+}
+
+extension ExtraPresenter: SheetModuleOutput {
+    func setResult(_ result: SheetType, at index: Int) {
+        print("[DEBUG] old data: \(data[index])")
+        data[index] = result
+        print("[DEBUG] new data: \(data[index])")
+        switchStates[index] = true
+        view?.reloadData()
     }
 }
 

@@ -13,9 +13,13 @@ struct WeightMeasurementViewModel {
     let plusImage: UIImage?
     
     init(value: Double?) {
-        var valueTextFieldTitle = "0.0"
+        var valueTextFieldTitle = "0,0"
         if let value {
-            valueTextFieldTitle = String(value)
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            if let value = formatter.string(from: value as NSNumber) {
+                valueTextFieldTitle = value
+            }
         }
         let valueTextFieldAttributedString = NSAttributedString(string: valueTextFieldTitle, attributes: Styles.valueAttributes)
         let minusButtonImageName = "minus.circle.fill"

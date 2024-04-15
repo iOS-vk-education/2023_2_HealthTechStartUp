@@ -13,7 +13,5 @@ protocol HeartRateVariabilityViewOutput: AnyObject {
 
 extension SheetPresenter: HeartRateVariabilityViewOutput {
     func didLoadHeartRateVariabilityView(with heartRateVariability: HeartRateVariability? = nil) {
-//        let viewModel = WeightMeasurementViewModel(value: weight)
-//        contentView?.configure(with: viewModel)
     }
 }

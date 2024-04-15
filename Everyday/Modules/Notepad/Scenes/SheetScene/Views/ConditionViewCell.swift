@@ -69,7 +69,7 @@ final class ConditionViewCell: UICollectionViewCell {
     
     func configure(with viewModel: ConditionCellViewModel) {
         imageView.image = viewModel.conditionImage
-        titleLabel.attributedText = viewModel.title
+        titleLabel.text = viewModel.title
     }
 }
 
@@ -112,6 +112,8 @@ private extension ConditionViewCell {
     }
     
     func setupTitleLabel() {
+        titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
+        titleLabel.textColor = UIColor.Text.grayElement
         titleLabel.textAlignment = .center
     }
 }

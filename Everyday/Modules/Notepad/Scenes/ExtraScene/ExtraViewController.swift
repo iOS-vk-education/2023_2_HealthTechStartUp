@@ -122,6 +122,7 @@ extension ExtraViewController: UITableViewDataSource {
 extension ExtraViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         output.didSelectRowAt(index: indexPath.row)
+        tableView.deselectRow(at: indexPath, animated: true)
     }
 }
 

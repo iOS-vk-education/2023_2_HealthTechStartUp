@@ -10,9 +10,9 @@ import PinLayout
 
 class WeightMeasurementView: UIView {
     
-    // MARK: - Private Properties
-    
     var output: WeightMeasurementViewOutput?
+    
+    // MARK: - Private Properties
     
     private let textField = UITextField()
     private let minusButton = UIButton()
@@ -94,6 +94,7 @@ private extension WeightMeasurementView {
         textField.font = UIFont.systemFont(ofSize: 72, weight: .bold)
         textField.keyboardType = .decimalPad
         textField.addTarget(self, action: #selector(didEndEditingTextField), for: .editingDidEnd)
+        textField.addTarget(self, action: #selector(didEditTextField), for: .editingChanged)
     }
     
     func setupMinusButton() {
@@ -147,9 +148,29 @@ private extension WeightMeasurementView {
         
         let resultText = attributedText.string
         if resultText.isEmpty || !resultText.isDouble || Int(resultText) ?? 0 < 0 {
-            let valueTextFieldTitle = String(Constants.TextField.defaultValue)
+            let valueTextFieldTitle = String("0,0")
             let valueTextFieldAttributedString = NSAttributedString(string: valueTextFieldTitle, attributes: Styles.valueAttributes)
             textField.attributedText = valueTextFieldAttributedString
+        }
+    }
+    
+    @objc
+    func didEditTextField() {
+        guard
+            let attributedText = textField.attributedText
+        else {
+            return
+        }
+        
+        let resultText = attributedText.string
+        if resultText.isEmpty || !resultText.isDouble || Int(resultText) ?? 0 < 0 {
+            output?.didEditTextField(with: nil)
+        } else {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            if let number = formatter.number(from: resultText) {
+                output?.didEditTextField(with: Double(truncating: number))
+            }
         }
     }
     

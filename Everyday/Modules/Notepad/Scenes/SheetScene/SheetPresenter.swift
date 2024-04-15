@@ -18,7 +18,7 @@ final class SheetPresenter {
     
     private let router: SheetRouterInput
     private let interactor: SheetInteractorInput
-    let moduleType: SheetType
+    var moduleType: SheetType
     
     init(router: SheetRouterInput, interactor: SheetInteractorInput, moduleType: SheetType) {
         self.router = router
@@ -41,7 +41,16 @@ extension SheetPresenter: SheetViewOutput {
     }
     
     func didTapSaveButton() {
-//        moduleOutput?.setResult(of: exercise.name, with: String(result), at: indexOfSet)
+        switch moduleType {
+        case .camera:
+            break
+        case .conditionChoice:
+            moduleOutput?.setResult(moduleType, at: 1)
+        case .heartRateVariability:
+            break
+        case .weightMeasurement:
+            moduleOutput?.setResult(moduleType, at: 3)
+        }
         router.dismissSheet()
     }
 }

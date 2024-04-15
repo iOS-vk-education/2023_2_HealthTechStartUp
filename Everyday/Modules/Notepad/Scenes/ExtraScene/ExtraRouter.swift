@@ -9,13 +9,14 @@
 import UIKit
 
 final class ExtraRouter {
+    weak var presenter: ExtraPresenter?
     weak var viewController: ExtraViewController?
 }
 
 private extension ExtraRouter {
-    func cameraViewController() -> UIViewController {
+    func cameraViewController(with context: SheetType) -> UIViewController {
         let moduleType = SheetType.camera(model: .init())
-        let context = SheetContext(type: moduleType)
+        let context = SheetContext(moduleOutput: presenter, type: context)
         let container = SheetContainer.assemble(with: context)
         let presentedViewController = container.viewController
         presentedViewController.modalPresentationStyle = .overFullScreen
@@ -23,10 +24,10 @@ private extension ExtraRouter {
         return presentedViewController
     }
     
-    func stateViewController() -> UIViewController {
+    func stateViewController(with context: SheetType) -> UIViewController {
         let moduleType = SheetType.conditionChoice(model: .init())
         let sheetSize = Constants.smallSheetHeight
-        let context = SheetContext(type: moduleType)
+        let context = SheetContext(moduleOutput: presenter, type: context)
         let container = SheetContainer.assemble(with: context)
         let presentedViewController = container.viewController
         if let sheet = presentedViewController.sheetPresentationController {
@@ -36,12 +37,13 @@ private extension ExtraRouter {
                 })
             ]
         }
+        
         return presentedViewController
     }
     
-    func heartViewController() -> UIViewController {
+    func heartViewController(with context: SheetType) -> UIViewController {
         let moduleType = SheetType.heartRateVariability(model: .init())
-        let context = SheetContext(type: moduleType)
+        let context = SheetContext(moduleOutput: presenter, type: moduleType)
         let container = SheetContainer.assemble(with: context)
         let presentedViewController = container.viewController
         presentedViewController.modalPresentationStyle = .overFullScreen
@@ -49,10 +51,10 @@ private extension ExtraRouter {
         return presentedViewController
     }
     
-    func weightViewController() -> UIViewController {
+    func weightViewController(with context: SheetType) -> UIViewController {
         let moduleType = SheetType.weightMeasurement(model: .init())
         let sheetSize = Constants.smallSheetHeight
-        let context = SheetContext(type: moduleType)
+        let context = SheetContext(moduleOutput: presenter, type: context)
         let container = SheetContainer.assemble(with: context)
         let presentedViewController = container.viewController
         if let sheet = presentedViewController.sheetPresentationController {
@@ -62,12 +64,13 @@ private extension ExtraRouter {
                 })
             ]
         }
+        
         return presentedViewController
     }
 }
 
 extension ExtraRouter: ExtraRouterInput {
-    func showView(with type: ExtraViewType) {
+    func showView(_ type: ExtraViewType, with context: SheetType) {
         guard let viewController = viewController else {
             return
         }
@@ -75,13 +78,13 @@ extension ExtraRouter: ExtraRouterInput {
         let presentedViewController: UIViewController?
         switch type {
         case .photo:
-            presentedViewController = cameraViewController()
+            presentedViewController = cameraViewController(with: context)
         case .state:
-            presentedViewController = stateViewController()
+            presentedViewController = stateViewController(with: context)
         case .heart:
-            presentedViewController = heartViewController()
+            presentedViewController = heartViewController(with: context)
         case .weight:
-            presentedViewController = weightViewController()
+            presentedViewController = weightViewController(with: context)
         }
         guard let presentedViewController else {
             return
