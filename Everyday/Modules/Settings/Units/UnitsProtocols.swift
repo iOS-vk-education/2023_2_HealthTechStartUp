@@ -16,9 +16,13 @@ protocol UnitsModuleOutput: AnyObject {
 }
 
 protocol UnitsViewInput: AnyObject {
+    func configure(with: UnitsViewModel)
+    func showAlert(with key: String, message: String)
 }
 
 protocol UnitsViewOutput: AnyObject {
+    func didLoadView()
+    func getUnitsViewModel() -> UnitsViewModel
     func didSwipe()
 }
 

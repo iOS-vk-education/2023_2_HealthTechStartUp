@@ -25,6 +25,16 @@ extension UnitsPresenter: UnitsModuleInput {
 }
 
 extension UnitsPresenter: UnitsViewOutput {
+    func didLoadView() {
+        let viewModel = UnitsViewModel()
+        view?.configure(with: viewModel)
+    }
+    
+    func getUnitsViewModel() -> UnitsViewModel {
+        let viewModel = UnitsViewModel()
+        return viewModel
+    }
+    
     func didSwipe() {
         router.getBackToMainView()
     }

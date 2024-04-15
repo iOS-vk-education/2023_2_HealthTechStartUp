@@ -2529,6 +2529,23 @@
         }
       }
     },
+    "Units_Stones_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Stones"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Стоуны"
+          }
+        }
+      }
+    },
     "Units_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -2552,13 +2569,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Weight"
+            "value" : "Load weight"
           }
         },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Вес"
+            "value" : "Вес нагрузки"
           }
         }
       }

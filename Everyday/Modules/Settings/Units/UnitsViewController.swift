@@ -30,13 +30,13 @@ final class UnitsViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        output.didLoadView()
         
         view.backgroundColor = Constants.backgroundColor
         
         let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
         self.view.addGestureRecognizer(swipeRightGestureRecognizer)
         
-        navBarTitle.attributedText = UnitsViewModel().unitsTitle
         self.navigationItem.titleView = navBarTitle
         navigationController?.navigationBar.tintColor = Constants.accentColor
         
@@ -95,6 +95,12 @@ private extension UnitsViewController {
 }
 
 extension UnitsViewController: UnitsViewInput {
+    func configure(with model: UnitsViewModel) {
+        navBarTitle.attributedText = model.unitsTitle
+    }
+    
+    func showAlert(with key: String, message: String) {
+    }
 }
 
 // MARK: - UITableViewDataSource
@@ -106,7 +112,15 @@ extension UnitsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return Constants.TableView.rowsInSectionsInTableView
+        let model = output.getUnitsViewModel()
+        switch section {
+        case 0: return model.weightSectionModel.count
+        case 1: return model.measurementsSectionModel.count
+        case 2: return model.weightSectionModel.count
+        case 3: return model.distanceSectionModel.count
+        default:
+            return 0
+        }
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -117,7 +131,7 @@ extension UnitsViewController: UITableViewDataSource {
         
         cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
         
-        let model = UnitsViewModel()
+        let model = output.getUnitsViewModel()
         
         if indexPath.section == 0 {
             let viewModel = model.weightSectionModel
@@ -159,7 +173,7 @@ extension UnitsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
-        let model = UnitsViewModel()
+        let model = output.getUnitsViewModel()
         let headerView = UILabel()
         if section == 0 {
             headerView.attributedText = model.bodyWeigthTitle
@@ -190,7 +204,7 @@ extension UnitsViewController: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
         let footerView = UILabel()
-        footerView.attributedText = UnitsViewModel().aboutUnitsTitle
+        footerView.attributedText = output.getUnitsViewModel().aboutUnitsTitle
         footerView.textAlignment = .center
         footerView.numberOfLines = .max
         

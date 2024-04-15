@@ -12,6 +12,7 @@ struct UnitsViewModel {
     let bodyWeigthTitle: NSAttributedString
     let kgmsTitle: NSAttributedString
     let poundsTitle: NSAttributedString
+    let stonesTitle: NSAttributedString
     let measurementsTitle: NSAttributedString
     let cmsTitle: NSAttributedString
     let inchesTitle: NSAttributedString
@@ -29,6 +30,7 @@ struct UnitsViewModel {
         self.bodyWeigthTitle = NSAttributedString(string: "Units_BodyWeight_title".localized, attributes: Styles.titleAttributes)
         self.kgmsTitle = NSAttributedString(string: "Units_Kilograms_title".localized, attributes: Styles.titleAttributes)
         self.poundsTitle = NSAttributedString(string: "Units_Pounds_title".localized, attributes: Styles.titleAttributes)
+        self.stonesTitle = NSAttributedString(string: "Units_Stones_title".localized, attributes: Styles.titleAttributes)
         self.measurementsTitle = NSAttributedString(string: "Units_Measurements_title".localized, attributes: Styles.titleAttributes)
         self.cmsTitle = NSAttributedString(string: "Units_Centimeters_title".localized, attributes: Styles.titleAttributes)
         self.inchesTitle = NSAttributedString(string: "Units_Inches_title".localized, attributes: Styles.titleAttributes)
@@ -37,7 +39,7 @@ struct UnitsViewModel {
         self.klmsTitle = NSAttributedString(string: "Units_Kilometers_title".localized, attributes: Styles.titleAttributes)
         self.milesTitle = NSAttributedString(string: "Units_Miles_title".localized, attributes: Styles.titleAttributes)
         self.aboutUnitsTitle = NSAttributedString(string: "Units_AboutUnits_title".localized, attributes: Styles.titleAttributes)
-        self.weightSectionModel = [kgmsTitle, poundsTitle]
+        self.weightSectionModel = [kgmsTitle, poundsTitle, stonesTitle]
         self.measurementsSectionModel = [cmsTitle, inchesTitle]
         self.distanceSectionModel = [klmsTitle, milesTitle]
     }
