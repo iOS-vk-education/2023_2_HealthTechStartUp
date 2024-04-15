@@ -15,6 +15,7 @@ final class ExtraPresenter {
     private let router: ExtraRouterInput
     private let interactor: ExtraInteractorInput
     
+    private var progress = WorkoutProgress()
     private var viewTypes: [ExtraViewType] = []
     private var switchStates: [Bool] = []
     private var data: [SheetType] = []
@@ -81,7 +82,7 @@ extension ExtraPresenter: ExtraViewOutput {
     }
     
     func didTapFinishButton() {
-        router.openNotepad()
+//        interactor.saveProgress(progress)
     }
 }
 
@@ -96,4 +97,15 @@ extension ExtraPresenter: SheetModuleOutput {
 }
 
 extension ExtraPresenter: ExtraInteractorOutput {
+    func didPostData() {
+        router.openNotepad()
+    }
+    
+    func didStartLoading() {
+        view?.showLoadingView()
+    }
+    
+    func didEndLoading() {
+        view?.dismissLoadingView()
+    }
 }

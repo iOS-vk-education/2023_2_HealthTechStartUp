@@ -15,8 +15,9 @@ final class ExtraViewController: UIViewController {
     
     private let output: ExtraViewOutput
     
-    private let finishButton = UIButton()
     private let tableView = UITableView()
+    private let finishButton = UIButton()
+    private let activityIndicator = UIActivityIndicatorView(style: .large)
     
     // MARK: - Init
 
@@ -126,7 +127,7 @@ extension ExtraViewController: UITableViewDelegate {
     }
 }
 
-// MARK: - ExtraViewInput
+// MARK: - ViewInput
 
 extension ExtraViewController: ExtraViewInput {
     func configure(with viewModel: ExtraViewModel) {
@@ -135,6 +136,20 @@ extension ExtraViewController: ExtraViewInput {
     
     func reloadData() {
         tableView.reloadData()
+    }
+    
+    func showLoadingView() {
+        view.addSubview(activityIndicator)
+        
+        activityIndicator.pin
+            .hCenter()
+            .vCenter()
+        
+        activityIndicator.startAnimating()
+    }
+    
+    func dismissLoadingView() {
+        activityIndicator.removeFromSuperview()
     }
 }
 

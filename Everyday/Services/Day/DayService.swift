@@ -11,6 +11,7 @@ import Firebase
 protocol DayServiceDescription {
     func getDaySchedule(on date: Date, completion: @escaping (Result<[WorkoutDay], CustomError>) -> Void)
     func getDayResults(on date: Date, completion: @escaping (Result<[WorkoutDay], CustomError>) -> Void)
+    func postProgress(_ progress: WorkoutProgress, completion: @escaping (Result<Bool, CustomError>) -> Void)
 }
 
 final class DayService: DayServiceDescription {
@@ -18,6 +19,8 @@ final class DayService: DayServiceDescription {
     private let db = Firestore.firestore()
 
     private init() {}
+    
+    // MARK: - GET
     
     func getDaySchedule(on date: Date, completion: @escaping (Result<[WorkoutDay], CustomError>) -> Void) {
         guard let userUID = Auth.auth().currentUser?.uid else {
@@ -125,6 +128,37 @@ final class DayService: DayServiceDescription {
                 }
             }
     }
+    
+    // MARK: - POST
+    
+    func postProgress(_ progress: WorkoutProgress, completion: @escaping (Result<Bool, CustomError>) -> Void) {
+        guard let userUID = Auth.auth().currentUser?.uid else {
+            completion(.failure(.unknownError))
+            return
+        }
+
+        let historyCollectionReference = db.collection(Constants.historyCollection)
+        let historyDocumentReference: DocumentReference?
+        do {
+            historyDocumentReference = try historyCollectionReference.addDocument(from: progress)
+        } catch {
+            completion(.failure(.unknownError))
+            return
+        }
+        guard let historyDocumentReference else {
+            completion(.failure(.unknownError))
+            return
+        }
+        
+        let historyElement: HistoryElement = .init(
+            date: Date(),
+            historyID: historyDocumentReference
+        )
+        db.collection(Constants.userCollection).document(userUID)
+            .updateData([
+                Constants.User.historyField: FieldValue.arrayUnion([historyElement])
+            ])
+    }
 }
 
 // MARK: - Constants
@@ -132,5 +166,10 @@ final class DayService: DayServiceDescription {
 private extension DayService {
     struct Constants {
         static let userCollection = "user"
+        static let historyCollection = "history"
+        
+        struct User {
+            static let historyField = "history"
+        }
     }
 }

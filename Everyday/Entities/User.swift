@@ -26,6 +26,11 @@ struct HistoryDay: Codable, Hashable {
     let historyID: [PartOfWokout]
 }
 
+struct HistoryElement: Codable {
+    let date: Date
+    let historyID: DocumentReference
+}
+
 struct Day: Codable, Hashable {
     let dayOfWeek: String
     let programs: [PartOfWokout]
@@ -36,7 +41,7 @@ struct PartOfWokout: Codable, Hashable {
     let indexOfDay: Int
 }
 
-struct WorkoutDay: Comparable {
+struct WorkoutDay: Codable, Comparable {
     var workout: Workout
     let indexOfDay: Int
     

@@ -18,6 +18,8 @@ protocol ExtraModuleOutput: AnyObject {
 protocol ExtraViewInput: AnyObject {
     func configure(with viewModel: ExtraViewModel)
     func reloadData()
+    func showLoadingView()
+    func dismissLoadingView()
 }
 
 protocol ExtraViewOutput: AnyObject {
@@ -30,9 +32,13 @@ protocol ExtraViewOutput: AnyObject {
 }
 
 protocol ExtraInteractorInput: AnyObject {
+    func saveProgress(_ progress: WorkoutProgress)
 }
 
 protocol ExtraInteractorOutput: AnyObject {
+    func didPostData()
+    func didStartLoading()
+    func didEndLoading()
 }
 
 protocol ExtraRouterInput: AnyObject {
