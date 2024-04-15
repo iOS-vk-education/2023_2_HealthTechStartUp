@@ -62,7 +62,7 @@ extension ProfilePresenter: ProfileViewOutput {
 
         interactor.updateUserImage(image: image) { result in
             switch result {
-            case .success: print("Success")
+            case .success: print("Success update image")
             case .failure(let error):
                 DispatchQueue.main.async {
                     self.view?.showAlert(with: "ErrorUpdateImage", message: error.localizedDescription)
@@ -76,8 +76,7 @@ extension ProfilePresenter: ProfileViewOutput {
             DispatchQueue.main.async {
                 switch result {
                 case .success:
-//                    self.router.getBackToMainView()
-                    print("save in userDefaults")
+                    SettingsUserDefaultsService.shared.setUserName(username: username)
                 case .failure(let error):
                     self.view?.showAlert(with: "network", message: error.localizedDescription)
                 }
@@ -101,25 +100,36 @@ extension ProfilePresenter: ProfileViewOutput {
     }
     
     func getUsername(completion: @escaping (String?) -> Void) {
-        interactor.getUserName { result, username in
-            switch result {
-            case .success(()):
-                completion(username)
-            case .failure(let error):
-                self.view?.showAlert(with: "getUsernameError", message: error.localizedDescription)
+        let settingsUserDefaults = SettingsUserDefaultsService.shared
+        let currentUserName = settingsUserDefaults.getUserName()
+        completion(currentUserName)
+        
+        DispatchQueue.main.async {
+            self.interactor.getUserName { result, username in
+                if username != currentUserName {
+                    switch result {
+                    case .success(()):
+                        settingsUserDefaults.setUserName(username: username)
+                        completion(username)
+                    case .failure(let error):
+                        self.view?.showAlert(with: "getUsernameError", message: error.localizedDescription)
+                    }
+                }
             }
         }
     }
     
     func didLoadView() {
-        interactor.getUserProfileImage { [weak self] result, userProfileImage in
-            guard let self = self else {
-                return
+        DispatchQueue.main.async {
+            self.interactor.getUserProfileImage { [weak self] result, userProfileImage in
+                guard let self = self else {
+                    return
+                }
+                self.handleFetchUser(result: result, userProfileImage: userProfileImage)
             }
-            self.handleFetchUser(result: result, userProfileImage: userProfileImage)
+            
+            self.view?.configure(with: ProfileViewModel())
         }
-        
-        self.view?.configure(with: ProfileViewModel())
     }
     
     func didSwipe() {

@@ -36,7 +36,6 @@ final class SettingsViewController: UIViewController {
         view.backgroundColor = Constants.backgroundColor
         
         navigationController?.navigationBar.isHidden = false
-        print(CoreDataService.shared.getAllItems())
         
         setup()
     }

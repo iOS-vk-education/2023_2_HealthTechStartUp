@@ -91,4 +91,16 @@ final class KeychainService {
             
             return status == errSecSuccess
         }
+    
+    @discardableResult
+    static func clearOne(authType: String) -> Bool {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: authType
+        ]
+        
+        let status = SecItemDelete(query as CFDictionary)
+        
+        return status == errSecSuccess
+    }
 }

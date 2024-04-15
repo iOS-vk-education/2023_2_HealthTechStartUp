@@ -23,6 +23,8 @@ protocol SettingsUserDefaultsServiceDescription {
     func saveSwitchValue(switchState: Bool, key: Int)
     func switchIsOn(key: Int) -> Bool
     func resetUserDefaults()
+    func setUserName(username: String)
+    func getUserName() -> String
 }
 
 final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription {
@@ -171,6 +173,17 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
     func switchIsOn(key: Int) -> Bool {
         UserDefaults.standard.bool(forKey: Constants.switchKeys[key])
     }
+    
+    func setUserName(username: String) {
+        UserDefaults.standard.set(username, forKey: Constants.userNameKey)
+    }
+    
+    func getUserName() -> String {
+        guard let userName = UserDefaults.standard.string(forKey: Constants.userNameKey) else {
+            return ""
+        }
+        return userName
+    }
 
     func resetUserDefaults() {
         let defaults = UserDefaults.standard
@@ -179,12 +192,14 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
         defaults.set("MilitaryTime", forKey: Constants.timeFormat)
         defaults.set(true, forKey: Constants.switchKeys[0])
         defaults.set(true, forKey: Constants.switchKeys[1])
-        defaults.set("email", forKey: "WhichSign")
+        defaults.set("email", forKey: Constants.whichSign)
     }
 }
 
 private extension SettingsUserDefaultsService {
     struct Constants {
+        static let whichSign = "WhichSign"
+        static let userNameKey = "Username"
         static let themeKey = "SelectedTheme"
         static let beginningOfTheWeekKey = "BeginningOfTheWeek"
         static let timeFormat = "TimeFormat"

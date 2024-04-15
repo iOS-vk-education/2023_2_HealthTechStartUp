@@ -93,6 +93,13 @@ final class SettingsService: SettingsServiceDescription {
             if let error = error {
                 completion(.failure(error))
             } else if success {
+                self.firebaseService.signOut { _, error in
+                    guard error == nil else {
+                        completion(.failure(error!))
+                        return
+                    }
+                }
+                KeychainService.clearOne(authType: "emailAuth")
                 coreData.deleteAuthType(authType: whichSign)
                 completion(.success(()))
             }
@@ -105,6 +112,13 @@ final class SettingsService: SettingsServiceDescription {
             if let error = error {
                 completion(.failure(error))
             } else if success {
+                self.firebaseService.signOut { _, error in
+                    guard error == nil else {
+                        completion(.failure(error!))
+                        return
+                    }
+                }
+                KeychainService.clearOne(authType: "anonymAuth")
                 coreData.deleteAuthType(authType: whichSign)
                 completion(.success(()))
             }
@@ -117,6 +131,13 @@ final class SettingsService: SettingsServiceDescription {
             if let error = error {
                 completion(.failure(error))
             } else if success {
+                self.firebaseService.signOut { _, error in
+                    guard error == nil else {
+                        completion(.failure(error!))
+                        return
+                    }
+                }
+                KeychainService.clearOne(authType: "googleAuth")
                 coreData.deleteAuthType(authType: whichSign)
                 completion(.success(()))
             }
@@ -129,7 +150,13 @@ final class SettingsService: SettingsServiceDescription {
             if let error = error {
                 completion(.failure(error))
             } else if success {
-                KeychainService.clearAll()
+                self.firebaseService.signOut { _, error in
+                    guard error == nil else {
+                        completion(.failure(error!))
+                        return
+                    }
+                }
+                KeychainService.clearOne(authType: "vkAuth")
                 coreData.deleteAuthType(authType: whichSign)
                 completion(.success(()))
             }
