@@ -43,11 +43,11 @@ extension SheetPresenter: SheetViewOutput {
     func didTapSaveButton() {
         switch moduleType {
         case .camera:
-            break
+            moduleOutput?.setResult(moduleType, at: 0)
         case .conditionChoice:
             moduleOutput?.setResult(moduleType, at: 1)
         case .heartRateVariability:
-            break
+            moduleOutput?.setResult(moduleType, at: 2)
         case .weightMeasurement:
             moduleOutput?.setResult(moduleType, at: 3)
         }

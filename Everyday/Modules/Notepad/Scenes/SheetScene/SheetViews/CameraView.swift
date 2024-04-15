@@ -35,7 +35,6 @@ class CameraView: UIView {
     convenience init(image: UIImage? = nil, output: CameraViewOutput) {
         self.init(frame: .zero)
         self.output = output
-        output.didLoadCameraView(with: image)
     }
     
     // MARK: - Lifecycle
@@ -177,9 +176,11 @@ extension CameraView: AVCapturePhotoCaptureDelegate {
         
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill
-        imageView.frame = self.bounds
+        imageView.frame = bounds
         
         addSubview(imageView)
+        
+        self.output?.didProcessImage(image)
     }
 }
 
