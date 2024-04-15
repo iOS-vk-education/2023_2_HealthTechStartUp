@@ -22,7 +22,6 @@ final class ExtraViewController: UIViewController {
 
     init(output: ExtraViewOutput) {
         self.output = output
-
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -35,14 +34,12 @@ final class ExtraViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         output.didLoadView()
         setup()
     }
     
     override func viewWillLayoutSubviews() {
         super.viewWillLayoutSubviews()
-        
         layout()
     }
 }

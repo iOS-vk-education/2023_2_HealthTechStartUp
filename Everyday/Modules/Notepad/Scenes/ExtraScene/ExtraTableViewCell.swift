@@ -23,17 +23,18 @@ class ExtraTableViewCell: UITableViewCell {
     
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
-        
         setup()
     }
     
     required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
+        super.init(coder: coder)
+        setup()
     }
     
     // MARK: - Life cycle
     
     override func layoutSubviews() {
+        super.layoutSubviews()
         layout()
     }
     
@@ -101,6 +102,7 @@ private extension ExtraTableViewCell {
     // MARK: - Setup
     
     func setup() {
+        backgroundColor = Constants.backgroundColor
         circleImageView.tintColor = Constants.CounterLabel.uncheckedColor
         counterLabel.textAlignment = .center
         numberView.addSubviews(circleImageView, counterLabel)

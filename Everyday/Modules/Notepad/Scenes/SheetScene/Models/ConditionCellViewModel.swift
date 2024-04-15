@@ -25,7 +25,8 @@ struct ConditionCellViewModel {
 private extension ConditionCellViewModel {
     struct Styles {
         static let titleAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 16, weight: .regular)
+            .font: UIFont.systemFont(ofSize: 16, weight: .regular),
+            .foregroundColor: UIColor.Text.grayElement
         ]
     }
     

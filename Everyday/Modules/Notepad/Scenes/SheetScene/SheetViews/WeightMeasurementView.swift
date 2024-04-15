@@ -51,23 +51,23 @@ private extension WeightMeasurementView {
     func layout() {
         let resultViewWidth: CGFloat = bounds.width - Constants.TextField.padding * 2
         
+        textField.pin
+            .width(resultViewWidth)
+            .height(Constants.TextField.height)
+            .hCenter()
+            .top(Constants.TextField.topMargin)
+        
         minusButton.pin
-            .bottom()
+            .below(of: textField)
             .left(Constants.Button.horizontalMargin)
             .height(Constants.Button.height)
             .width(Constants.Button.width)
         
         plusButton.pin
-            .bottom()
+            .below(of: textField)
             .right(Constants.Button.horizontalMargin)
             .height(Constants.Button.height)
             .width(Constants.Button.width)
-        
-        textField.pin
-            .width(resultViewWidth)
-            .height(Constants.TextField.height)
-            .hCenter()
-            .above(of: [minusButton, plusButton])
     }
     
     // MARK: - Setup
@@ -92,7 +92,7 @@ private extension WeightMeasurementView {
         textField.textAlignment = .center
         textField.textColor = Constants.TextField.textColor
         textField.font = UIFont.systemFont(ofSize: 72, weight: .bold)
-        textField.keyboardType = .numberPad
+        textField.keyboardType = .decimalPad
         textField.addTarget(self, action: #selector(didEndEditingTextField), for: .editingDidEnd)
     }
     
@@ -200,6 +200,7 @@ private extension WeightMeasurementView {
             static let cornerRadius: CGFloat = 16
             static let height: CGFloat = 100
             static let defaultValue: Double = 0.0
+            static let topMargin: CGFloat = 20
         }
     }
     
