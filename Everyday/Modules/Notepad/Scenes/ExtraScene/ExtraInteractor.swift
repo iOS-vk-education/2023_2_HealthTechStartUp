@@ -29,10 +29,10 @@ extension ExtraInteractor: ExtraInteractorInput {
             switch result {
             case .success(let workoutDays):
                 self.output?.didEndLoading()
-                self.output?.didPostData()
+                self.output?.didPostData(true)
             case .failure:
-                print("[DEBUG] failure")
                 self.output?.didEndLoading()
+                self.output?.didPostData(false)
             }
         }
     }

@@ -97,8 +97,12 @@ extension ExtraPresenter: SheetModuleOutput {
 }
 
 extension ExtraPresenter: ExtraInteractorOutput {
-    func didPostData() {
-        router.openNotepad()
+    func didPostData(_ result: Bool) {
+        if result {
+            router.openNotepad()
+        } else {
+            print("[DEBUG] didPostData faillure")
+        }
     }
     
     func didStartLoading() {

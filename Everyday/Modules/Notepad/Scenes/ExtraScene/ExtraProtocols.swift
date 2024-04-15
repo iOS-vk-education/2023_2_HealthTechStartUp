@@ -36,7 +36,7 @@ protocol ExtraInteractorInput: AnyObject {
 }
 
 protocol ExtraInteractorOutput: AnyObject {
-    func didPostData()
+    func didPostData(_ result: Bool)
     func didStartLoading()
     func didEndLoading()
 }
