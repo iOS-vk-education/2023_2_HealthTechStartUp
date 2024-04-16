@@ -18,6 +18,7 @@ protocol UnitsModuleOutput: AnyObject {
 protocol UnitsViewInput: AnyObject {
     func configure(with: UnitsViewModel)
     func showAlert(with key: String, message: String)
+    func reloadData()
 }
 
 protocol UnitsViewOutput: AnyObject {
@@ -35,10 +36,10 @@ protocol UnitsViewOutput: AnyObject {
 }
 
 protocol UnitsInteractorInput: AnyObject {
-    func updateBodyWeightMeasureUnit(completion: @escaping (Result<Void, Error>) -> Void)
-    func updateMeasurementsMeasureUnit(completion: @escaping (Result<Void, Error>) -> Void)
-    func updateLoadWeightMeasureUnit(completion: @escaping (Result<Void, Error>) -> Void)
-    func updateDistanceMeasureUnit(completion: @escaping (Result<Void, Error>) -> Void)
+    func updateBodyWeightMeasureUnit(measureUnit: String, completion: @escaping (Result<Void, Error>) -> Void)
+    func updateMeasurementsMeasureUnit(measureUnit: String, completion: @escaping (Result<Void, Error>) -> Void)
+    func updateLoadWeightMeasureUnit(measureUnit: String, completion: @escaping (Result<Void, Error>) -> Void)
+    func updateDistanceMeasureUnit(measureUnit: String, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 protocol UnitsInteractorOutput: AnyObject {

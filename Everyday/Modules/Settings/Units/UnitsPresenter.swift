@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import UIKit
 
 final class UnitsPresenter {
     weak var view: UnitsViewInput?
@@ -43,45 +44,89 @@ extension UnitsPresenter: UnitsViewOutput {
     }
     
     func didTapOnCellInBodyWeigthSection(row: Int) {
-        settingsUserDefaultsService.setBodyWeightUnitType(row: row)
+        let measureUnit: String = {
+            switch row {
+            case 0: return Constants.kgs
+            case 1: return Constants.pounds
+            case 2: return Constants.stones
+            default: return Constants.kgs
+            }
+        }()
         
-        interactor.updateBodyWeightMeasureUnit { result in
-            switch result {
-            case .success: print("success")
-            case .failure(let error): print(error)
+        DispatchQueue.main.async {
+            self.interactor.updateBodyWeightMeasureUnit(measureUnit: measureUnit) { result in
+                switch result {
+                case .success:
+                    self.settingsUserDefaultsService.setBodyWeightUnitType(measureUnit: measureUnit)
+                    self.view?.reloadData()
+                case .failure(let error): print(error)
+                }
             }
         }
     }
     
     func didTapOnCellInMeasurementsSection(row: Int) {
-        settingsUserDefaultsService.setMeasurementsUnitType(row: row)
+        let measureUnit: String = {
+            switch row {
+            case 0: return Constants.centimeters
+            case 1: return Constants.inches
+            default: return Constants.centimeters
+            }
+        }()
         
-        interactor.updateMeasurementsMeasureUnit { result in
-            switch result {
-            case .success: print("success")
-            case .failure(let error): print(error)
+        DispatchQueue.main.async {
+            self.interactor.updateMeasurementsMeasureUnit(measureUnit: measureUnit) { result in
+                switch result {
+                case .success:
+                    self.settingsUserDefaultsService.setMeasurementsUnitType(measureUnit: measureUnit)
+                    self.view?.reloadData()
+                case .failure(let error): print(error)
+                }
             }
         }
     }
     
     func didTapOnCellInLoadWeigthSection(row: Int) {
-        settingsUserDefaultsService.setLoadWeightUnitType(row: row)
+        let measureUnit: String = {
+            switch row {
+            case 0: return Constants.kgs
+            case 1: return Constants.pounds
+            case 2: return Constants.stones
+            default: return Constants.kgs
+            }
+        }()
         
-        interactor.updateLoadWeightMeasureUnit { result in
-            switch result {
-            case .success: print("success")
-            case .failure(let error): print(error)
+        DispatchQueue.main.async {
+            self.interactor.updateLoadWeightMeasureUnit(measureUnit: measureUnit) { result in
+                switch result {
+                case .success:
+                    self.settingsUserDefaultsService.setLoadWeightUnitType(measureUnit: measureUnit)
+                    self.view?.reloadData()
+                    print("success")
+                case .failure(let error): print(error)
+                }
             }
         }
     }
     
     func didTapOnCellInDistanceSection(row: Int) {
-        settingsUserDefaultsService.setDistanceUnitType(row: row)
+        let measureUnit: String = {
+            switch row {
+            case 0: return Constants.kilometers
+            case 1: return Constants.miles
+            default: return Constants.kilometers
+            }
+        }()
         
-        interactor.updateDistanceMeasureUnit { result in
-            switch result {
-            case .success: print("success")
-            case .failure(let error): print(error)
+        DispatchQueue.main.async {
+            self.interactor.updateDistanceMeasureUnit(measureUnit: measureUnit) { result in
+                switch result {
+                case .success:
+                    self.settingsUserDefaultsService.setDistanceUnitType(measureUnit: measureUnit)
+                    self.view?.reloadData()
+                    print("success")
+                case .failure(let error): print(error)
+                }
             }
         }
     }
@@ -98,6 +143,16 @@ extension UnitsPresenter: UnitsViewOutput {
     
     func didSwipe() {
         router.getBackToMainView()
+    }
+    
+    struct Constants {
+        static let kgs = "kg"
+        static let pounds = "lb"
+        static let stones = "st"
+        static let centimeters = "centimeters"
+        static let inches = "inches"
+        static let kilometers = "kilometers"
+        static let miles = "miles"
     }
 }
 

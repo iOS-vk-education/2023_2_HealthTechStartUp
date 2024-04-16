@@ -13,38 +13,32 @@ final class UnitsInteractor {
     
     let settingsService: SettingsServiceDescription
     
-    private let userDefaults = UserDefaults.standard
-    
     init(settingsService: SettingsServiceDescription) {
         self.settingsService = settingsService
     }
 }
 
 extension UnitsInteractor: UnitsInteractorInput {
-    func updateBodyWeightMeasureUnit(completion: @escaping (Result<Void, any Error>) -> Void) {
-        let bodyWeightMeasureUnit = userDefaults.string(forKey: Constants.bodyWeightKey) ?? ""
-        settingsService.updateMeasureUnit(measureUnit: bodyWeightMeasureUnit, measureUnitKey: Constants.bodyWeightKey) { result in
+    func updateBodyWeightMeasureUnit(measureUnit: String, completion: @escaping (Result<Void, any Error>) -> Void) {
+        settingsService.updateMeasureUnit(measureUnit: measureUnit, measureUnitKey: Constants.bodyWeightKey) { result in
             completion(result)
         }
     }
     
-    func updateMeasurementsMeasureUnit(completion: @escaping (Result<Void, any Error>) -> Void) {
-        let bodyWeightMeasureUnit = userDefaults.string(forKey: Constants.measurementsKey) ?? ""
-        settingsService.updateMeasureUnit(measureUnit: bodyWeightMeasureUnit, measureUnitKey: Constants.measurementsKey) { result in
+    func updateMeasurementsMeasureUnit(measureUnit: String, completion: @escaping (Result<Void, any Error>) -> Void) {
+        settingsService.updateMeasureUnit(measureUnit: measureUnit, measureUnitKey: Constants.measurementsKey) { result in
             completion(result)
         }
     }
     
-    func updateLoadWeightMeasureUnit(completion: @escaping (Result<Void, any Error>) -> Void) {
-        let bodyWeightMeasureUnit = userDefaults.string(forKey: Constants.loadWeightKey) ?? ""
-        settingsService.updateMeasureUnit(measureUnit: bodyWeightMeasureUnit, measureUnitKey: Constants.loadWeightKey) { result in
+    func updateLoadWeightMeasureUnit(measureUnit: String, completion: @escaping (Result<Void, any Error>) -> Void) {
+        settingsService.updateMeasureUnit(measureUnit: measureUnit, measureUnitKey: Constants.loadWeightKey) { result in
             completion(result)
         }
     }
     
-    func updateDistanceMeasureUnit(completion: @escaping (Result<Void, any Error>) -> Void) {
-        let bodyWeightMeasureUnit = userDefaults.string(forKey: Constants.distanceKey) ?? ""
-        settingsService.updateMeasureUnit(measureUnit: bodyWeightMeasureUnit, measureUnitKey: Constants.distanceKey) { result in
+    func updateDistanceMeasureUnit(measureUnit: String, completion: @escaping (Result<Void, any Error>) -> Void) {
+        settingsService.updateMeasureUnit(measureUnit: measureUnit, measureUnitKey: Constants.distanceKey) { result in
             completion(result)
         }
     }

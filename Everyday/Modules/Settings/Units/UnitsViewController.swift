@@ -95,6 +95,10 @@ private extension UnitsViewController {
 }
 
 extension UnitsViewController: UnitsViewInput {
+    func reloadData() {
+        tableView.reloadData()
+    }
+    
     func configure(with model: UnitsViewModel) {
         navBarTitle.attributedText = model.unitsTitle
     }

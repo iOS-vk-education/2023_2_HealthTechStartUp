@@ -26,10 +26,10 @@ protocol SettingsUserDefaultsServiceDescription {
     func resetUserDefaults()
     func setUserName(username: String)
     func getUserName() -> String
-    func setBodyWeightUnitType(row: Int)
-    func setMeasurementsUnitType(row: Int)
-    func setLoadWeightUnitType(row: Int)
-    func setDistanceUnitType(row: Int)
+    func setBodyWeightUnitType(measureUnit: String)
+    func setMeasurementsUnitType(measureUnit: String)
+    func setLoadWeightUnitType(measureUnit: String)
+    func setDistanceUnitType(measureUnit: String)
     func getSelectedBodyWeightCellIndexPath() -> IndexPath
     func getSelectedMeasurementsCellIndexPath() -> IndexPath
     func getSelectedLoadWeightCellIndexPath() -> IndexPath
@@ -39,11 +39,11 @@ protocol SettingsUserDefaultsServiceDescription {
 final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription {
     public static let shared = SettingsUserDefaultsService()
     
+    private let defaults = UserDefaults.standard
+    
     private init() {}
     
     func setBeginningOfTheWeek(indexPath: IndexPath) {
-        let defaults = UserDefaults.standard
-        
         switch indexPath {
         case [0, 0]:
             defaults.set(Constants.dateAndTimeKeys[0], forKey: Constants.beginningOfTheWeekKey)
@@ -53,8 +53,6 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
     }
 
     func setTimeFormat(indexPath: IndexPath) {
-        let defaults = UserDefaults.standard
-        
         switch indexPath {
         case [1, 1]:
             defaults.set(Constants.dateAndTimeKeys[3], forKey: Constants.timeFormat)
@@ -64,7 +62,6 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
     }
 
     func getSelectedTimeFormatIndexPath() -> IndexPath {
-        let defaults = UserDefaults.standard
         let currentFormat = defaults.string(forKey: Constants.timeFormat)
         
         switch currentFormat {
@@ -75,7 +72,6 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
     }
 
     func getSelectedBeginningOfTheWeekIndexPath() -> IndexPath {
-        let defaults = UserDefaults.standard
         let currentFormat = defaults.string(forKey: Constants.beginningOfTheWeekKey)
         
         switch currentFormat {
@@ -87,18 +83,17 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
         
     func getSelectedThemeCellIndexPath() -> IndexPath {
         switch self.getSelectedTheme() {
-        case "Dark": return [1, 0]
-        case "Light": return [1, 1]
+        case "dark": return [1, 0]
+        case "light": return [1, 1]
         default: return [0, 0]
         }
     }
     
     func getSelectedTheme() -> String? {
-        return UserDefaults.standard.string(forKey: Constants.themeKey)
+        return defaults.string(forKey: Constants.themeKey)
     }
 
     func setAutoTheme() {
-        let defaults = UserDefaults.standard
         defaults.set(Constants.themeKeys[0], forKey: Constants.themeKey)
         if #available(iOS 13.0, *) {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
@@ -112,7 +107,6 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
     }
 
     func setDarkTheme() {
-        let defaults = UserDefaults.standard
         defaults.set(Constants.themeKeys[1], forKey: Constants.themeKey)
         if #available(iOS 13.0, *) {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
@@ -126,7 +120,6 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
     }
 
     func setLightTheme() {
-        let defaults = UserDefaults.standard
         defaults.set(Constants.themeKeys[2], forKey: Constants.themeKey)
         if #available(iOS 13.0, *) {
             if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene {
@@ -138,7 +131,7 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
             }
         }
     }
-
+    
     func setTheme() {
         switch getSelectedTheme() {
         case Constants.themeKeys[1]: setDarkTheme()
@@ -149,22 +142,22 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
 
     func enableAutolock(switchState: Bool) {
         UIApplication.shared.isIdleTimerDisabled = false
-        UserDefaults.standard.set(true, forKey: Constants.switchKeys[1])
+        defaults.set(true, forKey: Constants.switchKeys[1])
     }
 
     func disabledAutolock(switchState: Bool) {
         UIApplication.shared.isIdleTimerDisabled = true
-        UserDefaults.standard.set(switchState, forKey: Constants.switchKeys[1])
+        defaults.set(switchState, forKey: Constants.switchKeys[1])
     }
 
     func disableNotifications(switchState: Bool) {
         UNUserNotificationCenter.current().removeAllPendingNotificationRequests()
-        UserDefaults.standard.set(switchState, forKey: Constants.switchKeys[0])
+        defaults.set(switchState, forKey: Constants.switchKeys[0])
     }
 
     func enableNotifications(switchState: Bool) {
         UIApplication.shared.registerForRemoteNotifications()
-        UserDefaults.standard.set(switchState, forKey: Constants.switchKeys[0])
+        defaults.set(switchState, forKey: Constants.switchKeys[0])
     }
 
     func saveSwitchValue(switchState: Bool, key: Int ) {
@@ -203,7 +196,6 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
     }
 
     func resetUserDefaults() {
-        let defaults = UserDefaults.standard
         defaults.set("auto", forKey: Constants.themeKey)
         defaults.set("Monday", forKey: Constants.beginningOfTheWeekKey)
         defaults.set("MilitaryTime", forKey: Constants.timeFormat)
@@ -212,54 +204,32 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
         defaults.set("email", forKey: Constants.whichSign)
     }
     
-    func setBodyWeightUnitType(row: Int) {
-        let defaults = UserDefaults.standard
+    func setBodyWeightUnitType(measureUnit: String) {
         let key = Constants.bodyWeightKey
-        switch row {
-        case 0: defaults.set(Constants.kgs, forKey: key)
-        case 1: defaults.set(Constants.pounds, forKey: key)
-        case 2: defaults.set(Constants.stones, forKey: key)
-        default:
-            defaults.set(Constants.kgs, forKey: key)
-        }
+        
+        defaults.set(measureUnit, forKey: key)
     }
     
-    func setMeasurementsUnitType(row: Int) {
-        let defaults = UserDefaults.standard
+    func setMeasurementsUnitType(measureUnit: String) {
         let key = Constants.measurementsKey
-        switch row {
-        case 0: defaults.set(Constants.centimeters, forKey: key)
-        case 1: defaults.set(Constants.inches, forKey: key)
-        default:
-            defaults.set(Constants.centimeters, forKey: key)
-        }
+        
+        defaults.set(measureUnit, forKey: key)
     }
     
-    func setLoadWeightUnitType(row: Int) {
-        let defaults = UserDefaults.standard
+    func setLoadWeightUnitType(measureUnit: String) {
         let key = Constants.loadWeightKey
-        switch row {
-        case 0: defaults.set(Constants.kgs, forKey: key)
-        case 1: defaults.set(Constants.pounds, forKey: key)
-        case 2: defaults.set(Constants.stones, forKey: key)
-        default:
-            defaults.set(Constants.kgs, forKey: key)
-        }
+        
+        defaults.set(measureUnit, forKey: key)
     }
     
-    func setDistanceUnitType(row: Int) {
-        let defaults = UserDefaults.standard
+    func setDistanceUnitType(measureUnit: String) {
         let key = Constants.distanceKey
-        switch row {
-        case 0: defaults.set(Constants.kilometers, forKey: key)
-        case 1: defaults.set(Constants.miles, forKey: key)
-        default:
-            defaults.set(Constants.kilometers, forKey: key)
-        }
+        
+        defaults.set(measureUnit, forKey: key)
     }
     
     func getSelectedBodyWeightCellIndexPath() -> IndexPath {
-        switch UserDefaults.standard.string(forKey: Constants.bodyWeightKey) {
+        switch defaults.string(forKey: Constants.bodyWeightKey) {
         case Constants.kgs: return [0, 0]
         case Constants.pounds: return [0, 1]
         case Constants.stones: return [0, 2]
@@ -269,7 +239,7 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
     }
     
     func getSelectedMeasurementsCellIndexPath() -> IndexPath {
-        switch UserDefaults.standard.string(forKey: Constants.measurementsKey) {
+        switch defaults.string(forKey: Constants.measurementsKey) {
         case Constants.centimeters: return [1, 0]
         case Constants.inches: return [1, 1]
         default:
@@ -278,7 +248,7 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
     }
     
     func getSelectedLoadWeightCellIndexPath() -> IndexPath {
-        switch UserDefaults.standard.string(forKey: Constants.loadWeightKey) {
+        switch defaults.string(forKey: Constants.loadWeightKey) {
         case Constants.kgs: return [2, 0]
         case Constants.pounds: return [2, 1]
         case Constants.stones: return [2, 2]
@@ -288,7 +258,7 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
     }
     
     func getSelectedDistanceCellIndexPath() -> IndexPath {
-        switch UserDefaults.standard.string(forKey: Constants.distanceKey) {
+        switch defaults.string(forKey: Constants.distanceKey) {
         case Constants.kilometers: return [3, 0]
         case Constants.miles: return [3, 1]
         default:
