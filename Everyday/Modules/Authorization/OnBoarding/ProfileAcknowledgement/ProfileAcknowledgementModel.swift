@@ -21,14 +21,20 @@ class ProfileAcknowledgementModel {
     private(set) var schedule: [[DocumentReference]] = []
     private(set) var profileImagePath: String?
     private(set) var profileImage: UIImage?
-    private(set) var measureUnit: String?
+    private(set) var bodyWeightMeasureUnit: String?
+    private(set) var measurementsMeasureUnit: String?
+    private(set) var loadWeightMeasureUnit: String?
+    private(set) var distanceMeasureUnit: String?
 
     private init() { }
 
-    func update(firstname: String? = nil, lastname: String? = nil, nickname: String? = nil, email: String? = nil, 
+    func update(firstname: String? = nil, lastname: String? = nil, nickname: String? = nil, email: String? = nil,
                 password: String? = nil, profileImage: UIImage? = nil, age: String? = nil, gender: String? = nil,
                 weight: String? = nil, schedule: [[DocumentReference]]? = nil, profileImagePath: String? = nil,
-                measureUnit: String? = nil) {
+                bodyWeightMeasureUnit: String? = nil,
+                measurementsMeasureUnit: String? = nil,
+                loadWeightMeasureUnit: String? = nil,
+                distanceMeasureUnit: String? = nil) {
         if let firstname = firstname { self.firstname = firstname }
         if let lastname = lastname { self.lastname = lastname }
         if let nickname = nickname { self.nickname = nickname }
@@ -40,11 +46,14 @@ class ProfileAcknowledgementModel {
         if let schedule = schedule { self.schedule = schedule }
         if let profileImagePath = profileImagePath { self.profileImagePath = profileImagePath }
         if let profileImage = profileImage { self.profileImage = profileImage }
-        if let measureUnit = measureUnit { self.measureUnit = measureUnit}
+        if let bodyWeightMeasureUnit = bodyWeightMeasureUnit { self.bodyWeightMeasureUnit = bodyWeightMeasureUnit}
+        if let measurementsMeasureUnit = measurementsMeasureUnit { self.measurementsMeasureUnit = measurementsMeasureUnit}
+        if let loadWeightMeasureUnit = loadWeightMeasureUnit { self.loadWeightMeasureUnit = loadWeightMeasureUnit}
+        if let distanceMeasureUnit = distanceMeasureUnit { self.distanceMeasureUnit = distanceMeasureUnit}
     }
     
     enum Field {
-        case firstname, lastname, nickname, email, password, profileImagePath, age, gender, weight, schedule, profileImage, measureUnit
+        case firstname, lastname, nickname, email, password, profileImagePath, age, gender, weight, schedule, profileImage, bodyWeightMeasureUnit
     }
 
     func clear(fields: [Field]) {
@@ -72,8 +81,8 @@ class ProfileAcknowledgementModel {
                 schedule = []
             case .profileImage:
                 profileImage = nil
-            case .measureUnit:
-                measureUnit = nil
+            case .bodyWeightMeasureUnit:
+                bodyWeightMeasureUnit = nil
             }
         }
     }
