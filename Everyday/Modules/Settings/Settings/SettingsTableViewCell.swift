@@ -13,6 +13,7 @@ final class SettingsTableViewCell: UITableViewCell {
     
     // MARK: - Private properties
     
+    private let backgroundImageView = UIView()
     private let cellImage = UIImageView()
     private let cellTitle = UILabel()
     
@@ -39,8 +40,45 @@ final class SettingsTableViewCell: UITableViewCell {
     
     func configure(with viewModel: SettingsTableViewCellModel) {
         cellImage.contentMode = .scaleAspectFit
-        cellImage.image = viewModel.cellImage?.withTintColor(Constants.accentColor)
+        cellImage.image = viewModel.cellImage?.withTintColor(.white, renderingMode: .alwaysOriginal)
         cellTitle.attributedText = viewModel.cellTitle
+    }
+
+    func setBackgroundColor(indexPath: IndexPath, cell: String) {
+        switch cell {
+        case "Profile":
+            backgroundImageView.backgroundColor = .red
+        case "Support":
+            backgroundImageView.backgroundColor = Constants.accentColor
+        case "General":
+            switch indexPath.item {
+            case 0:
+                backgroundImageView.backgroundColor = .systemYellow
+            case 1:
+                backgroundImageView.backgroundColor = .gray
+            case 2:
+                backgroundImageView.backgroundColor = .systemGreen
+            case 3:
+                backgroundImageView.backgroundColor = .systemOrange
+            case 4:
+                backgroundImageView.backgroundColor = .purple
+            default:
+                backgroundImageView.backgroundColor = .gray
+            }
+        case "AboutApp":
+            switch indexPath.item {
+            case 0:
+                backgroundImageView.backgroundColor = .systemBlue
+            case 1:
+                backgroundImageView.backgroundColor = .systemTeal
+            case 2:
+                backgroundImageView.backgroundColor = .systemBrown
+            default:
+                backgroundImageView.backgroundColor = .gray
+            }
+        default:
+            backgroundImageView.backgroundColor = .gray
+        }
     }
 }
 
@@ -49,14 +87,19 @@ private extension SettingsTableViewCell {
     // MARK: - Layout
     
     func layout() {
-        cellImage.pin
-            .left(Constants.horizontalMargin)
-            .vCenter()
-            .width(Constants.cellImage.width)
-            .height(Constants.cellImage.height)
+        backgroundImageView.pin
+           .left(Constants.horizontalMargin)
+           .vCenter()
+           .width(Constants.backgroundImage.size.width)
+           .height(Constants.backgroundImage.size.height)
+               
+       cellImage.pin
+           .center()
+           .width(Constants.cellImage.size.width)
+           .height(Constants.cellImage.size.height)
         
         cellTitle.pin
-            .left(to: cellImage.edge.right)
+            .after(of: backgroundImageView)
             .margin(Constants.horizontalMargin)
             .vCenter()
             .width(of: UITableViewCell())
@@ -69,7 +112,12 @@ private extension SettingsTableViewCell {
     // MARK: - Setup
     
     func setup() {
-        contentView.addSubviews(cellImage, cellTitle)
+        contentView.addSubview(backgroundImageView)
+        backgroundImageView.addSubview(cellImage)
+        contentView.addSubview(cellTitle)
+                
+        backgroundImageView.layer.cornerRadius = Constants.backgroundImage.cornerRadius
+        backgroundImageView.clipsToBounds = true
     }
 }
 
@@ -82,9 +130,13 @@ private extension SettingsTableViewCell {
         static let horizontalMargin: CGFloat = 10
         static let contentHeight: CGFloat = 20
         
+        struct backgroundImage {
+            static let size: CGSize = CGSize(width: 30, height: 30)
+            static let cornerRadius: CGFloat = 8
+        }
+        
         struct cellImage {
-            static let width: CGFloat = 30
-            static let height: CGFloat = 30
+            static let size: CGSize = CGSize(width: 26, height: 26)
         }
         
         struct cellTitle {

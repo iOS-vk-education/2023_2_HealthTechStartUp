@@ -105,8 +105,9 @@ extension SettingsViewController: UITableViewDataSource {
         switch section {
         case 0: return model.generalSettingsSectionCellModel.count
         case 1: return model.profileSettingsSectionCellModel.count
-        case 2: return model.aboutAppSettingsSectionCellModel.count
-        case 3: return model.tellFriendsSectionCellModel.count
+        case 2: return model.healthSettingsSectionCellModel.count
+        case 3: return model.aboutAppSettingsSectionCellModel.count
+        case 4: return model.tellFriendsSectionCellModel.count
         default: return 0
         }
     }
@@ -124,6 +125,7 @@ extension SettingsViewController: UITableViewDataSource {
         if indexPath.section == 0 && indexPath.row <= 1 {
             let viewModel = model.generalSettingsSectionCellModel
             cell.configure(with: viewModel[indexPath.row])
+            cell.setBackgroundColor(indexPath: indexPath, cell: "General")
             
             let switchControl = UISwitch()
             switchControl.isOn = settingsUserDefaultService.switchIsOn(key: indexPath.row)
@@ -138,6 +140,7 @@ extension SettingsViewController: UITableViewDataSource {
         if indexPath.section == 0 {
             let viewModel = model.generalSettingsSectionCellModel
             cell.configure(with: viewModel[indexPath.row])
+            cell.setBackgroundColor(indexPath: indexPath, cell: "General")
             
             return cell
         }
@@ -145,22 +148,30 @@ extension SettingsViewController: UITableViewDataSource {
         if indexPath.section == 1 {
             let viewModel = model.profileSettingsSectionCellModel
             cell.configure(with: viewModel[indexPath.row])
-            
+            cell.setBackgroundColor(indexPath: indexPath, cell: "Profile")
             return cell
         }
         
         if indexPath.section == 2 {
-            let viewModel = model.aboutAppSettingsSectionCellModel
-            cell.configure(with: viewModel[indexPath.row])
+            let viewmodel = model.healthSettingsSectionCellModel
+            cell.configure(with: viewmodel[indexPath.row])
             
             return cell
         }
         
         if indexPath.section == 3 {
+            let viewModel = model.aboutAppSettingsSectionCellModel
+            cell.configure(with: viewModel[indexPath.row])
+            cell.setBackgroundColor(indexPath: indexPath, cell: "AboutApp")
+            return cell
+        }
+        
+        if indexPath.section == 4 {
             let viewModel = model.tellFriendsSectionCellModel
             cell.configure(with: viewModel[indexPath.row])
+            cell.setBackgroundColor(indexPath: indexPath, cell: "Support")
             cell.accessoryType = .none
-            
+                        
             return cell
         }
         return UITableViewCell()
@@ -168,7 +179,7 @@ extension SettingsViewController: UITableViewDataSource {
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let model = output.getViewModel()
-        if section == 3 {
+        if section == 4 {
             return model.supportEverydayTitle
         }
         
@@ -176,7 +187,7 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 3 {
+        if section == 4 {
             return Constants.TableView.matginBottom
         }
         
@@ -203,10 +214,17 @@ extension SettingsViewController: UITableViewDelegate {
             default: print("ERROR")
             }
         }
+        
+        if indexPath.section == 2 {
+            switch indexPath.row {
+            case 0: output.didTapHealthCell()
+            default: print("ERROR")
+            }
+        }
     }
     
     func tableView(_ tableView: UITableView, willDisplayHeaderView view: UIView, forSection section: Int) {
-        if section == 3 {
+        if section == 4 {
             guard let header = view as? UITableViewHeaderFooterView else {
                 return
             }
@@ -220,7 +238,7 @@ extension SettingsViewController: UITableViewDelegate {
         tableViewFooterLabel.attributedText = model.tyTitle
         tableViewFooterLabel.textAlignment = .center
         
-        if section == 3 {
+        if section == 4 {
             return tableViewFooterLabel
         } else {
             return UIView()
@@ -238,7 +256,7 @@ private extension SettingsViewController {
         static let gray: UIColor = .gray
         
         struct TableView {
-            static let numberOfSectionsInTableView: Int = 4
+            static let numberOfSectionsInTableView: Int = 5
             static let colorOpacity: CGFloat = 0.1
             static let marginTop: CGFloat = 10
             static let matginBottom: CGFloat = 50

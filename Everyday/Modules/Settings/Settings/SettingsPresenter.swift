@@ -45,6 +45,10 @@ extension SettingsPresenter: SettingsViewOutput {
     func didTapProfileCell() {
         router.getProfileView()
     }
+    
+    func didTapHealthCell() {
+        router.getHealthView()
+    }
 }
 
 extension SettingsPresenter: SettingsInteractorOutput {

@@ -25,6 +25,7 @@ protocol SettingsViewOutput: AnyObject {
     func didTapDateAndTimeCell()
     func didTapUnitsCell()
     func didTapProfileCell()
+    func didTapHealthCell()
 }
 
 protocol SettingsInteractorInput: AnyObject {
@@ -38,4 +39,5 @@ protocol SettingsRouterInput: AnyObject {
     func getDateAndTimeView()
     func getUnitsView()
     func getProfileView()
+    func getHealthView()
 }

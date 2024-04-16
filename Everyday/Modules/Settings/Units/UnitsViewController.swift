@@ -136,10 +136,9 @@ extension UnitsViewController: UITableViewDataSource {
         cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
         
         let model = output.getUnitsViewModel()
-        let settingsUserDefaultService = SettingsUserDefaultsService.shared
-        
+
         if indexPath.section == 0 {
-            if indexPath == settingsUserDefaultService.getSelectedBodyWeightCellIndexPath() {
+            if indexPath == output.getSelectedBodyWeightCellIndexPath() {
                 let accessoryView = UIImageView(image: model.accessoryCellImage)
                 accessoryView.tintColor = Constants.accentColor
                 cell.accessoryView = accessoryView

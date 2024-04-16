@@ -1,15 +1,15 @@
 //
-//  UnitsTableViewCell.swift
+//  HealthTableViewCell.swift
 //  Everyday
 //
-//  Created by Yaz on 10.03.2024.
+//  Created by Yaz on 16.04.2024.
 //
 
 import UIKit
 import PinLayout
 
-final class UnitsTableViewCell: UITableViewCell {
-    static let reuseID = "UnitsTableViewCell"
+final class HealthTableViewCellHealthCondition: UITableViewCell {
+    static let reuseID = "HealthTableViewCellCondition"
     
     // MARK: - Private properties
     
@@ -31,9 +31,10 @@ final class UnitsTableViewCell: UITableViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
+        
         layout()
     }
-
+    
     // MARK: - Interface
     
     func configure(with title: NSAttributedString) {
@@ -41,7 +42,7 @@ final class UnitsTableViewCell: UITableViewCell {
     }
 }
 
-private extension UnitsTableViewCell {
+private extension HealthTableViewCellHealthCondition {
     // MARK: - Layout
     
     func layout() {
@@ -55,17 +56,21 @@ private extension UnitsTableViewCell {
     // MARK: - Setup
     
     func setup() {
-        contentView.addSubview(cellTitle)
+        contentView.addSubviews(cellTitle)
     }
 }
 
-private extension UnitsTableViewCell {
+private extension HealthTableViewCellHealthCondition {
     struct Constants {
         static let horizontalMargin: CGFloat = 10
-        static let contentHeight: CGFloat = 20
+        static let contentHeight: CGFloat = 24
         
         struct cellTitle {
-            static let width: CGFloat = 200
+            static let width: CGFloat = 230
+        }
+        
+        struct cellValue {
+            static let width: CGFloat = 60
         }
     }
 }

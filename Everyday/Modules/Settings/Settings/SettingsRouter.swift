@@ -56,4 +56,15 @@ extension SettingsRouter: SettingsRouterInput {
         profileViewController.modalPresentationStyle = .overFullScreen
         viewController.navigationController?.pushViewController(profileViewController, animated: true)
     }
+    
+    func getHealthView() {
+        guard let viewController = viewController else {
+            return
+        }
+        
+        let healthContainer = HealthContainer.assemble(with: .init())
+        let healthViewController = healthContainer.viewController
+        healthViewController.modalPresentationStyle = .overFullScreen
+        viewController.navigationController?.pushViewController(healthViewController, animated: true)
+    }
 }

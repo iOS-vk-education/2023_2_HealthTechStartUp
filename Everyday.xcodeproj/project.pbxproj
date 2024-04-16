@@ -78,6 +78,15 @@
 		8C3B5EFD2BB8F2CF00CFE490 /* ProfileViewModelSingWithVKOrGoogle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EFC2BB8F2CF00CFE490 /* ProfileViewModelSingWithVKOrGoogle.swift */; };
 		8C3B5F012BBA058800CFE490 /* AuthUserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5F002BBA058800CFE490 /* AuthUserDefaultsService.swift */; };
 		8C3B5F032BBA158F00CFE490 /* ProfileViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5F022BBA158F00CFE490 /* ProfileViewModel.swift */; };
+		8C5237192BCE25F80084F335 /* HealthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5237132BCE25F80084F335 /* HealthPresenter.swift */; };
+		8C52371A2BCE25F80084F335 /* HealthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5237142BCE25F80084F335 /* HealthRouter.swift */; };
+		8C52371B2BCE25F80084F335 /* HealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5237152BCE25F80084F335 /* HealthViewController.swift */; };
+		8C52371C2BCE25F80084F335 /* HealthProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5237162BCE25F80084F335 /* HealthProtocols.swift */; };
+		8C52371D2BCE25F80084F335 /* HealthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5237172BCE25F80084F335 /* HealthInteractor.swift */; };
+		8C52371E2BCE25F80084F335 /* HealthContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5237182BCE25F80084F335 /* HealthContainer.swift */; };
+		8C5237212BCE2BCC0084F335 /* HealthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5237202BCE2BCC0084F335 /* HealthViewModel.swift */; };
+		8C5237232BCE31490084F335 /* HealthTableViewCellHealthCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5237222BCE31490084F335 /* HealthTableViewCellHealthCondition.swift */; };
+		8C5237272BCE8E7D0084F335 /* HealthTableViewCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5237262BCE8E7D0084F335 /* HealthTableViewCellButton.swift */; };
 		8CBF07A52BCC5B38005D1E0D /* ForgotPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07A42BCC5B38005D1E0D /* ForgotPasswordPresenter.swift */; };
 		8CBF07A72BCC5B4C005D1E0D /* ForgotPasswordContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07A62BCC5B4C005D1E0D /* ForgotPasswordContainer.swift */; };
 		8CBF07A92BCC5B5E005D1E0D /* ForgotPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07A82BCC5B5E005D1E0D /* ForgotPasswordInteractor.swift */; };
@@ -85,6 +94,7 @@
 		8CBF07AD2BCC5B8B005D1E0D /* ForgotPasswordRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07AC2BCC5B8B005D1E0D /* ForgotPasswordRouter.swift */; };
 		8CBF07AF2BCC5B9D005D1E0D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07AE2BCC5B9D005D1E0D /* ForgotPasswordViewController.swift */; };
 		8CBF07B22BCC66C4005D1E0D /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07B12BCC66C4005D1E0D /* ForgotPasswordViewModel.swift */; };
+		8CBF07B52BCE207F005D1E0D /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07B42BCE207F005D1E0D /* HealthService.swift */; };
 		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
 		9E2A8BC92B850461004A81CF /* FIrebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */; };
 		9E2A8BCD2B8520B2004A81CF /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */; };
@@ -309,6 +319,15 @@
 		8C3B5EFC2BB8F2CF00CFE490 /* ProfileViewModelSingWithVKOrGoogle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModelSingWithVKOrGoogle.swift; sourceTree = "<group>"; };
 		8C3B5F002BBA058800CFE490 /* AuthUserDefaultsService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthUserDefaultsService.swift; sourceTree = "<group>"; };
 		8C3B5F022BBA158F00CFE490 /* ProfileViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewModel.swift; sourceTree = "<group>"; };
+		8C5237132BCE25F80084F335 /* HealthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthPresenter.swift; sourceTree = "<group>"; };
+		8C5237142BCE25F80084F335 /* HealthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRouter.swift; sourceTree = "<group>"; };
+		8C5237152BCE25F80084F335 /* HealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewController.swift; sourceTree = "<group>"; };
+		8C5237162BCE25F80084F335 /* HealthProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthProtocols.swift; sourceTree = "<group>"; };
+		8C5237172BCE25F80084F335 /* HealthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthInteractor.swift; sourceTree = "<group>"; };
+		8C5237182BCE25F80084F335 /* HealthContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthContainer.swift; sourceTree = "<group>"; };
+		8C5237202BCE2BCC0084F335 /* HealthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewModel.swift; sourceTree = "<group>"; };
+		8C5237222BCE31490084F335 /* HealthTableViewCellHealthCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTableViewCellHealthCondition.swift; sourceTree = "<group>"; };
+		8C5237262BCE8E7D0084F335 /* HealthTableViewCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTableViewCellButton.swift; sourceTree = "<group>"; };
 		8CBF07A42BCC5B38005D1E0D /* ForgotPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPresenter.swift; sourceTree = "<group>"; };
 		8CBF07A62BCC5B4C005D1E0D /* ForgotPasswordContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordContainer.swift; sourceTree = "<group>"; };
 		8CBF07A82BCC5B5E005D1E0D /* ForgotPasswordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordInteractor.swift; sourceTree = "<group>"; };
@@ -316,6 +335,7 @@
 		8CBF07AC2BCC5B8B005D1E0D /* ForgotPasswordRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordRouter.swift; sourceTree = "<group>"; };
 		8CBF07AE2BCC5B9D005D1E0D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		8CBF07B12BCC66C4005D1E0D /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
+		8CBF07B42BCE207F005D1E0D /* HealthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
 		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
 		9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
@@ -706,6 +726,7 @@
 		8C3B5EFE2BBA052300CFE490 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8CBF07B32BCE2056005D1E0D /* Health */,
 				8C3B5EDC2BAF7E7B00CFE490 /* UserDefaults */,
 			);
 			path = Helpers;
@@ -717,6 +738,14 @@
 				8C3B5F002BBA058800CFE490 /* AuthUserDefaultsService.swift */,
 			);
 			path = UserDefaults;
+			sourceTree = "<group>";
+		};
+		8C52371F2BCE2BB70084F335 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8C5237202BCE2BCC0084F335 /* HealthViewModel.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		8CBF079F2BCC587A005D1E0D /* ForgotPassword */ = {
@@ -739,6 +768,30 @@
 				8CBF07B12BCC66C4005D1E0D /* ForgotPasswordViewModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8CBF07B32BCE2056005D1E0D /* Health */ = {
+			isa = PBXGroup;
+			children = (
+				8CBF07B42BCE207F005D1E0D /* HealthService.swift */,
+			);
+			path = Health;
+			sourceTree = "<group>";
+		};
+		8CBF07B62BCE23D7005D1E0D /* Health */ = {
+			isa = PBXGroup;
+			children = (
+				8C52371F2BCE2BB70084F335 /* Models */,
+				8C5237132BCE25F80084F335 /* HealthPresenter.swift */,
+				8C5237142BCE25F80084F335 /* HealthRouter.swift */,
+				8C5237152BCE25F80084F335 /* HealthViewController.swift */,
+				8C5237162BCE25F80084F335 /* HealthProtocols.swift */,
+				8C5237172BCE25F80084F335 /* HealthInteractor.swift */,
+				8C5237182BCE25F80084F335 /* HealthContainer.swift */,
+				8C5237222BCE31490084F335 /* HealthTableViewCellHealthCondition.swift */,
+				8C5237262BCE8E7D0084F335 /* HealthTableViewCellButton.swift */,
+			);
+			path = Health;
 			sourceTree = "<group>";
 		};
 		9E1383072BAB03240073622C /* CoreData */ = {
@@ -1318,6 +1371,7 @@
 		9EE8AE082B7FB8BC001D126F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				8CBF07B62BCE23D7005D1E0D /* Health */,
 				8CBF079F2BCC587A005D1E0D /* ForgotPassword */,
 				8C3B5E632BAF76FD00CFE490 /* DeleteAccount */,
 				8C3B5E622BAF76E900CFE490 /* ChangePassword */,
@@ -1519,6 +1573,7 @@
 				9EE335992B8F9CCD00F532B3 /* SplashAnimator.swift in Sources */,
 				8C3B5E832BAF797C00CFE490 /* ThemeViewModel.swift in Sources */,
 				8C3B5EFD2BB8F2CF00CFE490 /* ProfileViewModelSingWithVKOrGoogle.swift in Sources */,
+				8C5237232BCE31490084F335 /* HealthTableViewCellHealthCondition.swift in Sources */,
 				9E4F22982B9F3BDD003E749E /* ExerciseProtocols.swift in Sources */,
 				8C3B5EFB2BB75DA200CFE490 /* SettingsService.swift in Sources */,
 				9E5B74ED2B7F99FB00E2BDE6 /* WelcomeScreenViewModel.swift in Sources */,
@@ -1615,6 +1670,7 @@
 				9E4F22D02B9F3C51003E749E /* ExtraInteractor.swift in Sources */,
 				8C3B5E7B2BAF78D100CFE490 /* ProfileProtocols.swift in Sources */,
 				9EBFD9652BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift in Sources */,
+				8C5237272BCE8E7D0084F335 /* HealthTableViewCellButton.swift in Sources */,
 				9E4382D52B83738800C69708 /* AuthService.swift in Sources */,
 				8CBF07A92BCC5B5E005D1E0D /* ForgotPasswordInteractor.swift in Sources */,
 				8C3B5EBB2BAF7CA500CFE490 /* ChangeEmailRouter.swift in Sources */,
@@ -1625,6 +1681,7 @@
 				9E4766D82B9F516F00DD31B9 /* StorageService.swift in Sources */,
 				9E53FB342B7F87BA00C55A45 /* AppDelegate.swift in Sources */,
 				9E4F22CF2B9F3C51003E749E /* ExtraPresenter.swift in Sources */,
+				8C5237212BCE2BCC0084F335 /* HealthViewModel.swift in Sources */,
 				9E5B75162B7F9D3500E2BDE6 /* GenderButtonView.swift in Sources */,
 				9E4F229C2B9F3BDD003E749E /* ExerciseInteractor.swift in Sources */,
 				9E7C199D2B8F482E0006D48C /* KeychainService.swift in Sources */,
@@ -1634,6 +1691,7 @@
 				9E5B74EB2B7F99FB00E2BDE6 /* WelcomeScreenProtocols.swift in Sources */,
 				9E4F22CC2B9F3C51003E749E /* ExtraRouter.swift in Sources */,
 				9E4F228F2B9F3BC4003E749E /* TrainingTableViewCellViewModel.swift in Sources */,
+				8CBF07B52BCE207F005D1E0D /* HealthService.swift in Sources */,
 				8C3B5EAC2BAF7BC400CFE490 /* UnitsViewController.swift in Sources */,
 				8C3B5EBA2BAF7CA500CFE490 /* ChangeEmailPresenter.swift in Sources */,
 				8C3B5E9E2BAF7A2700CFE490 /* DateAndTimeInteractor.swift in Sources */,
@@ -1670,6 +1728,12 @@
 				9E53FB362B7F87BA00C55A45 /* SceneDelegate.swift in Sources */,
 				9E5B74FD2B7F9A7000E2BDE6 /* SignUpContainer.swift in Sources */,
 				8C3B5EBD2BAF7CA500CFE490 /* ChangeEmailProtocols.swift in Sources */,
+				8C5237192BCE25F80084F335 /* HealthPresenter.swift in Sources */,
+				8C52371A2BCE25F80084F335 /* HealthRouter.swift in Sources */,
+				8C52371B2BCE25F80084F335 /* HealthViewController.swift in Sources */,
+				8C52371C2BCE25F80084F335 /* HealthProtocols.swift in Sources */,
+				8C52371D2BCE25F80084F335 /* HealthInteractor.swift in Sources */,
+				8C52371E2BCE25F80084F335 /* HealthContainer.swift in Sources */,
 				9E5B750B2B7F9A8300E2BDE6 /* SignInViewModel.swift in Sources */,
 				8C3B5EDB2BAF7DD400CFE490 /* DeleteAccountContainer.swift in Sources */,
 				9E5B750C2B7F9A8300E2BDE6 /* SignInInteractor.swift in Sources */,
@@ -1865,6 +1929,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow access to enjoy all the features of the application";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
@@ -1896,6 +1961,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
+				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow access to enjoy all the features of the application";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
