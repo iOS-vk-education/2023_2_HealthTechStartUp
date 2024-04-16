@@ -15,7 +15,7 @@ final class UnitsContainer {
     
     class func assemble(with context: UnitsContext) -> UnitsContainer {
         let router = UnitsRouter()
-        let interactor = UnitsInteractor()
+        let interactor = UnitsInteractor(settingsService: SettingsService.shared)
         let presenter = UnitsPresenter(router: router, interactor: interactor)
         let viewController = UnitsViewController(output: presenter)
         

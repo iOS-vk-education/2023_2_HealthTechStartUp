@@ -132,8 +132,16 @@ extension UnitsViewController: UITableViewDataSource {
         cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
         
         let model = output.getUnitsViewModel()
+        let settingsUserDefaultService = SettingsUserDefaultsService.shared
         
         if indexPath.section == 0 {
+            if indexPath == settingsUserDefaultService.getSelectedBodyWeightCellIndexPath() {
+                let accessoryView = UIImageView(image: model.accessoryCellImage)
+                accessoryView.tintColor = Constants.accentColor
+                cell.accessoryView = accessoryView
+            } else {
+                cell.accessoryView = nil
+            }
             let viewModel = model.weightSectionModel
             cell.configure(with: viewModel[indexPath.row])
             
@@ -141,6 +149,13 @@ extension UnitsViewController: UITableViewDataSource {
         }
         
         if indexPath.section == 1 {
+            if indexPath == output.getSelectedMeasurementsCellIndexPath() {
+                let accessoryView = UIImageView(image: model.accessoryCellImage)
+                accessoryView.tintColor = Constants.accentColor
+                cell.accessoryView = accessoryView
+            } else {
+                cell.accessoryView = nil
+            }
             let viewModel = model.measurementsSectionModel
             cell.configure(with: viewModel[indexPath.row])
             
@@ -148,6 +163,13 @@ extension UnitsViewController: UITableViewDataSource {
         }
         
         if indexPath.section == 2 {
+            if indexPath == output.getSelectedLoadWeightCellIndexPath() {
+                let accessoryView = UIImageView(image: model.accessoryCellImage)
+                accessoryView.tintColor = Constants.accentColor
+                cell.accessoryView = accessoryView
+            } else {
+                cell.accessoryView = nil
+            }
             let viewModel = model.weightSectionModel
             cell.configure(with: viewModel[indexPath.row])
             
@@ -155,6 +177,13 @@ extension UnitsViewController: UITableViewDataSource {
         }
         
         if indexPath.section == 3 {
+            if indexPath == output.getSelectedDistanceCellIndexPath() {
+                let accessoryView = UIImageView(image: model.accessoryCellImage)
+                accessoryView.tintColor = Constants.accentColor
+                cell.accessoryView = accessoryView
+            } else {
+                cell.accessoryView = nil
+            }
             let viewModel = model.distanceSectionModel
             cell.configure(with: viewModel[indexPath.row])
             
@@ -170,6 +199,17 @@ extension UnitsViewController: UITableViewDataSource {
 extension UnitsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
+        
+        switch indexPath.section {
+        case 0: output.didTapOnCellInBodyWeigthSection(row: indexPath.row)
+        case 1: output.didTapOnCellInMeasurementsSection(row: indexPath.row)
+        case 2: output.didTapOnCellInLoadWeigthSection(row: indexPath.row)
+        case 3: output.didTapOnCellInDistanceSection(row: indexPath.row)
+        default:
+            print("Error when tap on tableView")
+        }
+        
+        tableView.reloadData()
     }
     
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
@@ -236,7 +276,6 @@ private extension UnitsViewController {
         
         struct TableView {
             static let numberOfSectionsInTableView: Int = 4
-            static let rowsInSectionsInTableView: Int = 2
             static let colorOpacity: CGFloat = 0.1
             static let marginTop: CGFloat = 35
             static let matginBottom: CGFloat = 50

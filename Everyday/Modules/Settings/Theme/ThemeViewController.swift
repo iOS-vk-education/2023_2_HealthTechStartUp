@@ -17,7 +17,6 @@ final class ThemeViewController: UIViewController {
     
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private let navBarTitle = UILabel()
-    private let themeKeys = ["Auto", "Dark", "Light"]
 
     // MARK: - lifecycle
     
@@ -34,13 +33,13 @@ final class ThemeViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        output.didLoadView()
         
         view.backgroundColor = Constants.backgroundColor
         
         let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
         self.view.addGestureRecognizer(swipeRightGestureRecognizer)
         
-        navBarTitle.attributedText = ThemeViewModel().themeTitle
         self.navigationItem.titleView = navBarTitle
         
         navigationController?.navigationBar.isHidden = false
@@ -86,15 +85,6 @@ private extension ThemeViewController {
             .bottom(view.pin.safeArea)
     }
     
-    func getIndexPath() -> IndexPath {
-        let settingsUserDefaultService = SettingsUserDefaultsService.shared
-        switch settingsUserDefaultService.getSelectedTheme() {
-        case "Dark": return [1, 0]
-        case "Light": return [1, 1]
-        default: return [0, 0]
-        }
-    }
-    
     // MARK: - Actions
     
     @objc
@@ -105,6 +95,9 @@ private extension ThemeViewController {
     }
 }
 extension ThemeViewController: ThemeViewInput {
+    func configure(with model: ThemeViewModel) {
+        navBarTitle.attributedText = model.themeTitle
+    }
 }
 
 extension ThemeViewController: UITableViewDataSource {
@@ -125,11 +118,11 @@ extension ThemeViewController: UITableViewDataSource {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: ThemeTableViewCell.reuseID, for: indexPath) as? ThemeTableViewCell else {
                     return UITableViewCell()
                 }
-        cell.selectionStyle = .blue
-        cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
-        let model = ThemeViewModel()
         
-        if indexPath == getIndexPath() {
+        cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
+        let model = output.getThemeViewModel()
+        
+        if indexPath == output.getSelectedThemeCellIndexPath() {
             let accessoryView = UIImageView(image: model.accessoryCellImage)
             accessoryView.tintColor = Constants.accentColor
             cell.accessoryView = accessoryView
@@ -158,16 +151,16 @@ extension ThemeViewController: UITableViewDataSource {
 extension ThemeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        let settingsUserDefaultService = SettingsUserDefaultsService.shared
+        
         if indexPath.section == 0 {
-            settingsUserDefaultService.setAutoTheme()
+            output.didTapOnAutoThemeCell()
         }
         
         if indexPath.section == 1 {
             switch indexPath.row {
-            case 0: settingsUserDefaultService.setDarkTheme()
-            case 1: settingsUserDefaultService.setLightTheme()
-            default: settingsUserDefaultService.setAutoTheme()
+            case 0: output.didTapOnDarkThemeCell()
+            case 1: output.didTapOnLightThemeCell()
+            default: output.didTapOnAutoThemeCell()
             }
         }
 
@@ -175,7 +168,7 @@ extension ThemeViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, viewForFooterInSection section: Int) -> UIView? {
-        let model = ThemeViewModel()
+        let model = output.getThemeViewModel()
         let explanationAutoTheme = UILabel()
         explanationAutoTheme.attributedText = model.explanationForAutoTheme
         explanationAutoTheme.textAlignment = .center

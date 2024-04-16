@@ -14,6 +14,7 @@ final class DateAndTimePresenter {
     
     private let router: DateAndTimeRouterInput
     private let interactor: DateAndTimeInteractorInput
+    private let settingsUserDefaultsService: SettingsUserDefaultsService = SettingsUserDefaultsService.shared
     
     init(router: DateAndTimeRouterInput, interactor: DateAndTimeInteractorInput) {
         self.router = router
@@ -25,6 +26,32 @@ extension DateAndTimePresenter: DateAndTimeModuleInput {
 }
 
 extension DateAndTimePresenter: DateAndTimeViewOutput {
+    func getSelectedBegginingOfTheWeekCellIndexPath() -> IndexPath {
+        settingsUserDefaultsService.getSelectedBeginningOfTheWeekIndexPath()
+    }
+    
+    func getSelectedTimeFormatCellIndexPath() -> IndexPath {
+        settingsUserDefaultsService.getSelectedTimeFormatIndexPath()
+    }
+    
+    func didTapOnCellInBegginingOfTheWeekSection(indexPath: IndexPath) {
+        settingsUserDefaultsService.setBeginningOfTheWeek(indexPath: indexPath)
+    }
+    
+    func didTapOnCellInTimeFormatSection(indexPath: IndexPath) {
+        settingsUserDefaultsService.setTimeFormat(indexPath: indexPath)
+    }
+    
+    func didLoadView() {
+        let model = DateAndTimeViewModel()
+        view?.configure(with: model)
+    }
+    
+    func getDateAndTimeViewModel() -> DateAndTimeViewModel {
+        let model = DateAndTimeViewModel()
+        return model
+    }
+    
     func didSwipe() {
         router.getBackToMainView()
     }

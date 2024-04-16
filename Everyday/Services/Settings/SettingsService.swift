@@ -18,6 +18,7 @@ protocol SettingsServiceDescription {
     func deleteVkAccount(with whichSign: String, completion: @escaping (Result<Void, Error>) -> Void)
     func updateUserImage(image: UIImage, completion: @escaping (Result<Void, Error>) -> Void)
     func updateUserName(username: String, completion: @escaping (Result<Void, Error>) -> Void)
+    func updateMeasureUnit(measureUnit: String, measureUnitKey: String, completion: @escaping (Result<Void, Error>) -> Void)
     func sendForgotPasswordMessage(email: String, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
@@ -56,6 +57,16 @@ final class SettingsService: SettingsServiceDescription {
     
     func updateUserImage(image: UIImage, completion: @escaping (Result<Void, Error>) -> Void) {
         firebaseService.updateUserImage(image: image) { success, error in
+            if let error = error {
+                completion(.failure(error))
+            } else if success {
+                completion(.success(()))
+            }
+        }
+    }
+    
+    func updateMeasureUnit(measureUnit: String, measureUnitKey: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        firebaseService.updateMeasureUnit(measureUnit: measureUnit, measureUnitKey: measureUnitKey) { success, error in
             if let error = error {
                 completion(.failure(error))
             } else if success {

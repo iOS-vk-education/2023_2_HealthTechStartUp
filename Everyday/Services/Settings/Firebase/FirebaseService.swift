@@ -22,6 +22,7 @@ protocol FirebaseServiceDescription {
     func deleteVkAccount(completion: @escaping (Bool, Error?) -> Void)
     func updateUserImage(image: UIImage, completion: @escaping (Bool, Error?) -> Void)
     func updateNickname(username: String, completion: @escaping (Bool, Error?) -> Void)
+    func updateMeasureUnit(measureUnit: String, measureUnitKey: String, completion: @escaping (Bool, Error?) -> Void)
     func currentUser(completion: @escaping (User?, Error?) -> Void)
     func changeFieldInFireBase(field: String, value: String, completion: @escaping (Bool, Error?) -> Void)
     func deleteUserInFirebase(user: User, userId: String, completion: @escaping(Bool, Error?) -> Void)
@@ -400,6 +401,16 @@ extension FirebaseService: FirebaseServiceDescription {
     
     func updateNickname(username: String, completion: @escaping (Bool, Error?) -> Void) {
         changeFieldInFireBase(field: Constants.nickname, value: username) { _, error in
+            guard error == nil else {
+                completion(false, error)
+                return
+            }
+            completion(true, nil)
+        }
+    }
+    
+    func updateMeasureUnit(measureUnit: String, measureUnitKey: String, completion: @escaping (Bool, Error?) -> Void) {
+        changeFieldInFireBase(field: measureUnitKey, value: measureUnit) { _, error in
             guard error == nil else {
                 completion(false, error)
                 return

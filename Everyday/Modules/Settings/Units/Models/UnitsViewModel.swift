@@ -21,6 +21,7 @@ struct UnitsViewModel {
     let klmsTitle: NSAttributedString
     let milesTitle: NSAttributedString
     let aboutUnitsTitle: NSAttributedString
+    let accessoryCellImage: UIImage?
     let weightSectionModel: [NSAttributedString]
     let measurementsSectionModel: [NSAttributedString]
     let distanceSectionModel: [NSAttributedString]
@@ -38,7 +39,9 @@ struct UnitsViewModel {
         self.distanceTitle = NSAttributedString(string: "Units_Distance_title".localized, attributes: Styles.titleAttributes)
         self.klmsTitle = NSAttributedString(string: "Units_Kilometers_title".localized, attributes: Styles.titleAttributes)
         self.milesTitle = NSAttributedString(string: "Units_Miles_title".localized, attributes: Styles.titleAttributes)
-        self.aboutUnitsTitle = NSAttributedString(string: "Units_AboutUnits_title".localized, attributes: Styles.titleAttributes)
+        self.aboutUnitsTitle = NSAttributedString(
+            string: "Units_AboutUnits_title".localized, attributes: Styles.titleAttributes)
+        self.accessoryCellImage = UIImage(systemName: "circle.fill")?.withRenderingMode(.alwaysOriginal)
         self.weightSectionModel = [kgmsTitle, poundsTitle, stonesTitle]
         self.measurementsSectionModel = [cmsTitle, inchesTitle]
         self.distanceSectionModel = [klmsTitle, milesTitle]

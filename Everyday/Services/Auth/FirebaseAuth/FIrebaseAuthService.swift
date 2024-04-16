@@ -143,7 +143,10 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
                         "weight": userRequest.weight ?? "",
                         "schedule": userRequest.schedule,
                         "profileImage": path,
-                        "measureUnit": userRequest.measureUnit ?? ""
+                        "bodyWeightMeasureUnit": userRequest.measureUnit ?? "",
+                        "measurementsMeasureUnit": "",
+                        "loadWeightMeasureUnit": "",
+                        "distanceMeasureUnit": ""
                     ]
                     
                     try await Firestore.firestore().collection("user").document(userId).setData(userData)
