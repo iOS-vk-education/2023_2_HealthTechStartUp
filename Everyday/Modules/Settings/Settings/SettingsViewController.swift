@@ -43,36 +43,28 @@ final class SettingsViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         layout()
     }
-}
 
-private extension SettingsViewController {
-    
     // MARK: - Setup
     
     func setup() {
         setupTableView()
-        view.addSubviews(tableView)
+        view.addSubview(tableView)
     }
 
     func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(SettingsTableViewCell.self, forCellReuseIdentifier: SettingsTableViewCell.reuseID)
-        
         tableView.showsVerticalScrollIndicator = false
         tableView.backgroundColor = .none
         tableView.separatorStyle = .singleLine
-        tableView.separatorInset = UIEdgeInsets(top: .zero,
-                                                left: .zero,
-                                                bottom: .zero,
-                                                right: .zero)
+        tableView.separatorInset = UIEdgeInsets(top: .zero, left: .zero, bottom: .zero, right: .zero)
         tableView.separatorColor = .black
     }
 
     // MARK: - Layout
     
     func layout() {
-        
         tableView.pin
             .top(view.pin.safeArea)
             .horizontally()
@@ -92,95 +84,55 @@ private extension SettingsViewController {
     }
 }
 
+// MARK: - SettingsViewInput
+
 extension SettingsViewController: SettingsViewInput {
 }
 
+// MARK: - UITableViewDataSource
+
 extension SettingsViewController: UITableViewDataSource {
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let model = output.getViewModel()
+        
+        switch indexPath.section {
+        case 0:
+            return configureGeneralSectionCell(for: indexPath, with: model)
+        case 1:
+            return configureProfileSectionCell(for: indexPath, with: model)
+        case 2:
+            return configureHealthSectionCell(for: indexPath, with: model)
+        case 3:
+            return configureAboutAppSectionCell(for: indexPath, with: model)
+        case 4:
+            return configureTellFriendsSectionCell(for: indexPath, with: model)
+        default:
+            return UITableViewCell()
+        }
+    }
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return Constants.TableView.numberOfSectionsInTableView
     }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let model = output.getViewModel()
+        
         switch section {
-        case 0: return model.generalSettingsSectionCellModel.count
-        case 1: return model.profileSettingsSectionCellModel.count
-        case 2: return model.healthSettingsSectionCellModel.count
-        case 3: return model.aboutAppSettingsSectionCellModel.count
-        case 4: return model.tellFriendsSectionCellModel.count
-        default: return 0
+        case 0: 
+            return model.generalSettingsSectionCellModel.count
+        case 1, 2, 4:
+            return 1
+        case 3:
+            return model.aboutAppSettingsSectionCellModel.count
+        default:
+            return 0
         }
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.reuseID, for: indexPath) as? SettingsTableViewCell else {
-                    return UITableViewCell()
-                }
-        cell.selectionStyle = .blue
-        cell.accessoryType = .disclosureIndicator
-        cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
-        let model = output.getViewModel()
-        let settingsUserDefaultService = SettingsUserDefaultsService.shared
-        
-        if indexPath.section == 0 && indexPath.row <= 1 {
-            let viewModel = model.generalSettingsSectionCellModel
-            cell.configure(with: viewModel[indexPath.row])
-            cell.setBackgroundColor(indexPath: indexPath, cell: "General")
-            
-            let switchControl = UISwitch()
-            switchControl.isOn = settingsUserDefaultService.switchIsOn(key: indexPath.row)
-            switchControl.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
-            
-            cell.accessoryView = switchControl
-            cell.selectionStyle = .none
-            
-            return cell
-        }
-        
-        if indexPath.section == 0 {
-            let viewModel = model.generalSettingsSectionCellModel
-            cell.configure(with: viewModel[indexPath.row])
-            cell.setBackgroundColor(indexPath: indexPath, cell: "General")
-            
-            return cell
-        }
-        
-        if indexPath.section == 1 {
-            let viewModel = model.profileSettingsSectionCellModel
-            cell.configure(with: viewModel[indexPath.row])
-            cell.setBackgroundColor(indexPath: indexPath, cell: "Profile")
-            return cell
-        }
-        
-        if indexPath.section == 2 {
-            let viewmodel = model.healthSettingsSectionCellModel
-            cell.configure(with: viewmodel[indexPath.row])
-            cell.setBackgroundColor(indexPath: indexPath, cell: "AppleHealth")
-            
-            return cell
-        }
-        
-        if indexPath.section == 3 {
-            let viewModel = model.aboutAppSettingsSectionCellModel
-            cell.configure(with: viewModel[indexPath.row])
-            cell.setBackgroundColor(indexPath: indexPath, cell: "AboutApp")
-            return cell
-        }
-        
-        if indexPath.section == 4 {
-            let viewModel = model.tellFriendsSectionCellModel
-            cell.configure(with: viewModel[indexPath.row])
-            cell.setBackgroundColor(indexPath: indexPath, cell: "Support")
-            cell.accessoryType = .none
-                        
-            return cell
-        }
-        return UITableViewCell()
     }
     
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         let model = output.getViewModel()
-        if section == 4 {
+        if section == Constants.headerSection {
             return model.supportEverydayTitle
         }
         
@@ -188,7 +140,7 @@ extension SettingsViewController: UITableViewDataSource {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 4 {
+        if section == Constants.headerSection {
             return Constants.TableView.matginBottom
         }
         
@@ -196,31 +148,30 @@ extension SettingsViewController: UITableViewDataSource {
     }
 }
 
+// MARK: - UITableViewDelegate
+
 extension SettingsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        if indexPath.section == 0 {
+        switch indexPath.section {
+        case 0:
             switch indexPath.row {
-            case 2: output.didTapThemeCell()
-            case 3: output.didTapDateAndTimeCell()
-            case 4: output.didTapUnitsCell()
-            default: print("ERROR")
+            case 2:
+                output.didTapThemeCell()
+            case 3:
+                output.didTapDateAndTimeCell()
+            case 4:
+                output.didTapUnitsCell()
+            default:
+               fatalError("ambigious row in tableView !")
             }
-        }
-        
-        if indexPath.section == 1 {
-            switch indexPath.row {
-            case 0: output.didTapProfileCell()
-            default: print("ERROR")
-            }
-        }
-        
-        if indexPath.section == 2 {
-            switch indexPath.row {
-            case 0: output.didTapHealthCell()
-            default: print("ERROR")
-            }
+        case 1:
+            output.didTapProfileCell()
+        case 2:
+            output.didTapHealthCell()
+        default:
+            fatalError("no appropriate section in tableView !")
         }
     }
     
@@ -239,11 +190,73 @@ extension SettingsViewController: UITableViewDelegate {
         tableViewFooterLabel.attributedText = model.tyTitle
         tableViewFooterLabel.textAlignment = .center
         
-        if section == 4 {
+        if section == Constants.headerSection {
             return tableViewFooterLabel
         } else {
             return UIView()
         }
+    }
+}
+
+private extension SettingsViewController {
+    func configureGeneralSectionCell(for indexPath: IndexPath, with model: SettingsViewModel) -> UITableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.reuseID, for: indexPath) as? SettingsTableViewCell else {
+            return UITableViewCell()
+        }
+        
+        let viewModel = model.generalSettingsSectionCellModel[indexPath.row]
+        cell.configure(with: viewModel)
+        cell.setBackgroundColor(indexPath: indexPath, cell: Constants.CellType.general)
+        
+        if indexPath.row <= 1 {
+            configureSwitchForCell(cell, at: indexPath)
+        }
+
+        return cell
+    }
+
+    func configureProfileSectionCell(for indexPath: IndexPath, with model: SettingsViewModel) -> SettingsTableViewCell {
+        let viewModel = model.profileSettingsSectionCellModel
+        return configureCell(for: indexPath, with: viewModel, cellType: Constants.CellType.profile)
+    }
+
+    func configureHealthSectionCell(for indexPath: IndexPath, with model: SettingsViewModel) -> SettingsTableViewCell {
+        let viewModel = model.healthSettingsSectionCellModel
+        return configureCell(for: indexPath, with: viewModel, cellType: Constants.CellType.appleHealth)
+    }
+
+    func configureAboutAppSectionCell(for indexPath: IndexPath, with model: SettingsViewModel) -> SettingsTableViewCell {
+        let viewModel = model.aboutAppSettingsSectionCellModel[indexPath.row]
+        return configureCell(for: indexPath, with: viewModel, cellType: Constants.CellType.aboutApp)
+    }
+
+    func configureTellFriendsSectionCell(for indexPath: IndexPath, with model: SettingsViewModel) -> SettingsTableViewCell {
+        let viewModel = model.tellFriendsSectionCellModel
+        let cell = configureCell(for: indexPath, with: viewModel, cellType: Constants.CellType.support)
+        
+        cell.accessoryType = .none
+        return cell
+    }
+
+    func configureCell(for indexPath: IndexPath, with viewModel: SettingsTableViewCellModel, cellType: String) -> SettingsTableViewCell {
+        guard let cell = tableView.dequeueReusableCell(withIdentifier: SettingsTableViewCell.reuseID, for: indexPath) as? SettingsTableViewCell else {
+            return SettingsTableViewCell()
+        }
+        
+        cell.configure(with: viewModel)
+        cell.setBackgroundColor(indexPath: indexPath, cell: cellType)
+        
+        return cell
+    }
+
+    func configureSwitchForCell(_ cell: SettingsTableViewCell, at indexPath: IndexPath) {
+        let switchControl = UISwitch()
+        
+        switchControl.isOn = SettingsUserDefaultsService.shared.switchIsOn(key: indexPath.row)
+        switchControl.addTarget(self, action: #selector(switchValueChanged(_:)), for: .valueChanged)
+        
+        cell.accessoryView = switchControl
+        cell.selectionStyle = .none
     }
 }
 
@@ -262,5 +275,15 @@ private extension SettingsViewController {
             static let marginTop: CGFloat = 10
             static let matginBottom: CGFloat = 50
         }
+        
+        struct CellType {
+            static let general: String = "General"
+            static let profile: String = "Profile"
+            static let appleHealth: String = "AppleHealth"
+            static let aboutApp: String = "AboutApp"
+            static let support: String = "Support"
+        }
+        
+        static let headerSection: Int = 4
     }
 }

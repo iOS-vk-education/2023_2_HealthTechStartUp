@@ -36,7 +36,7 @@ final class SettingsTableViewCell: UITableViewCell {
         layout()
     }
 
-    // MARK: - Interface
+    // MARK: - Actions
     
     func configure(with viewModel: SettingsTableViewCellModel) {
         cellImage.contentMode = .scaleAspectFit
@@ -44,47 +44,45 @@ final class SettingsTableViewCell: UITableViewCell {
         cellTitle.attributedText = viewModel.cellTitle
     }
 
-    // swiftlint:disable cyclomatic_complexity
     func setBackgroundColor(indexPath: IndexPath, cell: String) {
+        let color: UIColor
+        
         switch cell {
         case "Profile":
-            backgroundImageView.backgroundColor = .red
+            color = .red
         case "Support":
-            backgroundImageView.backgroundColor = Constants.accentColor
+            color = Constants.accentColor
         case "General":
-            switch indexPath.item {
-            case 0:
-                backgroundImageView.backgroundColor = .systemYellow
-            case 1:
-                backgroundImageView.backgroundColor = .gray
-            case 2:
-                backgroundImageView.backgroundColor = .systemGreen
-            case 3:
-                backgroundImageView.backgroundColor = .systemOrange
-            case 4:
-                backgroundImageView.backgroundColor = .purple
-            default:
-                backgroundImageView.backgroundColor = .gray
-            }
+            color = generalColor(for: indexPath.item)
         case "AboutApp":
-            switch indexPath.item {
-            case 0:
-                backgroundImageView.backgroundColor = .systemBlue
-            case 1:
-                backgroundImageView.backgroundColor = .systemTeal
-            case 2:
-                backgroundImageView.backgroundColor = .systemBrown
-            default:
-                backgroundImageView.backgroundColor = .gray
-            }
+            color = aboutAppColor(for: indexPath.item)
         case "AppleHealth":
             cellImage.image = UIImage(named: "AppleHealth")
-            
+            color = .systemBackground
         default:
-            backgroundImageView.backgroundColor = .gray
+            color = .gray
         }
-        
-        // swiftlint:enable cyclomatic_complexity
+        backgroundImageView.backgroundColor = color
+    }
+
+    private func generalColor(for index: Int) -> UIColor {
+        switch index {
+        case 0: return .systemYellow
+        case 1: return .gray
+        case 2: return .systemGreen
+        case 3: return .systemOrange
+        case 4: return .purple
+        default: return .gray
+        }
+    }
+
+    private func aboutAppColor(for index: Int) -> UIColor {
+        switch index {
+        case 0: return .systemBlue
+        case 1: return .systemTeal
+        case 2: return .systemBrown
+        default: return .gray
+        }
     }
 }
 
