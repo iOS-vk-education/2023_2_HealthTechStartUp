@@ -95,6 +95,7 @@
 		8CBF07AF2BCC5B9D005D1E0D /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07AE2BCC5B9D005D1E0D /* ForgotPasswordViewController.swift */; };
 		8CBF07B22BCC66C4005D1E0D /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07B12BCC66C4005D1E0D /* ForgotPasswordViewModel.swift */; };
 		8CBF07B52BCE207F005D1E0D /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07B42BCE207F005D1E0D /* HealthService.swift */; };
+		9E0C34452BCEBEE300D8696B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E0C34442BCEBEE300D8696B /* GoogleService-Info.plist */; };
 		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
 		9E2A8BC92B850461004A81CF /* FIrebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */; };
 		9E2A8BCD2B8520B2004A81CF /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */; };
@@ -108,7 +109,6 @@
 		9E4382DB2B83746B00C69708 /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9E4382DA2B83746B00C69708 /* GoogleSignInSwift */; };
 		9E4766D82B9F516F00DD31B9 /* StorageService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4766D72B9F516F00DD31B9 /* StorageService.swift */; };
 		9E4766DA2B9FC0BD00DD31B9 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4766D92B9FC0BD00DD31B9 /* View+Extension.swift */; };
-		9E4766DD2BA3501700DD31B9 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E4766DC2BA3501700DD31B9 /* GoogleService-Info.plist */; };
 		9E4766E02BA350B000DD31B9 /* HealthKitService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4766DF2BA350B000DD31B9 /* HealthKitService.swift */; };
 		9E4F225F2B9F3B46003E749E /* DayService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F225E2B9F3B46003E749E /* DayService.swift */; };
 		9E4F22632B9F3B5C003E749E /* Workout.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F22612B9F3B5C003E749E /* Workout.swift */; };
@@ -336,6 +336,7 @@
 		8CBF07AE2BCC5B9D005D1E0D /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		8CBF07B12BCC66C4005D1E0D /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		8CBF07B42BCE207F005D1E0D /* HealthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
+		9E0C34442BCEBEE300D8696B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
 		9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
@@ -348,7 +349,6 @@
 		9E4766D72B9F516F00DD31B9 /* StorageService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
 		9E4766D92B9FC0BD00DD31B9 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		9E4766DB2BA34F1E00DD31B9 /* Everyday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Everyday.entitlements; sourceTree = "<group>"; };
-		9E4766DC2BA3501700DD31B9 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E4766DF2BA350B000DD31B9 /* HealthKitService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthKitService.swift; sourceTree = "<group>"; };
 		9E4F225E2B9F3B46003E749E /* DayService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = DayService.swift; sourceTree = "<group>"; };
 		9E4F22612B9F3B5C003E749E /* Workout.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Workout.swift; sourceTree = "<group>"; };
@@ -1113,7 +1113,7 @@
 		9E53FB482B7F94A000C55A45 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				9E4766DC2BA3501700DD31B9 /* GoogleService-Info.plist */,
+				9E0C34442BCEBEE300D8696B /* GoogleService-Info.plist */,
 				9EE8AE042B7FA45F001D126F /* Localizable.xcstrings */,
 				9E53FB332B7F87BA00C55A45 /* AppDelegate.swift */,
 				9E53FB352B7F87BA00C55A45 /* SceneDelegate.swift */,
@@ -1505,7 +1505,7 @@
 			files = (
 				9E53FB402B7F87BB00C55A45 /* LaunchScreen.storyboard in Resources */,
 				9E5B74CE2B7F966100E2BDE6 /* Assets.xcassets in Resources */,
-				9E4766DD2BA3501700DD31B9 /* GoogleService-Info.plist in Resources */,
+				9E0C34452BCEBEE300D8696B /* GoogleService-Info.plist in Resources */,
 				9EE8AE052B7FA45F001D126F /* Localizable.xcstrings in Resources */,
 				9E53FB3B2B7F87BA00C55A45 /* Main.storyboard in Resources */,
 			);
@@ -1925,7 +1925,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NS3YD2TYB9;
+				DEVELOPMENT_TEAM = 72F47Y7J7T;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -1941,7 +1941,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Health.Everydayyy;
+				PRODUCT_BUNDLE_IDENTIFIER = Everyday.ru;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -1957,7 +1957,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NS3YD2TYB9;
+				DEVELOPMENT_TEAM = 72F47Y7J7T;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -1973,7 +1973,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Health.Everydayyy;
+				PRODUCT_BUNDLE_IDENTIFIER = Everyday.ru;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;

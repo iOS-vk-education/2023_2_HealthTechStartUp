@@ -3,9 +3,9 @@
 <plist version="1.0">
 <dict>
 	<key>CLIENT_ID</key>
-	<string>526363179403-cf56vkj6gpqrj5b7uf7hmr1j211v5u0l.apps.googleusercontent.com</string>
+	<string>526363179403-6t9lds21ap2vd2339cq9i1tooqfs1j0b.apps.googleusercontent.com</string>
 	<key>REVERSED_CLIENT_ID</key>
-	<string>com.googleusercontent.apps.526363179403-cf56vkj6gpqrj5b7uf7hmr1j211v5u0l</string>
+	<string>com.googleusercontent.apps.526363179403-6t9lds21ap2vd2339cq9i1tooqfs1j0b</string>
 	<key>API_KEY</key>
 	<string>AIzaSyAvzk6UpZL3dnmrW0icMt1bBl6nadqdMYU</string>
 	<key>GCM_SENDER_ID</key>
@@ -13,7 +13,7 @@
 	<key>PLIST_VERSION</key>
 	<string>1</string>
 	<key>BUNDLE_ID</key>
-	<string>ru.Health.Everyday</string>
+	<string>Everyday.ru</string>
 	<key>PROJECT_ID</key>
 	<string>everyday-5683d</string>
 	<key>STORAGE_BUCKET</key>
@@ -29,6 +29,6 @@
 	<key>IS_SIGNIN_ENABLED</key>
 	<true></true>
 	<key>GOOGLE_APP_ID</key>
-	<string>1:526363179403:ios:7df1ecf3527899afc4978e</string>
+	<string>1:526363179403:ios:42de28374c767d83c4978e</string>
 </dict>
 </plist>
