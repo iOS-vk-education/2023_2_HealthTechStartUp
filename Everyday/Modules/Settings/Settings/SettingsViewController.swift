@@ -155,6 +155,7 @@ extension SettingsViewController: UITableViewDataSource {
         if indexPath.section == 2 {
             let viewmodel = model.healthSettingsSectionCellModel
             cell.configure(with: viewmodel[indexPath.row])
+            cell.setBackgroundColor(indexPath: indexPath, cell: "AppleHealth")
             
             return cell
         }

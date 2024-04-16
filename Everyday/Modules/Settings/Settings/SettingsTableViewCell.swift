@@ -44,6 +44,7 @@ final class SettingsTableViewCell: UITableViewCell {
         cellTitle.attributedText = viewModel.cellTitle
     }
 
+    // swiftlint:disable cyclomatic_complexity
     func setBackgroundColor(indexPath: IndexPath, cell: String) {
         switch cell {
         case "Profile":
@@ -76,9 +77,14 @@ final class SettingsTableViewCell: UITableViewCell {
             default:
                 backgroundImageView.backgroundColor = .gray
             }
+        case "AppleHealth":
+            cellImage.image = UIImage(named: "AppleHealth")
+            
         default:
             backgroundImageView.backgroundColor = .gray
         }
+        
+        // swiftlint:enable cyclomatic_complexity
     }
 }
 
