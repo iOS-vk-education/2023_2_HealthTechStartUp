@@ -41,3 +41,7 @@ protocol SettingsRouterInput: AnyObject {
     func getProfileView()
     func getHealthView()
 }
+
+protocol TableViewDelegateSelection: AnyObject {
+    func didSelectRowAt(_ indexPath: IndexPath)
+}

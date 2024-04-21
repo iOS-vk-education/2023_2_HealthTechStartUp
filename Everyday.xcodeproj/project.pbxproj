@@ -96,6 +96,7 @@
 		8CBF07B22BCC66C4005D1E0D /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07B12BCC66C4005D1E0D /* ForgotPasswordViewModel.swift */; };
 		8CBF07B52BCE207F005D1E0D /* HealthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07B42BCE207F005D1E0D /* HealthService.swift */; };
 		9E0C34452BCEBEE300D8696B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E0C34442BCEBEE300D8696B /* GoogleService-Info.plist */; };
+		9E0C347F2BD5997F00D8696B /* SettingsTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0C347E2BD5997F00D8696B /* SettingsTableViewManager.swift */; };
 		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
 		9E2A8BC92B850461004A81CF /* FIrebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */; };
 		9E2A8BCD2B8520B2004A81CF /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */; };
@@ -337,6 +338,7 @@
 		8CBF07B12BCC66C4005D1E0D /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		8CBF07B42BCE207F005D1E0D /* HealthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthService.swift; sourceTree = "<group>"; };
 		9E0C34442BCEBEE300D8696B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9E0C347E2BD5997F00D8696B /* SettingsTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewManager.swift; sourceTree = "<group>"; };
 		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
 		9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
@@ -792,6 +794,22 @@
 				8C5237262BCE8E7D0084F335 /* HealthTableViewCellButton.swift */,
 			);
 			path = Health;
+			sourceTree = "<group>";
+		};
+		9E0C34702BD57A5A00D8696B /* Cells */ = {
+			isa = PBXGroup;
+			children = (
+				8C3B5E6C2BAF77A900CFE490 /* SettingsTableViewCell.swift */,
+			);
+			path = Cells;
+			sourceTree = "<group>";
+		};
+		9E0C347D2BD5996200D8696B /* Manager */ = {
+			isa = PBXGroup;
+			children = (
+				9E0C347E2BD5997F00D8696B /* SettingsTableViewManager.swift */,
+			);
+			path = Manager;
 			sourceTree = "<group>";
 		};
 		9E1383072BAB03240073622C /* CoreData */ = {
@@ -1346,6 +1364,8 @@
 		9EA180172BAF6CE5002F6C80 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				9E0C347D2BD5996200D8696B /* Manager */,
+				9E0C34702BD57A5A00D8696B /* Cells */,
 				8C3B5E642BAF771200CFE490 /* Models */,
 				9EE8AE092B7FB8CF001D126F /* SettingsPresenter.swift */,
 				9EE8AE0A2B7FB8CF001D126F /* SettingsRouter.swift */,
@@ -1353,7 +1373,6 @@
 				9EE8AE0C2B7FB8CF001D126F /* SettingsProtocols.swift */,
 				9EE8AE0D2B7FB8CF001D126F /* SettingsInteractor.swift */,
 				9EE8AE0E2B7FB8CF001D126F /* SettingsContainer.swift */,
-				8C3B5E6C2BAF77A900CFE490 /* SettingsTableViewCell.swift */,
 			);
 			path = Settings;
 			sourceTree = "<group>";
@@ -1685,6 +1704,7 @@
 				9E5B75162B7F9D3500E2BDE6 /* GenderButtonView.swift in Sources */,
 				9E4F229C2B9F3BDD003E749E /* ExerciseInteractor.swift in Sources */,
 				9E7C199D2B8F482E0006D48C /* KeychainService.swift in Sources */,
+				9E0C347F2BD5997F00D8696B /* SettingsTableViewManager.swift in Sources */,
 				8C3B5E9C2BAF7A2700CFE490 /* DateAndTimeViewController.swift in Sources */,
 				9E4382D42B83738800C69708 /* VKIDAuthService.swift in Sources */,
 				9E5B75442B7F9D7600E2BDE6 /* AgeViewModel.swift in Sources */,
