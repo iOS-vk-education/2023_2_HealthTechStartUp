@@ -15,7 +15,7 @@ final class SignUpViewController: UIViewController {
     private let output: SignUpViewOutput
     private let signWithGoogleButton = UIButton(type: .custom)
     private let signWithVKButton     = UIButton(type: .custom)
-    private let signWithAnonymButton = UIButton(type: .custom)
+    private let signWithAppleButton  = UIButton(type: .custom)
     private let signUpButton         = UIButton(type: .system)
     private let togglePasswordButton = UIButton(type: .custom)
     private let firstSeparator       = UIView()
@@ -52,7 +52,7 @@ final class SignUpViewController: UIViewController {
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapOnPrivacyPolicy))
         privacyPolicyLabel.addGestureRecognizer(tapGesture)
         
-        view.addSubviews(signWithGoogleButton, signWithVKButton, signWithAnonymButton,
+        view.addSubviews(signWithGoogleButton, signWithVKButton, signWithAppleButton,
                          firstSeparator, secondSeparator, separatorLabel,
                          emailTextField, emailUnderline,
                          passwordTextField, passwordUnderline, togglePasswordButton,
@@ -77,7 +77,7 @@ final class SignUpViewController: UIViewController {
     }
     
     private func setupButtons() {
-        for button in [signWithGoogleButton, signWithVKButton, signWithAnonymButton] {
+        for button in [signWithGoogleButton, signWithVKButton, signWithAppleButton] {
             button.clipsToBounds = true
             button.layer.cornerRadius = Constants.Buttons.cornerRadius
         }
@@ -90,7 +90,7 @@ final class SignUpViewController: UIViewController {
         
         signWithGoogleButton.addTarget(self, action: #selector(didTapSignWithGoogleButton), for: .touchUpInside)
         signWithVKButton.addTarget(self, action: #selector(didTapSignWithVKButton), for: .touchUpInside)
-        signWithAnonymButton.addTarget(self, action: #selector(didTapSignWithAnonymButton), for: .touchUpInside)
+        signWithAppleButton.addTarget(self, action: #selector(didTapSignWithAppleButton), for: .touchUpInside)
         signUpButton.addTarget(self, action: #selector(didTapSignUpButton), for: .touchUpInside)
         togglePasswordButton.addTarget(self, action: #selector(didTapShowPasswordButton), for: .touchUpInside)
     }
@@ -159,7 +159,7 @@ final class SignUpViewController: UIViewController {
             .marginLeft(spacing)
             .size(Constants.Buttons.size.width)
         
-        signWithAnonymButton.pin
+        signWithAppleButton.pin
             .top(Constants.Buttons.marginTop)
             .after(of: signWithVKButton)
             .marginLeft(spacing)
@@ -243,9 +243,9 @@ final class SignUpViewController: UIViewController {
     }
     
     @objc
-    private func didTapSignWithAnonymButton() {
-        animateButton(with: signWithAnonymButton)
-        output.didTapSignWithAnonymButton()
+    private func didTapSignWithAppleButton() {
+        animateButton(with: signWithAppleButton)
+        output.didTapSignWithAppleButton()
     }
     
     @objc
@@ -292,23 +292,28 @@ extension SignUpViewController: SignUpViewInput {
     func showAlert(with key: String, message: String) {
         switch key {
         case "email":
-            AlertManager.showInvalidEmailAlert(on: self)
+            AlertService.shared.presentAlert(on: self, alertType: .invalidEmail)
         case "password":
-            AlertManager.showInvalidPasswordAlert(on: self, message: message.localized)
+            AlertService.shared.presentAlert(on: self, alertType: .invalidPasswordWithRegExp(description: message))
         case "network":
-            AlertManager.showRegistrationErrorAlert(on: self, message: message.localized)
+            AlertService.shared.presentAlert(on: self, alertType: .registrationMessage(description: message))
         case "signed":
-            AlertManager.showSignedUpAlert(on: self, message: message.localized)
+            AlertService.shared.presentAlert(on: self, alertType: .registered(description: message))
+        case "google":
+            AlertService.shared.presentAlert(on: self, alertType: .ruSignWithGoogle)
+        case "apple":
+            AlertService.shared.presentAlert(on: self, alertType: .ruSignWithAppleID)
+        case "appleInfo":
+            AlertService.shared.presentAlert(on: self, alertType: .signWithAppleID)
         default:
-            let error = NSError(domain: "Everydaytech.ru", code: 400)
-            AlertManager.showRegistrationErrorAlert(on: self, with: error)
+           return
         }
     }
     
     func configure(with model: SignUpViewModel) {
         signWithGoogleButton.setImage(model.googleImage, for: .normal)
         signWithVKButton.setImage(model.vkImage, for: .normal)
-        signWithAnonymButton.setImage(model.anonymImage, for: .normal)
+        signWithAppleButton.setImage(model.appleImage, for: .normal)
         
         separatorLabel.attributedText = model.separatorTitle
         

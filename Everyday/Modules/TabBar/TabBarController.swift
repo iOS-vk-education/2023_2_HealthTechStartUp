@@ -17,6 +17,7 @@ final class TabBarController: UITabBarController {
         super.viewDidLoad()
         setupTabBar()
         selectedIndex = 0
+        delegate = self
     }
     
     // MARK: - actions
@@ -50,6 +51,11 @@ final class TabBarController: UITabBarController {
 
             return viewController
         }
+}
+
+// MARK: - UITabBarControllerDelegate
+
+extension TabBarController: UITabBarControllerDelegate {
 }
 
 // MARK: - Helpers

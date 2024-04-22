@@ -10,7 +10,7 @@ import UIKit
 struct SignUpViewModel {
     let googleImage: UIImage?
     let vkImage: UIImage?
-    let anonymImage: UIImage?
+    let appleImage: UIImage?
     let separatorTitle: NSAttributedString
     let emailTitle: NSAttributedString
     let passwordTitle: NSAttributedString
@@ -22,7 +22,7 @@ struct SignUpViewModel {
     init() {
         self.googleImage = UIImage(named: "google")
         self.vkImage = UIImage(named: "vk")
-        self.anonymImage = UIImage(named: "anonymous")
+        self.appleImage = UIImage(named: "apple")
         self.separatorTitle = NSAttributedString(string: "SignUp_or_SignIn_separator_or".localized, attributes: Styles.titleAttributes)
         self.emailTitle = NSAttributedString(string: "Onboarding_user_email".localized, attributes: Styles.titleAttributes)
         self.passwordTitle = NSAttributedString(string: "Onboarding_user_password".localized, attributes: Styles.titleAttributes)

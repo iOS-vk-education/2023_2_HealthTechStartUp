@@ -74,16 +74,6 @@ extension SignInInteractor: SignInInteractorInput {
         }
     }
     
-    func loginWithAnonym(with flag: Bool) {
-        if flag {
-            authService.loginWithAnonym { result in
-                self.output?.authResult(signedUp: flag, service: "anonym", result)
-            }
-        } else {
-            output?.authResult(signedUp: flag, service: "anonym", .success(()))
-        }
-    }
-    
     func isAuthExist(for service: String) -> Bool {
         let isExists = coreDataService.isItemExists(for: service)
         return output?.authExistResult(isExists: isExists) ?? false

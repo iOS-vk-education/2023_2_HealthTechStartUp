@@ -40,14 +40,12 @@ extension SignUpPresenter: SignUpViewOutput {
         view?.configure(with: viewModel)
     }
     
-    func didTapSignWithAnonymButton() {
-        AuthModel.shared.whichSign = .anonym
-        
-        let generator = NameGenerator()
-        
-        ProfileAcknowledgementModel.shared.update(firstname: generator.generateName(),
-                                                  lastname: generator.generateSurname())
-        checkAuth(for: Constants.anonym)
+    func didTapSignWithAppleButton() {
+        guard Locale.current.region?.identifier != "RU" else {
+            view?.showAlert(with: Constants.apple, message: "")
+            return
+        }
+        view?.showAlert(with: Constants.appleInfo, message: "")
     }
     
     func didTapSignUpButton(with email: String?, and password: String?) {
@@ -74,6 +72,11 @@ extension SignUpPresenter: SignUpViewOutput {
     }
 
     func didTapSignWithGoogleButton() {
+        guard Locale.current.region?.identifier != "RU" else {
+            view?.showAlert(with: Constants.google, message: "")
+            return
+        }
+        
         AuthModel.shared.whichSign = .google
         interactor.authWithGoogle()
     }
@@ -84,7 +87,8 @@ extension SignUpPresenter: SignUpViewOutput {
         static let vk: String = "vk"
         static let google: String = "google"
         static let email: String = "email"
-        static let anonym: String = "anonym"
+        static let apple: String = "apple"
+        static let appleInfo: String = "appleInfo"
         static let network: String = "network"
         static let password: String = "password"
     }

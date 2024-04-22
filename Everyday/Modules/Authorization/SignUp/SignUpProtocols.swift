@@ -25,7 +25,7 @@ protocol SignUpViewOutput: AnyObject {
     func didTapSignUpButton(with email: String?, and password: String?)
     func didTapSignWithVKButton()
     func didTapSignWithGoogleButton()
-    func didTapSignWithAnonymButton()
+    func didTapSignWithAppleButton()
 }
 
 protocol SignUpInteractorInput: AnyObject {

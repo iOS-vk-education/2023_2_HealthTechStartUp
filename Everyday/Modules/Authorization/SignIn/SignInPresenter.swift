@@ -48,34 +48,31 @@ extension SignInPresenter: SignInViewOutput {
     }
     
     func didTapSignInWithGoogleButton() {
+        guard Locale.current.region?.identifier != "RU" else {
+            view?.showAlert(with: Constants.google, message: "")
+            return
+        }
+        
         performSignIn(signInMethod: .google, authType: Constants.google)
     }
-    
+        
     func didTapSignInWithVKButton() {
         performSignIn(signInMethod: .vk, authType: Constants.vk)
     }
     
-    func didTapSignInWithAnonymButton() {
-        performSignIn(signInMethod: .anonym, authType: Constants.anonym)
+    func didTapSignInWithAppleButton() {
+        view?.showAlert(with: Constants.appleInfo, message: "")
     }
     
     private func performSignIn(signInMethod: AuthModel.Sign, authType: String, email: String = "", password: String = "") {
         let signedUp = checkAuth(for: authType)
         AuthModel.shared.whichSign = signInMethod
         
-        if signInMethod == .anonym && !signedUp {
-            let generator = NameGenerator()
-            ProfileAcknowledgementModel.shared.update(firstname: generator.generateName(),
-                                                      lastname: generator.generateSurname())
-        }
-                
         switch signInMethod {
         case .google:
             interactor.loginWithGoogle(with: signedUp)
         case .vk:
             interactor.loginWithVK(with: signedUp)
-        case .anonym:
-            interactor.loginWithAnonym(with: signedUp)
         case .email:
             interactor.loginWithEmail(with: signedUp, email: email, password: password)
         default:
@@ -94,7 +91,8 @@ extension SignInPresenter: SignInViewOutput {
         static let vk: String = "vk"
         static let google: String = "google"
         static let email: String = "email"
-        static let anonym: String = "anonym"
+        static let apple: String = "apple"
+        static let appleInfo: String = "appleInfo"
         static let network: String = "network"
         static let password: String = "password"
         static let invalidEmail: String = "Invalid email"

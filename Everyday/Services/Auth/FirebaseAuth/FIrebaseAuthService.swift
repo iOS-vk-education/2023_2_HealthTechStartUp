@@ -16,7 +16,6 @@ final class AuthModel {
         case vk
         case google
         case common
-        case anonym
         case none
         case email
     }
@@ -30,7 +29,6 @@ final class AuthModel {
 protocol FirebaseAuthServiceDescription {
     func registerUser(with userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void)
     func login(with userRequest: SignInModel, completion: @escaping(Bool, Error?) -> Void)
-    func anonymLogin(completion: @escaping (Bool, Error?) -> Void)
     func signOut(completion: @escaping (Bool, Error?) -> Void)
     
     // func forgotPassword(with email: String, completion: @escaping (Error?) -> Void)
@@ -43,7 +41,7 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
     
     func registerUser(with userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void) {
         switch AuthModel.shared.whichSign {
-        case .google, .vk, .common, .anonym:
+        case .google, .vk, .common:
             performAuth(userRequest: userRequest, completion: completion)
         default:
             completion(false, nil)
@@ -100,8 +98,6 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
             Auth.auth().signIn(with: credential, completion: authAction)
         case .vk, .common:
             Auth.auth().createUser(withEmail: email, password: password, completion: authAction)
-        case .anonym:
-            Auth.auth().signInAnonymously(completion: authAction)
         default:
             completion(false, nil)
         }

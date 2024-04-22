@@ -25,14 +25,13 @@ protocol SignInViewOutput: AnyObject {
     func didTapSignInButton(with email: String?, and password: String?)
     func didTapSignInWithGoogleButton()
     func didTapSignInWithVKButton()
-    func didTapSignInWithAnonymButton()
+    func didTapSignInWithAppleButton()
 }
 
 protocol SignInInteractorInput: AnyObject {
     func loginWithEmail(with flag: Bool, email: String, password: String)
     func loginWithVK(with flag: Bool)
     func loginWithGoogle(with flag: Bool)
-    func loginWithAnonym(with flag: Bool)
     func isAuthExist(for service: String) -> Bool
 }
 
