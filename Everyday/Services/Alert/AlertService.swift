@@ -119,34 +119,45 @@ class AlertViewController: UIViewController {
     
     func layout() {
         popupView.pin
-            .hCenter()
-            .vCenter()
-            .width(310)
-            .height(300)
-        
+            .top()
+            .horizontally()
+            
         closeButton.pin
-            .top(10)
-            .right(10)
             .size(CGSize(width: 14, height: 12))
         
         titleLabel.pin
             .below(of: closeButton)
-            .marginTop(5)
-            .hCenter()
             .width(250)
             .height(100)
+            .sizeToFit(.width)
         
         descriptionLabel.pin
             .below(of: titleLabel, aligned: .left)
-            .marginTop(2)
+            .marginTop(4)
             .width(250)
             .height(100)
+            .sizeToFit(.width)
         
         button.pin
             .below(of: descriptionLabel)
             .marginTop(10)
-            .hCenter()
             .size(CGSize(width: 250, height: 50))
+        
+        popupView.pin
+            .wrapContent(padding: 20)
+            .vCenter()
+            .hCenter()
+        
+        closeButton.pin
+            .top(10)
+            .right(10)
+        
+        titleLabel.pin
+            .marginTop(5)
+            .hCenter()
+        
+        button.pin
+            .hCenter()
     }
     
     // MARK: - animation

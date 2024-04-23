@@ -26,11 +26,12 @@
 		9D4E4BD72BB070D200617E5D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B042BA8AEFE006AC078 /* FirebaseFirestoreSwift */; };
 		9D4E4BD82BB070D200617E5D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B062BA8AEFE006AC078 /* FirebaseStorage */; };
 		9DDEBFCF2BC42C8100E9347D /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DDEBFCE2BC42C8100E9347D /* CalendarService.swift */; };
-		9E0C34812BD5A27200D8696B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E0C34802BD5A27200D8696B /* GoogleService-Info.plist */; };
 		9E0C34862BD5B59400D8696B /* HapticService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0C34852BD5B59300D8696B /* HapticService.swift */; };
 		9E0C34892BD6D77700D8696B /* AlertService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0C34882BD6D77700D8696B /* AlertService.swift */; };
 		9E0C348C2BD6D79000D8696B /* AlertServiceViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0C348B2BD6D79000D8696B /* AlertServiceViewModel.swift */; };
 		9E0C348E2BD700CB00D8696B /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0C348D2BD700CB00D8696B /* CloseButton.swift */; };
+		9E0C34902BD7CE6A00D8696B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */; };
+		9E0C34922BD7D80B00D8696B /* HalfScreenViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0C34912BD7D80B00D8696B /* HalfScreenViewController.swift */; };
 		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
 		9E2A8BC92B850461004A81CF /* FIrebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */; };
 		9E2A8BCF2B854147004A81CF /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BCE2B854147004A81CF /* Validator.swift */; };
@@ -156,6 +157,13 @@
 		9EBFD9642BAB077500A1891D /* UserAuthentication+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9622BAB077500A1891D /* UserAuthentication+CoreDataClass.swift */; };
 		9EBFD9652BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9632BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift */; };
 		9EBFD9672BAB273400A1891D /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9662BAB273400A1891D /* CoreDataService.swift */; };
+		9EE1BFA12BD7EFA600458F04 /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1BF9B2BD7EFA600458F04 /* AuthorizationPresenter.swift */; };
+		9EE1BFA22BD7EFA600458F04 /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1BF9C2BD7EFA600458F04 /* AuthorizationRouter.swift */; };
+		9EE1BFA32BD7EFA600458F04 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1BF9D2BD7EFA600458F04 /* AuthorizationViewController.swift */; };
+		9EE1BFA42BD7EFA600458F04 /* AuthorizationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1BF9E2BD7EFA600458F04 /* AuthorizationProtocols.swift */; };
+		9EE1BFA52BD7EFA600458F04 /* AuthorizationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1BF9F2BD7EFA600458F04 /* AuthorizationInteractor.swift */; };
+		9EE1BFA62BD7EFA600458F04 /* AuthorizationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1BFA02BD7EFA600458F04 /* AuthorizationContainer.swift */; };
+		9EE1BFA92BD7F36300458F04 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1BFA82BD7F36300458F04 /* AuthorizationViewModel.swift */; };
 		9EE335992B8F9CCD00F532B3 /* SplashAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE335982B8F9CCD00F532B3 /* SplashAnimator.swift */; };
 		9EE3359B2B8F9CDC00F532B3 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3359A2B8F9CDC00F532B3 /* SplashViewController.swift */; };
 		9EE3359D2B8F9CEA00F532B3 /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3359C2B8F9CEA00F532B3 /* SplashPresenter.swift */; };
@@ -190,11 +198,12 @@
 		9D15BE2F2BC4945F004FC560 /* NotepadEmptyStateViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadEmptyStateViewViewModel.swift; sourceTree = "<group>"; };
 		9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		9DDEBFCE2BC42C8100E9347D /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
-		9E0C34802BD5A27200D8696B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E0C34852BD5B59300D8696B /* HapticService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HapticService.swift; sourceTree = "<group>"; };
 		9E0C34882BD6D77700D8696B /* AlertService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertService.swift; sourceTree = "<group>"; };
 		9E0C348B2BD6D79000D8696B /* AlertServiceViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertServiceViewModel.swift; sourceTree = "<group>"; };
 		9E0C348D2BD700CB00D8696B /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
+		9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9E0C34912BD7D80B00D8696B /* HalfScreenViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HalfScreenViewController.swift; sourceTree = "<group>"; };
 		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
 		9E2A8BCE2B854147004A81CF /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
@@ -327,6 +336,13 @@
 		9EBFD9622BAB077500A1891D /* UserAuthentication+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAuthentication+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9EBFD9632BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAuthentication+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9EBFD9662BAB273400A1891D /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		9EE1BF9B2BD7EFA600458F04 /* AuthorizationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationPresenter.swift; sourceTree = "<group>"; };
+		9EE1BF9C2BD7EFA600458F04 /* AuthorizationRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationRouter.swift; sourceTree = "<group>"; };
+		9EE1BF9D2BD7EFA600458F04 /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
+		9EE1BF9E2BD7EFA600458F04 /* AuthorizationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationProtocols.swift; sourceTree = "<group>"; };
+		9EE1BF9F2BD7EFA600458F04 /* AuthorizationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInteractor.swift; sourceTree = "<group>"; };
+		9EE1BFA02BD7EFA600458F04 /* AuthorizationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationContainer.swift; sourceTree = "<group>"; };
+		9EE1BFA82BD7F36300458F04 /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
 		9EE335982B8F9CCD00F532B3 /* SplashAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashAnimator.swift; sourceTree = "<group>"; };
 		9EE3359A2B8F9CDC00F532B3 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		9EE3359C2B8F9CEA00F532B3 /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
@@ -415,6 +431,20 @@
 			path = Model;
 			sourceTree = "<group>";
 		};
+		9E0C34932BD7EE5F00D8696B /* Authorization */ = {
+			isa = PBXGroup;
+			children = (
+				9EE1BFA72BD7F34F00458F04 /* Models */,
+				9EE1BF9B2BD7EFA600458F04 /* AuthorizationPresenter.swift */,
+				9EE1BF9C2BD7EFA600458F04 /* AuthorizationRouter.swift */,
+				9EE1BF9D2BD7EFA600458F04 /* AuthorizationViewController.swift */,
+				9EE1BF9E2BD7EFA600458F04 /* AuthorizationProtocols.swift */,
+				9EE1BF9F2BD7EFA600458F04 /* AuthorizationInteractor.swift */,
+				9EE1BFA02BD7EFA600458F04 /* AuthorizationContainer.swift */,
+			);
+			path = Authorization;
+			sourceTree = "<group>";
+		};
 		9E1383072BAB03240073622C /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
@@ -431,6 +461,7 @@
 			children = (
 				9E2931832B9F260000950B15 /* OnBoarding */,
 				9E0C348D2BD700CB00D8696B /* CloseButton.swift */,
+				9E0C34912BD7D80B00D8696B /* HalfScreenViewController.swift */,
 			);
 			path = UI;
 			sourceTree = "<group>";
@@ -739,7 +770,7 @@
 		9E53FB482B7F94A000C55A45 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				9E0C34802BD5A27200D8696B /* GoogleService-Info.plist */,
+				9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */,
 				9EE8AE042B7FA45F001D126F /* Localizable.xcstrings */,
 				9E53FB332B7F87BA00C55A45 /* AppDelegate.swift */,
 				9E53FB352B7F87BA00C55A45 /* SceneDelegate.swift */,
@@ -780,6 +811,7 @@
 		9E5B74CF2B7F96ED00E2BDE6 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
+				9E0C34932BD7EE5F00D8696B /* Authorization */,
 				9E5B74D02B7F96FA00E2BDE6 /* WelcomeScreen */,
 				9E5B74DF2B7F98F200E2BDE6 /* SignIn */,
 				9E5B74DE2B7F98EB00E2BDE6 /* SignUp */,
@@ -990,6 +1022,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		9EE1BFA72BD7F34F00458F04 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9EE1BFA82BD7F36300458F04 /* AuthorizationViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		9EE335972B8F9C3900F532B3 /* ScreenSaver */ = {
 			isa = PBXGroup;
 			children = (
@@ -1129,7 +1169,7 @@
 			files = (
 				9E53FB402B7F87BB00C55A45 /* LaunchScreen.storyboard in Resources */,
 				9E5B74CE2B7F966100E2BDE6 /* Assets.xcassets in Resources */,
-				9E0C34812BD5A27200D8696B /* GoogleService-Info.plist in Resources */,
+				9E0C34902BD7CE6A00D8696B /* GoogleService-Info.plist in Resources */,
 				9EE8AE052B7FA45F001D126F /* Localizable.xcstrings in Resources */,
 				9E53FB3B2B7F87BA00C55A45 /* Main.storyboard in Resources */,
 			);
@@ -1238,6 +1278,7 @@
 				9E4F22B42B9F3C14003E749E /* ResultsViewModel.swift in Sources */,
 				9E4382D62B83738800C69708 /* GoogleAuthService.swift in Sources */,
 				9EE8AE1C2B7FB905001D126F /* ProgressPresenter.swift in Sources */,
+				9E0C34922BD7D80B00D8696B /* HalfScreenViewController.swift in Sources */,
 				9E4F22AB2B9F3C05003E749E /* ResultsRouter.swift in Sources */,
 				9EE8AE1D2B7FB905001D126F /* ProgressRouter.swift in Sources */,
 				9EE8AE382B7FB96E001D126F /* WorkoutViewController.swift in Sources */,
@@ -1283,6 +1324,12 @@
 				9E4F22642B9F3B5C003E749E /* User.swift in Sources */,
 				9E4F228B2B9F3BB4003E749E /* TrainingProtocols.swift in Sources */,
 				9E4F22722B9F3B8F003E749E /* NotepadInteractor.swift in Sources */,
+				9EE1BFA12BD7EFA600458F04 /* AuthorizationPresenter.swift in Sources */,
+				9EE1BFA22BD7EFA600458F04 /* AuthorizationRouter.swift in Sources */,
+				9EE1BFA32BD7EFA600458F04 /* AuthorizationViewController.swift in Sources */,
+				9EE1BFA42BD7EFA600458F04 /* AuthorizationProtocols.swift in Sources */,
+				9EE1BFA52BD7EFA600458F04 /* AuthorizationInteractor.swift in Sources */,
+				9EE1BFA62BD7EFA600458F04 /* AuthorizationContainer.swift in Sources */,
 				9E4F22D82B9F3D09003E749E /* CustomError.swift in Sources */,
 				9EE8AE122B7FB8CF001D126F /* SettingsProtocols.swift in Sources */,
 				9D15BE302BC4945F004FC560 /* NotepadEmptyStateViewViewModel.swift in Sources */,
@@ -1293,6 +1340,7 @@
 				9E5B750D2B7F9A8300E2BDE6 /* SignInPresenter.swift in Sources */,
 				9E4F22B32B9F3C14003E749E /* ResultsTableViewCellViewModel.swift in Sources */,
 				9E5B75462B7F9D7600E2BDE6 /* ProfileAcknowledgementView.swift in Sources */,
+				9EE1BFA92BD7F36300458F04 /* AuthorizationViewModel.swift in Sources */,
 				9E5B753D2B7F9D7600E2BDE6 /* DecimalTextFieldView.swift in Sources */,
 				9EE8AE0F2B7FB8CF001D126F /* SettingsPresenter.swift in Sources */,
 				9D15BE282BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift in Sources */,
@@ -1495,7 +1543,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Everyday.ru;
+				PRODUCT_BUNDLE_IDENTIFIER = HealthEveryday.ru;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -1532,7 +1580,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Everyday.ru;
+				PRODUCT_BUNDLE_IDENTIFIER = HealthEveryday.ru;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;

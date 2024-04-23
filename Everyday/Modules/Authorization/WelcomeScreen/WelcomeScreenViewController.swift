@@ -16,7 +16,6 @@ final class WelcomeScreenViewController: UIViewController {
     private let output: WelcomeScreenViewOutput
     private let signUpButton = UIButton(type: .system)
     private let signInButton = UIButton(type: .system)
-    private let logoImageView = UIImageView()
     private let triangleView = UIView()
     private let controllersScrollView: UIScrollView = UIScrollView()
 
@@ -42,14 +41,14 @@ final class WelcomeScreenViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.backgroundColor = .background
+        view.backgroundColor = .clear
         
         output.didLoadView()
         output.getSignUp()
         output.getSignIn()
         setupUI()
         
-        view.addSubviews(controllersScrollView, signUpButton, signInButton, triangleView, logoImageView)
+        view.addSubviews(controllersScrollView, signUpButton, signInButton, triangleView)
         
         let tapGesture = UITapGestureRecognizer(target: self, action: #selector(didTapWholeView))
                 view.addGestureRecognizer(tapGesture)
@@ -126,50 +125,48 @@ final class WelcomeScreenViewController: UIViewController {
     // MARK: - Layout
     
     private func layout() {
-        controllersScrollView.frame = CGRect(x: .zero, y: view.frame.height / 2, width: view.frame.width, height: view.frame.height / 2)
-        
-        signUpViewController?.view.pin
-            .topLeft()
-            .width(view.frame.width)
-        
-        signInViewController?.view.pin
-            .top()
-            .after(of: signUpViewController?.view ?? UIView())
-            .width(view.frame.width)
-        
         signUpButton.pin
-            .above(of: controllersScrollView)
+            .top(5)
             .left(view.pin.safeArea)
-            .marginBottom(Constants.Buttons.marginBottom)
             .width(Constants.Buttons.percent)
             .height(Constants.Buttons.height)
-        
+
         signInButton.pin
-            .above(of: controllersScrollView)
+            .after(of: signUpButton)
             .right(view.pin.safeArea)
             .marginBottom(Constants.Buttons.marginBottom)
             .width(Constants.Buttons.percent)
             .height(Constants.Buttons.height)
         
-        logoImageView.pin
-            .top(view.safeAreaInsets.top)
-            .above(of: signUpButton)
-            .marginBottom(Constants.Image.marginBottom)
-            .horizontally()
-        
        let centerX: CGFloat
        let centerY = signUpButton.frame.maxY
-       
+
        switch activePage {
        case .signUp:
            centerX = signUpButton.frame.midX - Constants.Triangle.size.width / 2
        case .signIn:
            centerX = signInButton.frame.midX - Constants.Triangle.size.width / 2
        }
-       
+
        triangleView.pin
-           .top(centerY)
+           .top(centerY - 8)
            .left(centerX)
+        
+        let height = (view.frame.height) - signUpButton.frame.maxY
+        controllersScrollView.pin
+            .below(of: triangleView)
+            .marginTop(10)
+            .width(100%)
+            .height(height)
+
+        signUpViewController?.view.pin
+            .topLeft()
+            .width(view.frame.width)
+
+        signInViewController?.view.pin
+            .top()
+            .after(of: signUpViewController?.view ?? UIView())
+            .width(view.frame.width)
     }
     
     // MARK: - Actions
@@ -190,6 +187,23 @@ final class WelcomeScreenViewController: UIViewController {
     
     // MARK: - Keyboard Actions
     
+//    @objc
+//    func keyboardWillShow(notification: Notification) {
+//        guard
+//            let userInfo = notification.userInfo,
+//            let keyboardFrameInfo = userInfo[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue
+//        else {
+//            return
+//        }
+//        
+//        let keyboardHeight = keyboardFrameInfo.cgRectValue.height
+//        let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? Constants.Keyboard.duration
+//        
+//        UIView.animate(withDuration: duration) {
+//            self.view.frame.origin.y = -keyboardHeight
+//        }
+//    }
+    
     @objc
     func keyboardWillShow(notification: Notification) {
         guard
@@ -199,11 +213,12 @@ final class WelcomeScreenViewController: UIViewController {
             return
         }
         
-        let keyboardHeight = keyboardFrameInfo.cgRectValue.height
+        let yOffset: CGFloat = 4
+        
         let duration = notification.userInfo?[UIResponder.keyboardAnimationDurationUserInfoKey] as? Double ?? Constants.Keyboard.duration
         
         UIView.animate(withDuration: duration) {
-            self.view.frame.origin.y = -keyboardHeight
+            self.view.frame.origin.y = -yOffset
         }
     }
 
@@ -215,7 +230,7 @@ final class WelcomeScreenViewController: UIViewController {
             self.view.frame.origin.y = 0
         }
     }
-    
+        
     @objc
     private func didTapWholeView() {
         view.endEditing(true)
@@ -257,9 +272,6 @@ extension WelcomeScreenViewController: UIScrollViewDelegate {
 
 extension WelcomeScreenViewController: WelcomeScreenViewInput {
     func configure(with model: WelcomeScreenViewModel) {
-        logoImageView.image = model.logoImage
-        logoImageView.contentMode = .scaleAspectFit
-        
         signInButton.setAttributedTitle(model.signInTitle, for: .normal)
         signUpButton.setAttributedTitle(model.signUpTitle, for: .normal)
     }
@@ -288,12 +300,7 @@ private extension WelcomeScreenViewController {
         
         struct Triangle {
             static let size: CGSize = CGSize(width: 25, height: 15)
-
             static let fillCGColor: CGColor = UIColor.UI.accentLight.cgColor
-        }
-        
-        struct Image {
-            static let marginBottom: CGFloat = 7.5
         }
         
         struct ScrollView {
