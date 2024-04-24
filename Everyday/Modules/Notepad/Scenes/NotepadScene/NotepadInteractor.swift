@@ -48,7 +48,7 @@ extension NotepadInteractor: NotepadInteractorInput {
             case .success(let workoutDays):
                 self.output?.didLoadDay(with: workoutDays, false)
             case .failure:
-                break
+                self.output?.didLoadDay(with: [], false)
             }
         }
     }
