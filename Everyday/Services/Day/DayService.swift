@@ -9,9 +9,9 @@ import Foundation
 import Firebase
 
 protocol DayServiceDescription {
-    func getDaySchedule(on date: Date, completion: @escaping (Result<[WorkoutDay], CustomError>) -> Void)
-    func getDayResults(on date: Date, completion: @escaping (Result<[WorkoutDay], CustomError>) -> Void)
-    func postProgress(_ progress: WorkoutProgress, completion: @escaping (Result<Bool, CustomError>) -> Void)
+    func getDaySchedule(on date: Date, completion: @escaping (Result<[NewWorkout], CustomError>) -> Void)
+    func getDayResults(on date: Date, completion: @escaping (Result<[NewWorkout], CustomError>) -> Void)
+    func postProgress(_ progress: NewWorkoutProgress, completion: @escaping (CustomError?) -> Void)
 }
 
 final class DayService: DayServiceDescription {
@@ -22,7 +22,7 @@ final class DayService: DayServiceDescription {
     
     // MARK: - GET
     
-    func getDaySchedule(on date: Date, completion: @escaping (Result<[WorkoutDay], CustomError>) -> Void) {
+    func getDaySchedule(on date: Date, completion: @escaping (Result<[NewWorkout], CustomError>) -> Void) {
         guard let userUID = Auth.auth().currentUser?.uid else {
             completion(.failure(.unknownError))
             return
@@ -30,7 +30,7 @@ final class DayService: DayServiceDescription {
 
         db.collection(Constants.userCollection)
             .document(userUID)
-            .getDocument(as: NotepadUser.self) { result in
+            .getDocument(as: DayServiceUser.self) { result in
                 switch result {
                 case .success(let user):
                     guard let schedule = user.schedule else {
@@ -48,19 +48,25 @@ final class DayService: DayServiceDescription {
                     
                     let programIDs = dayPrograms.programs.map { $0.programID }
                     let group = DispatchGroup()
-                    var workoutDays: [WorkoutDay] = Array(repeating: WorkoutDay(), count: programIDs.count)
+                    var workouts: [NewWorkout] = Array(repeating: NewWorkout(), count: programIDs.count)
 
                     for indexOfProgram in 0..<programIDs.count {
                         group.enter()
-                        programIDs[indexOfProgram].getDocument(as: Workout.self) { result in
+                        programIDs[indexOfProgram].getDocument(as: DayServiceProgram.self) { result in
                             defer {
                                 group.leave()
                             }
 
                             switch result {
                             case .success(let workout):
-                                let indexOfDay = dayPrograms.programs[indexOfProgram].indexOfDay
-                                workoutDays[indexOfProgram] = .init(workout: workout, indexOfDay: indexOfDay)
+                                let indexOfDay = dayPrograms.programs[indexOfProgram].indexOfCurrentDay
+                                let sets: [NewTrainingSet] = workout.days[indexOfDay].sets.map { .init(dtoModel: $0) }
+                                workouts[indexOfProgram] = .init(
+                                    workoutName: workout.name,
+                                    dayName: workout.days[indexOfDay].name,
+                                    dayIndex: indexOfDay,
+                                    sets: sets
+                                )
                                 
                             case .failure:
                                 completion(.failure(.unknownError))
@@ -69,7 +75,7 @@ final class DayService: DayServiceDescription {
                     }
 
                     group.notify(queue: .main) {
-                        completion(.success(workoutDays))
+                        completion(.success(workouts))
                     }
 
                 case .failure:
@@ -78,7 +84,7 @@ final class DayService: DayServiceDescription {
             }
     }
     
-    func getDayResults(on date: Date, completion: @escaping (Result<[WorkoutDay], CustomError>) -> Void) {
+    func getDayResults(on date: Date, completion: @escaping (Result<[NewWorkout], CustomError>) -> Void) {
         guard let userUID = Auth.auth().currentUser?.uid else {
             completion(.failure(.unknownError))
             return
@@ -86,33 +92,33 @@ final class DayService: DayServiceDescription {
 
         db.collection(Constants.userCollection)
             .document(userUID)
-            .getDocument(as: NotepadUser.self) { result in
+            .getDocument(as: DayServiceUser.self) { result in
                 switch result {
                 case .success(let user):
                     guard let history = user.history else {
                         completion(.failure(.unknownError))
                         return
                     }
-                    guard let dayHistory = history.filter({ $0.date.onlyDate == date.onlyDate }).first else {
+                    let workoutHistories = history.filter { $0.date.onlyDate == date.onlyDate }
+                    guard !workoutHistories.isEmpty else {
                         completion(.failure(.unknownError))
                         return
                     }
-                    let historyIDs: [DocumentReference] = dayHistory.historyID.map { $0.programID }
+                    let historyIDs: [DocumentReference] = workoutHistories.map { $0.historyID }
 
                     let group = DispatchGroup()
-                    var workoutDays: [WorkoutDay] = Array(repeating: WorkoutDay(), count: historyIDs.count)
+                    var workouts: [NewWorkout] = Array(repeating: NewWorkout(), count: historyIDs.count)
 
                     for indexOfProgram in 0..<historyIDs.count {
                         group.enter()
-                        historyIDs[indexOfProgram].getDocument(as: Workout.self) { result in
+                        historyIDs[indexOfProgram].getDocument(as: DayServiceHistory.self) { result in
                             defer {
                                 group.leave()
                             }
 
                             switch result {
-                            case .success(let workout):
-                                let indexOfDay = dayHistory.historyID[indexOfProgram].indexOfDay
-                                workoutDays[indexOfProgram] = .init(workout: workout, indexOfDay: indexOfDay)
+                            case .success(let history):
+                                workouts[indexOfProgram] = .init(dtoHistoryWorkout: history.workout)
                                 
                             case .failure:
                                 completion(.failure(.unknownError))
@@ -122,7 +128,7 @@ final class DayService: DayServiceDescription {
                     }
 
                     group.notify(queue: .main) {
-                        completion(.success(workoutDays))
+                        completion(.success(workouts))
                         return
                     }
 
@@ -135,26 +141,27 @@ final class DayService: DayServiceDescription {
     
     // MARK: - POST
     
-    func postProgress(_ progress: WorkoutProgress, completion: @escaping (Result<Bool, CustomError>) -> Void) {
+    func postProgress(_ progress: NewWorkoutProgress, completion: @escaping (CustomError?) -> Void) {
         guard let userUID = Auth.auth().currentUser?.uid else {
-            completion(.failure(.unknownError))
+            completion(.unknownError)
             return
         }
 
         let historyCollectionReference = db.collection(Constants.historyCollection)
         let historyDocumentReference: DocumentReference?
+        let history: DayServiceHistory = .init(domainModel: progress)
         do {
-            historyDocumentReference = try historyCollectionReference.addDocument(from: progress)
+            historyDocumentReference = try historyCollectionReference.addDocument(from: history)
         } catch {
-            completion(.failure(.unknownError))
+            completion(.unknownError)
             return
         }
         guard let historyDocumentReference else {
-            completion(.failure(.unknownError))
+            completion(.unknownError)
             return
         }
         
-        let historyElement: HistoryElement = .init(
+        let historyElement: DayServiceHistoryElement = .init(
             date: Date(),
             historyID: historyDocumentReference
         )
@@ -162,6 +169,8 @@ final class DayService: DayServiceDescription {
             .updateData([
                 Constants.User.historyField: FieldValue.arrayUnion([historyElement])
             ])
+        
+        completion(nil)
     }
 }
 

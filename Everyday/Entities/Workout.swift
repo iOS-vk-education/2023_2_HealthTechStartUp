@@ -4,7 +4,7 @@
 //
 //  Created by user on 28.02.2024.
 //
-
+/*
 import Foundation
 import Firebase
 import FirebaseFirestoreSwift
@@ -46,3 +46,4 @@ struct Exercise: Codable, Hashable {
     let description: String
     var result: String
 }
+*/

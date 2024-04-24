@@ -11,8 +11,8 @@ import Firebase
 // MARK: - DayServiceUser
 
 struct DayServiceUser: Decodable {
-    let schedule: [DayServiceScheduleElement]
-    let history: [DayServiceHistoryElement]
+    let schedule: [DayServiceScheduleElement]?
+    let history: [DayServiceHistoryElement]?
 }
 
 struct DayServiceScheduleElement: Decodable {
@@ -24,7 +24,7 @@ struct DayServiceProgramElement: Decodable {
     let programID: DocumentReference
 }
 
-struct DayServiceHistoryElement: Decodable {
+struct DayServiceHistoryElement: Codable {
     let date: Date
     let historyID: DocumentReference
 }
@@ -36,35 +36,66 @@ struct DayServiceProgram: Decodable {
     let days: [DayServiceDayElement]
 }
 
-struct DayServiceDayElement: Decodable {
+struct DayServiceDayElement: Codable {
     let name: String
     let sets: [DayServiceSetElement]
+    
+    init(domainModel: NewWorkout) {
+        name = domainModel.dayName
+        sets = domainModel.sets.map { .init(domainModel: $0) }
+    }
 }
 
-struct DayServiceSetElement: Decodable {
+struct DayServiceSetElement: Codable {
     let name: String
     let exercises: [DayServiceExerciseElement]
+    
+    init(domainModel: NewTrainingSet) {
+        name = domainModel.name
+        exercises = domainModel.exercises.map { .init(domainModel: $0) }
+    }
 }
 
-struct DayServiceExerciseElement: Decodable {
+struct DayServiceExerciseElement: Codable {
     let name: String
     let result: String
+    
+    init(domainModel: NewExercise) {
+        name = domainModel.name
+        result = domainModel.result
+    }
 }
 
 // MARK: - DayServiceHistory
 
-struct DayServiceHistory: Decodable {
-    let workouts: [DayServiceWorkout]
+struct DayServiceHistory: Codable {
+    let workout: DayServiceWorkout
     let extra: DayServiceExtra?
+    
+    init(domainModel: NewWorkoutProgress) {
+        workout = .init(domainModel: domainModel.workout)
+        extra = .init(domainModel: domainModel.extra)
+    }
 }
 
-struct DayServiceWorkout: Decodable {
+struct DayServiceWorkout: Codable {
     let programName: String
     let programDay: DayServiceDayElement
+    
+    init(domainModel: NewWorkout) {
+        programName = domainModel.workoutName
+        programDay = .init(domainModel: domainModel)
+    }
 }
 
-struct DayServiceExtra: Decodable {
+struct DayServiceExtra: Codable {
     let imageURL: String?
     let condition: Int?
     let weight: Double?
+    
+    init(domainModel: ExtraModel?) {
+        imageURL = domainModel?.imageURL
+        condition = domainModel?.condition
+        weight = domainModel?.weight
+    }
 }

@@ -15,14 +15,14 @@ final class TrainingPresenter {
     private let router: TrainingRouterInput
     private let interactor: TrainingInteractorInput
     
-    private var workoutDay: WorkoutDay
+    private var workout: NewWorkout
     private var indexOfSet: Int = 0
     private var switchStates: [Bool] = []
     
-    init(router: TrainingRouterInput, interactor: TrainingInteractorInput, workoutDay: WorkoutDay) {
+    init(router: TrainingRouterInput, interactor: TrainingInteractorInput, workout: NewWorkout) {
         self.router = router
         self.interactor = interactor
-        self.workoutDay = workoutDay
+        self.workout = workout
     }
 }
 
@@ -33,16 +33,16 @@ extension TrainingPresenter: TrainingViewOutput {
     func didLoadView() {
         let viewModel = TrainingViewModel()
         view?.configure(with: viewModel)
-        switchStates = [Bool](repeating: false, count: workoutDay.workout.days[workoutDay.indexOfDay].sets[0].exercises.count)
+        switchStates = [Bool](repeating: false, count: workout.sets[indexOfSet].exercises.count)
         view?.reloadData()
     }
     
     func numberOfRowsInSection(_ section: Int) -> Int {
-        workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises.count
+        workout.sets[indexOfSet].exercises.count
     }
     
-    func getExercise(at index: Int) -> Exercise {
-        workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises[index]
+    func getExercise(at index: Int) -> NewExercise {
+        workout.sets[indexOfSet].exercises[index]
     }
     
     func getSwitchState(at index: Int) -> Bool {
@@ -50,43 +50,44 @@ extension TrainingPresenter: TrainingViewOutput {
     }
     
     func didSelectRowAt(index: Int) {
-        let exercise = workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises[index]
-        let exerciseContext = ExerciseContext(moduleOutput: self, exercise: exercise, indexOfSet: indexOfSet)
-        router.openExercise(with: exerciseContext)
+        #warning("sheet module")
+//        let exercise = workout.sets[indexOfSet].exercises[index]
+//        let exerciseContext = ExerciseContext(moduleOutput: self, exercise: exercise, indexOfSet: indexOfSet)
+//        router.openExercise(with: exerciseContext)
     }
     
     func didTapFinishButton() {
-        let exercises = workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises
-        let resultsContext = ResultsContext(moduleOutput: self, exercises: exercises)
-        router.showResults(with: resultsContext)
+        #warning("sheet module")
+//        let exercises = workout.sets[indexOfSet].exercises
+//        let resultsContext = ResultsContext(moduleOutput: self, exercises: exercises)
+//        router.showResults(with: resultsContext)
     }
 }
 
 extension TrainingPresenter: ExerciseModuleOutput {
     func setResult(of exercise: String, with result: String, at indexOfSet: Int) {
-        let exercises = self.workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises
+        let exercises = workout.sets[indexOfSet].exercises
         guard let indexOfExercise = exercises.firstIndex(where: { $0.name == exercise }) else {
             return
         }
         
-        self.workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises[indexOfExercise].result = result
+        workout.sets[indexOfSet].exercises[indexOfExercise].result = result
         switchStates[indexOfExercise] = true
         view?.reloadData()
     }
 }
 
 extension TrainingPresenter: ResultsModuleOutput {
-    func changeSet(with exercises: [Exercise]) {
-        let index = workoutDay.workout.days[workoutDay.indexOfDay].sets.firstIndex { $0.exercises[0].name == exercises[0].name }!
-        if workoutDay.workout.days[workoutDay.indexOfDay].sets.count > index + 1 {
-            self.indexOfSet = index + 1
+    func changeSet(with exercises: [NewExercise]) {
+        let index = workout.sets.firstIndex { $0.exercises[0].name == exercises[0].name }!
+        if workout.sets.count > index + 1 {
+            indexOfSet = index + 1
         } else {
             router.openExtra()
             return
         }
         
-        switchStates = [Bool](repeating: false,
-                              count: workoutDay.workout.days[workoutDay.indexOfDay].sets[indexOfSet].exercises.count)
+        switchStates = [Bool](repeating: false, count: workout.sets[indexOfSet].exercises.count)
         view?.reloadData()
     }
 }

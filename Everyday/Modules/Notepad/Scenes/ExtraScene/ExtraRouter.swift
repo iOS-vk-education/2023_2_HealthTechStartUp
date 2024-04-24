@@ -15,7 +15,6 @@ final class ExtraRouter {
 
 private extension ExtraRouter {
     func cameraViewController(with context: SheetType) -> UIViewController {
-        let moduleType = SheetType.camera(model: .init())
         let context = SheetContext(moduleOutput: presenter, type: context)
         let container = SheetContainer.assemble(with: context)
         let presentedViewController = container.viewController
@@ -25,7 +24,6 @@ private extension ExtraRouter {
     }
     
     func stateViewController(with context: SheetType) -> UIViewController {
-        let moduleType = SheetType.conditionChoice(model: .init())
         let sheetSize = Constants.smallSheetHeight
         let context = SheetContext(moduleOutput: presenter, type: context)
         let container = SheetContainer.assemble(with: context)
@@ -52,7 +50,6 @@ private extension ExtraRouter {
     }
     
     func weightViewController(with context: SheetType) -> UIViewController {
-        let moduleType = SheetType.weightMeasurement(model: .init())
         let sheetSize = Constants.smallSheetHeight
         let context = SheetContext(moduleOutput: presenter, type: context)
         let container = SheetContainer.assemble(with: context)

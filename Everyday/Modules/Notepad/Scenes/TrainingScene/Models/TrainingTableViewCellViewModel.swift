@@ -14,7 +14,7 @@ struct TrainingTableViewCellViewModel {
     let circle: UIImage?
     let circleFilled: UIImage?
     
-    init(exercise: Exercise) {
+    init(exercise: NewExercise) {
         let titleLabelTitle = exercise.name
         let titleLabelAttributedString = NSAttributedString(string: titleLabelTitle, attributes: Styles.titleAttributes)
         let resultLabelTitle = exercise.result

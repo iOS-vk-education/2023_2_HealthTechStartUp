@@ -11,7 +11,7 @@ struct NotepadTableViewCellViewModel {
     let title: NSAttributedString
     let result: NSAttributedString
     
-    init(exercise: Exercise) {
+    init(exercise: NewExercise) {
         let titleLabelTitle = exercise.name
         let titleLabelAttributedString = NSAttributedString(string: titleLabelTitle, attributes: Styles.titleAttributes)
         let resultLabelTitle = exercise.result

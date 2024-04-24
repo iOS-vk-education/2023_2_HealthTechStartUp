@@ -38,6 +38,6 @@ final class ExerciseContainer {
 
 struct ExerciseContext {
     weak var moduleOutput: ExerciseModuleOutput?
-    let exercise: Exercise
+    let exercise: NewExercise
     let indexOfSet: Int
 }

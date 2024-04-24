@@ -13,7 +13,7 @@ enum ExtraViewType: String, CaseIterable {
     case heart = "Heart rate variability"
     case weight = "Weight"
 }
-
+/*
 struct WorkoutProgress: Codable {
     let history: [HistoryWorkout]
     let extra: Extra?
@@ -34,3 +34,4 @@ struct Extra: Codable {
     let condition: Int?
     let weight: Double?
 }
+*/

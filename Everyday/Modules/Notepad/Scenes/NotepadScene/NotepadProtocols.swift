@@ -37,10 +37,9 @@ protocol NotepadViewOutput: AnyObject {
     func collectionNumberOfItems() -> Int
     func collectionItem(at index: Int) -> [Date]
     func headerViewState() -> NotepadSectionHeaderState
-    func getWorkoutDay(_ number: Int) -> WorkoutDay
-    func getWorkout(at indexOfWorkout: Int) -> Workout
-    func getExercises(at indexOfSection: Int) -> [Exercise]
-    func getExercise(at indexOfSection: Int, at indexOfRow: Int) -> Exercise
+    func getWorkout(at index: Int) -> NewWorkout
+    func getAllExercises(at index: Int) -> [NewExercise]
+    func getExercise(at indexOfSection: Int, at indexOfRow: Int) -> NewExercise
     func numberOfSections() -> Int
     func numberOfRowsInSection(_ section: Int) -> Int
     func toggleCollapsed(at indexOfSection: Int) -> Bool
@@ -53,7 +52,7 @@ protocol NotepadInteractorInput: AnyObject {
 }
 
 protocol NotepadInteractorOutput: AnyObject {
-    func didLoadDay(with workoutDays: [WorkoutDay], _ isResult: Bool)
+    func didLoadDay(with workoutDays: [NewWorkout], _ isResult: Bool)
     func didStartLoading()
     func didEndLoading()
 }

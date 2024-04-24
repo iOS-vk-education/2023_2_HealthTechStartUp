@@ -32,11 +32,11 @@ protocol ExtraViewOutput: AnyObject {
 }
 
 protocol ExtraInteractorInput: AnyObject {
-    func saveProgress(_ progress: WorkoutProgress)
+    func saveProgress(_ progress: NewWorkoutProgress)
 }
 
 protocol ExtraInteractorOutput: AnyObject {
-    func didPostData(_ result: Bool)
+    func didPostData()
     func didStartLoading()
     func didEndLoading()
 }

@@ -15,7 +15,7 @@ struct ExerciseViewModel {
     let closeImage: UIImage?
     let saveImage: UIImage?
     
-    init(exercise: Exercise) {
+    init(exercise: NewExercise) {
         let resultLabelTitle = "0"
         let resultLabelAttributedString = NSAttributedString(string: resultLabelTitle, attributes: Styles.resultAttributes)
         let minusButtonImageName = "minus.circle.fill"

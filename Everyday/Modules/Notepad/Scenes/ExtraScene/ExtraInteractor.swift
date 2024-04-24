@@ -18,22 +18,20 @@ final class ExtraInteractor {
 }
 
 extension ExtraInteractor: ExtraInteractorInput {
-    func saveProgress(_ progress: WorkoutProgress) {
+    func saveProgress(_ progress: NewWorkoutProgress) {
         self.output?.didStartLoading()
         
-        dayManager.postProgress(progress) { [weak self] result in
+        dayManager.postProgress(progress) { [weak self] error in
             guard let self else {
                 return
             }
-
-            switch result {
-            case .success(let workoutDays):
-                self.output?.didEndLoading()
-                self.output?.didPostData(true)
-            case .failure:
-                self.output?.didEndLoading()
-                self.output?.didPostData(false)
+            
+            guard error == nil else {
+                return
             }
+
+            self.output?.didEndLoading()
+            self.output?.didPostData()
         }
     }
 }

@@ -15,11 +15,11 @@ final class ExercisePresenter {
     private let router: ExerciseRouterInput
     private let interactor: ExerciseInteractorInput
     
-    private var exercise: Exercise
+    private var exercise: NewExercise
     private var indexOfSet: Int
     private var result: Int = 0
     
-    init(router: ExerciseRouterInput, interactor: ExerciseInteractorInput, exercise: Exercise, indexOfSet: Int) {
+    init(router: ExerciseRouterInput, interactor: ExerciseInteractorInput, exercise: NewExercise, indexOfSet: Int) {
         self.router = router
         self.interactor = interactor
         self.exercise = exercise

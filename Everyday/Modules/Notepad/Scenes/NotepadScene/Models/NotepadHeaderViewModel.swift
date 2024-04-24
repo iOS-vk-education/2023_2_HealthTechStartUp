@@ -12,10 +12,10 @@ struct NotepadHeaderViewModel {
     let desciption: NSAttributedString
     let collapseImage: UIImage?
     
-    init(workoutDay: WorkoutDay) {
-        let titleLabelTitle = workoutDay.workout.name
+    init(workout: NewWorkout) {
+        let titleLabelTitle = workout.workoutName
         let titleLabelAttributedString = NSAttributedString(string: titleLabelTitle, attributes: Styles.titleAttributes)
-        let desciptionLabelTitle = workoutDay.workout.name
+        let desciptionLabelTitle = workout.dayName
         let desciptionLabelAttributedString = NSAttributedString(string: desciptionLabelTitle, attributes: Styles.desciptionAttributes)
         let collapseButtonImageName = "chevron.down"
         let collapseButtonImage = UIImage(systemName: collapseButtonImageName)

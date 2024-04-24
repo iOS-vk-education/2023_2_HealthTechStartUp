@@ -20,7 +20,7 @@ final class NotepadPresenter {
     private var shouldDeselectCell: (outerIndex: IndexPath, innerIndex: IndexPath)?
     
     private var isResult: Bool = false
-    private var workoutDays: [WorkoutDay] = []
+    private var workouts: [NewWorkout] = []
     private var isCollapsed = [
         true,
         true
@@ -140,28 +140,24 @@ extension NotepadPresenter: NotepadViewOutput {
         isResult ? .collapse : .open
     }
     
-    func getWorkoutDay(_ number: Int) -> WorkoutDay {
-        (workoutDays[number])
+    func getWorkout(at index: Int) -> NewWorkout {
+        workouts[index]
     }
     
-    func getWorkout(at indexOfWorkout: Int) -> Workout {
-        workoutDays[indexOfWorkout].workout
+    func getAllExercises(at index: Int) -> [NewExercise] {
+        workouts[index].sets.flatMap { $0.exercises }
     }
     
-    func getExercises(at indexOfSection: Int) -> [Exercise] {
-        workoutDays[indexOfSection].workout.days[workoutDays[indexOfSection].indexOfDay].sets.flatMap { $0.exercises }
-    }
-    
-    func getExercise(at indexOfSection: Int, at indexOfRow: Int) -> Exercise {
-        workoutDays[indexOfSection].workout.days[workoutDays[indexOfSection].indexOfDay].sets.flatMap { $0.exercises }[indexOfRow]
+    func getExercise(at indexOfSection: Int, at indexOfRow: Int) -> NewExercise {
+        getAllExercises(at: indexOfSection)[indexOfRow]
     }
     
     func numberOfSections() -> Int {
-        workoutDays.count
+        workouts.count
     }
     
     func numberOfRowsInSection(_ section: Int) -> Int {
-        isCollapsed[section] ? 0 : workoutDays[section].workout.days[workoutDays[section].indexOfDay].sets.flatMap { $0.exercises }.count
+        isCollapsed[section] ? 0 : workouts[section].sets.flatMap({ $0.exercises }).count
     }
     
     func toggleCollapsed(at indexOfSection: Int) -> Bool {
@@ -170,7 +166,7 @@ extension NotepadPresenter: NotepadViewOutput {
     }
     
     func didTapHeaderView(number: Int) {
-        let trainingContext = TrainingContext(workoutDay: workoutDays[number])
+        let trainingContext = TrainingContext(workout: workouts[number])
         router.openTraining(with: trainingContext)
     }
 }
@@ -178,8 +174,8 @@ extension NotepadPresenter: NotepadViewOutput {
 // MARK: - InteractorOutput
 
 extension NotepadPresenter: NotepadInteractorOutput {
-    func didLoadDay(with workoutDays: [WorkoutDay], _ isResult: Bool) {
-        self.workoutDays = workoutDays
+    func didLoadDay(with workouts: [NewWorkout], _ isResult: Bool) {
+        self.workouts = workouts
         self.isResult = isResult
         for i in 0..<isCollapsed.count {
             isCollapsed[i] = true
@@ -187,7 +183,7 @@ extension NotepadPresenter: NotepadInteractorOutput {
         
         view?.reloadData()
         
-        if !workoutDays.isEmpty {
+        if !workouts.isEmpty {
             view?.dismissEmptyStateView()
             let viewModel = NotepadViewModel(isResult: isResult)
             view?.configure(with: viewModel)

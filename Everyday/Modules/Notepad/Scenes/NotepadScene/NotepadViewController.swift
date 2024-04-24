@@ -150,7 +150,7 @@ private extension NotepadViewController {
         var indexPaths = [IndexPath]()
         
         let section = button.tag
-        let exercises = output.getExercises(at: section)
+        let exercises = output.getAllExercises(at: section)
         for exerciseIndex in 0..<exercises.count {
             let indexPath = IndexPath(row: exerciseIndex, section: section)
             indexPaths.append(indexPath)
@@ -246,8 +246,8 @@ extension NotepadViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = NotepadSectionHeaderView()
         
-        let workoutDay = output.getWorkoutDay(section)
-        let viewModel = NotepadHeaderViewModel(workoutDay: workoutDay)
+        let workout = output.getWorkout(at: section)
+        let viewModel = NotepadHeaderViewModel(workout: workout)
         let headerViewState = output.headerViewState()
         headerView.configure(with: viewModel, and: section, state: headerViewState)
         headerView.addActions(self, viewAction: #selector(didTapHeaderView), buttonAction: #selector(didTapCollapseButton))
