@@ -38,5 +38,5 @@ final class ResultsContainer {
 
 struct ResultsContext {
     weak var moduleOutput: ResultsModuleOutput?
-    var exercises: [NewExercise]
+    var exercises: [Exercise]
 }

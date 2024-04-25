@@ -20,7 +20,7 @@ final class NotepadPresenter {
     private var shouldDeselectCell: (outerIndex: IndexPath, innerIndex: IndexPath)?
     
     private var isResult: Bool = false
-    private var workouts: [NewWorkout] = []
+    private var workouts: [Workout] = []
     private var isCollapsed = [
         true,
         true
@@ -34,9 +34,19 @@ final class NotepadPresenter {
 
 extension NotepadPresenter: NotepadModuleInput {}
 
-// MARK: - Helpers
-
 private extension NotepadPresenter {
+    
+    // MARK: - Init
+    
+    func initProperties() {
+        let outerIndexPath = IndexPath(item: 2, section: 0)
+        let innerIndex = CalendarService.shared.getWeekdayIndex(from: Date())
+        let innerIndexPath = IndexPath(item: innerIndex, section: 0)
+        selectedCell = (outerIndexPath, innerIndexPath)
+    }
+    
+    // MARK: - Helpers
+    
     func fetchWeeklyCalendar() -> [[Date]] {
         let calendar = Calendar.current
         guard
@@ -87,12 +97,7 @@ private extension NotepadPresenter {
 extension NotepadPresenter: NotepadViewOutput {
     func didLoadView() {
         calendar = fetchWeeklyCalendar()
-
-        let outerIndexPath = IndexPath(item: 2, section: 0)
-        let innerIndex = CalendarService.shared.getWeekdayIndex(from: Date())
-        let innerIndexPath = IndexPath(item: innerIndex, section: 0)
-        setSelectedCell((outerIndexPath, innerIndexPath))
-        
+        initProperties()
         interactor.loadResult(date: Date())
     }
     
@@ -140,15 +145,15 @@ extension NotepadPresenter: NotepadViewOutput {
         isResult ? .collapse : .open
     }
     
-    func getWorkout(at index: Int) -> NewWorkout {
+    func getWorkout(at index: Int) -> Workout {
         workouts[index]
     }
     
-    func getAllExercises(at index: Int) -> [NewExercise] {
+    func getAllExercises(at index: Int) -> [Exercise] {
         workouts[index].sets.flatMap { $0.exercises }
     }
     
-    func getExercise(at indexOfSection: Int, at indexOfRow: Int) -> NewExercise {
+    func getExercise(at indexOfSection: Int, at indexOfRow: Int) -> Exercise {
         getAllExercises(at: indexOfSection)[indexOfRow]
     }
     
@@ -174,7 +179,7 @@ extension NotepadPresenter: NotepadViewOutput {
 // MARK: - InteractorOutput
 
 extension NotepadPresenter: NotepadInteractorOutput {
-    func didLoadDay(with workouts: [NewWorkout], _ isResult: Bool) {
+    func didLoadDay(with workouts: [Workout], _ isResult: Bool) {
         self.workouts = workouts
         self.isResult = isResult
         for i in 0..<isCollapsed.count {

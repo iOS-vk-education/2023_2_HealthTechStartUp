@@ -23,7 +23,7 @@ protocol TrainingViewInput: AnyObject {
 protocol TrainingViewOutput: AnyObject {
     func didLoadView()
     func numberOfRowsInSection(_ section: Int) -> Int
-    func getExercise(at index: Int) -> NewExercise
+    func getExercise(at index: Int) -> Exercise
     func getSwitchState(at index: Int) -> Bool
     func didSelectRowAt(index: Int)
     func didTapFinishButton()

@@ -13,7 +13,7 @@ protocol ResultsModuleInput {
 }
 
 protocol ResultsModuleOutput: AnyObject {
-    func changeSet(with exercises: [NewExercise])
+    func changeSet(with exercises: [Exercise])
 }
 
 protocol ResultsViewInput: AnyObject {
@@ -24,7 +24,7 @@ protocol ResultsViewInput: AnyObject {
 protocol ResultsViewOutput: AnyObject {
     func didLoadView()
     func numberOfRowsInSection(_ section: Int) -> Int
-    func getExercise(at index: Int) -> NewExercise
+    func getExercise(at index: Int) -> Exercise
     func didTapCloseButton()
     func didTapRestButton()
     func didTapContinueButton()

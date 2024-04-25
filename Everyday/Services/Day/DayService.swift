@@ -9,9 +9,9 @@ import Foundation
 import Firebase
 
 protocol DayServiceDescription {
-    func getDaySchedule(on date: Date, completion: @escaping (Result<[NewWorkout], CustomError>) -> Void)
-    func getDayResults(on date: Date, completion: @escaping (Result<[NewWorkout], CustomError>) -> Void)
-    func postProgress(_ progress: NewWorkoutProgress, completion: @escaping (CustomError?) -> Void)
+    func getDaySchedule(on date: Date, completion: @escaping (Result<[Workout], CustomError>) -> Void)
+    func getDayResults(on date: Date, completion: @escaping (Result<[Workout], CustomError>) -> Void)
+    func postProgress(_ progress: WorkoutProgress, completion: @escaping (CustomError?) -> Void)
 }
 
 final class DayService: DayServiceDescription {
@@ -22,7 +22,7 @@ final class DayService: DayServiceDescription {
     
     // MARK: - GET
     
-    func getDaySchedule(on date: Date, completion: @escaping (Result<[NewWorkout], CustomError>) -> Void) {
+    func getDaySchedule(on date: Date, completion: @escaping (Result<[Workout], CustomError>) -> Void) {
         guard let userUID = Auth.auth().currentUser?.uid else {
             completion(.failure(.unknownError))
             return
@@ -48,7 +48,7 @@ final class DayService: DayServiceDescription {
                     
                     let programIDs = dayPrograms.programs.map { $0.programID }
                     let group = DispatchGroup()
-                    var workouts: [NewWorkout] = Array(repeating: NewWorkout(), count: programIDs.count)
+                    var workouts: [Workout] = Array(repeating: Workout(), count: programIDs.count)
 
                     for indexOfProgram in 0..<programIDs.count {
                         group.enter()
@@ -60,7 +60,7 @@ final class DayService: DayServiceDescription {
                             switch result {
                             case .success(let workout):
                                 let indexOfDay = dayPrograms.programs[indexOfProgram].indexOfCurrentDay
-                                let sets: [NewTrainingSet] = workout.days[indexOfDay].sets.map { .init(dtoModel: $0) }
+                                let sets: [TrainingSet] = workout.days[indexOfDay].sets.map { .init(dtoModel: $0) }
                                 workouts[indexOfProgram] = .init(
                                     workoutName: workout.name,
                                     dayName: workout.days[indexOfDay].name,
@@ -84,7 +84,7 @@ final class DayService: DayServiceDescription {
             }
     }
     
-    func getDayResults(on date: Date, completion: @escaping (Result<[NewWorkout], CustomError>) -> Void) {
+    func getDayResults(on date: Date, completion: @escaping (Result<[Workout], CustomError>) -> Void) {
         guard let userUID = Auth.auth().currentUser?.uid else {
             completion(.failure(.unknownError))
             return
@@ -107,7 +107,7 @@ final class DayService: DayServiceDescription {
                     let historyIDs: [DocumentReference] = workoutHistories.map { $0.historyID }
 
                     let group = DispatchGroup()
-                    var workouts: [NewWorkout] = Array(repeating: NewWorkout(), count: historyIDs.count)
+                    var workouts: [Workout] = Array(repeating: Workout(), count: historyIDs.count)
 
                     for indexOfProgram in 0..<historyIDs.count {
                         group.enter()
@@ -141,7 +141,7 @@ final class DayService: DayServiceDescription {
     
     // MARK: - POST
     
-    func postProgress(_ progress: NewWorkoutProgress, completion: @escaping (CustomError?) -> Void) {
+    func postProgress(_ progress: WorkoutProgress, completion: @escaping (CustomError?) -> Void) {
         guard let userUID = Auth.auth().currentUser?.uid else {
             completion(.unknownError)
             return

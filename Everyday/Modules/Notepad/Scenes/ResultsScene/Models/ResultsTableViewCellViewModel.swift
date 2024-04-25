@@ -13,7 +13,7 @@ struct ResultsTableViewCellViewModel {
     let minusImage: UIImage?
     let plusImage: UIImage?
     
-    init(exercise: NewExercise) {
+    init(exercise: Exercise) {
         let exerciseNameLabelTitle = exercise.name
         let exerciseNameLabelAttributedString = NSAttributedString(string: exerciseNameLabelTitle, attributes: Styles.titleAttributes)
         let resultLabelTitle = exercise.result

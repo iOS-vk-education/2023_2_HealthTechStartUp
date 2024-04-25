@@ -12,7 +12,7 @@ struct NotepadHeaderViewModel {
     let desciption: NSAttributedString
     let collapseImage: UIImage?
     
-    init(workout: NewWorkout) {
+    init(workout: Workout) {
         let titleLabelTitle = workout.workoutName
         let titleLabelAttributedString = NSAttributedString(string: titleLabelTitle, attributes: Styles.titleAttributes)
         let desciptionLabelTitle = workout.dayName

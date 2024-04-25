@@ -38,5 +38,5 @@ final class TrainingContainer {
 
 struct TrainingContext {
     weak var moduleOutput: TrainingModuleOutput?
-    let workout: NewWorkout
+    let workout: Workout
 }

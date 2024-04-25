@@ -10,15 +10,15 @@ import Foundation
 // MARK: - NotepadModel
 
 struct NotepadModel {
-    var schedule: [NewWorkout]?
-    let history: [NewWorkout]?
+    var schedule: [Workout]?
+    let history: [Workout]?
 }
 
-struct NewWorkout {  // Workout
+struct Workout {
     let workoutName: String
     let dayName: String
     let dayIndex: Int?
-    var sets: [NewTrainingSet]
+    var sets: [TrainingSet]
     
     init() {
         workoutName = ""
@@ -27,7 +27,7 @@ struct NewWorkout {  // Workout
         sets = []
     }
     
-    init(workoutName: String, dayName: String, dayIndex: Int?, sets: [NewTrainingSet]) {
+    init(workoutName: String, dayName: String, dayIndex: Int?, sets: [TrainingSet]) {
         self.workoutName = workoutName
         self.dayName = dayName
         self.dayIndex = dayIndex
@@ -42,9 +42,9 @@ struct NewWorkout {  // Workout
     }
 }
 
-struct NewTrainingSet {  // TrainingSet
+struct TrainingSet {
     let name: String
-    var exercises: [NewExercise]
+    var exercises: [Exercise]
     
     init(dtoModel: DayServiceSetElement) {
         name = dtoModel.name
@@ -52,7 +52,7 @@ struct NewTrainingSet {  // TrainingSet
     }
 }
 
-struct NewExercise {  // Exercise
+struct Exercise {
     let name: String
     var result: String
     
@@ -64,13 +64,13 @@ struct NewExercise {  // Exercise
 
 // MARK: - ExtraModel
 
-struct ExtraModel {  // ExtraModel
+struct WorkoutProgress {
+    let workout: Workout
+    let extra: ExtraModel?
+}
+
+struct ExtraModel {
     let imageURL: String?
     let condition: Int?
     let weight: Double?
-}
-
-struct NewWorkoutProgress {  // WorkoutProgress
-    let workout: NewWorkout
-    let extra: ExtraModel?
 }

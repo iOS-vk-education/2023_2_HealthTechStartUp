@@ -40,7 +40,7 @@ struct DayServiceDayElement: Codable {
     let name: String
     let sets: [DayServiceSetElement]
     
-    init(domainModel: NewWorkout) {
+    init(domainModel: Workout) {
         name = domainModel.dayName
         sets = domainModel.sets.map { .init(domainModel: $0) }
     }
@@ -50,7 +50,7 @@ struct DayServiceSetElement: Codable {
     let name: String
     let exercises: [DayServiceExerciseElement]
     
-    init(domainModel: NewTrainingSet) {
+    init(domainModel: TrainingSet) {
         name = domainModel.name
         exercises = domainModel.exercises.map { .init(domainModel: $0) }
     }
@@ -60,7 +60,7 @@ struct DayServiceExerciseElement: Codable {
     let name: String
     let result: String
     
-    init(domainModel: NewExercise) {
+    init(domainModel: Exercise) {
         name = domainModel.name
         result = domainModel.result
     }
@@ -72,7 +72,7 @@ struct DayServiceHistory: Codable {
     let workout: DayServiceWorkout
     let extra: DayServiceExtra?
     
-    init(domainModel: NewWorkoutProgress) {
+    init(domainModel: WorkoutProgress) {
         workout = .init(domainModel: domainModel.workout)
         extra = .init(domainModel: domainModel.extra)
     }
@@ -82,7 +82,7 @@ struct DayServiceWorkout: Codable {
     let programName: String
     let programDay: DayServiceDayElement
     
-    init(domainModel: NewWorkout) {
+    init(domainModel: Workout) {
         programName = domainModel.workoutName
         programDay = .init(domainModel: domainModel)
     }

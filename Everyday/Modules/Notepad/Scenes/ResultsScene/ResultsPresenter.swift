@@ -15,9 +15,9 @@ final class ResultsPresenter {
     private let router: ResultsRouterInput
     private let interactor: ResultsInteractorInput
     
-    private var exercises: [NewExercise]
+    private var exercises: [Exercise]
     
-    init(router: ResultsRouterInput, interactor: ResultsInteractorInput, exercises: [NewExercise]) {
+    init(router: ResultsRouterInput, interactor: ResultsInteractorInput, exercises: [Exercise]) {
         self.router = router
         self.interactor = interactor
         self.exercises = exercises
@@ -37,7 +37,7 @@ extension ResultsPresenter: ResultsViewOutput {
         exercises.count
     }
     
-    func getExercise(at index: Int) -> NewExercise {
+    func getExercise(at index: Int) -> Exercise {
         exercises[index]
     }
     

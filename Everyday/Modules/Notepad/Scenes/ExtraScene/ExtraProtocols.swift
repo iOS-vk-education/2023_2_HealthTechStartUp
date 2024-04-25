@@ -32,7 +32,7 @@ protocol ExtraViewOutput: AnyObject {
 }
 
 protocol ExtraInteractorInput: AnyObject {
-    func saveProgress(_ progress: NewWorkoutProgress)
+    func saveProgress(_ progress: WorkoutProgress)
 }
 
 protocol ExtraInteractorOutput: AnyObject {

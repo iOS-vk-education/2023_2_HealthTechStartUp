@@ -18,7 +18,7 @@ final class ExtraInteractor {
 }
 
 extension ExtraInteractor: ExtraInteractorInput {
-    func saveProgress(_ progress: NewWorkoutProgress) {
+    func saveProgress(_ progress: WorkoutProgress) {
         self.output?.didStartLoading()
         
         dayManager.postProgress(progress) { [weak self] error in

@@ -15,11 +15,11 @@ final class TrainingPresenter {
     private let router: TrainingRouterInput
     private let interactor: TrainingInteractorInput
     
-    private var workout: NewWorkout
+    private var workout: Workout
     private var indexOfSet: Int = 0
     private var switchStates: [Bool] = []
     
-    init(router: TrainingRouterInput, interactor: TrainingInteractorInput, workout: NewWorkout) {
+    init(router: TrainingRouterInput, interactor: TrainingInteractorInput, workout: Workout) {
         self.router = router
         self.interactor = interactor
         self.workout = workout
@@ -41,7 +41,7 @@ extension TrainingPresenter: TrainingViewOutput {
         workout.sets[indexOfSet].exercises.count
     }
     
-    func getExercise(at index: Int) -> NewExercise {
+    func getExercise(at index: Int) -> Exercise {
         workout.sets[indexOfSet].exercises[index]
     }
     
@@ -78,7 +78,7 @@ extension TrainingPresenter: ExerciseModuleOutput {
 }
 
 extension TrainingPresenter: ResultsModuleOutput {
-    func changeSet(with exercises: [NewExercise]) {
+    func changeSet(with exercises: [Exercise]) {
         let index = workout.sets.firstIndex { $0.exercises[0].name == exercises[0].name }!
         if workout.sets.count > index + 1 {
             indexOfSet = index + 1
