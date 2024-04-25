@@ -31,7 +31,7 @@ extension ExtraPresenter: ExtraModuleInput {
 
 private extension ExtraPresenter {
     
-    // MARK: - Helpers
+    // MARK: - Init
     
     func initProperties() {
         initViewTypes()
@@ -78,6 +78,9 @@ extension ExtraPresenter: ExtraViewOutput {
     }
     
     func didSelectRowAt(index: Int) {
+        guard index != 2 else {  // because heart rate not implemented
+            return
+        }
         router.showView(viewTypes[index], with: data[index])
     }
     

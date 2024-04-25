@@ -50,17 +50,15 @@ extension TrainingPresenter: TrainingViewOutput {
     }
     
     func didSelectRowAt(index: Int) {
-        #warning("sheet module")
-//        let exercise = workout.sets[indexOfSet].exercises[index]
-//        let exerciseContext = ExerciseContext(moduleOutput: self, exercise: exercise, indexOfSet: indexOfSet)
-//        router.openExercise(with: exerciseContext)
+        let exercise = workout.sets[indexOfSet].exercises[index]
+        let exerciseContext = ExerciseContext(moduleOutput: self, exercise: exercise, indexOfSet: indexOfSet)
+        router.openExercise(with: exerciseContext)
     }
     
     func didTapFinishButton() {
-        #warning("sheet module")
-//        let exercises = workout.sets[indexOfSet].exercises
-//        let resultsContext = ResultsContext(moduleOutput: self, exercises: exercises)
-//        router.showResults(with: resultsContext)
+        let exercises = workout.sets[indexOfSet].exercises
+        let resultsContext = ResultsContext(moduleOutput: self, exercises: exercises)
+        router.showResults(with: resultsContext)
     }
 }
 

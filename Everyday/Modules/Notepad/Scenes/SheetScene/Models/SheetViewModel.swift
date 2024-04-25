@@ -13,6 +13,8 @@ struct SheetViewModel {
     let closeImage: UIImage?
     let saveImage: UIImage?
     
+    // delete backgroundColor?
+    
     init(sheetType: SheetType) {
         let titleLabelTitle = "Title"  // make good
         let titleLabelAttributedString = NSAttributedString(string: titleLabelTitle, attributes: Styles.titleAttributes)

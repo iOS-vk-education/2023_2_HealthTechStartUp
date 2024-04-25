@@ -10,13 +10,15 @@ import PinLayout
 
 class WeightMeasurementView: UIView {
     
-    var output: WeightMeasurementViewOutput?
-    
     // MARK: - Private Properties
+    
+    private let closeButton = UIButton()
+    private let saveButton = UIButton()
     
     private let textField = UITextField()
     private let minusButton = UIButton()
     private let plusButton = UIButton()
+    private var output: WeightMeasurementViewOutput?
     
     // MARK: - Init
     
@@ -30,9 +32,13 @@ class WeightMeasurementView: UIView {
         setup()
     }
     
-    convenience init(weight: Double? = nil, output: WeightMeasurementViewOutput) {
+    convenience init(weight: Double? = nil, output: WeightMeasurementViewOutput?) {
         self.init(frame: .zero)
         self.output = output
+        
+        let viewModel = WeightMeasurementViewModel(value: weight)
+        textField.attributedText = viewModel.value
+        
         setupWeightView()
     }
     
@@ -51,33 +57,68 @@ private extension WeightMeasurementView {
     func layout() {
         let resultViewWidth: CGFloat = bounds.width - Constants.TextField.padding * 2
         
+        closeButton.pin
+            .top(Constants.Button.padding + pin.safeArea.top)
+            .left(Constants.Button.padding)
+            .width(Constants.Button.width)
+            .height(Constants.Button.height)
+        
+        saveButton.pin
+            .top(Constants.Button.padding + pin.safeArea.top)
+            .right(Constants.Button.padding)
+            .width(Constants.Button.width)
+            .height(Constants.Button.height)
+        
         textField.pin
+            .below(of: [closeButton, saveButton])
+            .marginTop(Constants.Button.padding)
             .width(resultViewWidth)
             .height(Constants.TextField.height)
             .hCenter()
-            .top(Constants.TextField.topMargin)
         
         minusButton.pin
             .below(of: textField)
-            .left(Constants.Button.horizontalMargin)
-            .height(Constants.Button.height)
-            .width(Constants.Button.width)
+            .left(Constants.ChangeButton.horizontalMargin)
+            .height(Constants.ChangeButton.height)
+            .width(Constants.ChangeButton.width)
         
         plusButton.pin
             .below(of: textField)
-            .right(Constants.Button.horizontalMargin)
-            .height(Constants.Button.height)
-            .width(Constants.Button.width)
+            .right(Constants.ChangeButton.horizontalMargin)
+            .height(Constants.ChangeButton.height)
+            .width(Constants.ChangeButton.width)
+    }
+    
+    // MARK: - Configure
+    
+    func configureButtons() {
+        let cameraModel = CameraModel()
+        let viewModel = SheetViewModel(sheetType: .camera(model: cameraModel))
+        closeButton.setImage(viewModel.closeImage, for: .normal)
+        saveButton.setImage(viewModel.saveImage, for: .normal)
     }
     
     // MARK: - Setup
     
     func setup() {
+        setupCloseButton()
+        setupSaveButton()
+        configureButtons()
         setupView()
         setupTextField()
         setupPlusButton()
         setupMinusButton()
-        addSubviews(textField, minusButton, plusButton)
+        addSubviews(closeButton, saveButton, textField, minusButton, plusButton)
+    }
+    
+    func setupCloseButton() {
+        closeButton.tintColor = Constants.Button.backgroundColor
+        closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
+    }
+    
+    func setupSaveButton() {
+        saveButton.tintColor = Constants.Button.backgroundColor
+        saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
     }
     
     func setupView() {
@@ -91,6 +132,7 @@ private extension WeightMeasurementView {
         textField.layer.cornerRadius = Constants.TextField.cornerRadius
         textField.textAlignment = .center
         textField.textColor = Constants.TextField.textColor
+        textField.placeholder = "0,0"
         textField.font = UIFont.systemFont(ofSize: 72, weight: .bold)
         textField.keyboardType = .decimalPad
         textField.addTarget(self, action: #selector(didEndEditingTextField), for: .editingDidEnd)
@@ -98,15 +140,15 @@ private extension WeightMeasurementView {
     }
     
     func setupMinusButton() {
-        minusButton.tintColor = Constants.Button.backgroundColor
+        minusButton.tintColor = Constants.ChangeButton.backgroundColor
         minusButton.addTarget(self, action: #selector(didTapMinusButton), for: .touchUpInside)
     }
     
     func setupPlusButton() {
-        plusButton.tintColor = Constants.Button.backgroundColor
+        plusButton.tintColor = Constants.ChangeButton.backgroundColor
         plusButton.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
     }
-
+    
     // MARK: - Actions
     
     @objc
@@ -164,12 +206,12 @@ private extension WeightMeasurementView {
         
         let resultText = attributedText.string
         if resultText.isEmpty || !resultText.isDouble || Int(resultText) ?? 0 < 0 {
-            output?.didEditTextField(with: nil)
+//            output?.didEditTextField(with: nil)
         } else {
             let formatter = NumberFormatter()
             formatter.numberStyle = .decimal
             if let number = formatter.number(from: resultText) {
-                output?.didEditTextField(with: Double(truncating: number))
+//                output?.didEditTextField(with: Double(truncating: number))
             }
         }
     }
@@ -177,6 +219,31 @@ private extension WeightMeasurementView {
     @objc
     func dismissKeyboard() {
         endEditing(true)
+    }
+    
+    @objc
+    func didTapCloseButton() {
+        output?.didTapWeightMeasurementCloseButton()
+    }
+    
+    @objc
+    func didTapSaveButton() {
+        guard
+            let attributedText = textField.attributedText
+        else {
+            return
+        }
+        
+        let resultText = attributedText.string
+        if resultText.isEmpty || !resultText.isDouble || Int(resultText) ?? 0 < 0 {
+            output?.didTapSaveButton(with: nil)
+        } else {
+            let formatter = NumberFormatter()
+            formatter.numberStyle = .decimal
+            if let number = formatter.number(from: resultText) {
+                output?.didTapSaveButton(with: Double(truncating: number))
+            }
+        }
     }
     
     // MARK: - Helpers
@@ -208,6 +275,13 @@ private extension WeightMeasurementView {
         static let backgroundColor: UIColor = UIColor.background
         
         struct Button {
+            static let backgroundColor: UIColor = .UI.accent
+            static let padding: CGFloat = 8
+            static let width: CGFloat = 40
+            static let height: CGFloat = 40
+        }
+        
+        struct ChangeButton {
             static let backgroundColor: UIColor = UIColor.UI.accent
             static let width: CGFloat = 100
             static let height: CGFloat = 100

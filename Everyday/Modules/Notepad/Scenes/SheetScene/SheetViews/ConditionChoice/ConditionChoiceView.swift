@@ -10,12 +10,14 @@ import PinLayout
 
 class ConditionChoiceView: UIView {
     
-    var output: ConditionChoiceViewOutput?
-    
     // MARK: - Private Properties
+    
+    private let closeButton = UIButton()
+    private let saveButton = UIButton()
     
     private var collectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     private let selectedConditionIndex: Int? = nil
+    private var output: ConditionChoiceViewOutput?
     
     // MARK: - Init
     
@@ -29,7 +31,7 @@ class ConditionChoiceView: UIView {
         setup()
     }
     
-    convenience init(condition: Condition? = nil, output: ConditionChoiceViewOutput) {
+    convenience init(condition: Condition? = nil, output: ConditionChoiceViewOutput?) {
         self.init(frame: .zero)
         self.output = output
         
@@ -38,7 +40,7 @@ class ConditionChoiceView: UIView {
             let index = Condition.allCases.firstIndex(of: condition)
         {
             let indexPath = IndexPath(item: index, section: 0)
-            collectionView.selectItem(at: indexPath, 
+            collectionView.selectItem(at: indexPath,
                                       animated: false,
                                       scrollPosition: .centeredHorizontally)
         }
@@ -57,18 +59,53 @@ private extension ConditionChoiceView {
     // MARK: - Layout
     
     func layout() {
+        closeButton.pin
+            .top(Constants.Button.padding + pin.safeArea.top)
+            .left(Constants.Button.padding)
+            .width(Constants.Button.width)
+            .height(Constants.Button.height)
+        
+        saveButton.pin
+            .top(Constants.Button.padding + pin.safeArea.top)
+            .right(Constants.Button.padding)
+            .width(Constants.Button.width)
+            .height(Constants.Button.height)
+        
         collectionView.pin
-            .horizontally()
-            .top()
+            .below(of: [closeButton, saveButton])
+            .marginTop(Constants.Button.padding)
             .bottom(pin.safeArea)
+            .horizontally()
+    }
+    
+    // MARK: - Configure
+    
+    func configureButtons() {
+        let cameraModel = CameraModel()
+        let viewModel = SheetViewModel(sheetType: .camera(model: cameraModel))
+        closeButton.setImage(viewModel.closeImage, for: .normal)
+        saveButton.setImage(viewModel.saveImage, for: .normal)
     }
     
     // MARK: - Setup
     
     func setup() {
+        setupCloseButton()
+        setupSaveButton()
+        configureButtons()
         setupView()
         setupCollectionView()
-        addSubview(collectionView)
+        addSubviews(closeButton, saveButton, collectionView)
+    }
+    
+    func setupCloseButton() {
+        closeButton.tintColor = Constants.Button.backgroundColor
+        closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
+    }
+    
+    func setupSaveButton() {
+        saveButton.tintColor = Constants.Button.backgroundColor
+        saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
     }
     
     func setupView() {
@@ -86,20 +123,40 @@ private extension ConditionChoiceView {
         collectionView.showsHorizontalScrollIndicator = false
         collectionView.showsVerticalScrollIndicator = false
     }
+    
+    // MARK: - Actions
+    
+    @objc
+    func didTapCloseButton() {
+        output?.didTapConditionChoiceCloseButton()
+    }
+    
+    @objc
+    func didTapSaveButton() {
+        guard
+            let indexPathsForSelectedItems = collectionView.indexPathsForSelectedItems,
+            let selectedIndexPath = indexPathsForSelectedItems.first
+        else {
+            return
+        }
+        let selectedIndex = selectedIndexPath.item
+        let condition = Condition.allCases[selectedIndex]
+        output?.didTapSaveButton(with: condition)
+    }
 }
 
 // MARK: - UICollectionViewDelegate
 
 extension ConditionChoiceView: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        output?.didSelectItemAt(index: indexPath.item)
+//        output?.didSelectItemAt(index: indexPath.item)
     }
 }
 
 // MARK: - UICollectionViewDelegateFlowLayout
 
 extension ConditionChoiceView: UICollectionViewDelegateFlowLayout {
-    func collectionView(_ collectionView: UICollectionView, 
+    func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout,
                         sizeForItemAt indexPath: IndexPath) -> CGSize {
         let width = bounds.width
@@ -147,6 +204,13 @@ extension ConditionChoiceView: ConditionChoiceViewInput {
 private extension ConditionChoiceView {
     struct Constants {
         static let backgroundColor: UIColor = .background
+        
+        struct Button {
+            static let backgroundColor: UIColor = .UI.accent
+            static let padding: CGFloat = 8
+            static let width: CGFloat = 40
+            static let height: CGFloat = 40
+        }
         
         struct CollectionView {
             static let backgroundColor: UIColor = .clear

@@ -16,7 +16,6 @@ final class TabBarController: UITabBarController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupTabBar()
-        selectedIndex = 0
     }
     
     // MARK: - actions

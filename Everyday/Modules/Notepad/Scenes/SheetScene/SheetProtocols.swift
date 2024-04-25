@@ -17,13 +17,10 @@ protocol SheetModuleOutput: AnyObject {
 }
 
 protocol SheetViewInput: AnyObject {
-    func configure(with viewModel: SheetViewModel)
 }
 
 protocol SheetViewOutput: AnyObject {
     func didLoadView()
-    func didTapCloseButton()
-    func didTapSaveButton()
 }
 
 protocol SheetWeightViewOutput: AnyObject {

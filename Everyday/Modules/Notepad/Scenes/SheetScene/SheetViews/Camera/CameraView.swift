@@ -11,14 +11,18 @@ import AVFoundation
 
 class CameraView: UIView {
     
-    var output: CameraViewOutput?
-    
     // MARK: - Private Properties
+    
+    private let closeButton = UIButton()
+    private let saveButton = UIButton()
+    
+    private var image: UIImage?
     
     private var session: AVCaptureSession?
     private let photoOutput = AVCapturePhotoOutput()
     private let previewLayer = AVCaptureVideoPreviewLayer()
     private let shutterButton = UIButton()
+    private var output: CameraViewOutput?
     
     // MARK: - Init
     
@@ -32,7 +36,7 @@ class CameraView: UIView {
         setup()
     }
     
-    convenience init(image: UIImage? = nil, output: CameraViewOutput) {
+    convenience init(image: UIImage? = nil, output: CameraViewOutput?) {
         self.init(frame: .zero)
         self.output = output
     }
@@ -50,8 +54,23 @@ private extension CameraView {
     // MARK: - Layout
     
     func layout() {
+        closeButton.pin
+            .top(Constants.Button.padding + pin.safeArea.top)
+            .left(Constants.Button.padding)
+            .width(Constants.Button.width)
+            .height(Constants.Button.height)
+        
+        saveButton.pin
+            .top(Constants.Button.padding + pin.safeArea.top)
+            .right(Constants.Button.padding)
+            .width(Constants.Button.width)
+            .height(Constants.Button.height)
+        
         previewLayer.pin
-            .all()
+            .below(of: [closeButton.layer, saveButton.layer])
+            .marginTop(Constants.Button.padding)
+            .bottom()
+            .horizontally()
         
         shutterButton.pin
             .hCenter()
@@ -63,12 +82,32 @@ private extension CameraView {
     // MARK: - Setup
     
     func setup() {
+        setupCloseButton()
+        setupSaveButton()
+        configureButtons()
         setupView()
         setupPreviewLayer()
         checkCameraPermissions()
         
         layer.addSublayer(previewLayer)
-        addSubview(shutterButton)
+        addSubviews(closeButton, saveButton, shutterButton)
+    }
+    
+    func configureButtons() {
+        let cameraModel = CameraModel()
+        let viewModel = SheetViewModel(sheetType: .camera(model: cameraModel))
+        closeButton.setImage(viewModel.closeImage, for: .normal)
+        saveButton.setImage(viewModel.saveImage, for: .normal)
+    }
+    
+    func setupCloseButton() {
+        closeButton.tintColor = Constants.Button.backgroundColor
+        closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
+    }
+    
+    func setupSaveButton() {
+        saveButton.tintColor = Constants.Button.backgroundColor
+        saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
     }
     
     func setupView() {
@@ -161,6 +200,16 @@ private extension CameraView {
         
         photoOutput.capturePhoto(with: AVCapturePhotoSettings(), delegate: self)
     }
+    
+    @objc
+    func didTapCloseButton() {
+        output?.didTapCameraCloseButton()
+    }
+    
+    @objc
+    func didTapSaveButton() {
+        output?.didTapSaveButton(with: image)
+    }
 }
 
 // MARK: - AVCapturePhotoCaptureDelegate
@@ -174,13 +223,13 @@ extension CameraView: AVCapturePhotoCaptureDelegate {
         let image = UIImage(data: data)
         session?.stopRunning()
         
+        self.image = image
+        
         let imageView = UIImageView(image: image)
         imageView.contentMode = .scaleAspectFill
         imageView.frame = bounds
         
         addSubview(imageView)
-        
-        self.output?.didProcessImage(image)
     }
 }
 
@@ -197,6 +246,13 @@ extension CameraView: CameraViewInput {
 private extension CameraView {
     struct Constants {
         static let backgroundColor: UIColor = .background
+        
+        struct Button {
+            static let backgroundColor: UIColor = .UI.accent
+            static let padding: CGFloat = 8
+            static let width: CGFloat = 40
+            static let height: CGFloat = 40
+        }
         
         struct ShutterButton {
             static let width: CGFloat = 100
