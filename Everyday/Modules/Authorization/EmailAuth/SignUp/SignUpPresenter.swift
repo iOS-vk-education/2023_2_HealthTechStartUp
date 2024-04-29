@@ -61,7 +61,7 @@ extension SignUpPresenter: SignUpInteractorOutput {
         DispatchQueue.main.async {
             switch result {
             case .success:
-                self.view?.showAlert(with: .invalidEmail)
+                self.view?.showAlert(with: .userExist)
             case .failure(let error):
                 if let nsError = error as NSError? {
                     if nsError.code == 0 {

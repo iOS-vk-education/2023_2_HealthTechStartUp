@@ -23,8 +23,9 @@ final class ProfileSetupViewModel: ObservableObject {
             userProfile.profileImage = inputImage
         }
     }
-    @Published var showingAlert = false
-    @Published var chooseAlert: whichAlert = .none
+
+    @Published var alertType: AlertType?
+    @Published var showingAlert: Bool = false
     
     let title: NSAttributedString
     let photoTitle: NSAttributedString
@@ -63,21 +64,6 @@ final class ProfileSetupViewModel: ObservableObject {
         if let inputImage = inputImage {
             userProfile.profileImage = inputImage
         }
-    }
-    
-    func setAlert() {
-        switch chooseAlert {
-        case .nickname:
-            self.userProfile.nickname = ""
-        case .name:
-            self.userProfile.name = ""
-        case .surname:
-            self.userProfile.surname = ""
-        default:
-            break
-        }
-        
-        showingAlert = true
     }
 }
 

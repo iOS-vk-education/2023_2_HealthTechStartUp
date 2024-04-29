@@ -160,6 +160,7 @@
 		9EE335992B8F9CCD00F532B3 /* SplashAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE335982B8F9CCD00F532B3 /* SplashAnimator.swift */; };
 		9EE3359B2B8F9CDC00F532B3 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3359A2B8F9CDC00F532B3 /* SplashViewController.swift */; };
 		9EE3359D2B8F9CEA00F532B3 /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3359C2B8F9CEA00F532B3 /* SplashPresenter.swift */; };
+		9EE8A5362BE0449C00C20048 /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8A5352BE0449C00C20048 /* DTO.swift */; };
 		9EE8AE052B7FA45F001D126F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9EE8AE042B7FA45F001D126F /* Localizable.xcstrings */; };
 		9EE8AE072B7FB77D001D126F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE062B7FB77D001D126F /* TabBarController.swift */; };
 		9EE8AE0F2B7FB8CF001D126F /* SettingsPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE092B7FB8CF001D126F /* SettingsPresenter.swift */; };
@@ -334,6 +335,7 @@
 		9EE335982B8F9CCD00F532B3 /* SplashAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashAnimator.swift; sourceTree = "<group>"; };
 		9EE3359A2B8F9CDC00F532B3 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		9EE3359C2B8F9CEA00F532B3 /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
+		9EE8A5352BE0449C00C20048 /* DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
 		9EE8AE042B7FA45F001D126F /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9EE8AE062B7FB77D001D126F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 		9EE8AE092B7FB8CF001D126F /* SettingsPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsPresenter.swift; sourceTree = "<group>"; };
@@ -556,6 +558,7 @@
 				9E4F22622B9F3B5C003E749E /* User.swift */,
 				9E4F22612B9F3B5C003E749E /* Workout.swift */,
 				9EE1BFCF2BDC7D1300458F04 /* Email.swift */,
+				9EE8A5352BE0449C00C20048 /* DTO.swift */,
 			);
 			path = Entities;
 			sourceTree = "<group>";
@@ -1338,6 +1341,7 @@
 				9E4F22B32B9F3C14003E749E /* ResultsTableViewCellViewModel.swift in Sources */,
 				9E5B75462B7F9D7600E2BDE6 /* ProfileAcknowledgementView.swift in Sources */,
 				9EE1BFA92BD7F36300458F04 /* AuthorizationViewModel.swift in Sources */,
+				9EE8A5362BE0449C00C20048 /* DTO.swift in Sources */,
 				9E5B753D2B7F9D7600E2BDE6 /* DecimalTextFieldView.swift in Sources */,
 				9EE8AE0F2B7FB8CF001D126F /* SettingsPresenter.swift in Sources */,
 				9D15BE282BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift in Sources */,
