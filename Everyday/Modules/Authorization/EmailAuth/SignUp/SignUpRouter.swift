@@ -1,18 +1,22 @@
 //
-//  SignInRouter.swift
-//  signup
+//  SignUpRouter.swift
+//  Everyday
 //
-//  Created by Михаил on 06.02.2024.
+//  Created by Михаил on 28.04.2024.
 //  
 //
 
 import UIKit
 
-final class SignInRouter {
-    weak var viewController: SignInViewController?
+final class SignUpRouter {
+    weak var viewController: SignUpViewController?
 }
 
-extension SignInRouter: SignInRouterInput {    
+extension SignUpRouter: SignUpRouterInput {
+    func closeView() {
+        viewController?.dismiss(animated: true, completion: nil)
+    }
+        
     func openApp() {
         if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
            let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
@@ -25,10 +29,14 @@ extension SignInRouter: SignInRouterInput {
         }
     }
     
+    func openLogin() {
+        let signInViewController = SignInContainer.assemble(with: .init()).viewController
+        // signInViewController.modalTransitionStyle = .crossDissolve
+        viewController?.navigationController?.pushViewController(signInViewController, animated: true)
+    }
+    
     func openOnBoarding(with authType: String) {
-        let onBoarding = OnBoardingViewController(onFinish: { [weak self] in
-            let key = authType + "Auth"
-            KeychainService.saveString(authType, for: key)
+        let onBoarding = OnBoardingViewController(authType: authType, onFinish: { [weak self] in
             self?.openApp()
         })
         

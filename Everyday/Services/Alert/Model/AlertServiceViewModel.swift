@@ -15,8 +15,6 @@ enum AlertType {
     case registrationMessage(description: String)
     case registered(description: String)
     
-    case signInMessage(description: String)
-    
     case logoutError(error: Error)
     
     case forgotPasswordMessage(description: String)
@@ -28,6 +26,15 @@ enum AlertType {
     case ruSignWithAppleID
     
     case signWithAppleID
+    
+    case onBoardingNicknameMessage
+    case onBoardingNameMessage
+    case onBoardingSurnameMessage
+    
+    case networkMessage(error: Error)
+    case unknownRegistrationError
+    case userExist
+    case sendResetLink
 }
 
 struct AlertServiceViewModel {
@@ -35,6 +42,7 @@ struct AlertServiceViewModel {
     let labelDescription: NSAttributedString
     let buttonTitle: NSAttributedString
     
+    // swiftlint: disable cyclomatic_complexity
     init(alertType: AlertType) {
         switch alertType {
         // MARK: Validation
@@ -63,13 +71,6 @@ struct AlertServiceViewModel {
             
         case .registered(let description):
             self.labelTitle = NSAttributedString(string: "AlertManager_invalid_registration_title".localized, attributes: Styles.titleAttributes)
-            self.labelDescription = NSAttributedString(string: description, attributes: Styles.descriptionAttributes)
-            self.buttonTitle = NSAttributedString(string: "AlertManager_alert_title".localized, attributes: Styles.buttonAttributes)
-            
-        // MARK: - Sign in
-            
-        case .signInMessage(let description):
-            self.labelTitle = NSAttributedString(string: "AlertManager_invalid_signin_title".localized, attributes: Styles.titleAttributes)
             self.labelDescription = NSAttributedString(string: description, attributes: Styles.descriptionAttributes)
             self.buttonTitle = NSAttributedString(string: "AlertManager_alert_title".localized, attributes: Styles.buttonAttributes)
             
@@ -115,6 +116,47 @@ struct AlertServiceViewModel {
             self.labelTitle = NSAttributedString(string: "AlertManager_apple_sign_title".localized, attributes: Styles.titleAttributes)
             self.labelDescription = NSAttributedString(string: "AlertManager_apple_sign_description".localized, attributes: Styles.descriptionAttributes)
             self.buttonTitle = NSAttributedString(string: "AlertManager_ru_sign_button".localized, attributes: Styles.buttonAttributes)
+            
+        // MARK: - OnBoarding
+            
+        case .onBoardingNicknameMessage:
+            self.labelTitle = NSAttributedString(string: "Onboarding_invalid_username_title".localized, attributes: Styles.titleAttributes)
+            self.labelDescription = NSAttributedString(string: "Onboarding_invalid_username_message", attributes: Styles.descriptionAttributes)
+            self.buttonTitle = NSAttributedString(string: "AlertManager_alert_title".localized, attributes: Styles.buttonAttributes)
+            
+        case .onBoardingNameMessage:
+            self.labelTitle = NSAttributedString(string: "Onboarding_invalid_name_title".localized, attributes: Styles.titleAttributes)
+            self.labelDescription = NSAttributedString(string: "Onboarding_invalid_name_message", attributes: Styles.descriptionAttributes)
+            self.buttonTitle = NSAttributedString(string: "AlertManager_alert_title".localized, attributes: Styles.buttonAttributes)
+            
+        case .onBoardingSurnameMessage:
+            self.labelTitle = NSAttributedString(string: "Onboarding_invalid_surname_title".localized, attributes: Styles.titleAttributes)
+            self.labelDescription = NSAttributedString(string: "Onboarding_invalid_name_message", attributes: Styles.descriptionAttributes)
+            self.buttonTitle = NSAttributedString(string: "AlertManager_alert_title".localized, attributes: Styles.buttonAttributes)
+            
+        // MARK: - network error
+            // добавить localize
+        case .networkMessage(let error):
+            self.labelTitle = NSAttributedString(string: "Alertmanager_networkMessage_title".localized, attributes: Styles.titleAttributes)
+            self.labelDescription = NSAttributedString(string: error.localizedDescription, attributes: Styles.descriptionAttributes)
+            self.buttonTitle = NSAttributedString(string: "AlertManager_alert_title".localized, attributes: Styles.buttonAttributes)
+            
+        // MARK: - unknown auth error
+        case .unknownRegistrationError:
+            self.labelTitle = NSAttributedString(string: "AlertManager_unknownRegistrationError_title".localized, attributes: Styles.titleAttributes)
+            self.labelDescription = NSAttributedString(string: "AlertManager_unknownRegistrationError_description", attributes: Styles.descriptionAttributes)
+            self.buttonTitle = NSAttributedString(string: "AlertManager_alert_title".localized, attributes: Styles.buttonAttributes)
+            
+        // MARK: - user exist
+        case .userExist:
+            self.labelTitle = NSAttributedString(string: "Alertmanager_networkMessage_title".localized, attributes: Styles.titleAttributes)
+            self.labelDescription = NSAttributedString(string: "AlertManager_unknownRegistrationError_description", attributes: Styles.descriptionAttributes)
+            self.buttonTitle = NSAttributedString(string: "AlertManager_alert_title".localized, attributes: Styles.buttonAttributes)
+            
+        case .sendResetLink:
+            self.labelTitle = NSAttributedString(string: "ForgotPasswordViewController_title".localized, attributes: Styles.titleAttributes)
+            self.labelDescription = NSAttributedString(string: "AlertManager_passwordReset_description".localized, attributes: Styles.descriptionAttributes)
+            self.buttonTitle = NSAttributedString(string: "AlertManager_alert_title".localized, attributes: Styles.buttonAttributes)
         }
     }
 }
@@ -137,3 +179,5 @@ private extension AlertServiceViewModel {
         ]
     }
 }
+
+// swiftlint: enable cyclomatic_complexity

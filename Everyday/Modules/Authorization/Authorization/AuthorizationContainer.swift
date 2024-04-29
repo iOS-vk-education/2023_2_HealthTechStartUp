@@ -15,7 +15,7 @@ final class AuthorizationContainer {
     
     class func assemble(with context: AuthorizationContext) -> AuthorizationContainer {
         let router = AuthorizationRouter()
-        let interactor = AuthorizationInteractor()
+        let interactor = AuthorizationInteractor(authService: AuthService.shared, coreDataService: CoreDataService.shared)
         let presenter = AuthorizationPresenter(router: router, interactor: interactor)
         let viewController = AuthorizationViewController(output: presenter)
         
@@ -23,6 +23,8 @@ final class AuthorizationContainer {
         presenter.moduleOutput = context.moduleOutput
         
         interactor.output = presenter
+        interactor.viewController = viewController
+        router.viewController = viewController
         
         return AuthorizationContainer(view: viewController, input: presenter, router: router)
     }

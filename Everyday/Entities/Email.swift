@@ -1,13 +1,13 @@
 //
-//  SignInModel.swift
+//  Email.swift
 //  Everyday
 //
-//  Created by Михаил on 26.02.2024.
+//  Created by Михаил on 27.04.2024.
 //
 
 import Foundation
 
-struct SignInModel {
+struct Email {
     let email: String
     let password: String
 }

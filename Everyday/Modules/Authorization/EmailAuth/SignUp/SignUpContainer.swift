@@ -1,9 +1,9 @@
 //
 //  SignUpContainer.swift
-//  signup
+//  Everyday
 //
-//  Created by Михаил on 06.02.2024.
-//
+//  Created by Михаил on 28.04.2024.
+//  
 //
 
 import UIKit
@@ -15,14 +15,13 @@ final class SignUpContainer {
     
     class func assemble(with context: SignUpContext) -> SignUpContainer {
         let router = SignUpRouter()
-        let interactor = SignUpInteractor(authService: AuthService.shared, coreDataService: CoreDataService.shared)
+        let interactor = SignUpInteractor(authService: AuthService.shared)
         let presenter = SignUpPresenter(router: router, interactor: interactor)
         let viewController = SignUpViewController(output: presenter)
         
         presenter.view = viewController
         presenter.moduleOutput = context.moduleOutput
         
-        interactor.viewController = viewController
         interactor.output = presenter
         router.viewController = viewController
         

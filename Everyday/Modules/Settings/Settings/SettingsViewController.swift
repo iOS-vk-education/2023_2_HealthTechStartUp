@@ -27,6 +27,34 @@ final class SettingsViewController: UIViewController {
         super.viewDidLoad()
         
         view.backgroundColor = .systemMint
+        
+        view.addSubview(logoutButton)
+        
+        setup()
+    }
+    
+    func setup() {
+        logoutButton.setTitle("logout", for: .normal)
+        logoutButton.addTarget(self, action: #selector(didTapLogoutButton), for: .touchUpInside)
+        logoutButton.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            logoutButton.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            logoutButton.centerYAnchor.constraint(equalTo: view.centerYAnchor)
+        ])
+    }
+    
+    @objc
+    func didTapLogoutButton() {
+        let authService = AuthService.shared
+        authService.logout { result in
+            switch result {
+            case .success:
+                Reloader.shared.deleteAuthentication()
+                print("ok")
+            case .failure:
+                print("ne ok")
+            }
+        }
     }
 }
 

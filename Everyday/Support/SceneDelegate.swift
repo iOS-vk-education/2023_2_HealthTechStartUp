@@ -7,7 +7,6 @@
 
 import UIKit
 import VKID
-import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -25,9 +24,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewController = TabBarController()
         window?.rootViewController = viewController
         
-        splashPresenter?.present()
+        Reloader.shared.reloadAuthentication()
         
-        reloadAuthentication()
+        splashPresenter?.present()
         
         let delay: TimeInterval = 1.5
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
@@ -52,24 +51,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let nav = UINavigationController(rootViewController: viewController)
             nav.modalPresentationStyle = .fullScreen
             self?.window?.rootViewController = nav
-        }
-    }
-    
-    private func reloadAuthentication() {
-        guard Auth.auth().currentUser == nil else {
-            return
-        }
-        
-        let authTypeArray: [String] = [
-            KeychainService.loadString(for: "vkAuth") ?? "",
-            KeychainService.loadString(for: "googleAuth") ?? "",
-            KeychainService.loadString(for: "anonymAuth") ?? "",
-            KeychainService.loadString(for: "emailAuth") ?? ""
-        ]
-        
-        CoreDataService.shared.deleteAllItems()
-        for authType in authTypeArray where !authType.isEmpty {
-            CoreDataService.shared.createItem(authType: authType)
         }
     }
 }

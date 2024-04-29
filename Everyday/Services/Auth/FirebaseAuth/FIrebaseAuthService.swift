@@ -17,7 +17,6 @@ final class AuthModel {
         case google
         case common
         case none
-        case email
     }
     
     var whichSign: Sign = .none
@@ -28,16 +27,43 @@ final class AuthModel {
 
 protocol FirebaseAuthServiceDescription {
     func registerUser(with userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void)
-    func login(with userRequest: SignInModel, completion: @escaping(Bool, Error?) -> Void)
+    func login(with data: Email, completion: @escaping(Bool, Error?) -> Void)
     func signOut(completion: @escaping (Bool, Error?) -> Void)
-    
-    // func forgotPassword(with email: String, completion: @escaping (Error?) -> Void)
+    func forgotPassword(with email: String, completion: @escaping (Bool, Error?) -> Void)
+    func userExist(with email: String, completion: @escaping (Bool, Error?) -> Void)
 }
 
 final class FirebaseAuthService: FirebaseAuthServiceDescription {
     public static let shared = FirebaseAuthService()
     
     private init() {}
+    
+    func forgotPassword(with email: String, completion: @escaping (Bool, Error?) -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                completion(false, error)
+                return
+            } else {
+                completion(true, nil)
+            }
+        }
+    }
+    
+    func userExist(with email: String, completion: @escaping (Bool, Error?) -> Void) {
+        let collection = Firestore.firestore().collection("user")
+        collection.whereField("email", isEqualTo: email).getDocuments { snapshot, error in
+            if let error = error {
+                completion(false, error)
+                return
+            } else {
+                guard let query = snapshot, !query.isEmpty else {
+                    completion(false, nil)
+                    return
+                }
+                completion(true, nil)
+            }
+        }
+    }
     
     func registerUser(with userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void) {
         switch AuthModel.shared.whichSign {
@@ -48,9 +74,9 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
         }
     }
     
-   func login(with userRequest: SignInModel, completion: @escaping (Bool, Error?) -> Void) {
-        let email = userRequest.email
-        let password = userRequest.password
+   func login(with data: Email, completion: @escaping (Bool, Error?) -> Void) {
+        let email = data.email
+        let password = data.password
         
         Auth.auth().signIn(withEmail: email, password: password) { _, error in
             if let error = error {
@@ -153,9 +179,3 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
         }
     }
 }
-//    
-//    public func forgotPassword(with email: String, completion: @escaping (Error?) -> Void) {
-//        Auth.auth().sendPasswordReset(withEmail: email) { error in
-//            completion(error)
-//        }
-//    }

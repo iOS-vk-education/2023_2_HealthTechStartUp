@@ -1,8 +1,8 @@
 //
 //  SignUpProtocols.swift
-//  signup
+//  Everyday
 //
-//  Created by Михаил on 06.02.2024.
+//  Created by Михаил on 28.04.2024.
 //  
 //
 
@@ -17,28 +17,27 @@ protocol SignUpModuleOutput: AnyObject {
 
 protocol SignUpViewInput: AnyObject {
     func configure(with model: SignUpViewModel)
-    func showAlert(with key: String, message: String)
+    func showAlert(with type: AlertType)
 }
 
 protocol SignUpViewOutput: AnyObject {
     func didLoadView()
-    func didTapSignUpButton(with email: String?, and password: String?)
-    func didTapSignWithVKButton()
-    func didTapSignWithGoogleButton()
-    func didTapSignWithAppleButton()
+    func didTapCloseButton()
+    func didTapSignupButton(with email: String, and password: String)
+    func didTapLoginButton()
 }
 
 protocol SignUpInteractorInput: AnyObject {
-    func authWithGoogle()
-    func authWithVKID()
-    func isAuthExist(for service: String) -> Bool
+    func checkUserExist(with email: String)
 }
 
 protocol SignUpInteractorOutput: AnyObject {
-    func authExistResult(isExists: Bool) -> Bool
-    func authResult(service: String, _ result: Result<Void, Error>) 
+    func didUserExist(_ result: Result<Void, Error>)
 }
 
 protocol SignUpRouterInput: AnyObject {
+    func closeView()
+    func openLogin()
     func openOnBoarding(with authType: String)
+    func openApp()
 }

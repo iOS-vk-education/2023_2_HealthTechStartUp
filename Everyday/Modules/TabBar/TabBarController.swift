@@ -11,7 +11,7 @@ import FirebaseAuth
 // MARK: - TabBarController
 
 final class TabBarController: UITabBarController {
-    private var isAuthenticationCheckInProgress: Bool = false
+    private var isUserAuthenticated: Bool = false
     
     // MARK: - Lifecycle
     
@@ -22,7 +22,7 @@ final class TabBarController: UITabBarController {
         delegate = self
     }
     
-    // MARK: - actions
+    // MARK: - Actions
     
     private func setupTabBar() {
         let viewControllers = TabBarItem.allCases.map { createViewController(for: $0) }
@@ -62,47 +62,64 @@ extension TabBarController: UITabBarControllerDelegate {
         guard let selectedIndex = tabBarController.viewControllers?.firstIndex(of: viewController) else {
             return true
         }
+        
+        isUserAuthenticated = checkAuthentication()
+        
         let selectedItem = TabBarItem(rawValue: selectedIndex)
         
         switch selectedItem {
         case .notepad, .progress:
-            if isAuthenticationCheckInProgress {
+            if isUserAuthenticated {
+                return true
+            } else {
+               offerAuthentication()
                 return false
             }
-            isAuthenticationCheckInProgress = true
-            checkAuthentication(for: viewController)
-            
-            return false
         default:
             return true
         }
     }
     
-    private func checkAuthentication(for viewController: UIViewController) {
-        guard Auth.auth().currentUser == nil else {
-            return
-        }
+    // MARK: - Helpers
+    
+    private func checkAuthentication() -> Bool {
+        let coreDataService = CoreDataService.shared
         
+        guard let authTypes = coreDataService.getAllItems() else {
+                   return false
+               }
+               
+       guard !authTypes.isEmpty else {
+           return false
+       }
+        
+        return true
+    }
+    
+    private func offerAuthentication() {
         guard (viewControllers?.first(where: { $0 is WorkoutViewController })) != nil else {
             return
         }
         
-        let welcomeScreen = WelcomeScreenContainer.assemble(with: .init()).viewController
+        let authScreen = AuthorizationContainer.assemble(with: .init()).viewController
+        let navigationController = UINavigationController(rootViewController: authScreen)
+        navigationController.navigationBar.isHidden = true
         
-//        if let sheet = welcomeScreen.sheetPresentationController {
-//            sheet.detents = [.medium()]
-//            sheet.preferredCornerRadius = 20
-//            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
-//            sheet.largestUndimmedDetentIdentifier = .medium
-//            sheet.prefersEdgeAttachedInCompactHeight = true
-//        }
+        if let sheet = navigationController.sheetPresentationController {
+            sheet.detents = [
+                .custom(identifier: .init("small"), resolver: { _ in
+                    return self.view.frame.height / 3.5
+                })
+            ]
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 20
+            sheet.prefersGrabberVisible = false
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.prefersEdgeAttachedInCompactHeight = true
+        }
         
-        welcomeScreen.modalPresentationStyle = .custom
-        welcomeScreen.transitioningDelegate = self
-        
-       present(welcomeScreen, animated: true) { [weak self] in
-           self?.isAuthenticationCheckInProgress = false
-       }
+        present(navigationController, animated: true)
     }
 }
 
@@ -113,12 +130,4 @@ enum TabBarItem: Int, CaseIterable {
     case progress
     case workout
     case settings
-}
-
-extension TabBarController: UIViewControllerTransitioningDelegate {
-    func presentationController(forPresented presented: UIViewController, 
-                                presenting: UIViewController?,
-                                source: UIViewController) -> UIPresentationController? {
-        HalfScreenViewController(presentedViewController: presented, presenting: presenting)
-    }
 }

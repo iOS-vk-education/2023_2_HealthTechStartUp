@@ -93,6 +93,7 @@ final class GoogleAuthService: GoogleAuthServiceDescription {
 }
 
 // MARK: - Constants
+
 private extension GoogleAuthService {
     struct Constants {
         static let imageDimension: UInt = 320
