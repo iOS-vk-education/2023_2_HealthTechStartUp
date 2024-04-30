@@ -43,8 +43,8 @@ final class ChangeEmailViewController: UIViewController {
         gestureRecognizer.cancelsTouchesInView = false
         view.addGestureRecognizer(gestureRecognizer)
         
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
-        self.view.addGestureRecognizer(swipeRight)
+        let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc))
+        self.view.addGestureRecognizer(swipeRightGestureRecognizer)
         
         self.navigationItem.titleView = navBarTitle
         navigationController?.navigationBar.tintColor = Constants.accentColor

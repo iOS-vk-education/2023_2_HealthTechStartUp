@@ -34,7 +34,7 @@ final class UnitsViewController: UIViewController {
         
         view.backgroundColor = Constants.backgroundColor
         
-        let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
+        let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc))
         self.view.addGestureRecognizer(swipeRightGestureRecognizer)
         
         self.navigationItem.titleView = navBarTitle
@@ -87,7 +87,7 @@ private extension UnitsViewController {
     // MARK: - Actions
     
     @objc
-    func swipeFunc(gesture: UISwipeGestureRecognizer) {
+    func swipeFunc(_ gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .right {
             output.didSwipe()
         }

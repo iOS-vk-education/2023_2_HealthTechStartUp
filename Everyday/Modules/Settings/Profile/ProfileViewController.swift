@@ -42,8 +42,8 @@ final class ProfileViewController: UIViewController {
                 gestureRecognizer.cancelsTouchesInView = false
                 view.addGestureRecognizer(gestureRecognizer)
         
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
-        self.view.addGestureRecognizer(swipeRight)
+        let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc))
+        self.view.addGestureRecognizer(swipeRightGestureRecognizer)
         
         self.navigationItem.titleView = navBarTitle
         navigationController?.navigationBar.tintColor = Constants.accentColor
@@ -67,10 +67,6 @@ extension ProfileViewController: ProfileViewInput {
     func setupProfileImage(image: UIImage) {
         userImageView.image = image
     }
-    
-//    func configure(with: ProfileViewModel, and userImage: UIImage) {
-//        userImageView.image = userImage
-//  }
     
     func showAlert(with key: String, message: String) {
         switch key {

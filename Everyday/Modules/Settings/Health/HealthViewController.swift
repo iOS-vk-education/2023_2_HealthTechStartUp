@@ -34,7 +34,7 @@ final class HealthViewController: UIViewController {
         
         view.backgroundColor = Constants.backgroundColor
         
-        let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
+        let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc))
         self.view.addGestureRecognizer(swipeRightGestureRecognizer)
         
         self.navigationItem.titleView = navBarTitle
@@ -156,6 +156,7 @@ extension HealthViewController: UITableViewDelegate {
         let footerView = UILabel()
         if section == 0 {
             footerView.attributedText = model.discriptionForConnectedTitle
+            footerView.numberOfLines = .max
             return footerView
         }
   

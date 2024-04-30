@@ -43,9 +43,9 @@ final class DeleteAccountViewController: UIViewController {
                 gestureRecognizer.cancelsTouchesInView = false
                 view.addGestureRecognizer(gestureRecognizer)
         
-        let swipeRight = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc(gesture:)))
+        let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc))
         
-        self.view.addGestureRecognizer(swipeRight)
+        self.view.addGestureRecognizer(swipeRightGestureRecognizer)
         
         self.navigationItem.titleView = navBarTitle
         navigationController?.navigationBar.tintColor = Constants.accentColor
