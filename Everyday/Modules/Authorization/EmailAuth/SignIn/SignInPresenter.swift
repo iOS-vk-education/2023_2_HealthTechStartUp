@@ -68,6 +68,7 @@ extension SignInPresenter: SignInInteractorOutput {
         DispatchQueue.main.async {
             switch result {
             case .success:
+                UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
                 self.router.openApp()
             case .failure(let error):
                 self.view?.showAlert(with: .networkMessage(error: error))

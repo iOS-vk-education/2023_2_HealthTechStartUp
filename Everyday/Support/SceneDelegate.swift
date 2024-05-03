@@ -24,7 +24,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewController = TabBarController()
         window?.rootViewController = viewController
         
-        Reloader.shared.reloadAuthentication()
+        Reloader.shared.getAuthType()
         
         splashPresenter?.present()
         

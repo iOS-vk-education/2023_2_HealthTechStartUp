@@ -49,7 +49,7 @@ final class SettingsViewController: UIViewController {
         authService.logout { result in
             switch result {
             case .success:
-                Reloader.shared.deleteAuthentication()
+              Reloader.shared.setLogout()
                 print("ok")
             case .failure:
                 print("ne ok")

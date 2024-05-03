@@ -214,7 +214,8 @@ struct ProfileAcknowledgementView: View {
                     
                     let key = authType + "Auth"
                     KeychainService.saveString(authType, for: key)
-                    Reloader.shared.loadAuthentication()
+                    UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+                    Reloader.shared.getAuthType()
                     
                     self.onFinish?()
                 }

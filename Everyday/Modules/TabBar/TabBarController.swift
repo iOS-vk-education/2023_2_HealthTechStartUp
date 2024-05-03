@@ -86,12 +86,16 @@ extension TabBarController: UITabBarControllerDelegate {
         let coreDataService = CoreDataService.shared
         
         guard let authTypes = coreDataService.getAllItems() else {
-                   return false
-               }
+            return false
+        }
                
-       guard !authTypes.isEmpty else {
+        guard !authTypes.isEmpty else {
            return false
-       }
+        }
+        
+        if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
+            return false
+        }
         
         return true
     }

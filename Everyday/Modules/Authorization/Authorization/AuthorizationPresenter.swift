@@ -84,6 +84,7 @@ extension AuthorizationPresenter: AuthorizationInteractorOutput {
             switch result {
             case .success:
                 if signedUp {
+                    UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
                     self.router.openApp()
                 } else {
                     self.router.openOnBoarding(with: service)
