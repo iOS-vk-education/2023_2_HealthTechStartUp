@@ -38,15 +38,8 @@ final class DayService: DayServiceDescription {
                         return
                     }
                     
-                    let dayIndex = CalendarService.shared.getWeekdayIndex(from: date)
-                    guard schedule.count > dayIndex else {
-                        completion(.failure(.unknownError))
-                        return
-                    }
-                    
-                    let dayPrograms = schedule[dayIndex]
-                    
-                    let programIDs = dayPrograms.programs.map { $0.programID }
+                    let dayPrograms = CalendarService.shared.getScheduleElement(from: schedule, at: date)
+                    let programIDs = dayPrograms.map { $0.programID }
                     let group = DispatchGroup()
                     var workouts: [Workout] = Array(repeating: Workout(), count: programIDs.count)
 
@@ -59,7 +52,7 @@ final class DayService: DayServiceDescription {
 
                             switch result {
                             case .success(let workout):
-                                let indexOfDay = dayPrograms.programs[indexOfProgram].indexOfCurrentDay
+                                let indexOfDay = dayPrograms[indexOfProgram].indexOfCurrentDay
                                 let sets: [TrainingSet] = workout.days[indexOfDay].sets.map { .init(dtoModel: $0) }
                                 workouts[indexOfProgram] = .init(
                                     workoutName: workout.name,

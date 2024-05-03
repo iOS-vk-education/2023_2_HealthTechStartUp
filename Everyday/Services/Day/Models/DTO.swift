@@ -11,12 +11,18 @@ import Firebase
 // MARK: - DayServiceUser
 
 struct DayServiceUser: Decodable {
-    let schedule: [DayServiceScheduleElement]?
+    let schedule: DayServiceSchedule?
     let history: [DayServiceHistoryElement]?
 }
 
-struct DayServiceScheduleElement: Decodable {
-    let programs: [DayServiceProgramElement]
+struct DayServiceSchedule: Decodable {
+    let monday: [DayServiceProgramElement]
+    let tuesday: [DayServiceProgramElement]
+    let wednesday: [DayServiceProgramElement]
+    let thursday: [DayServiceProgramElement]
+    let friday: [DayServiceProgramElement]
+    let saturday: [DayServiceProgramElement]
+    let sunday: [DayServiceProgramElement]
 }
 
 struct DayServiceProgramElement: Decodable {
