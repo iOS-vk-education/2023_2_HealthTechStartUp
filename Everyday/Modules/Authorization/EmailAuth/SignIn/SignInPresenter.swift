@@ -19,6 +19,10 @@ final class SignInPresenter {
         self.router = router
         self.interactor = interactor
     }
+    
+    private func checkAuth(for service: String) -> Bool {
+        return interactor.isAuthExist(for: service)
+    }
 }
 
 extension SignInPresenter: SignInModuleInput {
@@ -48,7 +52,11 @@ extension SignInPresenter: SignInViewOutput {
         AuthModel.shared.whichSign = .common
         let model = Email(email: email, password: password)
         
-        interactor.authWithEmail(model: model)
+        if checkAuth(for: "email") {
+            interactor.authWithEmail(model: model)
+        } else {
+            interactor.checkUserExist(with: model)
+        }
     }
     
     func didLoadView() {
@@ -64,6 +72,25 @@ extension SignInPresenter: SignInViewOutput {
 // MARK: - interactor output
 
 extension SignInPresenter: SignInInteractorOutput {
+    func didUserExist(_ model: Email, _ result: Result<Void, any Error>) {
+        DispatchQueue.main.async {
+            switch result {
+            case .success:
+                self.interactor.authWithEmail(model: model)
+            case .failure(let error):
+                if let nsError = error as NSError? {
+                    if nsError.code != 0 {
+                        self.view?.showAlert(with: .networkMessage(error: error))
+                    }
+                }
+            }
+        }
+    }
+    
+    func didAuthExist(isExists: Bool) -> Bool {
+        return isExists
+    }
+    
     func didAuth(_ result: Result<Void, any Error>) {
         DispatchQueue.main.async {
             switch result {

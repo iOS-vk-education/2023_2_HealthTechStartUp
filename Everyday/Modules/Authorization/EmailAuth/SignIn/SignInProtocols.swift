@@ -30,10 +30,14 @@ protocol SignInViewOutput: AnyObject {
 
 protocol SignInInteractorInput: AnyObject {
     func authWithEmail(model: Email)
+    func isAuthExist(for service: String) -> Bool
+    func checkUserExist(with model: Email)
 }
 
 protocol SignInInteractorOutput: AnyObject {
     func didAuth(_ result: Result<Void, Error>)
+    func didAuthExist(isExists: Bool) -> Bool
+    func didUserExist(_ model: Email, _ result: Result<Void, Error>)
 }
 
 protocol SignInRouterInput: AnyObject {

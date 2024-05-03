@@ -23,6 +23,16 @@ final class AuthorizationPresenter {
     private func checkAuth(for service: String) -> Bool {
         return interactor.isAuthExist(for: service)
     }
+    
+    private func setSignIn(with flag: Bool) {
+        if flag {
+            KeychainService.saveString("google", for: "googleAuth")
+            Reloader.shared.getAuthType()
+        }
+        
+        UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+        router.openApp()
+    }
 }
 
 extension AuthorizationPresenter: AuthorizationModuleInput {
@@ -84,10 +94,13 @@ extension AuthorizationPresenter: AuthorizationInteractorOutput {
             switch result {
             case .success:
                 if signedUp {
-                    UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
-                    self.router.openApp()
+                    self.setSignIn(with: false)
                 } else {
-                    self.router.openOnBoarding(with: service)
+                    if AuthModel.shared.whichSign == .google && GoogleAuthService.shared.authed {
+                        self.setSignIn(with: true)
+                    } else {
+                        self.router.openOnBoarding(with: service)
+                    }
                 }
             case .failure(let error):
                 self.view?.showAlert(with: .networkMessage(error: error))

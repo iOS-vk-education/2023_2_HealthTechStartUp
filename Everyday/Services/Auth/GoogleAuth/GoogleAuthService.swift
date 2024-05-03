@@ -13,13 +13,15 @@ import FirebaseCore
 protocol GoogleAuthServiceDescription {
     func authWithGoogle(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
     func loginWithGoogle(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
+    var authed: Bool { get set }
 }
 
 final class GoogleAuthService: GoogleAuthServiceDescription {
-
     static let shared = GoogleAuthService()
     
     var credential: AuthCredential?
+    let auth = FirebaseAuthService.shared
+    var authed: Bool = false
     
     private init() {
     }
@@ -36,22 +38,43 @@ final class GoogleAuthService: GoogleAuthServiceDescription {
                 completion(.failure(error))
                 return
             }
-
-            GoogleAuthService.shared.credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: user.accessToken.tokenString)
             
-            if let profilePicUrl = user.profile?.imageURL(withDimension: Constants.imageDimension) {
-                self.downloadProfileImage(from: profilePicUrl) { image in
-                    guard let image = image else {
-                        completion(.failure(NSError(domain: "DownloadError", code: -2, 
-                                                    userInfo: [NSLocalizedDescriptionKey: "Unable to download profile image"])))
-                        return
-                    }
-                    ProfileAcknowledgementModel.shared.update(firstname: user.profile?.givenName,
-                                                              lastname: user.profile?.familyName,
-                                                              email: user.profile?.email,
-                                                              profileImage: image)
+            let email = user.profile?.email ?? ""
+            
+            self.auth.userExist(with: email) { exists, error in
+                if let error = error {
+                    completion(.failure(error))
+                    return
                 }
-                completion(.success(()))
+                
+                if exists {
+                    let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: user.accessToken.tokenString)
+                    Auth.auth().signIn(with: credential) { _, error in
+                        if let error = error {
+                            completion(.failure(error))
+                            return
+                        }
+                        self.authed = true
+                        completion(.success(()))
+                    }
+                } else {
+                    GoogleAuthService.shared.credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: user.accessToken.tokenString)
+                    
+                    if let profilePicUrl = user.profile?.imageURL(withDimension: Constants.imageDimension) {
+                        self.downloadProfileImage(from: profilePicUrl) { image in
+                            guard let image = image else {
+                                completion(.failure(NSError(domain: "DownloadError", code: -2,
+                                                            userInfo: [NSLocalizedDescriptionKey: "Unable to download profile image"])))
+                                return
+                            }
+                            ProfileAcknowledgementModel.shared.update(firstname: user.profile?.givenName,
+                                                                      lastname: user.profile?.familyName,
+                                                                      email: user.profile?.email,
+                                                                      profileImage: image)
+                        }
+                        completion(.success(()))
+                    }
+                }
             }
         }
     }
@@ -68,7 +91,7 @@ final class GoogleAuthService: GoogleAuthServiceDescription {
                 completion(.failure(error))
                 return
             }
-
+            
             let credential = GoogleAuthProvider.credential(withIDToken: idToken, accessToken: user.accessToken.tokenString)
             
             Auth.auth().signIn(with: credential) { _, error in

@@ -84,3 +84,38 @@ struct DayServiceExtra: Decodable {
     let condition: Int?
     let weight: Double?
 }
+
+extension DayServiceSchedule {
+    func toDictionary() -> [String: Any] {
+        return [
+            "monday": monday.map { $0.toDictionary() },
+            "tuesday": tuesday.map { $0.toDictionary() },
+            "wednesday": wednesday.map { $0.toDictionary() },
+            "thursday": thursday.map { $0.toDictionary() },
+            "friday": friday.map { $0.toDictionary() },
+            "saturday": saturday.map { $0.toDictionary() },
+            "sunday": sunday.map { $0.toDictionary() }
+        ]
+    }
+}
+
+extension DayServiceProgramElement {
+    func toDictionary() -> [String: Any] {
+        return [
+            "indexOfCurrentDay": indexOfCurrentDay,
+            "programID": programID.path
+        ]
+    }
+}
+
+extension DayServiceHistoryElement {
+    func toDictionary() -> [String: Any] {
+        let formatter = ISO8601DateFormatter()
+        let dateString = formatter.string(from: date)
+
+        return [
+            "date": dateString,
+            "historyID": historyID.path 
+        ]
+    }
+}
