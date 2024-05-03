@@ -165,7 +165,8 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
                         "age": userRequest.age ?? "",
                         "gender": userRequest.gender ?? "",
                         "weight": userRequest.weight ?? "",
-                        "schedule": userRequest.schedule,
+                        "schedule": userRequest.schedule ?? DayServiceSchedule(),
+                        "history": userRequest.history ?? [],
                         "profileImage": path,
                         "measureUnit": userRequest.measureUnit ?? ""
                     ]
