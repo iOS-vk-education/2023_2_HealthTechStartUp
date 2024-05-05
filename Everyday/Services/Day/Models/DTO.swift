@@ -77,11 +77,11 @@ struct DayServiceExerciseElement: Codable {
 struct DayServiceHistory: Codable {
     let workout: DayServiceWorkout
     let extra: DayServiceExtra?
-    
-    init(domainModel: WorkoutProgress) {
-        workout = .init(domainModel: domainModel.workout)
-        extra = .init(domainModel: domainModel.extra)
-    }
+//    
+//    init(domainModel: WorkoutProgress) {
+//        workout = .init(domainModel: domainModel.workout)
+//        extra = .init(domainModel: domainModel.extra)
+//    }
 }
 
 struct DayServiceWorkout: Codable {
@@ -98,10 +98,4 @@ struct DayServiceExtra: Codable {
     let imageURL: String?
     let condition: Int?
     let weight: Double?
-    
-    init(domainModel: ExtraModel?) {
-        imageURL = domainModel?.imageURL
-        condition = domainModel?.condition
-        weight = domainModel?.weight
-    }
 }

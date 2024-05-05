@@ -6,7 +6,7 @@
 //  
 //
 
-import Foundation
+import UIKit
 
 final class ExtraPresenter {
     weak var view: ExtraViewInput?
@@ -15,7 +15,7 @@ final class ExtraPresenter {
     private let router: ExtraRouterInput
     private let interactor: ExtraInteractorInput
     
-//    private var progress = WorkoutProgress()
+    private var progress = WorkoutProgress()
     private var viewTypes: [ExtraViewType] = []
     private var switchStates: [Bool] = []
     private var data: [SheetType] = []
@@ -85,7 +85,30 @@ extension ExtraPresenter: ExtraViewOutput {
     }
     
     func didTapFinishButton() {
-//        interactor.saveProgress(progress)
+        var image: UIImage?
+        var condition: Int?
+        var weight: Double?
+        
+        for element in data {
+            switch element {
+            case .camera(let model):
+                image = model.image
+            case .conditionChoice(let model):
+                condition = Condition.allCases.firstIndex { $0 == model.condition }
+            case .heartRateVariability(let model):
+                continue
+            case .weightMeasurement(let model):
+                weight = model.weight
+            }
+        }
+        
+        progress.extra = ExtraModel(
+            image: image,
+            condition: condition,
+            weight: weight
+        )
+        
+        interactor.saveProgress(progress)
     }
 }
 

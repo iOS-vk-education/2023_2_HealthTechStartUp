@@ -7,6 +7,7 @@
 
 import Foundation
 import Firebase
+import FirebaseStorage
 
 protocol DayServiceDescription {
     func getDaySchedule(on date: Date, completion: @escaping (Result<[Workout], CustomError>) -> Void)
@@ -139,31 +140,98 @@ final class DayService: DayServiceDescription {
             completion(.unknownError)
             return
         }
+        
+        guard let data = progress.extra?.image?.jpegData(compressionQuality: 1.0) else {
+            completion(.unknownError)
+            return
+        }
+        var picUrl: URL?
+        putPhoto(data: data) { [weak self] result in
+            switch result {
+            case .success(let url):
+                picUrl = url
+                
+                guard let picUrlString = picUrl?.absoluteString else {
+                    completion(.unknownError)
+                    return
+                }
 
-        let historyCollectionReference = db.collection(Constants.historyCollection)
-        let historyDocumentReference: DocumentReference?
-        let history: DayServiceHistory = .init(domainModel: progress)
-        do {
-            historyDocumentReference = try historyCollectionReference.addDocument(from: history)
-        } catch {
-            completion(.unknownError)
-            return
+                let historyCollectionReference = self?.db.collection(Constants.historyCollection)
+                
+                guard let historyCollectionReference = historyCollectionReference else {
+                    completion(.unknownError)
+                    return
+                }
+                
+                let historyDocumentReference: DocumentReference?
+        //        this good
+                let history: DayServiceHistory = .init(
+                    workout: .init(domainModel: progress.workout),
+                    extra: .init(
+                        imageURL: picUrlString,
+                        condition: progress.extra?.condition,
+                        weight: progress.extra?.weight
+                    )
+                )
+        //        let history: DayServiceHistory = .init(domainModel: progress)
+                do {
+                    historyDocumentReference = try historyCollectionReference.addDocument(from: history)
+                } catch {
+                    completion(.unknownError)
+                    return
+                }
+                guard let historyDocumentReference else {
+                    completion(.unknownError)
+                    return
+                }
+                
+                let historyElement: DayServiceHistoryElement = .init(
+                    date: Date(),
+                    historyID: historyDocumentReference
+                )
+                self?.db.collection(Constants.userCollection).document(userUID)
+                    .updateData([
+                        Constants.User.historyField: FieldValue.arrayUnion([[
+                            "date": historyElement.date,
+                            "historyID": historyElement.historyID
+                        ]])
+                    ])
+                
+                completion(nil)
+                
+            case .failure:
+                completion(.unknownError)
+            }
         }
-        guard let historyDocumentReference else {
-            completion(.unknownError)
-            return
+    }
+    
+    // MARK: - PUT
+    
+    func putPhoto(data: Data, completion: @escaping (Result<URL, Error>) -> Void) {
+        let fileName = UUID().uuidString
+        
+        let reference = Storage.storage().reference()
+            .child("userPics")
+            .child(fileName)
+        
+        reference.putData(data) { result in
+            switch result {
+            case .success:
+                reference.downloadURL(completion: completion)
+//                reference.downloadURL { result in
+//                    switch result {
+//                    case .success(let url):
+//                        break
+//                    case .failure(let error):
+//                        print("error in put photo")
+//                        completion(.failure(.unknownError))
+//                    }
+//                }
+            case .failure(let error):
+                print("error in put photo")
+                completion(.failure(error))
+            }
         }
-        
-        let historyElement: DayServiceHistoryElement = .init(
-            date: Date(),
-            historyID: historyDocumentReference
-        )
-        db.collection(Constants.userCollection).document(userUID)
-            .updateData([
-                Constants.User.historyField: FieldValue.arrayUnion([historyElement])
-            ])
-        
-        completion(nil)
     }
 }
 

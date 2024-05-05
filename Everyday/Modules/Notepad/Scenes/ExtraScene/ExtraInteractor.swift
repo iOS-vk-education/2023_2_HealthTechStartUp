@@ -27,6 +27,7 @@ extension ExtraInteractor: ExtraInteractorInput {
             }
             
             guard error == nil else {
+                self.output?.didEndLoading()
                 return
             }
 

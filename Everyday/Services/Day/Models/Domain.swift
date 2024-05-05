@@ -5,7 +5,7 @@
 //  Created by Alexander on 16.04.2024.
 //
 
-import Foundation
+import UIKit
 
 // MARK: - NotepadModel
 
@@ -66,11 +66,16 @@ struct Exercise {
 
 struct WorkoutProgress {
     let workout: Workout
-    let extra: ExtraModel?
+    var extra: ExtraModel?
+    
+    init() {
+        workout = Workout()
+        extra = nil
+    }
 }
 
 struct ExtraModel {
-    let imageURL: String?
+    let image: UIImage?
     let condition: Int?
     let weight: Double?
 }

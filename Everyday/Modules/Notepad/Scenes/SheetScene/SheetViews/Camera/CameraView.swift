@@ -16,7 +16,11 @@ class CameraView: UIView {
     private let closeButton = UIButton()
     private let saveButton = UIButton()
     
-    private var image: UIImage?
+    private var image: UIImage? {
+        didSet {
+            print("pic saved")
+        }
+    }
     
     private var session: AVCaptureSession?
     private let photoOutput = AVCapturePhotoOutput()
@@ -225,11 +229,11 @@ extension CameraView: AVCapturePhotoCaptureDelegate {
         
         self.image = image
         
-        let imageView = UIImageView(image: image)
-        imageView.contentMode = .scaleAspectFill
-        imageView.frame = bounds
+//        let imageView = UIImageView(image: image)
+//        imageView.contentMode = .scaleAspectFill
+//        imageView.frame = previewLayer.bounds
         
-        addSubview(imageView)
+//        addSubview(imageView)
     }
 }
 
