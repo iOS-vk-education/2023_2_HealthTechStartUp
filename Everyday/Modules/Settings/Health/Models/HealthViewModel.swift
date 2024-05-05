@@ -18,7 +18,7 @@ struct HealthViewModel {
     let reloadMeasureTitle: NSAttributedString
     let cellsTitlesInSecondSection: [NSAttributedString]
     init() {
-        self.healthTitle = NSAttributedString(string: "Здоровье", attributes: Styles.titleAttributesBold)
+        self.healthTitle = NSAttributedString(string: "Health_title", attributes: Styles.titleAttributesBold)
         self.connectedTitle = NSAttributedString(string: "Health_Connected_title".localized)
         self.reloadWorkoutsTitle = NSAttributedString(string: "Health_Reloadworkouts_title".localized)
         self.reloadMeasureTitle = NSAttributedString(string: "Health_ReloadMeasure_title".localized)

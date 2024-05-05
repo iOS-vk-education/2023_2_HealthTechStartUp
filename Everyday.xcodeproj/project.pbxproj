@@ -87,6 +87,14 @@
 		8C5237212BCE2BCC0084F335 /* HealthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5237202BCE2BCC0084F335 /* HealthViewModel.swift */; };
 		8C5237232BCE31490084F335 /* HealthTableViewCellHealthCondition.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5237222BCE31490084F335 /* HealthTableViewCellHealthCondition.swift */; };
 		8C5237272BCE8E7D0084F335 /* HealthTableViewCellButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5237262BCE8E7D0084F335 /* HealthTableViewCellButton.swift */; };
+		8CA0C3482BE7034800353FB2 /* ChangeLanguagePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3422BE7034800353FB2 /* ChangeLanguagePresenter.swift */; };
+		8CA0C3492BE7034800353FB2 /* ChangeLanguageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3432BE7034800353FB2 /* ChangeLanguageRouter.swift */; };
+		8CA0C34A2BE7034800353FB2 /* ChangeLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3442BE7034800353FB2 /* ChangeLanguageViewController.swift */; };
+		8CA0C34B2BE7034800353FB2 /* ChangeLanguageProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3452BE7034800353FB2 /* ChangeLanguageProtocols.swift */; };
+		8CA0C34C2BE7034800353FB2 /* ChangeLanguageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3462BE7034800353FB2 /* ChangeLanguageInteractor.swift */; };
+		8CA0C34D2BE7034800353FB2 /* ChangeLanguageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3472BE7034800353FB2 /* ChangeLanguageContainer.swift */; };
+		8CA0C34F2BE7042700353FB2 /* ChangeLanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C34E2BE7042700353FB2 /* ChangeLanguageViewModel.swift */; };
+		8CA0C3512BE7101700353FB2 /* ChangeLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3502BE7101700353FB2 /* ChangeLanguageTableViewCell.swift */; };
 		8CBF07A52BCC5B38005D1E0D /* ForgotPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07A42BCC5B38005D1E0D /* ForgotPasswordPresenter.swift */; };
 		8CBF07A72BCC5B4C005D1E0D /* ForgotPasswordContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07A62BCC5B4C005D1E0D /* ForgotPasswordContainer.swift */; };
 		8CBF07A92BCC5B5E005D1E0D /* ForgotPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07A82BCC5B5E005D1E0D /* ForgotPasswordInteractor.swift */; };
@@ -329,6 +337,14 @@
 		8C5237202BCE2BCC0084F335 /* HealthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewModel.swift; sourceTree = "<group>"; };
 		8C5237222BCE31490084F335 /* HealthTableViewCellHealthCondition.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTableViewCellHealthCondition.swift; sourceTree = "<group>"; };
 		8C5237262BCE8E7D0084F335 /* HealthTableViewCellButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthTableViewCellButton.swift; sourceTree = "<group>"; };
+		8CA0C3422BE7034800353FB2 /* ChangeLanguagePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguagePresenter.swift; sourceTree = "<group>"; };
+		8CA0C3432BE7034800353FB2 /* ChangeLanguageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageRouter.swift; sourceTree = "<group>"; };
+		8CA0C3442BE7034800353FB2 /* ChangeLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageViewController.swift; sourceTree = "<group>"; };
+		8CA0C3452BE7034800353FB2 /* ChangeLanguageProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageProtocols.swift; sourceTree = "<group>"; };
+		8CA0C3462BE7034800353FB2 /* ChangeLanguageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageInteractor.swift; sourceTree = "<group>"; };
+		8CA0C3472BE7034800353FB2 /* ChangeLanguageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageContainer.swift; sourceTree = "<group>"; };
+		8CA0C34E2BE7042700353FB2 /* ChangeLanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageViewModel.swift; sourceTree = "<group>"; };
+		8CA0C3502BE7101700353FB2 /* ChangeLanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageTableViewCell.swift; sourceTree = "<group>"; };
 		8CBF07A42BCC5B38005D1E0D /* ForgotPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPresenter.swift; sourceTree = "<group>"; };
 		8CBF07A62BCC5B4C005D1E0D /* ForgotPasswordContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordContainer.swift; sourceTree = "<group>"; };
 		8CBF07A82BCC5B5E005D1E0D /* ForgotPasswordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordInteractor.swift; sourceTree = "<group>"; };
@@ -746,6 +762,29 @@
 			isa = PBXGroup;
 			children = (
 				8C5237202BCE2BCC0084F335 /* HealthViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		8CA0C3402BE7030A00353FB2 /* ChangeLanguage */ = {
+			isa = PBXGroup;
+			children = (
+				8CA0C3412BE7032000353FB2 /* Models */,
+				8CA0C3422BE7034800353FB2 /* ChangeLanguagePresenter.swift */,
+				8CA0C3432BE7034800353FB2 /* ChangeLanguageRouter.swift */,
+				8CA0C3442BE7034800353FB2 /* ChangeLanguageViewController.swift */,
+				8CA0C3452BE7034800353FB2 /* ChangeLanguageProtocols.swift */,
+				8CA0C3462BE7034800353FB2 /* ChangeLanguageInteractor.swift */,
+				8CA0C3472BE7034800353FB2 /* ChangeLanguageContainer.swift */,
+				8CA0C3502BE7101700353FB2 /* ChangeLanguageTableViewCell.swift */,
+			);
+			path = ChangeLanguage;
+			sourceTree = "<group>";
+		};
+		8CA0C3412BE7032000353FB2 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				8CA0C34E2BE7042700353FB2 /* ChangeLanguageViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1390,6 +1429,7 @@
 		9EE8AE082B7FB8BC001D126F /* Settings */ = {
 			isa = PBXGroup;
 			children = (
+				8CA0C3402BE7030A00353FB2 /* ChangeLanguage */,
 				8CBF07B62BCE23D7005D1E0D /* Health */,
 				8CBF079F2BCC587A005D1E0D /* ForgotPassword */,
 				8C3B5E632BAF76FD00CFE490 /* DeleteAccount */,
@@ -1578,6 +1618,13 @@
 				9E4F22BF2B9F3C2E003E749E /* TimerViewController.swift in Sources */,
 				9E4F227A2B9F3B9B003E749E /* NotepadHeaderViewModel.swift in Sources */,
 				9EBFD9642BAB077500A1891D /* UserAuthentication+CoreDataClass.swift in Sources */,
+				8CA0C3482BE7034800353FB2 /* ChangeLanguagePresenter.swift in Sources */,
+				8CA0C3492BE7034800353FB2 /* ChangeLanguageRouter.swift in Sources */,
+				8CA0C34A2BE7034800353FB2 /* ChangeLanguageViewController.swift in Sources */,
+				8CA0C34B2BE7034800353FB2 /* ChangeLanguageProtocols.swift in Sources */,
+				8CA0C3512BE7101700353FB2 /* ChangeLanguageTableViewCell.swift in Sources */,
+				8CA0C34C2BE7034800353FB2 /* ChangeLanguageInteractor.swift in Sources */,
+				8CA0C34D2BE7034800353FB2 /* ChangeLanguageContainer.swift in Sources */,
 				9E4F22AC2B9F3C05003E749E /* ResultsViewController.swift in Sources */,
 				8C3B5EAB2BAF7BC400CFE490 /* UnitsRouter.swift in Sources */,
 				9E5B753E2B7F9D7600E2BDE6 /* WeightViewModel.swift in Sources */,
@@ -1590,6 +1637,7 @@
 				9E5B74FC2B7F9A7000E2BDE6 /* SignUpViewModel.swift in Sources */,
 				8C3B5E7D2BAF78D100CFE490 /* ProfileContainer.swift in Sources */,
 				9EE335992B8F9CCD00F532B3 /* SplashAnimator.swift in Sources */,
+				8CA0C34F2BE7042700353FB2 /* ChangeLanguageViewModel.swift in Sources */,
 				8C3B5E832BAF797C00CFE490 /* ThemeViewModel.swift in Sources */,
 				8C3B5EFD2BB8F2CF00CFE490 /* ProfileViewModelSingWithVKOrGoogle.swift in Sources */,
 				8C5237232BCE31490084F335 /* HealthTableViewCellHealthCondition.swift in Sources */,

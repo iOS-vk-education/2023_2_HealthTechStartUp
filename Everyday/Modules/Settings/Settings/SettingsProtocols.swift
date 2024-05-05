@@ -24,6 +24,7 @@ protocol SettingsViewOutput: AnyObject {
     func didTapThemeCell()
     func didTapDateAndTimeCell()
     func didTapUnitsCell()
+    func didTapChangeLanguageCell()
     func didTapProfileCell()
     func didTapHealthCell()
 }
@@ -38,6 +39,7 @@ protocol SettingsRouterInput: AnyObject {
     func getThemeView()
     func getDateAndTimeView()
     func getUnitsView()
+    func getChangeLanguageView()
     func getProfileView()
     func getHealthView()
 }

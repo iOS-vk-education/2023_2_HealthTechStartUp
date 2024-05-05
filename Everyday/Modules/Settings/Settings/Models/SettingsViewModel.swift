@@ -28,12 +28,14 @@ struct SettingsViewModel {
     let suggestImprovementsImage: UIImage?
     let termsAndPrivacyImage: UIImage?
     let tellFriendsImage: UIImage?
+    let languageImage: UIImage?
     
     let soundsTitle: NSAttributedString
     let autolockTitle: NSAttributedString
     let themeTitle: NSAttributedString
     let dateAndTimeTitle: NSAttributedString
     let unitsTitle: NSAttributedString
+    let languageTitle: NSAttributedString
     let profileTitle: NSAttributedString
     let healthTitle: NSAttributedString
     let problemTitle: NSAttributedString
@@ -49,6 +51,7 @@ struct SettingsViewModel {
         self.themeImage               = UIImage(systemName: "circle.lefthalf.filled")
         self.dateAndTimeImage         = UIImage(systemName: "clock")
         self.unitsImage               = UIImage(systemName: "ruler")
+        self.languageImage            = UIImage(systemName: "ellipsis.message")
         self.profileImage             = UIImage(systemName: "person.text.rectangle")
         self.problemImage             = UIImage(systemName: "person.crop.circle.badge.exclamationmark")
         self.suggestImprovementsImage = UIImage(systemName: "plus.bubble")
@@ -62,6 +65,7 @@ struct SettingsViewModel {
         self.themeTitle               = NSAttributedString(string: "Settings_Theme_title".localized, attributes: Styles.titleAttributes)
         self.dateAndTimeTitle         = NSAttributedString(string: "Settings_DateAndTime_title".localized, attributes: Styles.titleAttributes)
         self.unitsTitle               = NSAttributedString(string: "Settings_Units_title".localized, attributes: Styles.titleAttributes)
+        self.languageTitle            = NSAttributedString(string: "Settings_Language_title".localized, attributes: Styles.titleAttributes)
         self.profileTitle             = NSAttributedString(string: "Settings_Profile_title".localized, attributes: Styles.titleAttributes)
         self.problemTitle             = NSAttributedString(string: "Settings_ReportAboutProblem_title".localized, attributes: Styles.titleAttributes)
         self.suggestImprovementsTitle = NSAttributedString(string: "Settings_SuggestImprovements_title".localized, attributes: Styles.titleAttributes)
@@ -75,7 +79,8 @@ struct SettingsViewModel {
                                                 SettingsTableViewCellModel(cellImage: autolockImage, cellTitle: autolockTitle),
                                                 SettingsTableViewCellModel(cellImage: themeImage, cellTitle: themeTitle),
                                                 SettingsTableViewCellModel(cellImage: dateAndTimeImage, cellTitle: dateAndTimeTitle),
-                                                SettingsTableViewCellModel(cellImage: unitsImage, cellTitle: unitsTitle)]
+                                                SettingsTableViewCellModel(cellImage: unitsImage, cellTitle: unitsTitle),
+                                                SettingsTableViewCellModel(cellImage: languageImage, cellTitle: languageTitle)]
         
         self.aboutAppSettingsSectionCellModel = [SettingsTableViewCellModel(cellImage: problemImage, cellTitle: problemTitle),
                                                  SettingsTableViewCellModel(cellImage: suggestImprovementsImage, cellTitle: suggestImprovementsTitle),

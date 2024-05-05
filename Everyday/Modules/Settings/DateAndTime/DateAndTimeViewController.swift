@@ -157,7 +157,6 @@ extension DateAndTimeViewController: UITableViewDataSource {
 
 extension DateAndTimeViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        let settingsUserDefaultService = SettingsUserDefaultsService.shared
         tableView.deselectRow(at: indexPath, animated: true)
         
         if indexPath.section == 0 {

@@ -34,6 +34,7 @@ protocol SettingsUserDefaultsServiceDescription {
     func getSelectedMeasurementsCellIndexPath() -> IndexPath
     func getSelectedLoadWeightCellIndexPath() -> IndexPath
     func getSelectedDistanceCellIndexPath() -> IndexPath
+    func setSelectedLanguage(language: String)
 }
 
 final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription {
@@ -42,6 +43,19 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
     private let defaults = UserDefaults.standard
     
     private init() {}
+    
+    func setSelectedLanguage(language: String) {
+        switch language {
+        case "en":
+            defaults.set([language], forKey: "AppleLanguages")
+            defaults.synchronize()
+        case "ru":
+            defaults.set([language], forKey: "AppleLanguages")
+            defaults.synchronize()
+        default:
+            return
+        }
+    }
     
     func setBeginningOfTheWeek(indexPath: IndexPath) {
         switch indexPath {

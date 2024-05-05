@@ -42,6 +42,10 @@ extension SettingsPresenter: SettingsViewOutput {
         router.getUnitsView()
     }
     
+    func didTapChangeLanguagesCell() {
+        router.getChangeLanguageView()
+    }
+    
     func didTapProfileCell() {
         router.getProfileView()
     }

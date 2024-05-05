@@ -78,7 +78,6 @@ private extension ThemeViewController {
     // MARK: - Layout
     
     func layout() {
-        
         tableView.pin
             .top(view.pin.safeArea)
             .horizontally()

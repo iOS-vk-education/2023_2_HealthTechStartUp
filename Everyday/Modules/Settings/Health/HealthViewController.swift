@@ -53,7 +53,6 @@ final class HealthViewController: UIViewController {
 // MARK: - Setup
 
 private extension HealthViewController {
-    
     func setup() {
         setupTableView()
         view.addSubviews(tableView)

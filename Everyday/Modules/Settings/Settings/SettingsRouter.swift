@@ -13,6 +13,18 @@ final class SettingsRouter {
 }
 
 extension SettingsRouter: SettingsRouterInput {
+    func getChangeLanguageView() {
+        guard let viewController = viewController else {
+            return
+        }
+        
+        let changeLanguagesContainer = ChangeLanguageContainer.assemble(with: .init())
+        let changeLanguagesController = changeLanguagesContainer.viewController
+        
+        changeLanguagesController.hidesBottomBarWhenPushed = false
+        viewController.navigationController?.pushViewController(changeLanguagesController, animated: true)
+    }
+    
     func getThemeView() {
         guard let viewController = viewController else {
             return
