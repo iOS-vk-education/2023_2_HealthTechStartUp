@@ -58,7 +58,11 @@ extension SignUpPresenter: SignUpViewOutput {
 
 extension SignUpPresenter: SignUpInteractorOutput {
     func didUserExist(_ result: Result<Void, any Error>) {
-        DispatchQueue.main.async {
+        DispatchQueue.main.async { [weak self] in
+            guard let self = self else {
+                return
+            }
+            
             switch result {
             case .success:
                 self.view?.showAlert(with: .userExist)

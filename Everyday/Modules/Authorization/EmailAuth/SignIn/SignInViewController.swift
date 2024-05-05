@@ -265,11 +265,13 @@ final class SignInViewController: UIViewController {
         output.didTapSignupButton()
     }
     
-    @objc func didTapCloseButton() {
+    @objc 
+    private func didTapCloseButton() {
         output.didTapCloseButton()
     }
     
-    @objc func didTapForgotPasswordButton() {
+    @objc 
+    private func didTapForgotPasswordButton() {
         output.didTapForgotPasswordButton()
     }
     

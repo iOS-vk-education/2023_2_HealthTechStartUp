@@ -50,9 +50,8 @@ final class SettingsViewController: UIViewController {
             switch result {
             case .success:
               Reloader.shared.setLogout()
-                print("ok")
             case .failure:
-                print("ne ok")
+                break
             }
         }
     }
