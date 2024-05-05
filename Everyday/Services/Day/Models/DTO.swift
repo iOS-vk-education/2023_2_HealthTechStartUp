@@ -30,9 +30,16 @@ struct DayServiceProgramElement: Decodable {
     let programID: DocumentReference
 }
 
-struct DayServiceHistoryElement: Codable {
+struct DayServiceHistoryElement: Decodable {
     let date: Date
     let historyID: DocumentReference
+    
+    var dictionaryRepresentation: [String: Any] {
+        return [
+            "date": date,
+            "historyID": historyID
+        ]
+    }
 }
 
 // MARK: - DayServiceProgram
@@ -77,11 +84,6 @@ struct DayServiceExerciseElement: Codable {
 struct DayServiceHistory: Codable {
     let workout: DayServiceWorkout
     let extra: DayServiceExtra?
-//    
-//    init(domainModel: WorkoutProgress) {
-//        workout = .init(domainModel: domainModel.workout)
-//        extra = .init(domainModel: domainModel.extra)
-//    }
 }
 
 struct DayServiceWorkout: Codable {

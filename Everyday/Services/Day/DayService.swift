@@ -29,7 +29,7 @@ final class DayService: DayServiceDescription {
             return
         }
 
-        db.collection(Constants.userCollection)
+        db.collection(Constants.Database.userCollection)
             .document(userUID)
             .getDocument(as: DayServiceUser.self) { result in
                 switch result {
@@ -84,7 +84,7 @@ final class DayService: DayServiceDescription {
             return
         }
 
-        db.collection(Constants.userCollection)
+        db.collection(Constants.Database.userCollection)
             .document(userUID)
             .getDocument(as: DayServiceUser.self) { result in
                 switch result {
@@ -133,7 +133,7 @@ final class DayService: DayServiceDescription {
             }
     }
     
-    // MARK: - POST
+    // MARK: - POST&PUT
     
     func postProgress(_ progress: WorkoutProgress, completion: @escaping (CustomError?) -> Void) {
         guard let userUID = Auth.auth().currentUser?.uid else {
@@ -156,7 +156,7 @@ final class DayService: DayServiceDescription {
                     return
                 }
 
-                let historyCollectionReference = self?.db.collection(Constants.historyCollection)
+                let historyCollectionReference = self?.db.collection(Constants.Database.historyCollection)
                 
                 guard let historyCollectionReference = historyCollectionReference else {
                     completion(.unknownError)
@@ -164,7 +164,7 @@ final class DayService: DayServiceDescription {
                 }
                 
                 let historyDocumentReference: DocumentReference?
-        //        this good
+
                 let history: DayServiceHistory = .init(
                     workout: .init(domainModel: progress.workout),
                     extra: .init(
@@ -173,7 +173,7 @@ final class DayService: DayServiceDescription {
                         weight: progress.extra?.weight
                     )
                 )
-        //        let history: DayServiceHistory = .init(domainModel: progress)
+
                 do {
                     historyDocumentReference = try historyCollectionReference.addDocument(from: history)
                 } catch {
@@ -189,12 +189,9 @@ final class DayService: DayServiceDescription {
                     date: Date(),
                     historyID: historyDocumentReference
                 )
-                self?.db.collection(Constants.userCollection).document(userUID)
+                self?.db.collection(Constants.Database.userCollection).document(userUID)
                     .updateData([
-                        Constants.User.historyField: FieldValue.arrayUnion([[
-                            "date": historyElement.date,
-                            "historyID": historyElement.historyID
-                        ]])
+                        Constants.Database.User.historyField: FieldValue.arrayUnion([historyElement.dictionaryRepresentation])
                     ])
                 
                 completion(nil)
@@ -205,28 +202,18 @@ final class DayService: DayServiceDescription {
         }
     }
     
-    // MARK: - PUT
+    // MARK: - POST
     
     func putPhoto(data: Data, completion: @escaping (Result<URL, Error>) -> Void) {
         let fileName = UUID().uuidString
-        
         let reference = Storage.storage().reference()
-            .child("userPics")
+            .child(Constants.Storage.progressPictureCollection)
             .child(fileName)
         
         reference.putData(data) { result in
             switch result {
             case .success:
                 reference.downloadURL(completion: completion)
-//                reference.downloadURL { result in
-//                    switch result {
-//                    case .success(let url):
-//                        break
-//                    case .failure(let error):
-//                        print("error in put photo")
-//                        completion(.failure(.unknownError))
-//                    }
-//                }
             case .failure(let error):
                 print("error in put photo")
                 completion(.failure(error))
@@ -239,11 +226,16 @@ final class DayService: DayServiceDescription {
 
 private extension DayService {
     struct Constants {
-        static let userCollection = "user"
-        static let historyCollection = "history"
-        
-        struct User {
-            static let historyField = "history"
+        struct Database {
+            static let userCollection = "user"
+            static let historyCollection = "history"
+            
+            struct User {
+                static let historyField = "history"
+            }
+        }
+        struct Storage {
+            static let progressPictureCollection = "userPics"
         }
     }
 }

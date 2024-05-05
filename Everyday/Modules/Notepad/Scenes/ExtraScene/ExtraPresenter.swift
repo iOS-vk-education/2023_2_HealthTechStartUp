@@ -91,14 +91,14 @@ extension ExtraPresenter: ExtraViewOutput {
         
         for element in data {
             switch element {
-            case .camera(let model):
-                image = model.image
-            case .conditionChoice(let model):
-                condition = Condition.allCases.firstIndex { $0 == model.condition }
-            case .heartRateVariability(let model):
+            case .camera(let cameraModel):
+                image = cameraModel.image
+            case .conditionChoice(let conditionChoiceModel):
+                condition = Condition.allCases.firstIndex { $0 == conditionChoiceModel.condition }
+            case .heartRateVariability:
                 continue
-            case .weightMeasurement(let model):
-                weight = model.weight
+            case .weightMeasurement(let weightMeasurementModel):
+                weight = weightMeasurementModel.weight
             }
         }
         
@@ -114,9 +114,7 @@ extension ExtraPresenter: ExtraViewOutput {
 
 extension ExtraPresenter: SheetModuleOutput {
     func setResult(_ result: SheetType, at index: Int) {
-        print("[DEBUG] old data: \(data[index])")
         data[index] = result
-        print("[DEBUG] new data: \(data[index])")
         switchStates[index] = true
         view?.reloadData()
     }
