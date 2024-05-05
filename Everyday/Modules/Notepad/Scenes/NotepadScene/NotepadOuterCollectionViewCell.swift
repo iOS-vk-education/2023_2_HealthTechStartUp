@@ -20,10 +20,10 @@ class NotepadOuterCollectionViewCell: UICollectionViewCell {
     weak var delegate: NotepadOuterCollectionViewCellDelegate?
     
     var innerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
-    var selfIndexPath: IndexPath?
     
     private var week: [Date] = []
-    private(set) var selectedCellIndexPath: IndexPath?
+    private var selectedCellIndexPath: IndexPath?
+    private var outerIndexPath: IndexPath?
     
     // MARK: - Init
     
@@ -46,11 +46,12 @@ class NotepadOuterCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Interface
     
-    func configure(with week: [Date], and selectedCellIndexPath: IndexPath? = nil) {
+    func configure(with week: [Date], outerIndexPath: IndexPath, and selectedCellIndexPath: IndexPath?) {
         self.week = week
+        self.outerIndexPath = outerIndexPath
         self.selectedCellIndexPath = selectedCellIndexPath
-        innerCollectionView.reloadData()
         
+        innerCollectionView.reloadData()
         selectCollectionViewCellsIfNeeded()
     }
     
@@ -130,7 +131,7 @@ extension NotepadOuterCollectionViewCell: UICollectionViewDataSource {
 extension NotepadOuterCollectionViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if selectedCellIndexPath != indexPath {
-            delegate?.didTapInnerCollectionViewCell(week[indexPath.item], selfIndexPath!, indexPath)
+            delegate?.didTapInnerCollectionViewCell(week[indexPath.item], outerIndexPath!, indexPath)
             selectedCellIndexPath = indexPath
         }
     }

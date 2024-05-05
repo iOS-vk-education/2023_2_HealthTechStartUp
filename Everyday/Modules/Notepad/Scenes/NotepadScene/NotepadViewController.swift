@@ -88,7 +88,6 @@ private extension NotepadViewController {
     func setupOuterCollectionView() {
         outerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createSingleColumnFlowLayout(in: view))
         outerCollectionView.dataSource = self
-        outerCollectionView.delegate = self
         outerCollectionView.register(NotepadOuterCollectionViewCell.self, forCellWithReuseIdentifier: NotepadOuterCollectionViewCell.reuseID)
         
         outerCollectionView.backgroundColor = .clear
@@ -178,16 +177,12 @@ extension NotepadViewController: UICollectionViewDataSource {
         }
         
         let week = output.collectionItem(at: indexPath.item)
-        var selectedIndexPath: IndexPath?
-        let first = output.getSelectedCellOuterIndexPath()
-//        let second = output.getShouldDeselectCellOuterIndexPath()
-        if first == indexPath {
-            selectedIndexPath = output.getSelectedCellInnerIndexPath()
+        var selectedInnerIndexPath: IndexPath?
+        let selectedOuterIndexPath = output.getSelectedCellOuterIndexPath()
+        if selectedOuterIndexPath == indexPath {
+            selectedInnerIndexPath = output.getSelectedCellInnerIndexPath()
         }
-        cell.configure(with: week, and: selectedIndexPath)
-        
-        cell.selfIndexPath = indexPath
-        
+        cell.configure(with: week, outerIndexPath: indexPath, and: selectedInnerIndexPath)
         cell.delegate = self
         
         return cell
@@ -199,31 +194,12 @@ extension NotepadViewController: UICollectionViewDataSource {
 extension NotepadViewController: NotepadOuterCollectionViewCellDelegate {
     func didTapInnerCollectionViewCell(_ date: Date, _ outerIndexPath: IndexPath, _ innerIndexPath: IndexPath) {
         output.didTapNewDate(date)
-//        output.setShouldDeselectCell(output.getSelectedCell())
+        
         if let selectedCell = output.getSelectedCell(),
             let cell = outerCollectionView.cellForItem(at: selectedCell.outerIndex) as? NotepadOuterCollectionViewCell {
             cell.deselectCell()
         }
         output.setSelectedCell((outerIndexPath, innerIndexPath))
-    }
-}
-
-// MARK: - CollectionViewDelegate
-
-extension NotepadViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        if let cell = outerCollectionView.cellForItem(at: indexPath) as? NotepadOuterCollectionViewCell {
-//            if let innerIndexPath = cell.selectedCellIndexPath {
-//                output.setSelectedCell((indexPath, innerIndexPath))
-//            }
-//        }
-    }
-    
-    func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-//        if let cell = outerCollectionView.cellForItem(at: indexPath) as? NotepadOuterCollectionViewCell {
-//            cell.reload
-//        }
-//        outerCollectionView.reloadData()
     }
 }
 

@@ -17,7 +17,6 @@ final class NotepadPresenter {
     
     private var calendar: [[Date]] = []
     private var selectedCell: (outerIndex: IndexPath, innerIndex: IndexPath)?
-//    private var shouldDeselectCell: (outerIndex: IndexPath, innerIndex: IndexPath)?
     
     private var isResult: Bool = false
     private var workouts: [Workout] = []
@@ -109,25 +108,13 @@ extension NotepadPresenter: NotepadViewOutput {
         selectedCell
     }
     
-//    func getShouldDeselectCell() -> (outerIndex: IndexPath, innerIndex: IndexPath)? {
-//        shouldDeselectCell
-//    }
-    
     func setSelectedCell(_ indexPaths: (outerIndex: IndexPath, innerIndex: IndexPath)? = nil) {
         selectedCell = indexPaths
     }
     
-//    func setShouldDeselectCell(_ indexPaths: (outerIndex: IndexPath, innerIndex: IndexPath)? = nil) {
-//        shouldDeselectCell = indexPaths
-//    }
-    
     func getSelectedCellOuterIndexPath() -> IndexPath? {
         selectedCell?.outerIndex
     }
-    
-//    func getShouldDeselectCellOuterIndexPath() -> IndexPath? {
-//        shouldDeselectCell?.outerIndex
-//    }
     
     func getSelectedCellInnerIndexPath() -> IndexPath? {
         selectedCell?.innerIndex
