@@ -16,7 +16,7 @@ final class ExtraContainer {
     class func assemble(with context: ExtraContext) -> ExtraContainer {
         let router = ExtraRouter()
         let interactor = ExtraInteractor()
-        let presenter = ExtraPresenter(router: router, interactor: interactor)
+        let presenter = ExtraPresenter(router: router, interactor: interactor, workout: context.workout)
         let viewController = ExtraViewController(output: presenter)
         
         presenter.view = viewController
@@ -39,4 +39,5 @@ final class ExtraContainer {
 
 struct ExtraContext {
     weak var moduleOutput: ExtraModuleOutput?
+    let workout: Workout
 }

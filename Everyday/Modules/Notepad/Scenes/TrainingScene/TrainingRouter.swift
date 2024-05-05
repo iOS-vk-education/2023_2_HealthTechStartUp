@@ -43,7 +43,7 @@ extension TrainingRouter: TrainingRouterInput {
         viewController.present(resultsViewController, animated: false)
     }
     
-    func openExtra() {
+    func openExtra(with extraContext: ExtraContext) {
         guard
             let viewController = viewController,
             let navigationController = viewController.navigationController
@@ -51,7 +51,7 @@ extension TrainingRouter: TrainingRouterInput {
             return
         }
         
-        let extraContainer = ExtraContainer.assemble(with: .init())
+        let extraContainer = ExtraContainer.assemble(with: extraContext)
         navigationController.pushViewController(extraContainer.viewController, animated: true)
     }
     

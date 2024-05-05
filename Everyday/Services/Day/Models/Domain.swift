@@ -67,11 +67,6 @@ struct Exercise {
 struct WorkoutProgress {
     let workout: Workout
     var extra: ExtraModel?
-    
-    init() {
-        workout = Workout()
-        extra = nil
-    }
 }
 
 struct ExtraModel {

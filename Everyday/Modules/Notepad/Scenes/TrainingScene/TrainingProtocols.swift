@@ -38,6 +38,6 @@ protocol TrainingInteractorOutput: AnyObject {
 protocol TrainingRouterInput: AnyObject {
     func openExercise(with exerciseContext: ExerciseContext)
     func showResults(with resultsContext: ResultsContext)
-    func openExtra()
+    func openExtra(with extraContext: ExtraContext)
     func openNotepad()
 }

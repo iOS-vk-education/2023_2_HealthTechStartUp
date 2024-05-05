@@ -15,14 +15,15 @@ final class ExtraPresenter {
     private let router: ExtraRouterInput
     private let interactor: ExtraInteractorInput
     
-    private var progress = WorkoutProgress()
+    private var progress: WorkoutProgress
     private var viewTypes: [ExtraViewType] = []
     private var switchStates: [Bool] = []
     private var data: [SheetType] = []
     
-    init(router: ExtraRouterInput, interactor: ExtraInteractorInput) {
+    init(router: ExtraRouterInput, interactor: ExtraInteractorInput, workout: Workout) {
         self.router = router
         self.interactor = interactor
+        self.progress = WorkoutProgress(workout: workout)
     }
 }
 

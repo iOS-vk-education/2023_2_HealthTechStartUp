@@ -81,7 +81,8 @@ extension TrainingPresenter: ResultsModuleOutput {
         if workout.sets.count > index + 1 {
             indexOfSet = index + 1
         } else {
-            router.openExtra()
+            let extraContext = ExtraContext(workout: workout)
+            router.openExtra(with: extraContext)
             return
         }
         
