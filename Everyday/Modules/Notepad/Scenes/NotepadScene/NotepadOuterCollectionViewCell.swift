@@ -11,7 +11,7 @@ import PinLayout
 // MARK: - Delegate Protocol
 
 protocol NotepadOuterCollectionViewCellDelegate: AnyObject {
-    func didTapInnerCollectionViewCell(_ date: Date)
+    func didTapInnerCollectionViewCell(_ date: Date, _ outerIndexPath: IndexPath, _ innerIndexPath: IndexPath)
 }
 
 class NotepadOuterCollectionViewCell: UICollectionViewCell {
@@ -19,7 +19,8 @@ class NotepadOuterCollectionViewCell: UICollectionViewCell {
     
     weak var delegate: NotepadOuterCollectionViewCellDelegate?
     
-    private var innerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    var innerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    var selfIndexPath: IndexPath?
     
     private var week: [Date] = []
     private(set) var selectedCellIndexPath: IndexPath?
@@ -28,13 +29,11 @@ class NotepadOuterCollectionViewCell: UICollectionViewCell {
     
     override init(frame: CGRect) {
         super.init(frame: frame)
-        
         setup()
     }
     
     required init?(coder: NSCoder) {
         super.init(coder: coder)
-        
         setup()
     }
     
@@ -42,7 +41,6 @@ class NotepadOuterCollectionViewCell: UICollectionViewCell {
     
     override func layoutSubviews() {
         super.layoutSubviews()
-        
         layout()
     }
     
@@ -132,7 +130,7 @@ extension NotepadOuterCollectionViewCell: UICollectionViewDataSource {
 extension NotepadOuterCollectionViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         if selectedCellIndexPath != indexPath {
-            delegate?.didTapInnerCollectionViewCell(week[indexPath.item])
+            delegate?.didTapInnerCollectionViewCell(week[indexPath.item], selfIndexPath!, indexPath)
             selectedCellIndexPath = indexPath
         }
     }
