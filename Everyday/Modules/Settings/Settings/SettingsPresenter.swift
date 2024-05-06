@@ -8,6 +8,12 @@
 
 import Foundation
 
+enum FeedBack {
+    case problem
+    case suggest
+    case privacy
+}
+
 final class SettingsPresenter {
     weak var view: SettingsViewInput?
     weak var moduleOutput: SettingsModuleOutput?
@@ -25,6 +31,28 @@ extension SettingsPresenter: SettingsModuleInput {
 }
 
 extension SettingsPresenter: SettingsViewOutput {
+    func didTapSuggestCell() {
+        interactor.openURL(with: .suggest)
+    }
+    
+    func didTapPrivacyCell() {
+        interactor.openURL(with: .privacy)
+    }
+    
+    func didTapProblemCell() {
+        interactor.openURL(with: .problem)
+    }
+    
+    func didTapTellFriendsCell() {
+        let textToShare = "Everyday"
+        guard let url = URL(string: "https://t.me/everydayheal") else {
+            return
+        }
+        
+        let items: [Any] = [textToShare, url]
+        router.getShareView(with: items)
+    }
+    
     func getViewModel() -> SettingsViewModel {
         let viewModel = SettingsViewModel()
         return viewModel
@@ -56,4 +84,11 @@ extension SettingsPresenter: SettingsViewOutput {
 }
 
 extension SettingsPresenter: SettingsInteractorOutput {
+    func didOpenURL(with appURL: URL, and webURL: URL) {
+        router.openURL(appURL, webURL)
+    }
+    
+    func didFailOpenURL() {
+        print("alert manager will be placed here after merge new_auth")
+    }
 }

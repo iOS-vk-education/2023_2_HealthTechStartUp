@@ -90,8 +90,6 @@ extension SettingsViewController: TableViewDelegateSelection {
                 output.didTapDateAndTimeCell()
             case 4:
                 output.didTapUnitsCell()
-            case 5:
-                output.didTapChangeLanguageCell()
             default:
                return
             }
@@ -99,6 +97,19 @@ extension SettingsViewController: TableViewDelegateSelection {
             output.didTapProfileCell()
         case 2:
             output.didTapHealthCell()
+        case 3:
+            switch indexPath.row {
+            case 0:
+                output.didTapProblemCell()
+            case 1:
+                output.didTapSuggestCell()
+            case 2:
+                output.didTapPrivacyCell()
+            default:
+               return
+            }
+        case 4:
+            output.didTapTellFriendsCell()
         default:
             return
         }

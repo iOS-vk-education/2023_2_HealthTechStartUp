@@ -13,6 +13,23 @@ final class SettingsRouter {
 }
 
 extension SettingsRouter: SettingsRouterInput {
+    func openURL(_ appUrl: URL, _ webUrl: URL) {
+        if UIApplication.shared.canOpenURL(appUrl) {
+            UIApplication.shared.open(appUrl, options: [:], completionHandler: nil)
+        } else {
+            if UIApplication.shared.canOpenURL(webUrl) {
+                UIApplication.shared.open(webUrl, options: [:], completionHandler: nil)
+            } else {
+                print("alert manager will be placed here after merge new_auth")
+            }
+        }
+    }
+    
+    func getShareView(with items: [Any]) {
+            let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        viewController?.present(activityViewController, animated: true)
+    }
+    
     func getChangeLanguageView() {
         guard let viewController = viewController else {
             return

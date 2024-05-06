@@ -27,12 +27,19 @@ protocol SettingsViewOutput: AnyObject {
     func didTapChangeLanguageCell()
     func didTapProfileCell()
     func didTapHealthCell()
+    func didTapTellFriendsCell()
+    func didTapProblemCell()
+    func didTapSuggestCell()
+    func didTapPrivacyCell()
 }
 
 protocol SettingsInteractorInput: AnyObject {
+    func openURL(with type: FeedBack)
 }
 
 protocol SettingsInteractorOutput: AnyObject {
+    func didOpenURL(with appURL: URL, and webURL: URL)
+    func didFailOpenURL()
 }
 
 protocol SettingsRouterInput: AnyObject {
@@ -42,6 +49,8 @@ protocol SettingsRouterInput: AnyObject {
     func getChangeLanguageView()
     func getProfileView()
     func getHealthView()
+    func getShareView(with items: [Any])
+    func openURL(_ appUrl: URL, _ webUrl: URL)
 }
 
 protocol TableViewDelegateSelection: AnyObject {
