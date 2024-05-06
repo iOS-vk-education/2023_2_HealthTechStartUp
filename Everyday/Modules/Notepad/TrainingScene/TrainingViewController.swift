@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by user on 28.02.2024.
-//  
+//
 //
 
 import UIKit
@@ -50,16 +50,14 @@ private extension TrainingViewController {
     
     func layout() {
         finishButton.pin
-            .top(view.pin.safeArea)
-            .marginTop(Constants.FinishButton.marginTop)
+            .bottom(view.pin.safeArea)
             .horizontally(Constants.FinishButton.horizontalMargin)
             .height(Constants.FinishButton.height)
 
         tableView.pin
-            .below(of: finishButton)
-            .marginTop(Constants.TableView.marginTop)
+            .top(view.pin.safeArea)
+            .above(of: finishButton)
             .horizontally()
-            .bottom()
     }
     
     // MARK: - Setup
@@ -117,16 +115,11 @@ extension TrainingViewController: UITableViewDataSource {
         
         let exercise = output.getExercise(at: indexPath.row)
         let viewModel = TrainingTableViewCellViewModel(exercise: exercise)
+        let isDone = output.getSwitchState(at: indexPath.row)
         
-        cell.configure(with: viewModel, and: indexPath.row)
+        cell.configure(with: viewModel, and: indexPath.row, isDone: isDone)
         cell.addStartButtonTarget(self, action: #selector(didTapStartButton))
         cell.delegate = self
-        
-        if output.getSwitchState(at: indexPath.row) {
-            cell.checkCheckBox()
-        } else {
-            cell.uncheckCheckBox()
-        }
         
         return cell
     }
@@ -167,7 +160,7 @@ extension TrainingViewController: TrainingViewInput {
         finishButton.isHidden = true
     }
     
-    func reloadData() {    
+    func reloadData() {
         tableView.reloadData()
     }
 }
@@ -181,7 +174,7 @@ private extension TrainingViewController {
         struct FinishButton {
             static let backgroundColor: UIColor = UIColor.UI.accent
             static let cornerRadius: CGFloat = 16
-            static let height: CGFloat = 30
+            static let height: CGFloat = 40
             static let marginTop: CGFloat = 40
             static let horizontalMargin: CGFloat = 20
         }

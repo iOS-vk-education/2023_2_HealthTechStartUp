@@ -6,31 +6,135 @@
 //
 
 import Foundation
+import Firebase
 
 protocol DayServiceDescription {
-    func getDaySchedule(completion: @escaping (Result<[(workout: Workout, indexOfDay: Int)], CustomError>) -> Void)
-    func getDayResults(on date: Date, completion: @escaping (Result<[(workout: Workout, indexOfDay: Int)], CustomError>) -> Void)
+    func getDaySchedule(on date: Date, completion: @escaping (Result<[WorkoutDay], CustomError>) -> Void)
+    func getDayResults(on date: Date, completion: @escaping (Result<[WorkoutDay], CustomError>) -> Void)
 }
 
 final class DayService: DayServiceDescription {
     static let shared: DayServiceDescription = DayService()
+    private let db = Firestore.firestore()
 
     private init() {}
-
-    func getDaySchedule(completion: @escaping (Result<[(workout: Workout, indexOfDay: Int)], CustomError>) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-            let workoutDays = MockSchedule.mockSchedule.daysOfWeek[4]
-            let result: Result<[(workout: Workout, indexOfDay: Int)], CustomError> = .success(workoutDays) // .failure(.unknownError)
-            completion(result)
+    
+    func getDaySchedule(on date: Date, completion: @escaping (Result<[WorkoutDay], CustomError>) -> Void) {
+        guard let userUID = Auth.auth().currentUser?.uid else {
+            completion(.failure(.unknownError))
+            return
         }
+
+        db.collection(Constants.userCollection)
+            .document(userUID)
+            .getDocument(as: NotepadUser.self) { result in
+                switch result {
+                case .success(let user):
+                    guard let schedule = user.schedule else {
+                        completion(.failure(.unknownError))
+                        return
+                    }
+                    
+                    let dayIndex = CalendarService.shared.getWeekdayIndex(from: date)
+                    guard schedule.count > dayIndex else {
+                        completion(.failure(.unknownError))
+                        return
+                    }
+                    
+                    let dayPrograms = schedule[dayIndex]
+                    
+                    let programIDs = dayPrograms.programs.map { $0.programID }
+                    let group = DispatchGroup()
+                    var workoutDays: [WorkoutDay] = Array(repeating: WorkoutDay(), count: programIDs.count)
+
+                    for indexOfProgram in 0..<programIDs.count {
+                        group.enter()
+                        programIDs[indexOfProgram].getDocument(as: Workout.self) { result in
+                            defer {
+                                group.leave()
+                            }
+
+                            switch result {
+                            case .success(let workout):
+                                let indexOfDay = dayPrograms.programs[indexOfProgram].indexOfDay
+                                workoutDays[indexOfProgram] = .init(workout: workout, indexOfDay: indexOfDay)
+                                
+                            case .failure:
+                                completion(.failure(.unknownError))
+                            }
+                        }
+                    }
+
+                    group.notify(queue: .main) {
+                        completion(.success(workoutDays))
+                    }
+
+                case .failure:
+                    completion(.failure(.unknownError))
+                }
+            }
     }
     
-    func getDayResults(on date: Date, completion: @escaping (Result<[(workout: Workout, indexOfDay: Int)], CustomError>) -> Void) {
-        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-//            let workoutDays = MockSchedule.mockSchedule.daysOfWeek[4]
-//            let result: Result<[(workout: Workout, indexOfDay: Int)], CustomError> = .success(workoutDays)
-            let result: Result<[(workout: Workout, indexOfDay: Int)], CustomError> = .failure(.unknownError)
-            completion(result)
+    func getDayResults(on date: Date, completion: @escaping (Result<[WorkoutDay], CustomError>) -> Void) {
+        guard let userUID = Auth.auth().currentUser?.uid else {
+            completion(.failure(.unknownError))
+            return
         }
+
+        db.collection(Constants.userCollection)
+            .document(userUID)
+            .getDocument(as: NotepadUser.self) { result in
+                switch result {
+                case .success(let user):
+                    guard let history = user.history else {
+                        completion(.failure(.unknownError))
+                        return
+                    }
+                    guard let dayHistory = history.filter({ $0.date.onlyDate == date.onlyDate }).first else {
+                        completion(.failure(.unknownError))
+                        return
+                    }
+                    let historyIDs: [DocumentReference] = dayHistory.historyID.map { $0.programID }
+
+                    let group = DispatchGroup()
+                    var workoutDays: [WorkoutDay] = Array(repeating: WorkoutDay(), count: historyIDs.count)
+
+                    for indexOfProgram in 0..<historyIDs.count {
+                        group.enter()
+                        historyIDs[indexOfProgram].getDocument(as: Workout.self) { result in
+                            defer {
+                                group.leave()
+                            }
+
+                            switch result {
+                            case .success(let workout):
+                                let indexOfDay = dayHistory.historyID[indexOfProgram].indexOfDay
+                                workoutDays[indexOfProgram] = .init(workout: workout, indexOfDay: indexOfDay)
+                                
+                            case .failure:
+                                completion(.failure(.unknownError))
+                                return
+                            }
+                        }
+                    }
+
+                    group.notify(queue: .main) {
+                        completion(.success(workoutDays))
+                        return
+                    }
+
+                case .failure:
+                    completion(.failure(.unknownError))
+                    return
+                }
+            }
+    }
+}
+
+// MARK: - Constants
+
+private extension DayService {
+    struct Constants {
+        static let userCollection = "user"
     }
 }

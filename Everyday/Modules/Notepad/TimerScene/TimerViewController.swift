@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by user on 28.02.2024.
-//  
+//
 //
 
 import UIKit
@@ -15,11 +15,13 @@ final class TimerViewController: UIViewController {
     
     private let output: TimerViewOutput
     
+    private let timerView = UIView()
     private let remainingTimeLabel = UILabel()
     private let startButton = UIButton()
-    private let stopButton = UIButton()
     private let resetButton = UIButton()
-    private let skipButton = UIButton()
+    private let extraTimeButton = UIButton()
+    private let saveButton = UIButton()
+    private let closeButton = UIButton()
     
     // MARK: - Init
 
@@ -53,72 +55,99 @@ private extension TimerViewController {
     // MARK: - Layout
     
     func layout() {
+        let timerViewWidth: CGFloat = view.bounds.width - Constants.TimerView.padding * 2
+        
+        timerView.pin
+            .width(timerViewWidth)
+            .height(Constants.TimerView.height)
+            .hCenter()
+            .top(Constants.TimerView.marginTop)
+        
         remainingTimeLabel.pin
             .hCenter()
-            .top(Constants.RemainingTimeLabel.marginTop)
-            .height(Constants.contentHeight)
-            .width(Constants.contentWidth)
+            .vCenter()
+            .height(Constants.RemainingTimeLabel.height)
+            .width(Constants.RemainingTimeLabel.width)
         
-        startButton.pin
-            .below(of: remainingTimeLabel)
-            .hCenter()
-            .height(Constants.contentHeight)
-            .width(Constants.contentWidth)
-        
-        stopButton.pin
-            .below(of: startButton)
-            .hCenter()
-            .height(Constants.contentHeight)
-            .width(Constants.contentWidth)
+        extraTimeButton.pin
+            .below(of: timerView)
+            .left(Constants.Button.horizontalMargin)
+            .height(Constants.Button.height)
+            .width(Constants.Button.width)
         
         resetButton.pin
-            .below(of: stopButton)
-            .hCenter()
-            .height(Constants.contentHeight)
-            .width(Constants.contentWidth)
+            .below(of: timerView)
+            .right(Constants.Button.horizontalMargin)
+            .height(Constants.Button.height)
+            .width(Constants.Button.width)
         
-        skipButton.pin
-            .below(of: resetButton)
+        startButton.pin
+            .below(of: timerView)
             .hCenter()
-            .height(Constants.contentHeight)
-            .width(Constants.contentWidth)
+            .height(Constants.Button.height)
+            .width(Constants.Button.width)
+        
+        closeButton.pin
+            .top(Constants.CloseButton.padding)
+            .left(Constants.CloseButton.padding)
+            .width(Constants.CloseButton.width)
+            .height(Constants.CloseButton.height)
+        
+        saveButton.pin
+            .top(Constants.CloseButton.padding)
+            .right(Constants.CloseButton.padding)
+            .width(Constants.CloseButton.width)
+            .height(Constants.CloseButton.height)
     }
     
     // MARK: - Setup
     
     func setup() {
         setupView()
+        setupTimerView()
         setupRemainingTimeLabel()
         setupStartButton()
-        setupStopButton()
         setupResetButton()
-        setupSkipButton()
+        setupCloseButton()
+        setupSaveButton()
+        setupExtraTimeButton()
         
-        view.addSubviews(startButton, stopButton, resetButton, skipButton, remainingTimeLabel)
+        timerView.addSubview(remainingTimeLabel)
+        view.addSubviews(startButton, resetButton, closeButton, timerView, extraTimeButton, saveButton)
     }
     
     func setupView() {
         view.backgroundColor = Constants.backgroundColor
     }
     
+    func setupTimerView() {
+        timerView.backgroundColor = Constants.TimerView.backgroundColor
+        timerView.layer.cornerRadius = Constants.TimerView.cornerRadius
+    }
+    
     func setupStartButton() {
-        startButton.backgroundColor = Constants.Button.backgroundColor
+        startButton.tintColor = Constants.Button.backgroundColor
         startButton.addTarget(self, action: #selector(didTapStartButton), for: .touchUpInside)
     }
     
-    func setupStopButton() {
-        stopButton.backgroundColor = Constants.Button.backgroundColor
-        stopButton.addTarget(self, action: #selector(didTapStopButton), for: .touchUpInside)
-    }
-    
     func setupResetButton() {
-        resetButton.backgroundColor = Constants.Button.backgroundColor
+        resetButton.tintColor = Constants.Button.backgroundColor
         resetButton.addTarget(self, action: #selector(didTapResetButton), for: .touchUpInside)
     }
     
-    func setupSkipButton() {
-        skipButton.backgroundColor = Constants.Button.backgroundColor
-        skipButton.addTarget(self, action: #selector(didTapSkipButton), for: .touchUpInside)
+    func setupCloseButton() {
+        closeButton.tintColor = Constants.Button.backgroundColor
+        closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
+    }
+    
+    func setupSaveButton() {
+        saveButton.tintColor = Constants.Button.backgroundColor
+        saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
+    }
+    
+    func setupExtraTimeButton() {
+        extraTimeButton.tintColor = Constants.Button.backgroundColor
+        extraTimeButton.addTarget(self, action: #selector(didTapExtraTimeButton), for: .touchUpInside)
     }
     
     func setupRemainingTimeLabel() {
@@ -133,18 +162,21 @@ private extension TimerViewController {
     }
     
     @objc
-    func didTapStopButton() {
-        output.didTapStopButton()
-    }
-    
-    @objc
     func didTapResetButton() {
         output.didTapResetButton()
     }
     
     @objc
-    func didTapSkipButton() {
-        output.didTapSkipButton()
+    func didTapCloseButton() {
+        output.didTapCloseButton()
+    }
+    
+    @objc
+    func didTapSaveButton() {
+    }
+    
+    @objc
+    func didTapExtraTimeButton() {
     }
 }
 
@@ -153,14 +185,19 @@ private extension TimerViewController {
 extension TimerViewController: TimerViewInput {
     func configure(with viewModel: TimerViewModel) {
         remainingTimeLabel.attributedText = viewModel.remainingTimeTitle
-        startButton.setAttributedTitle(viewModel.startTitle, for: .normal)
-        stopButton.setAttributedTitle(viewModel.stopTitle, for: .normal)
+        startButton.setImage(viewModel.playImage, for: .normal)
+        closeButton.setImage(viewModel.closeImage, for: .normal)
+        saveButton.setImage(viewModel.saveImage, for: .normal)
         resetButton.setAttributedTitle(viewModel.resetTitle, for: .normal)
-        skipButton.setAttributedTitle(viewModel.skipTitle, for: .normal)
+        extraTimeButton.setAttributedTitle(viewModel.exrtaTimeTitle, for: .normal)
     }
     
-    func updateRemainingTime(with time: Int) {
-        remainingTimeLabel.text = String(time)
+    func updateRemainingTime(with time: String) {
+        remainingTimeLabel.text = time
+    }
+    
+    func changeMainButtonImage(with image: UIImage?) {
+        startButton.setImage(image, for: .normal)
     }
 }
 
@@ -170,15 +207,30 @@ private extension TimerViewController {
     struct Constants {
         static let backgroundColor: UIColor = UIColor.background
         
-        static let contentWidth: CGFloat = 100
-        static let contentHeight: CGFloat = 100
-        
         struct Button {
             static let backgroundColor: UIColor = UIColor.UI.accent
+            static let width: CGFloat = 100
+            static let height: CGFloat = 100
+            static let horizontalMargin: CGFloat = 50
+        }
+        
+        struct TimerView {
+            static let backgroundColor: UIColor = UIColor.Text.primary
+            static let padding: CGFloat = 32
+            static let cornerRadius: CGFloat = 16
+            static let marginTop: CGFloat = 75
+            static let height: CGFloat = 100
         }
         
         struct RemainingTimeLabel {
-            static let marginTop: CGFloat = 200
+            static let width: CGFloat = 300
+            static let height: CGFloat = 80
+        }
+        
+        struct CloseButton {
+            static let padding: CGFloat = 8
+            static let width: CGFloat = 40
+            static let height: CGFloat = 40
         }
     }
 }

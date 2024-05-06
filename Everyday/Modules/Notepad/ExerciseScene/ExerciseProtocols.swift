@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by user on 28.02.2024.
-//  
+//
 //
 
 import Foundation
@@ -23,8 +23,10 @@ protocol ExerciseViewInput: AnyObject {
 
 protocol ExerciseViewOutput: AnyObject {
     func didLoadView()
-    func didTapStepper(with result: String)
     func didTapSaveButton()
+    func didTapCloseButton()
+    func didTapPlusButton()
+    func didTapMinusButton()
 }
 
 protocol ExerciseInteractorInput: AnyObject {

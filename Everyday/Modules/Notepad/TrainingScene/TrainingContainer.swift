@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by user on 28.02.2024.
-//  
+//
 //
 
 import UIKit
@@ -38,5 +38,5 @@ final class TrainingContainer {
 
 struct TrainingContext {
     weak var moduleOutput: TrainingModuleOutput?
-    let workoutDay: (workout: Workout, indexOfDay: Int)
+    let workoutDay: WorkoutDay
 }

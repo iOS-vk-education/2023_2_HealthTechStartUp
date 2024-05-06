@@ -11,4 +11,10 @@ extension String {
     var localized: String {
         NSLocalizedString(self, comment: "\(self) could not be found in Localized file")
     }
+    
+    var isNumber: Bool {
+        return self.allSatisfy { character in
+            character.isNumber
+        }
+    }
 }

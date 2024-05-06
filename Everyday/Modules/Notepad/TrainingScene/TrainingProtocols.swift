@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by user on 28.02.2024.
-//  
+//
 //
 
 import Foundation
@@ -43,4 +43,5 @@ protocol TrainingRouterInput: AnyObject {
     func openExercise(with exerciseContext: ExerciseContext)
     func showResults(with resultsContext: ResultsContext)
     func openExtra()
+    func openNotepad()
 }

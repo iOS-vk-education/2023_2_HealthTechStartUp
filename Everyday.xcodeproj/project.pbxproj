@@ -95,6 +95,14 @@
 		8CA0C34D2BE7034800353FB2 /* ChangeLanguageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3472BE7034800353FB2 /* ChangeLanguageContainer.swift */; };
 		8CA0C34F2BE7042700353FB2 /* ChangeLanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C34E2BE7042700353FB2 /* ChangeLanguageViewModel.swift */; };
 		8CA0C3512BE7101700353FB2 /* ChangeLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3502BE7101700353FB2 /* ChangeLanguageTableViewCell.swift */; };
+		8CA0C3542BE9579400353FB2 /* CalendarService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3532BE9579400353FB2 /* CalendarService.swift */; };
+		8CA0C3572BE95CAA00353FB2 /* NotepadInnerCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3562BE95CAA00353FB2 /* NotepadInnerCollectionViewCellViewModel.swift */; };
+		8CA0C3592BE95CD900353FB2 /* NotepadEmptyStateViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3582BE95CD900353FB2 /* NotepadEmptyStateViewViewModel.swift */; };
+		8CA0C35B2BE95D7C00353FB2 /* NotepadEmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C35A2BE95D7C00353FB2 /* NotepadEmptyStateView.swift */; };
+		8CA0C35D2BE95DAA00353FB2 /* NotepadInnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C35C2BE95DAA00353FB2 /* NotepadInnerCollectionViewCell.swift */; };
+		8CA0C35F2BE95DCB00353FB2 /* NotepadOuterCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C35E2BE95DCB00353FB2 /* NotepadOuterCollectionViewCell.swift */; };
+		8CA0C3622BE95E0E00353FB2 /* UIHelper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3612BE95E0E00353FB2 /* UIHelper.swift */; };
+		8CA0C3642BE968C200353FB2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3632BE968C200353FB2 /* Date+Extension.swift */; };
 		8CBF07A52BCC5B38005D1E0D /* ForgotPasswordPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07A42BCC5B38005D1E0D /* ForgotPasswordPresenter.swift */; };
 		8CBF07A72BCC5B4C005D1E0D /* ForgotPasswordContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07A62BCC5B4C005D1E0D /* ForgotPasswordContainer.swift */; };
 		8CBF07A92BCC5B5E005D1E0D /* ForgotPasswordInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CBF07A82BCC5B5E005D1E0D /* ForgotPasswordInteractor.swift */; };
@@ -345,6 +353,14 @@
 		8CA0C3472BE7034800353FB2 /* ChangeLanguageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageContainer.swift; sourceTree = "<group>"; };
 		8CA0C34E2BE7042700353FB2 /* ChangeLanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageViewModel.swift; sourceTree = "<group>"; };
 		8CA0C3502BE7101700353FB2 /* ChangeLanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageTableViewCell.swift; sourceTree = "<group>"; };
+		8CA0C3532BE9579400353FB2 /* CalendarService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarService.swift; sourceTree = "<group>"; };
+		8CA0C3562BE95CAA00353FB2 /* NotepadInnerCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadInnerCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
+		8CA0C3582BE95CD900353FB2 /* NotepadEmptyStateViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadEmptyStateViewViewModel.swift; sourceTree = "<group>"; };
+		8CA0C35A2BE95D7C00353FB2 /* NotepadEmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadEmptyStateView.swift; sourceTree = "<group>"; };
+		8CA0C35C2BE95DAA00353FB2 /* NotepadInnerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadInnerCollectionViewCell.swift; sourceTree = "<group>"; };
+		8CA0C35E2BE95DCB00353FB2 /* NotepadOuterCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadOuterCollectionViewCell.swift; sourceTree = "<group>"; };
+		8CA0C3612BE95E0E00353FB2 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
+		8CA0C3632BE968C200353FB2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		8CBF07A42BCC5B38005D1E0D /* ForgotPasswordPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordPresenter.swift; sourceTree = "<group>"; };
 		8CBF07A62BCC5B4C005D1E0D /* ForgotPasswordContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordContainer.swift; sourceTree = "<group>"; };
 		8CBF07A82BCC5B5E005D1E0D /* ForgotPasswordInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordInteractor.swift; sourceTree = "<group>"; };
@@ -789,6 +805,22 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		8CA0C3522BE9576F00353FB2 /* Calendar */ = {
+			isa = PBXGroup;
+			children = (
+				8CA0C3532BE9579400353FB2 /* CalendarService.swift */,
+			);
+			path = Calendar;
+			sourceTree = "<group>";
+		};
+		8CA0C3602BE95DFE00353FB2 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				8CA0C3612BE95E0E00353FB2 /* UIHelper.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		8CBF079F2BCC587A005D1E0D /* ForgotPassword */ = {
 			isa = PBXGroup;
 			children = (
@@ -907,6 +939,7 @@
 		9E4382CB2B83737600C69708 /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8CA0C3522BE9576F00353FB2 /* Calendar */,
 				8C3B5EF92BB75D8D00CFE490 /* Settings */,
 				9E4766DE2BA3509300DD31B9 /* HealthKit */,
 				9E4766D62B9F515700DD31B9 /* Storage */,
@@ -981,9 +1014,13 @@
 		9E4F22652B9F3B82003E749E /* NotepadScene */ = {
 			isa = PBXGroup;
 			children = (
+				8CA0C3602BE95DFE00353FB2 /* Helpers */,
 				9E4F22762B9F3B93003E749E /* Models */,
 				9E4F22672B9F3B8F003E749E /* NotepadContainer.swift */,
+				8CA0C35C2BE95DAA00353FB2 /* NotepadInnerCollectionViewCell.swift */,
+				8CA0C35A2BE95D7C00353FB2 /* NotepadEmptyStateView.swift */,
 				9E4F226A2B9F3B8F003E749E /* NotepadInteractor.swift */,
+				8CA0C35E2BE95DCB00353FB2 /* NotepadOuterCollectionViewCell.swift */,
 				9E4F22662B9F3B8F003E749E /* NotepadPresenter.swift */,
 				9E4F226B2B9F3B8F003E749E /* NotepadProtocols.swift */,
 				9E4F22682B9F3B8F003E749E /* NotepadRouter.swift */,
@@ -1000,6 +1037,8 @@
 				9E4F22772B9F3B9B003E749E /* NotepadHeaderViewModel.swift */,
 				9E4F22782B9F3B9B003E749E /* NotepadTableViewCellViewModel.swift */,
 				9E4F22792B9F3B9B003E749E /* NotepadViewModel.swift */,
+				8CA0C3562BE95CAA00353FB2 /* NotepadInnerCollectionViewCellViewModel.swift */,
+				8CA0C3582BE95CD900353FB2 /* NotepadEmptyStateViewViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1189,6 +1228,7 @@
 				9E53FB4D2B7F950B00C55A45 /* Color+Extension.swift */,
 				9E53FB4B2B7F950400C55A45 /* UIView+Extension.swift */,
 				9E4766D92B9FC0BD00DD31B9 /* View+Extension.swift */,
+				8CA0C3632BE968C200353FB2 /* Date+Extension.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1599,6 +1639,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				8C3B5EBC2BAF7CA500CFE490 /* ChangeEmailViewController.swift in Sources */,
+				8CA0C3592BE95CD900353FB2 /* NotepadEmptyStateViewViewModel.swift in Sources */,
 				9E5B75482B7F9D7600E2BDE6 /* ProfileAcknowledgementViewModel.swift in Sources */,
 				9E4F22732B9F3B8F003E749E /* NotepadProtocols.swift in Sources */,
 				9E5B74F82B7F9A7000E2BDE6 /* SignUpInteractor.swift in Sources */,
@@ -1611,10 +1652,12 @@
 				9E2A8BCF2B854147004A81CF /* Validator.swift in Sources */,
 				8C3B5EAE2BAF7BC400CFE490 /* UnitsInteractor.swift in Sources */,
 				9E4F22D42B9F3C5D003E749E /* ExtraViewModel.swift in Sources */,
+				8CA0C35F2BE95DCB00353FB2 /* NotepadOuterCollectionViewCell.swift in Sources */,
 				9E4F22752B9F3B8F003E749E /* NotepadTableViewCell.swift in Sources */,
 				9EE8AE102B7FB8CF001D126F /* SettingsRouter.swift in Sources */,
 				9E4F229A2B9F3BDD003E749E /* ExercisePresenter.swift in Sources */,
 				8C3B5EBF2BAF7CA500CFE490 /* ChangeEmailContainer.swift in Sources */,
+				8CA0C3572BE95CAA00353FB2 /* NotepadInnerCollectionViewCellViewModel.swift in Sources */,
 				9E4F22BF2B9F3C2E003E749E /* TimerViewController.swift in Sources */,
 				9E4F227A2B9F3B9B003E749E /* NotepadHeaderViewModel.swift in Sources */,
 				9EBFD9642BAB077500A1891D /* UserAuthentication+CoreDataClass.swift in Sources */,
@@ -1638,8 +1681,10 @@
 				8C3B5E7D2BAF78D100CFE490 /* ProfileContainer.swift in Sources */,
 				9EE335992B8F9CCD00F532B3 /* SplashAnimator.swift in Sources */,
 				8CA0C34F2BE7042700353FB2 /* ChangeLanguageViewModel.swift in Sources */,
+				8CA0C3622BE95E0E00353FB2 /* UIHelper.swift in Sources */,
 				8C3B5E832BAF797C00CFE490 /* ThemeViewModel.swift in Sources */,
 				8C3B5EFD2BB8F2CF00CFE490 /* ProfileViewModelSingWithVKOrGoogle.swift in Sources */,
+				8CA0C35B2BE95D7C00353FB2 /* NotepadEmptyStateView.swift in Sources */,
 				8C5237232BCE31490084F335 /* HealthTableViewCellHealthCondition.swift in Sources */,
 				9E4F22982B9F3BDD003E749E /* ExerciseProtocols.swift in Sources */,
 				8C3B5EFB2BB75DA200CFE490 /* SettingsService.swift in Sources */,
@@ -1723,12 +1768,14 @@
 				9E4F226F2B9F3B8F003E749E /* NotepadContainer.swift in Sources */,
 				9E4F22712B9F3B8F003E749E /* NotepadViewController.swift in Sources */,
 				9E4F22C02B9F3C2E003E749E /* TimerContainer.swift in Sources */,
+				8CA0C3642BE968C200353FB2 /* Date+Extension.swift in Sources */,
 				8C3B5ECA2BAF7D4300CFE490 /* ChangePasswordViewController.swift in Sources */,
 				8C3B5E8D2BAF798F00CFE490 /* ThemeProtocols.swift in Sources */,
 				9E4F22AA2B9F3C05003E749E /* ResultsContainer.swift in Sources */,
 				8C3B5ECB2BAF7D4300CFE490 /* ChangePasswordProtocols.swift in Sources */,
 				8C3B5E6F2BAF77DC00CFE490 /* SettingsViewModel.swift in Sources */,
 				8C3B5E8A2BAF798F00CFE490 /* ThemePresenter.swift in Sources */,
+				8CA0C3542BE9579400353FB2 /* CalendarService.swift in Sources */,
 				8CBF07A52BCC5B38005D1E0D /* ForgotPasswordPresenter.swift in Sources */,
 				9E53FB4E2B7F950B00C55A45 /* Color+Extension.swift in Sources */,
 				9E4766DA2B9FC0BD00DD31B9 /* View+Extension.swift in Sources */,
@@ -1785,6 +1832,7 @@
 				9E53FB502B7F951000C55A45 /* UIColor+Extension.swift in Sources */,
 				9E53FB4C2B7F950400C55A45 /* UIView+Extension.swift in Sources */,
 				9EBFD9672BAB273400A1891D /* CoreDataService.swift in Sources */,
+				8CA0C35D2BE95DAA00353FB2 /* NotepadInnerCollectionViewCell.swift in Sources */,
 				9E5B750D2B7F9A8300E2BDE6 /* SignInPresenter.swift in Sources */,
 				8C3B5E812BAF794E00CFE490 /* ProfileTableViewCellWithTitle.swift in Sources */,
 				9E4F22B32B9F3C14003E749E /* ResultsTableViewCellViewModel.swift in Sources */,

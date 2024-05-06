@@ -53,7 +53,7 @@ struct WeightView: View {
             .padding(.bottom, Constants.VStackValues.bPadding)
         }
         .padding(.horizontal)
-        .onChange(of: weight) { newValue in
+        .onChange(of: weight) { _, newValue in
             ProfileAcknowledgementModel.shared.update(weight: newValue)
         }
     }
@@ -87,5 +87,5 @@ private extension WeightView {
             static let cornerRadius: CGFloat = 8
             static let colorOpacity: CGFloat = 0.1
         }
-    }    
+    }
 }
