@@ -11,7 +11,6 @@
 		9D15BE262BC457D1004FC560 /* NotepadInnerCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE252BC457D1004FC560 /* NotepadInnerCollectionViewCell.swift */; };
 		9D15BE282BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE272BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift */; };
 		9D15BE2A2BC48603004FC560 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE292BC48603004FC560 /* Date+Extension.swift */; };
-		9D15BE302BC4945F004FC560 /* EmptyStateViewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE2F2BC4945F004FC560 /* EmptyStateViewViewModel.swift */; };
 		9D15BE322BC4A1C7004FC560 /* ExtraTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE312BC4A1C7004FC560 /* ExtraTableViewCellViewModel.swift */; };
 		9D15BE352BC4A518004FC560 /* Extra.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D15BE342BC4A518004FC560 /* Extra.swift */; };
 		9D1C38972BC9BEE400A806A5 /* CameraView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C38962BC9BEE400A806A5 /* CameraView.swift */; };
@@ -29,6 +28,8 @@
 		9D4E4BD62BB070D200617E5D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B022BA8AEFE006AC078 /* FirebaseFirestore */; };
 		9D4E4BD72BB070D200617E5D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B042BA8AEFE006AC078 /* FirebaseFirestoreSwift */; };
 		9D4E4BD82BB070D200617E5D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B062BA8AEFE006AC078 /* FirebaseStorage */; };
+		9D6D535A2BE8FC0C0096BA90 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6D53592BE8FC0C0096BA90 /* EmptyStateView.swift */; };
+		9D6D535C2BE8FC450096BA90 /* EmptyStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6D535B2BE8FC450096BA90 /* EmptyStateViewModel.swift */; };
 		9D71328D2BC923DE00B5ACF8 /* SheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132872BC923DE00B5ACF8 /* SheetPresenter.swift */; };
 		9D71328E2BC923DE00B5ACF8 /* SheetRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132882BC923DE00B5ACF8 /* SheetRouter.swift */; };
 		9D71328F2BC923DE00B5ACF8 /* SheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132892BC923DE00B5ACF8 /* SheetViewController.swift */; };
@@ -39,7 +40,6 @@
 		9D7132E62BC9453200B5ACF8 /* ConditionChoiceView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132E52BC9453200B5ACF8 /* ConditionChoiceView.swift */; };
 		9D7D9A792BCC0D3E00089A14 /* WeightMeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A782BCC0D3E00089A14 /* WeightMeasurementView.swift */; };
 		9D7D9A7B2BCC0E1300089A14 /* WeightMeasurementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A7A2BCC0E1300089A14 /* WeightMeasurementViewModel.swift */; };
-		9D7D9A7E2BCC4AB200089A14 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A7D2BCC4AB200089A14 /* EmptyStateView.swift */; };
 		9D7D9A852BCC52DB00089A14 /* SheetPresenter+CameraViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A842BCC52DB00089A14 /* SheetPresenter+CameraViewOutput.swift */; };
 		9D7D9A872BCC52ED00089A14 /* SheetPresenter+ConditionChoiceViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A862BCC52ED00089A14 /* SheetPresenter+ConditionChoiceViewOutput.swift */; };
 		9D7D9A892BCC532100089A14 /* SheetPresenter+WeightMeasurementViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A882BCC532100089A14 /* SheetPresenter+WeightMeasurementViewOutput.swift */; };
@@ -206,7 +206,6 @@
 		9D15BE252BC457D1004FC560 /* NotepadInnerCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadInnerCollectionViewCell.swift; sourceTree = "<group>"; };
 		9D15BE272BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadInnerCollectionViewCellViewModel.swift; sourceTree = "<group>"; };
 		9D15BE292BC48603004FC560 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
-		9D15BE2F2BC4945F004FC560 /* EmptyStateViewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateViewViewModel.swift; sourceTree = "<group>"; };
 		9D15BE312BC4A1C7004FC560 /* ExtraTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		9D15BE342BC4A518004FC560 /* Extra.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Extra.swift; sourceTree = "<group>"; };
 		9D1C38962BC9BEE400A806A5 /* CameraView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraView.swift; sourceTree = "<group>"; };
@@ -214,6 +213,8 @@
 		9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		9D408CBC2BCDD77B00B770F9 /* DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
 		9D408CBE2BCDD78100B770F9 /* Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
+		9D6D53592BE8FC0C0096BA90 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
+		9D6D535B2BE8FC450096BA90 /* EmptyStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateViewModel.swift; sourceTree = "<group>"; };
 		9D7132872BC923DE00B5ACF8 /* SheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPresenter.swift; sourceTree = "<group>"; };
 		9D7132882BC923DE00B5ACF8 /* SheetRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetRouter.swift; sourceTree = "<group>"; };
 		9D7132892BC923DE00B5ACF8 /* SheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewController.swift; sourceTree = "<group>"; };
@@ -224,7 +225,6 @@
 		9D7132E52BC9453200B5ACF8 /* ConditionChoiceView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConditionChoiceView.swift; sourceTree = "<group>"; };
 		9D7D9A782BCC0D3E00089A14 /* WeightMeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightMeasurementView.swift; sourceTree = "<group>"; };
 		9D7D9A7A2BCC0E1300089A14 /* WeightMeasurementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightMeasurementViewModel.swift; sourceTree = "<group>"; };
-		9D7D9A7D2BCC4AB200089A14 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		9D7D9A842BCC52DB00089A14 /* SheetPresenter+CameraViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetPresenter+CameraViewOutput.swift"; sourceTree = "<group>"; };
 		9D7D9A862BCC52ED00089A14 /* SheetPresenter+ConditionChoiceViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetPresenter+ConditionChoiceViewOutput.swift"; sourceTree = "<group>"; };
 		9D7D9A882BCC532100089A14 /* SheetPresenter+WeightMeasurementViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetPresenter+WeightMeasurementViewOutput.swift"; sourceTree = "<group>"; };
@@ -441,6 +441,14 @@
 			path = Models;
 			sourceTree = "<group>";
 		};
+		9D6D53582BE8FBFF0096BA90 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				9D6D53592BE8FC0C0096BA90 /* EmptyStateView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		9D7132862BC923C400B5ACF8 /* SheetScene */ = {
 			isa = PBXGroup;
 			children = (
@@ -465,23 +473,6 @@
 				9DB778F12BDAC351001C3B34 /* WeightMeasurement */,
 			);
 			path = SheetViews;
-			sourceTree = "<group>";
-		};
-		9D7D9A7C2BCC4A9D00089A14 /* Views */ = {
-			isa = PBXGroup;
-			children = (
-				9D7D9A802BCC4B5500089A14 /* Models */,
-				9D7D9A7D2BCC4AB200089A14 /* EmptyStateView.swift */,
-			);
-			path = Views;
-			sourceTree = "<group>";
-		};
-		9D7D9A802BCC4B5500089A14 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				9D15BE2F2BC4945F004FC560 /* EmptyStateViewViewModel.swift */,
-			);
-			path = Models;
 			sourceTree = "<group>";
 		};
 		9D7D9A812BCC4B8800089A14 /* Scenes */ = {
@@ -706,6 +697,7 @@
 		9E4F22652B9F3B82003E749E /* NotepadScene */ = {
 			isa = PBXGroup;
 			children = (
+				9D6D53582BE8FBFF0096BA90 /* Views */,
 				9D9517162BC58A46004EB96A /* Helpers */,
 				9E4F22762B9F3B93003E749E /* Models */,
 				9E4F22672B9F3B8F003E749E /* NotepadContainer.swift */,
@@ -729,6 +721,7 @@
 				9E4F22782B9F3B9B003E749E /* NotepadTableViewCellViewModel.swift */,
 				9E4F22792B9F3B9B003E749E /* NotepadViewModel.swift */,
 				9D15BE272BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift */,
+				9D6D535B2BE8FC450096BA90 /* EmptyStateViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1186,7 +1179,6 @@
 		9EE8AE222B7FB91E001D126F /* Notepad */ = {
 			isa = PBXGroup;
 			children = (
-				9D7D9A7C2BCC4A9D00089A14 /* Views */,
 				9D7D9A812BCC4B8800089A14 /* Scenes */,
 			);
 			path = Notepad;
@@ -1384,6 +1376,7 @@
 				9E5B75402B7F9D7600E2BDE6 /* PageViewModel.swift in Sources */,
 				9E4F22AF2B9F3C05003E749E /* ResultsProtocols.swift in Sources */,
 				9D7D9A892BCC532100089A14 /* SheetPresenter+WeightMeasurementViewOutput.swift in Sources */,
+				9D6D535A2BE8FC0C0096BA90 /* EmptyStateView.swift in Sources */,
 				9E2A8BC92B850461004A81CF /* FIrebaseAuthService.swift in Sources */,
 				9E5B74FE2B7F9A7000E2BDE6 /* SignUpViewController.swift in Sources */,
 				9E5B74EC2B7F99FB00E2BDE6 /* WelcomeScreenViewController.swift in Sources */,
@@ -1402,7 +1395,6 @@
 				9E4F22B42B9F3C14003E749E /* ResultsViewModel.swift in Sources */,
 				9E4382D62B83738800C69708 /* GoogleAuthService.swift in Sources */,
 				9EE8AE1C2B7FB905001D126F /* ProgressPresenter.swift in Sources */,
-				9D7D9A7E2BCC4AB200089A14 /* EmptyStateView.swift in Sources */,
 				9E4F22AB2B9F3C05003E749E /* ResultsRouter.swift in Sources */,
 				9EE8AE1D2B7FB905001D126F /* ProgressRouter.swift in Sources */,
 				9EE8AE382B7FB96E001D126F /* WorkoutViewController.swift in Sources */,
@@ -1451,7 +1443,6 @@
 				9E4F22722B9F3B8F003E749E /* NotepadInteractor.swift in Sources */,
 				9E4F22D82B9F3D09003E749E /* CustomError.swift in Sources */,
 				9EE8AE122B7FB8CF001D126F /* SettingsProtocols.swift in Sources */,
-				9D15BE302BC4945F004FC560 /* EmptyStateViewViewModel.swift in Sources */,
 				9E5B75412B7F9D7600E2BDE6 /* PageView.swift in Sources */,
 				9E53FB502B7F951000C55A45 /* UIColor+Extension.swift in Sources */,
 				9E53FB4C2B7F950400C55A45 /* UIView+Extension.swift in Sources */,
@@ -1491,6 +1482,7 @@
 				9E5B750A2B7F9A8300E2BDE6 /* SignInViewController.swift in Sources */,
 				9E4F22AD2B9F3C05003E749E /* ResultsPresenter.swift in Sources */,
 				9E4F22C42B9F3C3C003E749E /* TimerViewModel.swift in Sources */,
+				9D6D535C2BE8FC450096BA90 /* EmptyStateViewModel.swift in Sources */,
 				9E4F22CD2B9F3C51003E749E /* ExtraViewController.swift in Sources */,
 				9E5B75142B7F9D1D00E2BDE6 /* AgeButtonView.swift in Sources */,
 				9EE8AE1F2B7FB905001D126F /* ProgressProtocols.swift in Sources */,
