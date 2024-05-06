@@ -444,9 +444,17 @@
 		9D6D53582BE8FBFF0096BA90 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				9D6D53592BE8FC0C0096BA90 /* EmptyStateView.swift */,
+				9D6D535D2BE8FD170096BA90 /* EmptyState */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		9D6D535D2BE8FD170096BA90 /* EmptyState */ = {
+			isa = PBXGroup;
+			children = (
+				9D6D53592BE8FC0C0096BA90 /* EmptyStateView.swift */,
+			);
+			path = EmptyState;
 			sourceTree = "<group>";
 		};
 		9D7132862BC923C400B5ACF8 /* SheetScene */ = {
@@ -473,20 +481,6 @@
 				9DB778F12BDAC351001C3B34 /* WeightMeasurement */,
 			);
 			path = SheetViews;
-			sourceTree = "<group>";
-		};
-		9D7D9A812BCC4B8800089A14 /* Scenes */ = {
-			isa = PBXGroup;
-			children = (
-				9E4F22652B9F3B82003E749E /* NotepadScene */,
-				9E4F227D2B9F3BA4003E749E /* TrainingScene */,
-				9E4F22912B9F3BCE003E749E /* ExerciseScene */,
-				9E4F22B52B9F3C20003E749E /* TimerScene */,
-				9E4F22A12B9F3BF8003E749E /* ResultsScene */,
-				9D7132862BC923C400B5ACF8 /* SheetScene */,
-				9E4F22C52B9F3C44003E749E /* ExtraScene */,
-			);
-			path = Scenes;
 			sourceTree = "<group>";
 		};
 		9D9517162BC58A46004EB96A /* Helpers */ = {
@@ -697,9 +691,9 @@
 		9E4F22652B9F3B82003E749E /* NotepadScene */ = {
 			isa = PBXGroup;
 			children = (
-				9D6D53582BE8FBFF0096BA90 /* Views */,
 				9D9517162BC58A46004EB96A /* Helpers */,
 				9E4F22762B9F3B93003E749E /* Models */,
+				9D6D53582BE8FBFF0096BA90 /* Views */,
 				9E4F22672B9F3B8F003E749E /* NotepadContainer.swift */,
 				9E4F226A2B9F3B8F003E749E /* NotepadInteractor.swift */,
 				9E4F22662B9F3B8F003E749E /* NotepadPresenter.swift */,
@@ -1179,7 +1173,13 @@
 		9EE8AE222B7FB91E001D126F /* Notepad */ = {
 			isa = PBXGroup;
 			children = (
-				9D7D9A812BCC4B8800089A14 /* Scenes */,
+				9E4F22652B9F3B82003E749E /* NotepadScene */,
+				9E4F227D2B9F3BA4003E749E /* TrainingScene */,
+				9E4F22912B9F3BCE003E749E /* ExerciseScene */,
+				9E4F22B52B9F3C20003E749E /* TimerScene */,
+				9E4F22A12B9F3BF8003E749E /* ResultsScene */,
+				9D7132862BC923C400B5ACF8 /* SheetScene */,
+				9E4F22C52B9F3C44003E749E /* ExtraScene */,
 			);
 			path = Notepad;
 			sourceTree = "<group>";
