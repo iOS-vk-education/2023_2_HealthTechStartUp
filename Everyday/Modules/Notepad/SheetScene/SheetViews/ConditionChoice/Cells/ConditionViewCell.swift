@@ -81,7 +81,7 @@ private extension ConditionViewCell {
         stackView.pin
             .vCenter()
             .horizontally()
-            .height(80)
+            .height(Constants.StackView.height)
     }
     
     // MARK: - Setup
@@ -112,8 +112,8 @@ private extension ConditionViewCell {
     }
     
     func setupTitleLabel() {
-        titleLabel.font = UIFont.systemFont(ofSize: 16, weight: .regular)
-        titleLabel.textColor = UIColor.Text.grayElement
+        titleLabel.font = Constants.TitleLabel.font
+        titleLabel.textColor = Constants.TitleLabel.textColor
         titleLabel.textAlignment = .center
     }
 }
@@ -127,6 +127,7 @@ private extension ConditionViewCell {
         struct StackView {
             static let defaultBackgroundColor: UIColor = .Text.grayElement
             static let chosenBackgroundColor: UIColor = .UI.accent
+            static let height: CGFloat = 80
         }
         
         struct ImageView {
@@ -139,6 +140,8 @@ private extension ConditionViewCell {
         struct TitleLabel {
             static let defaultTextColor: UIColor = .Text.grayElement
             static let chosenTextColor: UIColor = .UI.accent
+            static let textColor: UIColor = UIColor.Text.grayElement
+            static let font: UIFont = UIFont.systemFont(ofSize: 16, weight: .regular)
         }
     }
 }

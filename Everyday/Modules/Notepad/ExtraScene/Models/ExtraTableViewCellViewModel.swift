@@ -14,8 +14,8 @@ struct ExtraTableViewCellViewModel {
     let circle: UIImage?
     let circleFilled: UIImage?
     
-    init(viewType: ExtraViewType) {
-        let titleLabelTitle = viewType.rawValue
+    init(viewType: SheetType) {
+        let titleLabelTitle = viewType.description
         let titleLabelAttributedString = NSAttributedString(string: titleLabelTitle, attributes: Styles.titleAttributes)
         let resultLabelTitle = ""
         let resultLabelAttributedString = NSAttributedString(string: resultLabelTitle, attributes: Styles.resultAttributes)

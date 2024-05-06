@@ -30,6 +30,7 @@
 		9D4E4BD82BB070D200617E5D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B062BA8AEFE006AC078 /* FirebaseStorage */; };
 		9D6D535A2BE8FC0C0096BA90 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6D53592BE8FC0C0096BA90 /* EmptyStateView.swift */; };
 		9D6D535C2BE8FC450096BA90 /* EmptyStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6D535B2BE8FC450096BA90 /* EmptyStateViewModel.swift */; };
+		9D6D535F2BE965B50096BA90 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6D535E2BE965B50096BA90 /* CameraViewModel.swift */; };
 		9D71328D2BC923DE00B5ACF8 /* SheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132872BC923DE00B5ACF8 /* SheetPresenter.swift */; };
 		9D71328E2BC923DE00B5ACF8 /* SheetRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132882BC923DE00B5ACF8 /* SheetRouter.swift */; };
 		9D71328F2BC923DE00B5ACF8 /* SheetViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132892BC923DE00B5ACF8 /* SheetViewController.swift */; };
@@ -215,6 +216,7 @@
 		9D408CBE2BCDD78100B770F9 /* Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
 		9D6D53592BE8FC0C0096BA90 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		9D6D535B2BE8FC450096BA90 /* EmptyStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateViewModel.swift; sourceTree = "<group>"; };
+		9D6D535E2BE965B50096BA90 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		9D7132872BC923DE00B5ACF8 /* SheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPresenter.swift; sourceTree = "<group>"; };
 		9D7132882BC923DE00B5ACF8 /* SheetRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetRouter.swift; sourceTree = "<group>"; };
 		9D7132892BC923DE00B5ACF8 /* SheetViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetViewController.swift; sourceTree = "<group>"; };
@@ -428,6 +430,7 @@
 				9D1C38992BC9C73200A806A5 /* SheetViewModel.swift */,
 				9DA0936E2BCB134E009825F9 /* ConditionCellViewModel.swift */,
 				9D7D9A7A2BCC0E1300089A14 /* WeightMeasurementViewModel.swift */,
+				9D6D535E2BE965B50096BA90 /* CameraViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1369,6 +1372,7 @@
 				9E5B75092B7F9A8300E2BDE6 /* SignInRouter.swift in Sources */,
 				9E4F22BD2B9F3C2E003E749E /* TimerPresenter.swift in Sources */,
 				9E5B753B2B7F9D7600E2BDE6 /* GenderController.swift in Sources */,
+				9D6D535F2BE965B50096BA90 /* CameraViewModel.swift in Sources */,
 				9E4382D32B83738800C69708 /* InfoPlist.swift in Sources */,
 				9E5B74E92B7F99FB00E2BDE6 /* WelcomeScreenContainer.swift in Sources */,
 				9EE8AE142B7FB8CF001D126F /* SettingsContainer.swift in Sources */,

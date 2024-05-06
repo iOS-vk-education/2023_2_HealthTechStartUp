@@ -16,8 +16,6 @@ class WeightMeasurementView: UIView {
     private let saveButton = UIButton()
     
     private let textField = UITextField()
-    private let minusButton = UIButton()
-    private let plusButton = UIButton()
     private var output: WeightMeasurementViewOutput?
     
     // MARK: - Init
@@ -38,8 +36,6 @@ class WeightMeasurementView: UIView {
         
         let viewModel = WeightMeasurementViewModel(value: weight)
         textField.attributedText = viewModel.value
-        
-        setupWeightView()
     }
     
     // MARK: - Lifecycle
@@ -70,30 +66,16 @@ private extension WeightMeasurementView {
             .height(Constants.Button.height)
         
         textField.pin
-            .below(of: [closeButton, saveButton])
-            .marginTop(Constants.Button.padding)
+            .vCenter()
+            .hCenter()
             .width(resultViewWidth)
             .height(Constants.TextField.height)
-            .hCenter()
-        
-        minusButton.pin
-            .below(of: textField)
-            .left(Constants.ChangeButton.horizontalMargin)
-            .height(Constants.ChangeButton.height)
-            .width(Constants.ChangeButton.width)
-        
-        plusButton.pin
-            .below(of: textField)
-            .right(Constants.ChangeButton.horizontalMargin)
-            .height(Constants.ChangeButton.height)
-            .width(Constants.ChangeButton.width)
     }
     
     // MARK: - Configure
     
     func configureButtons() {
-        let cameraModel = CameraModel()
-        let viewModel = SheetViewModel(sheetType: .camera(model: cameraModel))
+        let viewModel = SheetViewModel()
         closeButton.setImage(viewModel.closeImage, for: .normal)
         saveButton.setImage(viewModel.saveImage, for: .normal)
     }
@@ -106,9 +88,7 @@ private extension WeightMeasurementView {
         configureButtons()
         setupView()
         setupTextField()
-        setupPlusButton()
-        setupMinusButton()
-        addSubviews(closeButton, saveButton, textField, minusButton, plusButton)
+        addSubviews(closeButton, saveButton, textField)
     }
     
     func setupCloseButton() {
@@ -138,46 +118,7 @@ private extension WeightMeasurementView {
         textField.addTarget(self, action: #selector(didEndEditingTextField), for: .editingDidEnd)
     }
     
-    func setupMinusButton() {
-        minusButton.tintColor = Constants.ChangeButton.backgroundColor
-        minusButton.addTarget(self, action: #selector(didTapMinusButton), for: .touchUpInside)
-    }
-    
-    func setupPlusButton() {
-        plusButton.tintColor = Constants.ChangeButton.backgroundColor
-        plusButton.addTarget(self, action: #selector(didTapPlusButton), for: .touchUpInside)
-    }
-    
     // MARK: - Actions
-    
-    @objc
-    func didTapMinusButton() {
-        guard
-            let attributedText = textField.attributedText,
-            let result = Int(attributedText.string),
-            result > 0
-        else {
-            return
-        }
-        
-        let newAttributedText = NSMutableAttributedString(attributedString: attributedText)
-        newAttributedText.mutableString.setString(String(result - 1))
-        textField.attributedText = newAttributedText
-    }
-    
-    @objc
-    func didTapPlusButton() {
-        guard
-            let attributedText = textField.attributedText,
-            let result = Int(attributedText.string)
-        else {
-            return
-        }
-        
-        let newAttributedText = NSMutableAttributedString(attributedString: attributedText)
-        newAttributedText.mutableString.setString(String(result + 1))
-        textField.attributedText = newAttributedText
-    }
     
     @objc
     func didEndEditingTextField() {
@@ -187,9 +128,7 @@ private extension WeightMeasurementView {
         
         let resultText = attributedText.string
         if resultText.isEmpty || !resultText.isDouble || Int(resultText) ?? 0 < 0 {
-            let valueTextFieldTitle = Constants.TextField.defaultValue
-            let valueTextFieldAttributedString = NSAttributedString(string: valueTextFieldTitle, attributes: Styles.valueAttributes)
-            textField.attributedText = valueTextFieldAttributedString
+            let valueTextFieldTitle = ""
         }
     }
     
@@ -205,9 +144,7 @@ private extension WeightMeasurementView {
     
     @objc
     func didTapSaveButton() {
-        guard
-            let attributedText = textField.attributedText
-        else {
+        guard let attributedText = textField.attributedText else {
             return
         }
         
@@ -221,27 +158,6 @@ private extension WeightMeasurementView {
                 output?.didTapSaveButton(with: Double(truncating: number))
             }
         }
-    }
-    
-    // MARK: - Helpers
-    
-    func setupWeightView() {
-        minusButton.isHidden = true
-        plusButton.isHidden = true
-    }
-}
-
-// MARK: - ViewInput
-
-protocol WeightMeasurementViewInput: AnyObject {
-    func configure(with viewModel: WeightMeasurementViewModel)
-}
-
-extension WeightMeasurementView: WeightMeasurementViewInput {
-    func configure(with viewModel: WeightMeasurementViewModel) {
-        textField.attributedText = viewModel.value
-        minusButton.setImage(viewModel.minusImage, for: .normal)
-        plusButton.setImage(viewModel.plusImage, for: .normal)
     }
 }
 
@@ -258,13 +174,6 @@ private extension WeightMeasurementView {
             static let height: CGFloat = 40
         }
         
-        struct ChangeButton {
-            static let backgroundColor: UIColor = UIColor.UI.accent
-            static let width: CGFloat = 100
-            static let height: CGFloat = 100
-            static let horizontalMargin: CGFloat = 50
-        }
-        
         struct TextField {
             static let backgroundColor: UIColor = UIColor.Text.primary
             static let textColor: UIColor = UIColor.UI.accent
@@ -274,12 +183,5 @@ private extension WeightMeasurementView {
             static let defaultValue: String = "0"
             static let topMargin: CGFloat = 20
         }
-    }
-    
-    struct Styles {
-        static let valueAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 72, weight: .bold),
-            .foregroundColor: UIColor.UI.accent
-        ]
     }
 }

@@ -35,15 +35,7 @@ class ConditionChoiceView: UIView {
         self.init(frame: .zero)
         self.output = output
         
-        if
-            let condition = condition,
-            let index = Condition.allCases.firstIndex(of: condition)
-        {
-            let indexPath = IndexPath(item: index, section: 0)
-            collectionView.selectItem(at: indexPath,
-                                      animated: false,
-                                      scrollPosition: .centeredHorizontally)
-        }
+        selectCollectionViewCellsIfNeeded(condition: condition)
     }
     
     // MARK: - Lifecycle
@@ -81,8 +73,7 @@ private extension ConditionChoiceView {
     // MARK: - Configure
     
     func configureButtons() {
-        let cameraModel = CameraModel()
-        let viewModel = SheetViewModel(sheetType: .camera(model: cameraModel))
+        let viewModel = SheetViewModel()
         closeButton.setImage(viewModel.closeImage, for: .normal)
         saveButton.setImage(viewModel.saveImage, for: .normal)
     }
@@ -137,19 +128,41 @@ private extension ConditionChoiceView {
             let indexPathsForSelectedItems = collectionView.indexPathsForSelectedItems,
             let selectedIndexPath = indexPathsForSelectedItems.first
         else {
+            output?.didTapSaveButton(with: nil)
             return
         }
         let selectedIndex = selectedIndexPath.item
         let condition = Condition.allCases[selectedIndex]
         output?.didTapSaveButton(with: condition)
     }
+    
+    // MARK: - Helpers
+    
+    func selectCollectionViewCellsIfNeeded(condition: Condition?) {
+        if
+            let condition = condition,
+            let index = Condition.allCases.firstIndex(of: condition)
+        {
+            let indexPath = IndexPath(item: index, section: 0)
+            collectionView.selectItem(at: indexPath, animated: false, scrollPosition: [])
+        }
+    }
 }
 
 // MARK: - UICollectionViewDelegate
 
 extension ConditionChoiceView: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-//        output?.didSelectItemAt(index: indexPath.item)
+    func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
+        guard let cell = collectionView.cellForItem(at: indexPath) else {
+            return false
+        }
+        
+        if cell.isSelected {
+            collectionView.deselectItem(at: indexPath, animated: true)
+            return false
+        } else {
+            return true
+        }
     }
 }
 
@@ -189,14 +202,6 @@ extension ConditionChoiceView: UICollectionViewDataSource {
         
         return cell
     }
-}
-
-// MARK: - ViewInput
-
-protocol ConditionChoiceViewInput: AnyObject {
-}
-
-extension ConditionChoiceView: ConditionChoiceViewInput {
 }
 
 // MARK: - Constants

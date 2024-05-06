@@ -25,7 +25,7 @@ protocol ExtraViewInput: AnyObject {
 protocol ExtraViewOutput: AnyObject {
     func didLoadView()
     func numberOfRowsInSection(_ section: Int) -> Int
-    func getViewType(at index: Int) -> ExtraViewType
+    func getViewType(at index: Int) -> SheetType
     func getSwitchState(at index: Int) -> Bool
     func didSelectRowAt(index: Int)
     func didTapFinishButton()
@@ -42,6 +42,6 @@ protocol ExtraInteractorOutput: AnyObject {
 }
 
 protocol ExtraRouterInput: AnyObject {
-    func showView(_ type: ExtraViewType, with context: SheetType)
+    func showView(of type: SheetType)
     func openNotepad()
 }

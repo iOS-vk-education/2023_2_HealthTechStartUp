@@ -15,15 +15,17 @@ final class ExtraPresenter {
     private let router: ExtraRouterInput
     private let interactor: ExtraInteractorInput
     
-    private var progress: WorkoutProgress
-    private var viewTypes: [ExtraViewType] = []
+    private var workoutProgress: WorkoutProgress
+
     private var switchStates: [Bool] = []
     private var data: [SheetType] = []
+    
+    private var extra: [SheetType] = []
     
     init(router: ExtraRouterInput, interactor: ExtraInteractorInput, workout: Workout) {
         self.router = router
         self.interactor = interactor
-        self.progress = WorkoutProgress(workout: workout)
+        self.workoutProgress = WorkoutProgress(workout: workout)
     }
 }
 
@@ -35,17 +37,12 @@ private extension ExtraPresenter {
     // MARK: - Init
     
     func initProperties() {
-        initViewTypes()
-        initSwitchStates()
         initData()
-    }
-    
-    func initViewTypes() {
-        viewTypes = ExtraViewType.allCases
+        initSwitchStates()
     }
     
     func initSwitchStates() {
-        switchStates = [Bool](repeating: false, count: viewTypes.count)
+        switchStates = [Bool](repeating: false, count: data.count)
     }
     
     func initData() {
@@ -67,11 +64,11 @@ extension ExtraPresenter: ExtraViewOutput {
     }
     
     func numberOfRowsInSection(_ section: Int) -> Int {
-        viewTypes.count
+        data.count
     }
     
-    func getViewType(at index: Int) -> ExtraViewType {
-        viewTypes[index]
+    func getViewType(at index: Int) -> SheetType {
+        data[index]
     }
     
     func getSwitchState(at index: Int) -> Bool {
@@ -82,7 +79,7 @@ extension ExtraPresenter: ExtraViewOutput {
         guard index != 2 else {  // because heart rate not implemented
             return
         }
-        router.showView(viewTypes[index], with: data[index])
+        router.showView(of: data[index])
     }
     
     func didTapFinishButton() {
@@ -92,31 +89,42 @@ extension ExtraPresenter: ExtraViewOutput {
         
         for element in data {
             switch element {
-            case .camera(let cameraModel):
-                image = cameraModel.image
-            case .conditionChoice(let conditionChoiceModel):
-                condition = Condition.allCases.firstIndex { $0 == conditionChoiceModel.condition }
+            case .camera(let model):
+                image = model.image
+            case .conditionChoice(let model):
+                condition = model.condition?.rawValue
             case .heartRateVariability:
                 continue
-            case .weightMeasurement(let weightMeasurementModel):
-                weight = weightMeasurementModel.weight
+            case .weightMeasurement(let model):
+                weight = model.weight
             }
         }
         
-        progress.extra = ExtraModel(
-            image: image,
-            condition: condition,
-            weight: weight
-        )
+        if image != nil || condition != nil || weight != nil {
+            workoutProgress.extra = ExtraModel(
+                image: image,
+                condition: condition,
+                weight: weight
+            )
+        }
         
-        interactor.saveProgress(progress)
+        interactor.saveProgress(workoutProgress)
     }
 }
 
 extension ExtraPresenter: SheetModuleOutput {
     func setResult(_ result: SheetType, at index: Int) {
         data[index] = result
-        switchStates[index] = true
+        switch result {
+        case .camera(let model):
+            switchStates[index] = model.image != nil
+        case .conditionChoice(let model):
+            switchStates[index] = model.condition != nil
+        case .heartRateVariability(let model):
+            switchStates[index] = model.heartRateVariability != nil
+        case .weightMeasurement(let model):
+            switchStates[index] = model.weight != nil
+        }
         view?.reloadData()
     }
 }

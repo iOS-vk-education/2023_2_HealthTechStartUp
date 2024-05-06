@@ -14,8 +14,8 @@ final class ExtraRouter {
 }
 
 private extension ExtraRouter {
-    func cameraViewController(with context: SheetType) -> UIViewController {
-        let context = SheetContext(moduleOutput: presenter, type: context)
+    func cameraViewController(with type: SheetType) -> UIViewController {
+        let context = SheetContext(moduleOutput: presenter, type: type)
         let container = SheetContainer.assemble(with: context)
         let presentedViewController = container.viewController
         presentedViewController.modalPresentationStyle = .overFullScreen
@@ -23,9 +23,9 @@ private extension ExtraRouter {
         return presentedViewController
     }
     
-    func stateViewController(with context: SheetType) -> UIViewController {
+    func stateViewController(with type: SheetType) -> UIViewController {
         let sheetSize = Constants.smallSheetHeight
-        let context = SheetContext(moduleOutput: presenter, type: context)
+        let context = SheetContext(moduleOutput: presenter, type: type)
         let container = SheetContainer.assemble(with: context)
         let presentedViewController = container.viewController
         if let sheet = presentedViewController.sheetPresentationController {
@@ -39,7 +39,7 @@ private extension ExtraRouter {
         return presentedViewController
     }
     
-    func heartViewController(with context: SheetType) -> UIViewController {
+    func heartViewController(with type: SheetType) -> UIViewController {
         let moduleType = SheetType.heartRateVariability(model: .init())
         let context = SheetContext(moduleOutput: presenter, type: moduleType)
         let container = SheetContainer.assemble(with: context)
@@ -49,9 +49,9 @@ private extension ExtraRouter {
         return presentedViewController
     }
     
-    func weightViewController(with context: SheetType) -> UIViewController {
+    func weightViewController(with type: SheetType) -> UIViewController {
         let sheetSize = Constants.smallSheetHeight
-        let context = SheetContext(moduleOutput: presenter, type: context)
+        let context = SheetContext(moduleOutput: presenter, type: type)
         let container = SheetContainer.assemble(with: context)
         let presentedViewController = container.viewController
         if let sheet = presentedViewController.sheetPresentationController {
@@ -67,38 +67,27 @@ private extension ExtraRouter {
 }
 
 extension ExtraRouter: ExtraRouterInput {
-    func showView(_ type: ExtraViewType, with context: SheetType) {
-        guard let viewController = viewController else {
-            return
-        }
-        
+    func showView(of type: SheetType) {
         let presentedViewController: UIViewController?
         switch type {
-        case .photo:
-            presentedViewController = cameraViewController(with: context)
-        case .state:
-            presentedViewController = stateViewController(with: context)
-        case .heart:
-            presentedViewController = heartViewController(with: context)
-        case .weight:
-            presentedViewController = weightViewController(with: context)
+        case .camera:
+            presentedViewController = cameraViewController(with: type)
+        case .conditionChoice:
+            presentedViewController = stateViewController(with: type)
+        case .heartRateVariability:
+            presentedViewController = heartViewController(with: type)
+        case .weightMeasurement:
+            presentedViewController = weightViewController(with: type)
         }
         guard let presentedViewController else {
             return
         }
         
-        viewController.present(presentedViewController, animated: true)
+        viewController?.present(presentedViewController, animated: true)
     }
     
-    func openNotepad() {
-        guard
-            let viewController = viewController,
-            let navigationController = viewController.navigationController
-        else {
-            return
-        }
-        
-        navigationController.popToRootViewController(animated: true)
+    func openNotepad() {        
+        viewController?.navigationController?.popToRootViewController(animated: true)
     }
 }
 

@@ -9,31 +9,18 @@ import UIKit
 
 struct SheetViewModel {
     let title: NSAttributedString
-    let backgroundColor: UIColor
     let closeImage: UIImage?
     let saveImage: UIImage?
     
-    // delete backgroundColor?
-    
-    init(sheetType: SheetType) {
-        let titleLabelTitle = "Title"  // make good
+    init() {
+        let titleLabelTitle = "Title"  // [fix]: change
         let titleLabelAttributedString = NSAttributedString(string: titleLabelTitle, attributes: Styles.titleAttributes)
-        var backgroundColor: UIColor = Constants.defaultBackgroundColor
-        switch sheetType {
-        case .camera:
-            backgroundColor = Constants.transparentBackgroundColor
-        case .heartRateVariability:
-            backgroundColor = Constants.transparentBackgroundColor
-        default:
-            break
-        }
         let closeButtonImageName = "xmark.circle.fill"
         let closeButtonImage = UIImage(systemName: closeButtonImageName, withConfiguration: Configurations.large)
         let saveButtonImageName = "checkmark.circle.fill"
         let saveButtonImage = UIImage(systemName: saveButtonImageName, withConfiguration: Configurations.large)
         
         self.title = titleLabelAttributedString
-        self.backgroundColor = backgroundColor
         self.closeImage = closeButtonImage
         self.saveImage = saveButtonImage
     }

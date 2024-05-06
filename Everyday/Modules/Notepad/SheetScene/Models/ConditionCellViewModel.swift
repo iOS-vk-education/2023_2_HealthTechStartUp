@@ -13,7 +13,7 @@ struct ConditionCellViewModel {
     
     init(condition: Condition) {
         let titleLabelTitle = String(describing: condition).uppercased()
-        let conditionImageName = condition.rawValue
+        let conditionImageName = condition.imageName
         let conditionImage = UIImage(systemName: conditionImageName, withConfiguration: Configurations.large)
         
         self.title = titleLabelTitle

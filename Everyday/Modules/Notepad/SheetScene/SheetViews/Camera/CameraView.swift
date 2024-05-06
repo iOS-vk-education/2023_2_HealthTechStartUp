@@ -16,16 +16,18 @@ class CameraView: UIView {
     private let closeButton = UIButton()
     private let saveButton = UIButton()
     
-    private var image: UIImage? {
-        didSet {
-            print("pic saved")
-        }
-    }
+//    private var image: UIImage? {
+//        didSet {
+//            print("pic saved")
+//        }
+//    }
+    private var imageView = UIImageView()
     
     private var session: AVCaptureSession?
     private let photoOutput = AVCapturePhotoOutput()
     private let previewLayer = AVCaptureVideoPreviewLayer()
     private let shutterButton = UIButton()
+    private let retakePhotoButton = UIButton()
     private var output: CameraViewOutput?
     
     // MARK: - Init
@@ -70,6 +72,12 @@ private extension CameraView {
             .width(Constants.Button.width)
             .height(Constants.Button.height)
         
+        imageView.pin
+            .below(of: [closeButton, saveButton])
+            .marginTop(Constants.Button.padding)
+            .bottom()
+            .horizontally()
+        
         previewLayer.pin
             .below(of: [closeButton.layer, saveButton.layer])
             .marginTop(Constants.Button.padding)
@@ -81,6 +89,12 @@ private extension CameraView {
             .width(Constants.ShutterButton.width)
             .height(Constants.ShutterButton.height)
             .bottom(pin.safeArea)
+        
+        retakePhotoButton.pin
+            .before(of: shutterButton)
+            .width(Constants.RetakePhotoButton.width)
+            .height(Constants.RetakePhotoButton.height)
+            .bottom(pin.safeArea)
     }
     
     // MARK: - Setup
@@ -91,17 +105,22 @@ private extension CameraView {
         configureButtons()
         setupView()
         setupPreviewLayer()
+        setupImageView()
         checkCameraPermissions()
+        setupShutterButton()
+        setupRetakePhotoButton()
         
         layer.addSublayer(previewLayer)
-        addSubviews(closeButton, saveButton, shutterButton)
+        addSubviews(closeButton, saveButton, imageView, shutterButton, retakePhotoButton)
     }
     
     func configureButtons() {
-        let cameraModel = CameraModel()
-        let viewModel = SheetViewModel(sheetType: .camera(model: cameraModel))
+        let viewModel = SheetViewModel()
         closeButton.setImage(viewModel.closeImage, for: .normal)
         saveButton.setImage(viewModel.saveImage, for: .normal)
+        
+        let cameraViewModel = CameraViewModel()
+        retakePhotoButton.setImage(cameraViewModel.retakePhotoImage, for: .normal)
     }
     
     func setupCloseButton() {
@@ -114,19 +133,31 @@ private extension CameraView {
         saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
     }
     
+    func setupRetakePhotoButton() {
+        retakePhotoButton.tintColor = Constants.RetakePhotoButton.tintColor
+        retakePhotoButton.addTarget(self, action: #selector(didTapRetakePhotoButton), for: .touchUpInside)
+        retakePhotoButton.isHidden = true
+    }
+    
     func setupView() {
-        backgroundColor = .clear
+        backgroundColor = Constants.backgroundColor
     }
     
     func setupPreviewLayer() {
         previewLayer.backgroundColor = Constants.PreviewLayer.backgroundColor.cgColor
-        previewLayer.cornerRadius = 16
+        previewLayer.cornerRadius = Constants.PreviewLayer.cornerRadius
+    }
+    
+    func setupImageView() {
+        imageView.backgroundColor = Constants.ImageView.backgroundColor
+        imageView.layer.cornerRadius = Constants.ImageView.cornerRadius
+        imageView.contentMode = .scaleAspectFill
     }
     
     func setupShutterButton() {
         shutterButton.layer.cornerRadius = Constants.ShutterButton.cornerRadius
         shutterButton.layer.borderWidth = Constants.ShutterButton.borderWidth
-        shutterButton.layer.borderColor = Constants.ShutterButton.borderColor.cgColor
+        shutterButton.layer.borderColor = Constants.ShutterButton.borderColor
         shutterButton.addTarget(self, action: #selector(didTapShutterButton), for: .touchUpInside)
     }
     
@@ -190,7 +221,7 @@ private extension CameraView {
             break
         }
         
-        setupShutterButton()
+//        setupShutterButton()
     }
     
     // MARK: - Actions
@@ -206,13 +237,21 @@ private extension CameraView {
     }
     
     @objc
+    func didTapRetakePhotoButton() {
+        checkCameraPermissions()
+        shutterButton.isEnabled = true
+        imageView.image = nil
+        retakePhotoButton.isHidden = true
+    }
+    
+    @objc
     func didTapCloseButton() {
         output?.didTapCameraCloseButton()
     }
     
     @objc
     func didTapSaveButton() {
-        output?.didTapSaveButton(with: image)
+        output?.didTapSaveButton(with: imageView.image)
     }
 }
 
@@ -225,31 +264,21 @@ extension CameraView: AVCapturePhotoCaptureDelegate {
         }
         
         let image = UIImage(data: data)
+        imageView.image = image
+        
+        shutterButton.isEnabled = false
         session?.stopRunning()
-        
-        self.image = image
-        
-//        let imageView = UIImageView(image: image)
-//        imageView.contentMode = .scaleAspectFill
-//        imageView.frame = previewLayer.bounds
-        
-//        addSubview(imageView)
+        session = nil
+        previewLayer.session = nil
+        retakePhotoButton.isHidden = false
     }
-}
-
-// MARK: - ViewInput
-
-protocol CameraViewInput: AnyObject {
-}
-
-extension CameraView: CameraViewInput {
 }
 
 // MARK: - Constants
 
 private extension CameraView {
     struct Constants {
-        static let backgroundColor: UIColor = .background
+        static let backgroundColor: UIColor = .clear
         
         struct Button {
             static let backgroundColor: UIColor = .UI.accent
@@ -263,11 +292,23 @@ private extension CameraView {
             static let height: CGFloat = 100
             static let cornerRadius: CGFloat = 50
             static let borderWidth: CGFloat = 10
-            static let borderColor: UIColor = .background
+            static let borderColor: CGColor = UIColor.background.cgColor
+        }
+        
+        struct RetakePhotoButton {
+            static let width: CGFloat = 100
+            static let height: CGFloat = 100
+            static let tintColor: UIColor = .background
         }
         
         struct PreviewLayer {
-            static let backgroundColor: UIColor = .UI.accent
+            static let backgroundColor: UIColor = .background
+            static let cornerRadius: CGFloat = 16
+        }
+        
+        struct ImageView {
+            static let backgroundColor: UIColor = .clear
+            static let cornerRadius: CGFloat = 16
         }
     }
 }
