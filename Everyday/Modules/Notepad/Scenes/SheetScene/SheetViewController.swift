@@ -34,7 +34,6 @@ final class SheetViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        output.didLoadView()
     }
     
     override func viewWillLayoutSubviews() {
@@ -48,11 +47,7 @@ private extension SheetViewController {
     // MARK: - Layout
     
     func layout() {
-        contentView.pin
-            .top()
-            .marginTop(Constants.marginTop)
-            .bottom()
-            .horizontally()
+        contentView.pin.all()
     }
     
     // MARK: - Setup

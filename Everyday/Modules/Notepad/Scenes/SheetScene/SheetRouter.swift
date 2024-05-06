@@ -14,10 +14,6 @@ final class SheetRouter {
 
 extension SheetRouter: SheetRouterInput {
     func dismissSheet() {
-        guard let viewController = viewController else {
-            return
-        }
-        
-        viewController.dismiss(animated: true)
+        viewController?.dismiss(animated: true)
     }
 }

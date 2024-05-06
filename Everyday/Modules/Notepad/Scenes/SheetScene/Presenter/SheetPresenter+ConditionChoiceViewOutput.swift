@@ -9,7 +9,6 @@ import Foundation
 
 extension SheetPresenter: ConditionChoiceViewOutput {
     func didTapSaveButton(with condition: Condition?) {
-        print("[DEBUG] choice save button")
         let conditionChoiceModel = ConditionChoiceModel(condition: condition)
         let moduleType = SheetType.conditionChoice(model: conditionChoiceModel)
         moduleOutput?.setResult(moduleType, at: 1)

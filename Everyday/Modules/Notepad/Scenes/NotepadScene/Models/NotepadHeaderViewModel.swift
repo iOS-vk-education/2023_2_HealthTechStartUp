@@ -17,8 +17,8 @@ struct NotepadHeaderViewModel {
         let titleLabelAttributedString = NSAttributedString(string: titleLabelTitle, attributes: Styles.titleAttributes)
         let desciptionLabelTitle = workout.dayName
         let desciptionLabelAttributedString = NSAttributedString(string: desciptionLabelTitle, attributes: Styles.desciptionAttributes)
-        let collapseButtonImageName = "chevron.down"
-        let collapseButtonImage = UIImage(systemName: collapseButtonImageName)
+        let collapseButtonImageName = "chevron.down.circle.fill"
+        let collapseButtonImage = UIImage(systemName: collapseButtonImageName, withConfiguration: Configurations.large)
         
         self.title = titleLabelAttributedString
         self.desciption = desciptionLabelAttributedString
@@ -37,5 +37,9 @@ private extension NotepadHeaderViewModel {
             .foregroundColor: UIColor.Text.grayElement,
             .font: UIFont.systemFont(ofSize: 16, weight: .regular)
         ]
+    }
+    
+    struct Configurations {
+        static let large = UIImage.SymbolConfiguration(textStyle: .title1)
     }
 }

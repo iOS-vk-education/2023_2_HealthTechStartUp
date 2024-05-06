@@ -47,7 +47,9 @@ class NotepadSectionHeaderView: UIView {
     func configure(with viewModel: NotepadHeaderViewModel, and tag: Int, state: NotepadSectionHeaderState) {
         titleLabel.attributedText = viewModel.title
         descriptionLabel.attributedText = viewModel.desciption
-        collapseButton.setImage(viewModel.collapseImage, for: .normal)
+        if state == .open {
+            collapseButton.setImage(viewModel.collapseImage, for: .normal)
+        }
         
         self.tag = tag
         collapseButton.tag = tag
@@ -57,10 +59,10 @@ class NotepadSectionHeaderView: UIView {
     
     func addActions(_ target: Any?, viewAction: Selector, buttonAction: Selector) {
         switch state {
-        case .open:
+        case .collapse:
             let tapGesture = UITapGestureRecognizer(target: target, action: viewAction)
             self.addGestureRecognizer(tapGesture)
-        case .collapse:
+        case .open:
             collapseButton.addTarget(target, action: buttonAction, for: .touchUpInside)
         }
     }

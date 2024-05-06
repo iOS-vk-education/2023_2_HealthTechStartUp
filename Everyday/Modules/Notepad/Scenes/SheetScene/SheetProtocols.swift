@@ -20,7 +20,6 @@ protocol SheetViewInput: AnyObject {
 }
 
 protocol SheetViewOutput: AnyObject {
-    func didLoadView()
 }
 
 protocol SheetWeightViewOutput: AnyObject {

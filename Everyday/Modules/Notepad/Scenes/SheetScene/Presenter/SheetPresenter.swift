@@ -25,9 +25,6 @@ extension SheetPresenter: SheetModuleInput {
 }
 
 extension SheetPresenter: SheetViewOutput {
-    func didLoadView() {
-        print("[DEBUG] SheetPresenter didLoadView")
-    }
 }
 
 extension SheetPresenter: SheetWeightViewOutput {

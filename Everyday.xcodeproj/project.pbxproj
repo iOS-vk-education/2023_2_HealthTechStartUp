@@ -470,6 +470,7 @@
 		9D7D9A7C2BCC4A9D00089A14 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				9D7D9A802BCC4B5500089A14 /* Models */,
 				9D7D9A7D2BCC4AB200089A14 /* EmptyStateView.swift */,
 			);
 			path = Views;
@@ -1185,7 +1186,6 @@
 		9EE8AE222B7FB91E001D126F /* Notepad */ = {
 			isa = PBXGroup;
 			children = (
-				9D7D9A802BCC4B5500089A14 /* Models */,
 				9D7D9A7C2BCC4A9D00089A14 /* Views */,
 				9D7D9A812BCC4B8800089A14 /* Scenes */,
 			);

@@ -132,11 +132,10 @@ private extension WeightMeasurementView {
         textField.layer.cornerRadius = Constants.TextField.cornerRadius
         textField.textAlignment = .center
         textField.textColor = Constants.TextField.textColor
-        textField.placeholder = "0,0"
+        textField.placeholder = Constants.TextField.defaultValue
         textField.font = UIFont.systemFont(ofSize: 72, weight: .bold)
         textField.keyboardType = .decimalPad
         textField.addTarget(self, action: #selector(didEndEditingTextField), for: .editingDidEnd)
-        textField.addTarget(self, action: #selector(didEditTextField), for: .editingChanged)
     }
     
     func setupMinusButton() {
@@ -182,37 +181,15 @@ private extension WeightMeasurementView {
     
     @objc
     func didEndEditingTextField() {
-        guard
-            let attributedText = textField.attributedText
-        else {
+        guard let attributedText = textField.attributedText else {
             return
         }
         
         let resultText = attributedText.string
         if resultText.isEmpty || !resultText.isDouble || Int(resultText) ?? 0 < 0 {
-            let valueTextFieldTitle = String("0,0")
+            let valueTextFieldTitle = Constants.TextField.defaultValue
             let valueTextFieldAttributedString = NSAttributedString(string: valueTextFieldTitle, attributes: Styles.valueAttributes)
             textField.attributedText = valueTextFieldAttributedString
-        }
-    }
-    
-    @objc
-    func didEditTextField() {
-        guard
-            let attributedText = textField.attributedText
-        else {
-            return
-        }
-        
-        let resultText = attributedText.string
-        if resultText.isEmpty || !resultText.isDouble || Int(resultText) ?? 0 < 0 {
-//            output?.didEditTextField(with: nil)
-        } else {
-            let formatter = NumberFormatter()
-            formatter.numberStyle = .decimal
-            if let number = formatter.number(from: resultText) {
-//                output?.didEditTextField(with: Double(truncating: number))
-            }
         }
     }
     
@@ -294,7 +271,7 @@ private extension WeightMeasurementView {
             static let padding: CGFloat = 32
             static let cornerRadius: CGFloat = 16
             static let height: CGFloat = 100
-            static let defaultValue: Double = 0.0
+            static let defaultValue: String = "0"
             static let topMargin: CGFloat = 20
         }
     }

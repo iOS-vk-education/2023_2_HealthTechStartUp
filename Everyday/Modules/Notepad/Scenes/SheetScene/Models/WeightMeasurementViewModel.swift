@@ -13,7 +13,7 @@ struct WeightMeasurementViewModel {
     let plusImage: UIImage?
     
     init(value: Double?) {
-        var valueTextFieldTitle = "0,0"
+        var valueTextFieldTitle = "0"
         if let value {
             let formatter = NumberFormatter()
             formatter.numberStyle = .decimal

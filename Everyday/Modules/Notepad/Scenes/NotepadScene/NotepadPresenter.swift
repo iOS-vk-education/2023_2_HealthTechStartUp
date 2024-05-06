@@ -20,10 +20,7 @@ final class NotepadPresenter {
     
     private var isResult: Bool = false
     private var workouts: [Workout] = []
-    private var isCollapsed = [
-        true,
-        true
-    ]
+    private var isCollapsed: [Bool] = []
     
     init(router: NotepadRouterInput, interactor: NotepadInteractorInput) {
         self.router = router
@@ -129,7 +126,7 @@ extension NotepadPresenter: NotepadViewOutput {
     }
     
     func headerViewState() -> NotepadSectionHeaderState {
-        isResult ? .collapse : .open
+        isResult ? .open : .collapse
     }
     
     func getWorkout(at index: Int) -> Workout {
@@ -169,9 +166,7 @@ extension NotepadPresenter: NotepadInteractorOutput {
     func didLoadDay(with workouts: [Workout], _ isResult: Bool) {
         self.workouts = workouts
         self.isResult = isResult
-        for i in 0..<isCollapsed.count {
-            isCollapsed[i] = true
-        }
+        self.isCollapsed = [Bool](repeating: true, count: workouts.count)
         
         view?.reloadData()
         

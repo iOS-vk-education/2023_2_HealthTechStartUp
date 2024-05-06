@@ -230,6 +230,10 @@ extension NotepadViewController: UITableViewDataSource {
 // MARK: - TableViewDelegate
 
 extension NotepadViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = NotepadSectionHeaderView()
         

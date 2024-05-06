@@ -16,22 +16,18 @@ enum SheetType {
 
 struct CameraModel {
     var image: UIImage?
-    var status: String = "Photo wasn't saved."
 }
 
 struct ConditionChoiceModel {
     var condition: Condition?
-    var status: String = "Condition wasn't chosen."
 }
 
 struct HeartRateVariabilityModel {
     var heartRateVariability: HeartRateVariability?
-    var status: String = "No data saved."
 }
 
 struct WeightMeasurementModel {
     var weight: Double?
-    var status: String = "Weight wasn't measured."
 }
 
 enum Condition: String, CaseIterable {
@@ -42,5 +38,4 @@ enum Condition: String, CaseIterable {
 
 struct HeartRateVariability {
     var heartRate: Double? = 0.0
-    var status: String = "No heart rate"
 }

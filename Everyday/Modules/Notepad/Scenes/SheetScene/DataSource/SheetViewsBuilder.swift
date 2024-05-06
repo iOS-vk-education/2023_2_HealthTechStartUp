@@ -19,7 +19,7 @@ final class SheetViewsBuilder: SheetViewsBuilderDescription {
         case .conditionChoice(let conditionChoiceViewModel):
             return ConditionChoiceView(condition: conditionChoiceViewModel.condition, output: output)
         case .heartRateVariability:
-            return EmptyStateView()
+            return UIView()
         case .weightMeasurement(let weightMeasurementViewModel):
             return WeightMeasurementView(weight: weightMeasurementViewModel.weight, output: output)
         }

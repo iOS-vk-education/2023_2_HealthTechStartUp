@@ -65,7 +65,6 @@ private extension NotepadTableViewCell {
     
     func setup() {
         resultLabel.textAlignment = .center
-        
         contentView.addSubviews(titleLabel, resultLabel)
     }
 }
