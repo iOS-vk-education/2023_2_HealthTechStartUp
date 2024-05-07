@@ -66,7 +66,8 @@ private extension WeightMeasurementView {
             .height(Constants.Button.height)
         
         textField.pin
-            .vCenter()
+            .below(of: [closeButton, saveButton])
+            .marginTop(Constants.TextField.marginTop)
             .hCenter()
             .width(resultViewWidth)
             .height(Constants.TextField.height)
@@ -128,7 +129,7 @@ private extension WeightMeasurementView {
         
         let resultText = attributedText.string
         if resultText.isEmpty || !resultText.isDouble || Int(resultText) ?? 0 < 0 {
-            let valueTextFieldTitle = ""
+            textField.text = ""
         }
     }
     
@@ -181,7 +182,7 @@ private extension WeightMeasurementView {
             static let cornerRadius: CGFloat = 16
             static let height: CGFloat = 100
             static let defaultValue: String = "0"
-            static let topMargin: CGFloat = 20
+            static let marginTop: CGFloat = 20
         }
     }
 }
