@@ -123,15 +123,15 @@ final class SignUpViewController: UIViewController {
     }
 
     private func setupPasswordTextFieldRightView() {
-        let toggleButtonContainer = UIView(frame: CGRect(x: 0, y: 0,
+        let toggleButtonContainer = UIView(frame: CGRect(x: .zero, y: .zero,
                                                          width: Constants.Buttons.togglePasswordButtonSize + Constants.TextField.textAlignerWidth,
                                                          height: Constants.TextField.height))
-        togglePasswordButton.frame = CGRect(x: 0, y: 0,
+        togglePasswordButton.frame = CGRect(x: .zero, y: .zero,
                                             width: Constants.Buttons.togglePasswordButtonSize,
                                             height: Constants.TextField.height)
         toggleButtonContainer.addSubview(togglePasswordButton)
 
-        let paddingView = UIView(frame: CGRect(x: Constants.Buttons.togglePasswordButtonSize, y: 0,
+        let paddingView = UIView(frame: CGRect(x: Constants.Buttons.togglePasswordButtonSize, y: .zero,
                                                width: Constants.TextField.textAlignerWidth,
                                                height: Constants.TextField.height))
         toggleButtonContainer.addSubview(paddingView)
@@ -211,7 +211,6 @@ final class SignUpViewController: UIViewController {
         }
         
         let keyboardHeight = keyboardFrame.cgRectValue.height
-        print(keyboardHeight)
         let buttonBottomMargin: CGFloat = activeTextField == passwordTextField ? Constants.TextField.passwordBottom : Constants.TextField.emailBottom
 
         let newButtonBottom = self.view.frame.height - keyboardHeight - buttonBottomMargin

@@ -31,7 +31,6 @@ extension SignUpRouter: SignUpRouterInput {
     
     func openLogin() {
         let signInViewController = SignInContainer.assemble(with: .init()).viewController
-        // signInViewController.modalTransitionStyle = .crossDissolve
         viewController?.navigationController?.pushViewController(signInViewController, animated: true)
     }
     

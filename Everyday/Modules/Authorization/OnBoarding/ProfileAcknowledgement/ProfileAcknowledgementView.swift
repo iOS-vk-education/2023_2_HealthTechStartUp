@@ -222,7 +222,7 @@ struct ProfileAcknowledgementView: View {
             case .failure(let error):
                 setAlert(alertType: .networkMessage(error: error))
                 
-                DispatchQueue.main.async {
+                 DispatchQueue.main.async {
                     self.onFinish?()
                 }
             }

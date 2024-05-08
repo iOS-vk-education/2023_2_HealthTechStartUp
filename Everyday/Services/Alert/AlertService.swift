@@ -9,7 +9,7 @@ import UIKit
 import SwiftUI
 import PinLayout
 
-class AlertService {
+final class AlertService {
     static let shared = AlertService()
 
     private init() {}
@@ -53,7 +53,7 @@ struct AlertViewControllerWrapper: UIViewControllerRepresentable {
     }
 }
 
-class AlertViewController: UIViewController {
+final class AlertViewController: UIViewController {
     
     // MARK: - Private properties
     
