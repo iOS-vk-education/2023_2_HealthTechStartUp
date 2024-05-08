@@ -11,7 +11,8 @@ import UIKit
 final class DeleteAccountInteractor {
     weak var output: DeleteAccountInteractorOutput?
     weak var viewController: UIViewController?
-    let settingsService: SettingsServiceDescription
+    
+    private let settingsService: SettingsServiceDescription
     
     init(settingsService: SettingsServiceDescription) {
         self.settingsService = settingsService

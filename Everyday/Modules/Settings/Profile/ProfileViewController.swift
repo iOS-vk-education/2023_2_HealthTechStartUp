@@ -88,21 +88,21 @@ private extension ProfileViewController {
     
     // MARK: - Setup
     
-    func setup() {
+   private func setup() {
         setupScrollView()
         setupTableView()
         setupImage()
         setupButton()
     }
     
-    func setupScrollView() {
+    private func setupScrollView() {
         scrollView.addSubviews(userImageView, changeUserImageButton, tableView)
         scrollView.isScrollEnabled = true
         scrollView.alwaysBounceVertical = true
         scrollView.showsVerticalScrollIndicator = false
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.showsVerticalScrollIndicator = false
@@ -116,18 +116,17 @@ private extension ProfileViewController {
         tableView.separatorColor = .black
     }
     
-    func setupImage() {
+    private func setupImage() {
         userImageView.contentMode = .scaleAspectFill
         userImageView.layer.cornerRadius = UIScreen.main.bounds.size.width * 0.5 / 2
         userImageView.clipsToBounds = true
     }
     
-    func setupButton() {
+    private func setupButton() {
         changeUserImageButton.addTarget(self, action: #selector(didTapChangeUserImageButton), for: .touchUpInside)
     }
     
-    func layout() {
-        
+    private func layout() {
         scrollView.pin
             .top(view.pin.safeArea)
             .horizontally()
@@ -152,7 +151,7 @@ private extension ProfileViewController {
     // MARK: Actions
     
     @objc
-    private func didTapChangeUserImageButton() {
+    func didTapChangeUserImageButton() {
         var configuration = PHPickerConfiguration()
         configuration.filter = .images
         configuration.selectionLimit = 1
@@ -163,12 +162,12 @@ private extension ProfileViewController {
     }
     
     @objc
-    private func editingUserNameDidEnd(username: String) {
+    func editingUserNameDidEnd(username: String) {
         output.updateUserName(username: username)
     }
     
     @objc
-    private func didTapWholeView() {
+    func didTapWholeView() {
         view.endEditing(true)
     }
     

@@ -15,14 +15,12 @@ final class ChangeLanguageContainer {
     
     class func assemble(with context: ChangeLanguageContext) -> ChangeLanguageContainer {
         let router = ChangeLanguageRouter()
-        let interactor = ChangeLanguageInteractor()
-        let presenter = ChangeLanguagePresenter(router: router, interactor: interactor)
+        let presenter = ChangeLanguagePresenter(router: router)
         let viewController = ChangeLanguageViewController(output: presenter)
         
         presenter.view = viewController
         presenter.moduleOutput = context.moduleOutput
         
-        interactor.output = presenter
         router.viewController = viewController
         
         return ChangeLanguageContainer(view: viewController, input: presenter, router: router)

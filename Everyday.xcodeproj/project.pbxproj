@@ -29,7 +29,6 @@
 		8C3B5E8B2BAF798F00CFE490 /* ThemeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E852BAF798F00CFE490 /* ThemeRouter.swift */; };
 		8C3B5E8C2BAF798F00CFE490 /* ThemeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E862BAF798F00CFE490 /* ThemeViewController.swift */; };
 		8C3B5E8D2BAF798F00CFE490 /* ThemeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E872BAF798F00CFE490 /* ThemeProtocols.swift */; };
-		8C3B5E8E2BAF798F00CFE490 /* ThemeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E882BAF798F00CFE490 /* ThemeInteractor.swift */; };
 		8C3B5E8F2BAF798F00CFE490 /* ThemeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E892BAF798F00CFE490 /* ThemeContainer.swift */; };
 		8C3B5E912BAF79E900CFE490 /* ThemeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E902BAF79E900CFE490 /* ThemeTableViewCell.swift */; };
 		8C3B5E932BAF7A1400CFE490 /* DateAndTimeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E922BAF7A1400CFE490 /* DateAndTimeViewModel.swift */; };
@@ -37,7 +36,6 @@
 		8C3B5E9B2BAF7A2700CFE490 /* DateAndTimeRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E952BAF7A2700CFE490 /* DateAndTimeRouter.swift */; };
 		8C3B5E9C2BAF7A2700CFE490 /* DateAndTimeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E962BAF7A2700CFE490 /* DateAndTimeViewController.swift */; };
 		8C3B5E9D2BAF7A2700CFE490 /* DateAndTimeProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E972BAF7A2700CFE490 /* DateAndTimeProtocols.swift */; };
-		8C3B5E9E2BAF7A2700CFE490 /* DateAndTimeInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E982BAF7A2700CFE490 /* DateAndTimeInteractor.swift */; };
 		8C3B5E9F2BAF7A2700CFE490 /* DateAndTimeContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5E992BAF7A2700CFE490 /* DateAndTimeContainer.swift */; };
 		8C3B5EA12BAF7A8000CFE490 /* DateAndTimeTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EA02BAF7A8000CFE490 /* DateAndTimeTableViewCell.swift */; };
 		8C3B5EA32BAF7BAA00CFE490 /* UnitsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C3B5EA22BAF7BAA00CFE490 /* UnitsViewModel.swift */; };
@@ -91,7 +89,6 @@
 		8CA0C3492BE7034800353FB2 /* ChangeLanguageRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3432BE7034800353FB2 /* ChangeLanguageRouter.swift */; };
 		8CA0C34A2BE7034800353FB2 /* ChangeLanguageViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3442BE7034800353FB2 /* ChangeLanguageViewController.swift */; };
 		8CA0C34B2BE7034800353FB2 /* ChangeLanguageProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3452BE7034800353FB2 /* ChangeLanguageProtocols.swift */; };
-		8CA0C34C2BE7034800353FB2 /* ChangeLanguageInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3462BE7034800353FB2 /* ChangeLanguageInteractor.swift */; };
 		8CA0C34D2BE7034800353FB2 /* ChangeLanguageContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3472BE7034800353FB2 /* ChangeLanguageContainer.swift */; };
 		8CA0C34F2BE7042700353FB2 /* ChangeLanguageViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C34E2BE7042700353FB2 /* ChangeLanguageViewModel.swift */; };
 		8CA0C3512BE7101700353FB2 /* ChangeLanguageTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3502BE7101700353FB2 /* ChangeLanguageTableViewCell.swift */; };
@@ -287,7 +284,6 @@
 		8C3B5E852BAF798F00CFE490 /* ThemeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeRouter.swift; sourceTree = "<group>"; };
 		8C3B5E862BAF798F00CFE490 /* ThemeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeViewController.swift; sourceTree = "<group>"; };
 		8C3B5E872BAF798F00CFE490 /* ThemeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeProtocols.swift; sourceTree = "<group>"; };
-		8C3B5E882BAF798F00CFE490 /* ThemeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeInteractor.swift; sourceTree = "<group>"; };
 		8C3B5E892BAF798F00CFE490 /* ThemeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeContainer.swift; sourceTree = "<group>"; };
 		8C3B5E902BAF79E900CFE490 /* ThemeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ThemeTableViewCell.swift; sourceTree = "<group>"; };
 		8C3B5E922BAF7A1400CFE490 /* DateAndTimeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeViewModel.swift; sourceTree = "<group>"; };
@@ -295,7 +291,6 @@
 		8C3B5E952BAF7A2700CFE490 /* DateAndTimeRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeRouter.swift; sourceTree = "<group>"; };
 		8C3B5E962BAF7A2700CFE490 /* DateAndTimeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeViewController.swift; sourceTree = "<group>"; };
 		8C3B5E972BAF7A2700CFE490 /* DateAndTimeProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeProtocols.swift; sourceTree = "<group>"; };
-		8C3B5E982BAF7A2700CFE490 /* DateAndTimeInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeInteractor.swift; sourceTree = "<group>"; };
 		8C3B5E992BAF7A2700CFE490 /* DateAndTimeContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeContainer.swift; sourceTree = "<group>"; };
 		8C3B5EA02BAF7A8000CFE490 /* DateAndTimeTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DateAndTimeTableViewCell.swift; sourceTree = "<group>"; };
 		8C3B5EA22BAF7BAA00CFE490 /* UnitsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UnitsViewModel.swift; sourceTree = "<group>"; };
@@ -349,7 +344,6 @@
 		8CA0C3432BE7034800353FB2 /* ChangeLanguageRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageRouter.swift; sourceTree = "<group>"; };
 		8CA0C3442BE7034800353FB2 /* ChangeLanguageViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageViewController.swift; sourceTree = "<group>"; };
 		8CA0C3452BE7034800353FB2 /* ChangeLanguageProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageProtocols.swift; sourceTree = "<group>"; };
-		8CA0C3462BE7034800353FB2 /* ChangeLanguageInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageInteractor.swift; sourceTree = "<group>"; };
 		8CA0C3472BE7034800353FB2 /* ChangeLanguageContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageContainer.swift; sourceTree = "<group>"; };
 		8CA0C34E2BE7042700353FB2 /* ChangeLanguageViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageViewModel.swift; sourceTree = "<group>"; };
 		8CA0C3502BE7101700353FB2 /* ChangeLanguageTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChangeLanguageTableViewCell.swift; sourceTree = "<group>"; };
@@ -583,7 +577,6 @@
 				8C3B5E852BAF798F00CFE490 /* ThemeRouter.swift */,
 				8C3B5E862BAF798F00CFE490 /* ThemeViewController.swift */,
 				8C3B5E872BAF798F00CFE490 /* ThemeProtocols.swift */,
-				8C3B5E882BAF798F00CFE490 /* ThemeInteractor.swift */,
 				8C3B5E892BAF798F00CFE490 /* ThemeContainer.swift */,
 				8C3B5E902BAF79E900CFE490 /* ThemeTableViewCell.swift */,
 			);
@@ -598,7 +591,6 @@
 				8C3B5E952BAF7A2700CFE490 /* DateAndTimeRouter.swift */,
 				8C3B5E962BAF7A2700CFE490 /* DateAndTimeViewController.swift */,
 				8C3B5E972BAF7A2700CFE490 /* DateAndTimeProtocols.swift */,
-				8C3B5E982BAF7A2700CFE490 /* DateAndTimeInteractor.swift */,
 				8C3B5E992BAF7A2700CFE490 /* DateAndTimeContainer.swift */,
 				8C3B5EA02BAF7A8000CFE490 /* DateAndTimeTableViewCell.swift */,
 			);
@@ -790,7 +782,6 @@
 				8CA0C3432BE7034800353FB2 /* ChangeLanguageRouter.swift */,
 				8CA0C3442BE7034800353FB2 /* ChangeLanguageViewController.swift */,
 				8CA0C3452BE7034800353FB2 /* ChangeLanguageProtocols.swift */,
-				8CA0C3462BE7034800353FB2 /* ChangeLanguageInteractor.swift */,
 				8CA0C3472BE7034800353FB2 /* ChangeLanguageContainer.swift */,
 				8CA0C3502BE7101700353FB2 /* ChangeLanguageTableViewCell.swift */,
 			);
@@ -1666,7 +1657,6 @@
 				8CA0C34A2BE7034800353FB2 /* ChangeLanguageViewController.swift in Sources */,
 				8CA0C34B2BE7034800353FB2 /* ChangeLanguageProtocols.swift in Sources */,
 				8CA0C3512BE7101700353FB2 /* ChangeLanguageTableViewCell.swift in Sources */,
-				8CA0C34C2BE7034800353FB2 /* ChangeLanguageInteractor.swift in Sources */,
 				8CA0C34D2BE7034800353FB2 /* ChangeLanguageContainer.swift in Sources */,
 				9E4F22AC2B9F3C05003E749E /* ResultsViewController.swift in Sources */,
 				8C3B5EAB2BAF7BC400CFE490 /* UnitsRouter.swift in Sources */,
@@ -1706,7 +1696,6 @@
 				9E4F226E2B9F3B8F003E749E /* NotepadPresenter.swift in Sources */,
 				9EE3359B2B8F9CDC00F532B3 /* SplashViewController.swift in Sources */,
 				9EE8AE132B7FB8CF001D126F /* SettingsInteractor.swift in Sources */,
-				8C3B5E8E2BAF798F00CFE490 /* ThemeInteractor.swift in Sources */,
 				9E5B74F92B7F9A7000E2BDE6 /* SignUpRouter.swift in Sources */,
 				9E4F225F2B9F3B46003E749E /* DayService.swift in Sources */,
 				8C3B5EDE2BAF7EA900CFE490 /* SettingsUserDefaultsService.swift in Sources */,
@@ -1809,7 +1798,6 @@
 				8CBF07B52BCE207F005D1E0D /* HealthService.swift in Sources */,
 				8C3B5EAC2BAF7BC400CFE490 /* UnitsViewController.swift in Sources */,
 				8C3B5EBA2BAF7CA500CFE490 /* ChangeEmailPresenter.swift in Sources */,
-				8C3B5E9E2BAF7A2700CFE490 /* DateAndTimeInteractor.swift in Sources */,
 				9E5B754A2B7F9D7600E2BDE6 /* OnBoardingViewController.swift in Sources */,
 				8C3B5ECF2BAF7D8C00CFE490 /* DeleteAccountViewModel.swift in Sources */,
 				9E4F22992B9F3BDD003E749E /* ExerciseViewController.swift in Sources */,

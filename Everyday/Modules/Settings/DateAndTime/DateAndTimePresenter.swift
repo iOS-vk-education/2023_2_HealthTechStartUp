@@ -13,12 +13,10 @@ final class DateAndTimePresenter {
     weak var moduleOutput: DateAndTimeModuleOutput?
     
     private let router: DateAndTimeRouterInput
-    private let interactor: DateAndTimeInteractorInput
     private let settingsUserDefaultsService: SettingsUserDefaultsService = SettingsUserDefaultsService.shared
     
-    init(router: DateAndTimeRouterInput, interactor: DateAndTimeInteractorInput) {
+    init(router: DateAndTimeRouterInput) {
         self.router = router
-        self.interactor = interactor
     }
 }
 
@@ -55,7 +53,4 @@ extension DateAndTimePresenter: DateAndTimeViewOutput {
     func didSwipe() {
         router.getBackToMainView()
     }
-}
-
-extension DateAndTimePresenter: DateAndTimeInteractorOutput {
 }

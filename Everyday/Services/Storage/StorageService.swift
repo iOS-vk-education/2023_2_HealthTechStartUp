@@ -43,7 +43,7 @@ final class StorageService: StorageServiceDescription {
     }
     
     func saveImage(image: UIImage, userId: String) async throws -> (path: String, name: String) {
-        guard let data = image.jpegData(compressionQuality: 0.4) else {
+        guard let data = image.jpegData(compressionQuality: 0.002) else {
             throw URLError(.backgroundSessionWasDisconnected)
         }
         

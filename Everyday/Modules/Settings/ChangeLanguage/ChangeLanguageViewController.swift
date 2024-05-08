@@ -43,7 +43,7 @@ final class ChangeLanguageViewController: UIViewController {
         setup()
     }
     
-    override func viewWillLayoutSubviews() {
+    override func viewDidLayoutSubviews() {
         layout()
     }
 }

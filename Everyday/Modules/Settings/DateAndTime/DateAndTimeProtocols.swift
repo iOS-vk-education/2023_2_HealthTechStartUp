@@ -29,12 +29,6 @@ protocol DateAndTimeViewOutput: AnyObject {
     func didSwipe()
 }
 
-protocol DateAndTimeInteractorInput: AnyObject {
-}
-
-protocol DateAndTimeInteractorOutput: AnyObject {
-}
-
 protocol DateAndTimeRouterInput: AnyObject {
     func getBackToMainView()
 }

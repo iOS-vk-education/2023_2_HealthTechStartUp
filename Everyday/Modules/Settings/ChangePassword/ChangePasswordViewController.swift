@@ -21,7 +21,7 @@ final class ChangePasswordViewController: UIViewController {
     private let forgotPasswordButton = UIButton()
     private let scrollView = UIScrollView()
     private let contentView = UIView()
-    let navBarTitle = UILabel()
+    private let navBarTitle = UILabel()
     init(output: ChangePasswordViewOutput) {
         self.output = output
         
@@ -40,8 +40,8 @@ final class ChangePasswordViewController: UIViewController {
         view.backgroundColor = Constants.backgroundColor
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapWholeView))
-                gestureRecognizer.cancelsTouchesInView = false
-                view.addGestureRecognizer(gestureRecognizer)
+        gestureRecognizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(gestureRecognizer)
         
         let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc))
         self.view.addGestureRecognizer(swipeRightGestureRecognizer)
@@ -65,23 +65,23 @@ private extension ChangePasswordViewController {
     
     // MARK: - Setup
     
-    func setup() {
+    private func setup() {
         setupScrollView()
         setupContentView()
         setupFields()
         setupButtons()
     }
     
-    func setupScrollView() {
+    private func setupScrollView() {
         scrollView.addSubview(contentView)
         scrollView.showsVerticalScrollIndicator = false
     }
     
-    func setupContentView() {
+    private func setupContentView() {
         contentView.addSubviews(oldPasswordField, passwordField, confirmButton, forgotPasswordButton)
     }
     
-    func setupFields() {
+    private func setupFields() {
         [oldPasswordField, passwordField].forEach { field in
             let leftView = UIView(frame: CGRect(x: 0,
                                                 y: 0,
@@ -99,7 +99,7 @@ private extension ChangePasswordViewController {
         }
     }
     
-    func setupButtons() {
+    private func setupButtons() {
         confirmButton.backgroundColor = Constants.gray.withAlphaComponent(Constants.TextField.colorOpacity)
         confirmButton.layer.cornerRadius = Constants.cornerRadius
         
@@ -110,7 +110,7 @@ private extension ChangePasswordViewController {
     
     // MARK: - Layout
     
-    func layout() {
+    private func layout() {
         scrollView.pin
             .top(view.pin.safeArea)
             .horizontally()
@@ -159,12 +159,12 @@ private extension ChangePasswordViewController {
     // MARK: - Actions
 
     @objc
-    private func didTapWholeView() {
+    func didTapWholeView() {
         view.endEditing(true)
     }
     
     @objc
-    private func didTapConfirmButton() {
+    func didTapConfirmButton() {
         let oldPassword = self.oldPasswordField.text ?? ""
         let newPassword = self.passwordField.text ?? ""
         

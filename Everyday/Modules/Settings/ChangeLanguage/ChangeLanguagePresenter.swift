@@ -13,12 +13,10 @@ final class ChangeLanguagePresenter {
     weak var moduleOutput: ChangeLanguageModuleOutput?
     
     private let router: ChangeLanguageRouterInput
-    private let interactor: ChangeLanguageInteractorInput
     private let settingsUserDefaultsService: SettingsUserDefaultsService = SettingsUserDefaultsService.shared
     
-    init(router: ChangeLanguageRouterInput, interactor: ChangeLanguageInteractorInput) {
+    init(router: ChangeLanguageRouterInput) {
         self.router = router
-        self.interactor = interactor
     }
 }
 
@@ -29,14 +27,11 @@ extension ChangeLanguagePresenter: ChangeLanguageViewOutput {
     func didTapEnCell() {
         settingsUserDefaultsService.setSelectedLanguage(language: Constants.enKey)
         Bundle.main.path(forResource: Constants.enKey, ofType: Constants.lproj)
-        
-        //        let locale = Locale(identifier: Constants.enKey)
-        //        Locale.current = locale
     }
     
     func didTapRuCell() {
         settingsUserDefaultsService.setSelectedLanguage(language: Constants.ruKey)
-        // Перезапуск приложения
+        Bundle.main.path(forResource: Constants.ruKey, ofType: Constants.lproj)
     }
     
     func getCurrentLanguageIndexPath() -> IndexPath {
@@ -70,7 +65,4 @@ extension ChangeLanguagePresenter: ChangeLanguageViewOutput {
         static let ruKey: String = "ru"
         static let lproj: String = "lproj"
     }
-}
-
-extension ChangeLanguagePresenter: ChangeLanguageInteractorOutput {
 }

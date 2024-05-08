@@ -94,6 +94,7 @@ private extension DateAndTimeViewController {
         }
     }
 }
+
 extension DateAndTimeViewController: DateAndTimeViewInput {
     func configure(with model: DateAndTimeViewModel) {
         navBarTitle.attributedText = model.dateAndTimeTitle

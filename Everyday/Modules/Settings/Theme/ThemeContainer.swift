@@ -15,14 +15,11 @@ final class ThemeContainer {
     
     class func assemble(with context: ThemeContext) -> ThemeContainer {
         let router = ThemeRouter()
-        let interactor = ThemeInteractor()
-        let presenter = ThemePresenter(router: router, interactor: interactor)
+        let presenter = ThemePresenter(router: router)
         let viewController = ThemeViewController(output: presenter)
         
         presenter.view = viewController
         presenter.moduleOutput = context.moduleOutput
-        
-        interactor.output = presenter
         
         router.viewController = viewController
         

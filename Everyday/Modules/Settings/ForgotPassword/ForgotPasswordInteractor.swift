@@ -9,9 +9,8 @@ import UIKit
 
 final class ForgotPasswordInteractor {
     weak var output: ForgotPasswordInteractorOutput?
-    weak var viewController: UIViewController?
     
-    let settingsService: SettingsServiceDescription
+    private let settingsService: SettingsServiceDescription
     
     init(settingsService: SettingsServiceDescription) {
         self.settingsService = settingsService

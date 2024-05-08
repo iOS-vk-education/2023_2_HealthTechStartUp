@@ -13,11 +13,9 @@ final class ThemePresenter {
     weak var moduleOutput: ThemeModuleOutput?
     
     private let router: ThemeRouterInput
-    private let interactor: ThemeInteractorInput
     private let settingsUserDefaultsService: SettingsUserDefaultsService = SettingsUserDefaultsService.shared
-    init(router: ThemeRouterInput, interactor: ThemeInteractorInput) {
+    init(router: ThemeRouterInput) {
         self.router = router
-        self.interactor = interactor
     }
 }
 
@@ -54,7 +52,4 @@ extension ThemePresenter: ThemeViewOutput {
     func didSwipe() {
         router.getBackToMainView()
     }
-}
-
-extension ThemePresenter: ThemeInteractorOutput {
 }

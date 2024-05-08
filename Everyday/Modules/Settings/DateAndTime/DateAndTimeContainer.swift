@@ -15,14 +15,11 @@ final class DateAndTimeContainer {
     
     class func assemble(with context: DateAndTimeContext) -> DateAndTimeContainer {
         let router = DateAndTimeRouter()
-        let interactor = DateAndTimeInteractor()
-        let presenter = DateAndTimePresenter(router: router, interactor: interactor)
+        let presenter = DateAndTimePresenter(router: router)
         let viewController = DateAndTimeViewController(output: presenter)
         
         presenter.view = viewController
         presenter.moduleOutput = context.moduleOutput
-        
-        interactor.output = presenter
         
         router.viewController = viewController
         

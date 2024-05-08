@@ -20,7 +20,7 @@ final class ChangeEmailViewController: UIViewController {
     private let forgotPasswordButton = UIButton()
     private let scrollView = UIScrollView()
     private let contentView = UIView()
-    let navBarTitle = UILabel()
+    private let navBarTitle = UILabel()
     
     init(output: ChangeEmailViewOutput) {
         self.output = output
@@ -65,23 +65,23 @@ final class ChangeEmailViewController: UIViewController {
 
 private extension ChangeEmailViewController {
     
-    func setup() {
+    private func setup() {
         setupScrollView()
         setupContentView()
         setupFields()
         setupButtons()
     }
     
-    func setupScrollView() {
+    private func setupScrollView() {
         scrollView.addSubview(contentView)
         scrollView.showsVerticalScrollIndicator = false
     }
     
-    func setupContentView() {
+    private func setupContentView() {
         contentView.addSubviews(newEmailField, passwordField, confirmButton, forgotPasswordButton)
     }
     
-    func setupFields() {
+    private func setupFields() {
         [newEmailField, passwordField].forEach { field in
             let leftView = UIView(frame: CGRect(x: 0,
                                                 y: 0,
@@ -99,7 +99,7 @@ private extension ChangeEmailViewController {
         }
     }
     
-    func setupButtons() {
+    private func setupButtons() {
         confirmButton.backgroundColor = Constants.gray.withAlphaComponent(Constants.TextField.colorOpacity)
         confirmButton.layer.cornerRadius = Constants.cornerRadius
         confirmButton.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
@@ -109,7 +109,7 @@ private extension ChangeEmailViewController {
     
     // MARK: - Layout
     
-    func layout() {
+    private func layout() {
         scrollView.pin
             .top(view.pin.safeArea)
             .horizontally()
@@ -158,7 +158,7 @@ private extension ChangeEmailViewController {
     // MARK: - Actions
     
     @objc
-    private func didTapWholeView() {
+    func didTapWholeView() {
         view.endEditing(true)
     }
     

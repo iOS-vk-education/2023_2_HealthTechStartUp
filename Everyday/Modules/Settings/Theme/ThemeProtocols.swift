@@ -29,12 +29,6 @@ protocol ThemeViewOutput: AnyObject {
     func didSwipe()
 }
 
-protocol ThemeInteractorInput: AnyObject {
-}
-
-protocol ThemeInteractorOutput: AnyObject {
-}
-
 protocol ThemeRouterInput: AnyObject {
     func getBackToMainView()
 }

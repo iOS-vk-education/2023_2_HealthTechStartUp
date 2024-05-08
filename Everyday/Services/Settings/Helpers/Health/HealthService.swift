@@ -10,7 +10,7 @@ import HealthKit
 
 final class HealthService {
     
-    let healthStore = HKHealthStore()
+    private let healthStore = HKHealthStore()
     
     init() {
         let steps = HKQuantityType(.stepCount)

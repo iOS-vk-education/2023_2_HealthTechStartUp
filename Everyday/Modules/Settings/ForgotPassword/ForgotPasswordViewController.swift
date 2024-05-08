@@ -15,14 +15,13 @@ final class ForgotPasswordViewController: UIViewController {
     private let contentView = UIView()
     private let emailField = UITextField()
     private let confirmButton = UIButton()
-    let navBarTitle = UILabel()
+    private let navBarTitle = UILabel()
     
     init(output: ForgotPasswordViewOutput) {
         self.output = output
         
         super.init(nibName: nil, bundle: nil)
     }
-    //    ForgotPassword
     
     @available(*, unavailable)
     required init?(coder aDecoder: NSCoder) {
@@ -60,23 +59,23 @@ final class ForgotPasswordViewController: UIViewController {
 
 private extension ForgotPasswordViewController {
     
-    func setup() {
+    private func setup() {
         setupScrollView()
         setupContentView()
         setupField()
         setupButton()
     }
     
-    func setupScrollView() {
+    private func setupScrollView() {
         scrollView.addSubview(contentView)
         scrollView.showsVerticalScrollIndicator = false
     }
     
-    func setupContentView() {
+    private func setupContentView() {
         contentView.addSubviews(emailField, confirmButton)
     }
     
-    func setupField() {
+    private func setupField() {
         let leftView = UIView(frame: CGRect(x: 0,
                                             y: 0,
                                             width: 10,
@@ -92,7 +91,7 @@ private extension ForgotPasswordViewController {
         emailField.leftViewMode = .always
     }
     
-    func setupButton() {
+    private func setupButton() {
         confirmButton.backgroundColor = Constants.gray.withAlphaComponent(Constants.TextField.colorOpacity)
         confirmButton.layer.cornerRadius = Constants.cornerRadius
         confirmButton.addTarget(self, action: #selector(didTapConfirmButton), for: .touchUpInside)
@@ -100,7 +99,7 @@ private extension ForgotPasswordViewController {
     
     // MARK: - Layout
     
-    func layout() {
+    private func layout() {
         scrollView.pin
             .top(view.pin.safeArea)
             .horizontally()
@@ -133,7 +132,7 @@ private extension ForgotPasswordViewController {
     // MARK: - Actions
     
     @objc
-    private func didTapWholeView() {
+    func didTapWholeView() {
         view.endEditing(true)
     }
     

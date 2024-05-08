@@ -11,7 +11,8 @@ import UIKit
 final class ChangePasswordInteractor {
     weak var output: ChangePasswordInteractorOutput?
     weak var viewController: UIViewController?
-    let settingsService: SettingsServiceDescription
+    
+    private let settingsService: SettingsServiceDescription
     
     init(settingsService: SettingsServiceDescription) {
         self.settingsService = settingsService

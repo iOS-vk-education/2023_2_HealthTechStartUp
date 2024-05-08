@@ -48,7 +48,7 @@ final class SettingsViewController: UIViewController {
 
     // MARK: - Setup
     
-    func setup() {
+    private func setup() {
         setupTableView()
         view.addSubview(tableView)
     }
@@ -64,7 +64,7 @@ final class SettingsViewController: UIViewController {
 
     // MARK: - Layout
     
-    func layout() {
+    private func layout() {
         tableView.pin
             .top(view.pin.safeArea)
             .horizontally()

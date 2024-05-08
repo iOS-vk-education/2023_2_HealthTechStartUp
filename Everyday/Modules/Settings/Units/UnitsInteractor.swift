@@ -11,7 +11,7 @@ import Foundation
 final class UnitsInteractor {
     weak var output: UnitsInteractorOutput?
     
-    let settingsService: SettingsServiceDescription
+    private let settingsService: SettingsServiceDescription
     
     init(settingsService: SettingsServiceDescription) {
         self.settingsService = settingsService

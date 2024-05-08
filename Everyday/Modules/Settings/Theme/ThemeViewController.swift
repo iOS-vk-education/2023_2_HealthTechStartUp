@@ -54,13 +54,12 @@ final class ThemeViewController: UIViewController {
 }
 
 private extension ThemeViewController {
-    
-    func setup() {
+    private func setup() {
         setupTableView()
         view.addSubviews(tableView)
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(ThemeTableViewCell.self, forCellReuseIdentifier: ThemeTableViewCell.reuseID)
@@ -77,7 +76,7 @@ private extension ThemeViewController {
     
     // MARK: - Layout
     
-    func layout() {
+    private func layout() {
         tableView.pin
             .top(view.pin.safeArea)
             .horizontally()
@@ -93,6 +92,7 @@ private extension ThemeViewController {
         }
     }
 }
+
 extension ThemeViewController: ThemeViewInput {
     func configure(with model: ThemeViewModel) {
         navBarTitle.attributedText = model.themeTitle

@@ -29,12 +29,6 @@ protocol ChangeLanguageViewOutput: AnyObject {
     func getCurrentLanguageIndexPath() -> IndexPath
 }
 
-protocol ChangeLanguageInteractorInput: AnyObject {
-}
-
-protocol ChangeLanguageInteractorOutput: AnyObject {
-}
-
 protocol ChangeLanguageRouterInput: AnyObject {
     func getBackToMainView()
 }

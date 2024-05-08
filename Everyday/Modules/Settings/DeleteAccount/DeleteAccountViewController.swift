@@ -21,7 +21,7 @@ final class DeleteAccountViewController: UIViewController {
     private let scrollView = UIScrollView()
     private let contentView = UIView()
     private let discriprionLabel = UILabel()
-    let navBarTitle = UILabel()
+    private let navBarTitle = UILabel()
     init(output: DeleteAccountViewOutput) {
         self.output = output
         
@@ -40,8 +40,8 @@ final class DeleteAccountViewController: UIViewController {
         view.backgroundColor = Constants.backgroundColor
         
         let gestureRecognizer = UITapGestureRecognizer(target: self, action: #selector(didTapWholeView))
-                gestureRecognizer.cancelsTouchesInView = false
-                view.addGestureRecognizer(gestureRecognizer)
+        gestureRecognizer.cancelsTouchesInView = false
+        view.addGestureRecognizer(gestureRecognizer)
         
         let swipeRightGestureRecognizer = UISwipeGestureRecognizer(target: self, action: #selector(swipeFunc))
         
@@ -71,7 +71,7 @@ private extension DeleteAccountViewController {
     
     // MARK: - Setup
     
-    func setup() {
+    private func setup() {
         setupScrollView()
         setupContentView()
         setupFields()
@@ -79,16 +79,16 @@ private extension DeleteAccountViewController {
         setupLabel()
     }
     
-    func setupScrollView() {
+    private func setupScrollView() {
         scrollView.addSubview(contentView)
         scrollView.showsVerticalScrollIndicator = false
     }
     
-    func setupContentView() {
+    private func setupContentView() {
         contentView.addSubviews(emailField, passwordField, confirmButton, forgotPasswordButton, discriprionLabel)
     }
     
-    func setupFields() {
+    private func setupFields() {
         [emailField, passwordField].forEach { field in
             let leftView = UIView(frame: CGRect(x: 0,
                                                 y: 0,
@@ -106,7 +106,7 @@ private extension DeleteAccountViewController {
         }
     }
     
-    func setupButtons() {
+    private func setupButtons() {
         confirmButton.backgroundColor = Constants.gray.withAlphaComponent(Constants.TextField.colorOpacity)
         confirmButton.layer.cornerRadius = Constants.cornerRadius
         
@@ -121,14 +121,14 @@ private extension DeleteAccountViewController {
         forgotPasswordButton.addTarget(self, action: #selector(didTapForgotPasswordButton), for: .touchUpInside)
     }
     
-    func setupLabel() {
+    private func setupLabel() {
         discriprionLabel.textAlignment = .center
         discriprionLabel.numberOfLines = .max
     }
     
     // MARK: - Layout
     
-    func layoutForSignWithEmail() {
+    private func layoutForSignWithEmail() {
         scrollView.pin
             .top(view.pin.safeArea)
             .horizontally()
@@ -174,7 +174,7 @@ private extension DeleteAccountViewController {
             .bottom(to: contentView.edge.bottom)
     }
     
-    func layoutForOtherNonEmailSign() {
+    private func layoutForOtherNonEmailSign() {
         scrollView.pin
             .top(view.pin.safeArea)
             .horizontally()
@@ -207,14 +207,14 @@ private extension DeleteAccountViewController {
     // MARK: - Actions
     
     @objc
-    private func didTapConfirmButton() {
+    func didTapConfirmButton() {
         let email = self.emailField.text ?? ""
         let password = self.passwordField.text ?? ""
         
         output.didTapConfirmButton(with: email, and: password)
     }
     @objc
-    private func didTapWholeView() {
+    func didTapWholeView() {
         view.endEditing(true)
     }
     

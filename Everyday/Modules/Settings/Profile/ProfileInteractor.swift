@@ -10,8 +10,8 @@ import UIKit
 
 final class ProfileInteractor {
     weak var output: ProfileInteractorOutput?
-    let settingsService: SettingsServiceDescription
-    let authService: AuthServiceDescription
+    private let settingsService: SettingsServiceDescription
+    private let authService: AuthServiceDescription
     
     init(settingsService: SettingsServiceDescription, authService: AuthServiceDescription) {
         self.settingsService = settingsService

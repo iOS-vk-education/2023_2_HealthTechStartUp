@@ -54,12 +54,12 @@ final class UnitsViewController: UIViewController {
 
 private extension UnitsViewController {
     
-    func setup() {
+    private func setup() {
         setupTableView()
         view.addSubviews(tableView)
     }
     
-    func setupTableView() {
+    private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(UnitsTableViewCell.self, forCellReuseIdentifier: UnitsTableViewCell.reuseID)
@@ -76,8 +76,7 @@ private extension UnitsViewController {
     
     // MARK: - Layout
     
-    func layout() {
-        
+    private func layout() {
         tableView.pin
             .top(view.pin.safeArea)
             .horizontally()
@@ -87,7 +86,7 @@ private extension UnitsViewController {
     // MARK: - Actions
     
     @objc
-    func swipeFunc(_ gesture: UISwipeGestureRecognizer) {
+    private func swipeFunc(_ gesture: UISwipeGestureRecognizer) {
         if gesture.direction == .right {
             output.didSwipe()
         }
@@ -110,7 +109,6 @@ extension UnitsViewController: UnitsViewInput {
 // MARK: - UITableViewDataSource
 
 extension UnitsViewController: UITableViewDataSource {
-    
     func numberOfSections(in tableView: UITableView) -> Int {
         return Constants.TableView.numberOfSectionsInTableView
     }
