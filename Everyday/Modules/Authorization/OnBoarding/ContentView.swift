@@ -16,6 +16,7 @@ struct ContentView: View {
     private let pages: [Page] = Page.samplePages
     private let dotAppearance = UIPageControl.appearance()
         
+    var authType: String
     var onFinish: (() -> Void)?
     
     // MARK: - body
@@ -53,7 +54,7 @@ struct ContentView: View {
                     })
             .tag(6)
             
-            ProfileAcknowledgementView(onFinish: onFinish)
+            ProfileAcknowledgementView(authType: authType, onFinish: onFinish)
             .tag(7)
         }
         .animation(.easeInOut, value: pageIndex)

@@ -18,6 +18,28 @@
         }
       }
     },
+    "AlertManager_apple_sign_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Когда наша команда получит лицензию разработчиков, вы обязательно сможете войти таким способом"
+          }
+        }
+      }
+    },
+    "AlertManager_apple_sign_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вход через Apple ID временно не доступен"
+          }
+        }
+      }
+    },
     "AlertManager_invalid_email_message" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -188,6 +210,17 @@
         }
       }
     },
+    "Alertmanager_networkMessage_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " Сетевая ошибка"
+          }
+        }
+      }
+    },
     "AlertManager_password_reset_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -205,6 +238,61 @@
         }
       }
     },
+    "AlertManager_passwordReset_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сообщение для сброса пароля было выслано на почту"
+          }
+        }
+      }
+    },
+    "AlertManager_ru_apple_sign_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Войти через Apple ID в России не получится"
+          }
+        }
+      }
+    },
+    "AlertManager_ru_google_sign_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Войти через Google в России не получится"
+          }
+        }
+      }
+    },
+    "AlertManager_ru_sign_button" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Войти иначе"
+          }
+        }
+      }
+    },
+    "AlertManager_ru_sign_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "По закону в Everyday нельзя входить и регистрироваться с помощью иностранных сервисов. Используйте другой способ"
+          }
+        }
+      }
+    },
     "AlertManager_signedUp_message" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -212,6 +300,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Вы уже зарегистрированы данным способом. Попробуйте войти"
+          }
+        }
+      }
+    },
+    "AlertManager_unknownRegistrationError_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Попробуйте зарегистрироваться еще раз."
+          }
+        }
+      }
+    },
+    "AlertManager_unknownRegistrationError_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Неизвестная ошибка"
+          }
+        }
+      }
+    },
+    "AlertManager_userExist_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пользователь с указанной почтой зарегистрирован"
+          }
+        }
+      }
+    },
+    "Authorization_email_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Войти через почту"
           }
         }
       }
@@ -229,6 +361,17 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Назад"
+          }
+        }
+      }
+    },
+    "ForgotPasswordViewController_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Восстановления пароля"
           }
         }
       }
@@ -280,278 +423,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Готово"
-          }
-        }
-      }
-    },
-    "NameGenerator_name_1" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Brave"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Смелый"
-          }
-        }
-      }
-    },
-    "NameGenerator_name_2" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fast"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Быстрый"
-          }
-        }
-      }
-    },
-    "NameGenerator_name_3" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Intelligent"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Умный"
-          }
-        }
-      }
-    },
-    "NameGenerator_name_4" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lazy"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ленивый"
-          }
-        }
-      }
-    },
-    "NameGenerator_name_5" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wize"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Мудрый"
-          }
-        }
-      }
-    },
-    "NameGenerator_name_6" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Young"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Юный"
-          }
-        }
-      }
-    },
-    "NameGenerator_name_7" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Old"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Старый"
-          }
-        }
-      }
-    },
-    "NameGenerator_name_8" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Funny"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Веселый"
-          }
-        }
-      }
-    },
-    "NameGenerator_surname_1" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Lion"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Лев"
-          }
-        }
-      }
-    },
-    "NameGenerator_surname_2" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Tiger"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Тигр"
-          }
-        }
-      }
-    },
-    "NameGenerator_surname_3" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Bear"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Медведь"
-          }
-        }
-      }
-    },
-    "NameGenerator_surname_4" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Wolfe"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Волк"
-          }
-        }
-      }
-    },
-    "NameGenerator_surname_5" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Fox"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Лис"
-          }
-        }
-      }
-    },
-    "NameGenerator_surname_6" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Rabbit"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Заяц"
-          }
-        }
-      }
-    },
-    "NameGenerator_surname_7" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Eagle"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Орел"
-          }
-        }
-      }
-    },
-    "NameGenerator_surname_8" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Elephant"
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Слон"
           }
         }
       }
@@ -1263,6 +1134,39 @@
         }
       }
     },
+    "SignInViewController_signup1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Нет аккаунта ? "
+          }
+        }
+      }
+    },
+    "SignInViewController_signup2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Зарегистрироваться"
+          }
+        }
+      }
+    },
+    "SignInViewController_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вход"
+          }
+        }
+      }
+    },
     "SignUp_create_account_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1361,6 +1265,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Политика конфидециальности"
+          }
+        }
+      }
+    },
+    "SignUpViewController_buttonTitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Создать аккаунт"
+          }
+        }
+      }
+    },
+    "SignUpViewController_login1" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Есть аккаунт? "
+          }
+        }
+      }
+    },
+    "SignUpViewController_login2" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Войти"
+          }
+        }
+      }
+    },
+    "SignUpViewController_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Регистрация"
           }
         }
       }

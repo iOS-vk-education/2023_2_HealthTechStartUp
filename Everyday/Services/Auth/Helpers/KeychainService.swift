@@ -83,12 +83,12 @@ final class KeychainService {
     
     @discardableResult
     static func clearAll() -> Bool {
-            let query: [String: Any] = [
-                kSecClass as String: kSecClassGenericPassword
-            ]
-            
-            let status = SecItemDelete(query as CFDictionary)
-            
-            return status == errSecSuccess
-        }
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword
+        ]
+        
+        let status = SecItemDelete(query as CFDictionary)
+        
+        return status == errSecSuccess
+    }
 }
