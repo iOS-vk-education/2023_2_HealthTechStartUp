@@ -104,8 +104,7 @@ private extension ConditionChoiceView {
     }
     
     func setupCollectionView() {
-        let numberOfItems = Condition.allCases.count
-        collectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createHorizontalFlowLayout(in: self, with: numberOfItems))
+        collectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createHorizontalFlowLayout())
         collectionView.delegate = self
         collectionView.dataSource = self
         collectionView.register(ConditionViewCell.self, forCellWithReuseIdentifier: ConditionViewCell.reuseID)

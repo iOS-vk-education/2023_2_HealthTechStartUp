@@ -38,7 +38,7 @@ enum UIHelper {
         return flowLayout
     }
     
-    static func createHorizontalFlowLayout(in view: UIView, with numberOfItems: Int) -> UICollectionViewFlowLayout {
+    static func createHorizontalFlowLayout() -> UICollectionViewFlowLayout {
         let flowLayout = UICollectionViewFlowLayout()
         let padding: CGFloat = 8
         flowLayout.sectionInset = UIEdgeInsets(top: 0, left: padding, bottom: 0, right: padding)

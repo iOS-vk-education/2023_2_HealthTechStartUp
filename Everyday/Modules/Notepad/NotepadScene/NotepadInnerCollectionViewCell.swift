@@ -11,9 +11,9 @@ import PinLayout
 class NotepadInnerCollectionViewCell: UICollectionViewCell {
     static let reuseID = "NotepadInnerCollectionViewCell"
     
-    private var stackView = UIStackView()
-    private var weekdayLabel = UILabel()
-    private var dayOfMonthLabel = UILabel()
+    private let stackView = UIStackView()
+    private let weekdayLabel = UILabel()
+    private let dayOfMonthLabel = UILabel()
     
     // MARK: - Init
     
@@ -70,13 +70,16 @@ private extension NotepadInnerCollectionViewCell {
     
     func setup() {
         setupView()
+        setupBackgroundView()
         setupStackView()
         addSubview(stackView)
     }
     
     func setupView() {
         backgroundColor = Constants.backgroundColor
-        
+    }
+    
+    func setupBackgroundView() {
         let backgroundView = UIView()
         backgroundView.backgroundColor = Constants.BackgroundView.backgroundColor
         backgroundView.layer.cornerRadius = Constants.BackgroundView.cornerRadius
