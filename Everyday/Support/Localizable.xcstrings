@@ -607,6 +607,23 @@
         }
       }
     },
+    "NotepadEmptyState_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chilling..."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отдыхаем..."
+          }
+        }
+      }
+    },
     "Onboarding_Age_title" : {
       "extractionState" : "manual",
       "localizations" : {

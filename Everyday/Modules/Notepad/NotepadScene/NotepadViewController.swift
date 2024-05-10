@@ -262,8 +262,9 @@ extension NotepadViewController: NotepadViewInput {
         tableView.reloadData()
     }
     
-    func showEmptyStateView() {
+    func showEmptyStateView(with viewModel: NotepadEmptyStateViewModel) {
         stateLabel.text = ""
+        emptyStateView.configure(with: viewModel)
         view.addSubview(emptyStateView)
         
         emptyStateView.pin

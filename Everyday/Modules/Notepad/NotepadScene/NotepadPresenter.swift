@@ -175,7 +175,8 @@ extension NotepadPresenter: NotepadInteractorOutput {
             let viewModel = NotepadViewModel(isResult: isResult)
             view?.configure(with: viewModel)
         } else {
-            view?.showEmptyStateView()
+            let viewModel = NotepadEmptyStateViewModel()
+            view?.showEmptyStateView(with: viewModel)
         }
     }
     

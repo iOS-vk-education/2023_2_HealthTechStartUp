@@ -1,18 +1,18 @@
 //
-//  EmptyStateViewViewModel.swift
+//  NotepadEmptyStateViewModel.swift
 //  Everyday
 //
-//  Created by Alexander on 09.04.2024.
+//  Created by Alexander on 10.05.2024.
 //
 
 import UIKit
 
-struct EmptyStateViewViewModel {
+struct NotepadEmptyStateViewModel {
     let title: NSAttributedString
     let logoImage: UIImage?
     
     init() {
-        let titleLabelTitle = "Chilling..."
+        let titleLabelTitle = "NotepadEmptyState_title".localized
         let titleLabelAttributedString = NSAttributedString(string: titleLabelTitle, attributes: Styles.titleAttributes)
         let imageName = "logo"
         let image = UIImage(named: imageName)
@@ -22,7 +22,7 @@ struct EmptyStateViewViewModel {
     }
 }
 
-private extension EmptyStateViewViewModel {
+private extension NotepadEmptyStateViewModel {
     struct Styles {
         static let titleAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.Text.primary,

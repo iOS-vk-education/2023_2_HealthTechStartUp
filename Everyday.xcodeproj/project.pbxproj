@@ -28,8 +28,8 @@
 		9D4E4BD62BB070D200617E5D /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B022BA8AEFE006AC078 /* FirebaseFirestore */; };
 		9D4E4BD72BB070D200617E5D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B042BA8AEFE006AC078 /* FirebaseFirestoreSwift */; };
 		9D4E4BD82BB070D200617E5D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B062BA8AEFE006AC078 /* FirebaseStorage */; };
+		9D6A65EF2BEE498C00ACD686 /* NotepadEmptyStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A65EE2BEE498C00ACD686 /* NotepadEmptyStateViewModel.swift */; };
 		9D6D535A2BE8FC0C0096BA90 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6D53592BE8FC0C0096BA90 /* EmptyStateView.swift */; };
-		9D6D535C2BE8FC450096BA90 /* EmptyStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6D535B2BE8FC450096BA90 /* EmptyStateViewModel.swift */; };
 		9D6D535F2BE965B50096BA90 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6D535E2BE965B50096BA90 /* CameraViewModel.swift */; };
 		9D71328D2BC923DE00B5ACF8 /* SheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132872BC923DE00B5ACF8 /* SheetPresenter.swift */; };
 		9D71328E2BC923DE00B5ACF8 /* SheetRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132882BC923DE00B5ACF8 /* SheetRouter.swift */; };
@@ -214,8 +214,8 @@
 		9D32E9162BBF0AB3008A2BA4 /* UIHelper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIHelper.swift; sourceTree = "<group>"; };
 		9D408CBC2BCDD77B00B770F9 /* DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
 		9D408CBE2BCDD78100B770F9 /* Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
+		9D6A65EE2BEE498C00ACD686 /* NotepadEmptyStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadEmptyStateViewModel.swift; sourceTree = "<group>"; };
 		9D6D53592BE8FC0C0096BA90 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
-		9D6D535B2BE8FC450096BA90 /* EmptyStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateViewModel.swift; sourceTree = "<group>"; };
 		9D6D535E2BE965B50096BA90 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		9D7132872BC923DE00B5ACF8 /* SheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPresenter.swift; sourceTree = "<group>"; };
 		9D7132882BC923DE00B5ACF8 /* SheetRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetRouter.swift; sourceTree = "<group>"; };
@@ -718,7 +718,7 @@
 				9E4F22782B9F3B9B003E749E /* NotepadTableViewCellViewModel.swift */,
 				9E4F22792B9F3B9B003E749E /* NotepadViewModel.swift */,
 				9D15BE272BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift */,
-				9D6D535B2BE8FC450096BA90 /* EmptyStateViewModel.swift */,
+				9D6A65EE2BEE498C00ACD686 /* NotepadEmptyStateViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1435,6 +1435,7 @@
 				9D7D9A7B2BCC0E1300089A14 /* WeightMeasurementViewModel.swift in Sources */,
 				9E5B75442B7F9D7600E2BDE6 /* AgeViewModel.swift in Sources */,
 				9DDEBFCF2BC42C8100E9347D /* CalendarService.swift in Sources */,
+				9D6A65EF2BEE498C00ACD686 /* NotepadEmptyStateViewModel.swift in Sources */,
 				9E5B74EB2B7F99FB00E2BDE6 /* WelcomeScreenProtocols.swift in Sources */,
 				9E4F22CC2B9F3C51003E749E /* ExtraRouter.swift in Sources */,
 				9E4F228F2B9F3BC4003E749E /* TrainingTableViewCellViewModel.swift in Sources */,
@@ -1486,7 +1487,6 @@
 				9E5B750A2B7F9A8300E2BDE6 /* SignInViewController.swift in Sources */,
 				9E4F22AD2B9F3C05003E749E /* ResultsPresenter.swift in Sources */,
 				9E4F22C42B9F3C3C003E749E /* TimerViewModel.swift in Sources */,
-				9D6D535C2BE8FC450096BA90 /* EmptyStateViewModel.swift in Sources */,
 				9E4F22CD2B9F3C51003E749E /* ExtraViewController.swift in Sources */,
 				9E5B75142B7F9D1D00E2BDE6 /* AgeButtonView.swift in Sources */,
 				9EE8AE1F2B7FB905001D126F /* ProgressProtocols.swift in Sources */,
