@@ -72,7 +72,7 @@ private extension NotepadInnerCollectionViewCell {
         setupView()
         setupBackgroundView()
         setupStackView()
-        addSubview(stackView)
+        contentView.addSubview(stackView)
     }
     
     func setupView() {
