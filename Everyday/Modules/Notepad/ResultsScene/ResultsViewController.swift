@@ -44,8 +44,8 @@ final class ResultsViewController: UIViewController {
         setup()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         layout()
     }
 }

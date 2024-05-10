@@ -41,8 +41,8 @@ final class NotepadViewController: UIViewController {
         setup()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         layout()
     }
 }

@@ -19,7 +19,7 @@ class NotepadOuterCollectionViewCell: UICollectionViewCell {
     
     weak var delegate: NotepadOuterCollectionViewCellDelegate?
     
-    var innerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    private var innerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
     
     private var week: [Date] = []
     private var selectedCellIndexPath: IndexPath?
