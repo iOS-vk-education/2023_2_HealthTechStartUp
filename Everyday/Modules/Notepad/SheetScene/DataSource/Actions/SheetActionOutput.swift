@@ -11,7 +11,8 @@ protocol SheetActionOutput: CameraViewOutput,
                             ConditionChoiceViewOutput,
                             WeightMeasurementViewOutput,
                             HeartRateVariabilityViewOutput,
-                            ExerciseCounterViewOutput {}
+                            ExerciseCounterViewOutput,
+                            ExerciseTimerViewOutput {}
 
 // MARK: - Camera
 
@@ -44,6 +45,13 @@ protocol WeightMeasurementViewOutput: AnyObject {
 // MARK: - ExerciseCounter
 
 protocol ExerciseCounterViewOutput: AnyObject {
-    func didTapSaveButton(with exercise: Exercise)
+    func didTapExerciseCounterSaveButton(with exercise: Exercise)
     func didTapExerciseCounterCloseButton()
+}
+
+// MARK: - ExerciseTimer
+
+protocol ExerciseTimerViewOutput: AnyObject {
+    func didTapExerciseTimerSaveButton(with exercise: Exercise)
+    func didTapExerciseTimerCloseButton()
 }

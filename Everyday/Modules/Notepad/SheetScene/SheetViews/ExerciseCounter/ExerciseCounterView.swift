@@ -183,7 +183,7 @@ private extension ExerciseCounterView {
     func didTapSaveButton() {
         if var exercise {
             exercise.result = String(result)
-            output?.didTapSaveButton(with: exercise)
+            output?.didTapExerciseCounterSaveButton(with: exercise)
         } else {
             output?.didTapExerciseCounterCloseButton()  // handle properly
         }

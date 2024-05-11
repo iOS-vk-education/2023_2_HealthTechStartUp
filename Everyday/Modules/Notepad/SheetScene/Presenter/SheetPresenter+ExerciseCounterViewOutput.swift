@@ -8,7 +8,7 @@
 import Foundation
 
 extension SheetPresenter: ExerciseCounterViewOutput {
-    func didTapSaveButton(with exercise: Exercise) {
+    func didTapExerciseCounterSaveButton(with exercise: Exercise) {
         let counterModel = ExerciseCounterModel(exercise: exercise)
         let moduleType = SheetType.exerciseCounter(model: counterModel)
         moduleOutput?.setResult(moduleType)

@@ -1,19 +1,18 @@
 //
-//  TimerViewController.swift
+//  ExerciseTimerView.swift
 //  Everyday
 //
-//  Created by user on 28.02.2024.
-//  
+//  Created by Alexander on 11.05.2024.
 //
 
 import UIKit
 import PinLayout
 
-final class TimerViewController: UIViewController {
+final class ExerciseTimerView: UIView {
     
-    // MARK: - Private properties
-    
-    private let output: TimerViewOutput
+    // MARK: - Private Properties
+
+    private var output: ExerciseCounterViewOutput?
     
     private let timerView = UIView()
     private let remainingTimeLabel = UILabel()
@@ -23,39 +22,53 @@ final class TimerViewController: UIViewController {
     private let saveButton = UIButton()
     private let closeButton = UIButton()
     
-    // MARK: - Init
-
-    init(output: TimerViewOutput) {
-        self.output = output
-
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private var exercise: Exercise?
     
-    // MARK: - Life cycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        
-        output.didLoadView()
+    private var timer = Timer()
+    private var remainingTime: Int = Constants.defaultTime
+    private var isActive: Bool = false
+    
+    // MARK: - Init
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setup()
     }
     
-    override func viewDidLayoutSubviews() {
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+    
+    convenience init(exercise: Exercise, output: ExerciseCounterViewOutput?) {
+        self.init(frame: .zero)
+        self.exercise = exercise
+        self.output = output
+        
+        let timeString = fromSecondsToTimeString(remainingTime)
+        let viewModel = ExerciseTimerViewModel(remainingTime: String(timeString))
+        remainingTimeLabel.attributedText = viewModel.remainingTimeTitle
+        startButton.setImage(viewModel.playImage, for: .normal)
+        closeButton.setImage(viewModel.closeImage, for: .normal)
+        saveButton.setImage(viewModel.saveImage, for: .normal)
+        resetButton.setAttributedTitle(viewModel.resetTitle, for: .normal)
+        extraTimeButton.setAttributedTitle(viewModel.exrtaTimeTitle, for: .normal)
+    }
+    
+    // MARK: - Lifecycle
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         layout()
     }
 }
 
-private extension TimerViewController {
+private extension ExerciseTimerView {
     
     // MARK: - Layout
     
     func layout() {
-        let timerViewWidth: CGFloat = view.bounds.width - Constants.TimerView.padding * 2
+        let timerViewWidth: CGFloat = bounds.width - Constants.TimerView.padding * 2
         
         timerView.pin
             .width(timerViewWidth)
@@ -113,11 +126,11 @@ private extension TimerViewController {
         setupExtraTimeButton()
         
         timerView.addSubview(remainingTimeLabel)
-        view.addSubviews(startButton, resetButton, closeButton, timerView, extraTimeButton, saveButton)
+        addSubviews(startButton, resetButton, closeButton, timerView, extraTimeButton, saveButton)
     }
     
     func setupView() {
-        view.backgroundColor = Constants.backgroundColor
+        backgroundColor = Constants.backgroundColor
     }
     
     func setupTimerView() {
@@ -153,22 +166,37 @@ private extension TimerViewController {
     func setupRemainingTimeLabel() {
         remainingTimeLabel.textAlignment = .center
     }
-    
+
     // MARK: - Actions
     
     @objc
     func didTapStartButton() {
-        output.didTapStartButton()
+        let timeString = fromSecondsToTimeString(remainingTime)
+        let viewModel = ExerciseTimerViewModel(remainingTime: timeString)
+        if !isActive {
+            timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(step), userInfo: nil, repeats: true)
+            startButton.setImage(viewModel.pauseImage, for: .normal)
+        } else {
+            timer.invalidate()
+            startButton.setImage(viewModel.playImage, for: .normal)
+        }
+        isActive.toggle()
     }
     
     @objc
     func didTapResetButton() {
-        output.didTapResetButton()
+        timer.invalidate()
+        remainingTime = Constants.defaultTime
+        let timeString = fromSecondsToTimeString(remainingTime)
+        let viewModel = ExerciseTimerViewModel(remainingTime: timeString)
+        isActive = false
+        startButton.setImage(viewModel.playImage, for: .normal)
+        remainingTimeLabel.text = timeString
     }
     
     @objc
     func didTapCloseButton() {
-        output.didTapCloseButton()
+        output?.didTapExerciseCounterCloseButton()
     }
     
     @objc
@@ -178,33 +206,41 @@ private extension TimerViewController {
     @objc
     func didTapExtraTimeButton() {
     }
-}
-
-// MARK: - TimerViewInput
-
-extension TimerViewController: TimerViewInput {
-    func configure(with viewModel: TimerViewModel) {
-        remainingTimeLabel.attributedText = viewModel.remainingTimeTitle
-        startButton.setImage(viewModel.playImage, for: .normal)
-        closeButton.setImage(viewModel.closeImage, for: .normal)
-        saveButton.setImage(viewModel.saveImage, for: .normal)
-        resetButton.setAttributedTitle(viewModel.resetTitle, for: .normal)
-        extraTimeButton.setAttributedTitle(viewModel.exrtaTimeTitle, for: .normal)
+    
+    // MARK: - Helpers
+    
+    func secondsToMinutesSeconds(_ seconds: Int) -> (Int, Int) {
+        ((seconds / 60), (seconds % 60))
     }
     
-    func updateRemainingTime(with time: String) {
-        remainingTimeLabel.text = time
+    func makeTimeString(_ minutes: Int, _ seconds: Int) -> String {
+        String(format: "%02d", minutes) + " : " + String(format: "%02d", seconds)
     }
     
-    func changeMainButtonImage(with image: UIImage?) {
-        startButton.setImage(image, for: .normal)
+    func fromSecondsToTimeString(_ seconds: Int) -> String {
+        let minutesSeconds = secondsToMinutesSeconds(seconds)
+        let timeString = makeTimeString(minutesSeconds.0, minutesSeconds.1)
+        return timeString
+    }
+
+    @objc
+    func step() {
+        if remainingTime > 0 {
+            remainingTime -= 1
+        } else {
+            timer.invalidate()
+        }
+        
+        let timeString = fromSecondsToTimeString(remainingTime)
+        remainingTimeLabel.text = timeString
     }
 }
 
 // MARK: - Constants
 
-private extension TimerViewController {
+private extension ExerciseTimerView {
     struct Constants {
+        static let defaultTime: Int = 2
         static let backgroundColor: UIColor = UIColor.background
         
         struct Button {

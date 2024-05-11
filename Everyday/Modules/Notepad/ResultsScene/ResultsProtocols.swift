@@ -37,6 +37,7 @@ protocol ResultsInteractorOutput: AnyObject {
 }
 
 protocol ResultsRouterInput: AnyObject {
-    func openTimer(with timerContext: TimerContext)
+//    func openTimer(with timerContext: TimerContext)
+    func showView(with context: SheetContext)
     func closeResults()
 }

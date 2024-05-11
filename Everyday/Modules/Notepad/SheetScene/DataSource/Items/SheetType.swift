@@ -13,6 +13,7 @@ enum SheetType {
     case heartRateVariability(model: HeartRateVariabilityModel)
     case weightMeasurement(model: WeightMeasurementModel)
     case exerciseCounter(model: ExerciseCounterModel)
+    case exerciseTimer(model: ExerciseTimerModel)
     
     var description: String {
         switch self {
@@ -26,6 +27,8 @@ enum SheetType {
             return "Weight"
         case .exerciseCounter:
             return "Exercise counter"
+        case .exerciseTimer:
+            return "Exercise timer"
         }
     }
 }
@@ -68,5 +71,9 @@ struct HeartRateVariability {
 }
 
 struct ExerciseCounterModel {
+    var exercise: Exercise
+}
+
+struct ExerciseTimerModel {
     var exercise: Exercise
 }

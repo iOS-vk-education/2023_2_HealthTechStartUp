@@ -1,13 +1,13 @@
 //
-//  TimerViewModel.swift
+//  ExerciseTimerViewModel.swift
 //  Everyday
 //
-//  Created by user on 28.02.2024.
+//  Created by Alexander on 11.05.2024.
 //
 
 import UIKit
 
-struct TimerViewModel {
+struct ExerciseTimerViewModel {
     let remainingTimeTitle: NSAttributedString
     let exrtaTimeTitle: NSAttributedString
     let resetTitle: NSAttributedString
@@ -42,7 +42,7 @@ struct TimerViewModel {
     }
 }
 
-private extension TimerViewModel {
+private extension ExerciseTimerViewModel {
     struct Styles {
         static let timeAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 72, weight: .bold)
