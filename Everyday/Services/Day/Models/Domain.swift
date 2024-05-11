@@ -53,8 +53,14 @@ struct TrainingSet {
 }
 
 struct Exercise {
+    let id = UUID()
     let name: String
     var result: String
+    
+    init() {
+        name = "No name"
+        result = "0"
+    }
     
     init(dtoModel: DayServiceExerciseElement) {
         name = dtoModel.name

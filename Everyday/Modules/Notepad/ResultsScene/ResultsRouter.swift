@@ -17,24 +17,10 @@ extension ResultsRouter: ResultsRouterInput {
         let sheetContainer = SheetContainer.assemble(with: context)
         let presentedViewController = sheetContainer.viewController
         
-        if let sheet = presentedViewController.sheetPresentationController {
-            sheet.detents = [
-                .custom(resolver: { _ in
-                    return Constants.timerSheetHeight
-                })
-            ]
-        }
-        
         viewController?.present(presentedViewController, animated: true)
     }
     
     func dismissResults() {
         viewController?.dismiss(animated: true)
-    }
-}
-
-private extension ResultsRouter {
-    struct Constants {
-        static let timerSheetHeight: CGFloat = 250
     }
 }

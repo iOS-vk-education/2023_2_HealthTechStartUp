@@ -21,7 +21,7 @@ final class ExerciseCounterView: UIView {
     private let saveButton = UIButton()
     private let closeButton = UIButton()
     
-    private var exercise: Exercise?
+    private var exercise: Exercise = .init()
     private var result: Int = 0
     
     // MARK: - Init
@@ -181,12 +181,8 @@ private extension ExerciseCounterView {
     
     @objc
     func didTapSaveButton() {
-        if var exercise {
-            exercise.result = String(result)
-            output?.didTapExerciseCounterSaveButton(with: exercise)
-        } else {
-            output?.didTapExerciseCounterCloseButton()  // handle properly
-        }
+        exercise.result = String(result)
+        output?.didTapExerciseCounterSaveButton(with: exercise)
     }
 }
 

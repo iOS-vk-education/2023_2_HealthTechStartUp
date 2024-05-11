@@ -66,35 +66,25 @@ extension TrainingPresenter: TrainingViewOutput {
 
 extension TrainingPresenter: SheetModuleOutput {
     func setResult(_ result: SheetType) {
-        var index = -1
-        let exercises = workout.sets[indexOfSet].exercises
         switch result {
         case .exerciseCounter(let model):
-            index = exercises.firstIndex(where: { $0.name == model.exercise.name }) ?? -1
-            
-            guard index < workout.sets[indexOfSet].exercises.count, index >= 0 else {
+            guard let index = workout.sets[indexOfSet].exercises.firstIndex(where: { $0.id == model.exercise.id }) else {
                 return
             }
             
             workout.sets[indexOfSet].exercises[index].result = model.exercise.result
+            switchStates[index] = true
+            view?.reloadData()
         default:
             break
         }
-        guard index < workout.sets[indexOfSet].exercises.count, index >= 0 else {
-            return
-        }
-        
-        switchStates[index] = true
-        view?.reloadData()
     }
 }
 
 extension TrainingPresenter: ResultsModuleOutput {
     func changeSet(with exercises: [Exercise]) {
-        let index = workout.sets.firstIndex { $0.exercises[0].name == exercises[0].name }!
-        if workout.sets.count > index + 1 {
-            indexOfSet = index + 1
-        } else {
+        indexOfSet += 1
+        guard workout.sets.count > indexOfSet else {
             let extraContext = ExtraContext(workout: workout)
             router.openExtra(with: extraContext)
             return
