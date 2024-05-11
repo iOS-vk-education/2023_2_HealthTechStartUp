@@ -25,7 +25,8 @@ final class ExerciseTimerView: UIView {
     private var exercise: Exercise = .init()
     
     private var timer = Timer()
-    private var remainingTime: Int = Constants.defaultTime
+    private var remainingTime: Int = 0
+    private var startRemainingTime: Int = 0
     private var isActive: Bool = false
     
     // MARK: - Init
@@ -43,6 +44,8 @@ final class ExerciseTimerView: UIView {
     convenience init(exercise: Exercise, output: ExerciseTimerViewOutput?) {
         self.init(frame: .zero)
         self.exercise = exercise
+        self.startRemainingTime = fromTimeStringToSeconds(exercise.result)
+        self.remainingTime = startRemainingTime
         self.output = output
         
         let timeString = fromSecondsToTimeString(remainingTime)
@@ -170,6 +173,18 @@ private extension ExerciseTimerView {
     // MARK: - Actions
     
     @objc
+    func step() {
+        if remainingTime > 0 {
+            remainingTime -= 1
+        } else {
+            timer.invalidate()
+        }
+        
+        let timeString = fromSecondsToTimeString(remainingTime)
+        remainingTimeLabel.text = timeString
+    }
+    
+    @objc
     func didTapStartButton() {
         let timeString = fromSecondsToTimeString(remainingTime)
         let viewModel = ExerciseTimerViewModel(remainingTime: timeString)
@@ -186,7 +201,7 @@ private extension ExerciseTimerView {
     @objc
     func didTapResetButton() {
         timer.invalidate()
-        remainingTime = Constants.defaultTime
+        remainingTime = startRemainingTime
         let timeString = fromSecondsToTimeString(remainingTime)
         let viewModel = ExerciseTimerViewModel(remainingTime: timeString)
         isActive = false
@@ -201,12 +216,21 @@ private extension ExerciseTimerView {
     
     @objc
     func didTapSaveButton() {
-        exercise.result = "05:00"
+        let result = startRemainingTime - remainingTime
+        exercise.result = fromSecondsToTimeString(result)
         output?.didTapExerciseTimerSaveButton(with: exercise)
     }
     
     @objc
     func didTapExtraTimeButton() {
+        timer.invalidate()
+        remainingTime += 60
+        startRemainingTime += 60
+        let timeString = fromSecondsToTimeString(remainingTime)
+        let viewModel = ExerciseTimerViewModel(remainingTime: timeString)
+        isActive = false
+        startButton.setImage(viewModel.playImage, for: .normal)
+        remainingTimeLabel.text = timeString
     }
     
     // MARK: - Helpers
@@ -216,7 +240,7 @@ private extension ExerciseTimerView {
     }
     
     func makeTimeString(_ minutes: Int, _ seconds: Int) -> String {
-        String(format: "%02d", minutes) + " : " + String(format: "%02d", seconds)
+        String(format: "%02d", minutes) + ":" + String(format: "%02d", seconds)
     }
     
     func fromSecondsToTimeString(_ seconds: Int) -> String {
@@ -224,17 +248,28 @@ private extension ExerciseTimerView {
         let timeString = makeTimeString(minutesSeconds.0, minutesSeconds.1)
         return timeString
     }
-
-    @objc
-    func step() {
-        if remainingTime > 0 {
-            remainingTime -= 1
-        } else {
-            timer.invalidate()
+    
+    func makeMinutesSeconds(_ timeString: String) -> (minutes: Int, seconds: Int) {
+        let components = timeString.split(separator: ":")
+        guard 
+            components.count == 2,
+            let minutes = Int(components[0]),
+            let seconds = Int(components[1])
+        else {
+            return (0, 0)
         }
         
-        let timeString = fromSecondsToTimeString(remainingTime)
-        remainingTimeLabel.text = timeString
+        return (minutes, seconds)
+    }
+    
+    func minutesSecondsToSeconds(_ minutes: Int, _ seconds: Int) -> Int {
+        minutes * 60 + seconds
+    }
+    
+    func fromTimeStringToSeconds(_ timeString: String) -> Int {
+        let minutesSeconds = makeMinutesSeconds(timeString)
+        let seconds = minutesSecondsToSeconds(minutesSeconds.0, minutesSeconds.1)
+        return seconds
     }
 }
 
@@ -242,7 +277,6 @@ private extension ExerciseTimerView {
 
 private extension ExerciseTimerView {
     struct Constants {
-        static let defaultTime: Int = 2
         static let backgroundColor: UIColor = UIColor.background
         
         struct Button {
@@ -253,7 +287,7 @@ private extension ExerciseTimerView {
         }
         
         struct TimerView {
-            static let backgroundColor: UIColor = UIColor.Text.primary
+            static let backgroundColor: UIColor = UIColor.Text.grayElement
             static let padding: CGFloat = 32
             static let cornerRadius: CGFloat = 16
             static let marginTop: CGFloat = 75

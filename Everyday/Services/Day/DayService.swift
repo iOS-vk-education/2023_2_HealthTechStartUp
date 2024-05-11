@@ -215,7 +215,6 @@ final class DayService: DayServiceDescription {
             case .success:
                 reference.downloadURL(completion: completion)
             case .failure(let error):
-                print("error in put photo")
                 completion(.failure(error))
             }
         }

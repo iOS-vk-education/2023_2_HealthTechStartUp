@@ -63,6 +63,6 @@ extension ResultsPresenter: ResultsInteractorOutput {
 
 private extension ResultsPresenter {
     struct Constants {
-        static let defaultTimerTime: Int = 5
+        static let defaultTimerTime: Int = 120
     }
 }

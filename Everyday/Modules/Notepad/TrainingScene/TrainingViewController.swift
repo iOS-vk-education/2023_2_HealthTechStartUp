@@ -123,6 +123,7 @@ extension TrainingViewController: UITableViewDataSource {
 
 extension TrainingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         output.didSelectRowAt(index: indexPath.row)
     }
 }
