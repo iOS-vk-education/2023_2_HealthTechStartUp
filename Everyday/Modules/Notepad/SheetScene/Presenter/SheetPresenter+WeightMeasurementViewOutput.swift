@@ -11,7 +11,7 @@ extension SheetPresenter: WeightMeasurementViewOutput {
     func didTapSaveButton(with weight: Double?) {
         let weightMeasurementModel = WeightMeasurementModel(weight: weight)
         let moduleType = SheetType.weightMeasurement(model: weightMeasurementModel)
-        moduleOutput?.setResult(moduleType, at: 3)
+        moduleOutput?.setResult(moduleType)
         router.dismissSheet()
     }
     

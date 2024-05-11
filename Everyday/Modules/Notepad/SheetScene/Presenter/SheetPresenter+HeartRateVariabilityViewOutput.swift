@@ -11,7 +11,7 @@ extension SheetPresenter: HeartRateVariabilityViewOutput {
     func didTapSaveButton(with heartRateVariability: HeartRateVariability?) {
         let heartRateVariabilityModel = HeartRateVariabilityModel(heartRateVariability: heartRateVariability)
         let moduleType = SheetType.heartRateVariability(model: heartRateVariabilityModel)
-        moduleOutput?.setResult(moduleType, at: 2)
+        moduleOutput?.setResult(moduleType)
         router.dismissSheet()
     }
     

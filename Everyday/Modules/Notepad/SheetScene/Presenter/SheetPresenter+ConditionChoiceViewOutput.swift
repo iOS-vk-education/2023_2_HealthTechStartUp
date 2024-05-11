@@ -11,7 +11,7 @@ extension SheetPresenter: ConditionChoiceViewOutput {
     func didTapSaveButton(with condition: Condition?) {
         let conditionChoiceModel = ConditionChoiceModel(condition: condition)
         let moduleType = SheetType.conditionChoice(model: conditionChoiceModel)
-        moduleOutput?.setResult(moduleType, at: 1)
+        moduleOutput?.setResult(moduleType)
         router.dismissSheet()
     }
     

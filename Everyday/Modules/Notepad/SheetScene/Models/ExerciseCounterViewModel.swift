@@ -1,13 +1,13 @@
 //
-//  ExerciseViewModel.swift
+//  ExerciseCounterViewModel.swift
 //  Everyday
 //
-//  Created by user on 28.02.2024.
+//  Created by Alexander on 10.05.2024.
 //
 
 import UIKit
 
-struct ExerciseViewModel {
+struct ExerciseCounterViewModel {
     let title: String
     let resultTitle: NSAttributedString
     let minusImage: UIImage?
@@ -36,7 +36,7 @@ struct ExerciseViewModel {
     }
 }
 
-private extension ExerciseViewModel {
+private extension ExerciseCounterViewModel {
     struct Styles {
         static let resultAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont.systemFont(ofSize: 72, weight: .bold)

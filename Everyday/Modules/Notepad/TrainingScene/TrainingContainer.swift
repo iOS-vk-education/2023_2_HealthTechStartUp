@@ -24,6 +24,7 @@ final class TrainingContainer {
         
         interactor.output = presenter
         
+        router.presenter = presenter
         router.viewController = viewController
         
         return TrainingContainer(view: viewController, input: presenter, router: router)

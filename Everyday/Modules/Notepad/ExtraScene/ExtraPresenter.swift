@@ -97,6 +97,8 @@ extension ExtraPresenter: ExtraViewOutput {
                 continue
             case .weightMeasurement(let model):
                 weight = model.weight
+            default:
+                continue
             }
         }
         
@@ -113,18 +115,29 @@ extension ExtraPresenter: ExtraViewOutput {
 }
 
 extension ExtraPresenter: SheetModuleOutput {
-    func setResult(_ result: SheetType, at index: Int) {
-        data[index] = result
+    func setResult(_ result: SheetType) {
+        var index = 4
         switch result {
         case .camera(let model):
+            index = 0
             switchStates[index] = model.image != nil
         case .conditionChoice(let model):
-            switchStates[index] = model.condition != nil
+            index = 1
+            switchStates[1] = model.condition != nil
         case .heartRateVariability(let model):
-            switchStates[index] = model.heartRateVariability != nil
+            index = 2
+            switchStates[2] = model.heartRateVariability != nil
         case .weightMeasurement(let model):
-            switchStates[index] = model.weight != nil
+            index = 3
+            switchStates[3] = model.weight != nil
+        default:
+            break
         }
+        guard index < data.count, index > 0 else {
+            return
+        }
+        
+        data[index] = result
         view?.reloadData()
     }
 }

@@ -1,19 +1,18 @@
 //
-//  ExerciseViewController.swift
+//  ExerciseCounterView.swift
 //  Everyday
 //
-//  Created by user on 28.02.2024.
-//  
+//  Created by Alexander on 10.05.2024.
 //
 
 import UIKit
 import PinLayout
 
-final class ExerciseViewController: UIViewController {
+final class ExerciseCounterView: UIView {
     
-    // MARK: - Private properties
-    
-    private let output: ExerciseViewOutput
+    // MARK: - Private Properties
+
+    private var output: ExerciseCounterViewOutput?
     
     private let resultView = UIView()
     private let resultLabel = UILabel()
@@ -22,39 +21,48 @@ final class ExerciseViewController: UIViewController {
     private let saveButton = UIButton()
     private let closeButton = UIButton()
     
-    // MARK: - Init
-
-    init(output: ExerciseViewOutput) {
-        self.output = output
-
-        super.init(nibName: nil, bundle: nil)
-    }
-
-    @available(*, unavailable)
-    required init?(coder aDecoder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
-    }
+    private var exercise: Exercise?
+    private var result: Int = 0
     
-    // MARK: - Life cycle
-
-    override func viewDidLoad() {
-        super.viewDidLoad()
-        output.didLoadView()
+    // MARK: - Init
+    
+    override init(frame: CGRect) {
+        super.init(frame: frame)
         setup()
     }
     
-    override func viewDidLayoutSubviews() {
-        super.viewDidLayoutSubviews()
+    required init?(coder: NSCoder) {
+        super.init(coder: coder)
+        setup()
+    }
+    
+    convenience init(exercise: Exercise, output: ExerciseCounterViewOutput?) {
+        self.init(frame: .zero)
+        self.exercise = exercise
+        self.output = output
+        
+        let viewModel = ExerciseCounterViewModel(exercise: exercise)
+        resultLabel.attributedText = viewModel.resultTitle
+        minusButton.setImage(viewModel.minusImage, for: .normal)
+        plusButton.setImage(viewModel.plusImage, for: .normal)
+        closeButton.setImage(viewModel.closeImage, for: .normal)
+        saveButton.setImage(viewModel.saveImage, for: .normal)
+    }
+    
+    // MARK: - Lifecycle
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
         layout()
     }
 }
 
-private extension ExerciseViewController {
+private extension ExerciseCounterView {
     
     // MARK: - Layout
     
     func layout() {
-        let resultViewWidth: CGFloat = view.bounds.width - Constants.ResultView.padding * 2
+        let resultViewWidth: CGFloat = bounds.width - Constants.ResultView.padding * 2
         
         resultView.pin
             .width(resultViewWidth)
@@ -93,6 +101,14 @@ private extension ExerciseViewController {
             .height(Constants.CloseButton.height)
     }
     
+    // MARK: - Configure
+    
+    func configureButtons() {
+        let viewModel = SheetViewModel()
+        closeButton.setImage(viewModel.closeImage, for: .normal)
+        saveButton.setImage(viewModel.saveImage, for: .normal)
+    }
+    
     // MARK: - Setup
     
     func setup() {
@@ -106,8 +122,8 @@ private extension ExerciseViewController {
     }
     
     func setupView() {
-        view.backgroundColor = Constants.backgroundColor
-        view.addSubviews(plusButton, minusButton, closeButton, resultView, saveButton)
+        backgroundColor = Constants.backgroundColor
+        addSubviews(plusButton, minusButton, closeButton, resultView, saveButton)
     }
     
     func setupResultView() {
@@ -144,46 +160,40 @@ private extension ExerciseViewController {
     
     @objc
     func didTapMinusButton() {
-        output.didTapMinusButton()
+        guard result > 0 else {
+            return
+        }
+        
+        result -= 1
+        resultLabel.text = String(result)
     }
     
     @objc
     func didTapPlusButton() {
-        output.didTapPlusButton()
+        result += 1
+        resultLabel.text = String(result)
     }
     
     @objc
     func didTapCloseButton() {
-        output.didTapCloseButton()
+        output?.didTapExerciseCounterCloseButton()
     }
     
     @objc
     func didTapSaveButton() {
-        output.didTapSaveButton()
-    }
-}
-
-// MARK: - ExerciseViewInput
-
-extension ExerciseViewController: ExerciseViewInput {
-    func configure(with viewModel: ExerciseViewModel) {
-        title = viewModel.title
-        resultLabel.attributedText = viewModel.resultTitle
-        minusButton.setImage(viewModel.minusImage, for: .normal)
-        plusButton.setImage(viewModel.plusImage, for: .normal)
-        closeButton.setImage(viewModel.closeImage, for: .normal)
-        saveButton.setImage(viewModel.saveImage, for: .normal)
-    }
-    
-    func updateResult(with result: String) {
-        resultLabel.text = result
+        if var exercise {
+            exercise.result = String(result)
+            output?.didTapSaveButton(with: exercise)
+        } else {
+            output?.didTapExerciseCounterCloseButton()  // handle properly
+        }
     }
 }
 
 // MARK: - Constants
 
-private extension ExerciseViewController {
-    struct Constants {        
+private extension ExerciseCounterView {
+    struct Constants {
         static let backgroundColor: UIColor = UIColor.background
         
         struct Button {

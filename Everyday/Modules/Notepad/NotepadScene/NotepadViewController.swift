@@ -60,9 +60,9 @@ private extension NotepadViewController {
         
         stateLabel.pin
             .below(of: outerCollectionView)
-            .marginTop(Constants.HeaderLabel.marginTop)
-            .horizontally(Constants.HeaderLabel.horizontalMargin)
-            .height(Constants.HeaderLabel.height)
+            .marginTop(Constants.StateLabel.marginTop)
+            .horizontally(Constants.StateLabel.horizontalMargin)
+            .height(Constants.StateLabel.height)
 
         tableView.pin
             .below(of: stateLabel)
@@ -90,7 +90,7 @@ private extension NotepadViewController {
         outerCollectionView.dataSource = self
         outerCollectionView.register(NotepadOuterCollectionViewCell.self, forCellWithReuseIdentifier: NotepadOuterCollectionViewCell.reuseID)
         
-        outerCollectionView.backgroundColor = .clear
+        outerCollectionView.backgroundColor = Constants.OuterCollectionView.backgroundColor
         
         outerCollectionView.showsHorizontalScrollIndicator = false
         outerCollectionView.showsVerticalScrollIndicator = false
@@ -263,7 +263,7 @@ extension NotepadViewController: NotepadViewInput {
     }
     
     func showEmptyStateView(with viewModel: NotepadEmptyStateViewModel) {
-        stateLabel.text = ""
+        stateLabel.text = Constants.StateLabel.defaultText
         emptyStateView.configure(with: viewModel)
         view.addSubview(emptyStateView)
         
@@ -306,15 +306,17 @@ private extension NotepadViewController {
             static let dateFormat: String = "EEEE, d MMM"
         }
         
-        struct HeaderLabel {
+        struct StateLabel {
             static let height: CGFloat = 30
             static let horizontalMargin: CGFloat = 20
             static let marginTop: CGFloat = 20
+            static let defaultText: String = "EEEE, d MMM"
         }
         
         struct OuterCollectionView {
             static let marginTop: CGFloat = 20
             static let height: CGFloat = 60
+            static let backgroundColor: UIColor = UIColor.clear
         }
         
         struct TableView {

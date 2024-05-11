@@ -9,27 +9,77 @@
 import UIKit
 
 final class TrainingRouter {
+    weak var presenter: TrainingPresenter?
     weak var viewController: TrainingViewController?
 }
 
-extension TrainingRouter: TrainingRouterInput {
-    func openExercise(with exerciseContext: ExerciseContext) {
-        guard let viewController = viewController else {
-            return
-        }
-        
-        let exerciseContainer = ExerciseContainer.assemble(with: exerciseContext)
-        let exerciseViewController = exerciseContainer.viewController
-        
-        if let sheet = exerciseViewController.sheetPresentationController {
+private extension TrainingRouter {
+    func exerciseCounterViewController(with type: SheetType) -> UIViewController {
+        let sheetSize = Constants.sheetHeight
+        let context = SheetContext(moduleOutput: presenter, type: type)
+        let container = SheetContainer.assemble(with: context)
+        let presentedViewController = container.viewController
+        if let sheet = presentedViewController.sheetPresentationController {
             sheet.detents = [
                 .custom(resolver: { _ in
-                    return Constants.sheetHeight
+                    return sheetSize
                 })
             ]
         }
         
-        viewController.present(exerciseViewController, animated: true)
+        return presentedViewController
+    }
+    
+    func exerciseTimerViewController(with type: SheetType) -> UIViewController {
+        let sheetSize = Constants.sheetHeight
+        let context = SheetContext(moduleOutput: presenter, type: type)
+        let container = SheetContainer.assemble(with: context)
+        let presentedViewController = container.viewController
+        if let sheet = presentedViewController.sheetPresentationController {
+            sheet.detents = [
+                .custom(resolver: { _ in
+                    return sheetSize
+                })
+            ]
+        }
+        
+        return presentedViewController
+    }
+}
+
+extension TrainingRouter: TrainingRouterInput {
+//    func showExercise(with exerciseContext: ExerciseContext) {
+//        guard let viewController = viewController else {
+//            return
+//        }
+//        
+//        let exerciseContainer = ExerciseContainer.assemble(with: exerciseContext)
+//        let exerciseViewController = exerciseContainer.viewController
+//        
+//        if let sheet = exerciseViewController.sheetPresentationController {
+//            sheet.detents = [
+//                .custom(resolver: { _ in
+//                    return Constants.sheetHeight
+//                })
+//            ]
+//        }
+//        
+//        viewController.present(exerciseViewController, animated: true)
+//    }
+
+    func showView(with context: SheetContext) {
+        var presentedViewController: UIViewController?
+        switch context.type {
+        case .exerciseCounter:
+            presentedViewController = exerciseCounterViewController(with: context.type)
+        default:
+            break
+        }
+        guard let presentedViewController else {
+            return
+        }
+        
+        viewController?.present(presentedViewController, animated: true)
     }
     
     func showResults(with resultsContext: ResultsContext) {

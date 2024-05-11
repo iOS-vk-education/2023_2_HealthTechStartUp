@@ -50,9 +50,15 @@ extension TrainingPresenter: TrainingViewOutput {
     }
     
     func didSelectRowAt(index: Int) {
+//        let exercise = workout.sets[indexOfSet].exercises[index]
+//        let exerciseContext = ExerciseContext(moduleOutput: self, exercise: exercise, indexOfSet: indexOfSet)
+//        router.showExercise(with: exerciseContext)
+        
         let exercise = workout.sets[indexOfSet].exercises[index]
-        let exerciseContext = ExerciseContext(moduleOutput: self, exercise: exercise, indexOfSet: indexOfSet)
-        router.openExercise(with: exerciseContext)
+        let exerciseCounterModel: ExerciseCounterModel = .init(exercise: exercise)
+        let sheetType: SheetType = .exerciseCounter(model: exerciseCounterModel)
+        let sheetConext = SheetContext(moduleOutput: self, type: sheetType)
+        router.showView(with: sheetConext)
     }
     
     func didTapFinishButton() {
@@ -62,15 +68,27 @@ extension TrainingPresenter: TrainingViewOutput {
     }
 }
 
-extension TrainingPresenter: ExerciseModuleOutput {
-    func setResult(of exercise: String, with result: String, at indexOfSet: Int) {
+extension TrainingPresenter: SheetModuleOutput {
+    func setResult(_ result: SheetType) {
+        var index = -1
         let exercises = workout.sets[indexOfSet].exercises
-        guard let indexOfExercise = exercises.firstIndex(where: { $0.name == exercise }) else {
+        switch result {
+        case .exerciseCounter(let model):
+            index = exercises.firstIndex(where: { $0.name == model.exercise.name }) ?? -1
+            
+            guard index < workout.sets[indexOfSet].exercises.count, index >= 0 else {
+                return
+            }
+            
+            workout.sets[indexOfSet].exercises[index].result = model.exercise.result
+        default:
+            break
+        }
+        guard index < workout.sets[indexOfSet].exercises.count, index >= 0 else {
             return
         }
         
-        workout.sets[indexOfSet].exercises[indexOfExercise].result = result
-        switchStates[indexOfExercise] = true
+        switchStates[index] = true
         view?.reloadData()
     }
 }

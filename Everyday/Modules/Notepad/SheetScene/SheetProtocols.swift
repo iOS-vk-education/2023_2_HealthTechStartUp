@@ -13,7 +13,7 @@ protocol SheetModuleInput {
 }
 
 protocol SheetModuleOutput: AnyObject {
-    func setResult(_ result: SheetType, at index: Int)
+    func setResult(_ result: SheetType)
 }
 
 protocol SheetViewInput: AnyObject {

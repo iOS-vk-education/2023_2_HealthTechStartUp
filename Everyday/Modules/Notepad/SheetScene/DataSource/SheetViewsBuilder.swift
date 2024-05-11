@@ -22,6 +22,8 @@ final class SheetViewsBuilder: SheetViewsBuilderDescription {
             return UIView()
         case .weightMeasurement(let weightMeasurementViewModel):
             return WeightMeasurementView(weight: weightMeasurementViewModel.weight, output: output)
+        case .exerciseCounter(let model):
+            return ExerciseCounterView(exercise: model.exercise, output: output)
         }
     }
 }

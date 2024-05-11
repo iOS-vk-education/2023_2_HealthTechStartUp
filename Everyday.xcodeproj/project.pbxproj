@@ -29,6 +29,9 @@
 		9D4E4BD72BB070D200617E5D /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B042BA8AEFE006AC078 /* FirebaseFirestoreSwift */; };
 		9D4E4BD82BB070D200617E5D /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9DE61B062BA8AEFE006AC078 /* FirebaseStorage */; };
 		9D6A65EF2BEE498C00ACD686 /* NotepadEmptyStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A65EE2BEE498C00ACD686 /* NotepadEmptyStateViewModel.swift */; };
+		9D6A65F82BEE9BEE00ACD686 /* ExerciseCounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A65F72BEE9BEE00ACD686 /* ExerciseCounterViewModel.swift */; };
+		9D6A65FA2BEE9C1F00ACD686 /* SheetPresenter+ExerciseCounterViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A65F92BEE9C1F00ACD686 /* SheetPresenter+ExerciseCounterViewOutput.swift */; };
+		9D6A65FD2BEE9CEE00ACD686 /* ExerciseCounterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A65FC2BEE9CEE00ACD686 /* ExerciseCounterView.swift */; };
 		9D6D535A2BE8FC0C0096BA90 /* EmptyStateView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6D53592BE8FC0C0096BA90 /* EmptyStateView.swift */; };
 		9D6D535F2BE965B50096BA90 /* CameraViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6D535E2BE965B50096BA90 /* CameraViewModel.swift */; };
 		9D71328D2BC923DE00B5ACF8 /* SheetPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7132872BC923DE00B5ACF8 /* SheetPresenter.swift */; };
@@ -86,13 +89,6 @@
 		9E4F228B2B9F3BB4003E749E /* TrainingProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F22842B9F3BB4003E749E /* TrainingProtocols.swift */; };
 		9E4F228F2B9F3BC4003E749E /* TrainingTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F228D2B9F3BC3003E749E /* TrainingTableViewCellViewModel.swift */; };
 		9E4F22902B9F3BC4003E749E /* TrainingViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F228E2B9F3BC4003E749E /* TrainingViewModel.swift */; };
-		9E4F22982B9F3BDD003E749E /* ExerciseProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F22922B9F3BDC003E749E /* ExerciseProtocols.swift */; };
-		9E4F22992B9F3BDD003E749E /* ExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F22932B9F3BDC003E749E /* ExerciseViewController.swift */; };
-		9E4F229A2B9F3BDD003E749E /* ExercisePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F22942B9F3BDC003E749E /* ExercisePresenter.swift */; };
-		9E4F229B2B9F3BDD003E749E /* ExerciseRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F22952B9F3BDC003E749E /* ExerciseRouter.swift */; };
-		9E4F229C2B9F3BDD003E749E /* ExerciseInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F22962B9F3BDC003E749E /* ExerciseInteractor.swift */; };
-		9E4F229D2B9F3BDD003E749E /* ExerciseContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F22972B9F3BDD003E749E /* ExerciseContainer.swift */; };
-		9E4F22A02B9F3BEA003E749E /* ExerciseViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F229F2B9F3BEA003E749E /* ExerciseViewModel.swift */; };
 		9E4F22A92B9F3C05003E749E /* ResultsInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F22A22B9F3C04003E749E /* ResultsInteractor.swift */; };
 		9E4F22AA2B9F3C05003E749E /* ResultsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F22A32B9F3C04003E749E /* ResultsContainer.swift */; };
 		9E4F22AB2B9F3C05003E749E /* ResultsRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F22A42B9F3C04003E749E /* ResultsRouter.swift */; };
@@ -215,6 +211,9 @@
 		9D408CBC2BCDD77B00B770F9 /* DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
 		9D408CBE2BCDD78100B770F9 /* Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
 		9D6A65EE2BEE498C00ACD686 /* NotepadEmptyStateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotepadEmptyStateViewModel.swift; sourceTree = "<group>"; };
+		9D6A65F72BEE9BEE00ACD686 /* ExerciseCounterViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCounterViewModel.swift; sourceTree = "<group>"; };
+		9D6A65F92BEE9C1F00ACD686 /* SheetPresenter+ExerciseCounterViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetPresenter+ExerciseCounterViewOutput.swift"; sourceTree = "<group>"; };
+		9D6A65FC2BEE9CEE00ACD686 /* ExerciseCounterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseCounterView.swift; sourceTree = "<group>"; };
 		9D6D53592BE8FC0C0096BA90 /* EmptyStateView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyStateView.swift; sourceTree = "<group>"; };
 		9D6D535E2BE965B50096BA90 /* CameraViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CameraViewModel.swift; sourceTree = "<group>"; };
 		9D7132872BC923DE00B5ACF8 /* SheetPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SheetPresenter.swift; sourceTree = "<group>"; };
@@ -273,13 +272,6 @@
 		9E4F22842B9F3BB4003E749E /* TrainingProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingProtocols.swift; sourceTree = "<group>"; };
 		9E4F228D2B9F3BC3003E749E /* TrainingTableViewCellViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		9E4F228E2B9F3BC4003E749E /* TrainingViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingViewModel.swift; sourceTree = "<group>"; };
-		9E4F22922B9F3BDC003E749E /* ExerciseProtocols.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseProtocols.swift; sourceTree = "<group>"; };
-		9E4F22932B9F3BDC003E749E /* ExerciseViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseViewController.swift; sourceTree = "<group>"; };
-		9E4F22942B9F3BDC003E749E /* ExercisePresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExercisePresenter.swift; sourceTree = "<group>"; };
-		9E4F22952B9F3BDC003E749E /* ExerciseRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseRouter.swift; sourceTree = "<group>"; };
-		9E4F22962B9F3BDC003E749E /* ExerciseInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseInteractor.swift; sourceTree = "<group>"; };
-		9E4F22972B9F3BDD003E749E /* ExerciseContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseContainer.swift; sourceTree = "<group>"; };
-		9E4F229F2B9F3BEA003E749E /* ExerciseViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ExerciseViewModel.swift; sourceTree = "<group>"; };
 		9E4F22A22B9F3C04003E749E /* ResultsInteractor.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsInteractor.swift; sourceTree = "<group>"; };
 		9E4F22A32B9F3C04003E749E /* ResultsContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsContainer.swift; sourceTree = "<group>"; };
 		9E4F22A42B9F3C04003E749E /* ResultsRouter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ResultsRouter.swift; sourceTree = "<group>"; };
@@ -431,6 +423,7 @@
 				9DA0936E2BCB134E009825F9 /* ConditionCellViewModel.swift */,
 				9D7D9A7A2BCC0E1300089A14 /* WeightMeasurementViewModel.swift */,
 				9D6D535E2BE965B50096BA90 /* CameraViewModel.swift */,
+				9D6A65F72BEE9BEE00ACD686 /* ExerciseCounterViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -442,6 +435,14 @@
 				9D408CBE2BCDD78100B770F9 /* Domain.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		9D6A65FB2BEE9CE000ACD686 /* ExerciseCounter */ = {
+			isa = PBXGroup;
+			children = (
+				9D6A65FC2BEE9CEE00ACD686 /* ExerciseCounterView.swift */,
+			);
+			path = ExerciseCounter;
 			sourceTree = "<group>";
 		};
 		9D6D53582BE8FBFF0096BA90 /* Views */ = {
@@ -479,6 +480,7 @@
 		9D7132DE2BC93E2300B5ACF8 /* SheetViews */ = {
 			isa = PBXGroup;
 			children = (
+				9D6A65FB2BEE9CE000ACD686 /* ExerciseCounter */,
 				9DB778EE2BDAC2FC001C3B34 /* Camera */,
 				9DB778EF2BDAC309001C3B34 /* ConditionChoice */,
 				9DB778F12BDAC351001C3B34 /* WeightMeasurement */,
@@ -528,6 +530,7 @@
 				9D7D9A862BCC52ED00089A14 /* SheetPresenter+ConditionChoiceViewOutput.swift */,
 				9D7D9A8A2BCC54D200089A14 /* SheetPresenter+HeartRateVariabilityViewOutput.swift */,
 				9D7D9A882BCC532100089A14 /* SheetPresenter+WeightMeasurementViewOutput.swift */,
+				9D6A65F92BEE9C1F00ACD686 /* SheetPresenter+ExerciseCounterViewOutput.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -743,28 +746,6 @@
 			children = (
 				9E4F228D2B9F3BC3003E749E /* TrainingTableViewCellViewModel.swift */,
 				9E4F228E2B9F3BC4003E749E /* TrainingViewModel.swift */,
-			);
-			path = Models;
-			sourceTree = "<group>";
-		};
-		9E4F22912B9F3BCE003E749E /* ExerciseScene */ = {
-			isa = PBXGroup;
-			children = (
-				9E4F229E2B9F3BE1003E749E /* Models */,
-				9E4F22972B9F3BDD003E749E /* ExerciseContainer.swift */,
-				9E4F22962B9F3BDC003E749E /* ExerciseInteractor.swift */,
-				9E4F22942B9F3BDC003E749E /* ExercisePresenter.swift */,
-				9E4F22922B9F3BDC003E749E /* ExerciseProtocols.swift */,
-				9E4F22952B9F3BDC003E749E /* ExerciseRouter.swift */,
-				9E4F22932B9F3BDC003E749E /* ExerciseViewController.swift */,
-			);
-			path = ExerciseScene;
-			sourceTree = "<group>";
-		};
-		9E4F229E2B9F3BE1003E749E /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				9E4F229F2B9F3BEA003E749E /* ExerciseViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -1178,7 +1159,6 @@
 			children = (
 				9E4F22652B9F3B82003E749E /* NotepadScene */,
 				9E4F227D2B9F3BA4003E749E /* TrainingScene */,
-				9E4F22912B9F3BCE003E749E /* ExerciseScene */,
 				9E4F22B52B9F3C20003E749E /* TimerScene */,
 				9E4F22A12B9F3BF8003E749E /* ResultsScene */,
 				9D7132862BC923C400B5ACF8 /* SheetScene */,
@@ -1324,7 +1304,6 @@
 				9E2A8BCF2B854147004A81CF /* Validator.swift in Sources */,
 				9E4F22752B9F3B8F003E749E /* NotepadTableViewCell.swift in Sources */,
 				9EE8AE102B7FB8CF001D126F /* SettingsRouter.swift in Sources */,
-				9E4F229A2B9F3BDD003E749E /* ExercisePresenter.swift in Sources */,
 				9E4F22BF2B9F3C2E003E749E /* TimerViewController.swift in Sources */,
 				9E4F227A2B9F3B9B003E749E /* NotepadHeaderViewModel.swift in Sources */,
 				9EBFD9642BAB077500A1891D /* UserAuthentication+CoreDataClass.swift in Sources */,
@@ -1344,7 +1323,6 @@
 				9D408CBF2BCDD78100B770F9 /* Domain.swift in Sources */,
 				9EE335992B8F9CCD00F532B3 /* SplashAnimator.swift in Sources */,
 				9D7D9A872BCC52ED00089A14 /* SheetPresenter+ConditionChoiceViewOutput.swift in Sources */,
-				9E4F22982B9F3BDD003E749E /* ExerciseProtocols.swift in Sources */,
 				9E5B74ED2B7F99FB00E2BDE6 /* WelcomeScreenViewModel.swift in Sources */,
 				9E5B75382B7F9D7600E2BDE6 /* GenderModel.swift in Sources */,
 				9E5B754B2B7F9D7600E2BDE6 /* ProfileSetupViewModel.swift in Sources */,
@@ -1376,6 +1354,7 @@
 				9E4382D32B83738800C69708 /* InfoPlist.swift in Sources */,
 				9E5B74E92B7F99FB00E2BDE6 /* WelcomeScreenContainer.swift in Sources */,
 				9EE8AE142B7FB8CF001D126F /* SettingsContainer.swift in Sources */,
+				9D6A65FA2BEE9C1F00ACD686 /* SheetPresenter+ExerciseCounterViewOutput.swift in Sources */,
 				9D7D9A852BCC52DB00089A14 /* SheetPresenter+CameraViewOutput.swift in Sources */,
 				9E5B75402B7F9D7600E2BDE6 /* PageViewModel.swift in Sources */,
 				9E4F22AF2B9F3C05003E749E /* ResultsProtocols.swift in Sources */,
@@ -1395,7 +1374,6 @@
 				9E4F22872B9F3BB4003E749E /* TrainingTableViewCell.swift in Sources */,
 				9EE8AE3B2B7FB96E001D126F /* WorkoutContainer.swift in Sources */,
 				9E4F227B2B9F3B9B003E749E /* NotepadTableViewCellViewModel.swift in Sources */,
-				9E4F229D2B9F3BDD003E749E /* ExerciseContainer.swift in Sources */,
 				9E4F22B42B9F3C14003E749E /* ResultsViewModel.swift in Sources */,
 				9E4382D62B83738800C69708 /* GoogleAuthService.swift in Sources */,
 				9EE8AE1C2B7FB905001D126F /* ProgressPresenter.swift in Sources */,
@@ -1426,10 +1404,11 @@
 				9E4382D52B83738800C69708 /* AuthService.swift in Sources */,
 				9EE3359D2B8F9CEA00F532B3 /* SplashPresenter.swift in Sources */,
 				9E4766D82B9F516F00DD31B9 /* StorageService.swift in Sources */,
+				9D6A65F82BEE9BEE00ACD686 /* ExerciseCounterViewModel.swift in Sources */,
 				9E53FB342B7F87BA00C55A45 /* AppDelegate.swift in Sources */,
+				9D6A65FD2BEE9CEE00ACD686 /* ExerciseCounterView.swift in Sources */,
 				9E4F22CF2B9F3C51003E749E /* ExtraPresenter.swift in Sources */,
 				9E5B75162B7F9D3500E2BDE6 /* GenderButtonView.swift in Sources */,
-				9E4F229C2B9F3BDD003E749E /* ExerciseInteractor.swift in Sources */,
 				9E7C199D2B8F482E0006D48C /* KeychainService.swift in Sources */,
 				9E4382D42B83738800C69708 /* VKIDAuthService.swift in Sources */,
 				9D7D9A7B2BCC0E1300089A14 /* WeightMeasurementViewModel.swift in Sources */,
@@ -1440,9 +1419,7 @@
 				9E4F22CC2B9F3C51003E749E /* ExtraRouter.swift in Sources */,
 				9E4F228F2B9F3BC4003E749E /* TrainingTableViewCellViewModel.swift in Sources */,
 				9E5B754A2B7F9D7600E2BDE6 /* OnBoardingViewController.swift in Sources */,
-				9E4F22992B9F3BDD003E749E /* ExerciseViewController.swift in Sources */,
 				9E2A8BCD2B8520B2004A81CF /* AlertManager.swift in Sources */,
-				9E4F22A02B9F3BEA003E749E /* ExerciseViewModel.swift in Sources */,
 				9EE8AE3A2B7FB96E001D126F /* WorkoutInteractor.swift in Sources */,
 				9E4F228B2B9F3BB4003E749E /* TrainingProtocols.swift in Sources */,
 				9E4F22722B9F3B8F003E749E /* NotepadInteractor.swift in Sources */,
@@ -1469,7 +1446,6 @@
 				9E5B750B2B7F9A8300E2BDE6 /* SignInViewModel.swift in Sources */,
 				9DA0936F2BCB134E009825F9 /* ConditionCellViewModel.swift in Sources */,
 				9E5B750C2B7F9A8300E2BDE6 /* SignInInteractor.swift in Sources */,
-				9E4F229B2B9F3BDD003E749E /* ExerciseRouter.swift in Sources */,
 				9E7C199B2B8D0EC50006D48C /* SignInModel.swift in Sources */,
 				9E4F22C12B9F3C2E003E749E /* TimerRouter.swift in Sources */,
 				9E5B75432B7F9D7600E2BDE6 /* AgeModel.swift in Sources */,

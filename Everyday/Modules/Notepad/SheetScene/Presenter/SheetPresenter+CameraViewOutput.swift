@@ -11,7 +11,7 @@ extension SheetPresenter: CameraViewOutput {
     func didTapSaveButton(with image: UIImage?) {
         let cameraModel = CameraModel(image: image)
         let moduleType = SheetType.camera(model: cameraModel)
-        moduleOutput?.setResult(moduleType, at: 0)
+        moduleOutput?.setResult(moduleType)
         router.dismissSheet()
     }
     

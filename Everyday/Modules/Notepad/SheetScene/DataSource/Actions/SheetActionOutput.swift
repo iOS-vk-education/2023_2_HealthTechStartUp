@@ -10,7 +10,8 @@ import UIKit
 protocol SheetActionOutput: CameraViewOutput,
                             ConditionChoiceViewOutput,
                             WeightMeasurementViewOutput,
-                            HeartRateVariabilityViewOutput {}
+                            HeartRateVariabilityViewOutput,
+                            ExerciseCounterViewOutput {}
 
 // MARK: - Camera
 
@@ -38,4 +39,11 @@ protocol HeartRateVariabilityViewOutput: AnyObject {
 protocol WeightMeasurementViewOutput: AnyObject {
     func didTapSaveButton(with weight: Double?)
     func didTapWeightMeasurementCloseButton()
+}
+
+// MARK: - ExerciseCounter
+
+protocol ExerciseCounterViewOutput: AnyObject {
+    func didTapSaveButton(with exercise: Exercise)
+    func didTapExerciseCounterCloseButton()
 }

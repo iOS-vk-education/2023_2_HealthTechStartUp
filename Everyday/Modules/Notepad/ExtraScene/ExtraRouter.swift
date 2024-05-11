@@ -68,7 +68,7 @@ private extension ExtraRouter {
 
 extension ExtraRouter: ExtraRouterInput {
     func showView(of type: SheetType) {
-        let presentedViewController: UIViewController?
+        var presentedViewController: UIViewController?
         switch type {
         case .camera:
             presentedViewController = cameraViewController(with: type)
@@ -78,6 +78,8 @@ extension ExtraRouter: ExtraRouterInput {
             presentedViewController = heartViewController(with: type)
         case .weightMeasurement:
             presentedViewController = weightViewController(with: type)
+        default:
+            break
         }
         guard let presentedViewController else {
             return
