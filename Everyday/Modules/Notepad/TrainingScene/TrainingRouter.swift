@@ -39,6 +39,7 @@ extension TrainingRouter: TrainingRouterInput {
     func openExtra(with context: ExtraContext) {
         let extraContainer = ExtraContainer.assemble(with: context)
         let extraViewController = extraContainer.viewController
+        extraViewController.navigationItem.hidesBackButton = true
         
         viewController?.navigationController?.pushViewController(extraViewController, animated: true)
     }

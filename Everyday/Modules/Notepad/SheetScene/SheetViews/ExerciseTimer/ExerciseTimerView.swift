@@ -22,7 +22,7 @@ final class ExerciseTimerView: UIView {
     private let saveButton = UIButton()
     private let closeButton = UIButton()
     
-    private var exercise: Exercise?
+    private var exercise: Exercise = .init()
     
     private var timer = Timer()
     private var remainingTime: Int = Constants.defaultTime
@@ -201,6 +201,8 @@ private extension ExerciseTimerView {
     
     @objc
     func didTapSaveButton() {
+        exercise.result = "05:00"
+        output?.didTapExerciseTimerSaveButton(with: exercise)
     }
     
     @objc

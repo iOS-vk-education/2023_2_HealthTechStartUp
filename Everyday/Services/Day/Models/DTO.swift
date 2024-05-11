@@ -71,10 +71,12 @@ struct DayServiceSetElement: Codable {
 
 struct DayServiceExerciseElement: Codable {
     let name: String
+    let type: Int
     let result: String
     
     init(domainModel: Exercise) {
         name = domainModel.name
+        type = domainModel.type.rawValue
         result = domainModel.result
     }
 }

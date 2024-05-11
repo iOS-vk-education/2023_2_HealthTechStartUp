@@ -55,17 +55,24 @@ struct TrainingSet {
 struct Exercise {
     let id = UUID()
     let name: String
+    let type: ExerciseType
     var result: String
     
     init() {
         name = "No name"
+        type = .reps
         result = "0"
     }
     
     init(dtoModel: DayServiceExerciseElement) {
         name = dtoModel.name
+        type = ExerciseType.allCases[dtoModel.type]
         result = dtoModel.result
     }
+}
+
+enum ExerciseType: Int, CaseIterable {
+    case reps, time
 }
 
 // MARK: - ExtraModel
