@@ -50,10 +50,6 @@ extension TrainingPresenter: TrainingViewOutput {
     }
     
     func didSelectRowAt(index: Int) {
-//        let exercise = workout.sets[indexOfSet].exercises[index]
-//        let exerciseContext = ExerciseContext(moduleOutput: self, exercise: exercise, indexOfSet: indexOfSet)
-//        router.showExercise(with: exerciseContext)
-        
         let exercise = workout.sets[indexOfSet].exercises[index]
         let exerciseCounterModel: ExerciseCounterModel = .init(exercise: exercise)
         let sheetType: SheetType = .exerciseCounter(model: exerciseCounterModel)

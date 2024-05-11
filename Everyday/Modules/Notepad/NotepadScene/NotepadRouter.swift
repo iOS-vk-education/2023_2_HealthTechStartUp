@@ -13,15 +13,10 @@ final class NotepadRouter {
 }
 
 extension NotepadRouter: NotepadRouterInput {    
-    func openTraining(with trainingContext: TrainingContext) {
-        guard
-            let viewController = viewController,
-            let navigationController = viewController.navigationController
-        else {
-            return
-        }
+    func openTraining(with context: TrainingContext) {
+        let trainingContainer = TrainingContainer.assemble(with: context)
+        let trainingViewController = trainingContainer.viewController
         
-        let trainingContainer = TrainingContainer.assemble(with: trainingContext)
-        navigationController.pushViewController(trainingContainer.viewController, animated: true)
+        viewController?.navigationController?.pushViewController(trainingViewController, animated: true)
     }
 }

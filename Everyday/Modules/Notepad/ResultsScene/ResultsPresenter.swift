@@ -42,13 +42,10 @@ extension ResultsPresenter: ResultsViewOutput {
     }
     
     func didTapCloseButton() {
-        router.closeResults()
+        router.dismissResults()
     }
     
     func didTapRestButton() {
-//        let timerContext = TimerContext()
-//        router.openTimer(with: timerContext)
-        
         let exercise = exercises[0]
         let exerciseTimerModel: ExerciseTimerModel = .init(exercise: exercise)
         let sheetType: SheetType = .exerciseTimer(model: exerciseTimerModel)
@@ -58,7 +55,7 @@ extension ResultsPresenter: ResultsViewOutput {
     
     func didTapContinueButton() {
         moduleOutput?.changeSet(with: exercises)
-        router.closeResults()
+        router.dismissResults()
     }
 }
 

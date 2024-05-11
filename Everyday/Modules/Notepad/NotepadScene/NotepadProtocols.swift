@@ -55,5 +55,5 @@ protocol NotepadInteractorOutput: AnyObject {
 }
 
 protocol NotepadRouterInput: AnyObject {
-    func openTraining(with trainingContext: TrainingContext)
+    func openTraining(with context: TrainingContext)
 }

@@ -24,7 +24,6 @@ final class ResultsContainer {
         
         interactor.output = presenter
         
-        router.presenter = presenter
         router.viewController = viewController
         
         return ResultsContainer(view: viewController, input: presenter, router: router)
