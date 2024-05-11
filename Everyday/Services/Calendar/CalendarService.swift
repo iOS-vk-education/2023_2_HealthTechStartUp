@@ -29,13 +29,13 @@ final class CalendarService: CalendarServiceDescription {
     
     func getScheduleElement(from schedule: DayServiceSchedule, at date: Date) -> [DayServiceProgramElement] {
         let map: [String: [DayServiceProgramElement]] = [
-            "Sun".localized: schedule.sunday,
-            "Mon".localized: schedule.monday,
-            "Tue".localized: schedule.tuesday,
-            "Wed".localized: schedule.wednesday,
-            "Thu".localized: schedule.thursday,
-            "Fri".localized: schedule.friday,
-            "Sat".localized: schedule.saturday
+            "CalendarService_Sun_Key".localized: schedule.sunday,
+            "CalendarService_Mon_Key".localized: schedule.monday,
+            "CalendarService_Tue_Key".localized: schedule.tuesday,
+            "CalendarService_Wed_Key".localized: schedule.wednesday,
+            "CalendarService_Thu_Key".localized: schedule.thursday,
+            "CalendarService_Fri_Key".localized: schedule.friday,
+            "CalendarService_Sat_Key".localized: schedule.saturday
         ]
         
         let key = extractDate(date: date, format: "E")

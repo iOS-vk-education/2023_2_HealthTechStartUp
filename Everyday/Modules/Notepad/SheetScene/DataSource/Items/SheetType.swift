@@ -19,19 +19,19 @@ enum SheetType {
     var description: String {
         switch self {
         case .camera:
-            return "Add photo"
+            return "Sheet_Camera_description".localized
         case .conditionChoice:
-            return "Note how you feel"
+            return "Sheet_ConditionChoice_description".localized
         case .heartRateVariability:
-            return "Heart rate variability"
+            return "Sheet_HeartRateVariability_description".localized
         case .weightMeasurement:
-            return "Weight"
+            return "Sheet_WeightMeasurement_description".localized
         case .exerciseCounter:
-            return "Exercise counter"
+            return "Sheet_ExerciseCounter_description".localized
         case .exerciseTimer:
-            return "Exercise timer"
+            return "Sheet_ExerciseTimer_description".localized
         case .timer:
-            return "Timer"
+            return "Sheet_Timer_description".localized
         }
     }
 }

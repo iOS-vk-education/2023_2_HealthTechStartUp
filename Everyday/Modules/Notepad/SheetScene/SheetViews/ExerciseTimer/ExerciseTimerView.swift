@@ -137,7 +137,7 @@ private extension ExerciseTimerView {
     }
     
     func setupTimerView() {
-        timerView.backgroundColor = Constants.TimerView.backgroundColor
+        timerView.backgroundColor = Constants.TimerView.backgroundColor.withAlphaComponent(Constants.TimerView.colorOpacity)
         timerView.layer.cornerRadius = Constants.TimerView.cornerRadius
     }
     
@@ -287,7 +287,8 @@ private extension ExerciseTimerView {
         }
         
         struct TimerView {
-            static let backgroundColor: UIColor = UIColor.Text.grayElement
+            static let backgroundColor: UIColor = UIColor.gray
+            static let colorOpacity: CGFloat = 0.1
             static let padding: CGFloat = 32
             static let cornerRadius: CGFloat = 16
             static let marginTop: CGFloat = 75

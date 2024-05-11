@@ -10,8 +10,8 @@ import UIKit
 struct ExtraViewModel {
     let finishTitle: NSAttributedString
     
-    init(isFinish: Bool = false) {
-        let finishButtonTitle = isFinish ? "Training_Finish_Button_Title" : "Skip"
+    init() {
+        let finishButtonTitle = "Training_Finish_Button_Title".localized
         let finishButtonAttributedString = NSAttributedString(string: finishButtonTitle.localized, attributes: Styles.titleAttributes)
         
         self.finishTitle = finishButtonAttributedString

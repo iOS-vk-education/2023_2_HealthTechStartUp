@@ -17,7 +17,6 @@ class ExtraTableViewCell: UITableViewCell {
     private let circleImageView = UIImageView()
     private let numberView = UIView()
     private let exerciseNameLabel = UILabel()
-    private let resultLabel = UILabel()
     
     // MARK: - Init
     
@@ -42,7 +41,6 @@ class ExtraTableViewCell: UITableViewCell {
 
     func configure(with viewModel: ExtraTableViewCellViewModel, and index: Int, isDone: Bool) {
         exerciseNameLabel.attributedText = viewModel.title
-        resultLabel.attributedText = viewModel.result
         counterLabel.attributedText = viewModel.number
         
         counterLabel.text = String(index + 1)
@@ -54,10 +52,6 @@ class ExtraTableViewCell: UITableViewCell {
             circleImageView.image = viewModel.circleFilled
             circleImageView.tintColor = Constants.CounterLabel.uncheckedColor
         }
-    }
-    
-    func updateResult(with result: String) {
-        resultLabel.text = result
     }
 }
 
@@ -87,14 +81,8 @@ private extension ExtraTableViewCell {
         exerciseNameLabel.pin
             .after(of: counterLabel)
             .marginLeft(Constants.horizontalMargin)
-            .width(Constants.ExerciseNameLabel.width)
-            .height(Constants.contentHeight)
-            .vCenter()
-        
-        resultLabel.pin
             .right()
-            .after(of: exerciseNameLabel)
-            .marginLeft(Constants.horizontalMargin)
+            .marginRight(Constants.horizontalMargin)
             .height(Constants.contentHeight)
             .vCenter()
     }
@@ -106,7 +94,7 @@ private extension ExtraTableViewCell {
         circleImageView.tintColor = Constants.CounterLabel.uncheckedColor
         counterLabel.textAlignment = .center
         numberView.addSubviews(circleImageView, counterLabel)
-        contentView.addSubviews(numberView, exerciseNameLabel, resultLabel)
+        contentView.addSubviews(numberView, exerciseNameLabel)
     }
 }
 

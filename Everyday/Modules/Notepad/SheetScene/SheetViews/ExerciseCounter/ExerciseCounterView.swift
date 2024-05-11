@@ -39,6 +39,7 @@ final class ExerciseCounterView: UIView {
     convenience init(exercise: Exercise, output: ExerciseCounterViewOutput?) {
         self.init(frame: .zero)
         self.exercise = exercise
+        self.result = Int(exercise.result)!
         self.output = output
         
         let viewModel = ExerciseCounterViewModel(exercise: exercise)
@@ -127,7 +128,7 @@ private extension ExerciseCounterView {
     }
     
     func setupResultView() {
-        resultView.backgroundColor = Constants.ResultView.backgroundColor
+        resultView.backgroundColor = Constants.ResultView.backgroundColor.withAlphaComponent(Constants.ResultView.colorOpacity)
         resultView.layer.cornerRadius = Constants.ResultView.cornerRadius
         resultView.addSubview(resultLabel)
     }
@@ -200,7 +201,8 @@ private extension ExerciseCounterView {
         }
         
         struct ResultView {
-            static let backgroundColor: UIColor = UIColor.Text.primary
+            static let backgroundColor: UIColor = UIColor.gray
+            static let colorOpacity: CGFloat = 0.1
             static let padding: CGFloat = 32
             static let cornerRadius: CGFloat = 16
             static let marginTop: CGFloat = 75

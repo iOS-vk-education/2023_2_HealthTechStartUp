@@ -45,10 +45,12 @@ struct ExerciseTimerViewModel {
 private extension ExerciseTimerViewModel {
     struct Styles {
         static let timeAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 72, weight: .bold)
+            .font: UIFont.systemFont(ofSize: 72, weight: .bold),
+            .foregroundColor: UIColor.Text.primary
         ]
         static let titleAttributes: [NSAttributedString.Key: Any] = [
-            .font: UIFont.systemFont(ofSize: 16, weight: .regular)
+            .font: UIFont.systemFont(ofSize: 16, weight: .regular),
+            .foregroundColor: UIColor.Text.primary
         ]
     }
     

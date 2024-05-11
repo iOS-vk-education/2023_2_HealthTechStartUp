@@ -9,7 +9,6 @@ import UIKit
 
 struct ExtraTableViewCellViewModel {
     let title: NSAttributedString
-    let result: NSAttributedString
     let number: NSAttributedString
     let circle: UIImage?
     let circleFilled: UIImage?
@@ -17,17 +16,14 @@ struct ExtraTableViewCellViewModel {
     init(viewType: SheetType) {
         let titleLabelTitle = viewType.description
         let titleLabelAttributedString = NSAttributedString(string: titleLabelTitle, attributes: Styles.titleAttributes)
-        let resultLabelTitle = ""
-        let resultLabelAttributedString = NSAttributedString(string: resultLabelTitle, attributes: Styles.resultAttributes)
         let numberLabelTitle = "0"
-        let numberLabelAttributedString = NSAttributedString(string: numberLabelTitle, attributes: Styles.resultAttributes)
+        let numberLabelAttributedString = NSAttributedString(string: numberLabelTitle, attributes: Styles.numberAttributes)
         let circleImageName = "circle"
         let circleImage = UIImage(systemName: circleImageName, withConfiguration: Configurations.large)
         let circleFilledImageName = "circle.fill"
         let circleFilledImage = UIImage(systemName: circleFilledImageName, withConfiguration: Configurations.large)
         
         self.title = titleLabelAttributedString
-        self.result = resultLabelAttributedString
         self.number = numberLabelAttributedString
         self.circle = circleImage
         self.circleFilled = circleFilledImage
@@ -41,7 +37,7 @@ private extension ExtraTableViewCellViewModel {
             .font: UIFont.systemFont(ofSize: 16, weight: .regular)
         ]
         
-        static let resultAttributes: [NSAttributedString.Key: Any] = [
+        static let numberAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor.Text.primary,
             .font: UIFont.systemFont(ofSize: 16, weight: .regular)
         ]
