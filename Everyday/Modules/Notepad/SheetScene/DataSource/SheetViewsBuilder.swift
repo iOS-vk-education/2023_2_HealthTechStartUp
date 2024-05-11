@@ -26,6 +26,8 @@ final class SheetViewsBuilder: SheetViewsBuilderDescription {
             return ExerciseCounterView(exercise: model.exercise, output: output)
         case .exerciseTimer(let model):
             return ExerciseTimerView(exercise: model.exercise, output: output)
+        case .timer(let model):
+            return TimerView(seconds: model.seconds, output: output)
         }
     }
 }

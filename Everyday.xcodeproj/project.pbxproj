@@ -44,6 +44,9 @@
 		9D7912F32BEF78B900A984AE /* ExerciseTimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7912F22BEF78B900A984AE /* ExerciseTimerViewModel.swift */; };
 		9D7912F52BEF791B00A984AE /* SheetPresenter+ExerciseTimerViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7912F42BEF791B00A984AE /* SheetPresenter+ExerciseTimerViewOutput.swift */; };
 		9D7912F82BEF795800A984AE /* ExerciseTimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7912F72BEF795800A984AE /* ExerciseTimerView.swift */; };
+		9D7913032BEF98BF00A984AE /* TimerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7913022BEF98BF00A984AE /* TimerView.swift */; };
+		9D7913052BEF9A0400A984AE /* TimerViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7913042BEF9A0400A984AE /* TimerViewModel.swift */; };
+		9D7913072BEF9A3A00A984AE /* SheetPresenter+TimerViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7913062BEF9A3A00A984AE /* SheetPresenter+TimerViewOutput.swift */; };
 		9D7D9A792BCC0D3E00089A14 /* WeightMeasurementView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A782BCC0D3E00089A14 /* WeightMeasurementView.swift */; };
 		9D7D9A7B2BCC0E1300089A14 /* WeightMeasurementViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A7A2BCC0E1300089A14 /* WeightMeasurementViewModel.swift */; };
 		9D7D9A852BCC52DB00089A14 /* SheetPresenter+CameraViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D7D9A842BCC52DB00089A14 /* SheetPresenter+CameraViewOutput.swift */; };
@@ -221,6 +224,9 @@
 		9D7912F22BEF78B900A984AE /* ExerciseTimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTimerViewModel.swift; sourceTree = "<group>"; };
 		9D7912F42BEF791B00A984AE /* SheetPresenter+ExerciseTimerViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetPresenter+ExerciseTimerViewOutput.swift"; sourceTree = "<group>"; };
 		9D7912F72BEF795800A984AE /* ExerciseTimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExerciseTimerView.swift; sourceTree = "<group>"; };
+		9D7913022BEF98BF00A984AE /* TimerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerView.swift; sourceTree = "<group>"; };
+		9D7913042BEF9A0400A984AE /* TimerViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimerViewModel.swift; sourceTree = "<group>"; };
+		9D7913062BEF9A3A00A984AE /* SheetPresenter+TimerViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetPresenter+TimerViewOutput.swift"; sourceTree = "<group>"; };
 		9D7D9A782BCC0D3E00089A14 /* WeightMeasurementView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightMeasurementView.swift; sourceTree = "<group>"; };
 		9D7D9A7A2BCC0E1300089A14 /* WeightMeasurementViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightMeasurementViewModel.swift; sourceTree = "<group>"; };
 		9D7D9A842BCC52DB00089A14 /* SheetPresenter+CameraViewOutput.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "SheetPresenter+CameraViewOutput.swift"; sourceTree = "<group>"; };
@@ -407,6 +413,7 @@
 				9D6D535E2BE965B50096BA90 /* CameraViewModel.swift */,
 				9D6A65F72BEE9BEE00ACD686 /* ExerciseCounterViewModel.swift */,
 				9D7912F22BEF78B900A984AE /* ExerciseTimerViewModel.swift */,
+				9D7913042BEF9A0400A984AE /* TimerViewModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -467,6 +474,7 @@
 			children = (
 				9D6A65FB2BEE9CE000ACD686 /* ExerciseCounter */,
 				9D7912F62BEF794100A984AE /* ExerciseTimer */,
+				9D7913012BEF98A600A984AE /* Timer */,
 				9DB778EE2BDAC2FC001C3B34 /* Camera */,
 				9DB778EF2BDAC309001C3B34 /* ConditionChoice */,
 				9DB778F12BDAC351001C3B34 /* WeightMeasurement */,
@@ -548,6 +556,14 @@
 			path = SectionHeader;
 			sourceTree = "<group>";
 		};
+		9D7913012BEF98A600A984AE /* Timer */ = {
+			isa = PBXGroup;
+			children = (
+				9D7913022BEF98BF00A984AE /* TimerView.swift */,
+			);
+			path = Timer;
+			sourceTree = "<group>";
+		};
 		9D9517162BC58A46004EB96A /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
@@ -592,6 +608,7 @@
 				9D7D9A882BCC532100089A14 /* SheetPresenter+WeightMeasurementViewOutput.swift */,
 				9D6A65F92BEE9C1F00ACD686 /* SheetPresenter+ExerciseCounterViewOutput.swift */,
 				9D7912F42BEF791B00A984AE /* SheetPresenter+ExerciseTimerViewOutput.swift */,
+				9D7913062BEF9A3A00A984AE /* SheetPresenter+TimerViewOutput.swift */,
 			);
 			path = Presenter;
 			sourceTree = "<group>";
@@ -1348,6 +1365,7 @@
 				9E4F22892B9F3BB4003E749E /* TrainingInteractor.swift in Sources */,
 				9D7132DD2BC93CF300B5ACF8 /* SheetType.swift in Sources */,
 				9E4F22852B9F3BB4003E749E /* TrainingViewController.swift in Sources */,
+				9D7913072BEF9A3A00A984AE /* SheetPresenter+TimerViewOutput.swift in Sources */,
 				9E4F227C2B9F3B9B003E749E /* NotepadViewModel.swift in Sources */,
 				9E5B74FC2B7F9A7000E2BDE6 /* SignUpViewModel.swift in Sources */,
 				9D7912F52BEF791B00A984AE /* SheetPresenter+ExerciseTimerViewOutput.swift in Sources */,
@@ -1473,6 +1491,7 @@
 				9E7C19972B8BF1340006D48C /* PasswordGenerator.swift in Sources */,
 				9E53FB362B7F87BA00C55A45 /* SceneDelegate.swift in Sources */,
 				9E5B74FD2B7F9A7000E2BDE6 /* SignUpContainer.swift in Sources */,
+				9D7913052BEF9A0400A984AE /* TimerViewModel.swift in Sources */,
 				9E5B750B2B7F9A8300E2BDE6 /* SignInViewModel.swift in Sources */,
 				9DA0936F2BCB134E009825F9 /* ConditionCellViewModel.swift in Sources */,
 				9E5B750C2B7F9A8300E2BDE6 /* SignInInteractor.swift in Sources */,
@@ -1488,6 +1507,7 @@
 				9D7132902BC923DE00B5ACF8 /* SheetProtocols.swift in Sources */,
 				9D7132912BC923DE00B5ACF8 /* SheetInteractor.swift in Sources */,
 				9D7132922BC923DE00B5ACF8 /* SheetContainer.swift in Sources */,
+				9D7913032BEF98BF00A984AE /* TimerView.swift in Sources */,
 				9D15BE242BC456CC004FC560 /* NotepadOuterCollectionViewCell.swift in Sources */,
 				9E5B750A2B7F9A8300E2BDE6 /* SignInViewController.swift in Sources */,
 				9E4F22AD2B9F3C05003E749E /* ResultsPresenter.swift in Sources */,

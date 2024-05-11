@@ -46,10 +46,9 @@ extension ResultsPresenter: ResultsViewOutput {
     }
     
     func didTapRestButton() {
-        let exercise = exercises[0]
-        let exerciseTimerModel: ExerciseTimerModel = .init(exercise: exercise)
-        let sheetType: SheetType = .exerciseTimer(model: exerciseTimerModel)
-        let sheetConext = SheetContext(moduleOutput: self, type: sheetType)
+        let timerModel: TimerModel = .init(seconds: Constants.defaultTimerTime)
+        let sheetType: SheetType = .timer(model: timerModel)
+        let sheetConext = SheetContext(type: sheetType)
         router.showView(with: sheetConext)
     }
     
@@ -59,28 +58,11 @@ extension ResultsPresenter: ResultsViewOutput {
     }
 }
 
-extension ResultsPresenter: SheetModuleOutput {
-    func setResult(_ result: SheetType) {
-        var index = -1
-        switch result {
-        case .exerciseCounter(let model):
-            index = exercises.firstIndex(where: { $0.name == model.exercise.name }) ?? -1
-            
-            guard index < exercises.count, index >= 0 else {
-                return
-            }
-            
-            exercises[index].result = model.exercise.result
-        default:
-            break
-        }
-        guard index < exercises.count, index >= 0 else {
-            return
-        }
-        
-        view?.reloadData()
-    }
+extension ResultsPresenter: ResultsInteractorOutput {
 }
 
-extension ResultsPresenter: ResultsInteractorOutput {
+private extension ResultsPresenter {
+    struct Constants {
+        static let defaultTimerTime: Int = 5
+    }
 }
