@@ -31,7 +31,7 @@ class ExtraTableViewCell: UITableViewCell {
         setup()
     }
     
-    // MARK: - Life cycle
+    // MARK: - Lifecycle
     
     override func layoutSubviews() {
         super.layoutSubviews()

@@ -29,7 +29,7 @@ class ResultsTableViewCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life cycle
+    // MARK: - Lifecycle
     
     override func layoutSubviews() {
         super.layoutSubviews()
