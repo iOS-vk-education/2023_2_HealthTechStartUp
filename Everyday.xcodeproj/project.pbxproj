@@ -465,8 +465,8 @@
 		9D7132DE2BC93E2300B5ACF8 /* SheetViews */ = {
 			isa = PBXGroup;
 			children = (
-				9D7912F62BEF794100A984AE /* ExerciseTimer */,
 				9D6A65FB2BEE9CE000ACD686 /* ExerciseCounter */,
+				9D7912F62BEF794100A984AE /* ExerciseTimer */,
 				9DB778EE2BDAC2FC001C3B34 /* Camera */,
 				9DB778EF2BDAC309001C3B34 /* ConditionChoice */,
 				9DB778F12BDAC351001C3B34 /* WeightMeasurement */,

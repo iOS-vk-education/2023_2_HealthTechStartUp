@@ -15,8 +15,9 @@ enum NotepadSectionHeaderState {
 
 class NotepadSectionHeaderView: UIView {
     
-    // MARK: - Private properties
+    // MARK: - Private Properties
     
+    private let stackView = UIStackView()
     private let titleLabel = UILabel()
     private let descriptionLabel = UILabel()
     private let collapseButton = UIButton()
@@ -35,7 +36,7 @@ class NotepadSectionHeaderView: UIView {
         setup()
     }
     
-    // MARK: - Life cycle
+    // MARK: - Lifecycle
     
     override func layoutSubviews() {
         super.layoutSubviews()
@@ -73,17 +74,7 @@ private extension NotepadSectionHeaderView {
     // MARK: - Layout
     
     func layout() {
-        let labelStackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
-        labelStackView.axis = .vertical
-        labelStackView.distribution = .equalSpacing
-        
-        let mainStackView = UIStackView(arrangedSubviews: [labelStackView, collapseButton])
-        mainStackView.axis = .horizontal
-        mainStackView.distribution = .equalSpacing
-        
-        self.addSubview(mainStackView)
-        
-        mainStackView.pin
+        stackView.pin
             .horizontally(Constants.horizontalMargin)
             .vertically(Constants.verticalMargin)
     }
@@ -92,12 +83,26 @@ private extension NotepadSectionHeaderView {
     
     func setup() {
         setupView()
+        setupStackView()
         setupCollapseButton()
     }
     
     func setupView() {
-        self.backgroundColor = Constants.backgroundColor
-        self.layer.cornerRadius = Constants.cornerRadius
+        backgroundColor = Constants.backgroundColor
+        layer.cornerRadius = Constants.cornerRadius
+    }
+    
+    func setupStackView() {
+        let labelStackView = UIStackView(arrangedSubviews: [titleLabel, descriptionLabel])
+        labelStackView.axis = .vertical
+        labelStackView.distribution = .equalSpacing
+        
+        stackView.addArrangedSubview(labelStackView)
+        stackView.addArrangedSubview(collapseButton)
+        stackView.axis = .horizontal
+        stackView.distribution = .equalSpacing
+        
+        addSubview(stackView)
     }
     
     func setupCollapseButton() {
