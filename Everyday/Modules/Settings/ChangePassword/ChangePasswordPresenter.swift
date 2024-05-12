@@ -29,7 +29,8 @@ extension ChangePasswordPresenter: ChangePasswordViewOutput {
     func didTapConfirmButton(with oldPassword: String?, and newPassword: String?) {
         let validationErrors = Validator.validatePassword(for: oldPassword ?? "")
         if !validationErrors.isEmpty {
-            view?.showAlert(with: Constants.invalidPassword, message: validationErrors)
+            view?.showAlert(with: .invalidPasswordWithRegExp(description: validationErrors.description))
+            return
         }
         
         self.interactor.changePassword(oldPassword: oldPassword ?? "", newPassword: newPassword ?? "")
@@ -47,21 +48,20 @@ extension ChangePasswordPresenter: ChangePasswordViewOutput {
     func didTapOnForgotPasswordButton() {
         router.getForgotPasswordView()
     }
-    
-    struct Constants {
-        static let password: String = "password"
-        static let invalidPassword: String = "Invalid password"
-    }
 }
 
 extension ChangePasswordPresenter: ChangePasswordInteractorOutput {
-    func didChanged(_ result: Result<Void, any Error>) {
+    func didChanged(_ result: Result<Void, any Error>, _ reauth: Bool?) {
         switch result {
         case .success:
             print("success")
             self.router.getBackToMainView()
         case .failure(let error):
-            self.view?.showAlert(with: "network", message: error.localizedDescription)
+            if reauth == nil {
+                self.view?.showAlert(with: .fetchingUserError(error: error))
+            } else if reauth == false {
+                self.view?.showAlert(with: .invalidEmailOrPassword)
+            }
         }
     }
 }

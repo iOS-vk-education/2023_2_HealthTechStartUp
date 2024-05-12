@@ -24,8 +24,11 @@ final class ProfilePresenter {
     }
     
     private func handleUpdateImageError(_ error: Error?) {
-        let error = error?.localizedDescription ?? ""
-        self.view?.showAlert(with: "DownloadImageError", message: error)
+        guard let error = error else {
+            return
+        }
+        
+        self.view?.showAlert(with: .fetchingUserError(error: error as NSError))
     }
     
     private func handleFetchUserImage(result: Result<Void, Error>, userProfileImage: UIImage) {
@@ -33,7 +36,7 @@ final class ProfilePresenter {
         case .success:
             self.view?.setupProfileImage(image: userProfileImage)
         case .failure(let error):
-            self.view?.showAlert(with: "image", message: error.localizedDescription)
+            self.view?.showAlert(with: .fetchingUserError(error: error))
         }
     }
 }
@@ -131,7 +134,7 @@ extension ProfilePresenter: ProfileInteractorOutput {
         case .success:
             SettingsUserDefaultsService.shared.setUserName(username: username)
         case .failure(let error):
-            self.view?.showAlert(with: "network", message: error.localizedDescription)
+            self.view?.showAlert(with: .networkMessage(error: error))
         }
     }
     
@@ -145,7 +148,7 @@ extension ProfilePresenter: ProfileInteractorOutput {
                 self.settingsUserDefaults.setUserName(username: username ?? "")
                 self.view?.reloadData()
             case .failure(let error):
-                self.view?.showAlert(with: "getUsernameError", message: error.localizedDescription)
+                self.view?.showAlert(with: .fetchingUserError(error: error))
             }
         }
     }
@@ -165,7 +168,7 @@ extension ProfilePresenter: ProfileInteractorOutput {
                 Reloader.shared.setLogout()
                 self.router.getBackToMainView()
             case .failure(let error):
-                self.view?.showAlert(with: "logout", message: error.localizedDescription)
+                self.view?.showAlert(with: .logoutError(error: error))
             }
         }
     }

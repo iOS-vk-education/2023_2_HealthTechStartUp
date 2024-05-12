@@ -16,7 +16,7 @@ protocol ChangePasswordModuleOutput: AnyObject {
 }
 
 protocol ChangePasswordViewInput: AnyObject {
-    func showAlert(with key: String, message: String)
+    func showAlert(with type: AlertType)
     func configure(with: ChangePasswordViewModel)
 }
 
@@ -32,7 +32,7 @@ protocol ChangePasswordInteractorInput: AnyObject {
 }
 
 protocol ChangePasswordInteractorOutput: AnyObject {
-    func didChanged(_ result: Result<Void, Error>)
+    func didChanged(_ result: Result<Void, Error>, _ reauth: Bool?)
 }
 
 protocol ChangePasswordRouterInput: AnyObject {

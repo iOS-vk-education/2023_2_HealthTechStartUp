@@ -8,11 +8,11 @@
 import UIKit
 
 protocol SettingsServiceDescription {
-    func changeEmail(with userRequest: ChangeEmailModel, completion: @escaping (Result<Void, Error>) -> Void)
-    func changePassword(with userRequest: ChangePasswordModel, completion: @escaping (Result<Void, Error>) -> Void)
+    func changeEmail(with userRequest: ChangeEmailModel, completion: @escaping (Result<Void, Error>, Bool?) -> Void)
+    func changePassword(with userRequest: ChangePasswordModel, completion: @escaping (Result<Void, Error>, Bool?) -> Void)
     func getUserName(completion: @escaping (Result<Void, Error>, String?) -> Void)
     func getUserProfileImage(completion: @escaping (Result<Void, Error>, UIImage?) -> Void)
-    func deleteEmailAccount(with userRequest: DeleteAccountModel, whichSign: String, completion: @escaping (Result<Void, Error>) -> Void)
+    func deleteEmailAccount(with userRequest: DeleteAccountModel, whichSign: String, completion: @escaping (Result<Void, Error>, Bool?) -> Void)
     func deleteGoogleAccount(with whichSign: String, completion: @escaping (Result<Void, Error>) -> Void)
     func deleteVkAccount(with whichSign: String, completion: @escaping (Result<Void, Error>) -> Void)
     func updateUserImage(image: UIImage, completion: @escaping (Result<Void, Error>) -> Void)
@@ -87,30 +87,30 @@ final class SettingsService: SettingsServiceDescription {
         }
     }
     
-    func changeEmail(with userRequest: ChangeEmailModel, completion: @escaping (Result<Void, Error>) -> Void) {
-        firebaseService.updateEmail(with: userRequest) { success, error in
+    func changeEmail(with userRequest: ChangeEmailModel, completion: @escaping (Result<Void, Error>, Bool?) -> Void) {
+        firebaseService.updateEmail(with: userRequest) { success, error, reauth in
             if let error = error {
-                completion(.failure(error))
+                completion(.failure(error), reauth)
             } else if success {
-                completion(.success(()))
+                completion(.success(()), reauth)
             }
         }
     }
     
-    func deleteEmailAccount(with userRequest: DeleteAccountModel, whichSign: String, completion: @escaping (Result<Void, Error>) -> Void) {
+    func deleteEmailAccount(with userRequest: DeleteAccountModel, whichSign: String, completion: @escaping (Result<Void, Error>, Bool?) -> Void) {
         let coreData = CoreDataService.shared
-        firebaseService.deleteEmailAccount(email: userRequest.email, password: userRequest.password) { success, error  in
+        firebaseService.deleteEmailAccount(email: userRequest.email, password: userRequest.password) { success, error, reauth  in
             if let error = error {
-                completion(.failure(error))
+                completion(.failure(error), reauth)
             } else if success {
                 self.firebaseService.signOut { _, error in
                     guard let error = error else {
                         KeychainService.clearOne(authType: "emailAuth")
                         coreData.deleteAuthType(authType: whichSign)
-                        completion(.success(()))
+                        completion(.success(()), reauth)
                         return
                     }
-                    completion(.failure(error))
+                    completion(.failure(error), reauth)
                 }
             }
         }
@@ -154,12 +154,12 @@ final class SettingsService: SettingsServiceDescription {
         }
     }
     
-    func changePassword(with userRequest: ChangePasswordModel, completion: @escaping (Result<Void, Error>) -> Void) {
-        firebaseService.updatePassword(with: userRequest) { success, error in
+    func changePassword(with userRequest: ChangePasswordModel, completion: @escaping (Result<Void, Error>, Bool?) -> Void) {
+        firebaseService.updatePassword(with: userRequest) { success, error, reauth in
             if let error = error {
-                completion(.failure(error))
+                completion(.failure(error), reauth)
             } else if success {
-                completion(.success(()))
+                completion(.success(()), reauth)
             }
         }
     }

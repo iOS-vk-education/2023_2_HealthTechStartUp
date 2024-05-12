@@ -17,7 +17,7 @@ protocol ChangeEmailModuleOutput: AnyObject {
 
 protocol ChangeEmailViewInput: AnyObject {
     func configure(with: ChangeEmailViewModel)
-    func showAlert(with key: String, message: String)
+    func showAlert(with type: AlertType)
 }
 
 protocol ChangeEmailViewOutput: AnyObject {
@@ -32,7 +32,7 @@ protocol ChangeEmailInteractorInput: AnyObject {
 }
 
 protocol ChangeEmailInteractorOutput: AnyObject {
-    func didChanged(_ result: Result<Void, Error>)
+    func didChanged(_ result: Result<Void, Error>, _ reauth: Bool?)
 }
 
 protocol ChangeEmailRouterInput: AnyObject {

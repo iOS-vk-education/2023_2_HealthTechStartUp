@@ -10,13 +10,13 @@ import Firebase
 import FirebaseAuth
 
 protocol FirebaseServiceDescription {
-    func updateEmail(with: ChangeEmailModel, completion: @escaping (Bool, Error?) -> Void)
-    func updatePassword(with: ChangePasswordModel, completion: @escaping (Bool, Error?) -> Void)
+    func updateEmail(with: ChangeEmailModel, completion: @escaping (Bool, Error?, _ reauth: Bool?) -> Void)
+    func updatePassword(with: ChangePasswordModel, completion: @escaping (Bool, Error?, _ reauth: Bool?) -> Void)
     func fetchUserName(completion: @escaping (Bool, Error?, String?) -> Void)
     func fetchUserProfileImage(completion: @escaping (Bool, Error?, UIImage?) -> Void)
     func deleteOldImage(userId: String, completion: @escaping (Bool, Error?) -> Void)
     func updateProfileImagePath(path: String, completion: @escaping (Bool, Error?) -> Void)
-    func deleteEmailAccount(email: String, password: String, completion: @escaping (Bool, Error?) -> Void)
+    func deleteEmailAccount(email: String, password: String, completion: @escaping (Bool, Error?, _ reauth: Bool?) -> Void)
     func deleteGoogleAccount(completion: @escaping (Bool, Error?) -> Void)
     func deleteVkAccount(completion: @escaping (Bool, Error?) -> Void)
     func updateUserImage(image: UIImage, completion: @escaping (Bool, Error?) -> Void)
@@ -37,7 +37,6 @@ final class FirebaseService {
 }
 
 extension FirebaseService: FirebaseServiceDescription {
-    
     func currentUser(completion: @escaping (User?, Error?) -> Void) {
         guard let currentUser = Auth.auth().currentUser else {
             completion(nil, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не найден"]))
@@ -95,10 +94,10 @@ extension FirebaseService: FirebaseServiceDescription {
         }
     }
     
-    func updateEmail(with model: ChangeEmailModel, completion: @escaping (Bool, Error?) -> Void) {
+    func updateEmail(with model: ChangeEmailModel, completion: @escaping (Bool, Error?, _ reauth: Bool?) -> Void) {
         self.currentUser { user, error in
             guard let currentUser = user else {
-                completion(false, error)
+                completion(false, error, nil)
                 return
             }
             
@@ -106,32 +105,32 @@ extension FirebaseService: FirebaseServiceDescription {
             
             currentUser.reauthenticate(with: credential) { _, error in
                 guard error == nil else {
-                    completion(false, error)
+                    completion(false, error, false)
                     return
                 }
                 
                 currentUser.sendEmailVerification(beforeUpdatingEmail: model.newEmail) { error in
                     if let error = error {
-                        completion(false, error)
+                        completion(false, error, true)
                         return
                     }
                     guard (Auth.auth().currentUser?.uid) != nil else {
-                        completion(false, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не найден"]))
+                        completion(false, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не найден"]), true)
                         return()
                     }
                     
                     self.changeFieldInFireBase(field: Constants.email, value: model.newEmail) { _, error in
                         guard error == nil else {
-                            completion(false, error)
+                            completion(false, error, true)
                             return
                         }
-                        completion(true, nil)
+                        completion(true, nil, true)
                     }
                 }
                 
                 currentUser.reload {error in
                     guard error == nil else {
-                        completion(false, error)
+                        completion(false, error, true)
                         return
                     }
                 }
@@ -139,10 +138,10 @@ extension FirebaseService: FirebaseServiceDescription {
         }
     }
     
-    func updatePassword(with model: ChangePasswordModel, completion: @escaping (Bool, Error?) -> Void) {
+    func updatePassword(with model: ChangePasswordModel, completion: @escaping (Bool, Error?, _ reauth: Bool?) -> Void) {
         self.currentUser { user, error in
             guard let currentUser = user else {
-                completion(false, error)
+                completion(false, error, nil)
                 return
             }
             
@@ -150,16 +149,16 @@ extension FirebaseService: FirebaseServiceDescription {
             
             currentUser.reauthenticate(with: credential) { _, error in
                 guard error == nil else {
-                    completion(false, error)
+                    completion(false, error, false)
                     return
                 }
                 
                 currentUser.updatePassword(to: model.newPassword) { error in
                     guard error == nil else {
-                        completion(false, error)
+                        completion(false, error, true)
                         return
                     }
-                    completion(true, nil)
+                    completion(true, nil, true)
                 }
             }
         }
@@ -203,10 +202,10 @@ extension FirebaseService: FirebaseServiceDescription {
             completion(false, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не найден"]))
     }
     
-    func deleteEmailAccount(email: String, password: String, completion: @escaping (Bool, Error?) -> Void) {
+    func deleteEmailAccount(email: String, password: String, completion: @escaping (Bool, Error?, _ reauth: Bool?) -> Void) {
         self.currentUser { user, error in
             guard let currentUser = user else {
-                completion(false, error)
+                completion(false, error, nil)
                 return
             }
             let userId = currentUser.uid
@@ -215,16 +214,16 @@ extension FirebaseService: FirebaseServiceDescription {
             
             currentUser.reauthenticate(with: credential) { _, error in
                 guard error == nil else {
-                    completion(false, error)
+                    completion(false, error, false)
                     return
                 }
                 
                 self.deleteUserInFirebase(user: currentUser, userId: userId) { _, error in
                     guard error == nil else {
-                        completion(false, error)
+                        completion(false, error, true)
                         return
                     }
-                    completion(true, nil)
+                    completion(true, nil, true)
                 }
             }
         }

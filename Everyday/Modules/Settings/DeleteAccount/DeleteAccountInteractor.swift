@@ -28,18 +28,18 @@ extension DeleteAccountInteractor: DeleteAccountInteractorInput {
         switch whichSign {
         case "email":
             let model = DeleteAccountModel(email: email, password: password)
-            settingsService.deleteEmailAccount(with: model, whichSign: whichSign) { result in
-                self.output?.didDelete(result)
+            settingsService.deleteEmailAccount(with: model, whichSign: whichSign) { result, reauth in
+                self.output?.didDelete(result, reauth)
             }
             
         case "google":
             settingsService.deleteGoogleAccount(with: whichSign) { result in
-                self.output?.didDelete(result)
+                self.output?.didDelete(result, nil)
             }
             
         case "vk":
             settingsService.deleteVkAccount(with: whichSign) { result in
-                self.output?.didDelete(result)
+                self.output?.didDelete(result, nil)
             }
             
         default:

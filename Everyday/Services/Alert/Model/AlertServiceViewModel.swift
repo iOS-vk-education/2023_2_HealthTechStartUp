@@ -10,6 +10,7 @@ import UIKit
 enum AlertType {
     case invalidEmail
     case invalidPassword
+    case invalidEmailOrPassword
     case invalidPasswordWithRegExp(description: String)
 
     case registrationMessage(description: String)
@@ -57,6 +58,11 @@ struct AlertServiceViewModel {
             self.labelDescription = NSAttributedString(string: "AlertManager_invalid_password_message".localized, attributes: Styles.descriptionAttributes)
             self.buttonTitle = NSAttributedString(string: "AlertManager_alert_title".localized, attributes: Styles.buttonAttributes)
 
+        case .invalidEmailOrPassword:
+            self.labelTitle = NSAttributedString(string: "AlertManager_invalid_emailOrPass_title".localized, attributes: Styles.titleAttributes)
+            self.labelDescription = NSAttributedString(string: "AlertManager_invalid_emailOrPass_message".localized, attributes: Styles.descriptionAttributes)
+            self.buttonTitle = NSAttributedString(string: "AlertManager_alert_title".localized, attributes: Styles.buttonAttributes)
+            
         case .invalidPasswordWithRegExp(let description):
             self.labelTitle = NSAttributedString(string: "AlertManager_invalid_password_title".localized, attributes: Styles.titleAttributes)
             self.labelDescription = NSAttributedString(string: description, attributes: Styles.descriptionAttributes)

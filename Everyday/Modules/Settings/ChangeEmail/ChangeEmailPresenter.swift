@@ -31,7 +31,7 @@ extension ChangeEmailPresenter: ChangeEmailViewOutput {
     
     func didTapConfirmButton(with email: String?, and password: String?) {
         guard let email = email, Validator.isValidEmail(for: email) else {
-            view?.showAlert(with: Constants.email, message: Constants.invalidEmail)
+            view?.showAlert(with: .invalidEmail)
             return
         }
 
@@ -46,20 +46,19 @@ extension ChangeEmailPresenter: ChangeEmailViewOutput {
     func getBack() {
         router.getBackToMainView()
     }
-    
-    struct Constants {
-        static let email: String = "email"
-        static let invalidEmail: String = "Invalid email"
-    }
 }
 
 extension ChangeEmailPresenter: ChangeEmailInteractorOutput {
-    func didChanged(_ result: Result<Void, any Error>) {
+    func didChanged(_ result: Result<Void, any Error>, _ reauth: Bool?) {
         switch result {
         case .success(()):
             self.router.getBackToMainView()
         case .failure(let error):
-            self.view?.showAlert(with: "network", message: error.localizedDescription)
+            if reauth == nil {
+                self.view?.showAlert(with: .fetchingUserError(error: error))
+            } else if reauth == false {
+                self.view?.showAlert(with: .invalidEmailOrPassword)
+            }
         }
     }
 }

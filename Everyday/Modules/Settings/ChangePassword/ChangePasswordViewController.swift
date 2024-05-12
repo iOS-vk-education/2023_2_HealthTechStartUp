@@ -187,13 +187,8 @@ private extension ChangePasswordViewController {
 // MARK: - ChangePasswordViewInput
 
 extension ChangePasswordViewController: ChangePasswordViewInput {
-    func showAlert(with key: String, message: String) {
-        switch key {
-        case "password": AlertManager.showInvalidPasswordAlert(on: self, message: message)
-        case "invalidPassword": AlertManager.showInvalidPasswordAlert(on: self)
-        default: let error = NSError(domain: "Everydaytech.ru", code: 400)
-            AlertManager.showSignInErrorAlert(on: self, with: error)
-        }
+    func showAlert(with type: AlertType) {
+        AlertService.shared.presentAlert(on: self, alertType: type)
     }
     
     func configure(with model: ChangePasswordViewModel) {

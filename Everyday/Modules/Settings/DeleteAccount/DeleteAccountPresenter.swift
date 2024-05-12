@@ -55,7 +55,7 @@ extension DeleteAccountPresenter: DeleteAccountViewOutput {
 }
 
 extension DeleteAccountPresenter: DeleteAccountInteractorOutput {
-    func didDelete(_ result: Result<Void, any Error>) {
+    func didDelete(_ result: Result<Void, any Error>, _ reauth: Bool?) {
         switch result {
         case .success:
             SettingsUserDefaultsService.shared.resetUserDefaults()
@@ -63,7 +63,11 @@ extension DeleteAccountPresenter: DeleteAccountInteractorOutput {
             Reloader.shared.setLogout()
             self.router.routeToAuthentication()
         case .failure(let error):
-            self.view?.showAlert(with: "network", message: error.localizedDescription)
+            if reauth == nil {
+                self.view?.showAlert(with: .fetchingUserError(error: error))
+            } else if reauth == false {
+                self.view?.showAlert(with: .invalidEmailOrPassword)
+            }
         }
     }
 }

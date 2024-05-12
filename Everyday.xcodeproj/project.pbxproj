@@ -125,7 +125,6 @@
 		9E0C347F2BD5997F00D8696B /* SettingsTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0C347E2BD5997F00D8696B /* SettingsTableViewManager.swift */; };
 		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
 		9E2A8BC92B850461004A81CF /* FIrebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */; };
-		9E2A8BCD2B8520B2004A81CF /* AlertManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */; };
 		9E2A8BCF2B854147004A81CF /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BCE2B854147004A81CF /* Validator.swift */; };
 		9E4382D32B83738800C69708 /* InfoPlist.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4382CE2B83738800C69708 /* InfoPlist.swift */; };
 		9E4382D42B83738800C69708 /* VKIDAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4382CF2B83738800C69708 /* VKIDAuthService.swift */; };
@@ -248,7 +247,6 @@
 		9E673DA62B8275680041B97D /* VKID in Frameworks */ = {isa = PBXBuildFile; productRef = 9E673DA52B8275680041B97D /* VKID */; };
 		9E673DA82B8275680041B97D /* VKIDCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9E673DA72B8275680041B97D /* VKIDCore */; };
 		9E7C19972B8BF1340006D48C /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C19962B8BF1340006D48C /* PasswordGenerator.swift */; };
-		9E7C19992B8CC3E80006D48C /* NameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C19982B8CC3E80006D48C /* NameGenerator.swift */; };
 		9E7C199B2B8D0EC50006D48C /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C199A2B8D0EC50006D48C /* Email.swift */; };
 		9E7C199D2B8F482E0006D48C /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C199C2B8F482E0006D48C /* KeychainService.swift */; };
 		9EBFD9642BAB077500A1891D /* UserAuthentication+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9622BAB077500A1891D /* UserAuthentication+CoreDataClass.swift */; };
@@ -394,7 +392,6 @@
 		9E0C347E2BD5997F00D8696B /* SettingsTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewManager.swift; sourceTree = "<group>"; };
 		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
-		9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertManager.swift; sourceTree = "<group>"; };
 		9E2A8BCE2B854147004A81CF /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
 		9E4382CE2B83738800C69708 /* InfoPlist.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = InfoPlist.swift; sourceTree = "<group>"; };
 		9E4382CF2B83738800C69708 /* VKIDAuthService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VKIDAuthService.swift; sourceTree = "<group>"; };
@@ -519,7 +516,6 @@
 		9E5B75362B7F9D7600E2BDE6 /* ProfileSetupModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupModel.swift; sourceTree = "<group>"; };
 		9E5B75372B7F9D7600E2BDE6 /* ProfileSetupView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ProfileSetupView.swift; sourceTree = "<group>"; };
 		9E7C19962B8BF1340006D48C /* PasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
-		9E7C19982B8CC3E80006D48C /* NameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameGenerator.swift; sourceTree = "<group>"; };
 		9E7C199A2B8D0EC50006D48C /* Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
 		9E7C199C2B8F482E0006D48C /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
 		9EBFD9622BAB077500A1891D /* UserAuthentication+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAuthentication+CoreDataClass.swift"; sourceTree = "<group>"; };
@@ -892,17 +888,6 @@
 			path = Health;
 			sourceTree = "<group>";
 		};
-		8CC7E9742BF13AF6004F255A /* Helpers */ = {
-			isa = PBXGroup;
-			children = (
-				9E7C199C2B8F482E0006D48C /* KeychainService.swift */,
-				9E7C19962B8BF1340006D48C /* PasswordGenerator.swift */,
-				8CE21B142BEE134B002D9CB4 /* DataReload.swift */,
-				9E2A8BCE2B854147004A81CF /* Validator.swift */,
-			);
-			path = Helpers;
-			sourceTree = "<group>";
-		};
 		8CE21B0D2BEE0E60002D9CB4 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
@@ -1020,11 +1005,12 @@
 		9E2931842B9F262D00950B15 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
-				8CC7E9742BF13AF6004F255A /* Helpers */,
-				8C3B5EFF2BBA056000CFE490 /* UserDefaults */,
 				9E1383072BAB03240073622C /* CoreData */,
-				9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */,
-				9E7C19982B8CC3E80006D48C /* NameGenerator.swift */,
+				9E7C199C2B8F482E0006D48C /* KeychainService.swift */,
+				9E7C19962B8BF1340006D48C /* PasswordGenerator.swift */,
+				8CE21B142BEE134B002D9CB4 /* DataReload.swift */,
+				9E2A8BCE2B854147004A81CF /* Validator.swift */,
+				8C3B5EFF2BBA056000CFE490 /* UserDefaults */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1055,11 +1041,11 @@
 		9E4382CC2B83738800C69708 /* Auth */ = {
 			isa = PBXGroup;
 			children = (
+				9E4382D02B83738800C69708 /* AuthService.swift */,
 				9E2931842B9F262D00950B15 /* Helpers */,
 				9E2A8BC72B85044A004A81CF /* FirebaseAuth */,
 				9E4382CD2B83738800C69708 /* VKIDAuth */,
 				9E4382D12B83738800C69708 /* GoogleAuth */,
-				9E4382D02B83738800C69708 /* AuthService.swift */,
 			);
 			path = Auth;
 			sourceTree = "<group>";
@@ -1867,7 +1853,6 @@
 				9E5B75452B7F9D7600E2BDE6 /* AgeView.swift in Sources */,
 				9E5B75072B7F9A8300E2BDE6 /* SignInProtocols.swift in Sources */,
 				9E5B75472B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift in Sources */,
-				9E7C19992B8CC3E80006D48C /* NameGenerator.swift in Sources */,
 				9E5B74FA2B7F9A7000E2BDE6 /* SignUpProtocols.swift in Sources */,
 				9E4766E02BA350B000DD31B9 /* HealthKitService.swift in Sources */,
 				9EE8AE202B7FB905001D126F /* ProgressInteractor.swift in Sources */,
@@ -1925,7 +1910,6 @@
 				9E5B754A2B7F9D7600E2BDE6 /* OnBoardingViewController.swift in Sources */,
 				8C3B5ECF2BAF7D8C00CFE490 /* DeleteAccountViewModel.swift in Sources */,
 				9E4F22992B9F3BDD003E749E /* ExerciseViewController.swift in Sources */,
-				9E2A8BCD2B8520B2004A81CF /* AlertManager.swift in Sources */,
 				8C3B5EF82BB75C9F00CFE490 /* FirebaseService.swift in Sources */,
 				8C3B5ED82BAF7DD400CFE490 /* DeleteAccountViewController.swift in Sources */,
 				8C3B5E9B2BAF7A2700CFE490 /* DateAndTimeRouter.swift in Sources */,

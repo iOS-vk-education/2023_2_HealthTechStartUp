@@ -16,7 +16,7 @@ protocol DeleteAccountModuleOutput: AnyObject {
 }
 
 protocol DeleteAccountViewInput: AnyObject {
-    func showAlert(with key: String, message: String)
+    func showAlert(with type: AlertType)
     func configure(with: DeleteAccountViewModel)
 }
 
@@ -33,7 +33,7 @@ protocol DeleteAccountInteractorInput: AnyObject {
 }
 
 protocol DeleteAccountInteractorOutput: AnyObject {
-    func didDelete(_ result: Result<Void, Error>)
+    func didDelete(_ result: Result<Void, Error>, _ reauth: Bool?)
 }
 
 protocol DeleteAccountRouterInput: AnyObject {

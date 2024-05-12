@@ -30,8 +30,8 @@ final class ChangePasswordInteractor {
 extension ChangePasswordInteractor: ChangePasswordInteractorInput {
     func changePassword(oldPassword: String, newPassword: String) {
         let model = ChangePasswordModel(oldPassword: oldPassword, newPassword: newPassword)
-        settingsService.changePassword(with: model) { result in
-            self.output?.didChanged(result)
+        settingsService.changePassword(with: model) { result, reauth in
+            self.output?.didChanged(result, reauth)
         }
     }
 }

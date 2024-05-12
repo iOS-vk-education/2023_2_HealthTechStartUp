@@ -234,11 +234,8 @@ private extension DeleteAccountViewController {
 // MARK: - DeleteAccountViewInput
 
 extension DeleteAccountViewController: DeleteAccountViewInput {
-    func showAlert(with key: String, message: String) {
-        switch key {
-        case "network": AlertManager.showUnknownFetchingUserError(on: self)
-        default: AlertManager.showInvalidPasswordAlert(on: self, message: message)
-        }
+    func showAlert(with type: AlertType) {
+        AlertService.shared.presentAlert(on: self, alertType: type)
     }
     
     func configure(with model: DeleteAccountViewModel) {

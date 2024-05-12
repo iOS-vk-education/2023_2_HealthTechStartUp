@@ -59,6 +59,10 @@ final class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: ProfileViewInput {
+    func showAlert(with type: AlertType) {
+        AlertService.shared.presentAlert(on: self, alertType: type)
+    }
+    
     func reloadData() {
         tableView.reloadData()
     }
@@ -70,21 +74,6 @@ extension ProfileViewController: ProfileViewInput {
     
     func setupProfileImage(image: UIImage) {
         userImageView.image = image
-    }
-    
-    func showAlert(with key: String, message: String) {
-        switch key {
-        case "logout":
-            let error = NSError(domain: "Everydaytech.ru", code: 400)
-            AlertManager.showLogoutError(on: self, with: error)
-        case "getUsernameError": AlertManager.showUnknownFetchingUserError(on: self)
-        case "image": 
-            let error = NSError(domain: "Everydaytech.ru", code: 400)
-            AlertManager.showFetchingUserError(on: self, with: error)
-        default:
-            let error = NSError(domain: "Everydaytech.ru", code: 400)
-            AlertManager.showLogoutError(on: self, with: error)
-        }
     }
 }
 

@@ -18,7 +18,7 @@ protocol ProfileModuleOutput: AnyObject {
 
 protocol ProfileViewInput: AnyObject {
     func configure(with: ProfileViewModel)
-    func showAlert(with key: String, message: String)
+    func showAlert(with type: AlertType)
     func setupProfileImage(image: UIImage)
     func reloadData()
 }
