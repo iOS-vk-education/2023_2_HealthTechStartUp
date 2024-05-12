@@ -18,7 +18,6 @@
 		9D408CBD2BCDD77B00B770F9 /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D408CBC2BCDD77B00B770F9 /* DTO.swift */; };
 		9D408CBF2BCDD78100B770F9 /* Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D408CBE2BCDD78100B770F9 /* Domain.swift */; };
 		9D4E4BCD2BB070D200617E5D /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9E5B74CB2B7F963100E2BDE6 /* PinLayout */; };
-		9D4E4BCE2BB070D200617E5D /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9D11F0FF2BA7D53F003CF1F5 /* PinLayout */; };
 		9D4E4BD02BB070D200617E5D /* GoogleSignIn in Frameworks */ = {isa = PBXBuildFile; productRef = 9D11F1052BA7D854003CF1F5 /* GoogleSignIn */; };
 		9D4E4BD12BB070D200617E5D /* GoogleSignInSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 9D11F1072BA7D854003CF1F5 /* GoogleSignInSwift */; };
 		9D4E4BD22BB070D200617E5D /* VKID in Frameworks */ = {isa = PBXBuildFile; productRef = 9D11F10A2BA7D8CF003CF1F5 /* VKID */; };
@@ -168,9 +167,19 @@
 		9E7C19992B8CC3E80006D48C /* NameGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C19982B8CC3E80006D48C /* NameGenerator.swift */; };
 		9E7C199B2B8D0EC50006D48C /* SignInModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C199A2B8D0EC50006D48C /* SignInModel.swift */; };
 		9E7C199D2B8F482E0006D48C /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C199C2B8F482E0006D48C /* KeychainService.swift */; };
+		9E93A8A62BF0296C008C94EE /* HeartRatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E93A8A02BF0296C008C94EE /* HeartRatePresenter.swift */; };
+		9E93A8A72BF0296C008C94EE /* HeartRateRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E93A8A12BF0296C008C94EE /* HeartRateRouter.swift */; };
+		9E93A8A82BF0296C008C94EE /* HeartRateViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E93A8A22BF0296C008C94EE /* HeartRateViewController.swift */; };
+		9E93A8A92BF0296C008C94EE /* HeartRateProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E93A8A32BF0296C008C94EE /* HeartRateProtocols.swift */; };
+		9E93A8AA2BF0296C008C94EE /* HeartRateInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E93A8A42BF0296C008C94EE /* HeartRateInteractor.swift */; };
+		9E93A8AB2BF0296C008C94EE /* HeartRateContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E93A8A52BF0296C008C94EE /* HeartRateContainer.swift */; };
+		9E93A8AE2BF02984008C94EE /* HeartRateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E93A8AD2BF02984008C94EE /* HeartRateViewModel.swift */; };
 		9EBFD9642BAB077500A1891D /* UserAuthentication+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9622BAB077500A1891D /* UserAuthentication+CoreDataClass.swift */; };
 		9EBFD9652BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9632BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift */; };
 		9EBFD9672BAB273400A1891D /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9662BAB273400A1891D /* CoreDataService.swift */; };
+		9ED8C92A2BF02BAB00D400A3 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED8C9292BF02BAB00D400A3 /* Preview.swift */; };
+		9ED8C92D2BF02D8200D400A3 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9ED8C92C2BF02D8200D400A3 /* PinLayout */; };
+		9ED8C9332BF02EA000D400A3 /* BeamAISDK in Frameworks */ = {isa = PBXBuildFile; productRef = 9ED8C9322BF02EA000D400A3 /* BeamAISDK */; };
 		9EE335992B8F9CCD00F532B3 /* SplashAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE335982B8F9CCD00F532B3 /* SplashAnimator.swift */; };
 		9EE3359B2B8F9CDC00F532B3 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3359A2B8F9CDC00F532B3 /* SplashViewController.swift */; };
 		9EE3359D2B8F9CEA00F532B3 /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3359C2B8F9CEA00F532B3 /* SplashPresenter.swift */; };
@@ -355,9 +364,17 @@
 		9E7C19982B8CC3E80006D48C /* NameGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NameGenerator.swift; sourceTree = "<group>"; };
 		9E7C199A2B8D0EC50006D48C /* SignInModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInModel.swift; sourceTree = "<group>"; };
 		9E7C199C2B8F482E0006D48C /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		9E93A8A02BF0296C008C94EE /* HeartRatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRatePresenter.swift; sourceTree = "<group>"; };
+		9E93A8A12BF0296C008C94EE /* HeartRateRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateRouter.swift; sourceTree = "<group>"; };
+		9E93A8A22BF0296C008C94EE /* HeartRateViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateViewController.swift; sourceTree = "<group>"; };
+		9E93A8A32BF0296C008C94EE /* HeartRateProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateProtocols.swift; sourceTree = "<group>"; };
+		9E93A8A42BF0296C008C94EE /* HeartRateInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateInteractor.swift; sourceTree = "<group>"; };
+		9E93A8A52BF0296C008C94EE /* HeartRateContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateContainer.swift; sourceTree = "<group>"; };
+		9E93A8AD2BF02984008C94EE /* HeartRateViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRateViewModel.swift; sourceTree = "<group>"; };
 		9EBFD9622BAB077500A1891D /* UserAuthentication+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAuthentication+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9EBFD9632BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAuthentication+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9EBFD9662BAB273400A1891D /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		9ED8C9292BF02BAB00D400A3 /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		9EE335982B8F9CCD00F532B3 /* SplashAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashAnimator.swift; sourceTree = "<group>"; };
 		9EE3359A2B8F9CDC00F532B3 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		9EE3359C2B8F9CEA00F532B3 /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
@@ -393,10 +410,11 @@
 				9D4E4BD62BB070D200617E5D /* FirebaseFirestore in Frameworks */,
 				9D4E4BD52BB070D200617E5D /* FirebaseAuth in Frameworks */,
 				9D4E4BD32BB070D200617E5D /* VKIDCore in Frameworks */,
+				9ED8C9332BF02EA000D400A3 /* BeamAISDK in Frameworks */,
 				9D4E4BD22BB070D200617E5D /* VKID in Frameworks */,
+				9ED8C92D2BF02D8200D400A3 /* PinLayout in Frameworks */,
 				9D4E4BD12BB070D200617E5D /* GoogleSignInSwift in Frameworks */,
 				9D4E4BD02BB070D200617E5D /* GoogleSignIn in Frameworks */,
-				9D4E4BCE2BB070D200617E5D /* PinLayout in Frameworks */,
 				9D4E4BCD2BB070D200617E5D /* PinLayout in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -668,6 +686,7 @@
 		9E2931822B9F25FB00950B15 /* UI */ = {
 			isa = PBXGroup;
 			children = (
+				9ED8C9282BF02B9200D400A3 /* HeartRate */,
 				9E2931832B9F260000950B15 /* OnBoarding */,
 			);
 			path = UI;
@@ -1153,6 +1172,28 @@
 			path = ProfileSetup;
 			sourceTree = "<group>";
 		};
+		9E93A89F2BF02944008C94EE /* HeartRate */ = {
+			isa = PBXGroup;
+			children = (
+				9E93A8AC2BF02974008C94EE /* Models */,
+				9E93A8A02BF0296C008C94EE /* HeartRatePresenter.swift */,
+				9E93A8A12BF0296C008C94EE /* HeartRateRouter.swift */,
+				9E93A8A22BF0296C008C94EE /* HeartRateViewController.swift */,
+				9E93A8A32BF0296C008C94EE /* HeartRateProtocols.swift */,
+				9E93A8A42BF0296C008C94EE /* HeartRateInteractor.swift */,
+				9E93A8A52BF0296C008C94EE /* HeartRateContainer.swift */,
+			);
+			path = HeartRate;
+			sourceTree = "<group>";
+		};
+		9E93A8AC2BF02974008C94EE /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9E93A8AD2BF02984008C94EE /* HeartRateViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		9EA180172BAF6CE5002F6C80 /* Settings */ = {
 			isa = PBXGroup;
 			children = (
@@ -1171,6 +1212,14 @@
 			children = (
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		9ED8C9282BF02B9200D400A3 /* HeartRate */ = {
+			isa = PBXGroup;
+			children = (
+				9ED8C9292BF02BAB00D400A3 /* Preview.swift */,
+			);
+			path = HeartRate;
 			sourceTree = "<group>";
 		};
 		9EE335972B8F9C3900F532B3 /* ScreenSaver */ = {
@@ -1208,6 +1257,7 @@
 		9EE8AE222B7FB91E001D126F /* Notepad */ = {
 			isa = PBXGroup;
 			children = (
+				9E93A89F2BF02944008C94EE /* HeartRate */,
 				9E4F22652B9F3B82003E749E /* NotepadScene */,
 				9E4F227D2B9F3BA4003E749E /* TrainingScene */,
 				9E4F22A12B9F3BF8003E749E /* ResultsScene */,
@@ -1249,7 +1299,6 @@
 			name = Everyday;
 			packageProductDependencies = (
 				9E5B74CB2B7F963100E2BDE6 /* PinLayout */,
-				9D11F0FF2BA7D53F003CF1F5 /* PinLayout */,
 				9D11F1052BA7D854003CF1F5 /* GoogleSignIn */,
 				9D11F1072BA7D854003CF1F5 /* GoogleSignInSwift */,
 				9D11F10A2BA7D8CF003CF1F5 /* VKID */,
@@ -1258,6 +1307,8 @@
 				9DE61B022BA8AEFE006AC078 /* FirebaseFirestore */,
 				9DE61B042BA8AEFE006AC078 /* FirebaseFirestoreSwift */,
 				9DE61B062BA8AEFE006AC078 /* FirebaseStorage */,
+				9ED8C92C2BF02D8200D400A3 /* PinLayout */,
+				9ED8C9322BF02EA000D400A3 /* BeamAISDK */,
 			);
 			productName = Everyday;
 			productReference = 9E53FB302B7F87BA00C55A45 /* Everyday.app */;
@@ -1289,10 +1340,11 @@
 			);
 			mainGroup = 9E53FB272B7F87BA00C55A45;
 			packageReferences = (
-				9D11F0FE2BA7D53F003CF1F5 /* XCRemoteSwiftPackageReference "PinLayout" */,
 				9D11F1042BA7D854003CF1F5 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
 				9D11F1092BA7D8CF003CF1F5 /* XCRemoteSwiftPackageReference "vkid-ios-sdk" */,
 				9DE61AFD2BA8AEFE006AC078 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+				9ED8C92B2BF02D8200D400A3 /* XCRemoteSwiftPackageReference "PinLayout" */,
+				9ED8C9312BF02EA000D400A3 /* XCRemoteSwiftPackageReference "BeamAISDK-iOS" */,
 			);
 			productRefGroup = 9E53FB312B7F87BA00C55A45 /* Products */;
 			projectDirPath = "";
@@ -1477,6 +1529,7 @@
 				9E53FB502B7F951000C55A45 /* UIColor+Extension.swift in Sources */,
 				9E53FB4C2B7F950400C55A45 /* UIView+Extension.swift in Sources */,
 				9D7D9A8B2BCC54D200089A14 /* SheetPresenter+HeartRateVariabilityViewOutput.swift in Sources */,
+				9E93A8AE2BF02984008C94EE /* HeartRateViewModel.swift in Sources */,
 				9D9517152BC5786B004EB96A /* ExtraViewModel.swift in Sources */,
 				9EBFD9672BAB273400A1891D /* CoreDataService.swift in Sources */,
 				9DB778E92BDAC0CC001C3B34 /* SheetActionOutput.swift in Sources */,
@@ -1486,6 +1539,7 @@
 				9E5B75462B7F9D7600E2BDE6 /* ProfileAcknowledgementView.swift in Sources */,
 				9E5B753D2B7F9D7600E2BDE6 /* DecimalTextFieldView.swift in Sources */,
 				9EE8AE0F2B7FB8CF001D126F /* SettingsPresenter.swift in Sources */,
+				9ED8C92A2BF02BAB00D400A3 /* Preview.swift in Sources */,
 				9D7912F82BEF795800A984AE /* ExerciseTimerView.swift in Sources */,
 				9D15BE282BC48549004FC560 /* NotepadInnerCollectionViewCellViewModel.swift in Sources */,
 				9E7C19972B8BF1340006D48C /* PasswordGenerator.swift in Sources */,
@@ -1511,6 +1565,12 @@
 				9D15BE242BC456CC004FC560 /* NotepadOuterCollectionViewCell.swift in Sources */,
 				9E5B750A2B7F9A8300E2BDE6 /* SignInViewController.swift in Sources */,
 				9E4F22AD2B9F3C05003E749E /* ResultsPresenter.swift in Sources */,
+				9E93A8A62BF0296C008C94EE /* HeartRatePresenter.swift in Sources */,
+				9E93A8A72BF0296C008C94EE /* HeartRateRouter.swift in Sources */,
+				9E93A8A82BF0296C008C94EE /* HeartRateViewController.swift in Sources */,
+				9E93A8A92BF0296C008C94EE /* HeartRateProtocols.swift in Sources */,
+				9E93A8AA2BF0296C008C94EE /* HeartRateInteractor.swift in Sources */,
+				9E93A8AB2BF0296C008C94EE /* HeartRateContainer.swift in Sources */,
 				9E4F22CD2B9F3C51003E749E /* ExtraViewController.swift in Sources */,
 				9E5B75142B7F9D1D00E2BDE6 /* AgeButtonView.swift in Sources */,
 				9EE8AE1F2B7FB905001D126F /* ProgressProtocols.swift in Sources */,
@@ -1675,7 +1735,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LW5X22QCW4;
+				DEVELOPMENT_TEAM = 72F47Y7J7T;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -1713,7 +1773,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LW5X22QCW4;
+				DEVELOPMENT_TEAM = 72F47Y7J7T;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -1767,14 +1827,6 @@
 /* End XCConfigurationList section */
 
 /* Begin XCRemoteSwiftPackageReference section */
-		9D11F0FE2BA7D53F003CF1F5 /* XCRemoteSwiftPackageReference "PinLayout" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/layoutBox/PinLayout";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.10.5;
-			};
-		};
 		9D11F1042BA7D854003CF1F5 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
@@ -1799,14 +1851,25 @@
 				minimumVersion = 10.22.1;
 			};
 		};
+		9ED8C92B2BF02D8200D400A3 /* XCRemoteSwiftPackageReference "PinLayout" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/layoutBox/PinLayout";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.10.5;
+			};
+		};
+		9ED8C9312BF02EA000D400A3 /* XCRemoteSwiftPackageReference "BeamAISDK-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/beamai/BeamAISDK-iOS/";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		9D11F0FF2BA7D53F003CF1F5 /* PinLayout */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9D11F0FE2BA7D53F003CF1F5 /* XCRemoteSwiftPackageReference "PinLayout" */;
-			productName = PinLayout;
-		};
 		9D11F1052BA7D854003CF1F5 /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9D11F1042BA7D854003CF1F5 /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
@@ -1850,6 +1913,16 @@
 		9E5B74CB2B7F963100E2BDE6 /* PinLayout */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = PinLayout;
+		};
+		9ED8C92C2BF02D8200D400A3 /* PinLayout */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9ED8C92B2BF02D8200D400A3 /* XCRemoteSwiftPackageReference "PinLayout" */;
+			productName = PinLayout;
+		};
+		9ED8C9322BF02EA000D400A3 /* BeamAISDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9ED8C9312BF02EA000D400A3 /* XCRemoteSwiftPackageReference "BeamAISDK-iOS" */;
+			productName = BeamAISDK;
 		};
 /* End XCSwiftPackageProductDependency section */
 
