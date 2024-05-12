@@ -76,9 +76,6 @@ extension ExtraPresenter: ExtraViewOutput {
     }
     
     func didSelectRowAt(index: Int) {
-        guard index != 2 else {  // because heart rate not implemented
-            return
-        }
         router.showView(of: data[index])
     }
     
