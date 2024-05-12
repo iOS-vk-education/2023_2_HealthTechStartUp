@@ -25,30 +25,52 @@ class ProfileAcknowledgementModel {
     private(set) var bodyWeightMeasureUnit: String?
     private(set) var measurementsMeasureUnit: String?
     private(set) var distanceMeasureUnit: String?
+    private(set) var loadWeightMeasureUnit: String?
 
     private init() { }
 
+//    func update(firstname: String? = nil, lastname: String? = nil, nickname: String? = nil, email: String? = nil,
+//                password: String? = nil, profileImage: UIImage? = nil, age: String? = nil, gender: String? = nil,
+//                weight: String? = nil, schedule: DayServiceSchedule? = nil,
+//                history: [DayServiceHistoryElement]? = nil, profileImagePath: String? = nil,
+//                bodyWeightMeasureUnit: String? = nil, measurementsMeasureUnit: String? = nil,
+//                loadWeightMeasureUnit: String? = nil, distanceMeasureUnit: String? = nil) {
+//        if let firstname = firstname { self.firstname = firstname }
+//        if let lastname = lastname { self.lastname = lastname }
+//        if let nickname = nickname { self.nickname = nickname }
+//        if let email = email { self.email = email }
+//        if let password = password { self.password = password }
+//        if let age = age { self.age = age }
+//        if let gender = gender { self.gender = gender }
+//        if let weight = weight { self.weight = weight }
+//        if let schedule = schedule { self.schedule = schedule }
+//        if let history = history { self.history = history }
+//        if let profileImagePath = profileImagePath { self.profileImagePath = profileImagePath }
+//        if let profileImage = profileImage { self.profileImage = profileImage }
+//        if let bodyWeightMeasureUnit = bodyWeightMeasureUnit { self.bodyWeightMeasureUnit = bodyWeightMeasureUnit}
+//        if let measurementsMeasureUnit = measurementsMeasureUnit { self.measurementsMeasureUnit = measurementsMeasureUnit}
+//        if let distanceMeasureUnit = distanceMeasureUnit { self.distanceMeasureUnit = distanceMeasureUnit}
+//    }
+    
     func update(firstname: String? = nil, lastname: String? = nil, nickname: String? = nil, email: String? = nil,
                 password: String? = nil, profileImage: UIImage? = nil, age: String? = nil, gender: String? = nil,
-                weight: String? = nil, schedule: DayServiceSchedule? = nil,
-                history: [DayServiceHistoryElement]? = nil, profileImagePath: String? = nil,
+                weight: String? = nil, profileImagePath: String? = nil,
                 bodyWeightMeasureUnit: String? = nil, measurementsMeasureUnit: String? = nil,
-                loadWeightMeasureUnit: String? = nil, distanceMeasureUnit: String? = nil) {
-        if let firstname = firstname { self.firstname = firstname }
-        if let lastname = lastname { self.lastname = lastname }
-        if let nickname = nickname { self.nickname = nickname }
-        if let email = email { self.email = email }
-        if let password = password { self.password = password }
-        if let age = age { self.age = age }
-        if let gender = gender { self.gender = gender }
-        if let weight = weight { self.weight = weight }
-        if let schedule = schedule { self.schedule = schedule }
-        if let history = history { self.history = history }
-        if let profileImagePath = profileImagePath { self.profileImagePath = profileImagePath }
+                distanceMeasureUnit: String? = nil, loadWeightMeasureUnit: String? = nil) {
+        self.firstname.updateValue(firstname)
+        self.lastname.updateValue(lastname)
+        self.nickname.updateValue(nickname)
+        self.email.updateValue(email)
+        self.password.updateValue(password)
+        self.age.updateValue(age)
+        self.gender.updateValue(gender)
+        self.weight.updateValue(weight)
+        self.profileImagePath.updateValue(profileImagePath)
         if let profileImage = profileImage { self.profileImage = profileImage }
-        if let bodyWeightMeasureUnit = bodyWeightMeasureUnit { self.bodyWeightMeasureUnit = bodyWeightMeasureUnit}
-        if let measurementsMeasureUnit = measurementsMeasureUnit { self.measurementsMeasureUnit = measurementsMeasureUnit}
-        if let distanceMeasureUnit = distanceMeasureUnit { self.distanceMeasureUnit = distanceMeasureUnit}
+        self.bodyWeightMeasureUnit.updateValue(bodyWeightMeasureUnit)
+        self.measurementsMeasureUnit.updateValue(measurementsMeasureUnit)
+        self.distanceMeasureUnit.updateValue(distanceMeasureUnit)
+        self.loadWeightMeasureUnit.updateValue(loadWeightMeasureUnit)
     }
     
     enum Field {
