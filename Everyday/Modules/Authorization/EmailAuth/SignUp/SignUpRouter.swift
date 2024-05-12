@@ -16,15 +16,16 @@ extension SignUpRouter: SignUpRouterInput {
     func closeView() {
         viewController?.dismiss(animated: true, completion: nil)
     }
-        
+            
     func openApp() {
         if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
            let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
-           let appViewController = TabBarController()
-            appViewController.modalPresentationStyle = .fullScreen
+            let tabBarController = TabBarController()
+            let navigationController = UINavigationController(rootViewController: tabBarController)
+            navigationController.modalPresentationStyle = .fullScreen
 
-            UIView.transition(with: window, duration: 0.5, options: [.transitionCrossDissolve], animations: {
-                window.rootViewController = appViewController
+            UIView.transition(with: window, duration: 0.3, options: [.transitionCrossDissolve], animations: {
+                window.rootViewController = navigationController
             }, completion: nil)
         }
     }

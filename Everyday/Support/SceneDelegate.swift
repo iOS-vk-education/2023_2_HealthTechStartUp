@@ -49,12 +49,4 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window = window
         self.window?.makeKeyAndVisible()
     }
-    
-    private func goToController(with viewController: UIViewController) {
-        DispatchQueue.main.async { [weak self] in
-            let nav = UINavigationController(rootViewController: viewController)
-            nav.modalPresentationStyle = .fullScreen
-            self?.window?.rootViewController = nav
-        }
-    }
 }

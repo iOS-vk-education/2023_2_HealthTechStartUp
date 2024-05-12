@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		8C1B616D2BC997B500441A52 /* FirebaseAppCheck in Frameworks */ = {isa = PBXBuildFile; productRef = 8C1B616C2BC997B500441A52 /* FirebaseAppCheck */; };
 		8C1B616F2BC997B500441A52 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 8C1B616E2BC997B500441A52 /* FirebaseAuth */; };
 		8C1B61712BC997B500441A52 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 8C1B61702BC997B500441A52 /* FirebaseFirestore */; };
 		8C1B61732BC997B500441A52 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 8C1B61722BC997B500441A52 /* FirebaseFirestoreSwift */; };
@@ -123,7 +122,6 @@
 		8CE21B1D2BEE8267002D9CB4 /* ForgotPasswordViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE21B1C2BEE8267002D9CB4 /* ForgotPasswordViewController.swift */; };
 		8CE21B1F2BEE8425002D9CB4 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE21B1E2BEE8425002D9CB4 /* ForgotPasswordViewModel.swift */; };
 		8CE21B212BEE8995002D9CB4 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE21B202BEE8995002D9CB4 /* CloseButton.swift */; };
-		9E0C34452BCEBEE300D8696B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E0C34442BCEBEE300D8696B /* GoogleService-Info.plist */; };
 		9E0C347F2BD5997F00D8696B /* SettingsTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0C347E2BD5997F00D8696B /* SettingsTableViewManager.swift */; };
 		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
 		9E2A8BC92B850461004A81CF /* FIrebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */; };
@@ -256,6 +254,7 @@
 		9EBFD9642BAB077500A1891D /* UserAuthentication+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9622BAB077500A1891D /* UserAuthentication+CoreDataClass.swift */; };
 		9EBFD9652BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9632BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift */; };
 		9EBFD9672BAB273400A1891D /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9662BAB273400A1891D /* CoreDataService.swift */; };
+		9ED8C9352BF0F7FF00D400A3 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9ED8C9342BF0F7FF00D400A3 /* GoogleService-Info.plist */; };
 		9EE335992B8F9CCD00F532B3 /* SplashAnimator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE335982B8F9CCD00F532B3 /* SplashAnimator.swift */; };
 		9EE3359B2B8F9CDC00F532B3 /* SplashViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3359A2B8F9CDC00F532B3 /* SplashViewController.swift */; };
 		9EE3359D2B8F9CEA00F532B3 /* SplashPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE3359C2B8F9CEA00F532B3 /* SplashPresenter.swift */; };
@@ -392,7 +391,6 @@
 		8CE21B1C2BEE8267002D9CB4 /* ForgotPasswordViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewController.swift; sourceTree = "<group>"; };
 		8CE21B1E2BEE8425002D9CB4 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		8CE21B202BEE8995002D9CB4 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
-		9E0C34442BCEBEE300D8696B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E0C347E2BD5997F00D8696B /* SettingsTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewManager.swift; sourceTree = "<group>"; };
 		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
@@ -527,6 +525,7 @@
 		9EBFD9622BAB077500A1891D /* UserAuthentication+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAuthentication+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9EBFD9632BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAuthentication+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9EBFD9662BAB273400A1891D /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
+		9ED8C9342BF0F7FF00D400A3 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9EE335982B8F9CCD00F532B3 /* SplashAnimator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashAnimator.swift; sourceTree = "<group>"; };
 		9EE3359A2B8F9CDC00F532B3 /* SplashViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
 		9EE3359C2B8F9CEA00F532B3 /* SplashPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
@@ -562,7 +561,6 @@
 				9E4382D92B83746B00C69708 /* GoogleSignIn in Frameworks */,
 				8C1B61752BC997B500441A52 /* FirebaseStorage in Frameworks */,
 				9E673DA82B8275680041B97D /* VKIDCore in Frameworks */,
-				8C1B616D2BC997B500441A52 /* FirebaseAppCheck in Frameworks */,
 				8C1B61712BC997B500441A52 /* FirebaseFirestore in Frameworks */,
 				8C1B616F2BC997B500441A52 /* FirebaseAuth in Frameworks */,
 				8C1B61782BC9984800441A52 /* M13Checkbox in Frameworks */,
@@ -1308,7 +1306,7 @@
 		9E53FB482B7F94A000C55A45 /* Support */ = {
 			isa = PBXGroup;
 			children = (
-				9E0C34442BCEBEE300D8696B /* GoogleService-Info.plist */,
+				9ED8C9342BF0F7FF00D400A3 /* GoogleService-Info.plist */,
 				9EE8AE042B7FA45F001D126F /* Localizable.xcstrings */,
 				9E53FB332B7F87BA00C55A45 /* AppDelegate.swift */,
 				9E53FB352B7F87BA00C55A45 /* SceneDelegate.swift */,
@@ -1643,7 +1641,6 @@
 				9E673DA72B8275680041B97D /* VKIDCore */,
 				9E4382D82B83746B00C69708 /* GoogleSignIn */,
 				9E4382DA2B83746B00C69708 /* GoogleSignInSwift */,
-				8C1B616C2BC997B500441A52 /* FirebaseAppCheck */,
 				8C1B616E2BC997B500441A52 /* FirebaseAuth */,
 				8C1B61702BC997B500441A52 /* FirebaseFirestore */,
 				8C1B61722BC997B500441A52 /* FirebaseFirestoreSwift */,
@@ -1701,7 +1698,7 @@
 			files = (
 				9E53FB402B7F87BB00C55A45 /* LaunchScreen.storyboard in Resources */,
 				9E5B74CE2B7F966100E2BDE6 /* Assets.xcassets in Resources */,
-				9E0C34452BCEBEE300D8696B /* GoogleService-Info.plist in Resources */,
+				9ED8C9352BF0F7FF00D400A3 /* GoogleService-Info.plist in Resources */,
 				9EE8AE052B7FA45F001D126F /* Localizable.xcstrings in Resources */,
 				9E53FB3B2B7F87BA00C55A45 /* Main.storyboard in Resources */,
 			);
@@ -2149,7 +2146,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NS3YD2TYB9;
+				DEVELOPMENT_TEAM = 72F47Y7J7T;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -2165,7 +2162,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sup.Everyday.ru;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2181,7 +2178,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NS3YD2TYB9;
+				DEVELOPMENT_TEAM = 72F47Y7J7T;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -2197,7 +2194,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = sup.Everyday.ru;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2272,11 +2269,6 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
-		8C1B616C2BC997B500441A52 /* FirebaseAppCheck */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 8C1B616A2BC9974400441A52 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
-			productName = FirebaseAppCheck;
-		};
 		8C1B616E2BC997B500441A52 /* FirebaseAuth */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 8C1B616A2BC9974400441A52 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;

@@ -14,16 +14,16 @@ final class SignInRouter {
 
 extension SignInRouter: SignInRouterInput {
     func openApp() {
-        guard let navigationController = viewController?.navigationController else {
-            fatalError("SignInViewController is not embedded in a navigation controller.")
+        if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+           let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
+            let tabBarController = TabBarController()
+            let navigationController = UINavigationController(rootViewController: tabBarController)
+            navigationController.modalPresentationStyle = .fullScreen
+
+            UIView.transition(with: window, duration: 0.3, options: [.transitionCrossDissolve], animations: {
+                window.rootViewController = navigationController
+            }, completion: nil)
         }
-
-       let tabBarController = TabBarController()
-       tabBarController.modalPresentationStyle = .fullScreen
-
-        UIView.transition(with: navigationController.view, duration: 0.5, options: .transitionCrossDissolve, animations: {
-            navigationController.setViewControllers([tabBarController], animated: false)
-        }, completion: nil)
     }
 
     func openSignup() {
