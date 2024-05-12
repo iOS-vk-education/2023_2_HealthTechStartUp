@@ -19,10 +19,10 @@ final class ChangeEmailInteractor {
 }
 
 extension ChangeEmailInteractor: ChangeEmailInteractorInput {
-    func changeEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
+    func changeEmail(email: String, password: String) {
         let model = ChangeEmailModel(newEmail: email, password: password)
-        settingsService.changeEmail(with: model) {result in
-            completion(result)
+        settingsService.changeEmail(with: model) { result in
+            self.output?.didChanged(result)
         }
     }
 }

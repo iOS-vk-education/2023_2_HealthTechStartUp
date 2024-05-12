@@ -17,7 +17,6 @@ protocol FirebaseServiceDescription {
     func deleteOldImage(userId: String, completion: @escaping (Bool, Error?) -> Void)
     func updateProfileImagePath(path: String, completion: @escaping (Bool, Error?) -> Void)
     func deleteEmailAccount(email: String, password: String, completion: @escaping (Bool, Error?) -> Void)
-    func deleteAnonymAccount(completion: @escaping (Bool, Error?) -> Void)
     func deleteGoogleAccount(completion: @escaping (Bool, Error?) -> Void)
     func deleteVkAccount(completion: @escaping (Bool, Error?) -> Void)
     func updateUserImage(image: UIImage, completion: @escaping (Bool, Error?) -> Void)
@@ -163,25 +162,6 @@ extension FirebaseService: FirebaseServiceDescription {
                     completion(true, nil)
                 }
             }
-        }
-    }
-    
-    func deleteAnonymAccount(completion: @escaping (Bool, Error?) -> Void) {
-        if let currentUser = Auth.auth().currentUser {
-            let userId = currentUser.uid
-            if currentUser.isAnonymous {
-                deleteUserInFirebase(user: currentUser, userId: userId) { _, error in
-                    guard error == nil else {
-                        completion(false, error)
-                        return
-                    }
-                    completion(true, nil)
-                }
-            } else {
-                completion(false, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не анонимный"]))
-            }
-        } else {
-            completion(false, NSError(domain: "FirebaseService", code: 0, userInfo: [NSLocalizedDescriptionKey: "Пользователь не найден"]))
         }
     }
     

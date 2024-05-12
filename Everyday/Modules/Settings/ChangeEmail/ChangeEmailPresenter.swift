@@ -19,17 +19,6 @@ final class ChangeEmailPresenter {
         self.router = router
         self.interactor = interactor
     }
-    
-    private func handleLoginResult(result: Result<Void, Error>) {
-        DispatchQueue.main.async {
-            switch result {
-            case .success(()):
-                self.router.getBackToMainView()
-            case .failure(let error):
-                self.view?.showAlert(with: "network", message: error.localizedDescription)
-            }
-        }
-    }
 }
 
 extension ChangeEmailPresenter: ChangeEmailModuleInput {
@@ -45,15 +34,8 @@ extension ChangeEmailPresenter: ChangeEmailViewOutput {
             view?.showAlert(with: Constants.email, message: Constants.invalidEmail)
             return
         }
-        
-        DispatchQueue.main.async {
-            self.interactor.changeEmail(email: email, password: password ?? "") { [weak self] result in
-                guard let self = self else {
-                    return
-                }
-                self.handleLoginResult(result: result)
-            }
-        }
+
+        self.interactor.changeEmail(email: email, password: password ?? "")
     }
     
     func didLoadView() {
@@ -72,4 +54,12 @@ extension ChangeEmailPresenter: ChangeEmailViewOutput {
 }
 
 extension ChangeEmailPresenter: ChangeEmailInteractorOutput {
+    func didChanged(_ result: Result<Void, any Error>) {
+        switch result {
+        case .success(()):
+            self.router.getBackToMainView()
+        case .failure(let error):
+            self.view?.showAlert(with: "network", message: error.localizedDescription)
+        }
+    }
 }

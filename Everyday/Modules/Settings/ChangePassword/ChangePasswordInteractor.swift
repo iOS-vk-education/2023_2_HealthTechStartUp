@@ -28,10 +28,10 @@ final class ChangePasswordInteractor {
 }
 
 extension ChangePasswordInteractor: ChangePasswordInteractorInput {
-    func changePassword(oldPassword: String, newPassword: String, completion: @escaping (Result<Void, Error>) -> Void) {
+    func changePassword(oldPassword: String, newPassword: String) {
         let model = ChangePasswordModel(oldPassword: oldPassword, newPassword: newPassword)
-        settingsService.changePassword(with: model) {result in
-                completion(result)
+        settingsService.changePassword(with: model) { result in
+            self.output?.didChanged(result)
         }
     }
 }

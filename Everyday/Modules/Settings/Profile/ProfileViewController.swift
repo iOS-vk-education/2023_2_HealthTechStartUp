@@ -59,6 +59,10 @@ final class ProfileViewController: UIViewController {
 }
 
 extension ProfileViewController: ProfileViewInput {
+    func reloadData() {
+        tableView.reloadData()
+    }
+    
     func configure(with model: ProfileViewModel) {
         navBarTitle.attributedText = model.profileTitle
         changeUserImageButton.setAttributedTitle(model.selectImageTitle, for: .normal)
@@ -234,7 +238,7 @@ extension ProfileViewController: UITableViewDataSource {
                 cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
                 if indexPath.section == 1 {
                     switch whichSing {
-                    case "vk", "google", "anonym":
+                    case "vk", "google":
                         let model = output.getProfileViewModelSingWithVKOrGoogle()
                         cell.configure(with: model.sectionsModels[indexPath.section][indexPath.row])
                     case "email":
@@ -246,7 +250,7 @@ extension ProfileViewController: UITableViewDataSource {
                 
                 if indexPath.section == 2 {
                     switch whichSing {
-                    case "vk", "google", "anonym":
+                    case "vk", "google":
                         let model = output.getProfileViewModelSingWithVKOrGoogle()
                         cell.configure(with: model.sectionsModels[indexPath.section][indexPath.row])
                     case "email":
@@ -276,7 +280,7 @@ extension ProfileViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         switch output.getWhichSign() {
-        case "vk", "google", "anonym":
+        case "vk", "google":
             if indexPath.section == 1 {
                 output.didTapLogoutButton()
             }

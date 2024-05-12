@@ -97,6 +97,7 @@ extension SignInPresenter: SignInInteractorOutput {
             switch result {
             case .success:
                 UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+                UserDefaults.standard.set("email", forKey: "WhichSign")
                 self.router.openApp()
             case .failure(let error):
                 self.view?.showAlert(with: .networkMessage(error: error))

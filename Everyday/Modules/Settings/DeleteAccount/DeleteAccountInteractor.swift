@@ -31,18 +31,17 @@ extension DeleteAccountInteractor: DeleteAccountInteractorInput {
             settingsService.deleteEmailAccount(with: model, whichSign: whichSign) { result in
                 self.output?.didDelete(result)
             }
-        case "anonym":
-            settingsService.deleteAnonymAccount(with: whichSign) { result in
-                self.output?.didDelete(result)
-            }
+            
         case "google":
             settingsService.deleteGoogleAccount(with: whichSign) { result in
                 self.output?.didDelete(result)
             }
+            
         case "vk":
             settingsService.deleteVkAccount(with: whichSign) { result in
                 self.output?.didDelete(result)
             }
+            
         default:
             print("deleteAccount Error")
         }

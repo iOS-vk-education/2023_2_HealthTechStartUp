@@ -13,7 +13,6 @@ protocol SettingsServiceDescription {
     func getUserName(completion: @escaping (Result<Void, Error>, String?) -> Void)
     func getUserProfileImage(completion: @escaping (Result<Void, Error>, UIImage?) -> Void)
     func deleteEmailAccount(with userRequest: DeleteAccountModel, whichSign: String, completion: @escaping (Result<Void, Error>) -> Void)
-    func deleteAnonymAccount(with whichSign: String, completion: @escaping (Result<Void, Error>) -> Void)
     func deleteGoogleAccount(with whichSign: String, completion: @escaping (Result<Void, Error>) -> Void)
     func deleteVkAccount(with whichSign: String, completion: @escaping (Result<Void, Error>) -> Void)
     func updateUserImage(image: UIImage, completion: @escaping (Result<Void, Error>) -> Void)
@@ -113,25 +112,6 @@ final class SettingsService: SettingsServiceDescription {
                     }
                     completion(.failure(error))
                 }
-            }
-        }
-    }
-    
-    func deleteAnonymAccount(with whichSign: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        let coreData = CoreDataService.shared
-        firebaseService.deleteAnonymAccount { success, error  in
-            if let error = error {
-                completion(.failure(error))
-            } else if success {
-                self.firebaseService.signOut { _, error in
-                    guard error == nil else {
-                        completion(.failure(error!))
-                        return
-                    }
-                }
-                KeychainService.clearOne(authType: "anonymAuth")
-                coreData.deleteAuthType(authType: whichSign)
-                completion(.success(()))
             }
         }
     }

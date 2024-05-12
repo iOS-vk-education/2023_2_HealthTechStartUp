@@ -26,23 +26,24 @@ protocol UnitsViewOutput: AnyObject {
     func getSelectedMeasurementsCellIndexPath() -> IndexPath
     func getSelectedLoadWeightCellIndexPath() -> IndexPath
     func getSelectedDistanceCellIndexPath() -> IndexPath
-    func didTapOnCellInBodyWeigthSection(row: Int)
-    func didTapOnCellInMeasurementsSection(row: Int)
-    func didTapOnCellInLoadWeigthSection(row: Int)
-    func didTapOnCellInDistanceSection(row: Int)
+    func didTapOnCellInBodyWeigthSection(indexPath: IndexPath)
+    func didTapOnCellInMeasurementsSection(indexPath: IndexPath)
+    func didTapOnCellInLoadWeigthSection(indexPath: IndexPath)
+    func didTapOnCellInDistanceSection(indexPath: IndexPath)
     func didLoadView()
     func getUnitsViewModel() -> UnitsViewModel
     func didSwipe()
 }
 
 protocol UnitsInteractorInput: AnyObject {
-    func updateBodyWeightMeasureUnit(measureUnit: String, completion: @escaping (Result<Void, Error>) -> Void)
-    func updateMeasurementsMeasureUnit(measureUnit: String, completion: @escaping (Result<Void, Error>) -> Void)
-    func updateLoadWeightMeasureUnit(measureUnit: String, completion: @escaping (Result<Void, Error>) -> Void)
-    func updateDistanceMeasureUnit(measureUnit: String, completion: @escaping (Result<Void, Error>) -> Void)
+    func updateBodyWeightMeasureUnit(measureUnit: String, section: Int?)
+    func updateMeasurementsMeasureUnit(measureUnit: String, section: Int?)
+    func updateLoadWeightMeasureUnit(measureUnit: String, section: Int?)
+    func updateDistanceMeasureUnit(measureUnit: String, section: Int?)
 }
 
 protocol UnitsInteractorOutput: AnyObject {
+    func didUpdate(measureUnit: String?, section: Int?, result: Result<Void, Error>)
 }
 
 protocol UnitsRouterInput: AnyObject {

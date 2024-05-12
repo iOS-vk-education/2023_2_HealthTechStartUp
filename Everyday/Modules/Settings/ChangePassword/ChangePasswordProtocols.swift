@@ -28,10 +28,11 @@ protocol ChangePasswordViewOutput: AnyObject {
 }
 
 protocol ChangePasswordInteractorInput: AnyObject {
-    func changePassword(oldPassword: String, newPassword: String, completion: @escaping (Result<Void, Error>) -> Void)
+    func changePassword(oldPassword: String, newPassword: String)
 }
 
 protocol ChangePasswordInteractorOutput: AnyObject {
+    func didChanged(_ result: Result<Void, Error>)
 }
 
 protocol ChangePasswordRouterInput: AnyObject {

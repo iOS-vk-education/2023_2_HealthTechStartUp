@@ -20,39 +20,42 @@ final class ProfileInteractor {
 }
 
 extension ProfileInteractor: ProfileInteractorInput {
-    func updateUserImage(image: UIImage, completion: @escaping (Result<Void, Error>) -> Void) {
+    func updateUserImage(image: UIImage) {
         settingsService.updateUserImage(image: image) { result in
-            completion(result)
+            self.output?.didUpdateUserImage(result)
         }
     }
     
-    func updateUserName(username: String, completion: @escaping (Result<Void, Error>) -> Void) {
+    func updateUserName(username: String) {
         settingsService.updateUserName(username: username) { result in
-            completion(result)
+            self.output?.didUpdateUserName(username: username, result: result)
         }
     }
     
-    func getUserName(completion: @escaping (Result<Void, Error>, String) -> Void) {
+    func getUserName() {
         settingsService.getUserName { result, username  in
             guard let username = username else {
+                self.output?.getUsername(username: nil, result: result)
                 return
             }
-            completion(result, username)
+            self.output?.getUsername(username: username, result: result)
         }
     }
     
-    func getUserProfileImage(completion: @escaping (Result<Void, Error>, UIImage) -> Void) {
+    func getUserProfileImage() {
         settingsService.getUserProfileImage { result, userProfileImage in
             guard let userProfileImage = userProfileImage else {
+                self.output?.getUserImage(userImage: nil, result: result)
                 return
             }
-            completion(result, userProfileImage)
+            
+            self.output?.getUserImage(userImage: userProfileImage, result: result)
         }
     }
     
-    func logout(completion: @escaping (Result<Void, Error>) -> Void) {
+    func logout() {
         authService.logout { result in
-            completion(result)
+            self.output?.didLogout(result)
         }
     }
 }

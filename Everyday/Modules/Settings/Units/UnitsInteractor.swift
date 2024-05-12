@@ -19,27 +19,27 @@ final class UnitsInteractor {
 }
 
 extension UnitsInteractor: UnitsInteractorInput {
-    func updateBodyWeightMeasureUnit(measureUnit: String, completion: @escaping (Result<Void, any Error>) -> Void) {
+    func updateBodyWeightMeasureUnit(measureUnit: String, section: Int?) {
         settingsService.updateMeasureUnit(measureUnit: measureUnit, measureUnitKey: Constants.bodyWeightKey) { result in
-            completion(result)
+            self.output?.didUpdate(measureUnit: measureUnit, section: section, result: result)
         }
     }
     
-    func updateMeasurementsMeasureUnit(measureUnit: String, completion: @escaping (Result<Void, any Error>) -> Void) {
+    func updateMeasurementsMeasureUnit(measureUnit: String, section: Int?) {
         settingsService.updateMeasureUnit(measureUnit: measureUnit, measureUnitKey: Constants.measurementsKey) { result in
-            completion(result)
+            self.output?.didUpdate(measureUnit: measureUnit, section: section, result: result)
         }
     }
     
-    func updateLoadWeightMeasureUnit(measureUnit: String, completion: @escaping (Result<Void, any Error>) -> Void) {
+    func updateLoadWeightMeasureUnit(measureUnit: String, section: Int?) {
         settingsService.updateMeasureUnit(measureUnit: measureUnit, measureUnitKey: Constants.loadWeightKey) { result in
-            completion(result)
+            self.output?.didUpdate(measureUnit: measureUnit, section: section, result: result)
         }
     }
     
-    func updateDistanceMeasureUnit(measureUnit: String, completion: @escaping (Result<Void, any Error>) -> Void) {
+    func updateDistanceMeasureUnit(measureUnit: String, section: Int?) {
         settingsService.updateMeasureUnit(measureUnit: measureUnit, measureUnitKey: Constants.distanceKey) { result in
-            completion(result)
+            self.output?.didUpdate(measureUnit: measureUnit, section: section, result: result)
         }
     }
     

@@ -20,6 +20,7 @@ protocol ProfileViewInput: AnyObject {
     func configure(with: ProfileViewModel)
     func showAlert(with key: String, message: String)
     func setupProfileImage(image: UIImage)
+    func reloadData()
 }
 
 protocol ProfileViewOutput: AnyObject {
@@ -38,18 +39,22 @@ protocol ProfileViewOutput: AnyObject {
 }
 
 protocol ProfileInteractorInput: AnyObject {
-    func updateUserImage(image: UIImage, completion: @escaping (Result<Void, Error>) -> Void)
-    func updateUserName(username: String, completion: @escaping (Result<Void, Error>) -> Void)
-    func getUserProfileImage(completion: @escaping (Result<Void, Error>, UIImage) -> Void)
-    func getUserName(completion: @escaping (Result<Void, Error>, String) -> Void)
-    func logout(completion: @escaping (Result<Void, Error>) -> Void)
+    func updateUserImage(image: UIImage)
+    func updateUserName(username: String)
+    func getUserProfileImage()
+    func getUserName()
+    func logout()
 }
 
 protocol ProfileInteractorOutput: AnyObject {
+    func didUpdateUserImage(_ result: Result<Void, Error>)
+    func didUpdateUserName(username: String, result: Result<Void, Error>)
+    func getUsername(username: String?, result: Result<Void, Error>)
+    func getUserImage(userImage: UIImage?, result: Result<Void, Error>)
+    func didLogout(_ result: Result<Void, Error>)
 }
 
 protocol ProfileRouterInput: AnyObject {
-    func routeToAuthentication()
     func getChangeEmailView()
     func getChangePasswordView()
     func getDeleteAccountView()

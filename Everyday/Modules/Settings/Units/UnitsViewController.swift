@@ -202,10 +202,10 @@ extension UnitsViewController: UITableViewDelegate {
         tableView.deselectRow(at: indexPath, animated: true)
         
         switch indexPath.section {
-        case 0: output.didTapOnCellInBodyWeigthSection(row: indexPath.row)
-        case 1: output.didTapOnCellInMeasurementsSection(row: indexPath.row)
-        case 2: output.didTapOnCellInLoadWeigthSection(row: indexPath.row)
-        case 3: output.didTapOnCellInDistanceSection(row: indexPath.row)
+        case 0: output.didTapOnCellInBodyWeigthSection(indexPath: indexPath)
+        case 1: output.didTapOnCellInMeasurementsSection(indexPath: indexPath)
+        case 2: output.didTapOnCellInLoadWeigthSection(indexPath: indexPath)
+        case 3: output.didTapOnCellInDistanceSection(indexPath: indexPath)
         default:
             print("Error when tap on tableView")
         }

@@ -69,6 +69,7 @@ extension SignUpPresenter: SignUpInteractorOutput {
             case .failure(let error):
                 if let nsError = error as NSError? {
                     if nsError.code == 0 {
+                        UserDefaults.standard.set("email", forKey: "WhichSign")
                         self.router.openOnBoarding(with: "email")
                     }
                 } else {

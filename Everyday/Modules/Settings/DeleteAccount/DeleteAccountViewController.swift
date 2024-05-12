@@ -59,7 +59,7 @@ final class DeleteAccountViewController: UIViewController {
     
     override func viewDidLayoutSubviews() {
         switch output.getWhichSign() {
-        case "vk", "google", "anonym": layoutForOtherNonEmailSign()
+        case "vk", "google": layoutForOtherNonEmailSign()
         case "email": layoutForSignWithEmail()
         default:
             print("Sign method error")

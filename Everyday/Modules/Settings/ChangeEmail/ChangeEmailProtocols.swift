@@ -28,10 +28,11 @@ protocol ChangeEmailViewOutput: AnyObject {
 }
 
 protocol ChangeEmailInteractorInput: AnyObject {
-    func changeEmail(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
+    func changeEmail(email: String, password: String)
 }
 
 protocol ChangeEmailInteractorOutput: AnyObject {
+    func didChanged(_ result: Result<Void, Error>)
 }
 
 protocol ChangeEmailRouterInput: AnyObject {

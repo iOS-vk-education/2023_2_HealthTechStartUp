@@ -892,6 +892,17 @@
 			path = Health;
 			sourceTree = "<group>";
 		};
+		8CC7E9742BF13AF6004F255A /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				9E7C199C2B8F482E0006D48C /* KeychainService.swift */,
+				9E7C19962B8BF1340006D48C /* PasswordGenerator.swift */,
+				8CE21B142BEE134B002D9CB4 /* DataReload.swift */,
+				9E2A8BCE2B854147004A81CF /* Validator.swift */,
+			);
+			path = Helpers;
+			sourceTree = "<group>";
+		};
 		8CE21B0D2BEE0E60002D9CB4 /* Alert */ = {
 			isa = PBXGroup;
 			children = (
@@ -1009,14 +1020,11 @@
 		9E2931842B9F262D00950B15 /* Helpers */ = {
 			isa = PBXGroup;
 			children = (
+				8CC7E9742BF13AF6004F255A /* Helpers */,
 				8C3B5EFF2BBA056000CFE490 /* UserDefaults */,
 				9E1383072BAB03240073622C /* CoreData */,
 				9E2A8BCC2B8520B2004A81CF /* AlertManager.swift */,
-				9E2A8BCE2B854147004A81CF /* Validator.swift */,
-				9E7C19962B8BF1340006D48C /* PasswordGenerator.swift */,
 				9E7C19982B8CC3E80006D48C /* NameGenerator.swift */,
-				9E7C199C2B8F482E0006D48C /* KeychainService.swift */,
-				8CE21B142BEE134B002D9CB4 /* DataReload.swift */,
 			);
 			path = Helpers;
 			sourceTree = "<group>";
@@ -1347,8 +1355,8 @@
 		9E5B74CF2B7F96ED00E2BDE6 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				8CE21B192BEE8212002D9CB4 /* EmailAuth */,
 				8CE21B102BEE11E7002D9CB4 /* Autorization */,
+				8CE21B192BEE8212002D9CB4 /* EmailAuth */,
 				9E5B74D02B7F96FA00E2BDE6 /* WelcomeScreen */,
 				9E5B74DD2B7F98E200E2BDE6 /* OnBoarding */,
 			);
@@ -2146,7 +2154,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72F47Y7J7T;
+				DEVELOPMENT_TEAM = NS3YD2TYB9;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -2162,7 +2170,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sport;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sportik;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
@@ -2178,7 +2186,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72F47Y7J7T;
+				DEVELOPMENT_TEAM = NS3YD2TYB9;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -2194,7 +2202,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sport;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sportik;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_EMIT_LOC_STRINGS = YES;
 				SWIFT_VERSION = 5.0;
