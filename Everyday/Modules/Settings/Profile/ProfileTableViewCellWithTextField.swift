@@ -13,7 +13,7 @@ final class ProfileTableViewCellWithTextField: UITableViewCell {
     
     // MARK: - Properties
     
-    let textField = UITextField()
+    private let textField = UITextField()
     
     // MARK: - Init
     
@@ -39,6 +39,10 @@ final class ProfileTableViewCellWithTextField: UITableViewCell {
     func configure(with viewModel: NSAttributedString) {
         textField.autocapitalizationType = .none
         textField.attributedText = viewModel
+    }
+    
+    func setDelegate(with delegate: UITextFieldDelegate) {
+        textField.delegate = delegate
     }
 }
 

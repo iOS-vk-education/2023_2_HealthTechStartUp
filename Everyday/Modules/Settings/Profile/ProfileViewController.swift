@@ -207,7 +207,7 @@ extension ProfileViewController: UITableViewDataSource {
             if let cell = tableView.dequeueReusableCell(withIdentifier: reuseID, for: indexPath) as? ProfileTableViewCellWithTextField {
                 cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
                 
-                cell.textField.delegate = self
+                cell.setDelegate(with: self)
                 output.getUsername { username in
                     if let username = username {
                         cell.configure(with: NSAttributedString(string: username, attributes: Constants.Styles.titleAttributes))

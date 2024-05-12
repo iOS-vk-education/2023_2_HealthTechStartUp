@@ -116,10 +116,10 @@ extension UnitsViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         let model = output.getUnitsViewModel()
         switch section {
-        case 0: return model.weightSectionModel.count
-        case 1: return model.measurementsSectionModel.count
-        case 2: return model.weightSectionModel.count
-        case 3: return model.distanceSectionModel.count
+        case Constants.Sections.bodyWeight: return model.weightSectionModel.count
+        case Constants.Sections.measurements: return model.measurementsSectionModel.count
+        case Constants.Sections.loadWeight: return model.weightSectionModel.count
+        case Constants.Sections.distance: return model.distanceSectionModel.count
         default:
             return 0
         }
@@ -135,7 +135,7 @@ extension UnitsViewController: UITableViewDataSource {
         
         let model = output.getUnitsViewModel()
 
-        if indexPath.section == 0 {
+        if indexPath.section == Constants.Sections.bodyWeight {
             if indexPath == output.getSelectedBodyWeightCellIndexPath() {
                 let accessoryView = UIImageView(image: model.accessoryCellImage)
                 accessoryView.tintColor = Constants.accentColor
@@ -149,7 +149,7 @@ extension UnitsViewController: UITableViewDataSource {
             return cell
         }
         
-        if indexPath.section == 1 {
+        if indexPath.section == Constants.Sections.measurements {
             if indexPath == output.getSelectedMeasurementsCellIndexPath() {
                 let accessoryView = UIImageView(image: model.accessoryCellImage)
                 accessoryView.tintColor = Constants.accentColor
@@ -163,7 +163,7 @@ extension UnitsViewController: UITableViewDataSource {
             return cell
         }
         
-        if indexPath.section == 2 {
+        if indexPath.section == Constants.Sections.loadWeight {
             if indexPath == output.getSelectedLoadWeightCellIndexPath() {
                 let accessoryView = UIImageView(image: model.accessoryCellImage)
                 accessoryView.tintColor = Constants.accentColor
@@ -177,7 +177,7 @@ extension UnitsViewController: UITableViewDataSource {
             return cell
         }
         
-        if indexPath.section == 3 {
+        if indexPath.section == Constants.Sections.distance {
             if indexPath == output.getSelectedDistanceCellIndexPath() {
                 let accessoryView = UIImageView(image: model.accessoryCellImage)
                 accessoryView.tintColor = Constants.accentColor
@@ -216,22 +216,22 @@ extension UnitsViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let model = output.getUnitsViewModel()
         let headerView = UILabel()
-        if section == 0 {
+        if section == Constants.Sections.bodyWeight {
             headerView.attributedText = model.bodyWeigthTitle
             return headerView
         }
         
-        if section == 1 {
+        if section == Constants.Sections.measurements {
             headerView.attributedText = model.measurementsTitle
             return headerView
         }
         
-        if section == 2 {
+        if section == Constants.Sections.loadWeight {
             headerView.attributedText = model.weightTitle
             return headerView
         }
         
-        if section == 3 {
+        if section == Constants.Sections.distance {
             headerView.attributedText = model.distanceTitle
             return headerView
         } else {
@@ -249,7 +249,7 @@ extension UnitsViewController: UITableViewDelegate {
         footerView.textAlignment = .center
         footerView.numberOfLines = .max
         
-        if section == 3 {
+        if section == Constants.Sections.distance {
             return footerView
         } else {
             return UILabel()
@@ -257,7 +257,7 @@ extension UnitsViewController: UITableViewDelegate {
     }
     
     func tableView(_ tableView: UITableView, heightForFooterInSection section: Int) -> CGFloat {
-        if section == 3 {
+        if section == Constants.Sections.distance {
             return Constants.TableView.heightForFooterView
         } else {
             return Constants.TableView.matginBottom
@@ -281,6 +281,13 @@ private extension UnitsViewController {
             static let marginTop: CGFloat = 35
             static let matginBottom: CGFloat = 50
             static let heightForFooterView: CGFloat = 100
+        }
+        
+        struct Sections {
+            static let bodyWeight: Int = 0
+            static let measurements: Int = 1
+            static let loadWeight: Int = 2
+            static let distance: Int = 3
         }
     }
 }

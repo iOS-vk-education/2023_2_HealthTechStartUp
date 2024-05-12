@@ -49,9 +49,7 @@ final class HealthService {
             completion("0", nil)
             return
         }
-//        
-//        let startDate = Calendar.current.startOfDay(for: Date())
-//        let endDate = Date()
+
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
         
         let query = HKStatisticsQuery(quantityType: stepType,
@@ -76,8 +74,6 @@ final class HealthService {
             return
         }
         
-//        let startDate = Calendar.current.startOfDay(for: Date())
-//        let endDate = Date()
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
         
         let query = HKStatisticsQuery(quantityType: distance,
@@ -102,8 +98,6 @@ final class HealthService {
             return
         }
         
-//        let startDate = Calendar.current.startOfDay(for: Date())
-//        let endDate = Date()
         let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
         
         let query = HKStatisticsQuery(quantityType: activeEnergyBurned,
