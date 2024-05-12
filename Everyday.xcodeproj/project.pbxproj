@@ -115,6 +115,7 @@
 		8CE21B1F2BEE8425002D9CB4 /* ForgotPasswordViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE21B1E2BEE8425002D9CB4 /* ForgotPasswordViewModel.swift */; };
 		8CE21B212BEE8995002D9CB4 /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CE21B202BEE8995002D9CB4 /* CloseButton.swift */; };
 		9E0C347F2BD5997F00D8696B /* SettingsTableViewManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0C347E2BD5997F00D8696B /* SettingsTableViewManager.swift */; };
+		9E0F92FC2BF18EC300FFB6C2 /* AuthorizationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0F92FB2BF18EC300FFB6C2 /* AuthorizationContainer.swift */; };
 		9E1383022BAB017E0073622C /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E1383002BAB017E0073622C /* Model.xcdatamodeld */; };
 		9E2A8BC92B850461004A81CF /* FIrebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */; };
 		9E2A8BCF2B854147004A81CF /* Validator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A8BCE2B854147004A81CF /* Validator.swift */; };
@@ -368,6 +369,7 @@
 		8CE21B1E2BEE8425002D9CB4 /* ForgotPasswordViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ForgotPasswordViewModel.swift; sourceTree = "<group>"; };
 		8CE21B202BEE8995002D9CB4 /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		9E0C347E2BD5997F00D8696B /* SettingsTableViewManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsTableViewManager.swift; sourceTree = "<group>"; };
+		9E0F92FB2BF18EC300FFB6C2 /* AuthorizationContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationContainer.swift; sourceTree = "<group>"; };
 		9E1383012BAB017E0073622C /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E2A8BC82B850461004A81CF /* FIrebaseAuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FIrebaseAuthService.swift; sourceTree = "<group>"; };
 		9E2A8BCE2B854147004A81CF /* Validator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validator.swift; sourceTree = "<group>"; };
@@ -856,6 +858,7 @@
 				8C4EAB372BEEC54E0023836D /* AuthorizationViewController.swift */,
 				8C4EAB382BEEC54E0023836D /* AuthorizationProtocols.swift */,
 				8C4EAB392BEEC54E0023836D /* AuthorizationInteractor.swift */,
+				9E0F92FB2BF18EC300FFB6C2 /* AuthorizationContainer.swift */,
 			);
 			path = Authorization;
 			sourceTree = "<group>";
@@ -1798,6 +1801,7 @@
 				8C4EAB3F2BEEC54E0023836D /* AuthorizationInteractor.swift in Sources */,
 				8C3B5EBE2BAF7CA500CFE490 /* ChangeEmailInteractor.swift in Sources */,
 				9EE3359D2B8F9CEA00F532B3 /* SplashPresenter.swift in Sources */,
+				9E0F92FC2BF18EC300FFB6C2 /* AuthorizationContainer.swift in Sources */,
 				9E4766D82B9F516F00DD31B9 /* StorageService.swift in Sources */,
 				9E53FB342B7F87BA00C55A45 /* AppDelegate.swift in Sources */,
 				9E4F22CF2B9F3C51003E749E /* ExtraPresenter.swift in Sources */,
