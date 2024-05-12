@@ -15,12 +15,6 @@ class CameraView: UIView {
     
     private let closeButton = UIButton()
     private let saveButton = UIButton()
-    
-//    private var image: UIImage? {
-//        didSet {
-//            print("pic saved")
-//        }
-//    }
     private var imageView = UIImageView()
     
     private var session: AVCaptureSession?
@@ -187,7 +181,6 @@ private extension CameraView {
                 }
             } catch {
                 // handle errors
-                print(error)
             }
         }
     }
@@ -220,8 +213,6 @@ private extension CameraView {
         default:
             break
         }
-        
-//        setupShutterButton()
     }
     
     // MARK: - Actions
