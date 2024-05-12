@@ -847,7 +847,7 @@
 			path = Alert;
 			sourceTree = "<group>";
 		};
-		8CE21B102BEE11E7002D9CB4 /* Autorization */ = {
+		8CE21B102BEE11E7002D9CB4 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
 				8C4EAB412BEEC5550023836D /* Models */,
@@ -857,7 +857,7 @@
 				8C4EAB382BEEC54E0023836D /* AuthorizationProtocols.swift */,
 				8C4EAB392BEEC54E0023836D /* AuthorizationInteractor.swift */,
 			);
-			path = Autorization;
+			path = Authorization;
 			sourceTree = "<group>";
 		};
 		8CE21B112BEE122A002D9CB4 /* Model */ = {
@@ -1282,7 +1282,7 @@
 		9E5B74CF2B7F96ED00E2BDE6 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				8CE21B102BEE11E7002D9CB4 /* Autorization */,
+				8CE21B102BEE11E7002D9CB4 /* Authorization */,
 				8CE21B192BEE8212002D9CB4 /* EmailAuth */,
 				9E5B74DD2B7F98E200E2BDE6 /* OnBoarding */,
 			);
