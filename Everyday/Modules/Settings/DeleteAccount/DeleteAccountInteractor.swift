@@ -17,37 +17,31 @@ final class DeleteAccountInteractor {
     init(settingsService: SettingsServiceDescription) {
         self.settingsService = settingsService
     }
-    
-    private func performAuthAction(flag: Bool, viewController: UIViewController,
-                                   action: (_ viewController: UIViewController, _ completion: @escaping (Result<Void, Error>) -> Void) -> Void,
-                                   completion: @escaping (Result<Void, Error>) -> Void) {
-        action(viewController) { result in
-            completion(result)
-        }
-    }
 }
 
 extension DeleteAccountInteractor: DeleteAccountInteractorInput {
-    func deleteAccount(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
-        let whichSign = UserDefaults.standard.string(forKey: "WhichSign")
+    func deleteAccount(email: String, password: String) {
+        guard let whichSign = UserDefaults.standard.string(forKey: "WhichSign") else {
+            return
+        }
 
         switch whichSign {
         case "email":
             let model = DeleteAccountModel(email: email, password: password)
-            settingsService.deleteEmailAccount(with: model, whichSign: whichSign!) { result in
-                completion(result)
+            settingsService.deleteEmailAccount(with: model, whichSign: whichSign) { result in
+                self.output?.didDelete(result)
             }
         case "anonym":
-            settingsService.deleteAnonymAccount(with: whichSign!) { result in
-                completion(result)
+            settingsService.deleteAnonymAccount(with: whichSign) { result in
+                self.output?.didDelete(result)
             }
         case "google":
-            settingsService.deleteGoogleAccount(with: whichSign!) { result in
-                completion(result)
+            settingsService.deleteGoogleAccount(with: whichSign) { result in
+                self.output?.didDelete(result)
             }
         case "vk":
-            settingsService.deleteVkAccount(with: whichSign!) { result in
-                completion(result)
+            settingsService.deleteVkAccount(with: whichSign) { result in
+                self.output?.didDelete(result)
             }
         default:
             print("deleteAccount Error")

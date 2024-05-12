@@ -105,14 +105,14 @@ final class SettingsService: SettingsServiceDescription {
                 completion(.failure(error))
             } else if success {
                 self.firebaseService.signOut { _, error in
-                    guard error == nil else {
-                        completion(.failure(error!))
+                    guard let error = error else {
+                        KeychainService.clearOne(authType: "emailAuth")
+                        coreData.deleteAuthType(authType: whichSign)
+                        completion(.success(()))
                         return
                     }
+                    completion(.failure(error))
                 }
-                KeychainService.clearOne(authType: "emailAuth")
-                coreData.deleteAuthType(authType: whichSign)
-                completion(.success(()))
             }
         }
     }

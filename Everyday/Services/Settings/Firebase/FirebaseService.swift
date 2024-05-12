@@ -75,24 +75,23 @@ extension FirebaseService: FirebaseServiceDescription {
     }
     
     func deleteUserInFirebase(user: User, userId: String, completion: @escaping (Bool, Error?) -> Void) {
-        user.delete { error in
-            guard error == nil else {
-                completion(false, error)
-                return
-            }
-        }
-        
         self.deleteOldImage(userId: userId) { _, error in
             guard error == nil else {
                 completion(false, error)
                 return
             }
             self.db.collection(Constants.user).document(userId).delete { error in
-                guard error == nil else {
-                    completion(false, error)
+                guard let error = error  else {
+                    user.delete { error in
+                        guard error == nil else {
+                            completion(false, error)
+                            return
+                        }
+                        completion(true, nil)
+                    }
                     return
                 }
-                completion(true, nil)
+                completion(false, error)
             }
         }
     }

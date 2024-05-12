@@ -21,8 +21,13 @@ final class TabBarController: UITabBarController {
         delegate = self
     }
     
-    // MARK: - Actions
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.hidesBackButton = true
+    }
     
+    // MARK: - Actions
+
     private func setupTabBar() {
         let viewControllers = TabBarItem.allCases.map { createViewController(for: $0) }
         self.setViewControllers(viewControllers, animated: false)
@@ -30,7 +35,7 @@ final class TabBarController: UITabBarController {
     
     private func createViewController(for item: TabBarItem) -> UIViewController {
         let viewController: UIViewController
-//        let tabBarItem = UITabBarItem()
+        
         let tabBarItem = UITabBarItem(title: item.title, image: item.image, tag: item.rawValue)
         
         switch item {

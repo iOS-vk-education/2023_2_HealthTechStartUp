@@ -29,10 +29,11 @@ protocol DeleteAccountViewOutput: AnyObject {
 }
 
 protocol DeleteAccountInteractorInput: AnyObject {
-    func deleteAccount(email: String, password: String, completion: @escaping (Result<Void, Error>) -> Void)
+    func deleteAccount(email: String, password: String)
 }
 
 protocol DeleteAccountInteractorOutput: AnyObject {
+    func didDelete(_ result: Result<Void, Error>)
 }
 
 protocol DeleteAccountRouterInput: AnyObject {

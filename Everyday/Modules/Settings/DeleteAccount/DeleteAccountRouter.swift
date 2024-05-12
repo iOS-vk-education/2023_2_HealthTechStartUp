@@ -21,11 +21,21 @@ extension DeleteAccountRouter: DeleteAccountRouterInput {
     }
     
     func routeToAuthentication() {
-        if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-            Reloader.shared.setLogout()
+        guard let viewController = viewController else {
+            return
+        }
+        
+        if let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+           let window = windowScene.windows.first,
+           let tabBarController = window.rootViewController as? TabBarController {
+            viewController.navigationController?.popToRootViewController(animated: true)
+            tabBarController.selectedIndex = 2 // Или индекс вашей вкладки, которую вы хотите выбрать после авторизации
+        } else {
+            let tabBarViewController = TabBarController()
+            viewController.navigationController?.pushViewController(tabBarViewController, animated: true)
         }
     }
-    
+
     func getBackToMainView() {
         guard let viewController = viewController else {
             return
