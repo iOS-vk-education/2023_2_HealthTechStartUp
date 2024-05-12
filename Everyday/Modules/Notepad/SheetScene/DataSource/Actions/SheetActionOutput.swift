@@ -60,6 +60,6 @@ protocol ExerciseTimerViewOutput: AnyObject {
 // MARK: - Timer
 
 protocol TimerViewOutput: AnyObject {
-    func didTapTimerSaveButton()
+    func didTapTimerSaveButton(with seconds: Int)
     func didTapTimerCloseButton()
 }

@@ -15,6 +15,7 @@ final class TimerView: UIView {
     private var output: TimerViewOutput?
     
     private let timerView = UIView()
+    private let shapeLayer = CAShapeLayer()
     private let remainingTimeLabel = UILabel()
     private let startButton = UIButton()
     private let resetButton = UIButton()
@@ -26,6 +27,7 @@ final class TimerView: UIView {
     private var remainingTime: Int = 0
     private var startRemainingTime: Int = 0
     private var isActive: Bool = false
+    private var isPaused: Bool = false
     
     // MARK: - Init
     
@@ -72,9 +74,10 @@ private extension TimerView {
         
         timerView.pin
             .width(timerViewWidth)
-            .height(Constants.TimerView.height)
-            .hCenter()
-            .top(Constants.TimerView.marginTop)
+            .height(timerViewWidth)
+            .center()
+        
+        circularAnimation()
         
         remainingTimeLabel.pin
             .hCenter()
@@ -119,11 +122,7 @@ private extension TimerView {
         setupView()
         setupTimerView()
         setupRemainingTimeLabel()
-        setupStartButton()
-        setupResetButton()
-        setupCloseButton()
-        setupSaveButton()
-        setupExtraTimeButton()
+        setupButtons()
         
         timerView.addSubview(remainingTimeLabel)
         addSubviews(startButton, resetButton, closeButton, timerView, extraTimeButton, saveButton)
@@ -134,32 +133,19 @@ private extension TimerView {
     }
     
     func setupTimerView() {
-        timerView.backgroundColor = Constants.TimerView.backgroundColor
+        timerView.backgroundColor = Constants.TimerView.backgroundColor.withAlphaComponent(Constants.TimerView.colorOpacity)
         timerView.layer.cornerRadius = Constants.TimerView.cornerRadius
     }
     
-    func setupStartButton() {
-        startButton.tintColor = Constants.Button.backgroundColor
+    func setupButtons() {
+        [startButton, resetButton, closeButton, saveButton, extraTimeButton].forEach { button in
+            button.tintColor = Constants.Button.tintColor
+        }
+        
         startButton.addTarget(self, action: #selector(didTapStartButton), for: .touchUpInside)
-    }
-    
-    func setupResetButton() {
-        resetButton.tintColor = Constants.Button.backgroundColor
         resetButton.addTarget(self, action: #selector(didTapResetButton), for: .touchUpInside)
-    }
-    
-    func setupCloseButton() {
-        closeButton.tintColor = Constants.Button.backgroundColor
         closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
-    }
-    
-    func setupSaveButton() {
-        saveButton.tintColor = Constants.Button.backgroundColor
         saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
-    }
-    
-    func setupExtraTimeButton() {
-        extraTimeButton.tintColor = Constants.Button.backgroundColor
         extraTimeButton.addTarget(self, action: #selector(didTapExtraTimeButton), for: .touchUpInside)
     }
     
@@ -170,13 +156,32 @@ private extension TimerView {
     // MARK: - Actions
     
     @objc
+    func step() {
+        if remainingTime > 0 {
+            remainingTime -= 1
+        } else {
+            timer.invalidate()
+        }
+        
+        let timeString = fromSecondsToTimeString(remainingTime)
+        remainingTimeLabel.text = timeString
+    }
+    
+    @objc
     func didTapStartButton() {
         let timeString = fromSecondsToTimeString(remainingTime)
         let viewModel = TimerViewModel(remainingTime: timeString)
+        
         if !isActive {
+            if isPaused {
+                resumeAnimation()
+            } else {
+                basicAnimation()
+            }
             timer = Timer.scheduledTimer(timeInterval: 1, target: self, selector: #selector(step), userInfo: nil, repeats: true)
             startButton.setImage(viewModel.pauseImage, for: .normal)
         } else {
+            pauseAnimation()
             timer.invalidate()
             startButton.setImage(viewModel.playImage, for: .normal)
         }
@@ -185,10 +190,12 @@ private extension TimerView {
     
     @objc
     func didTapResetButton() {
+        shapeLayer.removeAnimation(forKey: "basicAnimation")
         timer.invalidate()
         remainingTime = startRemainingTime
         let timeString = fromSecondsToTimeString(remainingTime)
         let viewModel = TimerViewModel(remainingTime: timeString)
+        isPaused = false
         isActive = false
         startButton.setImage(viewModel.playImage, for: .normal)
         remainingTimeLabel.text = timeString
@@ -201,10 +208,70 @@ private extension TimerView {
     
     @objc
     func didTapSaveButton() {
+        let result = startRemainingTime - remainingTime
+        output?.didTapTimerSaveButton(with: result)
     }
     
     @objc
     func didTapExtraTimeButton() {
+        pauseAnimation()
+        timer.invalidate()
+        remainingTime += 60
+        startRemainingTime += 60
+        let timeString = fromSecondsToTimeString(remainingTime)
+        let viewModel = TimerViewModel(remainingTime: timeString)
+        isPaused = false
+        isActive = false
+        startButton.setImage(viewModel.playImage, for: .normal)
+        remainingTimeLabel.text = timeString
+    }
+    
+    // MARK: - Animations
+    
+    func circularAnimation() {
+        let center = CGPoint(x: timerView.frame.width / 2, y: timerView.frame.height / 2)
+        let endAngle = (-CGFloat.pi / 2)
+        let startAngle = 2 * CGFloat.pi + endAngle
+        let circularPath = UIBezierPath(arcCenter: center, radius: 138, startAngle: startAngle, endAngle: endAngle, clockwise: false)
+        
+        shapeLayer.path = circularPath.cgPath
+        shapeLayer.lineWidth = 10
+        shapeLayer.fillColor = UIColor.clear.cgColor
+        shapeLayer.strokeEnd = 1
+        shapeLayer.lineCap = CAShapeLayerLineCap.round
+        shapeLayer.strokeColor = UIColor.UI.accent.cgColor
+        timerView.layer.addSublayer(shapeLayer)
+    }
+    
+    func basicAnimation() {
+        let basicAnimation = CABasicAnimation(keyPath: "strokeEnd")
+        basicAnimation.toValue = 0
+        basicAnimation.duration = CFTimeInterval(remainingTime)
+        basicAnimation.fillMode = CAMediaTimingFillMode.forwards
+        basicAnimation.isRemovedOnCompletion = false
+        shapeLayer.add(basicAnimation, forKey: "basicAnimation")
+        isPaused = false
+        
+        shapeLayer.speed = 1
+        shapeLayer.timeOffset = 0
+        shapeLayer.beginTime = 0
+    }
+    
+    func resumeAnimation() {
+        let pausedTime = shapeLayer.timeOffset
+        shapeLayer.speed = 1
+        shapeLayer.timeOffset = 0
+        shapeLayer.beginTime = 0
+        let timeSincePaused = shapeLayer.convertTime(CACurrentMediaTime(), from: nil) - pausedTime
+        shapeLayer.beginTime = timeSincePaused
+        isPaused = false
+    }
+    
+    func pauseAnimation() {
+        let pausedTime = shapeLayer.convertTime(CACurrentMediaTime(), from: nil)
+        shapeLayer.speed = 0
+        shapeLayer.timeOffset = pausedTime
+        isPaused = true
     }
     
     // MARK: - Helpers
@@ -222,18 +289,6 @@ private extension TimerView {
         let timeString = makeTimeString(minutesSeconds.0, minutesSeconds.1)
         return timeString
     }
-
-    @objc
-    func step() {
-        if remainingTime > 0 {
-            remainingTime -= 1
-        } else {
-            timer.invalidate()
-        }
-        
-        let timeString = fromSecondsToTimeString(remainingTime)
-        remainingTimeLabel.text = timeString
-    }
 }
 
 // MARK: - Constants
@@ -243,14 +298,15 @@ private extension TimerView {
         static let backgroundColor: UIColor = UIColor.background
         
         struct Button {
-            static let backgroundColor: UIColor = UIColor.UI.accent
+            static let tintColor: UIColor = UIColor.UI.accent
             static let width: CGFloat = 100
             static let height: CGFloat = 100
             static let horizontalMargin: CGFloat = 50
         }
         
         struct TimerView {
-            static let backgroundColor: UIColor = UIColor.Text.primary
+            static let backgroundColor: UIColor = UIColor.gray
+            static let colorOpacity: CGFloat = 0.1
             static let padding: CGFloat = 32
             static let cornerRadius: CGFloat = 16
             static let marginTop: CGFloat = 75

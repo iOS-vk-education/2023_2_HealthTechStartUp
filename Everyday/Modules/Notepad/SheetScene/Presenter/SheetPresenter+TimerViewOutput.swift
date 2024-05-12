@@ -8,10 +8,7 @@
 import Foundation
 
 extension SheetPresenter: TimerViewOutput {
-    func didTapTimerSaveButton() {
-//        let counterModel = ExerciseCounterModel(exercise: exercise)
-//        let moduleType = SheetType.exerciseCounter(model: counterModel)
-//        moduleOutput?.setResult(moduleType)
+    func didTapTimerSaveButton(with seconds: Int) {
         router.dismissSheet()
     }
     

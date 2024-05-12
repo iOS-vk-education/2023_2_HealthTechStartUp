@@ -122,11 +122,7 @@ private extension ExerciseTimerView {
         setupView()
         setupTimerView()
         setupRemainingTimeLabel()
-        setupStartButton()
-        setupResetButton()
-        setupCloseButton()
-        setupSaveButton()
-        setupExtraTimeButton()
+        setupButtons()
         
         timerView.addSubview(remainingTimeLabel)
         addSubviews(startButton, resetButton, closeButton, timerView, extraTimeButton, saveButton)
@@ -141,28 +137,15 @@ private extension ExerciseTimerView {
         timerView.layer.cornerRadius = Constants.TimerView.cornerRadius
     }
     
-    func setupStartButton() {
-        startButton.tintColor = Constants.Button.backgroundColor
+    func setupButtons() {
+        [startButton, resetButton, closeButton, saveButton, extraTimeButton].forEach { button in
+            button.tintColor = Constants.Button.tintColor
+        }
+        
         startButton.addTarget(self, action: #selector(didTapStartButton), for: .touchUpInside)
-    }
-    
-    func setupResetButton() {
-        resetButton.tintColor = Constants.Button.backgroundColor
         resetButton.addTarget(self, action: #selector(didTapResetButton), for: .touchUpInside)
-    }
-    
-    func setupCloseButton() {
-        closeButton.tintColor = Constants.Button.backgroundColor
         closeButton.addTarget(self, action: #selector(didTapCloseButton), for: .touchUpInside)
-    }
-    
-    func setupSaveButton() {
-        saveButton.tintColor = Constants.Button.backgroundColor
         saveButton.addTarget(self, action: #selector(didTapSaveButton), for: .touchUpInside)
-    }
-    
-    func setupExtraTimeButton() {
-        extraTimeButton.tintColor = Constants.Button.backgroundColor
         extraTimeButton.addTarget(self, action: #selector(didTapExtraTimeButton), for: .touchUpInside)
     }
     
@@ -280,7 +263,7 @@ private extension ExerciseTimerView {
         static let backgroundColor: UIColor = UIColor.background
         
         struct Button {
-            static let backgroundColor: UIColor = UIColor.UI.accent
+            static let tintColor: UIColor = UIColor.UI.accent
             static let width: CGFloat = 100
             static let height: CGFloat = 100
             static let horizontalMargin: CGFloat = 50
