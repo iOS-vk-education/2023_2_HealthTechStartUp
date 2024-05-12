@@ -17,16 +17,12 @@ extension DeleteAccountRouter: DeleteAccountRouterInput {
         guard let viewController = viewController else {
             return
         }
-        
-        let forgotPasswordContainer = ForgotPasswordContainer.assemble(with: .init())
-        let forgotPasswordViewController = forgotPasswordContainer.viewController
-        forgotPasswordViewController.modalPresentationStyle = .overFullScreen
-        viewController.navigationController?.pushViewController(forgotPasswordViewController, animated: true)
+        viewController.navigationController?.present(ForgotPasswordViewController(authService: AuthService.shared), animated: true)
     }
     
     func routeToAuthentication() {
         if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-            sceneDelegate.checkAuthentication()
+            Reloader.shared.setLogout()
         }
     }
     

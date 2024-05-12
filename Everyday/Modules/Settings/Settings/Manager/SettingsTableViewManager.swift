@@ -134,7 +134,7 @@ private extension SettingsTableViewManager {
         let viewModel = model.generalSettingsSectionCellModel[indexPath.row]
         cell.configure(with: viewModel)
         cell.setBackgroundColor(indexPath: indexPath, cell: Constants.CellType.general)
-        
+        cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
         if indexPath.row <= 1 {
             configureSwitchForCell(cell, at: indexPath)
         }
@@ -159,8 +159,9 @@ private extension SettingsTableViewManager {
 
     func configureTellFriendsSectionCell(for indexPath: IndexPath, with model: SettingsViewModel) -> SettingsTableViewCell {
         let viewModel = model.tellFriendsSectionCellModel
-        let cell = configureCell(for: indexPath, with: viewModel, cellType: Constants.CellType.support)
         
+        let cell = configureCell(for: indexPath, with: viewModel, cellType: Constants.CellType.support)
+        cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
         cell.accessoryType = .none
         return cell
     }
@@ -169,7 +170,7 @@ private extension SettingsTableViewManager {
         guard let cell = tableView?.dequeueReusableCell(withIdentifier: SettingsTableViewCell.reuseID, for: indexPath) as? SettingsTableViewCell else {
             return SettingsTableViewCell()
         }
-        
+        cell.backgroundColor = Constants.gray.withAlphaComponent(Constants.TableView.colorOpacity)
         cell.configure(with: viewModel)
         cell.setBackgroundColor(indexPath: indexPath, cell: cellType)
         

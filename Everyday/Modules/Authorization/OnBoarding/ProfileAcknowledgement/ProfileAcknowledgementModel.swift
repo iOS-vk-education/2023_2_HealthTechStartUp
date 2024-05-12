@@ -18,23 +18,22 @@ class ProfileAcknowledgementModel {
     private(set) var age: String?
     private(set) var gender: String?
     private(set) var weight: String?
-    private(set) var schedule: [[DocumentReference]] = []
+    private(set) var schedule: DayServiceSchedule?
+    private(set) var history: [DayServiceHistoryElement]?
     private(set) var profileImagePath: String?
     private(set) var profileImage: UIImage?
     private(set) var bodyWeightMeasureUnit: String?
     private(set) var measurementsMeasureUnit: String?
-    private(set) var loadWeightMeasureUnit: String?
     private(set) var distanceMeasureUnit: String?
 
     private init() { }
 
     func update(firstname: String? = nil, lastname: String? = nil, nickname: String? = nil, email: String? = nil,
                 password: String? = nil, profileImage: UIImage? = nil, age: String? = nil, gender: String? = nil,
-                weight: String? = nil, schedule: [[DocumentReference]]? = nil, profileImagePath: String? = nil,
-                bodyWeightMeasureUnit: String? = nil,
-                measurementsMeasureUnit: String? = nil,
-                loadWeightMeasureUnit: String? = nil,
-                distanceMeasureUnit: String? = nil) {
+                weight: String? = nil, schedule: DayServiceSchedule? = nil,
+                history: [DayServiceHistoryElement]? = nil, profileImagePath: String? = nil,
+                bodyWeightMeasureUnit: String? = nil, measurementsMeasureUnit: String? = nil,
+                loadWeightMeasureUnit: String? = nil, distanceMeasureUnit: String? = nil) {
         if let firstname = firstname { self.firstname = firstname }
         if let lastname = lastname { self.lastname = lastname }
         if let nickname = nickname { self.nickname = nickname }
@@ -44,16 +43,16 @@ class ProfileAcknowledgementModel {
         if let gender = gender { self.gender = gender }
         if let weight = weight { self.weight = weight }
         if let schedule = schedule { self.schedule = schedule }
+        if let history = history { self.history = history }
         if let profileImagePath = profileImagePath { self.profileImagePath = profileImagePath }
         if let profileImage = profileImage { self.profileImage = profileImage }
         if let bodyWeightMeasureUnit = bodyWeightMeasureUnit { self.bodyWeightMeasureUnit = bodyWeightMeasureUnit}
         if let measurementsMeasureUnit = measurementsMeasureUnit { self.measurementsMeasureUnit = measurementsMeasureUnit}
-        if let loadWeightMeasureUnit = loadWeightMeasureUnit { self.loadWeightMeasureUnit = loadWeightMeasureUnit}
         if let distanceMeasureUnit = distanceMeasureUnit { self.distanceMeasureUnit = distanceMeasureUnit}
     }
     
     enum Field {
-        case firstname, lastname, nickname, email, password, profileImagePath, age, gender, weight, schedule, profileImage, bodyWeightMeasureUnit
+        case firstname, lastname, nickname, email, password, profileImagePath, age, gender, weight, schedule, history, profileImage, bodyWeightMeasureUnit
     }
 
     func clear(fields: [Field]) {
@@ -78,7 +77,9 @@ class ProfileAcknowledgementModel {
             case .weight:
                 weight = nil
             case .schedule:
-                schedule = []
+                schedule = nil
+            case .history:
+                history = nil
             case .profileImage:
                 profileImage = nil
             case .bodyWeightMeasureUnit:

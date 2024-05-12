@@ -4,9 +4,7 @@
 //
 //  Created by Federico on 18/03/2022.
 //
-
 import SwiftUI
-
 struct ContentView: View {
     
     // MARK: - properties
@@ -15,9 +13,10 @@ struct ContentView: View {
     @State private var isKeyboardVisible = false
     private let pages: [Page] = Page.samplePages
     private let dotAppearance = UIPageControl.appearance()
-        
+
+    var authType: String
     var onFinish: (() -> Void)?
-    
+
     // MARK: - body
     
     var body: some View {
@@ -52,8 +51,8 @@ struct ContentView: View {
                         incrementPage()
                     })
             .tag(6)
-            
-            ProfileAcknowledgementView(onFinish: onFinish)
+
+            ProfileAcknowledgementView(authType: authType, onFinish: onFinish)
             .tag(7)
         }
         .animation(.easeInOut, value: pageIndex)
@@ -78,7 +77,6 @@ struct ContentView: View {
             NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillShowNotification, object: nil, queue: .main) { _ in
                 isKeyboardVisible = true
             }
-
             NotificationCenter.default.addObserver(forName: UIResponder.keyboardWillHideNotification, object: nil, queue: .main) { _ in
                 isKeyboardVisible = false
             }

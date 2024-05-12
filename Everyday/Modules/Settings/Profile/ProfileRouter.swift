@@ -14,9 +14,9 @@ final class ProfileRouter {
 
 extension ProfileRouter: ProfileRouterInput {
     func routeToAuthentication() {
-        if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
-            sceneDelegate.checkAuthentication()
-        }
+//        if let sceneDelegate = UIApplication.shared.connectedScenes.first?.delegate as? SceneDelegate {
+//            sceneDelegate.checkAuthentication()
+//        }
     }
     
     func getChangeEmailView() {

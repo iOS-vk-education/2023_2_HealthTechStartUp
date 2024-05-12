@@ -16,22 +16,21 @@ final class AuthModel {
         case vk
         case google
         case common
-        case anonym
         case none
-        case email
     }
     
     var whichSign: Sign = .none
-
+    
     private init() {
     }
 }
 
 protocol FirebaseAuthServiceDescription {
     func registerUser(with userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void)
-    func login(with userRequest: SignInModel, completion: @escaping(Bool, Error?) -> Void)
-    func anonymLogin(completion: @escaping (Bool, Error?) -> Void)
+    func login(with data: Email, completion: @escaping(Bool, Error?) -> Void)
     func signOut(completion: @escaping (Bool, Error?) -> Void)
+    func forgotPassword(with email: String, completion: @escaping (Bool, Error?) -> Void)
+    func userExist(with email: String, completion: @escaping (Bool, Error?) -> Void)
 }
 
 final class FirebaseAuthService: FirebaseAuthServiceDescription {
@@ -39,18 +38,45 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
     
     private init() {}
     
+    func forgotPassword(with email: String, completion: @escaping (Bool, Error?) -> Void) {
+        Auth.auth().sendPasswordReset(withEmail: email) { error in
+            if let error = error {
+                completion(false, error)
+                return
+            } else {
+                completion(true, nil)
+            }
+        }
+    }
+    
+    func userExist(with email: String, completion: @escaping (Bool, Error?) -> Void) {
+        let collection = Firestore.firestore().collection("user")
+        collection.whereField("email", isEqualTo: email).getDocuments { snapshot, error in
+            if let error = error {
+                completion(false, error)
+                return
+            } else {
+                guard let query = snapshot, !query.isEmpty else {
+                    completion(false, nil)
+                    return
+                }
+                completion(true, nil)
+            }
+        }
+    }
+    
     func registerUser(with userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void) {
         switch AuthModel.shared.whichSign {
-        case .google, .vk, .common, .anonym:
+        case .google, .vk, .common:
             performAuth(userRequest: userRequest, completion: completion)
         default:
             completion(false, nil)
         }
     }
     
-   func login(with userRequest: SignInModel, completion: @escaping (Bool, Error?) -> Void) {
-        let email = userRequest.email
-        let password = userRequest.password
+    func login(with data: Email, completion: @escaping (Bool, Error?) -> Void) {
+        let email = data.email
+        let password = data.password
         
         Auth.auth().signIn(withEmail: email, password: password) { _, error in
             if let error = error {
@@ -98,14 +124,12 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
             Auth.auth().signIn(with: credential, completion: authAction)
         case .vk, .common:
             Auth.auth().createUser(withEmail: email, password: password, completion: authAction)
-        case .anonym:
-            Auth.auth().signInAnonymously(completion: authAction)
         default:
             completion(false, nil)
         }
     }
     
-    private func handleAuthResult(result: AuthDataResult?, 
+    private func handleAuthResult(result: AuthDataResult?,
                                   error: Error?,
                                   userRequest: ProfileAcknowledgementModel,
                                   completion: @escaping(Bool, Error?) -> Void) {
@@ -119,7 +143,7 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
             return
         }
         
-       updateUserProfile(resultUser: resultUser, userRequest: userRequest, completion: completion)
+        updateUserProfile(resultUser: resultUser, userRequest: userRequest, completion: completion)
     }
     
     private func updateUserProfile(resultUser: User, userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void) {
@@ -141,11 +165,12 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
                         "age": userRequest.age ?? "",
                         "gender": userRequest.gender ?? "",
                         "weight": userRequest.weight ?? "",
-                        "schedule": userRequest.schedule,
+                        "schedule": userRequest.schedule?.toDictionary() ?? DayServiceSchedule().toDictionary(),
+                        "history": userRequest.history?.map { $0.toDictionary() } ?? [],
                         "profileImage": path,
                         "bodyWeightMeasureUnit": userRequest.bodyWeightMeasureUnit ?? "",
                         "measurementsMeasureUnit": userRequest.measurementsMeasureUnit ?? "",
-                        "loadWeightMeasureUnit": userRequest.loadWeightMeasureUnit ?? "",
+                        "loadWeightMeasureUnit": userRequest.bodyWeightMeasureUnit ?? "",
                         "distanceMeasureUnit": userRequest.distanceMeasureUnit ?? ""
                     ]
                     

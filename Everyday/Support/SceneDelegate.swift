@@ -7,7 +7,6 @@
 
 import UIKit
 import VKID
-import FirebaseAuth
 
 class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
@@ -22,15 +21,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         splashPresenter = SplashPresenter(scene: scene)
         setupWindow(with: scene)
         
-        if Auth.auth().currentUser == nil {
-            let viewController = WelcomeScreenContainer.assemble(with: .init()).viewController
-            window?.rootViewController = viewController
-        } else {
-            let viewController = TabBarController()
-            window?.rootViewController = viewController
-        }
+        let viewController = TabBarController()
+        let navigationController = UINavigationController(rootViewController: viewController)
         
         SettingsUserDefaultsService.shared.setTheme()
+        
+        window?.rootViewController = navigationController
+        
+        Reloader.shared.getAuthType()
         
         splashPresenter?.present()
         
@@ -40,8 +38,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
                 self?.splashPresenter = nil
             }
         }
-        
-        checkAuthentication()
     }
     
     private func setupWindow(with scene: UIScene) {
@@ -54,30 +50,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         self.window?.makeKeyAndVisible()
     }
     
-    public func checkAuthentication() {
-        if Auth.auth().currentUser == nil {
-            let authTypeArray: [String] = [KeychainService.loadString(for: "vkAuth") ?? "",
-                                           KeychainService.loadString(for: "googleAuth") ?? "",
-                                           KeychainService.loadString(for: "anonymAuth") ?? "",
-                                           KeychainService.loadString(for: "emailAuth") ?? ""]
-            
-            CoreDataService.shared.deleteAllItems()
-            for authType in authTypeArray where !authType.isEmpty {
-                CoreDataService.shared.createItem(authType: authType)
-            }
-
-            self.goToController(with: WelcomeScreenContainer.assemble(with: .init()).viewController)
-        } else {
-            self.goToController(with: TabBarController())
-        }
-    }
-    
     private func goToController(with viewController: UIViewController) {
         DispatchQueue.main.async { [weak self] in
             let nav = UINavigationController(rootViewController: viewController)
-            if viewController is TabBarController {
-                nav.setNavigationBarHidden(false, animated: false)
-            }
             nav.modalPresentationStyle = .fullScreen
             self?.window?.rootViewController = nav
         }

@@ -75,7 +75,11 @@ extension SettingsPresenter: SettingsViewOutput {
     }
     
     func didTapProfileCell() {
-        router.getProfileView()
+        if Reloader.shared.checkAuthentication() {
+            router.getProfileView()
+        } else {
+            router.getAuthView()
+        }
     }
     
     func didTapHealthCell() {

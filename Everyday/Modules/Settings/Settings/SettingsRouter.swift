@@ -13,6 +13,32 @@ final class SettingsRouter {
 }
 
 extension SettingsRouter: SettingsRouterInput {
+    func getAuthView() {
+        guard let viewController = viewController else {
+            return
+        }
+        
+        let authScreen = AuthorizationContainer.assemble(with: .init()).viewController
+        let navigationController = UINavigationController(rootViewController: authScreen)
+        navigationController.navigationBar.isHidden = true
+        
+        if let sheet = navigationController.sheetPresentationController {
+            sheet.detents = [
+                .custom(identifier: .init("small"), resolver: { _ in
+                    return UIScreen.main.bounds.height / 3.5
+                })
+            ]
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 20
+            sheet.prefersGrabberVisible = false
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.prefersEdgeAttachedInCompactHeight = true
+        }
+        
+        viewController.present(navigationController, animated: true)
+    }
+    
     func openURL(_ appUrl: URL, _ webUrl: URL) {
         if UIApplication.shared.canOpenURL(appUrl) {
             UIApplication.shared.open(appUrl, options: [:], completionHandler: nil)

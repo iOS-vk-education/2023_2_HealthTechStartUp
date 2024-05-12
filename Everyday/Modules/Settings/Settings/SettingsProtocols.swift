@@ -48,6 +48,7 @@ protocol SettingsRouterInput: AnyObject {
     func getUnitsView()
     func getChangeLanguageView()
     func getProfileView()
+    func getAuthView()
     func getHealthView()
     func getShareView(with items: [Any])
     func openURL(_ appUrl: URL, _ webUrl: URL)

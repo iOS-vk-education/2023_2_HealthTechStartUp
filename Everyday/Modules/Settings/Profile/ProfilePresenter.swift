@@ -98,7 +98,8 @@ extension ProfilePresenter: ProfileViewOutput {
                     switch result {
                     case .success:
                         SettingsUserDefaultsService.shared.resetUserDefaults()
-                        self.router.routeToAuthentication()
+                        Reloader.shared.setLogout()
+                        self.router.getBackToMainView()
                     case .failure(let error):
                         self.view?.showAlert(with: "logout", message: error.localizedDescription)
                     }

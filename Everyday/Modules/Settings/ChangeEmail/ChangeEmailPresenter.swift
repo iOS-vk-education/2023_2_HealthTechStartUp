@@ -68,8 +68,6 @@ extension ChangeEmailPresenter: ChangeEmailViewOutput {
     struct Constants {
         static let email: String = "email"
         static let invalidEmail: String = "Invalid email"
-//        static let password: String = "password"
-//        static let invalidPassword: String = "Invalid password"
     }
 }
 
