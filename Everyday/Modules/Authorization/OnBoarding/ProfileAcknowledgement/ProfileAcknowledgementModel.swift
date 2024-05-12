@@ -28,29 +28,6 @@ class ProfileAcknowledgementModel {
     private(set) var loadWeightMeasureUnit: String?
 
     private init() { }
-
-//    func update(firstname: String? = nil, lastname: String? = nil, nickname: String? = nil, email: String? = nil,
-//                password: String? = nil, profileImage: UIImage? = nil, age: String? = nil, gender: String? = nil,
-//                weight: String? = nil, schedule: DayServiceSchedule? = nil,
-//                history: [DayServiceHistoryElement]? = nil, profileImagePath: String? = nil,
-//                bodyWeightMeasureUnit: String? = nil, measurementsMeasureUnit: String? = nil,
-//                loadWeightMeasureUnit: String? = nil, distanceMeasureUnit: String? = nil) {
-//        if let firstname = firstname { self.firstname = firstname }
-//        if let lastname = lastname { self.lastname = lastname }
-//        if let nickname = nickname { self.nickname = nickname }
-//        if let email = email { self.email = email }
-//        if let password = password { self.password = password }
-//        if let age = age { self.age = age }
-//        if let gender = gender { self.gender = gender }
-//        if let weight = weight { self.weight = weight }
-//        if let schedule = schedule { self.schedule = schedule }
-//        if let history = history { self.history = history }
-//        if let profileImagePath = profileImagePath { self.profileImagePath = profileImagePath }
-//        if let profileImage = profileImage { self.profileImage = profileImage }
-//        if let bodyWeightMeasureUnit = bodyWeightMeasureUnit { self.bodyWeightMeasureUnit = bodyWeightMeasureUnit}
-//        if let measurementsMeasureUnit = measurementsMeasureUnit { self.measurementsMeasureUnit = measurementsMeasureUnit}
-//        if let distanceMeasureUnit = distanceMeasureUnit { self.distanceMeasureUnit = distanceMeasureUnit}
-//    }
     
     func update(firstname: String? = nil, lastname: String? = nil, nickname: String? = nil, email: String? = nil,
                 password: String? = nil, profileImage: UIImage? = nil, age: String? = nil, gender: String? = nil,
