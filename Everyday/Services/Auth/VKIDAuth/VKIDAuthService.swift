@@ -76,7 +76,7 @@ final class VKIDAuthService: VKIDAuthServiceDescription {
                     completion(.success(()))
                 }
             } catch AuthError.cancelled {
-                return                
+                return
             } catch {
                 let error = NSError(domain: "AuthError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unable to retrieve user information"])
                 completion(.failure(error))

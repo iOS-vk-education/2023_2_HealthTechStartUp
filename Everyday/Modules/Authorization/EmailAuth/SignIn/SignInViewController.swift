@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by Михаил on 27.04.2024.
-//
+//  
 //
 
 import UIKit
@@ -265,12 +265,12 @@ final class SignInViewController: UIViewController {
         output.didTapSignupButton()
     }
     
-    @objc
+    @objc 
     private func didTapCloseButton() {
         output.didTapCloseButton()
     }
     
-    @objc
+    @objc 
     private func didTapForgotPasswordButton() {
         output.didTapForgotPasswordButton()
     }

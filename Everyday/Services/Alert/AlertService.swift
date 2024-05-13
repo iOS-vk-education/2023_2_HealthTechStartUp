@@ -54,9 +54,9 @@ struct AlertViewControllerWrapper: UIViewControllerRepresentable {
 }
 
 final class AlertViewController: UIViewController {
-
+    
     // MARK: - Private properties
-
+    
     private let viewModel: AlertServiceViewModel
     private let popupView = UIView()
     private let visualEffectView = UIVisualEffectView()
@@ -88,10 +88,10 @@ final class AlertViewController: UIViewController {
         super.viewDidAppear(animated)
         animatePopupAppearance()
     }
-
+    
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-
+        
         layout()
     }
 
@@ -110,11 +110,11 @@ final class AlertViewController: UIViewController {
         visualEffectView.frame = view.bounds
         visualEffectView.autoresizingMask = [.flexibleWidth, .flexibleHeight]
     }
-
+    
     func setupLabels() {
         titleLabel.attributedText = viewModel.labelTitle
         descriptionLabel.attributedText = viewModel.labelDescription
-
+        
         for label in [titleLabel, descriptionLabel] {
             label.textAlignment = .center
             label.lineBreakMode = .byWordWrapping
@@ -122,11 +122,11 @@ final class AlertViewController: UIViewController {
             label.textAlignment = .left
         }
     }
-
+    
     func setupButton() {
         let closeButtonConfig = UIImage.SymbolConfiguration(pointSize: Constants.CloseButton.pointSize, weight: .regular)
         let image = UIImage(systemName: "xmark", withConfiguration: closeButtonConfig)
-
+        
         closeButton.setImage(image, for: .normal)
         closeButton.tintColor = Constants.closeButtonColor
         closeButton.contentVerticalAlignment = .fill
@@ -144,17 +144,17 @@ final class AlertViewController: UIViewController {
         popupView.layer.cornerRadius = Constants.PopupView.cornerRadius
         popupView.clipsToBounds = true
     }
-
+    
     // MARK: - layout
-
+    
     func layout() {
         popupView.pin
             .top()
             .horizontally()
-
+            
         closeButton.pin
             .size(Constants.CloseButton.size)
-
+        
         titleLabel.pin
             .below(of: closeButton)
             .width(Constants.Label.width)
@@ -177,21 +177,21 @@ final class AlertViewController: UIViewController {
             .wrapContent(padding: Constants.PopupView.padding)
             .vCenter()
             .hCenter()
-
+        
         closeButton.pin
             .top(Constants.CloseButton.top)
             .right(Constants.CloseButton.right)
-
+        
         titleLabel.pin
             .marginTop(Constants.Label.titleMarginTop)
             .hCenter()
-
+        
         button.pin
             .hCenter()
     }
-
+    
     // MARK: - animation
-
+    
     func animatePopupAppearance() {
         UIView.animate(withDuration: 0.3, delay: 0, usingSpringWithDamping: 0.7, initialSpringVelocity: 0.3, options: .curveEaseInOut, animations: {
             self.view.transform = .identity
@@ -229,7 +229,7 @@ private extension AlertViewController {
             static let cornerRadius: CGFloat = 10
             static let padding: CGFloat = 20
         }
-
+        
         struct Label {
             static let height: CGFloat = 100
             static let width: CGFloat = 250

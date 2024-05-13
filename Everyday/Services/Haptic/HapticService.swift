@@ -22,7 +22,7 @@ final class HapticService {
             selectionFeedbackGenerator.selectionChanged()
         }
     }
-
+    
     public func vibrate(for type: UINotificationFeedbackGenerator.FeedbackType) {
         DispatchQueue.main.async {
             let notificationGenerator = UINotificationFeedbackGenerator()

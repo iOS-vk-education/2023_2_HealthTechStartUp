@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by Михаил on 28.04.2024.
-//
+//  
 //
 
 import UIKit
@@ -16,7 +16,7 @@ extension SignUpRouter: SignUpRouterInput {
     func closeView() {
         viewController?.dismiss(animated: true, completion: nil)
     }
-            
+
     func openApp() {
         if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
            let window = windowScene.windows.first(where: { $0.isKeyWindow }) {

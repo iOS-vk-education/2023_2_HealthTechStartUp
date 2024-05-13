@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by Михаил on 28.04.2024.
-//
+//  
 //
 
 import UIKit
@@ -203,7 +203,7 @@ final class SignUpViewController: UIViewController {
     
     // MARK: - Actions
     
-    @objc
+    @objc 
     private func keyboardWillShow(notification: Notification) {
         guard let keyboardFrame = notification.userInfo?[UIResponder.keyboardFrameEndUserInfoKey] as? NSValue,
               let activeTextField = activeTextField else {
@@ -226,7 +226,7 @@ final class SignUpViewController: UIViewController {
         }
     }
 
-    @objc
+    @objc 
     private func keyboardWillHide(notification: Notification) {
         UIView.animate(withDuration: 0.3) {
             self.signupButton.pin

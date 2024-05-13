@@ -7,7 +7,7 @@
 
 import UIKit
 
-struct AuthorizationViewModel {
+struct AuthorizationViewModel {  
     let googleImage: UIImage?
     let vkImage: UIImage?
     let appleImage: UIImage?

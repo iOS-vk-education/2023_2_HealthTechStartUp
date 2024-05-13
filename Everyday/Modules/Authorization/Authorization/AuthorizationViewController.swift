@@ -3,6 +3,7 @@
 //  Everyday
 //
 //  Created by Михаил on 23.04.2024.
+//  
 //
 
 import UIKit
@@ -40,7 +41,7 @@ final class AuthorizationViewController: UIViewController {
         output.didLoadView()
         setup()
         
-        view.addSubviews(signWithGoogleButton, signWithVKButton, signWithAppleButton,
+        view.addSubviews(signWithGoogleButton, signWithVKButton, signWithAppleButton, 
                          firstSeparator, separatorLabel, secondSeparator,
                          signWithEmailButton, privacyPolicyLabel)
     }
@@ -183,7 +184,7 @@ final class AuthorizationViewController: UIViewController {
     }
 }
 
-// MARK: - View input
+// MARK: - View input 
 
 extension AuthorizationViewController: AuthorizationViewInput {
     func showAlert(with type: AlertType) {

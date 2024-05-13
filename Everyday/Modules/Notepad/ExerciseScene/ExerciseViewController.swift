@@ -184,7 +184,7 @@ extension ExerciseViewController: ExerciseViewInput {
 // MARK: - Constants
 
 private extension ExerciseViewController {
-    struct Constants {
+    struct Constants {        
         static let backgroundColor: UIColor = UIColor.background
         
         struct Button {

@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by Михаил on 27.04.2024.
-//
+//  
 //
 
 import Foundation
@@ -11,10 +11,10 @@ import Foundation
 final class SignInPresenter {
     weak var view: SignInViewInput?
     weak var moduleOutput: SignInModuleOutput?
-
+    
     private let router: SignInRouterInput
     private let interactor: SignInInteractorInput
-
+    
     init(router: SignInRouterInput, interactor: SignInInteractorInput) {
         self.router = router
         self.interactor = interactor
@@ -32,11 +32,11 @@ extension SignInPresenter: SignInViewOutput {
     func didTapForgotPasswordButton() {
         router.openForgot()
     }
-
+    
     func didTapCloseButton() {
         router.closeView()
     }
-
+    
     func didTapLoginButton(with email: String, and password: String) {
         guard Validator.isValidEmail(for: email) else {
             view?.showAlert(with: .invalidEmail)
@@ -87,11 +87,11 @@ extension SignInPresenter: SignInInteractorOutput {
             }
         }
     }
-
+    
     func didAuthExist(isExists: Bool) -> Bool {
         return isExists
     }
-
+    
     func didAuth(_ result: Result<Void, any Error>) {
         DispatchQueue.main.async {
             switch result {

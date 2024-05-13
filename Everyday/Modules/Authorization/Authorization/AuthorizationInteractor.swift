@@ -3,6 +3,7 @@
 //  Everyday
 //
 //  Created by Михаил on 23.04.2024.
+//  
 //
 
 import UIKit
@@ -66,7 +67,7 @@ extension AuthorizationInteractor: AuthorizationInteractorInput {
         }
     }
         
-    func isAuthExist(for service: String) -> Bool {
+    func isAuthExist(for service: String) -> Bool { 
         Reloader.shared.getAuthType()
         let isExists = coreDataService.isItemExists(for: service)
         return output?.didAuthExist(isExists: isExists) ?? false

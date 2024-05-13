@@ -115,7 +115,7 @@ extension DayServiceHistoryElement {
 
         return [
             "date": dateString,
-            "historyID": historyID.path
+            "historyID": historyID.path 
         ]
     }
 }

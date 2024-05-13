@@ -30,7 +30,7 @@ final class AuthService: AuthServiceDescription {
     
     private init(vkidAuthService: VKIDAuthServiceDescription = VKIDAuthService.shared,
                  googleAuthService: GoogleAuthServiceDescription = GoogleAuthService.shared,
-                 firebaseAuthService: FirebaseAuthServiceDescription = FirebaseAuthService.shared ) {
+                 firebaseAuthService: FirebaseAuthServiceDescription = FirebaseAuthService.shared) {
         self.vkidAuthService = vkidAuthService
         self.googleAuthService = googleAuthService
         self.firebaseAuthService = firebaseAuthService
@@ -67,7 +67,7 @@ final class AuthService: AuthServiceDescription {
             }
         }
     }
-    
+
     func loginWithEmail(with data: Email, completion: @escaping (Result<Void, Error>) -> Void) {
         firebaseAuthService.login(with: data) { success, error in
             if success {
