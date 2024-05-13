@@ -20,6 +20,5 @@ extension SearchResultsViewController: UISearchResultsUpdating {
     }
     
     func updateSearchResults(for searchText: String) {
-           // Отфильтруйте и обновите данные на основе searchText
     }
 }

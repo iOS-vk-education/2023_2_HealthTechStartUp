@@ -49,6 +49,8 @@
 		9E467A902BF2358300127EFA /* StoryCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E467A802BF2358300127EFA /* StoryCell.swift */; };
 		9E467A912BF2358300127EFA /* TrainingTypeCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E467A812BF2358300127EFA /* TrainingTypeCollectionViewCell.swift */; };
 		9E467A942BF235BC00127EFA /* arial_black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 9E467A922BF235BC00127EFA /* arial_black.ttf */; };
+		9E467A9A2BF2436200127EFA /* EmptyTrainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E467A992BF2436200127EFA /* EmptyTrainViewController.swift */; };
+		9E467A9C2BF2436D00127EFA /* TrainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E467A9B2BF2436D00127EFA /* TrainViewController.swift */; };
 		9E4766DA2B9FC0BD00DD31B9 /* View+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4766D92B9FC0BD00DD31B9 /* View+Extension.swift */; };
 		9E4F22D82B9F3D09003E749E /* CustomError.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E4F22D72B9F3D09003E749E /* CustomError.swift */; };
 		9E53FB342B7F87BA00C55A45 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E53FB332B7F87BA00C55A45 /* AppDelegate.swift */; };
@@ -341,6 +343,8 @@
 		9E467A802BF2358300127EFA /* StoryCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StoryCell.swift; sourceTree = "<group>"; };
 		9E467A812BF2358300127EFA /* TrainingTypeCollectionViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TrainingTypeCollectionViewCell.swift; sourceTree = "<group>"; };
 		9E467A922BF235BC00127EFA /* arial_black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = arial_black.ttf; sourceTree = "<group>"; };
+		9E467A992BF2436200127EFA /* EmptyTrainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyTrainViewController.swift; sourceTree = "<group>"; };
+		9E467A9B2BF2436D00127EFA /* TrainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TrainViewController.swift; sourceTree = "<group>"; };
 		9E4766D92B9FC0BD00DD31B9 /* View+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "View+Extension.swift"; sourceTree = "<group>"; };
 		9E4766DB2BA34F1E00DD31B9 /* Everyday.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = Everyday.entitlements; sourceTree = "<group>"; };
 		9E4F22D72B9F3D09003E749E /* CustomError.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = CustomError.swift; sourceTree = "<group>"; };
@@ -826,6 +830,15 @@
 				9E467A922BF235BC00127EFA /* arial_black.ttf */,
 			);
 			path = Fonts;
+			sourceTree = "<group>";
+		};
+		9E467A982BF2435000127EFA /* Training */ = {
+			isa = PBXGroup;
+			children = (
+				9E467A992BF2436200127EFA /* EmptyTrainViewController.swift */,
+				9E467A9B2BF2436D00127EFA /* TrainViewController.swift */,
+			);
+			path = Training;
 			sourceTree = "<group>";
 		};
 		9E4F22D52B9F3CEF003E749E /* Helpers */ = {
@@ -1782,6 +1795,7 @@
 			isa = PBXGroup;
 			children = (
 				9E467A832BF2358300127EFA /* Cells */,
+				9E467A982BF2435000127EFA /* Training */,
 				9E467A612BF2356C00127EFA /* Programs */,
 				9E467A532BF2356800127EFA /* SearchResultsViewController */,
 				9E467A4A2BF2356400127EFA /* WalkPrograms */,
@@ -1934,6 +1948,7 @@
 				9E467A3C2BF2356100127EFA /* WorkoutContainer.swift in Sources */,
 				9E0C348E2BD700CB00D8696B /* CloseButton.swift in Sources */,
 				9EA952002BF19D5500ADBF9A /* ChangeLanguageProtocols.swift in Sources */,
+				9E467A9A2BF2436200127EFA /* EmptyTrainViewController.swift in Sources */,
 				9EA952B32BF2279A00ADBF9A /* ExerciseProtocols.swift in Sources */,
 				9EA951FB2BF19D5500ADBF9A /* ChangeEmailRouter.swift in Sources */,
 				9E467A8D2BF2358300127EFA /* TargetCollectionViewCell.swift in Sources */,
@@ -2036,6 +2051,7 @@
 				9EA952C52BF2279A00ADBF9A /* NotepadInnerCollectionViewCell.swift in Sources */,
 				9ED8C93A2BF182F500D400A3 /* Optional+Extension.swift in Sources */,
 				9EE8AE1D2B7FB905001D126F /* ProgressRouter.swift in Sources */,
+				9E467A9C2BF2436D00127EFA /* TrainViewController.swift in Sources */,
 				9EA951762BF19BA200ADBF9A /* SignUpContainer.swift in Sources */,
 				9EA9518A2BF19D3900ADBF9A /* AuthorizationRouter.swift in Sources */,
 				9EA951FC2BF19D5500ADBF9A /* ChangeEmailViewController.swift in Sources */,
