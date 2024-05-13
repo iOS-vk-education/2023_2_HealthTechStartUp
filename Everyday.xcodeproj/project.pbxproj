@@ -80,7 +80,6 @@
 		8C4EAB3D2BEEC54E0023836D /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4EAB372BEEC54E0023836D /* AuthorizationViewController.swift */; };
 		8C4EAB3E2BEEC54E0023836D /* AuthorizationProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4EAB382BEEC54E0023836D /* AuthorizationProtocols.swift */; };
 		8C4EAB3F2BEEC54E0023836D /* AuthorizationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4EAB392BEEC54E0023836D /* AuthorizationInteractor.swift */; };
-		8C4EAB432BEEC5820023836D /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C4EAB422BEEC5810023836D /* AuthorizationViewModel.swift */; };
 		8C5237192BCE25F80084F335 /* HealthPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5237132BCE25F80084F335 /* HealthPresenter.swift */; };
 		8C52371A2BCE25F80084F335 /* HealthRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5237142BCE25F80084F335 /* HealthRouter.swift */; };
 		8C52371B2BCE25F80084F335 /* HealthViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C5237152BCE25F80084F335 /* HealthViewController.swift */; };
@@ -235,6 +234,7 @@
 		9E7C19972B8BF1340006D48C /* PasswordGenerator.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C19962B8BF1340006D48C /* PasswordGenerator.swift */; };
 		9E7C199B2B8D0EC50006D48C /* Email.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C199A2B8D0EC50006D48C /* Email.swift */; };
 		9E7C199D2B8F482E0006D48C /* KeychainService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E7C199C2B8F482E0006D48C /* KeychainService.swift */; };
+		9EA951532BF190C600ADBF9A /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA951522BF190C600ADBF9A /* AuthorizationViewModel.swift */; };
 		9EBFD9642BAB077500A1891D /* UserAuthentication+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9622BAB077500A1891D /* UserAuthentication+CoreDataClass.swift */; };
 		9EBFD9652BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9632BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift */; };
 		9EBFD9672BAB273400A1891D /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBFD9662BAB273400A1891D /* CoreDataService.swift */; };
@@ -334,7 +334,6 @@
 		8C4EAB372BEEC54E0023836D /* AuthorizationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewController.swift; sourceTree = "<group>"; };
 		8C4EAB382BEEC54E0023836D /* AuthorizationProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationProtocols.swift; sourceTree = "<group>"; };
 		8C4EAB392BEEC54E0023836D /* AuthorizationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationInteractor.swift; sourceTree = "<group>"; };
-		8C4EAB422BEEC5810023836D /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
 		8C5237132BCE25F80084F335 /* HealthPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthPresenter.swift; sourceTree = "<group>"; };
 		8C5237142BCE25F80084F335 /* HealthRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthRouter.swift; sourceTree = "<group>"; };
 		8C5237152BCE25F80084F335 /* HealthViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthViewController.swift; sourceTree = "<group>"; };
@@ -491,6 +490,7 @@
 		9E7C19962B8BF1340006D48C /* PasswordGenerator.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordGenerator.swift; sourceTree = "<group>"; };
 		9E7C199A2B8D0EC50006D48C /* Email.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Email.swift; sourceTree = "<group>"; };
 		9E7C199C2B8F482E0006D48C /* KeychainService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeychainService.swift; sourceTree = "<group>"; };
+		9EA951522BF190C600ADBF9A /* AuthorizationViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationViewModel.swift; sourceTree = "<group>"; };
 		9EBFD9622BAB077500A1891D /* UserAuthentication+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAuthentication+CoreDataClass.swift"; sourceTree = "<group>"; };
 		9EBFD9632BAB077500A1891D /* UserAuthentication+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UserAuthentication+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		9EBFD9662BAB273400A1891D /* CoreDataService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CoreDataService.swift; sourceTree = "<group>"; };
@@ -762,14 +762,6 @@
 			path = UserDefaults;
 			sourceTree = "<group>";
 		};
-		8C4EAB412BEEC5550023836D /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				8C4EAB422BEEC5810023836D /* AuthorizationViewModel.swift */,
-			);
-			name = Models;
-			sourceTree = "<group>";
-		};
 		8C52371F2BCE2BB70084F335 /* Models */ = {
 			isa = PBXGroup;
 			children = (
@@ -852,7 +844,7 @@
 		8CE21B102BEE11E7002D9CB4 /* Authorization */ = {
 			isa = PBXGroup;
 			children = (
-				8C4EAB412BEEC5550023836D /* Models */,
+				9EA951512BF190B800ADBF9A /* Models */,
 				8C4EAB352BEEC54E0023836D /* AuthorizationPresenter.swift */,
 				8C4EAB362BEEC54E0023836D /* AuthorizationRouter.swift */,
 				8C4EAB372BEEC54E0023836D /* AuthorizationViewController.swift */,
@@ -1467,6 +1459,14 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
+		9EA951512BF190B800ADBF9A /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				9EA951522BF190C600ADBF9A /* AuthorizationViewModel.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		9EE335972B8F9C3900F532B3 /* ScreenSaver */ = {
 			isa = PBXGroup;
 			children = (
@@ -1658,7 +1658,6 @@
 				8C3B5E792BAF78D100CFE490 /* ProfileRouter.swift in Sources */,
 				9EE8AE072B7FB77D001D126F /* TabBarController.swift in Sources */,
 				9E2A8BCF2B854147004A81CF /* Validator.swift in Sources */,
-				8C4EAB432BEEC5820023836D /* AuthorizationViewModel.swift in Sources */,
 				8C3B5EAE2BAF7BC400CFE490 /* UnitsInteractor.swift in Sources */,
 				9E4F22D42B9F3C5D003E749E /* ExtraViewModel.swift in Sources */,
 				8CA0C35F2BE95DCB00353FB2 /* NotepadOuterCollectionViewCell.swift in Sources */,
@@ -1829,6 +1828,7 @@
 				9EE8AE3A2B7FB96E001D126F /* WorkoutInteractor.swift in Sources */,
 				9E4F22642B9F3B5C003E749E /* User.swift in Sources */,
 				9E4F228B2B9F3BB4003E749E /* TrainingProtocols.swift in Sources */,
+				9EA951532BF190C600ADBF9A /* AuthorizationViewModel.swift in Sources */,
 				9E4F22722B9F3B8F003E749E /* NotepadInteractor.swift in Sources */,
 				9E4F22D82B9F3D09003E749E /* CustomError.swift in Sources */,
 				9EE8AE122B7FB8CF001D126F /* SettingsProtocols.swift in Sources */,
