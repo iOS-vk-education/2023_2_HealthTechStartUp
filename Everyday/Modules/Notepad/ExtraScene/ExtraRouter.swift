@@ -40,11 +40,8 @@ private extension ExtraRouter {
     }
     
     func heartViewController(with type: SheetType) -> UIViewController {
-        let moduleType = SheetType.heartRateVariability(model: .init())
-        let context = SheetContext(moduleOutput: presenter, type: moduleType)
-        let container = SheetContainer.assemble(with: context)
+        let container = HeartRateContainer.assemble(with: .init())
         let presentedViewController = container.viewController
-        presentedViewController.modalPresentationStyle = .overFullScreen
         
         return presentedViewController
     }
