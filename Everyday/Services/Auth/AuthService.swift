@@ -10,14 +10,15 @@ import UIKit
 protocol AuthServiceDescription {
     func authWithVKID(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
     func authWithGoogle(with presentingController: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
-    func authWithFirebase(with userRequest: ProfileAcknowledgementModel)
+    func authWithFirebase(with userRequest: ProfileAcknowledgementModel, completion: @escaping (Result<Void, Error>) -> Void)
     
-    func login(with userRequest: SignInModel, completion: @escaping (Result<Void, Error>) -> Void)
+    func loginWithEmail(with data: Email, completion: @escaping (Result<Void, Error>) -> Void)
     func loginWithGoogle(with: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
     func loginWithVKID(with: UIViewController, completion: @escaping (Result<Void, Error>) -> Void)
-    func loginWithAnonym(completion: @escaping (Result<Void, Error>) -> Void)
     
     func logout(completion: @escaping (Result<Void, Error>) -> Void)
+    func forgotPassword(with email: String, completion: @escaping (Result<Void, Error>) -> Void)
+    func userExist(with email: String, completion: @escaping (Result<Void, Error>) -> Void)
 }
 
 final class AuthService: AuthServiceDescription {
@@ -47,18 +48,28 @@ final class AuthService: AuthServiceDescription {
         }
     }
     
-    func authWithFirebase(with userRequest: ProfileAcknowledgementModel) {
+    func authWithFirebase(with userRequest: ProfileAcknowledgementModel, completion: @escaping (Result<Void, Error>) -> Void) {
         firebaseAuthService.registerUser(with: userRequest) { success, error in
-            if let error = error {
-                print("Registration failed with error: \(error.localizedDescription)")
-            } else {
-                print("Registration successful: \(success)")
+            if success {
+                completion(.success(()))
+            } else if let error = error {
+                completion(.failure(error))
+            }
+        }
+    }
+    
+    func forgotPassword(with email: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        firebaseAuthService.forgotPassword(with: email) { success, error in
+            if success {
+                completion(.success(()))
+            } else if let error = error {
+                completion(.failure(error))
             }
         }
     }
         
-    func login(with userRequest: SignInModel, completion: @escaping (Result<Void, Error>) -> Void) {
-        firebaseAuthService.login(with: userRequest) { success, error in
+    func loginWithEmail(with data: Email, completion: @escaping (Result<Void, Error>) -> Void) {
+        firebaseAuthService.login(with: data) { success, error in
             if success {
                 completion(.success(()))
             } else if let error = error {
@@ -79,8 +90,8 @@ final class AuthService: AuthServiceDescription {
         }
     }
     
-    func loginWithAnonym(completion: @escaping (Result<Void, Error>) -> Void) {
-        firebaseAuthService.anonymLogin { success, error in
+    func logout(completion: @escaping (Result<Void, Error>) -> Void) {
+        firebaseAuthService.signOut { success, error in
             if success {
                 completion(.success(()))
             } else if let error = error {
@@ -88,13 +99,13 @@ final class AuthService: AuthServiceDescription {
             }
         }
     }
-    
-    func logout(completion: @escaping (Result<Void, Error>) -> Void) {
-        firebaseAuthService.signOut { success, error in
-            if success {
-                completion(.success(()))
-            } else if let error = error {
+        
+    func userExist(with email: String, completion: @escaping (Result<Void, Error>) -> Void) {
+        firebaseAuthService.userExist(with: email) { exist, error in
+            if let error = error {
                 completion(.failure(error))
+            } else {
+                completion(exist ? .success(()) : .failure(NSError(domain: "", code: 0, userInfo: [NSLocalizedDescriptionKey: "User not found"])))
             }
         }
     }

@@ -76,7 +76,7 @@ final class VKIDAuthService: VKIDAuthServiceDescription {
                     completion(.success(()))
                 }
             } catch AuthError.cancelled {
-                return                
+                return
             } catch {
                 let error = NSError(domain: "AuthError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Unable to retrieve user information"])
                 completion(.failure(error))
@@ -98,7 +98,7 @@ final class VKIDAuthService: VKIDAuthServiceDescription {
                     return
                 }
                 
-                let model = SignInModel(email: email, password: password)
+                let model = Email(email: email, password: password)
                 FirebaseAuthService.shared.login(with: model) { _, error in
                     if let error = error {
                         completion(.failure(error))

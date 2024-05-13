@@ -7,8 +7,6 @@ class OnBoardingViewController: UIHostingController<ContentView> {
     
     // MARK: - properties
     
-    var onOnboardingFinished: (() -> Void)?
-    
     let standardAppearance = UINavigationBarAppearance()
     
     // MARK: - lifecycle
@@ -16,14 +14,14 @@ class OnBoardingViewController: UIHostingController<ContentView> {
     override func viewDidLoad() {
          super.viewDidLoad()
        
-        self.navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
-        self.navigationController?.navigationBar.shadowImage = UIImage()
+        navigationController?.navigationBar.setBackgroundImage(UIImage(), for: UIBarMetrics.default)
+        navigationController?.navigationBar.shadowImage = UIImage()
     }
     
     // MARK: - init
         
-    init(onFinish: @escaping () -> Void) {
-        let contentView = ContentView(onFinish: onFinish)
+    init(authType: String, onFinish: @escaping () -> Void) {
+        let contentView = ContentView(authType: authType, onFinish: onFinish)
         super.init(rootView: contentView)
     }
     
