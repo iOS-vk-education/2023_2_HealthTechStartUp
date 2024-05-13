@@ -87,5 +87,5 @@ private extension WeightView {
             static let cornerRadius: CGFloat = 8
             static let colorOpacity: CGFloat = 0.1
         }
-    }    
+    }
 }

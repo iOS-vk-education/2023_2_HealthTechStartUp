@@ -85,8 +85,6 @@ struct ProfileAcknowledgementView: View {
                 AgeButtonView(age: age, ageText: ageText, selectedAge: $selectedAge )
             }
 
-            Spacer()
-
             Text(AttributedString(viewModel.genderConfirm))
                 .font(.subheadline)
                 .multilineTextAlignment(.center)
@@ -113,21 +111,21 @@ struct ProfileAcknowledgementView: View {
                 .padding(.horizontal, Constants.TextFieldValues.hPadding)
                 .background(Color.gray.opacity(Constants.TextFieldValues.colorOpacity))
                 .cornerRadius(Constants.TextFieldValues.cornerRadius)
-
+            
             Spacer()
-          
+            
             Button(action: {
                 submitAction()
-               }, label: {
-                   Text(AttributedString(viewModel.starter))
-                       .padding(.horizontal, Constants.ButtonValues.hPadding)
-                       .padding(.vertical, Constants.ButtonValues.vPadding)
-                       .frame(maxWidth: .infinity)
-                       .background(Constants.accent)
-                       .foregroundColor(Constants.button)
-                       .cornerRadius(Constants.ButtonValues.cornerRadius)
-               })
-               .padding(.bottom, Constants.VStackValues.bPadding)
+            }, label: {
+                Text(AttributedString(viewModel.starter))
+                    .padding(.horizontal, Constants.ButtonValues.hPadding)
+                    .padding(.vertical, Constants.ButtonValues.vPadding)
+                    .frame(maxWidth: .infinity)
+                    .background(Constants.accent)
+                    .foregroundColor(Constants.button)
+                    .cornerRadius(Constants.ButtonValues.cornerRadius)
+            })
+            .padding(.bottom, Constants.VStackValues.bPadding)
         }
     }
     
@@ -147,7 +145,7 @@ struct ProfileAcknowledgementView: View {
         .padding()
     }
     
-     private var userTextFields: some View {
+    private var userTextFields: some View {
         Group {
             UserTextField(text: $selectedName,
                           keyType: .default,
@@ -160,10 +158,9 @@ struct ProfileAcknowledgementView: View {
                     ProfileAcknowledgementModel.shared.clear(fields: [.firstname])
                 } else {
                     update = true
-                    ProfileAcknowledgementModel.shared.update(firstname: viewModel.name)
+                    ProfileAcknowledgementModel.shared.update(firstname: selectedName)
                 }
             })
-
             UserTextField(text: $selectedSurname,
                           keyType: .default,
                           placeholder: viewModel.surname,
@@ -175,10 +172,10 @@ struct ProfileAcknowledgementView: View {
                     ProfileAcknowledgementModel.shared.clear(fields: [.lastname])
                 } else {
                     update = true
-                    ProfileAcknowledgementModel.shared.update(nickname: viewModel.surname)
+                    ProfileAcknowledgementModel.shared.update(nickname: selectedSurname)
                 }
             })
-
+            
             UserTextField(text: $selectedNickname,
                           keyType: .default,
                           placeholder: viewModel.nickname,
@@ -190,7 +187,7 @@ struct ProfileAcknowledgementView: View {
                     ProfileAcknowledgementModel.shared.clear(fields: [.nickname])
                 } else {
                     update = true
-                    ProfileAcknowledgementModel.shared.update(nickname: viewModel.nickname)
+                    ProfileAcknowledgementModel.shared.update(nickname: selectedNickname)
                 }
             })
         }
@@ -224,7 +221,7 @@ struct ProfileAcknowledgementView: View {
                 
                  DispatchQueue.main.async {
                     self.onFinish?()
-                }
+                 }
             }
         }
     }

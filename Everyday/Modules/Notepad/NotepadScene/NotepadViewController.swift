@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by Михаил on 16.02.2024.
-//  
+//
 //
 
 import UIKit
@@ -174,7 +174,7 @@ extension NotepadViewController: UICollectionViewDataSource {
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        guard let cell = outerCollectionView.dequeueReusableCell(withReuseIdentifier: NotepadOuterCollectionViewCell.reuseID, 
+        guard let cell = outerCollectionView.dequeueReusableCell(withReuseIdentifier: NotepadOuterCollectionViewCell.reuseID,
                                                                  for: indexPath) as? NotepadOuterCollectionViewCell else {
             return UICollectionViewCell()
         }

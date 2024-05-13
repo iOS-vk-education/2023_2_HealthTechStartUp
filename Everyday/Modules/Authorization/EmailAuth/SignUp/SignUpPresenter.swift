@@ -38,7 +38,7 @@ extension SignUpPresenter: SignUpViewOutput {
         }
         
         AuthModel.shared.whichSign = .common
-        ProfileAcknowledgementModel.shared.update(email: email, password: password)   
+        ProfileAcknowledgementModel.shared.update(email: email, password: password)
         interactor.checkUserExist(with: email)
     }
     
@@ -69,6 +69,7 @@ extension SignUpPresenter: SignUpInteractorOutput {
             case .failure(let error):
                 if let nsError = error as NSError? {
                     if nsError.code == 0 {
+                        UserDefaults.standard.set("email", forKey: "WhichSign")
                         self.router.openOnBoarding(with: "email")
                     }
                 } else {

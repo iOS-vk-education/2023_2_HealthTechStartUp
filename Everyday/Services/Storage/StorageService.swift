@@ -12,9 +12,12 @@ protocol StorageServiceDescription {
     func saveImage(data: Data, userId: String) async throws -> (path: String, name: String)
     func saveImage(image: UIImage, userId: String) async throws -> (path: String, name: String)
     func getData(userId: String, path: String) async throws -> Data
+    func getImage(path: String, completion: @escaping (UIImage?, Error?) -> Void) async throws
+    func deleteOldImage(userId: String, path: String) async throws
 }
     
 final class StorageService: StorageServiceDescription {
+    
     static let shared = StorageService()
     
     private init() {}
@@ -40,7 +43,7 @@ final class StorageService: StorageServiceDescription {
     }
     
     func saveImage(image: UIImage, userId: String) async throws -> (path: String, name: String) {
-        guard let data = image.jpegData(compressionQuality: 1) else {
+        guard let data = image.jpegData(compressionQuality: 0.002) else {
             throw URLError(.backgroundSessionWasDisconnected)
         }
         
@@ -49,6 +52,29 @@ final class StorageService: StorageServiceDescription {
     
     func getData(userId: String, path: String) async throws -> Data {
         try await userReference(userId: userId).child(path).data(maxSize: Constants.imageMaxSize)
+    }
+    
+    func getImage(path: String, completion: @escaping (UIImage?, Error?) -> Void) async throws {
+        let imageRef = storage.child(path)
+        
+        imageRef.getData(maxSize: Constants.imageMaxSize) { data, error in
+            if let error = error {
+                completion(nil, error)
+            } else {
+                if let imageData = data {
+                    let image = UIImage(data: imageData)
+                    completion(image, nil)
+                } else {
+                    completion(nil, error)
+                }
+            }
+        }
+    }
+    
+    func deleteOldImage(userId: String, path: String) async throws {
+        let oldImageRef = storage.child(path)
+        
+        try await oldImageRef.delete()
     }
 }
 

@@ -20,7 +20,7 @@ final class AuthModel {
     }
     
     var whichSign: Sign = .none
-
+    
     private init() {
     }
 }
@@ -74,7 +74,7 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
         }
     }
     
-   func login(with data: Email, completion: @escaping (Bool, Error?) -> Void) {
+    func login(with data: Email, completion: @escaping (Bool, Error?) -> Void) {
         let email = data.email
         let password = data.password
         
@@ -129,7 +129,7 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
         }
     }
     
-    private func handleAuthResult(result: AuthDataResult?, 
+    private func handleAuthResult(result: AuthDataResult?,
                                   error: Error?,
                                   userRequest: ProfileAcknowledgementModel,
                                   completion: @escaping(Bool, Error?) -> Void) {
@@ -143,7 +143,7 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
             return
         }
         
-       updateUserProfile(resultUser: resultUser, userRequest: userRequest, completion: completion)
+        updateUserProfile(resultUser: resultUser, userRequest: userRequest, completion: completion)
     }
     
     private func updateUserProfile(resultUser: User, userRequest: ProfileAcknowledgementModel, completion: @escaping(Bool, Error?) -> Void) {
@@ -168,7 +168,10 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
                         "schedule": userRequest.schedule?.toDictionary() ?? DayServiceSchedule().toDictionary(),
                         "history": userRequest.history?.map { $0.toDictionary() } ?? [],
                         "profileImage": path,
-                        "measureUnit": userRequest.measureUnit ?? ""
+                        "bodyWeightMeasureUnit": userRequest.bodyWeightMeasureUnit ?? "",
+                        "measurementsMeasureUnit": userRequest.measurementsMeasureUnit ?? "",
+                        "loadWeightMeasureUnit": userRequest.bodyWeightMeasureUnit ?? "",
+                        "distanceMeasureUnit": userRequest.distanceMeasureUnit ?? ""
                     ]
                     
                     try await Firestore.firestore().collection("user").document(userId).setData(userData)

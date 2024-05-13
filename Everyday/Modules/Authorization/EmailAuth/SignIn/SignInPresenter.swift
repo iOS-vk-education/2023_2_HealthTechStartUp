@@ -19,7 +19,7 @@ final class SignInPresenter {
         self.router = router
         self.interactor = interactor
     }
-    
+
     private func checkAuth(for service: String) -> Bool {
         return interactor.isAuthExist(for: service)
     }
@@ -42,28 +42,29 @@ extension SignInPresenter: SignInViewOutput {
             view?.showAlert(with: .invalidEmail)
             return
         }
-    
+
         let validationErrors = Validator.validatePassword(for: password)
         if !validationErrors.isEmpty {
             view?.showAlert(with: .invalidPasswordWithRegExp(description: validationErrors))
             return
         }
-        
+
         AuthModel.shared.whichSign = .common
         let model = Email(email: email, password: password)
-        
+
         if checkAuth(for: "email") {
             interactor.authWithEmail(model: model)
+            AuthUserDefaultsService.shared.setWhichSign(signMethod: .common)
         } else {
             interactor.checkUserExist(with: model)
         }
     }
-    
+
     func didLoadView() {
         let model = SignInViewModel()
         view?.configure(with: model)
     }
-    
+
     func didTapSignupButton() {
         router.openSignup()
     }
@@ -96,6 +97,7 @@ extension SignInPresenter: SignInInteractorOutput {
             switch result {
             case .success:
                 UserDefaults.standard.set(true, forKey: "isUserLoggedIn")
+                UserDefaults.standard.set("email", forKey: "WhichSign")
                 self.router.openApp()
             case .failure(let error):
                 self.view?.showAlert(with: .networkMessage(error: error))

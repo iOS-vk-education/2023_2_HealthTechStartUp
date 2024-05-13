@@ -67,7 +67,7 @@ final class AuthService: AuthServiceDescription {
             }
         }
     }
-        
+
     func loginWithEmail(with data: Email, completion: @escaping (Result<Void, Error>) -> Void) {
         firebaseAuthService.login(with: data) { success, error in
             if success {
@@ -99,7 +99,7 @@ final class AuthService: AuthServiceDescription {
             }
         }
     }
-        
+    
     func userExist(with email: String, completion: @escaping (Result<Void, Error>) -> Void) {
         firebaseAuthService.userExist(with: email) { exist, error in
             if let error = error {

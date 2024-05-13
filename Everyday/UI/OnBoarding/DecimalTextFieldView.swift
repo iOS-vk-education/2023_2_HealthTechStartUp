@@ -88,11 +88,20 @@ struct DecimalTextField: UIViewRepresentable {
             
             switch selectedSegmentIndex {
             case 0:
-                ProfileAcknowledgementModel.shared.update(measureUnit: "kg")
+                ProfileAcknowledgementModel.shared.update(bodyWeightMeasureUnit: "kg")
+                ProfileAcknowledgementModel.shared.update(measurementsMeasureUnit: "centimeters")
+                ProfileAcknowledgementModel.shared.update(loadWeightMeasureUnit: "kg")
+                ProfileAcknowledgementModel.shared.update(distanceMeasureUnit: "kilometers")
             case 1:
-                ProfileAcknowledgementModel.shared.update(measureUnit: "lb")
+                ProfileAcknowledgementModel.shared.update(bodyWeightMeasureUnit: "lb")
+                ProfileAcknowledgementModel.shared.update(measurementsMeasureUnit: "inches")
+                ProfileAcknowledgementModel.shared.update(loadWeightMeasureUnit: "lb")
+                ProfileAcknowledgementModel.shared.update(distanceMeasureUnit: "miles")
             case 2:
-                ProfileAcknowledgementModel.shared.update(measureUnit: "st")
+                ProfileAcknowledgementModel.shared.update(bodyWeightMeasureUnit: "st")
+                ProfileAcknowledgementModel.shared.update(measurementsMeasureUnit: "inches")
+                ProfileAcknowledgementModel.shared.update(loadWeightMeasureUnit: "st")
+                ProfileAcknowledgementModel.shared.update(distanceMeasureUnit: "miles")
             default:
                 break
             }

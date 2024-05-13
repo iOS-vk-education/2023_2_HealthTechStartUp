@@ -1,6 +1,4 @@
 //
-//  TabBarController.swift
-//  Everyday
 //
 //  Created by Михаил on 16.02.2024.
 //
@@ -19,38 +17,42 @@ final class TabBarController: UITabBarController {
         super.viewDidLoad()
         setupTabBar()
         selectedIndex = 2
+        self.tabBar.tintColor = Constants.accentColor
         delegate = self
     }
     
-    // MARK: - Actions
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationItem.hidesBackButton = true
+    }
     
+    // MARK: - Actions
+
     private func setupTabBar() {
         let viewControllers = TabBarItem.allCases.map { createViewController(for: $0) }
         self.setViewControllers(viewControllers, animated: false)
     }
-
+    
     private func createViewController(for item: TabBarItem) -> UIViewController {
         let viewController: UIViewController
-        let tabBarItem = UITabBarItem()
-
+        
+        let tabBarItem = UITabBarItem(title: item.title, image: item.image, tag: item.rawValue)
+        
         switch item {
         case .notepad:
             viewController = NotepadContainer.assemble(with: .init()).viewController
-            tabBarItem.title = "Notepad_title".localized
         case .progress:
             viewController = ProgressContainer.assemble(with: .init()).viewController
-            tabBarItem.title = "Progress_title".localized
         case .workout:
             viewController = WorkoutContainer.assemble(with: .init()).viewController
-            tabBarItem.title = "Workout_title".localized
+            tabBarItem.title = Constants.Workout.title
+            tabBarItem.image = UIImage(named: Constants.Workout.image)
         case .settings:
             viewController = SettingsContainer.assemble(with: .init()).viewController
-            tabBarItem.title = "Settings_title".localized
         }
 
-        tabBarItem.tag = item.rawValue
         viewController.tabBarItem = tabBarItem
-
+        
         return viewController
     }
 }
@@ -63,7 +65,7 @@ extension TabBarController: UITabBarControllerDelegate {
             return true
         }
         
-        isUserAuthenticated = checkAuthentication()
+        isUserAuthenticated = Reloader.shared.checkAuthentication()
         
         let selectedItem = TabBarItem(rawValue: selectedIndex)
         
@@ -72,7 +74,7 @@ extension TabBarController: UITabBarControllerDelegate {
             if isUserAuthenticated {
                 return true
             } else {
-               offerAuthentication()
+                offerAuthentication()
                 return false
             }
         default:
@@ -81,24 +83,6 @@ extension TabBarController: UITabBarControllerDelegate {
     }
     
     // MARK: - Helpers
-    
-    private func checkAuthentication() -> Bool {
-        let coreDataService = CoreDataService.shared
-        
-        guard let authTypes = coreDataService.getAllItems() else {
-            return false
-        }
-               
-        guard !authTypes.isEmpty else {
-           return false
-        }
-        
-        if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
-            return false
-        }
-        
-        return true
-    }
     
     private func offerAuthentication() {
         guard (viewControllers?.first(where: { $0 is WorkoutViewController })) != nil else {
@@ -127,11 +111,60 @@ extension TabBarController: UITabBarControllerDelegate {
     }
 }
 
-// MARK: - Helpers
-
 enum TabBarItem: Int, CaseIterable {
     case notepad
     case progress
     case workout
     case settings
+    
+    var title: String {
+        switch self {
+        case .notepad: return Constants.Notepad.title
+        case .progress: return Constants.Progress.title
+        case .settings: return Constants.Settings.title
+        default: return ""
+        }
+    }
+    
+    var image: UIImage? {
+        switch self {
+        case .notepad: return UIImage(systemName: Constants.Notepad.image)
+        case .progress: return UIImage(systemName: Constants.Progress.image)
+        case .settings: return UIImage(systemName: Constants.Settings.image)
+        default: return UIImage()
+        }
+    }
+    
+    struct Constants {
+        struct Notepad {
+            static let title: String = "Notepad_title".localized
+            static let image: String = "dumbbell"
+        }
+        
+        struct Progress {
+            static let title: String = "Progress_title".localized
+            static let image: String = "doc.plaintext"
+        }
+        
+        struct Workout {
+            static let title: String = "Workout_title".localized
+            static let image: String = "glass"
+        }
+        
+        struct Settings {
+            static let title: String = "Settings_title".localized
+            static let image: String = "gear"
+        }
+    }
+}
+
+private extension TabBarController {
+    struct Constants {
+        static let accentColor: UIColor = UIColor.UI.accent
+
+        struct Workout {
+            static let title: String = "Workout_title".localized
+            static let image: String = "glass"
+        }
+    }
 }

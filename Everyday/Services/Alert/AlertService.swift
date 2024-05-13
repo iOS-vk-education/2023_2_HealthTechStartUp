@@ -17,20 +17,20 @@ final class AlertService {
     func presentAlert(on viewController: UIViewController, alertType: AlertType) {
         let viewModel = AlertServiceViewModel(alertType: alertType)
         let alertViewController = AlertViewController(viewModel: viewModel)
-        
+
         alertViewController.modalPresentationStyle = .overFullScreen
         viewController.present(alertViewController, animated: false, completion: nil)
-        
+
         HapticService.shared.vibrate(for: .warning)
     }
-    
+
     func presentInfo(on viewController: UIViewController, alertType: AlertType) {
         let viewModel = AlertServiceViewModel(alertType: alertType)
         let alertViewController = AlertViewController(viewModel: viewModel)
-        
+
         alertViewController.modalPresentationStyle = .overFullScreen
         viewController.present(alertViewController, animated: false, completion: nil)
-        
+
         HapticService.shared.vibrate(for: .success)
     }
 }
@@ -79,7 +79,7 @@ final class AlertViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setup()
-        
+
         view.addSubviews(visualEffectView, popupView)
         popupView.addSubviews(closeButton, titleLabel, descriptionLabel, button)
     }
@@ -96,14 +96,14 @@ final class AlertViewController: UIViewController {
     }
 
     // MARK: - setup
-    
+
     func setup() {
         setupBackground()
         setupPopupView()
         setupButton()
         setupLabels()
     }
-    
+
     func setupBackground() {
         let blurEffect = UIBlurEffect(style: .dark)
         visualEffectView.effect = blurEffect
@@ -132,13 +132,13 @@ final class AlertViewController: UIViewController {
         closeButton.contentVerticalAlignment = .fill
         closeButton.contentHorizontalAlignment = .fill
         closeButton.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
-        
+
         button.setAttributedTitle(viewModel.buttonTitle, for: .normal)
         button.addTarget(self, action: #selector(dismissAlert), for: .touchUpInside)
         button.backgroundColor = Constants.accentColor
         button.layer.cornerRadius = Constants.Button.cornerRadius
     }
-    
+
     func setupPopupView() {
         popupView.backgroundColor = Constants.backgroundColor
         popupView.layer.cornerRadius = Constants.PopupView.cornerRadius
@@ -160,19 +160,19 @@ final class AlertViewController: UIViewController {
             .width(Constants.Label.width)
             .height(Constants.Label.height)
             .sizeToFit(.width)
-        
+
         descriptionLabel.pin
             .below(of: titleLabel, aligned: .left)
             .marginTop(Constants.Label.descriptionMarginTop)
             .width(Constants.Label.width)
             .height(Constants.Label.height)
             .sizeToFit(.width)
-        
+
         button.pin
             .below(of: descriptionLabel)
             .marginTop(Constants.Button.marginTop)
             .size(Constants.Button.size)
-        
+
         popupView.pin
             .wrapContent(padding: Constants.PopupView.padding)
             .vCenter()
@@ -197,7 +197,7 @@ final class AlertViewController: UIViewController {
             self.view.transform = .identity
         }, completion: nil)
     }
-    
+
     // MARK: - actions
 
     @objc func dismissAlert() {
@@ -211,20 +211,20 @@ private extension AlertViewController {
         static let backgroundColor: UIColor = UIColor.background
         static let accentColor: UIColor = UIColor.UI.accent
         static let closeButtonColor: UIColor = UIColor.Text.grayElement
-        
+
         struct Button {
             static let cornerRadius: CGFloat = 10
             static let size: CGSize = CGSize(width: 250, height: 50)
             static let marginTop: CGFloat = 10
         }
-        
+
         struct CloseButton {
             static let size: CGSize = CGSize(width: 14, height: 12)
             static let top: CGFloat = 10
             static let right: CGFloat = 10
             static let pointSize: CGFloat = 20
         }
-        
+
         struct PopupView {
             static let cornerRadius: CGFloat = 10
             static let padding: CGFloat = 20
