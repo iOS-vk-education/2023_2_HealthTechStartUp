@@ -18,6 +18,8 @@ final class TabBarController: UITabBarController {
         setupTabBar()
         selectedIndex = 2
         self.tabBar.tintColor = Constants.accentColor
+        self.tabBar.isTranslucent = false
+        self.tabBar.backgroundColor = Constants.background
         delegate = self
     }
     
@@ -161,6 +163,7 @@ enum TabBarItem: Int, CaseIterable {
 private extension TabBarController {
     struct Constants {
         static let accentColor: UIColor = UIColor.UI.accent
+        static let background: UIColor = UIColor.background
 
         struct Workout {
             static let title: String = "Workout_title".localized
