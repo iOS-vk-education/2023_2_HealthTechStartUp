@@ -158,7 +158,7 @@ struct ProfileAcknowledgementView: View {
                     ProfileAcknowledgementModel.shared.clear(fields: [.firstname])
                 } else {
                     update = true
-                    ProfileAcknowledgementModel.shared.update(firstname: viewModel.name)
+                    ProfileAcknowledgementModel.shared.update(firstname: selectedName)
                 }
             })
             UserTextField(text: $selectedSurname,
@@ -172,7 +172,7 @@ struct ProfileAcknowledgementView: View {
                     ProfileAcknowledgementModel.shared.clear(fields: [.lastname])
                 } else {
                     update = true
-                    ProfileAcknowledgementModel.shared.update(nickname: viewModel.surname)
+                    ProfileAcknowledgementModel.shared.update(nickname: selectedSurname)
                 }
             })
             
@@ -187,7 +187,7 @@ struct ProfileAcknowledgementView: View {
                     ProfileAcknowledgementModel.shared.clear(fields: [.nickname])
                 } else {
                     update = true
-                    ProfileAcknowledgementModel.shared.update(nickname: viewModel.nickname)
+                    ProfileAcknowledgementModel.shared.update(nickname: selectedNickname)
                 }
             })
         }
@@ -221,7 +221,7 @@ struct ProfileAcknowledgementView: View {
                 
                  DispatchQueue.main.async {
                     self.onFinish?()
-                }
+                 }
             }
         }
     }

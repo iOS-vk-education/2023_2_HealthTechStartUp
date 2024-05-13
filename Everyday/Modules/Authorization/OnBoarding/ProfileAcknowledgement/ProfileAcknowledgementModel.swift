@@ -30,10 +30,10 @@ class ProfileAcknowledgementModel {
     private init() { }
     
    func update(firstname: String? = nil, lastname: String? = nil, nickname: String? = nil, email: String? = nil,
-                password: String? = nil, profileImage: UIImage? = nil, age: String? = nil, gender: String? = nil,
-                weight: String? = nil, profileImagePath: String? = nil,
-                bodyWeightMeasureUnit: String? = nil, measurementsMeasureUnit: String? = nil,
-                distanceMeasureUnit: String? = nil, loadWeightMeasureUnit: String? = nil) {
+               password: String? = nil, profileImage: UIImage? = nil, age: String? = nil, gender: String? = nil,
+               weight: String? = nil, profileImagePath: String? = nil,
+               bodyWeightMeasureUnit: String? = nil, measurementsMeasureUnit: String? = nil,
+               distanceMeasureUnit: String? = nil, loadWeightMeasureUnit: String? = nil) {
         self.firstname.updateValue(firstname)
         self.lastname.updateValue(lastname)
         self.nickname.updateValue(nickname)
@@ -50,7 +50,6 @@ class ProfileAcknowledgementModel {
         self.loadWeightMeasureUnit.updateValue(loadWeightMeasureUnit)
     }
 
-    
     enum Field {
         case firstname, lastname, nickname, email, password, profileImagePath, age, gender, weight, schedule, history, profileImage, bodyWeightMeasureUnit
     }
