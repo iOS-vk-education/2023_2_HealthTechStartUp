@@ -210,6 +210,125 @@
         }
       }
     },
+    "CalendarService_Fri_Key" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fri"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пт"
+          }
+        }
+      }
+    },
+    "CalendarService_Mon_Key" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Mon"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Пн"
+          }
+        }
+      }
+    },
+    "CalendarService_Sat_Key" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sat"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Сб"
+          }
+        }
+      }
+    },
+    "CalendarService_Sun_Key" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sun"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вс"
+          }
+        }
+      }
+    },
+    "CalendarService_Thu_Key" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Thu"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Чт"
+          }
+        }
+      }
+    },
+    "CalendarService_Tue_Key" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Tue"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вт"
+          }
+        }
+      }
+    },
+    "CalendarService_Wed_Key" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Wed"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ср"
+          }
+        }
+      }
+    },
     "Alertmanager_networkMessage_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -444,6 +563,23 @@
         }
       }
     },
+    "NotepadEmptyState_title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Chilling..."
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отдыхаем..."
+          }
+        }
+      }
+    },
     "Onboarding_Age_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -583,6 +719,12 @@
     "Onboarding_invalid_lastname_message" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter valid last name"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -594,6 +736,12 @@
     "Onboarding_invalid_lastname_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid last name"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -605,6 +753,12 @@
     "Onboarding_invalid_name_message" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Enter valid first name"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -616,6 +770,12 @@
     "Onboarding_invalid_name_title" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Invalid first name"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1117,6 +1277,125 @@
         }
       }
     },
+    "Sheet_Camera_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Add photo"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Добавьте фото"
+          }
+        }
+      }
+    },
+    "Sheet_ConditionChoice_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Note how you feel"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Отметьте своё самочувствие"
+          }
+        }
+      }
+    },
+    "Sheet_ExerciseCounter_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exercise counter"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Счётчик упражнения"
+          }
+        }
+      }
+    },
+    "Sheet_ExerciseTimer_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Exercise timer"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Таймер упражнения"
+          }
+        }
+      }
+    },
+    "Sheet_HeartRateVariability_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Heart rate variability"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вариабельность сердечного ритма"
+          }
+        }
+      }
+    },
+    "Sheet_Timer_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Timer"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Таймер"
+          }
+        }
+      }
+    },
+    "Sheet_WeightMeasurement_description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Weight"
+          }
+        },
+        "ru" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Вес"
+          }
+        }
+      }
+    },
     "SignIn_forgot_password_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1316,6 +1595,12 @@
     "SplashPresenter_text1" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "The best assistant"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1327,6 +1612,12 @@
     "SplashPresenter_text2" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Analyze your health"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1338,6 +1629,12 @@
     "SplashPresenter_text3" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Journal your workouts"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1349,6 +1646,12 @@
     "SplashPresenter_text4" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Everyday"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1360,6 +1663,12 @@
     "SplashPresenter_text5" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Improve with us"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1371,6 +1680,12 @@
     "SplashPresenter_text6" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Best project"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1382,6 +1697,12 @@
     "SplashPresenter_text7" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Create workouts"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1393,6 +1714,12 @@
     "SplashPresenter_text8" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Download workouts"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1404,6 +1731,12 @@
     "SplashPresenter_text9" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sports with us"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",
@@ -1415,6 +1748,12 @@
     "SplashPresenter_text10" : {
       "extractionState" : "manual",
       "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Home and gym"
+          }
+        },
         "ru" : {
           "stringUnit" : {
             "state" : "translated",

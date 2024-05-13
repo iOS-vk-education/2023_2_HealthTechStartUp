@@ -22,7 +22,6 @@ final class TrainingViewController: UIViewController {
 
     init(output: TrainingViewOutput) {
         self.output = output
-
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -31,16 +30,16 @@ final class TrainingViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life cycle
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         output.didLoadView()
         setup()
     }
     
     override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         layout()
     }
 }
@@ -66,7 +65,6 @@ private extension TrainingViewController {
         setupView()
         setupFinishButton()
         setupTableView()
-        
         view.addSubviews(finishButton, tableView)
     }
 
@@ -91,17 +89,12 @@ private extension TrainingViewController {
     // MARK: - Actions
     
     @objc
-    func didTapStartButton(_ button: UIButton) {
-        output.didTapStartButton(number: button.tag)
-    }
-    
-    @objc
     func didTapFinishButton() {
         output.didTapFinishButton()
     }
 }
 
-// MARK: - UITableViewDataSource
+// MARK: - TableViewDataSource
 
 extension TrainingViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
@@ -118,30 +111,17 @@ extension TrainingViewController: UITableViewDataSource {
         let isDone = output.getSwitchState(at: indexPath.row)
         
         cell.configure(with: viewModel, and: indexPath.row, isDone: isDone)
-        cell.addStartButtonTarget(self, action: #selector(didTapStartButton))
-        cell.delegate = self
         
         return cell
     }
 }
 
-// MARK: - UITableViewDelegate
+// MARK: - TableViewDelegate
 
 extension TrainingViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
         output.didSelectRowAt(index: indexPath.row)
-    }
-}
-
-// MARK: - SwitchTableViewCellDelegate
-
-extension TrainingViewController: SwitchTableViewCellDelegate {
-    func switchCell(_ cell: TrainingTableViewCell, with value: Bool) {
-        guard let indexPath = tableView.indexPath(for: cell) else {
-            return
-        }
-        
-        output.setSwitchState(at: indexPath.row, with: value)
     }
 }
 
@@ -150,14 +130,6 @@ extension TrainingViewController: SwitchTableViewCellDelegate {
 extension TrainingViewController: TrainingViewInput {
     func configure(with viewModel: TrainingViewModel) {
         finishButton.setAttributedTitle(viewModel.finishTitle, for: .normal)
-    }
-    
-    func showFinishButton() {
-        finishButton.isHidden = false
-    }
-    
-    func hideFinishButton() {
-        finishButton.isHidden = true
     }
     
     func reloadData() {    

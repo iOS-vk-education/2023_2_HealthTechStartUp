@@ -14,4 +14,10 @@ extension Date {
         dateComponents.timeZone = TimeZone.current
         return calendar.date(from: dateComponents)
     }
+    
+    func convertToMonthDayYearFormat() -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "MM_dd_yyyy"
+        return dateFormatter.string(from: self)
+    }
 }

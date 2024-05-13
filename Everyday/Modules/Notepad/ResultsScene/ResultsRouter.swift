@@ -13,36 +13,14 @@ final class ResultsRouter {
 }
 
 extension ResultsRouter: ResultsRouterInput {
-    func openTimer(with timerContext: TimerContext) {
-        guard let viewController = viewController else {
-            return
-        }
+    func showView(with context: SheetContext) {
+        let sheetContainer = SheetContainer.assemble(with: context)
+        let presentedViewController = sheetContainer.viewController
         
-        let timerContainer = TimerContainer.assemble(with: timerContext)
-        let timerViewController = timerContainer.viewController
-        
-        if let sheet = timerViewController.sheetPresentationController {
-            sheet.detents = [
-                .custom(resolver: { _ in
-                    return Constants.timerSheetHeight
-                })
-            ]
-        }
-        
-        viewController.present(timerViewController, animated: true)
+        viewController?.present(presentedViewController, animated: true)
     }
     
-    func closeResults() {
-        guard let viewController = viewController else {
-            return
-        }
-        
-        viewController.dismiss(animated: true)
-    }
-}
-
-private extension ResultsRouter {
-    struct Constants {
-        static let timerSheetHeight: CGFloat = 250
+    func dismissResults() {
+        viewController?.dismiss(animated: true)
     }
 }
