@@ -117,7 +117,7 @@ extension ExtraPresenter: SheetModuleOutput {
         switch result {
         case .camera(let model):
             index = 0
-            switchStates[index] = model.image != nil
+            switchStates[0] = model.image != nil
         case .conditionChoice(let model):
             index = 1
             switchStates[1] = model.condition != nil
@@ -130,7 +130,7 @@ extension ExtraPresenter: SheetModuleOutput {
         default:
             break
         }
-        guard index < data.count, index > 0 else {
+        guard index < data.count, index >= 0 else {
             return
         }
         
