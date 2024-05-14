@@ -8,9 +8,15 @@
 import UIKit
 import PinLayout
 
+protocol TargetCollectionViewCellDelegate: AnyObject {
+    func targetCollectionViewCellDidSelectItem(at indexPath: IndexPath)
+}
+
 final class TargetCollectionViewCell: UICollectionViewCell {
     
     // MARK: - private properties
+    
+    weak var delegate: TargetCollectionViewCellDelegate?
     
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -141,5 +147,6 @@ extension TargetCollectionViewCell: UICollectionViewDelegate {
         guard let cell = collectionView.cellForItem(at: indexPath) as? TargetCell else {
             return
         }
+        delegate?.targetCollectionViewCellDidSelectItem(at: indexPath)
     }
 }

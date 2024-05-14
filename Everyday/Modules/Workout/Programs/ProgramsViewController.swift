@@ -9,9 +9,15 @@
 import UIKit
 import PinLayout
 
+protocol ProgramsViewControllerDelegate: AnyObject {
+    func programsViewControllerRequestsPresentation(_ viewController: UIViewController)
+}
+
 final class ProgramsViewController: UIViewController {
     // MARK: - private properties
     
+    weak var delegate: ProgramsViewControllerDelegate?
+
     private let output: ProgramsViewOutput
     
     private lazy var layout: UICollectionViewLayout = {
@@ -48,6 +54,7 @@ final class ProgramsViewController: UIViewController {
         view.backgroundColor = UIColor(named: "Ghost")
                 
         setupUI()
+        collectionViewManager.delegate = self
         output.didLoadView()
     }
     
@@ -73,5 +80,14 @@ final class ProgramsViewController: UIViewController {
 extension ProgramsViewController: ProgramsViewInput {
     func setup(with items: [ProgramsSectionItem]) {
         collectionViewManager.reload(with: items)
+    }
+}
+
+extension ProgramsViewController: TargetCollectionViewCellDelegate {
+    func targetCollectionViewCellDidSelectItem(at indexPath: IndexPath) {
+        // let vc = EmptyTrainViewController()
+        let vc = TrainViewController()
+        print("ok")
+        delegate?.programsViewControllerRequestsPresentation(vc)
     }
 }

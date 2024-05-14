@@ -173,6 +173,9 @@ final class WorkoutViewController: UIViewController {
 extension WorkoutViewController: WorkoutViewInput {
     func setPrograms(_ view: UIViewController) {
         programsViewController = view
+        if let programsVC = view as? ProgramsViewController {
+            programsVC.delegate = self
+        }
     }
     
     func setWalkPrograms(_ view: UIViewController) {
@@ -287,6 +290,18 @@ extension WorkoutViewController: UISearchBarDelegate {
             return
         }
         resultsController.updateSearchResults(for: searchText)
+    }
+}
+
+extension WorkoutViewController: ProgramsViewControllerDelegate {
+    func programsViewControllerRequestsPresentation(_ viewController: UIViewController) {
+        print("ok?")
+       // navigationController?.pushViewController(viewController, animated: true)
+        
+        let navController = UINavigationController(rootViewController: viewController)
+        navController.modalPresentationStyle = .fullScreen
+        navController.modalTransitionStyle = .coverVertical
+        present(navController, animated: true, completion: nil)
     }
 }
 
