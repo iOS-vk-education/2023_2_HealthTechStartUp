@@ -16,15 +16,7 @@
 		9D1C389A2BC9C73200A806A5 /* SheetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D1C38992BC9C73200A806A5 /* SheetViewModel.swift */; };
 		9D408CBD2BCDD77B00B770F9 /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D408CBC2BCDD77B00B770F9 /* DTO.swift */; };
 		9D408CBF2BCDD78100B770F9 /* Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D408CBE2BCDD78100B770F9 /* Domain.swift */; };
-		9D4E4BCD2BB070D200617E5D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9D4E4BD02BB070D200617E5D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9D4E4BD12BB070D200617E5D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9D4E4BD22BB070D200617E5D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9D4E4BD32BB070D200617E5D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9D4E4BD52BB070D200617E5D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9D4E4BD62BB070D200617E5D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9D4E4BD72BB070D200617E5D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
-		9D4E4BD82BB070D200617E5D /* (null) in Frameworks */ = {isa = PBXBuildFile; };
+		9D677E3A2BF351F800E6D35C /* BeamAISDK in Frameworks */ = {isa = PBXBuildFile; productRef = 9D677E392BF351F800E6D35C /* BeamAISDK */; };
 		9D6A65EF2BEE498C00ACD686 /* NotepadEmptyStateViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A65EE2BEE498C00ACD686 /* NotepadEmptyStateViewModel.swift */; };
 		9D6A65F82BEE9BEE00ACD686 /* ExerciseCounterViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A65F72BEE9BEE00ACD686 /* ExerciseCounterViewModel.swift */; };
 		9D6A65FA2BEE9C1F00ACD686 /* SheetPresenter+ExerciseCounterViewOutput.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6A65F92BEE9C1F00ACD686 /* SheetPresenter+ExerciseCounterViewOutput.swift */; };
@@ -176,7 +168,6 @@
 		9ED5E5572BDE94860010879F /* SignUpContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED5E5512BDE94860010879F /* SignUpContainer.swift */; };
 		9ED8C92A2BF02BAB00D400A3 /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED8C9292BF02BAB00D400A3 /* Preview.swift */; };
 		9ED8C92D2BF02D8200D400A3 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9ED8C92C2BF02D8200D400A3 /* PinLayout */; };
-		9ED8C9332BF02EA000D400A3 /* BeamAISDK in Frameworks */ = {isa = PBXBuildFile; productRef = 9ED8C9322BF02EA000D400A3 /* BeamAISDK */; };
 		9EE1BFA12BD7EFA600458F04 /* AuthorizationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1BF9B2BD7EFA600458F04 /* AuthorizationPresenter.swift */; };
 		9EE1BFA22BD7EFA600458F04 /* AuthorizationRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1BF9C2BD7EFA600458F04 /* AuthorizationRouter.swift */; };
 		9EE1BFA32BD7EFA600458F04 /* AuthorizationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1BF9D2BD7EFA600458F04 /* AuthorizationViewController.swift */; };
@@ -184,7 +175,6 @@
 		9EE1BFA52BD7EFA600458F04 /* AuthorizationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1BF9F2BD7EFA600458F04 /* AuthorizationInteractor.swift */; };
 		9EE1BFA62BD7EFA600458F04 /* AuthorizationContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1BFA02BD7EFA600458F04 /* AuthorizationContainer.swift */; };
 		9EE1BFA92BD7F36300458F04 /* AuthorizationViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE1BFA82BD7F36300458F04 /* AuthorizationViewModel.swift */; };
-		9EE1BFAC2BD7F5E100458F04 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9EE1BFAB2BD7F5E100458F04 /* PinLayout */; };
 		9EE1BFAE2BD7F5E700458F04 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9EE1BFAD2BD7F5E700458F04 /* FirebaseStorage */; };
 		9EE1BFB02BD7F5EE00458F04 /* VKID in Frameworks */ = {isa = PBXBuildFile; productRef = 9EE1BFAF2BD7F5EE00458F04 /* VKID */; };
 		9EE1BFB22BD7F5EE00458F04 /* VKIDCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9EE1BFB12BD7F5EE00458F04 /* VKIDCore */; };
@@ -424,18 +414,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				9D4E4BD82BB070D200617E5D /* (null) in Frameworks */,
-				9D4E4BD72BB070D200617E5D /* (null) in Frameworks */,
-				9D4E4BD62BB070D200617E5D /* (null) in Frameworks */,
-				9D4E4BD52BB070D200617E5D /* (null) in Frameworks */,
-				9D4E4BD32BB070D200617E5D /* (null) in Frameworks */,
-				9ED8C9332BF02EA000D400A3 /* BeamAISDK in Frameworks */,
-				9D4E4BD22BB070D200617E5D /* (null) in Frameworks */,
 				9ED8C92D2BF02D8200D400A3 /* PinLayout in Frameworks */,
-				9D4E4BD12BB070D200617E5D /* (null) in Frameworks */,
-				9D4E4BD02BB070D200617E5D /* (null) in Frameworks */,
-				9D4E4BCD2BB070D200617E5D /* (null) in Frameworks */,
-				9EE1BFAC2BD7F5E100458F04 /* PinLayout in Frameworks */,
+				9D677E3A2BF351F800E6D35C /* BeamAISDK in Frameworks */,
 				9EE1BFB02BD7F5EE00458F04 /* VKID in Frameworks */,
 				9EE1BFAE2BD7F5E700458F04 /* FirebaseStorage in Frameworks */,
 				9EE1BFBA2BD7F60900458F04 /* GoogleSignInSwift in Frameworks */,
@@ -1388,8 +1368,6 @@
 			name = Everyday;
 			packageProductDependencies = (
 				9ED8C92C2BF02D8200D400A3 /* PinLayout */,
-				9ED8C9322BF02EA000D400A3 /* BeamAISDK */,
-				9EE1BFAB2BD7F5E100458F04 /* PinLayout */,
 				9EE1BFAD2BD7F5E700458F04 /* FirebaseStorage */,
 				9EE1BFAF2BD7F5EE00458F04 /* VKID */,
 				9EE1BFB12BD7F5EE00458F04 /* VKIDCore */,
@@ -1398,6 +1376,7 @@
 				9EE1BFB72BD7F60900458F04 /* GoogleSignIn */,
 				9EE1BFB92BD7F60900458F04 /* GoogleSignInSwift */,
 				9EE1BFBB2BD7F62400458F04 /* FirebaseAuth */,
+				9D677E392BF351F800E6D35C /* BeamAISDK */,
 			);
 			productName = Everyday;
 			productReference = 9E53FB302B7F87BA00C55A45 /* Everyday.app */;
@@ -1433,7 +1412,7 @@
 				9D11F1092BA7D8CF003CF1F5 /* XCRemoteSwiftPackageReference "vkid-ios-sdk" */,
 				9DE61AFD2BA8AEFE006AC078 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				9ED8C92B2BF02D8200D400A3 /* XCRemoteSwiftPackageReference "PinLayout" */,
-				9ED8C9312BF02EA000D400A3 /* XCRemoteSwiftPackageReference "BeamAISDK-iOS" */,
+				9D677E382BF351F700E6D35C /* XCRemoteSwiftPackageReference "BeamAISDK-iOS" */,
 			);
 			productRefGroup = 9E53FB312B7F87BA00C55A45 /* Products */;
 			projectDirPath = "";
@@ -1937,6 +1916,14 @@
 				minimumVersion = 1.3.0;
 			};
 		};
+		9D677E382BF351F700E6D35C /* XCRemoteSwiftPackageReference "BeamAISDK-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/beamai/BeamAISDK-iOS";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.2;
+			};
+		};
 		9DE61AFD2BA8AEFE006AC078 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/firebase/firebase-ios-sdk.git";
@@ -1953,29 +1940,17 @@
 				minimumVersion = 1.10.5;
 			};
 		};
-		9ED8C9312BF02EA000D400A3 /* XCRemoteSwiftPackageReference "BeamAISDK-iOS" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/beamai/BeamAISDK-iOS/";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.2;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9D677E392BF351F800E6D35C /* BeamAISDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9D677E382BF351F700E6D35C /* XCRemoteSwiftPackageReference "BeamAISDK-iOS" */;
+			productName = BeamAISDK;
+		};
 		9ED8C92C2BF02D8200D400A3 /* PinLayout */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9ED8C92B2BF02D8200D400A3 /* XCRemoteSwiftPackageReference "PinLayout" */;
-			productName = PinLayout;
-		};
-		9ED8C9322BF02EA000D400A3 /* BeamAISDK */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 9ED8C9312BF02EA000D400A3 /* XCRemoteSwiftPackageReference "BeamAISDK-iOS" */;
-			productName = BeamAISDK;
-		};
-		9EE1BFAB2BD7F5E100458F04 /* PinLayout */ = {
-			isa = XCSwiftPackageProductDependency;
 			productName = PinLayout;
 		};
 		9EE1BFAD2BD7F5E700458F04 /* FirebaseStorage */ = {

@@ -73,6 +73,8 @@ extension ExtraRouter: ExtraRouterInput {
             presentedViewController = stateViewController(with: type)
         case .heartRateVariability:
             presentedViewController = heartViewController(with: type)
+            viewController?.navigationController?.pushViewController(presentedViewController!, animated: true)
+            return
         case .weightMeasurement:
             presentedViewController = weightViewController(with: type)
         default:
