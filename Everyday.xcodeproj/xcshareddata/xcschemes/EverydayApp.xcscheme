@@ -50,13 +50,6 @@
             ReferencedContainer = "container:Everyday.xcodeproj">
          </BuildableReference>
       </BuildableProductRunnable>
-      <EnvironmentVariables>
-         <EnvironmentVariable
-            key = "IDEPreferLogStreaming"
-            value = "YES"
-            isEnabled = "YES">
-         </EnvironmentVariable>
-      </EnvironmentVariables>
    </LaunchAction>
    <ProfileAction
       buildConfiguration = "Release"
@@ -80,8 +73,7 @@
    </AnalyzeAction>
    <ArchiveAction
       buildConfiguration = "Release"
-      customArchiveName = "EverydaySport"
-      revealArchiveInOrganizer = "YES"
-      allowsArchivingForSimulator = "YES">
+      customArchiveName = "Everyday"
+      revealArchiveInOrganizer = "YES">
    </ArchiveAction>
 </Scheme>
