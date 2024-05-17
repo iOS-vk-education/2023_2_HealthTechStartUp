@@ -21,18 +21,15 @@ extension ExtraInteractor: ExtraInteractorInput {
     func saveProgress(_ progress: WorkoutProgress) {
         self.output?.didStartLoading()
         
-        dayManager.postProgress(progress) { [weak self] error in
-            guard let self else {
-                return
-            }
-            
-            guard error == nil else {
+        Task {
+            do {
+                try await dayManager.postProgress(progress)
                 self.output?.didEndLoading()
-                return
+                self.output?.didPostData()
+            } catch {
+                self.output?.didEndLoading()
+                throw CustomError.progressPostError
             }
-
-            self.output?.didEndLoading()
-            self.output?.didPostData()
         }
     }
 }

@@ -86,6 +86,11 @@ struct DayServiceExerciseElement: Codable {
 struct DayServiceHistory: Codable {
     let workout: DayServiceWorkout
     let extra: DayServiceExtra?
+    
+    init(workout: DayServiceWorkout, extra: DayServiceExtra? = nil) {
+        self.workout = workout
+        self.extra = extra
+    }
 }
 
 struct DayServiceWorkout: Codable {

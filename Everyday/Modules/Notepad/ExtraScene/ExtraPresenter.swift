@@ -141,14 +141,29 @@ extension ExtraPresenter: SheetModuleOutput {
 
 extension ExtraPresenter: ExtraInteractorOutput {
     func didPostData() {
-        router.openNotepad()
+        DispatchQueue.main.async { [weak self] in
+            guard let self else {
+                return
+            }
+            router.openNotepad()
+        }
     }
     
     func didStartLoading() {
-        view?.showLoadingView()
+        DispatchQueue.main.async { [weak self] in
+            guard let self else {
+                return
+            }
+            view?.showLoadingView()
+        }
     }
     
     func didEndLoading() {
-        view?.dismissLoadingView()
+        DispatchQueue.main.async { [weak self] in
+            guard let self else {
+                return
+            }
+            view?.dismissLoadingView()
+        }
     }
 }

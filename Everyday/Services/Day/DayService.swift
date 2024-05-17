@@ -12,7 +12,7 @@ import FirebaseStorage
 protocol DayServiceDescription {
     func getDaySchedule(on date: Date, completion: @escaping (Result<[Workout], CustomError>) -> Void)
     func getDayResults(on date: Date, completion: @escaping (Result<[Workout], CustomError>) -> Void)
-    func postProgress(_ progress: WorkoutProgress, completion: @escaping (CustomError?) -> Void)
+    func postProgress(_ progress: WorkoutProgress) async throws
 }
 
 final class DayService: DayServiceDescription {
@@ -135,88 +135,80 @@ final class DayService: DayServiceDescription {
     
     // MARK: - POST&PUT
     
-    func postProgress(_ progress: WorkoutProgress, completion: @escaping (CustomError?) -> Void) {
+    func postProgress(_ progress: WorkoutProgress) async throws {
         guard let userUID = Auth.auth().currentUser?.uid else {
-            completion(.unknownError)
-            return
+            throw CustomError.authError
         }
         
-        guard let data = progress.extra?.image?.jpegData(compressionQuality: 1.0) else {
-            completion(.unknownError)
-            return
-        }
-        var picUrl: URL?
-        putPhoto(data: data) { [weak self] result in
-            switch result {
-            case .success(let url):
-                picUrl = url
-                
-                guard let picUrlString = picUrl?.absoluteString else {
-                    completion(.unknownError)
-                    return
-                }
-
-                let historyCollectionReference = self?.db.collection(Constants.Database.historyCollection)
-                
-                guard let historyCollectionReference = historyCollectionReference else {
-                    completion(.unknownError)
-                    return
+        let historyCollectionReference = db.collection(Constants.Database.historyCollection)
+        let userHistoryReference = db.collection(Constants.Database.userCollection).document(userUID)
+        
+        if let extra = progress.extra {
+            var photoURL: URL?
+            if let image = extra.image {
+                guard let data = image.jpegData(compressionQuality: Constants.Storage.compressionQuality) else {
+                    throw CustomError.imageCompressionError
                 }
                 
-                let historyDocumentReference: DocumentReference?
-
-                let history: DayServiceHistory = .init(
-                    workout: .init(domainModel: progress.workout),
-                    extra: .init(
-                        imageURL: picUrlString,
-                        condition: progress.extra?.condition,
-                        weight: progress.extra?.weight
-                    )
-                )
-
                 do {
-                    historyDocumentReference = try historyCollectionReference.addDocument(from: history)
+                    photoURL = try await putPhoto(data: data)
                 } catch {
-                    completion(.unknownError)
-                    return
+                    throw CustomError.imageUploadError
                 }
-                guard let historyDocumentReference else {
-                    completion(.unknownError)
-                    return
-                }
-                
+            }
+            
+            let history: DayServiceHistory = .init(
+                workout: .init(domainModel: progress.workout),
+                extra: .init(
+                    imageURL: photoURL?.absoluteString,
+                    condition: extra.condition,
+                    weight: extra.weight
+                )
+            )
+            do {
+                let historyDocumentReference = try historyCollectionReference.addDocument(from: history)
                 let historyElement: DayServiceHistoryElement = .init(
                     date: Date(),
                     historyID: historyDocumentReference
                 )
-                self?.db.collection(Constants.Database.userCollection).document(userUID)
-                    .updateData([
+                
+                try await userHistoryReference.updateData([
                         Constants.Database.User.historyField: FieldValue.arrayUnion([historyElement.dictionaryRepresentation])
                     ])
+            } catch {
+                throw CustomError.historyPostError
+            }
+        } else {
+            let history: DayServiceHistory = .init(workout: .init(domainModel: progress.workout))
+            do {
+                let historyDocumentReference = try historyCollectionReference.addDocument(from: history)
+                let historyElement: DayServiceHistoryElement = .init(
+                    date: Date(),
+                    historyID: historyDocumentReference
+                )
                 
-                completion(nil)
-                
-            case .failure:
-                completion(.unknownError)
+                try await userHistoryReference.updateData([
+                        Constants.Database.User.historyField: FieldValue.arrayUnion([historyElement.dictionaryRepresentation])
+                    ])
+            } catch {
+                throw CustomError.historyPostError
             }
         }
     }
     
     // MARK: - POST
     
-    func putPhoto(data: Data, completion: @escaping (Result<URL, Error>) -> Void) {
+    func putPhoto(data: Data) async throws -> URL {
         let fileName = UUID().uuidString
         let reference = Storage.storage().reference()
             .child(Constants.Storage.progressPictureCollection)
             .child(fileName)
         
-        reference.putData(data) { result in
-            switch result {
-            case .success:
-                reference.downloadURL(completion: completion)
-            case .failure(let error):
-                completion(.failure(error))
-            }
+        do {
+            _ = try await reference.putDataAsync(data)
+            return try await reference.downloadURL()
+        } catch {
+            throw CustomError.unknownError
         }
     }
 }
@@ -235,6 +227,7 @@ private extension DayService {
         }
         struct Storage {
             static let progressPictureCollection = "userPics"
+            static let compressionQuality: CGFloat = 1
         }
     }
 }
