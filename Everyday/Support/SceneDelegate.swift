@@ -22,8 +22,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         setupWindow(with: scene)
         
         let viewController = TabBarController()
-        let navigationController = UINavigationController(rootViewController: viewController)
-        window?.rootViewController = navigationController
+        window?.rootViewController = viewController
         
         Reloader.shared.getAuthType()
         
