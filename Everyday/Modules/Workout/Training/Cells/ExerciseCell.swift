@@ -46,7 +46,6 @@ final class ExerciseCell: UICollectionViewCell {
         
         descriptionLabel.pin
             .below(of: titleLabel, aligned: .center)
-            .left(10)
             .height(50)
             .width(320)
     }
