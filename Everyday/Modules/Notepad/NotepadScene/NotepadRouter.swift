@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by Михаил on 16.02.2024.
-//  
+//
 //
 
 import UIKit
@@ -12,7 +12,7 @@ final class NotepadRouter {
     weak var viewController: NotepadViewController?
 }
 
-extension NotepadRouter: NotepadRouterInput {    
+extension NotepadRouter: NotepadRouterInput {
     func openTraining(with trainingContext: TrainingContext) {
         guard
             let viewController = viewController,

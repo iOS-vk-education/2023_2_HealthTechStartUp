@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by user on 28.02.2024.
-//  
+//
 //
 
 import UIKit
@@ -220,7 +220,7 @@ extension ResultsViewController: ResultsViewInput {
         closeButton.setImage(viewModel.closeImage, for: .normal)
     }
     
-    func reloadData() {    
+    func reloadData() {
         tableView.reloadData()
     }
 }

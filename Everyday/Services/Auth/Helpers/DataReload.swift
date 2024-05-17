@@ -11,6 +11,7 @@ import FirebaseAuth
 protocol ReloaderDescription {
     func setLogout()
     func getAuthType()
+    func checkAuthentication() -> Bool
 }
 
 final class Reloader: ReloaderDescription {
@@ -33,5 +34,23 @@ final class Reloader: ReloaderDescription {
         for authType in authTypeArray where !authType.isEmpty {
             CoreDataService.shared.createItem(authType: authType)
         }
+    }
+    
+   func checkAuthentication() -> Bool {
+        let coreDataService = CoreDataService.shared
+        
+        guard let authTypes = coreDataService.getAllItems() else {
+            return false
+        }
+        
+        guard !authTypes.isEmpty else {
+            return false
+        }
+        
+        if !UserDefaults.standard.bool(forKey: "isUserLoggedIn") {
+            return false
+        }
+        
+        return true
     }
 }

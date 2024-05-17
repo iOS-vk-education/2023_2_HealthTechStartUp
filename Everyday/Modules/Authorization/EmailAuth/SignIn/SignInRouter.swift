@@ -14,28 +14,28 @@ final class SignInRouter {
 
 extension SignInRouter: SignInRouterInput {
     func openApp() {
-        guard let navigationController = viewController?.navigationController else {
-            fatalError("SignInViewController is not embedded in a navigation controller.")
-        }
-           
-       let tabBarController = TabBarController()
-       tabBarController.modalPresentationStyle = .fullScreen
+        if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
+           let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
+            let tabBarController = TabBarController()
+            let navigationController = UINavigationController(rootViewController: tabBarController)
+            navigationController.modalPresentationStyle = .fullScreen
 
-        UIView.transition(with: navigationController.view, duration: 0.5, options: .transitionCrossDissolve, animations: {
-            navigationController.setViewControllers([tabBarController], animated: false)
-        }, completion: nil)
+            UIView.transition(with: window, duration: 0.3, options: [.transitionCrossDissolve], animations: {
+                window.rootViewController = navigationController
+            }, completion: nil)
+        }
     }
-    
+
     func openSignup() {
         let signUpViewController = SignUpContainer.assemble(with: .init()).viewController
         viewController?.navigationController?.pushViewController(signUpViewController, animated: true)
     }
-    
+
     func openForgot() {
         viewController?.navigationController?.pushViewController(ForgotPasswordViewController(authService: AuthService.shared), animated: true)
     }
-    
+
     func closeView() {
         viewController?.dismiss(animated: true, completion: nil)
-    }    
+    }
 }

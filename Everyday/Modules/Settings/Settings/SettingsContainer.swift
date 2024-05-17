@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by Михаил on 16.02.2024.
-//  
+//
 //
 
 import UIKit
@@ -11,11 +11,12 @@ import UIKit
 final class SettingsContainer {
     let input: SettingsModuleInput
     let viewController: UIViewController
+    
     private(set) weak var router: SettingsRouterInput!
     
     class func assemble(with context: SettingsContext) -> SettingsContainer {
         let router = SettingsRouter()
-        let interactor = SettingsInteractor(authService: AuthService.shared)
+        let interactor = SettingsInteractor()
         let presenter = SettingsPresenter(router: router, interactor: interactor)
         let viewController = SettingsViewController(output: presenter)
         
@@ -23,6 +24,7 @@ final class SettingsContainer {
         presenter.moduleOutput = context.moduleOutput
         
         interactor.output = presenter
+        
         router.viewController = viewController
         
         return SettingsContainer(view: viewController, input: presenter, router: router)

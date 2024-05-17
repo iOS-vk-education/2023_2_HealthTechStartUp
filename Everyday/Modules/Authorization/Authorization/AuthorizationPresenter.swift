@@ -26,6 +26,7 @@ final class AuthorizationPresenter {
     
     private func setSignIn(with flag: Bool) {
         if flag {
+            UserDefaults.standard.set("google", forKey: "WhichSign")
             KeychainService.saveString("google", for: "googleAuth")
             Reloader.shared.getAuthType()
         }
@@ -80,6 +81,7 @@ extension AuthorizationPresenter: AuthorizationViewOutput {
             interactor.authWithGoogle(with: signedUp)
         case .vk:
             interactor.authWithVK(with: signedUp)
+            UserDefaults.standard.set("vk", forKey: "WhichSign")
         default:
             break
         }

@@ -60,7 +60,7 @@ final class KeychainService {
         
         return status == errSecSuccess
     }
-            
+    
     static func loadString(for key: String) -> String? {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword,
@@ -85,6 +85,18 @@ final class KeychainService {
     static func clearAll() -> Bool {
         let query: [String: Any] = [
             kSecClass as String: kSecClassGenericPassword
+        ]
+        
+        let status = SecItemDelete(query as CFDictionary)
+        
+        return status == errSecSuccess
+    }
+    
+    @discardableResult
+    static func clearOne(authType: String) -> Bool {
+        let query: [String: Any] = [
+            kSecClass as String: kSecClassGenericPassword,
+            kSecAttrAccount as String: authType
         ]
         
         let status = SecItemDelete(query as CFDictionary)

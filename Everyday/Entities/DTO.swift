@@ -23,7 +23,7 @@ struct DayServiceSchedule: Decodable {
     let friday: [DayServiceProgramElement]
     let saturday: [DayServiceProgramElement]
     let sunday: [DayServiceProgramElement]
-    
+
     init() {
         monday = []
         tuesday = []

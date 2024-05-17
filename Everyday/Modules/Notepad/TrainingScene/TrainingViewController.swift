@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by user on 28.02.2024.
-//  
+//
 //
 
 import UIKit
@@ -160,7 +160,7 @@ extension TrainingViewController: TrainingViewInput {
         finishButton.isHidden = true
     }
     
-    func reloadData() {    
+    func reloadData() {
         tableView.reloadData()
     }
 }

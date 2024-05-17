@@ -14,7 +14,7 @@ protocol HapticServiceDescription {
 
 final class HapticService {
     static let shared = HapticService()
-    
+
     public func selectionVibrate() {
         DispatchQueue.main.async {
             let selectionFeedbackGenerator = UISelectionFeedbackGenerator()

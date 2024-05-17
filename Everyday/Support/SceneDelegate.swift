@@ -22,7 +22,11 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         setupWindow(with: scene)
         
         let viewController = TabBarController()
-        window?.rootViewController = viewController
+        let navigationController = UINavigationController(rootViewController: viewController)
+        
+        SettingsUserDefaultsService.shared.setTheme()
+        
+        window?.rootViewController = navigationController
         
         Reloader.shared.getAuthType()
         
@@ -44,13 +48,5 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         self.window = window
         self.window?.makeKeyAndVisible()
-    }
-    
-    private func goToController(with viewController: UIViewController) {
-        DispatchQueue.main.async { [weak self] in
-            let nav = UINavigationController(rootViewController: viewController)
-            nav.modalPresentationStyle = .fullScreen
-            self?.window?.rootViewController = nav
-        }
     }
 }

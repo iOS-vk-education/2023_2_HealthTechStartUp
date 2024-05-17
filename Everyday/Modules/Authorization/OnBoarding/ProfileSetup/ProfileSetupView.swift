@@ -117,7 +117,7 @@ struct ProfileSetupView: View {
                    ProfileAcknowledgementModel.shared.clear(fields: [.firstname])
                } else {
                    update = true
-                   ProfileAcknowledgementModel.shared.update(firstname: viewModel.name)
+                   ProfileAcknowledgementModel.shared.update(firstname: viewModel.userProfile.name)
                }
            })
 
@@ -132,7 +132,7 @@ struct ProfileSetupView: View {
                    ProfileAcknowledgementModel.shared.clear(fields: [.lastname])
                } else {
                    update = true
-                   ProfileAcknowledgementModel.shared.update(nickname: viewModel.surname)
+                   ProfileAcknowledgementModel.shared.update(lastname: viewModel.userProfile.surname)
                }
            })
 
@@ -147,7 +147,7 @@ struct ProfileSetupView: View {
                    ProfileAcknowledgementModel.shared.clear(fields: [.nickname])
                } else {
                    update = true
-                   ProfileAcknowledgementModel.shared.update(nickname: viewModel.nickname)
+                   ProfileAcknowledgementModel.shared.update(nickname: viewModel.userProfile.nickname)
                }
            })
        }

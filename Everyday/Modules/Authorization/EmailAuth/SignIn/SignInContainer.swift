@@ -21,10 +21,10 @@ final class SignInContainer {
         
         presenter.view = viewController
         presenter.moduleOutput = context.moduleOutput
-        
+
         interactor.output = presenter
         router.viewController = viewController
-        
+
         return SignInContainer(view: viewController, input: presenter, router: router)
     }
     
@@ -34,7 +34,6 @@ final class SignInContainer {
         self.router = router
     }
 }
-
 struct SignInContext {
     weak var moduleOutput: SignInModuleOutput?
 }
