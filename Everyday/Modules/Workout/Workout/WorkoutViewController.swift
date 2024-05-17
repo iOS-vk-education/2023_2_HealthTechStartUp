@@ -19,7 +19,6 @@ final class WorkoutViewController: UIViewController {
     private var programsViewController: UIViewController?
     private var walkProgramsViewController: UIViewController?
     private var activePage: ActiveProgramPage = .programs
-    private let searchController = UISearchController(searchResultsController: SearchResultsViewController())
 
     private lazy var layout: UICollectionViewLayout = {
         let layout = UICollectionViewFlowLayout()
@@ -62,9 +61,7 @@ final class WorkoutViewController: UIViewController {
         output.getWalkPrograms()
         setupUI()
         
-        navigationItem.searchController = searchController
         view.addSubview(collectionView)
-       // view.addSubview(searchController.searchBar)
         view.addSubview(controllersScrollView)
         collectionView.addSubview(lineView)
     }
@@ -93,21 +90,12 @@ final class WorkoutViewController: UIViewController {
     
     private func setupUI() {
         setupLine()
-        setupSearchController()
         setupScrollView()
     }
     
     private func setupLine() {
         lineView.backgroundColor = UIColor(named: "SpaceGray")
         lineView.layer.cornerRadius = Constants.Lines.cornerRadius
-    }
-    
-    private func setupSearchController() {
-        searchController.searchBar.placeholder = "Искать программы, планы..."
-        searchController.delegate = self
-        searchController.definesPresentationContext = true
-        // searchController.searchBar.backgroundImage = UIImage()
-        
     }
     
     private func setupScrollView() {
@@ -284,24 +272,9 @@ extension WorkoutViewController: UISearchControllerDelegate {
     }
 }
 
-extension WorkoutViewController: UISearchBarDelegate {
-    func searchBar(_ searchBar: UISearchBar, textDidChange searchText: String) {
-        guard let resultsController = searchController.searchResultsController as? SearchResultsViewController else {
-            return
-        }
-        resultsController.updateSearchResults(for: searchText)
-    }
-}
-
 extension WorkoutViewController: ProgramsViewControllerDelegate {
     func programsViewControllerRequestsPresentation(_ viewController: UIViewController) {
-        print("ok?")
-       // navigationController?.pushViewController(viewController, animated: true)
-        
-        let navController = UINavigationController(rootViewController: viewController)
-        navController.modalPresentationStyle = .fullScreen
-        navController.modalTransitionStyle = .coverVertical
-        present(navController, animated: true, completion: nil)
+        output.loadCatalogViewController(viewController)
     }
 }
 

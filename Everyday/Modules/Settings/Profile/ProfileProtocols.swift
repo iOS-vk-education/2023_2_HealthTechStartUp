@@ -41,9 +41,9 @@ protocol ProfileViewOutput: AnyObject {
 protocol ProfileInteractorInput: AnyObject {
     func updateUserImage(image: UIImage)
     func updateUserName(username: String)
-    func getUserProfileImage()
     func getUserName()
     func logout()
+    func getUserProfileImage() async
 }
 
 protocol ProfileInteractorOutput: AnyObject {

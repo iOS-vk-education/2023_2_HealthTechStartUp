@@ -24,6 +24,8 @@ protocol WorkoutViewOutput: AnyObject {
     func didLoadView()
     func getPrograms()
     func getWalkPrograms()
+    
+    func loadCatalogViewController(_ viewController: UIViewController)
 }
 
 protocol WorkoutInteractorInput: AnyObject {
@@ -35,4 +37,5 @@ protocol WorkoutInteractorOutput: AnyObject {
 protocol WorkoutRouterInput: AnyObject {
     func getProgramsView() -> UIViewController
     func getWalkProgramsView() -> UIViewController
+    func openCatalogView(with newViewController: UIViewController)
 }

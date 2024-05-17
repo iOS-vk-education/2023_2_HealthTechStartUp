@@ -95,45 +95,27 @@ final class TrainViewController: UIViewController {
         setupLabels()
         setupView()
         setupScrollView()
+        setupSeparators()
+        setupButton()
         
-        infoImage.image = UIImage(named: "sh")
+        infoImage.image = UIImage(named: "sh") // !
         
         infoLabel.attributedText = NSAttributedString(string: "Программа тренировок Арнольда Шварценеггера",
-                                                      attributes: Styles.titleAttributes)
+                                                      attributes: Styles.titleAttributes) // !
         
-        scrollView.showsHorizontalScrollIndicator = false
-        scrollView.showsVerticalScrollIndicator = false
-        scrollView.layer.cornerRadius = 30
-
-        scrollView.addSubviews(levelLabel, separator1, timeLabel, separator2, countLabel,
-                               levelDescriptionLabel, timeDescriptionLabel, countDescriptionLabel,
-                               descriptionTextLabel, collectionView)
-        
-        levelLabel.attributedText = NSAttributedString(string: "Профи", attributes: Styles.valueAttributes)
-        timeLabel.attributedText = NSAttributedString(string: "2 месяца", attributes: Styles.valueAttributes)
-        countLabel.attributedText = NSAttributedString(string: "24", attributes: Styles.valueAttributes)
-        
-       
-        
-        separator1.backgroundColor = .gray
-        separator2.backgroundColor = .gray
-        
-        levelDescriptionLabel.attributedText = NSAttributedString(string: "Сложность",
-                                                                  attributes: Styles.descriptionAttributes)
-        timeDescriptionLabel.attributedText = NSAttributedString(string: "Длительность",
-                                                                 attributes: Styles.descriptionAttributes)
-        countDescriptionLabel.attributedText = NSAttributedString(string: "Тренировок",
-                                                                  attributes: Styles.descriptionAttributes)
-        
+        levelLabel.attributedText = NSAttributedString(string: "Профи", attributes: Styles.valueAttributes) // !
+        timeLabel.attributedText = NSAttributedString(string: "2 месяца", attributes: Styles.valueAttributes) // !
+        countLabel.attributedText = NSAttributedString(string: "24", attributes: Styles.valueAttributes) // !
         
         // swiftlint:disable line_length
         descriptionTextLabel.text = "Берите пример с единственного и неповторимого семикратного победителя Олимпии Арнольда Шварценеггера. Тренировки Арнольда — образец программ с высокой частотой и большим объемом тренировочной нагрузки."
         // swiftlint:enable line_length
         
-        downloadButton.layer.cornerRadius = 10
-        downloadButton.backgroundColor = Constants.accentColor
-        downloadButton.setTitleColor(Constants.textColor, for: .normal)
-        downloadButton.setTitle("Загрузить", for: .normal)
+        let model = TrainViewModel()
+        downloadButton.setTitle(model.buttonTitle, for: .normal)
+        levelDescriptionLabel.attributedText = model.levelDescriptionLabel
+        timeDescriptionLabel.attributedText = model.timeDescriptionLabel
+        countDescriptionLabel.attributedText = model.countDescriptionLabel
     }
     
     private func setupImage() {
@@ -164,7 +146,24 @@ final class TrainViewController: UIViewController {
     }
     
     private func setupScrollView() {
-        
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.showsVerticalScrollIndicator = false
+        scrollView.layer.cornerRadius = Constants.View.cornerRadius
+
+        scrollView.addSubviews(levelLabel, separator1, timeLabel, separator2, countLabel,
+                               levelDescriptionLabel, timeDescriptionLabel, countDescriptionLabel,
+                               descriptionTextLabel, collectionView)
+    }
+    
+    private func setupSeparators() {
+        separator1.backgroundColor = .gray
+        separator2.backgroundColor = .gray
+    }
+    
+    private func setupButton() {
+        downloadButton.layer.cornerRadius = Constants.Button.cornerRadius
+        downloadButton.backgroundColor = Constants.accentColor
+        downloadButton.setTitleColor(Constants.textColor, for: .normal)
     }
 
     // MARK: - Layout
@@ -177,13 +176,13 @@ final class TrainViewController: UIViewController {
         
         infoLabel.pin
             .below(of: infoImage, aligned: .center)
-            .marginTop(10)
+            .marginTop(Constants.Label.marginTop)
             .size(Constants.Label.size)
             .sizeToFit(.width)
         
         infoView.pin
             .below(of: infoLabel, aligned: .center)
-            .marginTop(10)
+            .marginTop(Constants.View.marginTop)
             .width(view.frame.width)
             .height(view.frame.height / 2 + 32)
         
@@ -196,33 +195,33 @@ final class TrainViewController: UIViewController {
     let spacing = (x * 100).rounded() / 100
         
         levelLabel.pin
-            .top(10)
+            .top(Constants.Label.marginTop)
             .left(Constants.Label.marginHorizontal)
             .size(Constants.Label.descriptionSize)
         
         separator1.pin
-            .top(10)
+            .top(Constants.Separators.marginTop)
             .after(of: levelLabel)
             .marginLeft(Constants.Label.marginHorizontal)
             .height(levelLabel.frame.height * 2)
-            .width(1)
+            .width(Constants.Separators.width)
         
         timeLabel.pin
-            .top(10)
+            .top(Constants.Label.marginTop)
             .after(of: separator1)
             .marginLeft(spacing)
             .height(Constants.Label.descriptionSize.height)
             .width(Constants.Label.descriptionSize.width)
         
         separator2.pin
-            .top(10)
+            .top(Constants.Separators.marginTop)
             .after(of: timeLabel)
             .marginLeft(Constants.Label.marginHorizontal)
             .height(levelLabel.frame.height * 2)
-            .width(1)
+            .width(Constants.Separators.width)
         
         countLabel.pin
-            .top(10)
+            .top(Constants.Label.marginTop)
             .after(of: separator2)
             .marginLeft(spacing)
             .height(Constants.Label.descriptionSize.height)
@@ -242,17 +241,17 @@ final class TrainViewController: UIViewController {
         
         descriptionTextLabel.pin
                 .below(of: levelDescriptionLabel)
-                .marginTop(2)
+                .marginTop(Constants.Label.descriptionLabelMarginTop)
                 .hCenter()
                 .width(infoView.frame.width - Constants.Label.marginHorizontal * 2)
-                .height(130)
+                .height(Constants.Label.descriptionLabelHeight)
         
         let numberOfItems = collectionView.numberOfItems(inSection: 0)
         let collectionViewHeight = CGFloat(numberOfItems) * 66 + CGFloat(numberOfItems - 1) * Constants.CollectionView.flowLayoutMinimumLineSpacing + 10
             
         collectionView.pin
             .below(of: descriptionTextLabel, aligned: .center)
-            .marginTop(10)
+            .marginTop(Constants.CollectionView.marginTop)
             .width(infoView.frame.width)
             .height(collectionViewHeight)
         
@@ -262,7 +261,7 @@ final class TrainViewController: UIViewController {
             .below(of: scrollView)
             .hCenter()
             .width(Constants.Button.width)
-            .height(Constants.Button.height + 10)
+            .height(Constants.Button.height)
     }
     
     // MARK: - actions
@@ -335,24 +334,35 @@ private extension TrainViewController {
         
         struct Label {
             static let size: CGSize = CGSizeMake(350, 70)
-            
+            static let marginTop: CGFloat = 10
             static let descriptionSize: CGSize = CGSizeMake(100, 40)
             static let marginHorizontal: CGFloat = 10
+            
+            static let descriptionLabelHeight: CGFloat = 130
+            static let descriptionLabelMarginTop: CGFloat = 2
         }
         
         struct View {
             static let opacity: CGFloat = 0.1
             static let cornerRadius: CGFloat = 30
+            static let marginTop: CGFloat = 10
         }
         
         struct Button {
-            static let size: CGSize = CGSizeMake(350, 70)
+            static let size: CGSize = CGSizeMake(350, 80)
             static let height: CGFloat = 50
             static let width = 80%
+            static let cornerRadius: CGFloat = 10
         }
         
         struct CollectionView {
             static let flowLayoutMinimumLineSpacing: CGFloat = 12
+            static let marginTop: CGFloat = 10
+        }
+        
+        struct Separators {
+            static let marginTop: CGFloat = 10
+            static let width: CGFloat = 1
         }
     }
     
@@ -365,11 +375,6 @@ private extension TrainViewController {
         static let valueAttributes: [NSAttributedString.Key: Any] = [
             .foregroundColor: UIColor(named: "SpaceGray") ?? .black,
             .font: UIFont.boldSystemFont(ofSize: 18)
-        ]
-        
-        static let descriptionAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor.lightGray,
-            .font: UIFont.systemFont(ofSize: 14)
         ]
     }
 }

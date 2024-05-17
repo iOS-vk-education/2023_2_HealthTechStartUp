@@ -13,7 +13,7 @@ protocol FirebaseServiceDescription {
     func updateEmail(with: ChangeEmailModel, completion: @escaping (Bool, Error?, _ reauth: Bool?) -> Void)
     func updatePassword(with: ChangePasswordModel, completion: @escaping (Bool, Error?, _ reauth: Bool?) -> Void)
     func fetchUserName(completion: @escaping (Bool, Error?, String?) -> Void)
-    func fetchUserProfileImage(completion: @escaping (Bool, Error?, UIImage?) -> Void)
+    func fetchUserProfileImage() async throws -> UIImage?
     func deleteOldImage(userId: String, completion: @escaping (Bool, Error?) -> Void)
     func updateProfileImagePath(path: String, completion: @escaping (Bool, Error?) -> Void)
     func deleteEmailAccount(email: String, password: String, completion: @escaping (Bool, Error?, _ reauth: Bool?) -> Void)
@@ -256,41 +256,26 @@ extension FirebaseService: FirebaseServiceDescription {
         }
     }
     
-    func fetchUserProfileImage(completion: @escaping (Bool, Error?, UIImage?) -> Void) {
+    func fetchUserProfileImage() async throws -> UIImage? {
         guard let userId = Auth.auth().currentUser?.uid else {
-            completion(false, NSError(domain: "FirebaseAuthService", code: 0, userInfo: [NSLocalizedDescriptionKey: "UID пользователя не найден"]), nil)
-            return
+            throw NSError(domain: "FirebaseAuthService", code: 0, userInfo: [NSLocalizedDescriptionKey: "UID пользователя не найден"])
         }
         
         let db = Firestore.firestore()
-        db.collection(Constants.user)
-            .document(userId)
-            .getDocument { snapshot, error in
-                guard error == nil else {
-                    completion(false, error, nil)
-                    return
-                }
-                
-                if let snapshot = snapshot,
-                   let snapshotData = snapshot.data(),
-                   let profileImagePath = snapshotData[Constants.profileImage] as? String {
-                    let storage: StorageServiceDescription = StorageService.shared
-                    Task {
-                        do {
-                            try await storage.getImage(path: profileImagePath) { image, error in
-                                guard error == nil else {
-                                    completion(false, error, nil)
-                                    return
-                                }
-                                completion(true, nil, image)
-                            }
-                        } catch {
-                            completion(false, error, nil)
-                        }
-                    }
-                }
-            }
+        let snapshot = try await db.collection(Constants.user)
+                                    .document(userId)
+                                    .getDocument()
+        
+        guard let snapshotData = snapshot.data(),
+              let profileImagePath = snapshotData[Constants.profileImage] as? String else {
+            throw NSError(domain: "FirebaseStorageService", code: 1, userInfo: [NSLocalizedDescriptionKey: "Profile image path not found"])
+        }
+        
+        let storage: StorageServiceDescription = StorageService.shared
+        let image = try await storage.getImage(path: profileImagePath)
+        return image
     }
+
     
     func deleteOldImage(userId: String, completion: @escaping (Bool, Error?) -> Void) {
         var isImageDeleted = false

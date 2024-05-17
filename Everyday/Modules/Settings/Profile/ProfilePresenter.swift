@@ -97,8 +97,8 @@ extension ProfilePresenter: ProfileViewOutput {
     }
     
     func didLoadView() {
-        DispatchQueue.main.async {
-            self.interactor.getUserProfileImage()
+        Task {
+            await interactor.getUserProfileImage()
         }
     }
     

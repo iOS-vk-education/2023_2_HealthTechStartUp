@@ -6,7 +6,7 @@
 //  
 //
 
-import Foundation
+import UIKit
 
 final class WorkoutPresenter {
     weak var view: WorkoutViewInput?
@@ -25,6 +25,10 @@ extension WorkoutPresenter: WorkoutModuleInput {
 }
 
 extension WorkoutPresenter: WorkoutViewOutput {
+    func loadCatalogViewController(_ viewController: UIViewController) {
+        router.openCatalogView(with: viewController)
+    }
+    
     func getPrograms() {
         view?.setPrograms(router.getProgramsView())
     }

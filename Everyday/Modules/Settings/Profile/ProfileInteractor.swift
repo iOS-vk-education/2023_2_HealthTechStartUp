@@ -42,16 +42,15 @@ extension ProfileInteractor: ProfileInteractorInput {
         }
     }
     
-    func getUserProfileImage() {
-        settingsService.getUserProfileImage { result, userProfileImage in
-            guard let userProfileImage = userProfileImage else {
-                self.output?.getUserImage(userImage: nil, result: result)
-                return
-            }
-            
-            self.output?.getUserImage(userImage: userProfileImage, result: result)
+    func getUserProfileImage() async {
+        do {
+            let userProfileImage = try await settingsService.getUserProfileImage()
+            self.output?.getUserImage(userImage: userProfileImage, result: .success(()))
+        } catch {
+            self.output?.getUserImage(userImage: nil, result: .failure(error))
         }
     }
+
     
     func logout() {
         authService.logout { result in

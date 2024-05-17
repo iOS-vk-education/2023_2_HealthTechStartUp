@@ -6,7 +6,7 @@
 //  
 //
 
-import Foundation
+import UIKit
 
 protocol ProgramsModuleInput {
     var moduleOutput: ProgramsModuleOutput? { get }
@@ -17,17 +17,27 @@ protocol ProgramsModuleOutput: AnyObject {
 
 protocol ProgramsViewInput: AnyObject {
     func setup(with items: [ProgramsSectionItem])
+    func showAlert(with type: AlertType)
 }
 
 protocol ProgramsViewOutput: AnyObject {
     func didLoadView()
+    func didSelectTargetCell(type: Target)
 }
 
 protocol ProgramsInteractorInput: AnyObject {
+    func loadWorkouts(for type: Target)
 }
 
 protocol ProgramsInteractorOutput: AnyObject {
+    func didFetchWorkout(type: Target, _ result: Result<[Train], Error>)
 }
 
 protocol ProgramsRouterInput: AnyObject {
+    func openCatalog(with trains: [Train], and type: String)
+    func openEmptyCatalog()
+}
+
+protocol ProgramsViewControllerDelegate: AnyObject {
+    func programsViewControllerRequestsPresentation(_ viewController: UIViewController)
 }

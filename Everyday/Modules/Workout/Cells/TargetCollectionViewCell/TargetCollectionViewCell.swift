@@ -9,7 +9,7 @@ import UIKit
 import PinLayout
 
 protocol TargetCollectionViewCellDelegate: AnyObject {
-    func targetCollectionViewCellDidSelectItem(at indexPath: IndexPath)
+    func targetCollectionViewCellDidSelectItem(type: Target)
 }
 
 final class TargetCollectionViewCell: UICollectionViewCell {
@@ -147,6 +147,26 @@ extension TargetCollectionViewCell: UICollectionViewDelegate {
         guard let cell = collectionView.cellForItem(at: indexPath) as? TargetCell else {
             return
         }
-        delegate?.targetCollectionViewCellDidSelectItem(at: indexPath)
+        
+        switch indexPath.item {
+        case 0:
+            delegate?.targetCollectionViewCellDidSelectItem(type: .recovery)
+        case 1:
+            delegate?.targetCollectionViewCellDidSelectItem(type: .stamina)
+        case 2:
+            delegate?.targetCollectionViewCellDidSelectItem(type: .flexibility)
+        case 3:
+            delegate?.targetCollectionViewCellDidSelectItem(type: .muscleRelief)
+        case 4:
+            delegate?.targetCollectionViewCellDidSelectItem(type: .coordination)
+        case 5:
+            delegate?.targetCollectionViewCellDidSelectItem(type: .weightLoss)
+        case 6:
+            delegate?.targetCollectionViewCellDidSelectItem(type: .muscleGain)
+        case 7:
+            delegate?.targetCollectionViewCellDidSelectItem(type: .posture)
+        default:
+            return
+        }
     }
 }

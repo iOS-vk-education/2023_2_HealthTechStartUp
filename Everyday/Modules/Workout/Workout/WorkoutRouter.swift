@@ -20,6 +20,17 @@ final class WorkoutRouter {
 }
 
 extension WorkoutRouter: WorkoutRouterInput {
+    func openCatalogView(with newViewController: UIViewController) {
+        guard let viewController = viewController  else {
+            return
+        }
+        
+        let navController = UINavigationController(rootViewController: newViewController)
+        navController.modalPresentationStyle = .fullScreen
+        navController.modalTransitionStyle = .coverVertical
+        viewController.present(navController, animated: true, completion: nil)
+    }
+    
     func getProgramsView() -> UIViewController {
         return programsViewController
     }

@@ -36,7 +36,8 @@ extension UIColor {
     
     struct Text {
         static let primary: UIColor = {
-            guard let color = UIColor(named: "SpaceGray") else {                fatalError("Can't find color: SpaceGray")
+            guard let color = UIColor(named: "SpaceGray") else {
+                fatalError("Can't find color: SpaceGray")
             }
             return color
         }()

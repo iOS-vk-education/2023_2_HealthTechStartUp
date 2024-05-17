@@ -3,21 +3,17 @@
 //  workout
 //
 //  Created by Михаил on 31.03.2024.
-//  
+//
 //
 
 import UIKit
 import PinLayout
 
-protocol ProgramsViewControllerDelegate: AnyObject {
-    func programsViewControllerRequestsPresentation(_ viewController: UIViewController)
-}
-
 final class ProgramsViewController: UIViewController {
-    // MARK: - private properties
     
-    weak var delegate: ProgramsViewControllerDelegate?
+    // MARK: - private properties
 
+    weak var delegate: ProgramsViewControllerDelegate?
     private let output: ProgramsViewOutput
     
     private lazy var layout: UICollectionViewLayout = {
@@ -78,16 +74,17 @@ final class ProgramsViewController: UIViewController {
 }
 
 extension ProgramsViewController: ProgramsViewInput {
+    func showAlert(with type: AlertType) {
+        AlertService.shared.presentAlert(on: self, alertType: type)
+    }
+    
     func setup(with items: [ProgramsSectionItem]) {
         collectionViewManager.reload(with: items)
     }
 }
 
 extension ProgramsViewController: TargetCollectionViewCellDelegate {
-    func targetCollectionViewCellDidSelectItem(at indexPath: IndexPath) {
-        // let vc = EmptyTrainViewController()
-        let vc = TrainViewController()
-        print("ok")
-        delegate?.programsViewControllerRequestsPresentation(vc)
+    func targetCollectionViewCellDidSelectItem(type: Target) {
+        output.didSelectTargetCell(type: type)
     }
 }

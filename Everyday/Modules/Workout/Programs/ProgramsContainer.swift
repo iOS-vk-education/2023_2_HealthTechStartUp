@@ -15,7 +15,7 @@ final class ProgramsContainer {
     
     class func assemble(with context: ProgramsContext) -> ProgramsContainer {
         let router = ProgramsRouter()
-        let interactor = ProgramsInteractor()
+        let interactor = ProgramsInteractor(catalogService: CatalogService.shared)
         let presenter = ProgramsPresenter(router: router, interactor: interactor)
         let viewController = ProgramsViewController(output: presenter)
         
@@ -23,6 +23,7 @@ final class ProgramsContainer {
         presenter.moduleOutput = context.moduleOutput
         
         interactor.output = presenter
+        router.viewController = viewController
         
         return ProgramsContainer(view: viewController, input: presenter, router: router)
     }
