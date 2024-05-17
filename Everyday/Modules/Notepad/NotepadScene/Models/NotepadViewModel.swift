@@ -9,12 +9,16 @@ import UIKit
 
 struct NotepadViewModel {
     let stateTitle: NSAttributedString
+    let barButtonImage: UIImage?
     
     init(isResult: Bool) {
         let stateLabelTitle = isResult ? "Journal_Results_Title" : "Journal_Plan_Title"
         let stateLabelAttributedString = NSAttributedString(string: stateLabelTitle.localized, attributes: Styles.titleAttributes)
+        let barButtonImageName = "bookmark"
+        let barButtonImage = UIImage(systemName: barButtonImageName)
         
         self.stateTitle = stateLabelAttributedString
+        self.barButtonImage = barButtonImage
     }
 }
 

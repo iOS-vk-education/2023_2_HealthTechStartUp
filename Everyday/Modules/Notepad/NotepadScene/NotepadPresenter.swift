@@ -158,6 +158,10 @@ extension NotepadPresenter: NotepadViewOutput {
         let trainingContext = TrainingContext(workout: workouts[number])
         router.openTraining(with: trainingContext)
     }
+    
+    func didTapRightBarButtonItem() {
+        router.openPrograms()
+    }
 }
 
 // MARK: - InteractorOutput

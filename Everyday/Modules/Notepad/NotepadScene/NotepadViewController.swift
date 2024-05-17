@@ -82,7 +82,6 @@ private extension NotepadViewController {
 
     func setupView() {
         view.backgroundColor = Constants.backgroundColor
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: dateLabel())
     }
     
     func setupOuterCollectionView() {
@@ -119,18 +118,10 @@ private extension NotepadViewController {
         tableView.register(NotepadTableViewCell.self, forCellReuseIdentifier: NotepadTableViewCell.reuseID)
     }
     
-    // MARK: - Custom Views
-    
-    func dateLabel() -> UILabel {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = Constants.DateLabel.dateFormat
-        
-        let currentDate = dateFormatter.string(from: Date())
-        
-        let dateLabel = UILabel()
-        dateLabel.text = currentDate.capitalized
-        
-        return dateLabel
+    func setupRightBarButtonItem(with image: UIImage?) {
+        let rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(didTapRightBarButtonItem))
+        rightBarButtonItem.tintColor = Constants.RightBarButtonItem.tintColor
+        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
     // MARK: - Actions
@@ -160,6 +151,11 @@ private extension NotepadViewController {
         } else {
             tableView.insertRows(at: indexPaths, with: .fade)
         }
+    }
+    
+    @objc
+    func didTapRightBarButtonItem() {
+        output.didTapRightBarButtonItem()
     }
 }
 
@@ -255,6 +251,7 @@ extension NotepadViewController: UITableViewDelegate {
 
 extension NotepadViewController: NotepadViewInput {
     func configure(with viewModel: NotepadViewModel) {
+        setupRightBarButtonItem(with: viewModel.barButtonImage)
         stateLabel.attributedText = viewModel.stateTitle
     }
     
@@ -326,6 +323,10 @@ private extension NotepadViewController {
             static let contentInsetBottom: CGFloat = 0
             static let contentInsetRight: CGFloat = 0
             static let headerHeight: CGFloat = 60
+        }
+        
+        struct RightBarButtonItem {
+            static let tintColor: UIColor = UIColor.UI.accent
         }
     }
 }

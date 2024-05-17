@@ -19,4 +19,7 @@ extension NotepadRouter: NotepadRouterInput {
         
         viewController?.navigationController?.pushViewController(trainingViewController, animated: true)
     }
+    
+    func openPrograms() {
+    }
 }

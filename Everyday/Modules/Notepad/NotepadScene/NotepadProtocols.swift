@@ -41,6 +41,7 @@ protocol NotepadViewOutput: AnyObject {
     func numberOfRowsInSection(_ section: Int) -> Int
     func toggleCollapsed(at indexOfSection: Int) -> Bool
     func didTapHeaderView(number: Int)
+    func didTapRightBarButtonItem()
 }
 
 protocol NotepadInteractorInput: AnyObject {
@@ -56,4 +57,5 @@ protocol NotepadInteractorOutput: AnyObject {
 
 protocol NotepadRouterInput: AnyObject {
     func openTraining(with context: TrainingContext)
+    func openPrograms()
 }
