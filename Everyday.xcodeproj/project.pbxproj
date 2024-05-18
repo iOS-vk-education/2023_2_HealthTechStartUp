@@ -300,6 +300,7 @@
 		9EBB2FB92BF7E8DA00D1A2D4 /* ExercisePreviewViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EBB2FB82BF7E8DA00D1A2D4 /* ExercisePreviewViewModel.swift */; };
 		9ED415C12BF8063C0068BDF2 /* Storage+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED415C02BF8063C0068BDF2 /* Storage+Extension.swift */; };
 		9ED415C52BF842F90068BDF2 /* Fetcher.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED415C42BF842F90068BDF2 /* Fetcher.swift */; };
+		9ED415C72BF84C820068BDF2 /* LevelService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED415C62BF84C820068BDF2 /* LevelService.swift */; };
 		9ED8C93A2BF182F500D400A3 /* Optional+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9ED8C9392BF182F500D400A3 /* Optional+Extension.swift */; };
 		9EE1BFAC2BD7F5E100458F04 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9EE1BFAB2BD7F5E100458F04 /* PinLayout */; };
 		9EE1BFAE2BD7F5E700458F04 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 9EE1BFAD2BD7F5E700458F04 /* FirebaseStorage */; };
@@ -617,6 +618,7 @@
 		9EBB2FB82BF7E8DA00D1A2D4 /* ExercisePreviewViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExercisePreviewViewModel.swift; sourceTree = "<group>"; };
 		9ED415C02BF8063C0068BDF2 /* Storage+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Storage+Extension.swift"; sourceTree = "<group>"; };
 		9ED415C42BF842F90068BDF2 /* Fetcher.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Fetcher.swift; sourceTree = "<group>"; };
+		9ED415C62BF84C820068BDF2 /* LevelService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelService.swift; sourceTree = "<group>"; };
 		9ED8C9392BF182F500D400A3 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		9EE8AE042B7FA45F001D126F /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9EE8AE062B7FB77D001D126F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
@@ -1856,6 +1858,7 @@
 				9EBB2FAA2BF7AA1E00D1A2D4 /* TargetService.swift */,
 				9EBB2FB02BF7BCA900D1A2D4 /* OtherService.swift */,
 				9EBB2FB22BF7BCB900D1A2D4 /* TrainingTypeService.swift */,
+				9ED415C62BF84C820068BDF2 /* LevelService.swift */,
 			);
 			path = Sections;
 			sourceTree = "<group>";
@@ -2207,6 +2210,7 @@
 				9EA952EF2BF2283400ADBF9A /* Workout.swift in Sources */,
 				9EA952D02BF2279A00ADBF9A /* ResultsContainer.swift in Sources */,
 				9E467A4D2BF2356400127EFA /* WalkProgramsInteractor.swift in Sources */,
+				9ED415C72BF84C820068BDF2 /* LevelService.swift in Sources */,
 				9EA952182BF19D5500ADBF9A /* DeleteAccountProtocols.swift in Sources */,
 				9EA952AF2BF2279A00ADBF9A /* ExerciseViewModel.swift in Sources */,
 				9EA952402BF19D5500ADBF9A /* UnitsContainer.swift in Sources */,

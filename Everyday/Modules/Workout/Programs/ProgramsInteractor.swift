@@ -18,6 +18,12 @@ final class ProgramsInteractor {
 }
 
 extension ProgramsInteractor: ProgramsInteractorInput {
+    func loadWorkouts(for type: Level) {
+        catalogService.loadLevelPrograms(for: type) { result in
+            self.output?.didFetchWorkout(type: type, result)
+        }
+    }
+    
     func loadWorkouts(for type: Other) {
         catalogService.loadOtherPrograms(for: type) { result in
             self.output?.didFetchWorkout(type: type, result)

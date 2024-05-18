@@ -15,6 +15,7 @@ final class ProgramsCollectionManager: NSObject {
     weak var targetDelegate: TargetCollectionViewCellDelegate?
     weak var trainingDelegate: TrainingTypeCollectionViewCellDelegate?
     weak var otherDelegate: OtherCollectionViewCellDelegate?
+    weak var levelDelegate: LevelCollectionViewCellDelegate?
     
     init(collectionView: UICollectionView) {
         self.collectionView = collectionView
@@ -69,7 +70,7 @@ extension ProgramsCollectionManager: UICollectionViewDataSource {
             guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: item.id, for: indexPath) as? ProgramLevelsCollectionViewCell else {
                 return UICollectionViewCell()
             }
-            
+            cell.delegate = self.levelDelegate
             cell.configure(with: info)
             return cell
             

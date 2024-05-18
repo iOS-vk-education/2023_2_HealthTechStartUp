@@ -25,18 +25,21 @@ protocol ProgramsViewOutput: AnyObject {
     func didSelectTargetCell(type: Target)
     func didSelectTrainingCell(type: Training)
     func didSelectOtherCell(type: Other)
+    func didSelectLevelCell(type: Level)
 }
 
 protocol ProgramsInteractorInput: AnyObject {
     func loadWorkouts(for type: Target)
     func loadWorkouts(for type: Training)
     func loadWorkouts(for type: Other)
+    func loadWorkouts(for type: Level)
 }
 
 protocol ProgramsInteractorOutput: AnyObject {
     func didFetchWorkout(type: Target, _ result: Result<[Train], Error>)
     func didFetchWorkout(type: Training, _ result: Result<[Train], Error>)
     func didFetchWorkout(type: Other, _ result: Result<[Train], Error>)
+    func didFetchWorkout(type: Level, _ result: Result<[Train], Error>)
 }
 
 protocol ProgramsRouterInput: AnyObject {

@@ -8,8 +8,14 @@
 import UIKit
 import PinLayout
 
+protocol LevelCollectionViewCellDelegate: AnyObject {
+    func levelTypeCollectionViewCellDidSelectItem(type: Level)
+}
+
 final class ProgramLevelsCollectionViewCell: UICollectionViewCell {
     // MARK: - private properties
+    
+    weak var delegate: LevelCollectionViewCellDelegate?
     
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -138,6 +144,17 @@ extension ProgramLevelsCollectionViewCell: UICollectionViewDelegate {
             layout.previousOffset = layout.updateOffset(collectionView)
             setupCell()
         }
+        
+        switch indexPath.row {
+        case 0:
+            delegate?.levelTypeCollectionViewCellDidSelectItem(type: .easy)
+        case 1:
+            delegate?.levelTypeCollectionViewCellDidSelectItem(type: .medium)
+        case 2:
+            delegate?.levelTypeCollectionViewCellDidSelectItem(type: .pro)
+        default:
+            return
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, willDisplay cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
@@ -165,9 +182,6 @@ extension ProgramLevelsCollectionViewCell: UICollectionViewDelegate {
 // MARK: - ScrollView Delegate
 
 extension ProgramLevelsCollectionViewCell {
-    func scrollViewDidEndScrollingAnimation(_ scrollView: UIScrollView) {
-    }
-    
     func scrollViewDidEndDragging(_ scrollView: UIScrollView, willDecelerate decelerate: Bool) {
         if decelerate {
             setupCell()
