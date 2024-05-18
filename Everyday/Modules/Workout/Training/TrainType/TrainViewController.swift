@@ -49,7 +49,20 @@ final class TrainViewController: UIViewController {
         return collectionView
     }()
     
+    private let image: UIImage
+    private let model: Train
+    
     // MARK: - lifecycle
+    
+    init(model: Train, image: UIImage) {
+        self.model = model
+        self.image = image
+        super.init(nibName: nil, bundle: nil)
+    }
+    
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -92,30 +105,25 @@ final class TrainViewController: UIViewController {
     
     private func setup() {
         setupImage()
-        setupLabels()
         setupView()
+        setupLabels()
         setupScrollView()
         setupSeparators()
         setupButton()
         
-        infoImage.image = UIImage(named: "sh") // !
+        infoImage.image = image
+        descriptionTextLabel.text = model.description
         
-        infoLabel.attributedText = NSAttributedString(string: "Программа тренировок Арнольда Шварценеггера",
-                                                      attributes: Styles.titleAttributes) // !
+        let model = TrainViewModel(infoLabel: model.title, levelLabel: model.level, timeLabel: model.duration, countLabel: model.count)
         
-        levelLabel.attributedText = NSAttributedString(string: "Профи", attributes: Styles.valueAttributes) // !
-        timeLabel.attributedText = NSAttributedString(string: "2 месяца", attributes: Styles.valueAttributes) // !
-        countLabel.attributedText = NSAttributedString(string: "24", attributes: Styles.valueAttributes) // !
-        
-        // swiftlint:disable line_length
-        descriptionTextLabel.text = "Берите пример с единственного и неповторимого семикратного победителя Олимпии Арнольда Шварценеггера. Тренировки Арнольда — образец программ с высокой частотой и большим объемом тренировочной нагрузки."
-        // swiftlint:enable line_length
-        
-        let model = TrainViewModel()
         downloadButton.setTitle(model.buttonTitle, for: .normal)
         levelDescriptionLabel.attributedText = model.levelDescriptionLabel
         timeDescriptionLabel.attributedText = model.timeDescriptionLabel
         countDescriptionLabel.attributedText = model.countDescriptionLabel
+        levelLabel.attributedText = model.levelLabel
+        infoLabel.attributedText = model.infoLabel
+        timeLabel.attributedText = model.timeLabel
+        countLabel.attributedText = model.countLabel
     }
     
     private func setupImage() {
@@ -129,7 +137,7 @@ final class TrainViewController: UIViewController {
         infoLabel.textAlignment = .left
         infoLabel.lineBreakMode = .byWordWrapping
         
-        for label in [levelLabel, levelLabel, countLabel,
+        for label in [levelLabel, timeLabel, countLabel,
                       levelDescriptionLabel, timeDescriptionLabel, countDescriptionLabel] {
             label.textAlignment = .center
         }
@@ -275,7 +283,7 @@ final class TrainViewController: UIViewController {
 
 extension TrainViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        4
+        model.exercises.count
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -285,12 +293,7 @@ extension TrainViewController: UICollectionViewDataSource {
         
         cell.titleLabel.text = ("Упражнение \(indexPath.item + 1)")
         
-        let descTitles = ["Жим штанги лежа",
-                          "Подтягивания обратным хватом",
-                          "Становая тяга со штангой",
-                          ""
-                         ]
-        
+        let descTitles = model.exercises
         let descTitle = descTitles[indexPath.item]
         
         cell.descriptionLabel.text = descTitle
@@ -364,17 +367,5 @@ private extension TrainViewController {
             static let marginTop: CGFloat = 10
             static let width: CGFloat = 1
         }
-    }
-    
-    struct Styles {
-        static let titleAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor(named: "SpaceGray") ?? .black,
-            .font: UIFont(name: "Arial-Black", size: 24) ?? UIFont.boldSystemFont(ofSize: 24)
-        ]
-        
-        static let valueAttributes: [NSAttributedString.Key: Any] = [
-            .foregroundColor: UIColor(named: "SpaceGray") ?? .black,
-            .font: UIFont.boldSystemFont(ofSize: 18)
-        ]
     }
 }

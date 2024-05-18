@@ -154,9 +154,10 @@ extension ProfilePresenter: ProfileInteractorOutput {
     }
     
     func getUserImage(userImage: UIImage?, result: Result<Void, any Error>) {
-        self.handleFetchUserImage(result: result, userProfileImage: userImage ?? UIImage())
-    
-        self.view?.configure(with: ProfileViewModel())
+        DispatchQueue.main.async {
+            self.handleFetchUserImage(result: result, userProfileImage: userImage ?? UIImage())
+            self.view?.configure(with: ProfileViewModel())
+        }
     }
     
     func didLogout(_ result: Result<Void, any Error>) {

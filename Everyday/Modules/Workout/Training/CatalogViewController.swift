@@ -34,8 +34,11 @@ final class CatalogViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.isScrollEnabled = true
+        collectionView.isHidden = true
         return collectionView
     }()
+    
+    private let loadingIndicator = UIActivityIndicatorView(style: .large)
     
     // MARK: - Lifecycle
 
@@ -58,7 +61,7 @@ final class CatalogViewController: UIViewController {
         
         output.didLoadView()
         
-        view.addSubviews(titleLabel, collectionView)
+        view.addSubviews(titleLabel, collectionView, loadingIndicator)
         
         navigationItem.leftBarButtonItem = UIBarButtonItem(
                 image: UIImage(systemName: "xmark"),
@@ -66,6 +69,10 @@ final class CatalogViewController: UIViewController {
                 target: self,
                 action: #selector(didTapCloseButton)
             )
+        
+        navigationItem.leftBarButtonItem?.tintColor = Constants.textColor
+        
+        loadingIndicator.startAnimating()
     }
     
     override func viewDidLayoutSubviews() {
@@ -82,7 +89,13 @@ final class CatalogViewController: UIViewController {
     // MARK: - setup
     
     private func setup() {
+        setupLoadingIndicator()
         titleLabel.textAlignment = .center
+    }
+    
+    private func setupLoadingIndicator() {
+        loadingIndicator.hidesWhenStopped = true
+        loadingIndicator.color = .gray
     }
     
     // MARK: - layout
@@ -98,6 +111,11 @@ final class CatalogViewController: UIViewController {
            .marginTop(10)
            .horizontally(0)
            .bottom(view.pin.safeArea.bottom)
+        
+        loadingIndicator.pin
+            .hCenter()
+            .vCenter()
+            .size(CGSize(width: 50, height: 50))
     }
     
     // MARK: - actions
@@ -108,29 +126,34 @@ final class CatalogViewController: UIViewController {
 }
 
 extension CatalogViewController: CatalogViewInput {
-    func configureCell(with model: ExercisePreviewViewModel, and indexPath: IndexPath) {
-        guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrainPreviewCell", for: indexPath) as? TrainPreviewCell,
-              let trains = trains
-        else {
-            return
-        }
-        
-        cell.configure(with: model)
-    }
-    
     func showAlert(with type: AlertType) {
         AlertService.shared.presentAlert(on: self, alertType: type)
     }
-    
+        
     func configure(with viewModel: CatalogViewModel) {
         titleLabel.attributedText = viewModel.title
         trains = output.getTrains()
+        collectionView.reloadData()
+        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
+            self.loadingIndicator.stopAnimating()
+            self.collectionView.isHidden = false
+        }
     }
 }
 
 // MARK: - UICollectionViewDelegate
 
 extension CatalogViewController: UICollectionViewDelegate {
+    func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        guard let cell = collectionView.cellForItem(at: indexPath) as? TrainPreviewCell,
+              let trains = trains
+        else {
+            return
+        }
+
+        let image = cell.getImage() 
+        output.didSelectCell(train: trains[indexPath.row], image: image)
+    }
 }
 
 // MARK: - CatalogViewController: UICollectionViewDataSource
@@ -142,18 +165,20 @@ extension CatalogViewController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "TrainPreviewCell", for: indexPath) as? TrainPreviewCell,
-              let trains = trains
-        else {
+              let trains = trains else {
             return .init()
         }
-        
+
         let train = trains[indexPath.row]
         Task {
             do {
-                await output.configureCell(for: train, at: indexPath)
-            }
+                let model = try await output.configureCell(for: train, at: indexPath)
+                DispatchQueue.main.async {
+                    cell.configure(with: model)
+                }
+            } 
         }
-        
+
         return cell
     }
 }
@@ -162,7 +187,7 @@ extension CatalogViewController: UICollectionViewDataSource {
 
 extension CatalogViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        CGSize(width: view.frame.width / 2 - 20, height: 300)
+        CGSize(width: view.frame.width / 2 - 20, height: 254)
     }
 
     func collectionView(_ collectionView: UICollectionView,

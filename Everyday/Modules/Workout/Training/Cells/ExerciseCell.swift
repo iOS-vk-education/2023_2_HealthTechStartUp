@@ -39,7 +39,7 @@ final class ExerciseCell: UICollectionViewCell {
         containerView.layer.cornerRadius = 8
         
         titleLabel.pin
-            .top()
+            .top(2)
             .left(10)
             .height(20)
             .width(320)
@@ -69,12 +69,12 @@ final class ExerciseCell: UICollectionViewCell {
     
     private func setupLabel() {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 16)
-        titleLabel.textColor = .black
+        titleLabel.textColor = UIColor.Text.primary
         titleLabel.textAlignment = .left
         titleLabel.numberOfLines = 0
         
         descriptionLabel.font = UIFont.systemFont(ofSize: 14)
-        descriptionLabel.textColor = .black
+        descriptionLabel.textColor = UIColor.Text.primary
         descriptionLabel.textAlignment = .left
         descriptionLabel.numberOfLines = 0
     }

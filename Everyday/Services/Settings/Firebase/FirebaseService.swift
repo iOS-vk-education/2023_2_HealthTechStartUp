@@ -276,7 +276,6 @@ extension FirebaseService: FirebaseServiceDescription {
         return image
     }
 
-    
     func deleteOldImage(userId: String, completion: @escaping (Bool, Error?) -> Void) {
         var isImageDeleted = false
         let lock = NSLock()

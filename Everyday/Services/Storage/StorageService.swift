@@ -56,11 +56,10 @@ final class StorageService: StorageServiceDescription {
     
     func getImage(path: String) async throws -> UIImage? {
         let imageRef = storage.child(path)
-        let data = try await imageRef.getData(maxSize: Constants.imageMaxSize)
+        let data = try await imageRef.getDataAsync(maxSize: Constants.imageMaxSize)
         return UIImage(data: data)
     }
 
-    
     func deleteOldImage(userId: String, path: String) async throws {
         let oldImageRef = storage.child(path)
         

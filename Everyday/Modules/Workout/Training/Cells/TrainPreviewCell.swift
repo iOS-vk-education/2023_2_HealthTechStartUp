@@ -18,9 +18,9 @@ final class TrainPreviewCell: UICollectionViewCell {
         return view
     }()
     
-     private let imageView = UIImageView()
-     private let titleLabel = UILabel()
-     private let levelLabel = UILabel()
+    private let imageView = UIImageView()
+    private let titleLabel = UILabel()
+    private let levelLabel = UILabel()
     
     // MARK: - life cycle
     
@@ -41,7 +41,7 @@ final class TrainPreviewCell: UICollectionViewCell {
         
         imageView.pin
             .top()
-            .height(200)
+            .height(150)
             .width(contentView.frame.width)
         
         levelLabel.pin
@@ -79,6 +79,14 @@ final class TrainPreviewCell: UICollectionViewCell {
         imageView.image = model.image
     }
     
+    func getImage() -> UIImage {
+        guard let image = imageView.image else {
+            return UIImage()
+        }
+        
+        return image
+    }
+    
     private func setupImage() {
         imageView.contentMode = .scaleAspectFit
         imageView.clipsToBounds = true
@@ -86,11 +94,11 @@ final class TrainPreviewCell: UICollectionViewCell {
     
     private func setupLabel() {
         titleLabel.font = UIFont.boldSystemFont(ofSize: 18)
-        titleLabel.textColor = .black
+        titleLabel.textColor = UIColor.Text.primary
         titleLabel.textAlignment = .left
         titleLabel.numberOfLines = 0
         
-        levelLabel.textColor = .black
+        levelLabel.textColor = UIColor.Text.primary
         levelLabel.textAlignment = .left
     }
 }

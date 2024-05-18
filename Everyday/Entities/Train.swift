@@ -8,17 +8,18 @@
 import Foundation
 
 struct Train {
-    var count: Int
+    var count: String
     var description: String
-    var duration: Int
+    var duration: String
     var image: String
     var level: String
     var title: String
+    var exercises: [String]
 
     init?(dictionary: [String: Any]) {
-        guard let count = dictionary["count"] as? Int,
+        guard let count = dictionary["count"] as? String,
               let description = dictionary["description"] as? String,
-              let duration = dictionary["duration"] as? Int,
+              let duration = dictionary["duration"] as? String,
               let image = dictionary["image"] as? String,
               let level = dictionary["level"] as? String,
               let title = dictionary["title"] as? String
@@ -31,5 +32,16 @@ struct Train {
         self.image = image
         self.level = level
         self.title = title
+        self.exercises = []
+    }
+    
+    init(count: String, description: String, duration: String, image: String, level: String, title: String, exercises: [String]) {
+        self.count = count
+        self.description = description
+        self.duration = duration
+        self.image = image
+        self.level = level
+        self.title = title
+        self.exercises = exercises
     }
 }

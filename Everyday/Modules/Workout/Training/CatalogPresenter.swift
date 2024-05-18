@@ -6,7 +6,7 @@
 //  
 //
 
-import Foundation
+import UIKit
 
 final class CatalogPresenter {
     weak var view: CatalogViewInput?
@@ -29,29 +29,17 @@ extension CatalogPresenter: CatalogModuleInput {
 }
 
 extension CatalogPresenter: CatalogViewOutput {
-    func configureCell(for train: Train, at indexPath: IndexPath) async {
-        do {
-            guard let image = try await StorageService.shared.getImage(path: train.image) else {
-                throw URLError(.cannotDecodeContentData)
-            }
-            
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
-                let model = ExercisePreviewViewModel(title: train.title, level: train.level, image: image)
-                self.view?.configureCell(with: model, and: indexPath)
-            }
-        } catch {
-            DispatchQueue.main.async { [weak self] in
-                guard let self = self else {
-                    return
-                }
-                
-                self.view?.showAlert(with: .fetchingUserError(error: error))
-            }
+    func didSelectCell(train: Train, image: UIImage) {
+        router.openCell(train: train, image: image)
+    }
+    
+    func configureCell(for train: Train, at indexPath: IndexPath) async throws -> ExercisePreviewViewModel {
+        guard let image = try? await StorageService.shared.getImage(path: train.image) else {
+            throw NSError(domain: "ImageLoadError", code: -1, userInfo: nil)
         }
+
+        let model = ExercisePreviewViewModel(title: train.title, level: train.level, image: image)
+        return model
     }
     
     func getTrains() -> [Train] {

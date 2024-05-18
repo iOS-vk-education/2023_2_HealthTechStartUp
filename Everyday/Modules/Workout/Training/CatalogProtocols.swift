@@ -6,7 +6,7 @@
 //  
 //
 
-import Foundation
+import UIKit
 
 protocol CatalogModuleInput {
     var moduleOutput: CatalogModuleOutput? { get }
@@ -19,14 +19,14 @@ protocol CatalogModuleOutput: AnyObject {
 protocol CatalogViewInput: AnyObject {
     func configure(with viewModel: CatalogViewModel)
     func showAlert(with type: AlertType)
-    func configureCell(with model: ExercisePreviewViewModel, and indexPath: IndexPath)
 }
 
 protocol CatalogViewOutput: AnyObject {
     func didLoadView()
     func getCount() -> Int
     func getTrains() -> [Train]
-    func configureCell(for train: Train, at indexPath: IndexPath) async 
+    func configureCell(for train: Train, at indexPath: IndexPath) async throws -> ExercisePreviewViewModel
+    func didSelectCell(train: Train, image: UIImage)
 }
 
 protocol CatalogInteractorInput: AnyObject {
@@ -36,4 +36,5 @@ protocol CatalogInteractorOutput: AnyObject {
 }
 
 protocol CatalogRouterInput: AnyObject {
+   func openCell(train: Train, image: UIImage)
 }

@@ -23,6 +23,7 @@ final class CatalogContainer {
         presenter.moduleOutput = context.moduleOutput
         
         interactor.output = presenter
+        router.viewController = viewController
         
         return CatalogContainer(view: viewController, input: presenter, router: router)
     }

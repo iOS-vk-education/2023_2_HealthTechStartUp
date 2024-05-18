@@ -45,7 +45,6 @@ final class SettingsService: SettingsServiceDescription {
         let userProfileImage = try await firebaseService.fetchUserProfileImage()
         return userProfileImage
     }
-
     
     func updateUserImage(image: UIImage, completion: @escaping (Result<Void, Error>) -> Void) {
         firebaseService.updateUserImage(image: image) { success, error in

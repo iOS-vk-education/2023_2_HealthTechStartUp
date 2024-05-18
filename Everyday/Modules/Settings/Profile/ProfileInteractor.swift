@@ -50,7 +50,6 @@ extension ProfileInteractor: ProfileInteractorInput {
             self.output?.getUserImage(userImage: nil, result: .failure(error))
         }
     }
-
     
     func logout() {
         authService.logout { result in
