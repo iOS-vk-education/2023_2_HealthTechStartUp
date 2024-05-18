@@ -24,16 +24,19 @@ protocol ProgramsViewOutput: AnyObject {
     func didLoadView()
     func didSelectTargetCell(type: Target)
     func didSelectTrainingCell(type: Training)
+    func didSelectOtherCell(type: Other)
 }
 
 protocol ProgramsInteractorInput: AnyObject {
     func loadWorkouts(for type: Target)
     func loadWorkouts(for type: Training)
+    func loadWorkouts(for type: Other)
 }
 
 protocol ProgramsInteractorOutput: AnyObject {
     func didFetchWorkout(type: Target, _ result: Result<[Train], Error>)
     func didFetchWorkout(type: Training, _ result: Result<[Train], Error>)
+    func didFetchWorkout(type: Other, _ result: Result<[Train], Error>)
 }
 
 protocol ProgramsRouterInput: AnyObject {

@@ -27,6 +27,10 @@ extension ProgramsPresenter: ProgramsModuleInput {
 }
 
 extension ProgramsPresenter: ProgramsViewOutput {
+    func didSelectOtherCell(type: Other) {
+        interactor.loadWorkouts(for: type)
+    }
+    
     func didSelectTrainingCell(type: Training) {
         interactor.loadWorkouts(for: type)
     }
@@ -46,6 +50,25 @@ extension ProgramsPresenter: ProgramsViewOutput {
 }
 
 extension ProgramsPresenter: ProgramsInteractorOutput {
+    func didFetchWorkout(type: Other, _ result: Result<[Train], any Error>) {
+        DispatchQueue.main.async {
+            switch result {
+            case .success(let trains):
+                self.router.openCatalog(with: trains, and: type.description)
+            case .failure(let error):
+                if let nsError = error as NSError? {
+                    if nsError.domain == "DataError" && nsError.code == -1 {
+                        self.router.openEmptyCatalog()
+                    } else {
+                        self.view?.showAlert(with: .networkMessage(error: error))
+                    }
+                } else {
+                    self.view?.showAlert(with: .networkMessage(error: error))
+                }
+            }
+        }
+    }
+    
     func didFetchWorkout(type: Training, _ result: Result<[Train], any Error>) {
         DispatchQueue.main.async {
             switch result {

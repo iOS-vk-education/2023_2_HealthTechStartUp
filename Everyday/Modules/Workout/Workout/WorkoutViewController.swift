@@ -27,8 +27,8 @@ final class WorkoutViewController: UIViewController {
         return layout
     }()
     
-    private let lineView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 4))
-    private var isLinePositioned = false
+    // private let lineView = UIView(frame: CGRect(x: 0, y: 0, width: 50, height: 4))
+    // private var isLinePositioned = false
     
     private lazy var collectionView: UICollectionView = {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
@@ -63,7 +63,7 @@ final class WorkoutViewController: UIViewController {
         
         view.addSubview(collectionView)
         view.addSubview(controllersScrollView)
-        collectionView.addSubview(lineView)
+        // collectionView.addSubview(lineView)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -76,27 +76,27 @@ final class WorkoutViewController: UIViewController {
         
         arrangement()
         
-        if !isLinePositioned {
-            DispatchQueue.main.async {
-                if let firstCell = self.collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) {
-                    self.positionLineViewUnderCell(firstCell)
-                    self.isLinePositioned = true
-                }
-            }
-        }
+//        if !isLinePositioned {
+//            DispatchQueue.main.async {
+//                if let firstCell = self.collectionView.cellForItem(at: IndexPath(item: 0, section: 0)) {
+//                    self.positionLineViewUnderCell(firstCell)
+//                    self.isLinePositioned = true
+//                }
+//            }
+//        }
     }
     
     // MARK: - SetUp
     
     private func setupUI() {
-        setupLine()
+        // setupLine()
         setupScrollView()
     }
     
-    private func setupLine() {
-        lineView.backgroundColor = UIColor(named: "SpaceGray")
-        lineView.layer.cornerRadius = Constants.Lines.cornerRadius
-    }
+//    private func setupLine() {
+//        lineView.backgroundColor = UIColor(named: "SpaceGray")
+//        lineView.layer.cornerRadius = Constants.Lines.cornerRadius
+//    }
     
     private func setupScrollView() {
         guard let programs = programsViewController, let walkPrograms = walkProgramsViewController else {
@@ -109,11 +109,12 @@ final class WorkoutViewController: UIViewController {
         controllersScrollView.showsVerticalScrollIndicator = false
         controllersScrollView.showsHorizontalScrollIndicator = false
         controllersScrollView.delegate = self
-        controllersScrollView.isPagingEnabled = true
+        // controllersScrollView.isPagingEnabled = true
+        controllersScrollView.isPagingEnabled = false
         controllersScrollView.isScrollEnabled = false
         
         controllersScrollView.addSubview(programs.view)
-        controllersScrollView.addSubview(walkPrograms.view)
+        // controllersScrollView.addSubview(walkPrograms.view)
     }
     
     // MARK: - Layout
@@ -150,12 +151,12 @@ final class WorkoutViewController: UIViewController {
         controllersScrollView.contentSize = CGSize(width: scrollViewWidth * 2, height: scrollViewHeight)
     }
     
-    private func positionLineViewUnderCell(_ cell: UICollectionViewCell) {
-        let lineX = cell.frame.origin.x + (cell.frame.size.width / 2) - (lineView.frame.size.width / 2)
-        let lineY = cell.frame.maxY - lineView.frame.size.height - 2
-
-        lineView.frame = CGRect(x: lineX, y: lineY, width: lineView.frame.size.width, height: lineView.frame.size.height)
-    }
+//    private func positionLineViewUnderCell(_ cell: UICollectionViewCell) {
+//        let lineX = cell.frame.origin.x + (cell.frame.size.width / 2) - (lineView.frame.size.width / 2)
+//        let lineY = cell.frame.maxY - lineView.frame.size.height - 2
+//
+//        lineView.frame = CGRect(x: lineX, y: lineY, width: lineView.frame.size.width, height: lineView.frame.size.height)
+//    }
 }
 
 extension WorkoutViewController: WorkoutViewInput {
@@ -173,18 +174,18 @@ extension WorkoutViewController: WorkoutViewInput {
 
 // MARK: - UIScrollViewDelegate
 
-extension WorkoutViewController: UIScrollViewDelegate {
-    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
-        let pageIndex = round(scrollView.contentOffset.x / view.frame.width)
-        activePage = pageIndex == 0 ? .programs : .walkPrograms
-    }
-}
+// extension WorkoutViewController: UIScrollViewDelegate {
+//    func scrollViewDidEndDecelerating(_ scrollView: UIScrollView) {
+//        let pageIndex = round(scrollView.contentOffset.x / view.frame.width)
+//        activePage = pageIndex == 0 ? .programs : .walkPrograms
+//    }
+// }
 
 // MARK: - Collection View data source
 
 extension WorkoutViewController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-        2
+        1
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
@@ -216,12 +217,12 @@ extension WorkoutViewController: UICollectionViewDelegate {
         if let cell = collectionView.cellForItem(at: indexPath) as? TextCell {
             cell.setText(isActive: true)
             
-            UIView.animate(withDuration: 0.3) {
-                let lineX = cell.frame.origin.x + (cell.frame.size.width / 2) - (self.lineView.frame.size.width / 2)
-                let lineY = cell.frame.maxY - self.lineView.frame.size.height - 2
-                
-                self.lineView.frame = CGRect(x: lineX, y: lineY, width: self.lineView.frame.size.width, height: self.lineView.frame.size.height)
-            }
+//            UIView.animate(withDuration: 0.3) {
+//                let lineX = cell.frame.origin.x + (cell.frame.size.width / 2) - (self.lineView.frame.size.width / 2)
+//                let lineY = cell.frame.maxY - self.lineView.frame.size.height - 2
+//                
+//                self.lineView.frame = CGRect(x: lineX, y: lineY, width: self.lineView.frame.size.width, height: self.lineView.frame.size.height)
+//            }
         }
         
         let pageWidth = view.frame.width
@@ -243,32 +244,6 @@ extension WorkoutViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView, 
                         layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: 0, left: 16, bottom: 0, right: 16)
-    }
-}
-
-extension WorkoutViewController: UISearchControllerDelegate {
-    func willPresentSearchController(_ searchController: UISearchController) {
-        UIView.animate(withDuration: 0.3) {
-            self.navigationController?.setNavigationBarHidden(false, animated: true)
-            searchController.searchBar.showsCancelButton = true
-            
-            self.navigationItem.searchController = searchController
-        }
-    }
-
-    func willDismissSearchController(_ searchController: UISearchController) {
-        navigationController?.setNavigationBarHidden(true, animated: true)
-        navigationItem.searchController = nil
-        
-        searchController.searchBar.showsCancelButton = false
-        view.addSubview(searchController.searchBar)
-        arrangement()
-        
-        view.setNeedsLayout()
-        view.layoutIfNeeded()
-    }
-    
-    func didDismissSearchController(_ searchController: UISearchController) {
     }
 }
 

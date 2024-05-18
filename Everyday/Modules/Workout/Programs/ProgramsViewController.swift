@@ -52,6 +52,7 @@ final class ProgramsViewController: UIViewController {
         setupUI()
         collectionViewManager.targetDelegate = self
         collectionViewManager.trainingDelegate = self
+        collectionViewManager.otherDelegate = self
         output.didLoadView()
     }
     
@@ -95,5 +96,11 @@ extension ProgramsViewController: TargetCollectionViewCellDelegate {
 extension ProgramsViewController: TrainingTypeCollectionViewCellDelegate {
     func trainingTypeCollectionViewCellDidSelectItem(type: Training) {
         output.didSelectTrainingCell(type: type)
+    }
+}
+
+extension ProgramsViewController: OtherCollectionViewCellDelegate {
+    func otherTypeCollectionViewCellDidSelectItem(type: Other) {
+        output.didSelectOtherCell(type: type)
     }
 }

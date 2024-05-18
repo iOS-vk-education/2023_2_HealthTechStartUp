@@ -8,9 +8,15 @@
 import UIKit
 import PinLayout
 
+protocol OtherCollectionViewCellDelegate: AnyObject {
+    func otherTypeCollectionViewCellDidSelectItem(type: Other)
+}
+
 final class OtherCollectionViewCell: UICollectionViewCell {
     
     // MARK: - private properties
+    
+    weak var delegate: OtherCollectionViewCellDelegate?
     
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -139,6 +145,17 @@ extension OtherCollectionViewCell: UICollectionViewDelegate {
                 }
             }
         )
+        
+        switch indexPath.item {
+        case 0:
+            delegate?.otherTypeCollectionViewCellDidSelectItem(type: .charge)
+        case 1:
+            delegate?.otherTypeCollectionViewCellDidSelectItem(type: .kegel)
+        case 2:
+            delegate?.otherTypeCollectionViewCellDidSelectItem(type: .eye)
+        default:
+            return
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {

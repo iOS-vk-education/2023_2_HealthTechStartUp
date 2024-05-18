@@ -19,14 +19,6 @@ final class TextCell: UICollectionViewCell {
         label.numberOfLines = 0
         return label
     }()
-    
-//    private lazy var underlineView: UIView = {
-//       let view = UIView()
-//       view.backgroundColor = .black
-//       view.isHidden = true
-//       view.layer.cornerRadius = 2
-//       return view
-//   }()
            
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -54,11 +46,6 @@ final class TextCell: UICollectionViewCell {
             .bottom(10)
             .left(10)
             .right(10)
-        
-//        underlineView.pin
-//           .below(of: titleLabel, aligned: .center).marginTop(4)
-//           .height(4)
-//           .width(50)
     }
     
     // MARK: - actions
@@ -66,20 +53,16 @@ final class TextCell: UICollectionViewCell {
     private func setUp() {
         contentView.addSubview(containerView)
         contentView.addSubview(titleLabel)
-        // containerView.addSubview(underlineView)
     }
     
     func setText(_ text: String, isActive: Bool) {
         titleLabel.text = text
         titleLabel.font = isActive ? UIFont.boldSystemFont(ofSize: 28) : UIFont.systemFont(ofSize: 20)
         titleLabel.textColor = isActive ? UIColor(named: "SpaceGray") : .gray
-       // underlineView.isHidden = !isActive
     }
     
     func setText(isActive: Bool) {
         titleLabel.font = isActive ? UIFont.boldSystemFont(ofSize: 28) : UIFont.systemFont(ofSize: 20)
         titleLabel.textColor = isActive ? UIColor(named: "SpaceGray") : .gray
-       // underlineView.isHidden = !isActive
-
     }
 }
