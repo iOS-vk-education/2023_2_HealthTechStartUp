@@ -24,6 +24,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewController = TabBarController()
         let navigationController = UINavigationController(rootViewController: viewController)
         
+        NotificationsService.shared.requestAuthorization()
+        
         SettingsUserDefaultsService.shared.setTheme()
         
         window?.rootViewController = navigationController

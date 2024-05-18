@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		8C5028602BF9626E0010F918 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50285C2BF9626E0010F918 /* NotificationModel.swift */; };
+		8C5028612BF9626E0010F918 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50285E2BF9626E0010F918 /* NotificationService.swift */; };
+		8C5028652BF9641F0010F918 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C5028632BF9641E0010F918 /* Model.xcdatamodeld */; };
 		8CA0C3642BE968C200353FB2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3632BE968C200353FB2 /* Date+Extension.swift */; };
 		9E0C348E2BD700CB00D8696B /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0C348D2BD700CB00D8696B /* CloseButton.swift */; };
 		9E0C34902BD7CE6A00D8696B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */; };
@@ -261,7 +264,6 @@
 		9EA9531E2BF2286300ADBF9A /* FIrebaseAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA952F42BF2286300ADBF9A /* FIrebaseAuthService.swift */; };
 		9EA9531F2BF2286300ADBF9A /* GoogleAuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA952F62BF2286300ADBF9A /* GoogleAuthService.swift */; };
 		9EA953202BF2286300ADBF9A /* CoreDataService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA952F82BF2286300ADBF9A /* CoreDataService.swift */; };
-		9EA953212BF2286300ADBF9A /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9EA952F92BF2286300ADBF9A /* Model.xcdatamodeld */; };
 		9EA953222BF2286300ADBF9A /* UserAuthentication+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA952FA2BF2286300ADBF9A /* UserAuthentication+CoreDataClass.swift */; };
 		9EA953232BF2286300ADBF9A /* UserAuthentication+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA952FB2BF2286300ADBF9A /* UserAuthentication+CoreDataProperties.swift */; };
 		9EA953242BF2286300ADBF9A /* AuthUserDefaultsService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EA952FD2BF2286300ADBF9A /* AuthUserDefaultsService.swift */; };
@@ -320,6 +322,9 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		8C50285C2BF9626E0010F918 /* NotificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
+		8C50285E2BF9626E0010F918 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		8C5028642BF9641E0010F918 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		8CA0C3632BE968C200353FB2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		9E0C348D2BD700CB00D8696B /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -597,7 +602,6 @@
 		9EA953132BF2286300ADBF9A /* SettingsUserDefaultsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsUserDefaultsService.swift; sourceTree = "<group>"; };
 		9EA953162BF2286300ADBF9A /* SettingsService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SettingsService.swift; sourceTree = "<group>"; };
 		9EA953182BF2286300ADBF9A /* StorageService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = StorageService.swift; sourceTree = "<group>"; };
-		9EA9531B2BF2286300ADBF9A /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9EA953342BF2288B00ADBF9A /* SplashAnimator.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashAnimator.swift; sourceTree = "<group>"; };
 		9EA953352BF2288B00ADBF9A /* SplashPresenter.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashPresenter.swift; sourceTree = "<group>"; };
 		9EA953362BF2288B00ADBF9A /* SplashViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SplashViewController.swift; sourceTree = "<group>"; };
@@ -650,6 +654,23 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		8C50285D2BF9626E0010F918 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				8C50285C2BF9626E0010F918 /* NotificationModel.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		8C50285F2BF9626E0010F918 /* Notification */ = {
+			isa = PBXGroup;
+			children = (
+				8C50285D2BF9626E0010F918 /* Model */,
+				8C50285E2BF9626E0010F918 /* NotificationService.swift */,
+			);
+			path = Notification;
+			sourceTree = "<group>";
+		};
 		9E2931822B9F25FB00950B15 /* UI */ = {
 			isa = PBXGroup;
 			children = (
@@ -1684,7 +1705,7 @@
 			isa = PBXGroup;
 			children = (
 				9EA952F82BF2286300ADBF9A /* CoreDataService.swift */,
-				9EA952F92BF2286300ADBF9A /* Model.xcdatamodeld */,
+				8C5028632BF9641E0010F918 /* Model.xcdatamodeld */,
 				9EA952FA2BF2286300ADBF9A /* UserAuthentication+CoreDataClass.swift */,
 				9EA952FB2BF2286300ADBF9A /* UserAuthentication+CoreDataProperties.swift */,
 			);
@@ -1811,6 +1832,7 @@
 		9EA9531A2BF2286300ADBF9A /* Services */ = {
 			isa = PBXGroup;
 			children = (
+				8C50285F2BF9626E0010F918 /* Notification */,
 				9EBB2FA72BF7A98600D1A2D4 /* Catalog */,
 				9EA952F32BF2286300ADBF9A /* Alert */,
 				9EA953082BF2286300ADBF9A /* Auth */,
@@ -2097,6 +2119,7 @@
 				9EA9521F2BF19D5500ADBF9A /* HealthProtocols.swift in Sources */,
 				9E5B753A2B7F9D7600E2BDE6 /* GenderViewModel.swift in Sources */,
 				9E467A852BF2358300127EFA /* OtherCell.swift in Sources */,
+				8C5028652BF9641F0010F918 /* Model.xcdatamodeld in Sources */,
 				9E467A9F2BF2D34300127EFA /* EmptyTrainViewModel.swift in Sources */,
 				9EA952B02BF2279A00ADBF9A /* ExerciseContainer.swift in Sources */,
 				9EBB2F9D2BF796F200D1A2D4 /* CatalogPresenter.swift in Sources */,
@@ -2185,6 +2208,7 @@
 				9E5B75452B7F9D7600E2BDE6 /* AgeView.swift in Sources */,
 				9E5B75472B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift in Sources */,
 				9EA952092BF19D5500ADBF9A /* ChangePasswordProtocols.swift in Sources */,
+				8C5028612BF9626E0010F918 /* NotificationService.swift in Sources */,
 				9EA952C32BF2279A00ADBF9A /* NotepadContainer.swift in Sources */,
 				9EE8AE202B7FB905001D126F /* ProgressInteractor.swift in Sources */,
 				9EA952E12BF2279A00ADBF9A /* TrainingInteractor.swift in Sources */,
@@ -2221,6 +2245,7 @@
 				9EA9521D2BF19D5500ADBF9A /* HealthInteractor.swift in Sources */,
 				9EA952BD2BF2279A00ADBF9A /* UIHelper.swift in Sources */,
 				9EA952302BF19D5500ADBF9A /* SettingsTableViewManager.swift in Sources */,
+				8C5028602BF9626E0010F918 /* NotificationModel.swift in Sources */,
 				9EBB2FB32BF7BCB900D1A2D4 /* TrainingTypeService.swift in Sources */,
 				9E467A3D2BF2356100127EFA /* WorkoutInteractor.swift in Sources */,
 				9EA952542BF2263B00ADBF9A /* SettingsViewController.swift in Sources */,
@@ -2237,7 +2262,6 @@
 				9E467A8F2BF2358300127EFA /* TrainingTypeViewModel.swift in Sources */,
 				9EA9533A2BF2288B00ADBF9A /* SplashViewController.swift in Sources */,
 				9E5B75162B7F9D3500E2BDE6 /* GenderButtonView.swift in Sources */,
-				9EA953212BF2286300ADBF9A /* Model.xcdatamodeld in Sources */,
 				9E467A642BF2356C00127EFA /* ProgramsViewModel.swift in Sources */,
 				9EA951882BF19D3900ADBF9A /* AuthorizationPresenter.swift in Sources */,
 				9EA952242BF19D5500ADBF9A /* ProfileViewModel.swift in Sources */,
@@ -2472,7 +2496,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72F47Y7J7T;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -2510,7 +2534,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72F47Y7J7T;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -2647,14 +2671,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		9EA952F92BF2286300ADBF9A /* Model.xcdatamodeld */ = {
+		8C5028632BF9641E0010F918 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9EA9531B2BF2286300ADBF9A /* Model.xcdatamodel */,
+				8C5028642BF9641E0010F918 /* Model.xcdatamodel */,
 			);
-			currentVersion = 9EA9531B2BF2286300ADBF9A /* Model.xcdatamodel */;
+			currentVersion = 8C5028642BF9641E0010F918 /* Model.xcdatamodel */;
 			name = Model.xcdatamodeld;
-			path = "/Users/mk126/Desktop/МГТУ/Технопарк ios/Технопарк 21/2023_2_HealthTechStartUp/Everyday/Services/Auth/Helpers/CoreData/Model.xcdatamodeld";
+			path = /Users/iwanm/EvrdTech/2023_2_HealthTechStartUp/Everyday/Services/Auth/Helpers/CoreData/Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
