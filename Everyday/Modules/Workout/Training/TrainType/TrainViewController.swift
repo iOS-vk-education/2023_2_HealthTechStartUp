@@ -205,7 +205,6 @@ final class TrainViewController: UIViewController {
     
     private func checkIfFavorited() {
         guard let user = Auth.auth().currentUser else {
-            getAuthView()
             return
         }
 
@@ -218,7 +217,6 @@ final class TrainViewController: UIViewController {
     
     private func checkIfDownloaded() {
         guard let user = Auth.auth().currentUser else {
-            getAuthView()
             return
         }
 

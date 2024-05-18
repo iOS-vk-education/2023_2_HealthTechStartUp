@@ -24,8 +24,6 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let viewController = TabBarController()
         let navigationController = UINavigationController(rootViewController: viewController)
         
-        NotificationsService.shared.requestAuthorization()
-        
         SettingsUserDefaultsService.shared.setTheme()
         
         window?.rootViewController = navigationController
@@ -38,6 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
             self.splashPresenter?.dismiss { [weak self] in
                 self?.splashPresenter = nil
+                NotificationsService.shared.requestAuthorization()
             }
         }
     }
