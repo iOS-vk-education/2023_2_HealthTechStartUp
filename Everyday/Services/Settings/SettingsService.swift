@@ -11,7 +11,7 @@ protocol SettingsServiceDescription {
     func changeEmail(with userRequest: ChangeEmailModel, completion: @escaping (Result<Void, Error>, Bool?) -> Void)
     func changePassword(with userRequest: ChangePasswordModel, completion: @escaping (Result<Void, Error>, Bool?) -> Void)
     func getUserName(completion: @escaping (Result<Void, Error>, String?) -> Void)
-    func getUserProfileImage(completion: @escaping (Result<Void, Error>, UIImage?) -> Void)
+    func getUserProfileImage() async throws -> UIImage?
     func deleteEmailAccount(with userRequest: DeleteAccountModel, whichSign: String, completion: @escaping (Result<Void, Error>, Bool?) -> Void)
     func deleteGoogleAccount(with whichSign: String, completion: @escaping (Result<Void, Error>) -> Void)
     func deleteVkAccount(with whichSign: String, completion: @escaping (Result<Void, Error>) -> Void)
@@ -40,18 +40,10 @@ final class SettingsService: SettingsServiceDescription {
             }
         }
     }
-    
-    func getUserProfileImage(completion: @escaping (Result<Void, Error>, UIImage?) -> Void) {
-        firebaseService.fetchUserProfileImage { success, error, userProfileImage in
-            if let error = error {
-                completion(.failure(error), nil)
-            } else if success {
-                guard let userProfileImage = userProfileImage else {
-                    return
-                }
-                completion(.success(()), userProfileImage)
-            }
-        }
+        
+    func getUserProfileImage() async throws -> UIImage? {
+        let userProfileImage = try await firebaseService.fetchUserProfileImage()
+        return userProfileImage
     }
     
     func updateUserImage(image: UIImage, completion: @escaping (Result<Void, Error>) -> Void) {

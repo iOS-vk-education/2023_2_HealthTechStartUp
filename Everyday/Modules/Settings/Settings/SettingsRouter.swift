@@ -52,7 +52,7 @@ extension SettingsRouter: SettingsRouterInput {
     }
     
     func getShareView(with items: [Any]) {
-            let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
+        let activityViewController = UIActivityViewController(activityItems: items, applicationActivities: nil)
         viewController?.present(activityViewController, animated: true)
     }
     

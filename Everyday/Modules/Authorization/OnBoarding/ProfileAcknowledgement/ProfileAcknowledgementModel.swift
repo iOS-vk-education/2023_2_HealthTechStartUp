@@ -26,6 +26,8 @@ class ProfileAcknowledgementModel {
     private(set) var measurementsMeasureUnit: String?
     private(set) var distanceMeasureUnit: String?
     private(set) var loadWeightMeasureUnit: String?
+    private(set) var featuredPrograms: [DocumentReference]?
+    private(set) var downloadedPrograms: [DocumentReference]?
 
     private init() { }
     

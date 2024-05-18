@@ -12,7 +12,7 @@ protocol StorageServiceDescription {
     func saveImage(data: Data, userId: String) async throws -> (path: String, name: String)
     func saveImage(image: UIImage, userId: String) async throws -> (path: String, name: String)
     func getData(userId: String, path: String) async throws -> Data
-    func getImage(path: String, completion: @escaping (UIImage?, Error?) -> Void) async throws
+    func getImage(path: String) async throws -> UIImage?
     func deleteOldImage(userId: String, path: String) async throws
 }
     
@@ -54,23 +54,12 @@ final class StorageService: StorageServiceDescription {
         try await userReference(userId: userId).child(path).data(maxSize: Constants.imageMaxSize)
     }
     
-    func getImage(path: String, completion: @escaping (UIImage?, Error?) -> Void) async throws {
+    func getImage(path: String) async throws -> UIImage? {
         let imageRef = storage.child(path)
-        
-        imageRef.getData(maxSize: Constants.imageMaxSize) { data, error in
-            if let error = error {
-                completion(nil, error)
-            } else {
-                if let imageData = data {
-                    let image = UIImage(data: imageData)
-                    completion(image, nil)
-                } else {
-                    completion(nil, error)
-                }
-            }
-        }
+        let data = try await imageRef.getDataAsync(maxSize: Constants.imageMaxSize)
+        return UIImage(data: data)
     }
-    
+
     func deleteOldImage(userId: String, path: String) async throws {
         let oldImageRef = storage.child(path)
         
