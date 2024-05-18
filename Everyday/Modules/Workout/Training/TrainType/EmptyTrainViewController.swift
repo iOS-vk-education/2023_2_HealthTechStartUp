@@ -31,6 +31,8 @@ final class EmptyTrainViewController: UIViewController {
                 target: self,
                 action: #selector(didTapCloseButton)
             )
+        
+        navigationItem.leftBarButtonItem?.tintColor = Constants.textColor
     }
     
     override func viewDidLayoutSubviews() {
@@ -83,6 +85,7 @@ final class EmptyTrainViewController: UIViewController {
 private extension EmptyTrainViewController {
     struct Constants {
         static let background: UIColor = UIColor.background
+        static let textColor: UIColor = UIColor.Text.primary
         
         struct ImageView {
             static let size: CGSize = CGSizeMake(200, 200)

@@ -41,8 +41,6 @@ final class ThemeViewController: UIViewController {
         self.view.addGestureRecognizer(swipeRightGestureRecognizer)
         
         self.navigationItem.titleView = navBarTitle
-        
-        navigationController?.navigationBar.isHidden = false
         navigationController?.navigationBar.tintColor = Constants.accentColor
         
         setup()
@@ -50,6 +48,11 @@ final class ThemeViewController: UIViewController {
     
     override func viewWillLayoutSubviews() {
         layout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
 

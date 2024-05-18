@@ -7,6 +7,7 @@
 
 import UIKit
 import PinLayout
+import FirebaseAuth
 
 final class TrainViewController: UIViewController {
     
@@ -51,6 +52,8 @@ final class TrainViewController: UIViewController {
     
     private let image: UIImage
     private let model: Train
+    private var isFavorited: Bool = false
+    private var isDownloaded: Bool = false
     
     // MARK: - lifecycle
     
@@ -83,11 +86,14 @@ final class TrainViewController: UIViewController {
                 image: UIImage(systemName: "heart"),
                 style: .plain,
                 target: self,
-                action: #selector(didTapCloseButton)
+                action: #selector(didTapLikeButton)
             )
         
         navigationItem.leftBarButtonItem?.tintColor = Constants.textColor
         navigationItem.rightBarButtonItem?.tintColor = Constants.textColor
+        
+        checkIfFavorited()
+        checkIfDownloaded()
     }
     
     override func viewDidLayoutSubviews() {
@@ -172,6 +178,60 @@ final class TrainViewController: UIViewController {
         downloadButton.layer.cornerRadius = Constants.Button.cornerRadius
         downloadButton.backgroundColor = Constants.accentColor
         downloadButton.setTitleColor(Constants.textColor, for: .normal)
+        downloadButton.addTarget(self, action: #selector(didTapDownloadButton), for: .touchUpInside)
+    }
+    
+    private func getAuthView() {
+        let authScreen = AuthorizationContainer.assemble(with: .init()).viewController
+        let navigationController = UINavigationController(rootViewController: authScreen)
+        navigationController.navigationBar.isHidden = true
+        
+        if let sheet = navigationController.sheetPresentationController {
+            sheet.detents = [
+                .custom(identifier: .init("small"), resolver: { _ in
+                    return UIScreen.main.bounds.height / 3.5
+                })
+            ]
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 20
+            sheet.prefersGrabberVisible = false
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.prefersEdgeAttachedInCompactHeight = true
+        }
+        
+        present(navigationController, animated: true)
+    }
+    
+    private func checkIfFavorited() {
+        guard let user = Auth.auth().currentUser else {
+            getAuthView()
+            return
+        }
+
+        Fetcher.shared.isFavorited(recordId: model.id, forUser: user.uid) { isFavorited in
+            self.isFavorited = isFavorited
+            let imageName = isFavorited ? "heart.fill" : "heart"
+            self.navigationItem.rightBarButtonItem?.image = UIImage(systemName: imageName)
+        }
+    }
+    
+    private func checkIfDownloaded() {
+        guard let user = Auth.auth().currentUser else {
+            getAuthView()
+            return
+        }
+
+        Fetcher.shared.isDownloaded(recordId: model.id, forUser: user.uid) { isDownloaded in
+            self.isDownloaded = isDownloaded
+            self.updateDownloadButtonTitle()
+        }
+    }
+        
+    private func updateDownloadButtonTitle() {
+        let title = isDownloaded ? "Удалить" : "Загрузить"
+        downloadButton.setTitle(title, for: .normal)
+        downloadButton.backgroundColor = isDownloaded ? .red : Constants.accentColor
     }
 
     // MARK: - Layout
@@ -275,7 +335,39 @@ final class TrainViewController: UIViewController {
     // MARK: - actions
     
     @objc func didTapCloseButton() {
+        if let user = Auth.auth().currentUser {
+            Fetcher.shared.updateFavoriteStatus(with: model.id, forUser: user.uid, isFavorited: isFavorited)
+        }
         self.dismiss(animated: true, completion: nil)
+    }
+    
+    @objc func didTapLikeButton() {
+        if Auth.auth().currentUser != nil { 
+            isFavorited.toggle()
+            HapticService.shared.vibrate(for: .success)
+        } else {
+            getAuthView()
+        }
+       
+        let newImageName = isFavorited ? "heart.fill" : "heart"
+        navigationItem.rightBarButtonItem?.image = UIImage(systemName: newImageName)
+    }
+    
+    @objc private func didTapDownloadButton() {
+        guard let user = Auth.auth().currentUser else {
+            getAuthView()
+            return
+        }
+        
+        HapticService.shared.selectionVibrate()
+       
+        DispatchQueue.global().async {
+            DispatchQueue.main.async {
+                self.isDownloaded.toggle()
+                self.updateDownloadButtonTitle()
+                Fetcher.shared.updateDownloadStatus(with: self.model.id, forUser: user.uid, isDownloaded: self.isDownloaded)
+            }
+        }
     }
 }
 

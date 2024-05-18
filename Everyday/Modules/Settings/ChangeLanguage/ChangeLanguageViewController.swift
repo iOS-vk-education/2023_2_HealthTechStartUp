@@ -38,13 +38,16 @@ final class ChangeLanguageViewController: UIViewController {
         self.navigationItem.titleView = navBarTitle
         navigationController?.navigationBar.tintColor = Constants.accentColor
         
-        navigationController?.navigationBar.isHidden = false
-        print(output.getCurrentLanguageIndexPath())
         setup()
     }
     
     override func viewDidLayoutSubviews() {
         layout()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
 
