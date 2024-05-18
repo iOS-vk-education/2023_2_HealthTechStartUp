@@ -50,7 +50,8 @@ final class ProgramsViewController: UIViewController {
         view.backgroundColor = UIColor(named: "Ghost")
                 
         setupUI()
-        collectionViewManager.delegate = self
+        collectionViewManager.targetDelegate = self
+        collectionViewManager.trainingDelegate = self
         output.didLoadView()
     }
     
@@ -83,8 +84,16 @@ extension ProgramsViewController: ProgramsViewInput {
     }
 }
 
+// MARK: - delegates
+
 extension ProgramsViewController: TargetCollectionViewCellDelegate {
     func targetCollectionViewCellDidSelectItem(type: Target) {
         output.didSelectTargetCell(type: type)
+    }
+}
+
+extension ProgramsViewController: TrainingTypeCollectionViewCellDelegate {
+    func trainingTypeCollectionViewCellDidSelectItem(type: Training) {
+        output.didSelectTrainingCell(type: type)
     }
 }

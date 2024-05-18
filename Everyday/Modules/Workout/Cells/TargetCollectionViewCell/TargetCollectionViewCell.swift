@@ -114,10 +114,19 @@ extension TargetCollectionViewCell: UICollectionViewDataSource {
                           "TargetCollectionViewCell_image_title_pic7".localized,
                           "TargetCollectionViewCell_image_title_pic8".localized]
         
+        let imageDescriptions = ["TargetCollectionViewCell_description_pic1".localized,
+                                 "TargetCollectionViewCell_description_pic2".localized,
+                                 "TargetCollectionViewCell_description_pic3".localized,
+                                 "TargetCollectionViewCell_description_pic4".localized,
+                                 "TargetCollectionViewCell_description_pic5".localized,
+                                 "TargetCollectionViewCell_description_pic6".localized,
+                                 "TargetCollectionViewCell_description_pic7".localized,
+                                 "TargetCollectionViewCell_description_pic8".localized]
+        
         let imageTitle = imageTitles[indexPath.item]
         
         cell.setText(imageTitle)
-        cell.setDescription("Item \(indexPath.item + 1)")
+        cell.setDescription("\(imageDescriptions[indexPath.row])")
 
         return cell
     }
@@ -144,10 +153,6 @@ extension TargetCollectionViewCell: UICollectionViewDelegateFlowLayout {
 
 extension TargetCollectionViewCell: UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        guard let cell = collectionView.cellForItem(at: indexPath) as? TargetCell else {
-            return
-        }
-        
         switch indexPath.item {
         case 0:
             delegate?.targetCollectionViewCellDidSelectItem(type: .recovery)

@@ -8,8 +8,14 @@
 import UIKit
 import PinLayout
 
+protocol TrainingTypeCollectionViewCellDelegate: AnyObject {
+    func trainingTypeCollectionViewCellDidSelectItem(type: Training)
+}
+
 final class TrainingTypeCollectionViewCell: UICollectionViewCell {
     // MARK: - private properties
+    
+    weak var delegate: TrainingTypeCollectionViewCellDelegate?
     
     private lazy var containerView: UIView = {
         let view = UIView()
@@ -73,19 +79,26 @@ extension TrainingTypeCollectionViewCell: UICollectionViewDataSource {
             return .init()
         }
         
-        let imageNames = ["OwnPlan", "FullBody", "Legs", "Hands", "Chest", "Shoulders", "Press", "Back"]
+        let imageNames = ["FullBody", "Legs", "Hands", "Chest", "Shoulders", "Press", "Back"]
         let imageName = imageNames[indexPath.item]
             if let image = UIImage(named: imageName) {
                 cell.setImage(with: image)
             }
 
-        cell.setText("Item \(indexPath.item + 1)")
+        let imageDescriptions = ["TrainingCollectionViewCell_description_pic1".localized,
+                                 "TrainingCollectionViewCell_description_pic2".localized,
+                                 "TrainingCollectionViewCell_description_pic3".localized,
+                                 "TrainingCollectionViewCell_description_pic4".localized,
+                                 "TrainingtCollectionViewCell_description_pic5".localized,
+                                 "TrainingCollectionViewCell_description_pic6".localized,
+                                 "TrainingCollectionViewCell_description_pic7".localized]
+        cell.setText("\(imageDescriptions[indexPath.row])")
 
         return cell
     }
 
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
-       8
+       7
     }
 }
 
@@ -119,6 +132,25 @@ extension TrainingTypeCollectionViewCell: UICollectionViewDelegate {
                 }
             }
         )
+        
+        switch indexPath.item {
+        case 0:
+            delegate?.trainingTypeCollectionViewCellDidSelectItem(type: .fullBody)
+        case 1:
+            delegate?.trainingTypeCollectionViewCellDidSelectItem(type: .legs)
+        case 2:
+            delegate?.trainingTypeCollectionViewCellDidSelectItem(type: .hands)
+        case 3:
+            delegate?.trainingTypeCollectionViewCellDidSelectItem(type: .chest)
+        case 4:
+            delegate?.trainingTypeCollectionViewCellDidSelectItem(type: .shoulders)
+        case 5:
+            delegate?.trainingTypeCollectionViewCellDidSelectItem(type: .press)
+        case 6:
+            delegate?.trainingTypeCollectionViewCellDidSelectItem(type: .back)
+        default:
+            return
+        }
     }
 
     func collectionView(_ collectionView: UICollectionView, didHighlightItemAt indexPath: IndexPath) {
