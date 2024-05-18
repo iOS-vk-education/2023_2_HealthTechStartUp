@@ -340,13 +340,15 @@ final class TrainViewController: UIViewController {
     }
     
     @objc func didTapLikeButton() {
-        if Auth.auth().currentUser != nil { 
-            isFavorited.toggle()
-            HapticService.shared.vibrate(for: .success)
-        } else {
+        guard let user = Auth.auth().currentUser else {
             getAuthView()
+            return
         }
+        
+        isFavorited.toggle()
+        HapticService.shared.vibrate(for: .success)
        
+        Fetcher.shared.updateFavoriteStatus(with: self.model.id, forUser: user.uid, isFavorited: self.isFavorited)
         let newImageName = isFavorited ? "heart.fill" : "heart"
         navigationItem.rightBarButtonItem?.image = UIImage(systemName: newImageName)
     }
