@@ -56,6 +56,11 @@ final class ProfileViewController: UIViewController {
     override func viewDidLayoutSubviews() {
         layout()
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
+    }
 }
 
 extension ProfileViewController: ProfileViewInput {

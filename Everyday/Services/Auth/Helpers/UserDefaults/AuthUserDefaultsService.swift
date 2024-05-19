@@ -24,10 +24,10 @@ final class AuthUserDefaultsService: AuthUserDefaultsDescription {
             defaults.set("google", forKey: "WhichSign")
         case .vk:
             defaults.set("vk", forKey: "WhichSign")
-//        case .anonym:
-//            defaults.set("anonym", forKey: "WhichSign")
         case .common:
             defaults.set("email", forKey: "WhichSign")
+//        case .apple:
+//            defaults.set("vk", forKey: "WhichSign")
         default:
             break
         }

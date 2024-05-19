@@ -90,6 +90,8 @@ extension SettingsViewController: TableViewDelegateSelection {
                 output.didTapDateAndTimeCell()
             case 4:
                 output.didTapUnitsCell()
+            case 5:
+                output.didTapChangeLanguageCell()
             default:
                 return
             }

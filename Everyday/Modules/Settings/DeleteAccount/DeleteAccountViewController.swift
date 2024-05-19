@@ -50,8 +50,6 @@ final class DeleteAccountViewController: UIViewController {
         self.navigationItem.titleView = navBarTitle
         navigationController?.navigationBar.tintColor = Constants.accentColor
         
-        navigationController?.navigationBar.isHidden = false
-        
         view.addSubview(scrollView)
         
         setup()
@@ -64,6 +62,11 @@ final class DeleteAccountViewController: UIViewController {
         default:
             print("Sign method error")
         }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        navigationController?.setNavigationBarHidden(false, animated: true)
     }
 }
 

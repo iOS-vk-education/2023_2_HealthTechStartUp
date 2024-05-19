@@ -171,7 +171,9 @@ final class FirebaseAuthService: FirebaseAuthServiceDescription {
                         "bodyWeightMeasureUnit": userRequest.bodyWeightMeasureUnit ?? "",
                         "measurementsMeasureUnit": userRequest.measurementsMeasureUnit ?? "",
                         "loadWeightMeasureUnit": userRequest.bodyWeightMeasureUnit ?? "",
-                        "distanceMeasureUnit": userRequest.distanceMeasureUnit ?? ""
+                        "distanceMeasureUnit": userRequest.distanceMeasureUnit ?? "",
+                        "featured": userRequest.featuredPrograms ?? [],
+                        "downloaded": userRequest.downloadedPrograms ?? []
                     ]
                     
                     try await Firestore.firestore().collection("user").document(userId).setData(userData)

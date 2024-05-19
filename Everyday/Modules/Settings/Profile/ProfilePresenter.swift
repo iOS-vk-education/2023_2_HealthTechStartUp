@@ -97,8 +97,8 @@ extension ProfilePresenter: ProfileViewOutput {
     }
     
     func didLoadView() {
-        DispatchQueue.main.async {
-            self.interactor.getUserProfileImage()
+        Task {
+            await interactor.getUserProfileImage()
         }
     }
     
@@ -154,9 +154,10 @@ extension ProfilePresenter: ProfileInteractorOutput {
     }
     
     func getUserImage(userImage: UIImage?, result: Result<Void, any Error>) {
-        self.handleFetchUserImage(result: result, userProfileImage: userImage ?? UIImage())
-    
-        self.view?.configure(with: ProfileViewModel())
+        DispatchQueue.main.async {
+            self.handleFetchUserImage(result: result, userProfileImage: userImage ?? UIImage())
+            self.view?.configure(with: ProfileViewModel())
+        }
     }
     
     func didLogout(_ result: Result<Void, any Error>) {

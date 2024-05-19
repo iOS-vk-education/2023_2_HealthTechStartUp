@@ -36,6 +36,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         DispatchQueue.main.asyncAfter(deadline: .now() + delay) {
             self.splashPresenter?.dismiss { [weak self] in
                 self?.splashPresenter = nil
+                NotificationsService.shared.requestAuthorization()
             }
         }
     }
