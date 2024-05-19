@@ -10,6 +10,7 @@
 		8C5028602BF9626E0010F918 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50285C2BF9626E0010F918 /* NotificationModel.swift */; };
 		8C5028612BF9626E0010F918 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50285E2BF9626E0010F918 /* NotificationService.swift */; };
 		8C5028652BF9641F0010F918 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C5028632BF9641E0010F918 /* Model.xcdatamodeld */; };
+		8C50286E2BF980630010F918 /* EverydayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50286D2BF980630010F918 /* EverydayTests.swift */; };
 		8CA0C3642BE968C200353FB2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3632BE968C200353FB2 /* Date+Extension.swift */; };
 		9E0C348E2BD700CB00D8696B /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0C348D2BD700CB00D8696B /* CloseButton.swift */; };
 		9E0C34902BD7CE6A00D8696B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */; };
@@ -321,10 +322,22 @@
 		9EE8AE212B7FB905001D126F /* ProgressContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE1B2B7FB905001D126F /* ProgressContainer.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8C50286F2BF980630010F918 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9E53FB282B7F87BA00C55A45 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9E53FB2F2B7F87BA00C55A45;
+			remoteInfo = Everyday;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		8C50285C2BF9626E0010F918 /* NotificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		8C50285E2BF9626E0010F918 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		8C5028642BF9641E0010F918 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		8C50286B2BF980630010F918 /* EverydayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EverydayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C50286D2BF980630010F918 /* EverydayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverydayTests.swift; sourceTree = "<group>"; };
 		8CA0C3632BE968C200353FB2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		9E0C348D2BD700CB00D8696B /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -635,6 +648,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8C5028682BF980630010F918 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9E53FB2D2B7F87BA00C55A45 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -669,6 +689,14 @@
 				8C50285E2BF9626E0010F918 /* NotificationService.swift */,
 			);
 			path = Notification;
+			sourceTree = "<group>";
+		};
+		8C50286C2BF980630010F918 /* EverydayTests */ = {
+			isa = PBXGroup;
+			children = (
+				8C50286D2BF980630010F918 /* EverydayTests.swift */,
+			);
+			path = EverydayTests;
 			sourceTree = "<group>";
 		};
 		9E2931822B9F25FB00950B15 /* UI */ = {
@@ -942,6 +970,8 @@
 			children = (
 				9E53FB322B7F87BA00C55A45 /* Everyday */,
 				9E467A312BF2342400127EFA /* Everyday.app */,
+				8C50286B2BF980630010F918 /* EverydayTests.xctest */,
+				8C50286C2BF980630010F918 /* EverydayTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -1929,6 +1959,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8C50286A2BF980630010F918 /* EverydayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C5028732BF980630010F918 /* Build configuration list for PBXNativeTarget "EverydayTests" */;
+			buildPhases = (
+				8C5028672BF980630010F918 /* Sources */,
+				8C5028682BF980630010F918 /* Frameworks */,
+				8C5028692BF980630010F918 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8C5028702BF980630010F918 /* PBXTargetDependency */,
+			);
+			name = EverydayTests;
+			productName = EverydayTests;
+			productReference = 8C50286B2BF980630010F918 /* EverydayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		9E53FB2F2B7F87BA00C55A45 /* Everyday */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9E53FB442B7F87BB00C55A45 /* Build configuration list for PBXNativeTarget "Everyday" */;
@@ -1965,9 +2013,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					8C50286A2BF980630010F918 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 9E53FB2F2B7F87BA00C55A45;
+					};
 					9E53FB2F2B7F87BA00C55A45 = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -1994,11 +2046,19 @@
 			projectRoot = "";
 			targets = (
 				9E53FB2F2B7F87BA00C55A45 /* Everyday */,
+				8C50286A2BF980630010F918 /* EverydayTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8C5028692BF980630010F918 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9E53FB2E2B7F87BA00C55A45 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2037,6 +2097,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8C5028672BF980630010F918 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C50286E2BF980630010F918 /* EverydayTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9E53FB2C2B7F87BA00C55A45 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2343,6 +2411,14 @@
 		};
 /* End PBXSourcesBuildPhase section */
 
+/* Begin PBXTargetDependency section */
+		8C5028702BF980630010F918 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9E53FB2F2B7F87BA00C55A45 /* Everyday */;
+			targetProxy = 8C50286F2BF980630010F918 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
+
 /* Begin PBXVariantGroup section */
 		9E53FB392B7F87BA00C55A45 /* Main.storyboard */ = {
 			isa = PBXVariantGroup;
@@ -2367,6 +2443,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8C5028712BF980630010F918 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NS3YD2TYB9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sport.EverydayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Everyday.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Everyday";
+			};
+			name = Debug;
+		};
+		8C5028722BF980630010F918 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NS3YD2TYB9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sport.EverydayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Everyday.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Everyday";
+			};
+			name = Release;
+		};
 		9E53FB422B7F87BB00C55A45 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2496,7 +2610,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = NS3YD2TYB9;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -2514,7 +2628,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sport;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sportic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -2534,7 +2648,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = "";
+				DEVELOPMENT_TEAM = NS3YD2TYB9;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -2552,7 +2666,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sport;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sportic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -2567,6 +2681,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8C5028732BF980630010F918 /* Build configuration list for PBXNativeTarget "EverydayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C5028712BF980630010F918 /* Debug */,
+				8C5028722BF980630010F918 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9E53FB2B2B7F87BA00C55A45 /* Build configuration list for PBXProject "Everyday" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

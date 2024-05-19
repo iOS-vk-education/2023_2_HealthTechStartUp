@@ -29,7 +29,7 @@ class ProfileAcknowledgementModel {
     private(set) var featuredPrograms: [DocumentReference]?
     private(set) var downloadedPrograms: [DocumentReference]?
 
-    private init() { }
+    internal init() { }
     
    func update(firstname: String? = nil, lastname: String? = nil, nickname: String? = nil, email: String? = nil,
                password: String? = nil, profileImage: UIImage? = nil, age: String? = nil, gender: String? = nil,
