@@ -31,11 +31,11 @@ final class TabBarController: UITabBarController {
     // MARK: - Actions
 
     private func setupTabBar() {
-        let viewControllers = TabBarItem.allCases.map { createViewController(for: $0) }
-        self.setViewControllers(viewControllers, animated: false)
+        let navigationControllers = TabBarItem.allCases.map { createNavigationController(for: $0) }
+        self.setViewControllers(navigationControllers, animated: false)
     }
     
-    private func createViewController(for item: TabBarItem) -> UIViewController {
+    private func createNavigationController(for item: TabBarItem) -> UINavigationController {
         let viewController: UIViewController
         
         let tabBarItem = UITabBarItem(title: item.title, image: item.image, tag: item.rawValue)
@@ -55,7 +55,7 @@ final class TabBarController: UITabBarController {
 
         viewController.tabBarItem = tabBarItem
         
-        return viewController
+        return UINavigationController(rootViewController: viewController)
     }
 }
 

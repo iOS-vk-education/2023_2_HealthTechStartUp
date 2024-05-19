@@ -82,6 +82,7 @@ private extension NotepadViewController {
         setupView()
         setupOuterCollectionView()
         setupTableView()
+        setupRightBarButtonItem()
         view.addSubviews(outerCollectionView, stateLabel, tableView, emptyStateView)
     }
 
@@ -123,8 +124,10 @@ private extension NotepadViewController {
         tableView.register(NotepadTableViewCell.self, forCellReuseIdentifier: NotepadTableViewCell.reuseID)
     }
     
-    func setupRightBarButtonItem(with image: UIImage?) {
-        let rightBarButtonItem = UIBarButtonItem(image: image, style: .plain, target: self, action: #selector(didTapRightBarButtonItem))
+    func setupRightBarButtonItem() {
+        let barButtonImageName = Constants.RightBarButtonItem.name
+        let barButtonImage = UIImage(systemName: barButtonImageName)
+        let rightBarButtonItem = UIBarButtonItem(image: barButtonImage, style: .plain, target: self, action: #selector(didTapRightBarButtonItem))
         rightBarButtonItem.tintColor = Constants.RightBarButtonItem.tintColor
         navigationItem.rightBarButtonItem = rightBarButtonItem
     }
@@ -256,7 +259,6 @@ extension NotepadViewController: UITableViewDelegate {
 
 extension NotepadViewController: NotepadViewInput {
     func configure(with viewModel: NotepadViewModel) {
-        setupRightBarButtonItem(with: viewModel.barButtonImage)
         stateLabel.attributedText = viewModel.stateTitle
     }
     
@@ -323,6 +325,7 @@ private extension NotepadViewController {
         
         struct RightBarButtonItem {
             static let tintColor: UIColor = UIColor.UI.accent
+            static let name: String = "bookmark"
         }
     }
 }

@@ -26,7 +26,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         
         SettingsUserDefaultsService.shared.setTheme()
         
-        window?.rootViewController = navigationController
+        window?.rootViewController = viewController
         
         Reloader.shared.getAuthType()
         
