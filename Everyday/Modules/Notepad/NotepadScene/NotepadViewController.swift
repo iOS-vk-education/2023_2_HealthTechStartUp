@@ -69,6 +69,11 @@ private extension NotepadViewController {
             .marginTop(Constants.TableView.marginTop)
             .horizontally()
             .bottom()
+        
+        emptyStateView.pin
+            .below(of: stateLabel)
+            .horizontally()
+            .bottom(view.pin.safeArea)
     }
     
     // MARK: - Setup
@@ -77,7 +82,7 @@ private extension NotepadViewController {
         setupView()
         setupOuterCollectionView()
         setupTableView()
-        view.addSubviews(outerCollectionView, stateLabel, tableView)
+        view.addSubviews(outerCollectionView, stateLabel, tableView, emptyStateView)
     }
 
     func setupView() {
@@ -262,20 +267,11 @@ extension NotepadViewController: NotepadViewInput {
     func showEmptyStateView(with viewModel: NotepadEmptyStateViewModel) {
         stateLabel.text = Constants.StateLabel.defaultText
         emptyStateView.configure(with: viewModel)
-        view.addSubview(emptyStateView)
-        
-        emptyStateView.pin
-            .below(of: outerCollectionView)
-            .horizontally()
-            .bottom(view.pin.safeArea)
+        emptyStateView.isHidden = false
     }
     
-    func dismissEmptyStateView() {
-        guard emptyStateView.superview != nil else {
-            return
-        }
-        
-        emptyStateView.removeFromSuperview()
+    func hideEmptyStateView() {
+        emptyStateView.isHidden = true
     }
     
     func showLoadingView() {
@@ -307,7 +303,7 @@ private extension NotepadViewController {
             static let height: CGFloat = 30
             static let horizontalMargin: CGFloat = 20
             static let marginTop: CGFloat = 20
-            static let defaultText: String = "EEEE, d MMM"
+            static let defaultText: String = ""
         }
         
         struct OuterCollectionView {

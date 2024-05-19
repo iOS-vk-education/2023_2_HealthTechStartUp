@@ -21,7 +21,7 @@ protocol NotepadViewInput: AnyObject {
     func showLoadingView()
     func dismissLoadingView()
     func showEmptyStateView(with viewModel: NotepadEmptyStateViewModel)
-    func dismissEmptyStateView()
+    func hideEmptyStateView()
 }
 
 protocol NotepadViewOutput: AnyObject {

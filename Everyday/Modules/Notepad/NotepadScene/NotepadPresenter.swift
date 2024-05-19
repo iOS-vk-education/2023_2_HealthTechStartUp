@@ -175,7 +175,7 @@ extension NotepadPresenter: NotepadInteractorOutput {
         view?.reloadData()
         
         if !workouts.isEmpty {
-            view?.dismissEmptyStateView()
+            view?.hideEmptyStateView()
             let viewModel = NotepadViewModel(isResult: isResult)
             view?.configure(with: viewModel)
         } else {
