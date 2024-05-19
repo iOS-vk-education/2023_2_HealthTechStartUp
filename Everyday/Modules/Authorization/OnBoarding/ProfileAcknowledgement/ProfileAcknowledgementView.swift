@@ -221,7 +221,7 @@ struct ProfileAcknowledgementView: View {
                 
                 DispatchQueue.main.async {
                     self.onFinish?()
-                 }
+                }
             }
         }
     }
