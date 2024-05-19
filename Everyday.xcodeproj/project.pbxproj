@@ -10,7 +10,6 @@
 		8C5028602BF9626E0010F918 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50285C2BF9626E0010F918 /* NotificationModel.swift */; };
 		8C5028612BF9626E0010F918 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50285E2BF9626E0010F918 /* NotificationService.swift */; };
 		8CA0C3642BE968C200353FB2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3632BE968C200353FB2 /* Date+Extension.swift */; };
-		9DEC6A892BFA0F2A0028BAFD /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6A872BFA0F2A0028BAFD /* Model.xcdatamodeld */; };
 		9DEC6A8B2BFA125A0028BAFD /* ExtraTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6A8A2BFA125A0028BAFD /* ExtraTableViewCellViewModel.swift */; };
 		9DEC6A8F2BFA12960028BAFD /* ExtraTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6A8E2BFA12960028BAFD /* ExtraTableViewCell.swift */; };
 		9DEC6A972BFA12CE0028BAFD /* HeartRatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6A912BFA12CE0028BAFD /* HeartRatePresenter.swift */; };
@@ -57,6 +56,8 @@
 		9DEC6AFF2BFA199C0028BAFD /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6AFE2BFA199C0028BAFD /* Preview.swift */; };
 		9E0C348E2BD700CB00D8696B /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0C348D2BD700CB00D8696B /* CloseButton.swift */; };
 		9E0C34902BD7CE6A00D8696B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */; };
+		9E36D47C2BFA435E004C5658 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E36D47A2BFA435E004C5658 /* Model.xcdatamodeld */; };
+		9E36D47F2BFA43B4004C5658 /* BeamAISDK in Frameworks */ = {isa = PBXBuildFile; productRef = 9E36D47E2BFA43B4004C5658 /* BeamAISDK */; };
 		9E467A3B2BF2356100127EFA /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E467A322BF2356100127EFA /* WorkoutViewModel.swift */; };
 		9E467A3C2BF2356100127EFA /* WorkoutContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E467A342BF2356100127EFA /* WorkoutContainer.swift */; };
 		9E467A3D2BF2356100127EFA /* WorkoutInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E467A352BF2356100127EFA /* WorkoutInteractor.swift */; };
@@ -350,7 +351,6 @@
 		8C50285C2BF9626E0010F918 /* NotificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		8C50285E2BF9626E0010F918 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		8CA0C3632BE968C200353FB2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
-		9DEC6A882BFA0F2A0028BAFD /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9DEC6A8A2BFA125A0028BAFD /* ExtraTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		9DEC6A8E2BFA12960028BAFD /* ExtraTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraTableViewCell.swift; sourceTree = "<group>"; };
 		9DEC6A912BFA12CE0028BAFD /* HeartRatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRatePresenter.swift; sourceTree = "<group>"; };
@@ -397,6 +397,7 @@
 		9DEC6AFE2BFA199C0028BAFD /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		9E0C348D2BD700CB00D8696B /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		9E36D47B2BFA435E004C5658 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E467A312BF2342400127EFA /* Everyday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everyday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E467A322BF2356100127EFA /* WorkoutViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
 		9E467A342BF2356100127EFA /* WorkoutContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutContainer.swift; sourceTree = "<group>"; };
@@ -689,6 +690,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				9E36D47F2BFA43B4004C5658 /* BeamAISDK in Frameworks */,
 				9EA952592BF2266800ADBF9A /* GoogleSignInSwift in Frameworks */,
 				9EE1BFAC2BD7F5E100458F04 /* PinLayout in Frameworks */,
 				9EA952572BF2266800ADBF9A /* GoogleSignIn in Frameworks */,
@@ -1970,7 +1972,7 @@
 		9EA952FC2BF2286300ADBF9A /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				9DEC6A872BFA0F2A0028BAFD /* Model.xcdatamodeld */,
+				9E36D47A2BFA435E004C5658 /* Model.xcdatamodeld */,
 				9EA952F82BF2286300ADBF9A /* CoreDataService.swift */,
 				9EA952FA2BF2286300ADBF9A /* UserAuthentication+CoreDataClass.swift */,
 				9EA952FB2BF2286300ADBF9A /* UserAuthentication+CoreDataProperties.swift */,
@@ -2220,6 +2222,7 @@
 				9EE1BFBB2BD7F62400458F04 /* FirebaseAuth */,
 				9EA952562BF2266800ADBF9A /* GoogleSignIn */,
 				9EA952582BF2266800ADBF9A /* GoogleSignInSwift */,
+				9E36D47E2BFA43B4004C5658 /* BeamAISDK */,
 			);
 			productName = Everyday;
 			productReference = 9E467A312BF2342400127EFA /* Everyday.app */;
@@ -2255,6 +2258,7 @@
 				9D11F1092BA7D8CF003CF1F5 /* XCRemoteSwiftPackageReference "vkid-ios-sdk" */,
 				9DE61AFD2BA8AEFE006AC078 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
 				9EA952552BF2266800ADBF9A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */,
+				9E36D47D2BFA43B4004C5658 /* XCRemoteSwiftPackageReference "BeamAISDK-iOS" */,
 			);
 			productRefGroup = 9E53FB272B7F87BA00C55A45;
 			projectDirPath = "";
@@ -2399,7 +2403,6 @@
 				9EBB2FA02BF796F200D1A2D4 /* CatalogProtocols.swift in Sources */,
 				9EBB2FA12BF796F200D1A2D4 /* CatalogInteractor.swift in Sources */,
 				9EBB2FA22BF796F200D1A2D4 /* CatalogContainer.swift in Sources */,
-				9DEC6A892BFA0F2A0028BAFD /* Model.xcdatamodeld in Sources */,
 				9EA952D32BF2279A00ADBF9A /* ResultsProtocols.swift in Sources */,
 				9EA953312BF2286300ADBF9A /* SettingsUserDefaultsService.swift in Sources */,
 				9EA952452BF19D5500ADBF9A /* UnitsTableViewCell.swift in Sources */,
@@ -2494,6 +2497,7 @@
 				9EA952262BF19D5500ADBF9A /* ProfileViewModelSingWithVKOrGoogle.swift in Sources */,
 				9EA953252BF2286300ADBF9A /* DataReload.swift in Sources */,
 				9E5B75452B7F9D7600E2BDE6 /* AgeView.swift in Sources */,
+				9E36D47C2BFA435E004C5658 /* Model.xcdatamodeld in Sources */,
 				9DEC6AD92BFA17010028BAFD /* SheetPresenter+WeightMeasurementViewOutput.swift in Sources */,
 				9E5B75472B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift in Sources */,
 				9EA952092BF19D5500ADBF9A /* ChangePasswordProtocols.swift in Sources */,
@@ -2904,6 +2908,14 @@
 				minimumVersion = 10.22.1;
 			};
 		};
+		9E36D47D2BFA43B4004C5658 /* XCRemoteSwiftPackageReference "BeamAISDK-iOS" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/MX126/BeamAISDK-iOS";
+			requirement = {
+				branch = main;
+				kind = branch;
+			};
+		};
 		9EA952552BF2266800ADBF9A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/google/GoogleSignIn-iOS";
@@ -2915,6 +2927,11 @@
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
+		9E36D47E2BFA43B4004C5658 /* BeamAISDK */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 9E36D47D2BFA43B4004C5658 /* XCRemoteSwiftPackageReference "BeamAISDK-iOS" */;
+			productName = BeamAISDK;
+		};
 		9EA952562BF2266800ADBF9A /* GoogleSignIn */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 9EA952552BF2266800ADBF9A /* XCRemoteSwiftPackageReference "GoogleSignIn-iOS" */;
@@ -2963,14 +2980,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		9DEC6A872BFA0F2A0028BAFD /* Model.xcdatamodeld */ = {
+		9E36D47A2BFA435E004C5658 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9DEC6A882BFA0F2A0028BAFD /* Model.xcdatamodel */,
+				9E36D47B2BFA435E004C5658 /* Model.xcdatamodel */,
 			);
-			currentVersion = 9DEC6A882BFA0F2A0028BAFD /* Model.xcdatamodel */;
+			currentVersion = 9E36D47B2BFA435E004C5658 /* Model.xcdatamodel */;
 			name = Model.xcdatamodeld;
-			path = /Users/a123/VK_education/sem2/swift/2023_2_HealthTechStartUp/Everyday/Services/Auth/Helpers/CoreData/Model.xcdatamodeld;
+			path = "/Users/mk126/Desktop/МГТУ/Технопарк ios/Технопарк 21/2023_2_HealthTechStartUp/Everyday/Services/Auth/Helpers/CoreData/Model.xcdatamodeld";
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};

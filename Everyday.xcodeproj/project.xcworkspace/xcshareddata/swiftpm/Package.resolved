@@ -1,5 +1,5 @@
 {
-  "originHash" : "aac5c477e52c1a71809ef32d614b604dedbeaee86848900f99de09a002ab3a25",
+  "originHash" : "98a6e77bbcd6d021eafa105a4074f8f05508e07abfdf98cb6020ded7d5e54aa3",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -29,9 +29,18 @@
       }
     },
     {
+      "identity" : "beamaisdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MX126/BeamAISDK-iOS",
+      "state" : {
+        "branch" : "main",
+        "revision" : "a9851792168b4c9c40a9247d1a1cfc6786cbadf2"
+      }
+    },
+    {
       "identity" : "firebase-ios-sdk",
       "kind" : "remoteSourceControl",
-      "location" : "https://github.com/firebase/firebase-ios-sdk.git",
+      "location" : "https://github.com/firebase/firebase-ios-sdk",
       "state" : {
         "revision" : "9d17b500cd98d9a7009751ad62f802e152e97021",
         "version" : "10.26.0"

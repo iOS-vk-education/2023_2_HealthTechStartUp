@@ -27,11 +27,9 @@ extension AuthorizationRouter: AuthorizationRouterInput {
         if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
            let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
             let tabBarController = TabBarController()
-            let navigationController = UINavigationController(rootViewController: tabBarController)
-            navigationController.modalPresentationStyle = .fullScreen
-
+            
             UIView.transition(with: window, duration: 0.3, options: [.transitionCrossDissolve], animations: {
-                window.rootViewController = navigationController
+                window.rootViewController = tabBarController
             }, completion: nil)
         }
     }

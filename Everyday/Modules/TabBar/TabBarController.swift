@@ -87,10 +87,6 @@ extension TabBarController: UITabBarControllerDelegate {
     // MARK: - Helpers
     
     private func offerAuthentication() {
-        guard (viewControllers?.first(where: { $0 is WorkoutViewController })) != nil else {
-            return
-        }
-        
         let authScreen = AuthorizationContainer.assemble(with: .init()).viewController
         let navigationController = UINavigationController(rootViewController: authScreen)
         navigationController.navigationBar.isHidden = true

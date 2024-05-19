@@ -21,11 +21,9 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         splashPresenter = SplashPresenter(scene: scene)
         setupWindow(with: scene)
         
-        let viewController = TabBarController()
-        let navigationController = UINavigationController(rootViewController: viewController)
-        
         SettingsUserDefaultsService.shared.setTheme()
         
+        let viewController = TabBarController()
         window?.rootViewController = viewController
         
         Reloader.shared.getAuthType()
