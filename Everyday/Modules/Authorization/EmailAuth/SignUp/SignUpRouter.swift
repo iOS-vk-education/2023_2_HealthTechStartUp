@@ -18,14 +18,16 @@ extension SignUpRouter: SignUpRouterInput {
     }
 
     func openApp() {
-        if let windowScene = UIApplication.shared.connectedScenes.first(where: { $0.activationState == .foregroundActive }) as? UIWindowScene,
-           let window = windowScene.windows.first(where: { $0.isKeyWindow }) {
-            let tabBarController = TabBarController()
-
-            UIView.transition(with: window, duration: 0.3, options: [.transitionCrossDissolve], animations: {
-                window.rootViewController = tabBarController
-            }, completion: nil)
+        guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
+              let window = windowScene.windows.first else {
+            fatalError("oops")
         }
+
+        let tabBarController = TabBarController()
+
+        UIView.transition(with: window, duration: 0.3, options: .transitionCrossDissolve, animations: {
+            window.rootViewController = tabBarController
+        }, completion: nil)
     }
     
     func openLogin() {

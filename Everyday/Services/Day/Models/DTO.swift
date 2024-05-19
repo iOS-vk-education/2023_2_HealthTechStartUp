@@ -33,6 +33,18 @@ struct DayServiceSchedule: Decodable {
         saturday = []
         sunday = []
     }
+    
+    var dictionaryRepresentation: [String: Any] {
+        return [
+            "monday": monday,
+            "tuesday": tuesday,
+            "wednesday": wednesday,
+            "thursday": thursday,
+            "friday": friday,
+            "saturday": saturday,
+            "sunday": sunday
+        ]
+    }
 }
 
 struct DayServiceProgramElement: Decodable {
