@@ -13,15 +13,11 @@ final class TrainingRouter {
 }
 
 extension TrainingRouter: TrainingRouterInput {
-    func openExercise(with exerciseContext: ExerciseContext) {
-        guard let viewController = viewController else {
-            return
-        }
+    func showView(with context: SheetContext) {
+        let sheetContainer = SheetContainer.assemble(with: context)
+        let presentedViewController = sheetContainer.viewController
         
-        let exerciseContainer = ExerciseContainer.assemble(with: exerciseContext)
-        let exerciseViewController = exerciseContainer.viewController
-        
-        if let sheet = exerciseViewController.sheetPresentationController {
+        if let sheet = presentedViewController.sheetPresentationController {
             sheet.detents = [
                 .custom(resolver: { _ in
                     return Constants.sheetHeight
@@ -29,41 +25,23 @@ extension TrainingRouter: TrainingRouterInput {
             ]
         }
         
-        viewController.present(exerciseViewController, animated: true)
+        viewController?.present(presentedViewController, animated: true)
     }
     
-    func showResults(with resultsContext: ResultsContext) {
-        guard let viewController = viewController else {
-            return
-        }
-        
-        let resultsContainer = ResultsContainer.assemble(with: resultsContext)
+    func showResults(with context: ResultsContext) {
+        let resultsContainer = ResultsContainer.assemble(with: context)
         let resultsViewController = resultsContainer.viewController
         resultsViewController.modalPresentationStyle = .overFullScreen
-        viewController.present(resultsViewController, animated: false)
+        
+        viewController?.present(resultsViewController, animated: false)
     }
     
-    func openExtra() {
-        guard
-            let viewController = viewController,
-            let navigationController = viewController.navigationController
-        else {
-            return
-        }
+    func openExtra(with context: ExtraContext) {
+        let extraContainer = ExtraContainer.assemble(with: context)
+        let extraViewController = extraContainer.viewController
+        extraViewController.navigationItem.hidesBackButton = true
         
-        let extraContainer = ExtraContainer.assemble(with: .init())
-        navigationController.pushViewController(extraContainer.viewController, animated: true)
-    }
-    
-    func openNotepad() {
-        guard
-            let viewController = viewController,
-            let navigationController = viewController.navigationController
-        else {
-            return
-        }
-        
-        navigationController.popToRootViewController(animated: true)
+        viewController?.navigationController?.pushViewController(extraViewController, animated: true)
     }
 }
 

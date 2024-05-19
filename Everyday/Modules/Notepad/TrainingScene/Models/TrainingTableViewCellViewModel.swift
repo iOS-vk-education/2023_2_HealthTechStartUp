@@ -10,7 +10,6 @@ import UIKit
 struct TrainingTableViewCellViewModel {
     let title: NSAttributedString
     let result: NSAttributedString
-    let startTitle: NSAttributedString
     let number: NSAttributedString
     let circle: UIImage?
     let circleFilled: UIImage?
@@ -22,8 +21,6 @@ struct TrainingTableViewCellViewModel {
         let resultLabelAttributedString = NSAttributedString(string: resultLabelTitle, attributes: Styles.resultAttributes)
         let numberLabelTitle = "0"
         let numberLabelAttributedString = NSAttributedString(string: numberLabelTitle, attributes: Styles.resultAttributes)
-        let startButtonTitle = "Timer_Start_Button_Title"
-        let startButtonAttributedString = NSAttributedString(string: startButtonTitle.localized, attributes: Styles.titleAttributes)
         let circleImageName = "circle"
         let circleImage = UIImage(systemName: circleImageName, withConfiguration: Configurations.large)
         let circleFilledImageName = "circle.fill"
@@ -31,7 +28,6 @@ struct TrainingTableViewCellViewModel {
         
         self.title = titleLabelAttributedString
         self.result = resultLabelAttributedString
-        self.startTitle = startButtonAttributedString
         self.number = numberLabelAttributedString
         self.circle = circleImage
         self.circleFilled = circleFilledImage

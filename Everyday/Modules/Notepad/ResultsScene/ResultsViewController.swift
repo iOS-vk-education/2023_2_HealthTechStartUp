@@ -27,7 +27,6 @@ final class ResultsViewController: UIViewController {
 
     init(output: ResultsViewOutput) {
         self.output = output
-
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -36,18 +35,16 @@ final class ResultsViewController: UIViewController {
         fatalError("init(coder:) has not been implemented")
     }
     
-    // MARK: - Life cycle
+    // MARK: - Lifecycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         output.didLoadView()
         setup()
     }
     
     override func viewDidLayoutSubviews() {
         super.viewDidLayoutSubviews()
-        
         layout()
     }
 }

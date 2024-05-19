@@ -17,4 +17,8 @@ extension String {
             character.isNumber
         }
     }
+    
+    var isDouble: Bool {
+        NumberFormatter().number(from: self) != nil
+    }
 }
