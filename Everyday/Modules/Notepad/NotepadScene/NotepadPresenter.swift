@@ -17,6 +17,7 @@ final class NotepadPresenter {
     
     private var calendar: [[Date]] = []
     private var selectedCell: (outerIndex: IndexPath, innerIndex: IndexPath)?
+    private var selectedDate: Date = Date()
     
     private var isResult: Bool = false
     private var workouts: [Workout] = []
@@ -98,6 +99,11 @@ extension NotepadPresenter: NotepadViewOutput {
     }
     
     func didTapNewDate(_ date: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Constants.DateFormatter.format
+        let dateLabelString = dateFormatter.string(from: date)
+        selectedDate = date
+        view?.updateDateLabel(with: dateLabelString)
         interactor.loadResult(date: date)
     }
     
@@ -155,18 +161,37 @@ extension NotepadPresenter: NotepadViewOutput {
     }
     
     func didTapHeaderView(number: Int) {
-        let trainingContext = TrainingContext(workout: workouts[number])
+        let trainingContext = TrainingContext(workout: workouts[number], date: selectedDate)
         router.openTraining(with: trainingContext)
     }
     
     func didTapRightBarButtonItem() {
-        router.openPrograms()
+        interactor.loadDownloadedPrograms()
     }
 }
 
 // MARK: - InteractorOutput
 
 extension NotepadPresenter: NotepadInteractorOutput {
+    func didExistDownloadPrograms(_ result: Result<[Train], any Error>) {
+        DispatchQueue.main.async {
+            switch result {
+            case .success(let train):
+                self.router.openPrograms(with: train, and: "Загруженные программы")
+            case .failure(let error):
+                if let nsError = error as NSError? {
+                    if nsError.domain == "DataError" && nsError.code == -1 {
+                        self.router.openEmptyPrograms(with: "Загруженные программы")
+                    } else {
+                        self.view?.showAlert(with: .networkMessage(error: error))
+                    }
+                } else {
+                    self.view?.showAlert(with: .networkMessage(error: error))
+                }
+            }
+        }
+    }
+    
     func didLoadDay(with workouts: [Workout], _ isResult: Bool) {
         self.workouts = workouts
         self.isResult = isResult
@@ -198,7 +223,7 @@ extension NotepadPresenter: NotepadInteractorOutput {
 private extension NotepadPresenter {
     struct Constants {
         struct DateFormatter {
-            static let format: String = "yyyy/MM/dd"
+            static let format: String = "EEEE, MMM d"
         }
     }
 }

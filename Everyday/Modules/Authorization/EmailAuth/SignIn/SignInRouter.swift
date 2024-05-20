@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by Михаил on 27.04.2024.
-//  
+//
 //
 
 import UIKit
@@ -16,7 +16,7 @@ extension SignInRouter: SignInRouterInput {
     func openApp() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let window = windowScene.windows.first else {
-            fatalError("oops")
+            return
         }
 
         let tabBarController = TabBarController()

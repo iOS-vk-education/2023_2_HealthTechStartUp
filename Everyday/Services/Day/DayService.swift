@@ -168,7 +168,7 @@ final class DayService: DayServiceDescription {
             do {
                 let historyDocumentReference = try historyCollectionReference.addDocument(from: history)
                 let historyElement: DayServiceHistoryElement = .init(
-                    date: Date(),
+                    date: progress.date,
                     historyID: historyDocumentReference
                 )
                 
@@ -183,7 +183,7 @@ final class DayService: DayServiceDescription {
             do {
                 let historyDocumentReference = try historyCollectionReference.addDocument(from: history)
                 let historyElement: DayServiceHistoryElement = .init(
-                    date: Date(),
+                    date: progress.date,
                     historyID: historyDocumentReference
                 )
                 

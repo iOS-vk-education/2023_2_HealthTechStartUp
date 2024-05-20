@@ -89,10 +89,6 @@ struct ContentView: View {
     
     // MARK: - actions
     
-//    private func incrementPage() {
-//        pageIndex += 1
-//    }
-    
     private func incrementPage() {
         if isKeyboardVisible {
             hideKeyboard()

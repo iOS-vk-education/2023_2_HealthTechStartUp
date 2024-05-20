@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by Михаил on 17.05.2024.
-//  
+//
 //
 
 import UIKit
@@ -34,7 +34,6 @@ final class CatalogViewController: UIViewController {
         collectionView.dataSource = self
         collectionView.delegate = self
         collectionView.isScrollEnabled = true
-        collectionView.isHidden = true
         return collectionView
     }()
     
@@ -71,8 +70,6 @@ final class CatalogViewController: UIViewController {
             )
         
         navigationItem.leftBarButtonItem?.tintColor = Constants.textColor
-        
-        loadingIndicator.startAnimating()
     }
     
     override func viewDidLayoutSubviews() {
@@ -104,7 +101,8 @@ final class CatalogViewController: UIViewController {
         titleLabel.pin
             .top(view.pin.safeArea.top)
             .hCenter()
-            .size(Constants.Label.size)
+            .height(Constants.Label.height)
+            .width(view.frame.width)
         
         collectionView.pin
            .below(of: titleLabel)
@@ -132,11 +130,24 @@ extension CatalogViewController: CatalogViewInput {
         
     func configure(with viewModel: CatalogViewModel) {
         titleLabel.attributedText = viewModel.title
-        trains = output.getTrains()
-        collectionView.reloadData()
-        DispatchQueue.main.asyncAfter(deadline: .now() + 3) {
-            self.loadingIndicator.stopAnimating()
-            self.collectionView.isHidden = false
+    
+        DispatchQueue.main.async {
+            self.loadingIndicator.startAnimating()
+            self.collectionView.isHidden = true
+        }
+
+        DispatchQueue.global(qos: .userInitiated).async { [weak self] in
+            guard let self = self else {
+                return
+            }
+
+            self.trains = self.output.getTrains()
+
+            DispatchQueue.main.async {
+                self.collectionView.reloadData()
+                self.loadingIndicator.stopAnimating()
+                self.collectionView.isHidden = false
+            }
         }
     }
 }
@@ -151,7 +162,7 @@ extension CatalogViewController: UICollectionViewDelegate {
             return
         }
 
-        let image = cell.getImage() 
+        let image = cell.getImage()
         output.didSelectCell(train: trains[indexPath.row], image: image)
     }
 }
@@ -176,7 +187,7 @@ extension CatalogViewController: UICollectionViewDataSource {
                 DispatchQueue.main.async {
                     cell.configure(with: model)
                 }
-            } 
+            }
         }
 
         return cell
@@ -208,7 +219,7 @@ private extension CatalogViewController {
         }
         
         struct Label {
-            static let size: CGSize = CGSize(width: 200, height: 50)
+            static let height: CGFloat = 50
         }
     }
 }

@@ -16,7 +16,7 @@ final class TrainingContainer {
     static func assemble(with context: TrainingContext) -> TrainingContainer {
         let router = TrainingRouter()
         let interactor = TrainingInteractor()
-        let presenter = TrainingPresenter(router: router, interactor: interactor, workout: context.workout)
+        let presenter = TrainingPresenter(router: router, interactor: interactor, workout: context.workout, date: context.date)
         let viewController = TrainingViewController(output: presenter)
         
         presenter.view = viewController
@@ -39,4 +39,5 @@ final class TrainingContainer {
 struct TrainingContext {
     weak var moduleOutput: TrainingModuleOutput?
     let workout: Workout
+    let date: Date
 }

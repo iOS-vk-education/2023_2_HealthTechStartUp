@@ -39,7 +39,7 @@ final class Reloader: ReloaderDescription {
    func checkAuthentication() -> Bool {
         let coreDataService = CoreDataService.shared
         
-        if let user = Auth.auth().currentUser {
+        if Auth.auth().currentUser != nil {
             return true
         }
        
