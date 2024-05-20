@@ -17,14 +17,10 @@ final class NotepadPresenter {
     
     private var calendar: [[Date]] = []
     private var selectedCell: (outerIndex: IndexPath, innerIndex: IndexPath)?
-    private var shouldDeselectCell: (outerIndex: IndexPath, innerIndex: IndexPath)?
     
     private var isResult: Bool = false
-    private var workoutDays: [WorkoutDay] = []
-    private var isCollapsed = [
-        true,
-        true
-    ]
+    private var workouts: [Workout] = []
+    private var isCollapsed: [Bool] = []
     
     init(router: NotepadRouterInput, interactor: NotepadInteractorInput) {
         self.router = router
@@ -34,9 +30,19 @@ final class NotepadPresenter {
 
 extension NotepadPresenter: NotepadModuleInput {}
 
-// MARK: - Helpers
-
 private extension NotepadPresenter {
+    
+    // MARK: - Init
+    
+    func initProperties() {
+        let outerIndexPath = IndexPath(item: 2, section: 0)
+        let innerIndex = CalendarService.shared.getWeekdayIndex(from: Date())
+        let innerIndexPath = IndexPath(item: innerIndex, section: 0)
+        selectedCell = (outerIndexPath, innerIndexPath)
+    }
+    
+    // MARK: - Helpers
+    
     func fetchWeeklyCalendar() -> [[Date]] {
         let calendar = Calendar.current
         guard
@@ -87,12 +93,7 @@ private extension NotepadPresenter {
 extension NotepadPresenter: NotepadViewOutput {
     func didLoadView() {
         calendar = fetchWeeklyCalendar()
-
-        let outerIndexPath = IndexPath(item: 2, section: 0)
-        let innerIndex = CalendarService.shared.getWeekdayIndex(from: Date())
-        let innerIndexPath = IndexPath(item: innerIndex, section: 0)
-        setSelectedCell((outerIndexPath, innerIndexPath))
-        
+        initProperties()
         interactor.loadResult(date: Date())
     }
     
@@ -104,24 +105,12 @@ extension NotepadPresenter: NotepadViewOutput {
         selectedCell
     }
     
-    func getShouldDeselectCell() -> (outerIndex: IndexPath, innerIndex: IndexPath)? {
-        shouldDeselectCell
-    }
-    
     func setSelectedCell(_ indexPaths: (outerIndex: IndexPath, innerIndex: IndexPath)? = nil) {
         selectedCell = indexPaths
     }
     
-    func setShouldDeselectCell(_ indexPaths: (outerIndex: IndexPath, innerIndex: IndexPath)? = nil) {
-        shouldDeselectCell = indexPaths
-    }
-    
     func getSelectedCellOuterIndexPath() -> IndexPath? {
         selectedCell?.outerIndex
-    }
-    
-    func getShouldDeselectCellOuterIndexPath() -> IndexPath? {
-        shouldDeselectCell?.outerIndex
     }
     
     func getSelectedCellInnerIndexPath() -> IndexPath? {
@@ -137,31 +126,27 @@ extension NotepadPresenter: NotepadViewOutput {
     }
     
     func headerViewState() -> NotepadSectionHeaderState {
-        isResult ? .collapse : .open
+        isResult ? .open : .collapse
     }
     
-    func getWorkoutDay(_ number: Int) -> WorkoutDay {
-        (workoutDays[number])
+    func getWorkout(at index: Int) -> Workout {
+        workouts[index]
     }
     
-    func getWorkout(at indexOfWorkout: Int) -> Workout {
-        workoutDays[indexOfWorkout].workout
-    }
-    
-    func getExercises(at indexOfSection: Int) -> [Exercise] {
-        workoutDays[indexOfSection].workout.days[workoutDays[indexOfSection].indexOfDay].sets.flatMap { $0.exercises }
+    func getAllExercises(at index: Int) -> [Exercise] {
+        workouts[index].sets.flatMap { $0.exercises }
     }
     
     func getExercise(at indexOfSection: Int, at indexOfRow: Int) -> Exercise {
-        workoutDays[indexOfSection].workout.days[workoutDays[indexOfSection].indexOfDay].sets.flatMap { $0.exercises }[indexOfRow]
+        getAllExercises(at: indexOfSection)[indexOfRow]
     }
     
     func numberOfSections() -> Int {
-        workoutDays.count
+        workouts.count
     }
     
     func numberOfRowsInSection(_ section: Int) -> Int {
-        isCollapsed[section] ? 0 : workoutDays[section].workout.days[workoutDays[section].indexOfDay].sets.flatMap { $0.exercises }.count
+        isCollapsed[section] ? 0 : workouts[section].sets.flatMap({ $0.exercises }).count
     }
     
     func toggleCollapsed(at indexOfSection: Int) -> Bool {
@@ -170,29 +155,32 @@ extension NotepadPresenter: NotepadViewOutput {
     }
     
     func didTapHeaderView(number: Int) {
-        let trainingContext = TrainingContext(workoutDay: workoutDays[number])
+        let trainingContext = TrainingContext(workout: workouts[number])
         router.openTraining(with: trainingContext)
+    }
+    
+    func didTapRightBarButtonItem() {
+        router.openPrograms()
     }
 }
 
 // MARK: - InteractorOutput
 
 extension NotepadPresenter: NotepadInteractorOutput {
-    func didLoadDay(with workoutDays: [WorkoutDay], _ isResult: Bool) {
-        self.workoutDays = workoutDays
+    func didLoadDay(with workouts: [Workout], _ isResult: Bool) {
+        self.workouts = workouts
         self.isResult = isResult
-        for i in 0..<isCollapsed.count {
-            isCollapsed[i] = true
-        }
+        self.isCollapsed = [Bool](repeating: true, count: workouts.count)
         
         view?.reloadData()
         
-        if !workoutDays.isEmpty {
-            view?.dismissEmptyStateView()
+        if !workouts.isEmpty {
+            view?.hideEmptyStateView()
             let viewModel = NotepadViewModel(isResult: isResult)
             view?.configure(with: viewModel)
         } else {
-            view?.showEmptyStateView()
+            let viewModel = NotepadEmptyStateViewModel()
+            view?.showEmptyStateView(with: viewModel)
         }
     }
     

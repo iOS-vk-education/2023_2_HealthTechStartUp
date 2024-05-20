@@ -65,7 +65,7 @@ final class NotificationsService: NotificationsServiceDescription {
                 components.hour = Constants.timeForPreTrainingNotification.hour
                 components.minute = Constants.timeForPreTrainingNotification.minut
                 
-                guard let notificationDate = Calendar.current.date(from: components) else {
+                guard Calendar.current.date(from: components) != nil else {
                     return
                 }
                 

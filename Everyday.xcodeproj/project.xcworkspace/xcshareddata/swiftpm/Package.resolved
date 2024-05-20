@@ -1,5 +1,5 @@
 {
-  "originHash" : "aac5c477e52c1a71809ef32d614b604dedbeaee86848900f99de09a002ab3a25",
+  "originHash" : "94751ecc20919746b0243193745121d898c9b11e238b1a51858fad8f2915d7a7",
   "pins" : [
     {
       "identity" : "abseil-cpp-binary",
@@ -26,6 +26,15 @@
       "state" : {
         "revision" : "c89ed571ae140f8eb1142735e6e23d7bb8c34cb2",
         "version" : "1.7.5"
+      }
+    },
+    {
+      "identity" : "beamaisdk-ios",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/MX126/BeamAISDK-iOS",
+      "state" : {
+        "branch" : "main",
+        "revision" : "a9851792168b4c9c40a9247d1a1cfc6786cbadf2"
       }
     },
     {

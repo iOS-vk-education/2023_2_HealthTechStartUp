@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by user on 28.02.2024.
-//  
+//
 //
 
 import Foundation
@@ -42,19 +42,27 @@ extension ResultsPresenter: ResultsViewOutput {
     }
     
     func didTapCloseButton() {
-        router.closeResults()
+        router.dismissResults()
     }
     
     func didTapRestButton() {
-        let timerContext = TimerContext()
-        router.openTimer(with: timerContext)
+        let timerModel: TimerModel = .init(seconds: Constants.defaultTimerTime)
+        let sheetType: SheetType = .timer(model: timerModel)
+        let sheetConext = SheetContext(type: sheetType)
+        router.showView(with: sheetConext)
     }
     
     func didTapContinueButton() {
         moduleOutput?.changeSet(with: exercises)
-        router.closeResults()
+        router.dismissResults()
     }
 }
 
 extension ResultsPresenter: ResultsInteractorOutput {
+}
+
+private extension ResultsPresenter {
+    struct Constants {
+        static let defaultTimerTime: Int = 120
+    }
 }

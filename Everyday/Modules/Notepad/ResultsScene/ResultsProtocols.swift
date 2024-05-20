@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by user on 28.02.2024.
-//  
+//
 //
 
 import Foundation
@@ -37,6 +37,6 @@ protocol ResultsInteractorOutput: AnyObject {
 }
 
 protocol ResultsRouterInput: AnyObject {
-    func openTimer(with timerContext: TimerContext)
-    func closeResults()
+    func showView(with context: SheetContext)
+    func dismissResults()
 }

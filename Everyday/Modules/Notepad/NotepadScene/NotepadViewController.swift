@@ -19,13 +19,12 @@ final class NotepadViewController: UIViewController {
     private let stateLabel = UILabel()
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private let activityIndicator = UIActivityIndicatorView(style: .large)
-    private let emptyStateView = NotepadEmptyStateView()
+    private let emptyStateView = EmptyStateView()
     
     // MARK: - Init
 
     init(output: NotepadViewOutput) {
         self.output = output
-
         super.init(nibName: nil, bundle: nil)
     }
 
@@ -38,14 +37,12 @@ final class NotepadViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         output.didLoadView()
         setup()
     }
     
-    override func viewWillLayoutSubviews() {
-        super.viewWillLayoutSubviews()
-        
+    override func viewDidLayoutSubviews() {
+        super.viewDidLayoutSubviews()
         layout()
     }
 }
@@ -63,15 +60,20 @@ private extension NotepadViewController {
         
         stateLabel.pin
             .below(of: outerCollectionView)
-            .marginTop(Constants.HeaderLabel.marginTop)
-            .horizontally(Constants.HeaderLabel.horizontalMargin)
-            .height(Constants.HeaderLabel.height)
+            .marginTop(Constants.StateLabel.marginTop)
+            .horizontally(Constants.StateLabel.horizontalMargin)
+            .height(Constants.StateLabel.height)
 
         tableView.pin
             .below(of: stateLabel)
             .marginTop(Constants.TableView.marginTop)
             .horizontally()
             .bottom()
+        
+        emptyStateView.pin
+            .below(of: stateLabel)
+            .horizontally()
+            .bottom(view.pin.safeArea)
     }
     
     // MARK: - Setup
@@ -80,22 +82,20 @@ private extension NotepadViewController {
         setupView()
         setupOuterCollectionView()
         setupTableView()
-        
-        view.addSubviews(outerCollectionView, stateLabel, tableView)
+        setupRightBarButtonItem()
+        view.addSubviews(outerCollectionView, stateLabel, tableView, emptyStateView)
     }
 
     func setupView() {
         view.backgroundColor = Constants.backgroundColor
-        navigationItem.leftBarButtonItem = UIBarButtonItem(customView: dateLabel())
     }
     
     func setupOuterCollectionView() {
         outerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UIHelper.createSingleColumnFlowLayout(in: view))
         outerCollectionView.dataSource = self
-        outerCollectionView.delegate = self
         outerCollectionView.register(NotepadOuterCollectionViewCell.self, forCellWithReuseIdentifier: NotepadOuterCollectionViewCell.reuseID)
         
-        outerCollectionView.backgroundColor = .clear
+        outerCollectionView.backgroundColor = Constants.OuterCollectionView.backgroundColor
         
         outerCollectionView.showsHorizontalScrollIndicator = false
         outerCollectionView.showsVerticalScrollIndicator = false
@@ -113,27 +113,23 @@ private extension NotepadViewController {
     
     func setupTableView() {
         tableView.backgroundColor = Constants.backgroundColor
-        tableView.contentInset = UIEdgeInsets(top: Constants.TableView.contentInsetTop,
-                                              left: Constants.TableView.contentInsetLeft,
-                                              bottom: Constants.TableView.contentInsetBottom,
-                                              right: Constants.TableView.contentInsetRight)
+        tableView.contentInset = UIEdgeInsets(
+            top: Constants.TableView.contentInsetTop,
+            left: Constants.TableView.contentInsetLeft,
+            bottom: Constants.TableView.contentInsetBottom,
+            right: Constants.TableView.contentInsetRight
+        )
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(NotepadTableViewCell.self, forCellReuseIdentifier: NotepadTableViewCell.reuseID)
     }
     
-    // MARK: - Custom Views
-    
-    func dateLabel() -> UILabel {
-        let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = Constants.DateLabel.dateFormat
-        
-        let currentDate = dateFormatter.string(from: Date())
-        
-        let dateLabel = UILabel()
-        dateLabel.text = currentDate.capitalized
-        
-        return dateLabel
+    func setupRightBarButtonItem() {
+        let barButtonImageName = Constants.RightBarButtonItem.name
+        let barButtonImage = UIImage(systemName: barButtonImageName)
+        let rightBarButtonItem = UIBarButtonItem(image: barButtonImage, style: .plain, target: self, action: #selector(didTapRightBarButtonItem))
+        rightBarButtonItem.tintColor = Constants.RightBarButtonItem.tintColor
+        navigationItem.rightBarButtonItem = rightBarButtonItem
     }
     
     // MARK: - Actions
@@ -152,7 +148,7 @@ private extension NotepadViewController {
         var indexPaths = [IndexPath]()
         
         let section = button.tag
-        let exercises = output.getExercises(at: section)
+        let exercises = output.getAllExercises(at: section)
         for exerciseIndex in 0..<exercises.count {
             let indexPath = IndexPath(row: exerciseIndex, section: section)
             indexPaths.append(indexPath)
@@ -163,6 +159,11 @@ private extension NotepadViewController {
         } else {
             tableView.insertRows(at: indexPaths, with: .fade)
         }
+    }
+    
+    @objc
+    func didTapRightBarButtonItem() {
+        output.didTapRightBarButtonItem()
     }
 }
 
@@ -180,13 +181,12 @@ extension NotepadViewController: UICollectionViewDataSource {
         }
         
         let week = output.collectionItem(at: indexPath.item)
-        var selectedIndexPath: IndexPath?
-        let first = output.getSelectedCellOuterIndexPath()
-        let second = output.getShouldDeselectCellOuterIndexPath()
-        if first == indexPath && second != indexPath {
-            selectedIndexPath = output.getSelectedCellInnerIndexPath()
+        var selectedInnerIndexPath: IndexPath?
+        let selectedOuterIndexPath = output.getSelectedCellOuterIndexPath()
+        if selectedOuterIndexPath == indexPath {
+            selectedInnerIndexPath = output.getSelectedCellInnerIndexPath()
         }
-        cell.configure(with: week, and: selectedIndexPath)
+        cell.configure(with: week, outerIndexPath: indexPath, and: selectedInnerIndexPath)
         cell.delegate = self
         
         return cell
@@ -196,25 +196,14 @@ extension NotepadViewController: UICollectionViewDataSource {
 // MARK: - NotepadOuterCollectionViewCellDelegate
 
 extension NotepadViewController: NotepadOuterCollectionViewCellDelegate {
-    func didTapInnerCollectionViewCell(_ date: Date) {
+    func didTapInnerCollectionViewCell(_ date: Date, _ outerIndexPath: IndexPath, _ innerIndexPath: IndexPath) {
         output.didTapNewDate(date)
-        output.setShouldDeselectCell(output.getSelectedCell())
+        
         if let selectedCell = output.getSelectedCell(),
             let cell = outerCollectionView.cellForItem(at: selectedCell.outerIndex) as? NotepadOuterCollectionViewCell {
             cell.deselectCell()
         }
-    }
-}
-
-// MARK: - CollectionViewDelegate
-
-extension NotepadViewController: UICollectionViewDelegate {
-    func collectionView(_ collectionView: UICollectionView, didEndDisplaying cell: UICollectionViewCell, forItemAt indexPath: IndexPath) {
-        if let cell = outerCollectionView.cellForItem(at: indexPath) as? NotepadOuterCollectionViewCell {
-            if let innerIndexPath = cell.selectedCellIndexPath {
-                output.setSelectedCell((indexPath, innerIndexPath))
-            }
-        }
+        output.setSelectedCell((outerIndexPath, innerIndexPath))
     }
 }
 
@@ -245,11 +234,15 @@ extension NotepadViewController: UITableViewDataSource {
 // MARK: - TableViewDelegate
 
 extension NotepadViewController: UITableViewDelegate {
+    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        tableView.deselectRow(at: indexPath, animated: true)
+    }
+    
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {
         let headerView = NotepadSectionHeaderView()
         
-        let workoutDay = output.getWorkoutDay(section)
-        let viewModel = NotepadHeaderViewModel(workoutDay: workoutDay)
+        let workout = output.getWorkout(at: section)
+        let viewModel = NotepadHeaderViewModel(workout: workout)
         let headerViewState = output.headerViewState()
         headerView.configure(with: viewModel, and: section, state: headerViewState)
         headerView.addActions(self, viewAction: #selector(didTapHeaderView), buttonAction: #selector(didTapCollapseButton))
@@ -273,22 +266,14 @@ extension NotepadViewController: NotepadViewInput {
         tableView.reloadData()
     }
     
-    func showEmptyStateView() {
-        stateLabel.text = ""
-        view.addSubview(emptyStateView)
-        
-        emptyStateView.pin
-            .below(of: outerCollectionView)
-            .horizontally()
-            .bottom(view.pin.safeArea)
+    func showEmptyStateView(with viewModel: NotepadEmptyStateViewModel) {
+        stateLabel.text = Constants.StateLabel.defaultText
+        emptyStateView.configure(with: viewModel)
+        emptyStateView.isHidden = false
     }
     
-    func dismissEmptyStateView() {
-        guard emptyStateView.superview != nil else {
-            return
-        }
-        
-        emptyStateView.removeFromSuperview()
+    func hideEmptyStateView() {
+        emptyStateView.isHidden = true
     }
     
     func showLoadingView() {
@@ -316,15 +301,17 @@ private extension NotepadViewController {
             static let dateFormat: String = "EEEE, d MMM"
         }
         
-        struct HeaderLabel {
+        struct StateLabel {
             static let height: CGFloat = 30
             static let horizontalMargin: CGFloat = 20
             static let marginTop: CGFloat = 20
+            static let defaultText: String = ""
         }
         
         struct OuterCollectionView {
             static let marginTop: CGFloat = 20
             static let height: CGFloat = 60
+            static let backgroundColor: UIColor = UIColor.clear
         }
         
         struct TableView {
@@ -334,6 +321,11 @@ private extension NotepadViewController {
             static let contentInsetBottom: CGFloat = 0
             static let contentInsetRight: CGFloat = 0
             static let headerHeight: CGFloat = 60
+        }
+        
+        struct RightBarButtonItem {
+            static let tintColor: UIColor = UIColor.UI.accent
+            static let name: String = "bookmark"
         }
     }
 }
