@@ -161,18 +161,37 @@ extension NotepadPresenter: NotepadViewOutput {
     }
     
     func didTapHeaderView(number: Int) {
-        let trainingContext = TrainingContext(workout: workouts[number], date: date)
+        let trainingContext = TrainingContext(workout: workouts[number], date: selectedDate)
         router.openTraining(with: trainingContext)
     }
     
     func didTapRightBarButtonItem() {
-        router.openPrograms()
+        interactor.loadDownloadedPrograms()
     }
 }
 
 // MARK: - InteractorOutput
 
 extension NotepadPresenter: NotepadInteractorOutput {
+    func didExistDownloadPrograms(_ result: Result<[Train], any Error>) {
+        DispatchQueue.main.async {
+            switch result {
+            case .success(let train):
+                self.router.openPrograms(with: train, and: "Загруженные программы")
+            case .failure(let error):
+                if let nsError = error as NSError? {
+                    if nsError.domain == "DataError" && nsError.code == -1 {
+                        self.router.openEmptyPrograms(with: "Загруженные программы")
+                    } else {
+                        self.view?.showAlert(with: .networkMessage(error: error))
+                    }
+                } else {
+                    self.view?.showAlert(with: .networkMessage(error: error))
+                }
+            }
+        }
+    }
+    
     func didLoadDay(with workouts: [Workout], _ isResult: Bool) {
         self.workouts = workouts
         self.isResult = isResult

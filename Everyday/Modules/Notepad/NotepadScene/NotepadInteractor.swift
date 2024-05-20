@@ -7,6 +7,7 @@
 //
 
 import Foundation
+import FirebaseAuth
 
 final class NotepadInteractor {
     weak var output: NotepadInteractorOutput?
@@ -34,6 +35,16 @@ extension NotepadInteractor: NotepadInteractorInput {
             case .failure:
                 self.loadSchedule(date: date)
             }
+        }
+    }
+    
+    func loadDownloadedPrograms() {
+        guard let user = Auth.auth().currentUser else {
+            return
+        }
+        
+        CatalogService.shared.loadDownloadedWorkouts(for: user.uid) { result in
+            self.output?.didExistDownloadPrograms(result)
         }
     }
     
