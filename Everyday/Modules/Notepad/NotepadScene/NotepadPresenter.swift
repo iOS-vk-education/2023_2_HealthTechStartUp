@@ -17,6 +17,7 @@ final class NotepadPresenter {
     
     private var calendar: [[Date]] = []
     private var selectedCell: (outerIndex: IndexPath, innerIndex: IndexPath)?
+    private var selectedDate: Date = Date()
     
     private var isResult: Bool = false
     private var workouts: [Workout] = []
@@ -101,6 +102,7 @@ extension NotepadPresenter: NotepadViewOutput {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = Constants.DateFormatter.format
         let dateLabelString = dateFormatter.string(from: date)
+        selectedDate = date
         view?.updateDateLabel(with: dateLabelString)
         interactor.loadResult(date: date)
     }
@@ -159,7 +161,7 @@ extension NotepadPresenter: NotepadViewOutput {
     }
     
     func didTapHeaderView(number: Int) {
-        let trainingContext = TrainingContext(workout: workouts[number])
+        let trainingContext = TrainingContext(workout: workouts[number], date: date)
         router.openTraining(with: trainingContext)
     }
     

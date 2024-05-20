@@ -22,10 +22,10 @@ final class ExtraPresenter {
     
     private var extra: [SheetType] = []
     
-    init(router: ExtraRouterInput, interactor: ExtraInteractorInput, workout: Workout) {
+    init(router: ExtraRouterInput, interactor: ExtraInteractorInput, workout: Workout, date: Date) {
         self.router = router
         self.interactor = interactor
-        self.workoutProgress = WorkoutProgress(workout: workout)
+        self.workoutProgress = WorkoutProgress(date: date, workout: workout)
     }
 }
 
