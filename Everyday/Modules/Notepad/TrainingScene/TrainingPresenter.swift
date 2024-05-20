@@ -16,13 +16,15 @@ final class TrainingPresenter {
     private let interactor: TrainingInteractorInput
     
     private var workout: Workout
+    private let date: Date
     private var indexOfSet: Int = 0
     private var switchStates: [Bool] = []
     
-    init(router: TrainingRouterInput, interactor: TrainingInteractorInput, workout: Workout) {
+    init(router: TrainingRouterInput, interactor: TrainingInteractorInput, workout: Workout, date: Date) {
         self.router = router
         self.interactor = interactor
         self.workout = workout
+        self.date = date
     }
 }
 
@@ -103,7 +105,7 @@ extension TrainingPresenter: ResultsModuleOutput {
     func changeSet(with exercises: [Exercise]) {
         indexOfSet += 1
         guard workout.sets.count > indexOfSet else {
-            let extraContext = ExtraContext(workout: workout)
+            let extraContext = ExtraContext(workout: workout, date: date)
             router.openExtra(with: extraContext)
             return
         }

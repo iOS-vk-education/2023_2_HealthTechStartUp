@@ -16,6 +16,7 @@ final class NotepadViewController: UIViewController {
     private let output: NotepadViewOutput
     
     private var outerCollectionView = UICollectionView(frame: .zero, collectionViewLayout: UICollectionViewLayout())
+    private let dateLabel = UILabel()
     private let stateLabel = UILabel()
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private let activityIndicator = UIActivityIndicatorView(style: .large)
@@ -82,6 +83,7 @@ private extension NotepadViewController {
         setupView()
         setupOuterCollectionView()
         setupTableView()
+        setupLeftBarButtonItem()
         setupRightBarButtonItem()
         view.addSubviews(outerCollectionView, stateLabel, tableView, emptyStateView)
     }
@@ -122,6 +124,17 @@ private extension NotepadViewController {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(NotepadTableViewCell.self, forCellReuseIdentifier: NotepadTableViewCell.reuseID)
+    }
+    
+    func setupLeftBarButtonItem() {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Constants.LeftBarButtonItem.dateFormat
+        let currentDate = dateFormatter.string(from: Date())
+        dateLabel.text = currentDate.capitalized
+        dateLabel.font = Constants.LeftBarButtonItem.font
+        dateLabel.textColor = Constants.LeftBarButtonItem.textColor
+        let leftBarButtonItem = UIBarButtonItem(customView: dateLabel)
+        navigationItem.leftBarButtonItem = leftBarButtonItem
     }
     
     func setupRightBarButtonItem() {
@@ -266,6 +279,10 @@ extension NotepadViewController: NotepadViewInput {
         tableView.reloadData()
     }
     
+    func updateDateLabel(with text: String) {
+        dateLabel.text = text.capitalized
+    }
+    
     func showEmptyStateView(with viewModel: NotepadEmptyStateViewModel) {
         stateLabel.text = Constants.StateLabel.defaultText
         emptyStateView.configure(with: viewModel)
@@ -326,6 +343,12 @@ private extension NotepadViewController {
         struct RightBarButtonItem {
             static let tintColor: UIColor = UIColor.UI.accent
             static let name: String = "bookmark"
+        }
+        
+        struct LeftBarButtonItem {
+            static let dateFormat: String = "EEEE, MMM d"
+            static let font: UIFont = .boldSystemFont(ofSize: 20)
+            static let textColor: UIColor = .Text.primary
         }
     }
 }

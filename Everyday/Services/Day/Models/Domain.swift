@@ -78,6 +78,7 @@ enum ExerciseType: Int, CaseIterable {
 // MARK: - ExtraModel
 
 struct WorkoutProgress {
+    let date: Date
     let workout: Workout
     var extra: ExtraModel?
 }
