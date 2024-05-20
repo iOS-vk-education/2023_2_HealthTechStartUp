@@ -15,7 +15,7 @@ final class HealthPresenter {
     private let router: HealthRouterInput
     private let interactor: HealthInteractorInput
     
-    private let healthService = HealthService()
+    private let healthService = HealthService.shared
     
     init(router: HealthRouterInput, interactor: HealthInteractorInput) {
         self.router = router

@@ -35,6 +35,7 @@ protocol SettingsUserDefaultsServiceDescription {
     func getSelectedLoadWeightCellIndexPath() -> IndexPath
     func getSelectedDistanceCellIndexPath() -> IndexPath
     func setSelectedLanguage(language: String)
+    func setUnits(generalUnits: String)
 }
 
 final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription {
@@ -277,6 +278,28 @@ final class SettingsUserDefaultsService: SettingsUserDefaultsServiceDescription 
         case Constants.miles: return [3, 1]
         default:
             return [3, 0]
+        }
+    }
+    
+    func setUnits(generalUnits: String) {
+        switch generalUnits {
+        case Constants.kgs:
+            defaults.set(Constants.kgs, forKey: Constants.bodyWeightKey)
+            defaults.set(Constants.centimeters, forKey: Constants.measurementsKey)
+            defaults.set(Constants.kgs, forKey: Constants.loadWeightKey)
+            defaults.set(Constants.kilometers, forKey: Constants.distanceKey)
+        case Constants.pounds:
+            defaults.set(Constants.pounds, forKey: Constants.bodyWeightKey)
+            defaults.set(Constants.inches, forKey: Constants.measurementsKey)
+            defaults.set(Constants.pounds, forKey: Constants.loadWeightKey)
+            defaults.set(Constants.miles, forKey: Constants.distanceKey)
+        case Constants.stones:
+            defaults.set(Constants.stones, forKey: Constants.bodyWeightKey)
+            defaults.set(Constants.inches, forKey: Constants.measurementsKey)
+            defaults.set(Constants.stones, forKey: Constants.loadWeightKey)
+            defaults.set(Constants.miles, forKey: Constants.distanceKey)
+        default:
+            return
         }
     }
 }

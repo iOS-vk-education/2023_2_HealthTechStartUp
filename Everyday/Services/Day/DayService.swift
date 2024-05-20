@@ -199,10 +199,14 @@ final class DayService: DayServiceDescription {
     // MARK: - POST
     
     func putPhoto(data: Data) async throws -> URL {
+        guard let userUID = Auth.auth().currentUser?.uid else {
+            throw CustomError.authError
+        }
         let fileName = UUID().uuidString
         let reference = Storage.storage().reference()
             .child(Constants.Storage.progressPictureCollection)
             .child(fileName)
+            .child(userUID)
         
         do {
             _ = try await reference.putDataAsync(data)
