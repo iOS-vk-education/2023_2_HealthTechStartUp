@@ -12,6 +12,9 @@
 		8C5028652BF9641F0010F918 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C5028632BF9641E0010F918 /* Model.xcdatamodeld */; };
 		8C50286E2BF980630010F918 /* EverydayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50286D2BF980630010F918 /* EverydayTests.swift */; };
 		8CA0C3642BE968C200353FB2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3632BE968C200353FB2 /* Date+Extension.swift */; };
+		8CFEAFCF2BFA0B1F00BCECF8 /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEAFCE2BFA0B1F00BCECF8 /* HealthView.swift */; };
+		8CFEAFD12BFA0B8D00BCECF8 /* HealthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEAFD02BFA0B8D00BCECF8 /* HealthController.swift */; };
+		8CFEAFD32BFA11AA00BCECF8 /* ActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEAFD22BFA11AA00BCECF8 /* ActivityCard.swift */; };
 		9E0C348E2BD700CB00D8696B /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0C348D2BD700CB00D8696B /* CloseButton.swift */; };
 		9E0C34902BD7CE6A00D8696B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */; };
 		9E467A3B2BF2356100127EFA /* WorkoutViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E467A322BF2356100127EFA /* WorkoutViewModel.swift */; };
@@ -339,6 +342,9 @@
 		8C50286B2BF980630010F918 /* EverydayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EverydayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C50286D2BF980630010F918 /* EverydayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverydayTests.swift; sourceTree = "<group>"; };
 		8CA0C3632BE968C200353FB2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		8CFEAFCE2BFA0B1F00BCECF8 /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
+		8CFEAFD02BFA0B8D00BCECF8 /* HealthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthController.swift; sourceTree = "<group>"; };
+		8CFEAFD22BFA11AA00BCECF8 /* ActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCard.swift; sourceTree = "<group>"; };
 		9E0C348D2BD700CB00D8696B /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E467A312BF2342400127EFA /* Everyday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everyday.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -697,6 +703,16 @@
 				8C50286D2BF980630010F918 /* EverydayTests.swift */,
 			);
 			path = EverydayTests;
+			sourceTree = "<group>";
+		};
+		8CFEAFCD2BFA0B0B00BCECF8 /* Health */ = {
+			isa = PBXGroup;
+			children = (
+				8CFEAFCE2BFA0B1F00BCECF8 /* HealthView.swift */,
+				8CFEAFD02BFA0B8D00BCECF8 /* HealthController.swift */,
+				8CFEAFD22BFA11AA00BCECF8 /* ActivityCard.swift */,
+			);
+			path = Health;
 			sourceTree = "<group>";
 		};
 		9E2931822B9F25FB00950B15 /* UI */ = {
@@ -1934,6 +1950,7 @@
 		9EE8AE152B7FB8F3001D126F /* Progress */ = {
 			isa = PBXGroup;
 			children = (
+				8CFEAFCD2BFA0B0B00BCECF8 /* Health */,
 				9EE8AE162B7FB905001D126F /* ProgressPresenter.swift */,
 				9EE8AE172B7FB905001D126F /* ProgressRouter.swift */,
 				9EE8AE182B7FB905001D126F /* ProgressViewController.swift */,
@@ -2186,6 +2203,7 @@
 				9EA9516D2BF19BA200ADBF9A /* ForgotPasswordViewController.swift in Sources */,
 				9EA9521F2BF19D5500ADBF9A /* HealthProtocols.swift in Sources */,
 				9E5B753A2B7F9D7600E2BDE6 /* GenderViewModel.swift in Sources */,
+				8CFEAFD12BFA0B8D00BCECF8 /* HealthController.swift in Sources */,
 				9E467A852BF2358300127EFA /* OtherCell.swift in Sources */,
 				8C5028652BF9641F0010F918 /* Model.xcdatamodeld in Sources */,
 				9E467A9F2BF2D34300127EFA /* EmptyTrainViewModel.swift in Sources */,
@@ -2272,6 +2290,7 @@
 				9EA9523A2BF19D5500ADBF9A /* ThemePresenter.swift in Sources */,
 				9EA9532B2BF2286300ADBF9A /* AuthService.swift in Sources */,
 				9EA952262BF19D5500ADBF9A /* ProfileViewModelSingWithVKOrGoogle.swift in Sources */,
+				8CFEAFD32BFA11AA00BCECF8 /* ActivityCard.swift in Sources */,
 				9EA953252BF2286300ADBF9A /* DataReload.swift in Sources */,
 				9E5B75452B7F9D7600E2BDE6 /* AgeView.swift in Sources */,
 				9E5B75472B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift in Sources */,
@@ -2395,6 +2414,7 @@
 				9EA952502BF2263300ADBF9A /* SettingsProtocols.swift in Sources */,
 				9EA951712BF19BA200ADBF9A /* SignInPresenter.swift in Sources */,
 				9E5B75432B7F9D7600E2BDE6 /* AgeModel.swift in Sources */,
+				8CFEAFCF2BFA0B1F00BCECF8 /* HealthView.swift in Sources */,
 				9EA9517A2BF19BA200ADBF9A /* SignUpRouter.swift in Sources */,
 				9E5B75392B7F9D7600E2BDE6 /* GenderView.swift in Sources */,
 				9EA9522A2BF19D5500ADBF9A /* ProfileProtocols.swift in Sources */,
@@ -2610,7 +2630,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NS3YD2TYB9;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -2648,7 +2668,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = NS3YD2TYB9;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
