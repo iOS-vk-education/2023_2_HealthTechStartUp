@@ -17,6 +17,7 @@ protocol NotepadModuleOutput: AnyObject {
 
 protocol NotepadViewInput: AnyObject {
     func configure(with viewModel: NotepadViewModel)
+    func updateDateLabel(with text: String)
     func reloadData()
     func showLoadingView()
     func dismissLoadingView()

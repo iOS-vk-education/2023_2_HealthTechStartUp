@@ -98,6 +98,10 @@ extension NotepadPresenter: NotepadViewOutput {
     }
     
     func didTapNewDate(_ date: Date) {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = Constants.DateFormatter.format
+        let dateLabelString = dateFormatter.string(from: date)
+        view?.updateDateLabel(with: dateLabelString)
         interactor.loadResult(date: date)
     }
     
@@ -198,7 +202,7 @@ extension NotepadPresenter: NotepadInteractorOutput {
 private extension NotepadPresenter {
     struct Constants {
         struct DateFormatter {
-            static let format: String = "yyyy/MM/dd"
+            static let format: String = "EEEE, MMM d"
         }
     }
 }
