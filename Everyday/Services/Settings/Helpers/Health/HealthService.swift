@@ -70,8 +70,8 @@ final class HealthService: ObservableObject, HealthServiceDescription {
             }
             let stepCount = quantity.doubleValue(for: .count())
             let activity = Activity(id: 0,
-                                    title: "Progress.Steps.title".localized,
-                                    timeInterval: "Progress.Today.title".localized,
+                                    title: "Progress_Steps_title".localized,
+                                    timeInterval: "Progress_Today_title".localized,
                                     image: "figure.walk",
                                     amount: stepCount.formattedString() ?? "",
                                     measure: nil)
@@ -94,11 +94,11 @@ final class HealthService: ObservableObject, HealthServiceDescription {
             
             let caloriesBurned = quantity.doubleValue(for: .kilocalorie())
             let activity = Activity(id: 1,
-                                    title: "Progress.EnergyBurned.title".localized,
-                                    timeInterval: "Progress.Today.title".localized,
+                                    title: "Progress_EnergyBurned_title".localized,
+                                    timeInterval: "Progress_Today_title".localized,
                                     image: "flame",
                                     amount: caloriesBurned.formattedString() ?? "",
-                                    measure: "Progress.Ccal.title".localized)
+                                    measure: "Progress_Ccal_title".localized)
             DispatchQueue.main.async {
                 self.activities["todayCalories"] = activity
             }
@@ -121,8 +121,8 @@ final class HealthService: ObservableObject, HealthServiceDescription {
             let currentFormattedDistance = self.getMeasureForDistance(distance: distanceWalkingRunning)
             
             let activity = Activity(id: 2,
-                                    title: "Progress.Distance.title".localized,
-                                    timeInterval: "Progress.Today.title".localized,
+                                    title: "Progress_Distance_title".localized,
+                                    timeInterval: "Progress_Today_title".localized,
                                     image: "ruler",
                                     amount: currentFormattedDistance.formattedDistance,
                                     measure: currentFormattedDistance.currentMeasure)
@@ -148,11 +148,11 @@ final class HealthService: ObservableObject, HealthServiceDescription {
             let beatsPerMinuteFormatted = String(format: "%.2f", beatsPerMinute)
             
             let activity = Activity(id: 3,
-                                    title: "Progress.AverageHeartRate.title".localized,
-                                    timeInterval: "Progress.Today.title".localized,
+                                    title: "Progress_AverageHeartRate_title".localized,
+                                    timeInterval: "Progress_Today_title".localized,
                                     image: "heart.square",
                                     amount: beatsPerMinuteFormatted,
-                                    measure: "Progress.BeatPerMinute.title")
+                                    measure: "Progress_BeatPerMinute_title")
             DispatchQueue.main.async {
                 self.activities["averageHeartRate"] = activity
             }
@@ -181,8 +181,8 @@ final class HealthService: ObservableObject, HealthServiceDescription {
             }
             let stepCount = quantity.doubleValue(for: .count())
             let activity = Activity(id: 4,
-                                    title: "Progress.Steps.title".localized,
-                                    timeInterval: "Progress.ThisWeak.title".localized,
+                                    title: "Progress_Steps_title".localized,
+                                    timeInterval: "Progress_ThisWeak_title".localized,
                                     image: "figure.walk",
                                     amount: stepCount.formattedString() ?? "",
                                     measure: nil)
@@ -213,11 +213,11 @@ final class HealthService: ObservableObject, HealthServiceDescription {
             
             let flightsCount = quantity.doubleValue(for: .count())
             let activity = Activity(id: 5,
-                                    title: "Progress.FlightsClimbed.title".localized,
-                                    timeInterval: "Progress.ThisWeak.title".localized,
+                                    title: "Progress_FlightsClimbed_title".localized,
+                                    timeInterval: "Progress_ThisWeak_title".localized,
                                     image: "flame",
                                     amount: flightsCount.formattedString() ?? "",
-                                    measure: "Progress.Flights.title".localized)
+                                    measure: "Progress_Flights_title".localized)
             
             DispatchQueue.main.async {
                 self.activities["flightsClimbed"] = activity
@@ -288,10 +288,10 @@ final class HealthService: ObservableObject, HealthServiceDescription {
         switch currentMeasure {
         case Constants.kilometers:
             return (formattedDistance: (distance / 1000).formattedString() ?? "",
-                    currentMeasure: "Progress.Kilometers.title".localized)
+                    currentMeasure: "Progress_Kilometers_title".localized)
         case Constants.miles:
             return (formattedDistance: (distance / 1000 * 0.62137).formattedString() ?? "",
-                    currentMeasure: "Progress.Miles.title".localized)
+                    currentMeasure: "Progress_Miles_title".localized)
         default:
             return (formattedDistance: "", currentMeasure: "")
         }
@@ -302,13 +302,13 @@ final class HealthService: ObservableObject, HealthServiceDescription {
         
         switch currentMeasure {
         case Constants.kgs:
-            return (formattedBodyWeight: bodyMass.formattedString() ?? "", currentMeasure: "Progress.Kgs.title".localized)
+            return (formattedBodyWeight: bodyMass.formattedString() ?? "", currentMeasure: "Progress_Kgs_title".localized)
         case Constants.pounds:
             let lbBodyMass = bodyMass * 2.20462
-            return (formattedBodyWeight: lbBodyMass.formattedString() ?? "", currentMeasure: "Progress.Pounds.title".localized)
+            return (formattedBodyWeight: lbBodyMass.formattedString() ?? "", currentMeasure: "Progress_Pounds_title".localized)
         case Constants.stones:
             let stBodyMass = bodyMass * 0.15747
-            return (formattedBodyWeight: stBodyMass.formattedString() ?? "", currentMeasure: "Progress.Stones.title".localized)
+            return (formattedBodyWeight: stBodyMass.formattedString() ?? "", currentMeasure: "Progress_Stones_title".localized)
         default:
             return (formattedBodyWeight: "", currentMeasure: "")
         }
