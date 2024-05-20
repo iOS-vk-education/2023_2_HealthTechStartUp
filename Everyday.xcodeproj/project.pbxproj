@@ -10,11 +10,11 @@
 		8C5028602BF9626E0010F918 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50285C2BF9626E0010F918 /* NotificationModel.swift */; };
 		8C5028612BF9626E0010F918 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50285E2BF9626E0010F918 /* NotificationService.swift */; };
 		8C50286E2BF980630010F918 /* EverydayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50286D2BF980630010F918 /* EverydayTests.swift */; };
+		8C6C970C2BFBB1EF00E5E9EB /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C6C970A2BFBB1EF00E5E9EB /* Model.xcdatamodeld */; };
 		8CA0C3642BE968C200353FB2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3632BE968C200353FB2 /* Date+Extension.swift */; };
 		8CFEAFCF2BFA0B1F00BCECF8 /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEAFCE2BFA0B1F00BCECF8 /* HealthView.swift */; };
 		8CFEAFD12BFA0B8D00BCECF8 /* HealthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEAFD02BFA0B8D00BCECF8 /* HealthController.swift */; };
 		8CFEAFD32BFA11AA00BCECF8 /* ActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEAFD22BFA11AA00BCECF8 /* ActivityCard.swift */; };
-		9D6337B22BFB8FF10034844E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D6337B02BFB8FF10034844E /* Model.xcdatamodeld */; };
 		9D6337B52BFB92D40034844E /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6337B42BFB92D40034844E /* ResultsView.swift */; };
 		9D6337B82BFB931F0034844E /* WeightFatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6337B72BFB931F0034844E /* WeightFatView.swift */; };
 		9D6337BB2BFB934A0034844E /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6337BA2BFB934A0034844E /* ActivityView.swift */; };
@@ -366,11 +366,11 @@
 		8C50285E2BF9626E0010F918 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		8C50286B2BF980630010F918 /* EverydayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EverydayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		8C50286D2BF980630010F918 /* EverydayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverydayTests.swift; sourceTree = "<group>"; };
+		8C6C970B2BFBB1EF00E5E9EB /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		8CA0C3632BE968C200353FB2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
 		8CFEAFCE2BFA0B1F00BCECF8 /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
 		8CFEAFD02BFA0B8D00BCECF8 /* HealthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthController.swift; sourceTree = "<group>"; };
 		8CFEAFD22BFA11AA00BCECF8 /* ActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCard.swift; sourceTree = "<group>"; };
-		9D6337B12BFB8FF10034844E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9D6337B42BFB92D40034844E /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
 		9D6337B72BFB931F0034844E /* WeightFatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightFatView.swift; sourceTree = "<group>"; };
 		9D6337BA2BFB934A0034844E /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
@@ -2072,7 +2072,7 @@
 		9EA952FC2BF2286300ADBF9A /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				9D6337B02BFB8FF10034844E /* Model.xcdatamodeld */,
+				8C6C970A2BFBB1EF00E5E9EB /* Model.xcdatamodeld */,
 				9EA952F82BF2286300ADBF9A /* CoreDataService.swift */,
 				9EA952FA2BF2286300ADBF9A /* UserAuthentication+CoreDataClass.swift */,
 				9EA952FB2BF2286300ADBF9A /* UserAuthentication+CoreDataProperties.swift */,
@@ -2508,6 +2508,7 @@
 				9DEC6AD52BFA16E40028BAFD /* SheetPresenter+ConditionChoiceViewOutput.swift in Sources */,
 				9EA952162BF19D5500ADBF9A /* DeleteAccountInteractor.swift in Sources */,
 				9DEC6AFC2BFA195D0028BAFD /* Domain.swift in Sources */,
+				8C6C970C2BFBB1EF00E5E9EB /* Model.xcdatamodeld in Sources */,
 				9E467A882BF2358300127EFA /* ProgramLevelsViewModel.swift in Sources */,
 				9EA951892BF19D3900ADBF9A /* AuthorizationProtocols.swift in Sources */,
 				9EA952CE2BF2279A00ADBF9A /* ResultsTableViewCellViewModel.swift in Sources */,
@@ -2733,7 +2734,6 @@
 				9EBB2FB52BF7CA4D00D1A2D4 /* CatalogService.swift in Sources */,
 				9DEC6AE62BFA17830028BAFD /* ExerciseTimerView.swift in Sources */,
 				9EA9523C2BF19D5500ADBF9A /* ThemeRouter.swift in Sources */,
-				9D6337B22BFB8FF10034844E /* Model.xcdatamodeld in Sources */,
 				9D6337BE2BFB936B0034844E /* ActivityViewModel.swift in Sources */,
 				9EA9521B2BF19D5500ADBF9A /* HealthViewModel.swift in Sources */,
 				9EA952432BF19D5500ADBF9A /* UnitsProtocols.swift in Sources */,
@@ -2966,7 +2966,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LW5X22QCW4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -2985,7 +2985,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Everyday.Sportic;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -3005,7 +3005,7 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = LW5X22QCW4;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
@@ -3024,7 +3024,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = Everyday.Sportic;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sport;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -3165,14 +3165,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		9D6337B02BFB8FF10034844E /* Model.xcdatamodeld */ = {
+		8C6C970A2BFBB1EF00E5E9EB /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9D6337B12BFB8FF10034844E /* Model.xcdatamodel */,
+				8C6C970B2BFBB1EF00E5E9EB /* Model.xcdatamodel */,
 			);
-			currentVersion = 9D6337B12BFB8FF10034844E /* Model.xcdatamodel */;
+			currentVersion = 8C6C970B2BFBB1EF00E5E9EB /* Model.xcdatamodel */;
 			name = Model.xcdatamodeld;
-			path = /Users/a123/VK_education/sem2/swift/2023_2_HealthTechStartUp/Everyday/Services/Auth/Helpers/CoreData/Model.xcdatamodeld;
+			path = /Users/iwanm/EvrdTech/2023_2_HealthTechStartUp/Everyday/Services/Auth/Helpers/CoreData/Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
