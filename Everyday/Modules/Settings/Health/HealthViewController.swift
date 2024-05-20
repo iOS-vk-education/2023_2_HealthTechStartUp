@@ -12,7 +12,7 @@ import PinLayout
 final class HealthViewController: UIViewController {
     private let output: HealthViewOutput
     
-    private let healthService = HealthService()
+    private let healthService = HealthService.shared
     
     private let tableView = UITableView(frame: .zero, style: .insetGrouped)
     private let navBarTitle = UILabel()

@@ -8,18 +8,34 @@
 import Foundation
 import HealthKit
 
-final class HealthService {
+protocol HealthServiceDescription {
+    func fetchTodaySteps()
+    func fetchTodayCalories()
+    func fetchTodayDistance()
+    func fetchAverageHeartRate()
+    func fetchWeeklySteps()
+    func fetchFlightClimbed()
+    func fetchWeight(completion: @escaping (Result<Void, Error>, _ bodyMass: String?, _ measure: String?) -> Void)
+    func fetchFatPercentage(completion: @escaping (Result<Void, Error>, _ fatPercent: String?) -> Void)
+}
+
+final class HealthService: ObservableObject, HealthServiceDescription {
+    public static let shared = HealthService()
     
     private let healthStore = HKHealthStore()
     
-    init() {
+    @Published var activities: [String: Activity] = [:]
+    
+    private init() {
         let steps = HKQuantityType(.stepCount)
         let distance = HKQuantityType(.distanceWalkingRunning)
         let activeEnergyBurned = HKQuantityType(.activeEnergyBurned)
         let flightsClimbed = HKQuantityType(.flightsClimbed)
         let heartRate = HKQuantityType(.heartRate)
+        let bodyMass = HKQuantityType(.bodyMass)
+        let bodyFatPercentage = HKQuantityType(.bodyFatPercentage)
         
-        let healthTypes: Set = [steps, distance, activeEnergyBurned, flightsClimbed, heartRate]
+        let healthTypes: Set = [steps, distance, activeEnergyBurned, flightsClimbed, heartRate, bodyMass, bodyFatPercentage]
         
         Task {
             do {
@@ -43,121 +59,291 @@ final class HealthService {
             healthStore.authorizationStatus(for: healthType)
         }
     }
+    
+    func fetchTodaySteps() {
+        let steps = HKQuantityType(.stepCount)
+        let predicate = HKQuery.predicateForSamples(withStart: .startOfToday, end: Date())
+        let query = HKStatisticsQuery(quantityType: steps, quantitySamplePredicate: predicate) { _, result, error in
+            guard let quantity = result?.sumQuantity(), error == nil else {
+                print("error fetching today steps")
+                return
+            }
+            let stepCount = quantity.doubleValue(for: .count())
+            let activity = Activity(id: 0,
+                                    title: "Progress_Steps_title".localized,
+                                    timeInterval: "Progress_Today_title".localized,
+                                    image: "figure.walk",
+                                    amount: stepCount.formattedString() ?? "",
+                                    measure: nil)
+            DispatchQueue.main.async {
+                self.activities["todaySteps"] = activity
+            }
+        }
+        
+        healthStore.execute(query)
+    }
+    
+    func fetchTodayCalories() {
+        let calories = HKQuantityType(.activeEnergyBurned)
+        let predicate = HKQuery.predicateForSamples(withStart: .startOfToday, end: Date())
+        let query = HKStatisticsQuery(quantityType: calories, quantitySamplePredicate: predicate) { _, result, error in
+            guard let quantity = result?.sumQuantity(), error == nil else {
+                print("error fetching today calories")
+                return
+            }
+            
+            let caloriesBurned = quantity.doubleValue(for: .kilocalorie())
+            let activity = Activity(id: 1,
+                                    title: "Progress_EnergyBurned_title".localized,
+                                    timeInterval: "Progress_Today_title".localized,
+                                    image: "flame",
+                                    amount: caloriesBurned.formattedString() ?? "",
+                                    measure: "Progress_Ccal_title".localized)
+            DispatchQueue.main.async {
+                self.activities["todayCalories"] = activity
+            }
+        }
+        
+        healthStore.execute(query)
+    }
+    
+    func fetchTodayDistance() {
+        let distance = HKQuantityType(.distanceWalkingRunning)
+        let predicate = HKQuery.predicateForSamples(withStart: .startOfToday, end: Date())
+        let query = HKStatisticsQuery(quantityType: distance, quantitySamplePredicate: predicate) { _, result, error in
+            guard let quantity = result?.sumQuantity(), error == nil else {
+                print("error fetching today distance")
+                return
+            }
+            
+            let distanceWalkingRunning = quantity.doubleValue(for: .meter())
+            
+            let currentFormattedDistance = self.getMeasureForDistance(distance: distanceWalkingRunning)
+            
+            let activity = Activity(id: 2,
+                                    title: "Progress_Distance_title".localized,
+                                    timeInterval: "Progress_Today_title".localized,
+                                    image: "ruler",
+                                    amount: currentFormattedDistance.formattedDistance,
+                                    measure: currentFormattedDistance.currentMeasure)
+            DispatchQueue.main.async {
+                self.activities["todayDistance"] = activity
+            }
+        }
+        
+        healthStore.execute(query)
+    }
+    
+    func fetchAverageHeartRate() {
+        let heartRate = HKQuantityType(.heartRate)
+        
+        let predicate = HKQuery.predicateForSamples(withStart: .startOfToday, end: Date(), options: .strictEndDate)
+        let query = HKStatisticsQuery(quantityType: heartRate, quantitySamplePredicate: predicate, options: .discreteAverage) { (_, result, error) in
+            guard let quantity = result?.sumQuantity(), error == nil else {
+                print("error fetching today HeartRate")
+                return
+            }
+            
+            let beatsPerMinute = quantity.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute()))
+            let beatsPerMinuteFormatted = String(format: "%.2f", beatsPerMinute)
+            
+            let activity = Activity(id: 3,
+                                    title: "Progress_AverageHeartRate_title".localized,
+                                    timeInterval: "Progress_Today_title".localized,
+                                    image: "heart.square",
+                                    amount: beatsPerMinuteFormatted,
+                                    measure: "Progress_BeatPerMinute_title")
+            DispatchQueue.main.async {
+                self.activities["averageHeartRate"] = activity
+            }
+            print("Средний пульс за последние N часов: \(beatsPerMinute) ударов в минуту")
+        }
+        
+        healthStore.execute(query)
+    }
+    
+    func fetchWeeklySteps() {
+        let steps = HKQuantityType(.stepCount)
+        
+        let calendar = Calendar.current
+        let now = Date()
+        guard let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: now)) else {
+            print("неделя не неделя")
+            return
+        }
+        
+        let predicate = HKQuery.predicateForSamples(withStart: startOfWeek, end: now)
+        
+        let query = HKStatisticsQuery(quantityType: steps, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, error in
+            guard let quantity = result?.sumQuantity(), error == nil else {
+                print("error fetching weekly steps")
+                return
+            }
+            let stepCount = quantity.doubleValue(for: .count())
+            let activity = Activity(id: 4,
+                                    title: "Progress_Steps_title".localized,
+                                    timeInterval: "Progress_ThisWeak_title".localized,
+                                    image: "figure.walk",
+                                    amount: stepCount.formattedString() ?? "",
+                                    measure: nil)
+            DispatchQueue.main.async {
+                self.activities["weeklySteps"] = activity
+            }
+        }
+        
+        healthStore.execute(query)
+    }
+    
+    func fetchFlightClimbed() {
+        let flightsClimbed = HKQuantityType(.flightsClimbed)
+        
+        let calendar = Calendar.current
+        let now = Date()
+        guard let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: now)) else {
+            return
+        }
+        
+        let predicate = HKQuery.predicateForSamples(withStart: startOfWeek, end: now)
+        
+        let query = HKStatisticsQuery(quantityType: flightsClimbed, quantitySamplePredicate: predicate, options: .cumulativeSum) { _, result, error in
+            guard let quantity = result?.sumQuantity(), error == nil else {
+                print("error fetching  flights")
+                return
+            }
+            
+            let flightsCount = quantity.doubleValue(for: .count())
+            let activity = Activity(id: 5,
+                                    title: "Progress_FlightsClimbed_title".localized,
+                                    timeInterval: "Progress_ThisWeak_title".localized,
+                                    image: "flame",
+                                    amount: flightsCount.formattedString() ?? "",
+                                    measure: "Progress_Flights_title".localized)
+            
+            DispatchQueue.main.async {
+                self.activities["flightsClimbed"] = activity
+            }
+        }
+        
+        healthStore.execute(query)
+    }
+    
+    func fetchWeight(completion: @escaping (Result<Void, Error>, _ bodyMass: String?, _ measure: String?) -> Void) {
+        guard let weightType = HKQuantityType.quantityType(forIdentifier: .bodyMass) else {
+            completion(.failure(NSError(domain: "HealthService", code: -1, userInfo: [NSLocalizedDescriptionKey: "Weight type is unavailable"])), nil, nil)
+            return
+        }
+        
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+        let query = HKSampleQuery(sampleType: weightType, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { _, results, error in
+            if let error = error {
+                completion(.failure(error), nil, nil)
+                print("Failed to fetch weight: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let result = results?.first as? HKQuantitySample else {
+                completion(.failure(NSError(domain: "HealthService", code: -1, userInfo: [NSLocalizedDescriptionKey: "No weight data available"])), nil, nil)
+                print("No weight data available")
+                return
+            }
+            
+            let weightInKilograms = result.quantity.doubleValue(for: .gramUnit(with: .kilo))
+            let currentWeightData = self.getMeasureForBodyWeight(bodyMass: weightInKilograms)
+            completion(.success(()), currentWeightData.formattedBodyWeight, currentWeightData.currentMeasure)
+        }
+        
+        healthStore.execute(query)
+    }
+    
+    func fetchFatPercentage(completion: @escaping (Result<Void, Error>, _ fatPercent: String?) -> Void) {
+        guard let fatPercentage = HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage) else {
+            completion(.failure(NSError(domain: "HealthService", code: -1, userInfo: [NSLocalizedDescriptionKey: "fatPercentage type is unavailable"])), nil)
+            return
+        }
+        
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+        let query = HKSampleQuery(sampleType: fatPercentage, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { _, results, error in
+            if let error = error {
+                completion(.failure(error), nil)
+                print("Failed to fetch fatPercentage: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let result = results?.first as? HKQuantitySample else {
+                completion(.failure(NSError(domain: "HealthService", code: -1, userInfo: [NSLocalizedDescriptionKey: "No fatPercentage data available"])), nil)
+                print("No fatPercentage data available")
+                return
+            }
+            
+            let bodyFatPercentage = result.quantity.doubleValue(for: HKUnit.percent())
+            completion(.success(()), String(bodyFatPercentage * 100))
+        }
+        
+        healthStore.execute(query)
+    }
+    
+    func getMeasureForDistance(distance: Double) -> (formattedDistance: String, currentMeasure: String) {
+        let currentMeasure = UserDefaults.standard.string(forKey: Constants.distanceKey)
+        
+        switch currentMeasure {
+        case Constants.kilometers:
+            return (formattedDistance: (distance / 1000).formattedString() ?? "",
+                    currentMeasure: "Progress_Kilometers_title".localized)
+        case Constants.miles:
+            return (formattedDistance: (distance / 1000 * 0.62137).formattedString() ?? "",
+                    currentMeasure: "Progress_Miles_title".localized)
+        default:
+            return (formattedDistance: "", currentMeasure: "")
+        }
+    }
+    
+    func getMeasureForBodyWeight(bodyMass: Double) -> (formattedBodyWeight: String, currentMeasure: String) {
+        let currentMeasure = UserDefaults.standard.string(forKey: Constants.bodyWeightKey)
+        
+        switch currentMeasure {
+        case Constants.kgs:
+            return (formattedBodyWeight: bodyMass.formattedString() ?? "", currentMeasure: "Progress_Kgs_title".localized)
+        case Constants.pounds:
+            let lbBodyMass = bodyMass * 2.20462
+            return (formattedBodyWeight: lbBodyMass.formattedString() ?? "", currentMeasure: "Progress_Pounds_title".localized)
+        case Constants.stones:
+            let stBodyMass = bodyMass * 0.15747
+            return (formattedBodyWeight: stBodyMass.formattedString() ?? "", currentMeasure: "Progress_Stones_title".localized)
+        default:
+            return (formattedBodyWeight: "", currentMeasure: "")
+        }
+    }
+}
 
-    func getStepCount(startDate: Date, endDate: Date, completion: @escaping (String, Error?) -> Void) {
-        guard let stepType = HKQuantityType.quantityType(forIdentifier: .stepCount) else {
-            completion("0", nil)
-            return
-        }
+private extension HealthService {
+    struct Constants {
+        static let bodyWeightKey = "bodyWeightMeasureUnit"
+        static let measurementsKey = "measurementsMeasureUnit"
+        static let loadWeightKey = "loadWeightMeasureUnit"
+        static let distanceKey = "distanceMeasureUnit"
+        
+        static let kgs = "kg"
+        static let pounds = "lb"
+        static let stones = "st"
+        static let centimeters = "centimeters"
+        static let inches = "inches"
+        static let kilometers = "kilometers"
+        static let miles = "miles"
+    }
+}
 
-        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
-        
-        let query = HKStatisticsQuery(quantityType: stepType,
-                                      quantitySamplePredicate: predicate,
-                                      options: .cumulativeSum) { _, result, error in
-            guard let result = result, let sum = result.sumQuantity() else {
-                completion("0", error)
-                return
-            }
-            
-            let stepCount = Int(sum.doubleValue(for: HKUnit.count()))
-            let stepCountFormatted = String(stepCount)
-            completion(stepCountFormatted, nil)
-        }
-        
-        healthStore.execute(query)
+extension Date {
+    static var startOfToday: Date {
+        Calendar.current.startOfDay(for: Date())
     }
-    
-    func getDistance(startDate: Date, endDate: Date, completion: @escaping (String, Error?) -> Void) {
-        guard let distance = HKQuantityType.quantityType(forIdentifier: .distanceWalkingRunning) else {
-            completion("0", nil)
-            return
-        }
+}
+
+extension Double {
+    func formattedString() -> String? {
+        let numberFormatter = NumberFormatter()
+        numberFormatter.numberStyle = .decimal
+        numberFormatter.maximumFractionDigits = 0
         
-        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
-        
-        let query = HKStatisticsQuery(quantityType: distance,
-                                      quantitySamplePredicate: predicate,
-                                      options: .cumulativeSum) { _, result, error in
-            guard let result = result, let sum = result.sumQuantity() else {
-                completion("0", error)
-                return
-            }
-            
-            let distance = (sum.doubleValue(for: HKUnit.meter()) / 10).rounded() / 100
-            let distanceformatted = String(distance)
-            completion(String(distanceformatted), nil)
-        }
-        
-        healthStore.execute(query)
-    }
-    
-    func getActiveEnergyBurned(startDate: Date, endDate: Date, completion: @escaping (String, Error?) -> Void) {
-        guard let activeEnergyBurned = HKQuantityType.quantityType(forIdentifier: .activeEnergyBurned) else {
-            completion("0", nil)
-            return
-        }
-        
-        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
-        
-        let query = HKStatisticsQuery(quantityType: activeEnergyBurned,
-                                      quantitySamplePredicate: predicate,
-                                      options: .cumulativeSum) { _, result, error in
-            guard let result = result, let sum = result.sumQuantity() else {
-                completion("0", error)
-                return
-            }
-            
-            let energyBurnedInKcal = (sum.doubleValue(for: HKUnit.kilocalorie()) * 100).rounded() / 100
-            let energyBurnedInKcalFormatted = String(energyBurnedInKcal)
-            completion(energyBurnedInKcalFormatted, nil)
-        }
-        
-        healthStore.execute(query)
-    }
-    
-    func getFlightsClimbed(startDate: Date, endDate: Date, completion: @escaping (String, Error?) -> Void) {
-        guard let flightsClimbedType = HKQuantityType.quantityType(forIdentifier: .flightsClimbed) else {
-            completion("0", nil)
-            return
-        }
-        
-        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictStartDate)
-        
-        let query = HKStatisticsQuery(quantityType: flightsClimbedType,
-                                      quantitySamplePredicate: predicate,
-                                      options: .cumulativeSum) { _, result, error in
-            guard let result = result, let sum = result.sumQuantity() else {
-                completion("0", error)
-                return
-            }
-            
-            let flightsClimbed = (sum.doubleValue(for: HKUnit.count()) * 100).rounded() / 100
-            let flightsClimbedFormatted = String(flightsClimbed)
-            completion(flightsClimbedFormatted, nil)
-        }
-        
-        healthStore.execute(query)
-    }
-    
-    func getAverageHeartRate(startDate: Date, endDate: Date, completion: @escaping (String, Error?) -> Void) {
-        guard let heartRateType = HKQuantityType.quantityType(forIdentifier: .heartRate) else {
-            completion("0", nil)
-            return
-        }
-        
-        let predicate = HKQuery.predicateForSamples(withStart: startDate, end: endDate, options: .strictEndDate)
-        let query = HKStatisticsQuery(quantityType: heartRateType, quantitySamplePredicate: predicate, options: .discreteAverage) { (_, result, error) in
-            if let result = result, let averageHeartRate = result.averageQuantity() {
-                let beatsPerMinute = averageHeartRate.doubleValue(for: HKUnit.count().unitDivided(by: HKUnit.minute()))
-                let beatsPerMinuteFormatted = String(format: "%.2f", beatsPerMinute)
-                completion(beatsPerMinuteFormatted, nil)
-                print("Средний пульс за последние N часов: \(beatsPerMinute) ударов в минуту")
-            } else {
-                completion("Error", error)
-                print("Ошибка при получении данных о пульсе: \(String(describing: error))")
-            }
-        }
-        healthStore.execute(query)
+        return numberFormatter.string(from: NSNumber(value: self))
     }
 }

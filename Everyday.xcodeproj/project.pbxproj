@@ -54,6 +54,12 @@
 		9DEC6AFA2BFA19580028BAFD /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6AF92BFA19580028BAFD /* DTO.swift */; };
 		9DEC6AFC2BFA195D0028BAFD /* Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6AFB2BFA195D0028BAFD /* Domain.swift */; };
 		9DEC6AFF2BFA199C0028BAFD /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6AFE2BFA199C0028BAFD /* Preview.swift */; };
+		8C5028652BF9641F0010F918 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C5028632BF9641E0010F918 /* Model.xcdatamodeld */; };
+		8C50286E2BF980630010F918 /* EverydayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50286D2BF980630010F918 /* EverydayTests.swift */; };
+		8CA0C3642BE968C200353FB2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3632BE968C200353FB2 /* Date+Extension.swift */; };
+		8CFEAFCF2BFA0B1F00BCECF8 /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEAFCE2BFA0B1F00BCECF8 /* HealthView.swift */; };
+		8CFEAFD12BFA0B8D00BCECF8 /* HealthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEAFD02BFA0B8D00BCECF8 /* HealthController.swift */; };
+		8CFEAFD32BFA11AA00BCECF8 /* ActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEAFD22BFA11AA00BCECF8 /* ActivityCard.swift */; };
 		9E0C348E2BD700CB00D8696B /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0C348D2BD700CB00D8696B /* CloseButton.swift */; };
 		9E0C34902BD7CE6A00D8696B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */; };
 		9E36D47C2BFA435E004C5658 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E36D47A2BFA435E004C5658 /* Model.xcdatamodeld */; };
@@ -347,6 +353,16 @@
 		9EE8AE212B7FB905001D126F /* ProgressContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE1B2B7FB905001D126F /* ProgressContainer.swift */; };
 /* End PBXBuildFile section */
 
+/* Begin PBXContainerItemProxy section */
+		8C50286F2BF980630010F918 /* PBXContainerItemProxy */ = {
+			isa = PBXContainerItemProxy;
+			containerPortal = 9E53FB282B7F87BA00C55A45 /* Project object */;
+			proxyType = 1;
+			remoteGlobalIDString = 9E53FB2F2B7F87BA00C55A45;
+			remoteInfo = Everyday;
+		};
+/* End PBXContainerItemProxy section */
+
 /* Begin PBXFileReference section */
 		8C50285C2BF9626E0010F918 /* NotificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		8C50285E2BF9626E0010F918 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
@@ -395,6 +411,13 @@
 		9DEC6AF92BFA19580028BAFD /* DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
 		9DEC6AFB2BFA195D0028BAFD /* Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
 		9DEC6AFE2BFA199C0028BAFD /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
+		8C5028642BF9641E0010F918 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		8C50286B2BF980630010F918 /* EverydayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EverydayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C50286D2BF980630010F918 /* EverydayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverydayTests.swift; sourceTree = "<group>"; };
+		8CA0C3632BE968C200353FB2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		8CFEAFCE2BFA0B1F00BCECF8 /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
+		8CFEAFD02BFA0B8D00BCECF8 /* HealthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthController.swift; sourceTree = "<group>"; };
+		8CFEAFD22BFA11AA00BCECF8 /* ActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCard.swift; sourceTree = "<group>"; };
 		9E0C348D2BD700CB00D8696B /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
 		9E36D47B2BFA435E004C5658 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
@@ -686,6 +709,13 @@
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
+		8C5028682BF980630010F918 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9E53FB2D2B7F87BA00C55A45 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
@@ -867,6 +897,24 @@
 				9DEC6ACF2BFA16A60028BAFD /* TimerViewModel.swift */,
 			);
 			path = Models;
+			sourceTree = "<group>";
+		};
+		8C50286C2BF980630010F918 /* EverydayTests */ = {
+			isa = PBXGroup;
+			children = (
+				8C50286D2BF980630010F918 /* EverydayTests.swift */,
+			);
+			path = EverydayTests;
+			sourceTree = "<group>";
+		};
+		8CFEAFCD2BFA0B0B00BCECF8 /* Health */ = {
+			isa = PBXGroup;
+			children = (
+				8CFEAFCE2BFA0B1F00BCECF8 /* HealthView.swift */,
+				8CFEAFD02BFA0B8D00BCECF8 /* HealthController.swift */,
+				8CFEAFD22BFA11AA00BCECF8 /* ActivityCard.swift */,
+			);
+			path = Health;
 			sourceTree = "<group>";
 		};
 		9DEC6AD12BFA16B30028BAFD /* Presenter */ = {
@@ -1259,6 +1307,8 @@
 			children = (
 				9E53FB322B7F87BA00C55A45 /* Everyday */,
 				9E467A312BF2342400127EFA /* Everyday.app */,
+				8C50286B2BF980630010F918 /* EverydayTests.xctest */,
+				8C50286C2BF980630010F918 /* EverydayTests */,
 			);
 			sourceTree = "<group>";
 		};
@@ -2173,6 +2223,7 @@
 		9EE8AE152B7FB8F3001D126F /* Progress */ = {
 			isa = PBXGroup;
 			children = (
+				8CFEAFCD2BFA0B0B00BCECF8 /* Health */,
 				9EE8AE162B7FB905001D126F /* ProgressPresenter.swift */,
 				9EE8AE172B7FB905001D126F /* ProgressRouter.swift */,
 				9EE8AE182B7FB905001D126F /* ProgressViewController.swift */,
@@ -2198,6 +2249,24 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
+		8C50286A2BF980630010F918 /* EverydayTests */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8C5028732BF980630010F918 /* Build configuration list for PBXNativeTarget "EverydayTests" */;
+			buildPhases = (
+				8C5028672BF980630010F918 /* Sources */,
+				8C5028682BF980630010F918 /* Frameworks */,
+				8C5028692BF980630010F918 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+				8C5028702BF980630010F918 /* PBXTargetDependency */,
+			);
+			name = EverydayTests;
+			productName = EverydayTests;
+			productReference = 8C50286B2BF980630010F918 /* EverydayTests.xctest */;
+			productType = "com.apple.product-type.bundle.unit-test";
+		};
 		9E53FB2F2B7F87BA00C55A45 /* Everyday */ = {
 			isa = PBXNativeTarget;
 			buildConfigurationList = 9E53FB442B7F87BB00C55A45 /* Build configuration list for PBXNativeTarget "Everyday" */;
@@ -2235,9 +2304,13 @@
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
-				LastSwiftUpdateCheck = 1500;
+				LastSwiftUpdateCheck = 1530;
 				LastUpgradeCheck = 1500;
 				TargetAttributes = {
+					8C50286A2BF980630010F918 = {
+						CreatedOnToolsVersion = 15.3;
+						TestTargetID = 9E53FB2F2B7F87BA00C55A45;
+					};
 					9E53FB2F2B7F87BA00C55A45 = {
 						CreatedOnToolsVersion = 15.0;
 					};
@@ -2265,11 +2338,19 @@
 			projectRoot = "";
 			targets = (
 				9E53FB2F2B7F87BA00C55A45 /* Everyday */,
+				8C50286A2BF980630010F918 /* EverydayTests */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
+		8C5028692BF980630010F918 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9E53FB2E2B7F87BA00C55A45 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2308,6 +2389,14 @@
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
+		8C5028672BF980630010F918 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8C50286E2BF980630010F918 /* EverydayTests.swift in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
 		9E53FB2C2B7F87BA00C55A45 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
@@ -2395,6 +2484,7 @@
 				9EA9516D2BF19BA200ADBF9A /* ForgotPasswordViewController.swift in Sources */,
 				9EA9521F2BF19D5500ADBF9A /* HealthProtocols.swift in Sources */,
 				9E5B753A2B7F9D7600E2BDE6 /* GenderViewModel.swift in Sources */,
+				8CFEAFD12BFA0B8D00BCECF8 /* HealthController.swift in Sources */,
 				9E467A852BF2358300127EFA /* OtherCell.swift in Sources */,
 				9E467A9F2BF2D34300127EFA /* EmptyTrainViewModel.swift in Sources */,
 				9EBB2F9D2BF796F200D1A2D4 /* CatalogPresenter.swift in Sources */,
@@ -2495,6 +2585,7 @@
 				9EA9523A2BF19D5500ADBF9A /* ThemePresenter.swift in Sources */,
 				9EA9532B2BF2286300ADBF9A /* AuthService.swift in Sources */,
 				9EA952262BF19D5500ADBF9A /* ProfileViewModelSingWithVKOrGoogle.swift in Sources */,
+				8CFEAFD32BFA11AA00BCECF8 /* ActivityCard.swift in Sources */,
 				9EA953252BF2286300ADBF9A /* DataReload.swift in Sources */,
 				9E5B75452B7F9D7600E2BDE6 /* AgeView.swift in Sources */,
 				9E36D47C2BFA435E004C5658 /* Model.xcdatamodeld in Sources */,
@@ -2623,6 +2714,7 @@
 				9EA952502BF2263300ADBF9A /* SettingsProtocols.swift in Sources */,
 				9EA951712BF19BA200ADBF9A /* SignInPresenter.swift in Sources */,
 				9E5B75432B7F9D7600E2BDE6 /* AgeModel.swift in Sources */,
+				8CFEAFCF2BFA0B1F00BCECF8 /* HealthView.swift in Sources */,
 				9EA9517A2BF19BA200ADBF9A /* SignUpRouter.swift in Sources */,
 				9E5B75392B7F9D7600E2BDE6 /* GenderView.swift in Sources */,
 				9EA9522A2BF19D5500ADBF9A /* ProfileProtocols.swift in Sources */,
@@ -2638,6 +2730,14 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXSourcesBuildPhase section */
+
+/* Begin PBXTargetDependency section */
+		8C5028702BF980630010F918 /* PBXTargetDependency */ = {
+			isa = PBXTargetDependency;
+			target = 9E53FB2F2B7F87BA00C55A45 /* Everyday */;
+			targetProxy = 8C50286F2BF980630010F918 /* PBXContainerItemProxy */;
+		};
+/* End PBXTargetDependency section */
 
 /* Begin PBXVariantGroup section */
 		9E53FB392B7F87BA00C55A45 /* Main.storyboard */ = {
@@ -2663,6 +2763,44 @@
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
+		8C5028712BF980630010F918 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NS3YD2TYB9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sport.EverydayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Everyday.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Everyday";
+			};
+			name = Debug;
+		};
+		8C5028722BF980630010F918 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				BUNDLE_LOADER = "$(TEST_HOST)";
+				CODE_SIGN_STYLE = Automatic;
+				CURRENT_PROJECT_VERSION = 1;
+				DEVELOPMENT_TEAM = NS3YD2TYB9;
+				GENERATE_INFOPLIST_FILE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 17.4;
+				MARKETING_VERSION = 1.0;
+				PRODUCT_BUNDLE_IDENTIFIER = sport.EverydayTests;
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_EMIT_LOC_STRINGS = NO;
+				SWIFT_VERSION = 5.0;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Everyday.app/$(BUNDLE_EXECUTABLE_FOLDER_PATH)/Everyday";
+			};
+			name = Release;
+		};
 		9E53FB422B7F87BB00C55A45 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
@@ -2810,7 +2948,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sport;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sportic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -2848,7 +2986,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sport;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sportic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -2863,6 +3001,15 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
+		8C5028732BF980630010F918 /* Build configuration list for PBXNativeTarget "EverydayTests" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8C5028712BF980630010F918 /* Debug */,
+				8C5028722BF980630010F918 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
 		9E53FB2B2B7F87BA00C55A45 /* Build configuration list for PBXProject "Everyday" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (

@@ -28,9 +28,9 @@ final class AuthService: AuthServiceDescription {
     private let googleAuthService: GoogleAuthServiceDescription
     private let firebaseAuthService: FirebaseAuthServiceDescription
     
-    private init(vkidAuthService: VKIDAuthServiceDescription = VKIDAuthService.shared,
-                 googleAuthService: GoogleAuthServiceDescription = GoogleAuthService.shared,
-                 firebaseAuthService: FirebaseAuthServiceDescription = FirebaseAuthService.shared) {
+    internal init(vkidAuthService: VKIDAuthServiceDescription = VKIDAuthService.shared,
+                  googleAuthService: GoogleAuthServiceDescription = GoogleAuthService.shared,
+                  firebaseAuthService: FirebaseAuthServiceDescription = FirebaseAuthService.shared) {
         self.vkidAuthService = vkidAuthService
         self.googleAuthService = googleAuthService
         self.firebaseAuthService = firebaseAuthService
