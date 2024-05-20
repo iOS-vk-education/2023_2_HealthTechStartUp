@@ -1,6 +1,22 @@
 {
   "sourceLanguage" : "ru",
   "strings" : {
+    "%@ %@" : {
+      "localizations" : {
+        "ru" : {
+          "stringUnit" : {
+            "state" : "new",
+            "value" : "%1$@ %2$@"
+          }
+        }
+      }
+    },
+    "%@ %%" : {
+
+    },
+    "Activity" : {
+
+    },
     "AlertManager_alert_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -909,6 +925,9 @@
         }
       }
     },
+    "Fat" : {
+
+    },
     "ForgotPassword_ConfirmButton_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -971,6 +990,9 @@
         }
       }
     },
+    "Health" : {
+
+    },
     "Health_Connected_title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1018,23 +1040,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Перезагрузить замеры"
-          }
-        }
-      }
-    },
-    "NotepadEmptyState_title" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Chilling..."
-          }
-        },
-        "ru" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Отдыхаем..."
           }
         }
       }
@@ -1123,6 +1128,9 @@
           }
         }
       }
+    },
+    "Loading error" : {
+
     },
     "NameGenerator_name_1" : {
       "extractionState" : "manual",
@@ -2017,6 +2025,12 @@
           }
         }
       }
+    },
+    "Photo Library" : {
+
+    },
+    "Photos" : {
+
     },
     "Profile_ChangeEmail_title" : {
       "extractionState" : "manual",
@@ -3598,6 +3612,9 @@
           }
         }
       }
+    },
+    "Weight" : {
+
     },
     "WelcomeScreen_or_Signin_button_title" : {
       "extractionState" : "manual",

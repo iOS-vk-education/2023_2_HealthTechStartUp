@@ -3,7 +3,7 @@
 //  Created by Михаил on 16.02.2024.
 //
 
-import UIKit
+import SwiftUI
 import FirebaseAuth
 
 // MARK: - TabBarController
@@ -17,9 +17,18 @@ final class TabBarController: UITabBarController {
         super.viewDidLoad()
         setupTabBar()
         selectedIndex = 2
-        self.tabBar.tintColor = Constants.accentColor
-        self.tabBar.isTranslucent = false
-        self.tabBar.backgroundColor = Constants.background
+        tabBar.tintColor = Constants.accentColor
+        tabBar.isTranslucent = false
+        tabBar.backgroundColor = Constants.background
+        UITabBar.appearance().isTranslucent = false
+        UITabBar.appearance().barTintColor = Constants.background
+        UITabBar.appearance().shadowImage = UIImage()
+        UITabBar.appearance().backgroundImage = UIImage()
+        
+        UINavigationBar.appearance().barTintColor = Constants.background
+        UINavigationBar.appearance().shadowImage = UIImage()
+        UINavigationBar.appearance().setBackgroundImage(UIImage(), for: .default)
+        
         delegate = self
     }
     
@@ -44,7 +53,7 @@ final class TabBarController: UITabBarController {
         case .notepad:
             viewController = NotepadContainer.assemble(with: .init()).viewController
         case .progress:
-            viewController = ProgressContainer.assemble(with: .init()).viewController
+            viewController = UIHostingController(rootView: ResultsView())
         case .workout:
             viewController = WorkoutContainer.assemble(with: .init()).viewController
             tabBarItem.title = Constants.Workout.title

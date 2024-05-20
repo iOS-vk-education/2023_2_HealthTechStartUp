@@ -9,7 +9,6 @@ import SwiftUI
 
 struct HealthView: View {
     @ObservedObject var healthService: HealthService
-    @StateObject var controller = HealthDataViewController()
     
     var body: some View {
         VStack {

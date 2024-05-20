@@ -276,7 +276,7 @@ final class HealthService: ObservableObject, HealthServiceDescription {
             }
             
             let bodyFatPercentage = result.quantity.doubleValue(for: HKUnit.percent())
-            completion(.success(()), String(bodyFatPercentage * 100))
+            completion(.success(()), (bodyFatPercentage * 100).formattedString())
         }
         
         healthStore.execute(query)

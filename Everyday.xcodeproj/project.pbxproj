@@ -9,7 +9,18 @@
 /* Begin PBXBuildFile section */
 		8C5028602BF9626E0010F918 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50285C2BF9626E0010F918 /* NotificationModel.swift */; };
 		8C5028612BF9626E0010F918 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50285E2BF9626E0010F918 /* NotificationService.swift */; };
+		8C50286E2BF980630010F918 /* EverydayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50286D2BF980630010F918 /* EverydayTests.swift */; };
 		8CA0C3642BE968C200353FB2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3632BE968C200353FB2 /* Date+Extension.swift */; };
+		8CFEAFCF2BFA0B1F00BCECF8 /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEAFCE2BFA0B1F00BCECF8 /* HealthView.swift */; };
+		8CFEAFD12BFA0B8D00BCECF8 /* HealthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEAFD02BFA0B8D00BCECF8 /* HealthController.swift */; };
+		8CFEAFD32BFA11AA00BCECF8 /* ActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEAFD22BFA11AA00BCECF8 /* ActivityCard.swift */; };
+		9D6337B22BFB8FF10034844E /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9D6337B02BFB8FF10034844E /* Model.xcdatamodeld */; };
+		9D6337B52BFB92D40034844E /* ResultsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6337B42BFB92D40034844E /* ResultsView.swift */; };
+		9D6337B82BFB931F0034844E /* WeightFatView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6337B72BFB931F0034844E /* WeightFatView.swift */; };
+		9D6337BB2BFB934A0034844E /* ActivityView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6337BA2BFB934A0034844E /* ActivityView.swift */; };
+		9D6337BE2BFB936B0034844E /* ActivityViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6337BD2BFB936B0034844E /* ActivityViewModel.swift */; };
+		9D6337C12BFB93880034844E /* PhotoLibraryView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6337C02BFB93880034844E /* PhotoLibraryView.swift */; };
+		9D6337C42BFB939C0034844E /* PhotoLibraryViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9D6337C32BFB939C0034844E /* PhotoLibraryViewModel.swift */; };
 		9DEC6A8B2BFA125A0028BAFD /* ExtraTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6A8A2BFA125A0028BAFD /* ExtraTableViewCellViewModel.swift */; };
 		9DEC6A8F2BFA12960028BAFD /* ExtraTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6A8E2BFA12960028BAFD /* ExtraTableViewCell.swift */; };
 		9DEC6A972BFA12CE0028BAFD /* HeartRatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6A912BFA12CE0028BAFD /* HeartRatePresenter.swift */; };
@@ -54,15 +65,8 @@
 		9DEC6AFA2BFA19580028BAFD /* DTO.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6AF92BFA19580028BAFD /* DTO.swift */; };
 		9DEC6AFC2BFA195D0028BAFD /* Domain.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6AFB2BFA195D0028BAFD /* Domain.swift */; };
 		9DEC6AFF2BFA199C0028BAFD /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6AFE2BFA199C0028BAFD /* Preview.swift */; };
-		8C5028652BF9641F0010F918 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8C5028632BF9641E0010F918 /* Model.xcdatamodeld */; };
-		8C50286E2BF980630010F918 /* EverydayTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50286D2BF980630010F918 /* EverydayTests.swift */; };
-		8CA0C3642BE968C200353FB2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3632BE968C200353FB2 /* Date+Extension.swift */; };
-		8CFEAFCF2BFA0B1F00BCECF8 /* HealthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEAFCE2BFA0B1F00BCECF8 /* HealthView.swift */; };
-		8CFEAFD12BFA0B8D00BCECF8 /* HealthController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEAFD02BFA0B8D00BCECF8 /* HealthController.swift */; };
-		8CFEAFD32BFA11AA00BCECF8 /* ActivityCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CFEAFD22BFA11AA00BCECF8 /* ActivityCard.swift */; };
 		9E0C348E2BD700CB00D8696B /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0C348D2BD700CB00D8696B /* CloseButton.swift */; };
 		9E0C34902BD7CE6A00D8696B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */; };
-		9E36D47C2BFA435E004C5658 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E36D47A2BFA435E004C5658 /* Model.xcdatamodeld */; };
 		9E36D4822BFA4833004C5658 /* BeamAISDK in Frameworks */ = {isa = PBXBuildFile; productRef = 9E36D4812BFA4833004C5658 /* BeamAISDK */; };
 		9E36D4852BFA4863004C5658 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9E36D4842BFA4863004C5658 /* FirebaseAuth */; };
 		9E36D4872BFA4863004C5658 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9E36D4862BFA4863004C5658 /* FirebaseFirestore */; };
@@ -345,12 +349,6 @@
 		9EE1BFB22BD7F5EE00458F04 /* VKIDCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9EE1BFB12BD7F5EE00458F04 /* VKIDCore */; };
 		9EE8AE052B7FA45F001D126F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9EE8AE042B7FA45F001D126F /* Localizable.xcstrings */; };
 		9EE8AE072B7FB77D001D126F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE062B7FB77D001D126F /* TabBarController.swift */; };
-		9EE8AE1C2B7FB905001D126F /* ProgressPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE162B7FB905001D126F /* ProgressPresenter.swift */; };
-		9EE8AE1D2B7FB905001D126F /* ProgressRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE172B7FB905001D126F /* ProgressRouter.swift */; };
-		9EE8AE1E2B7FB905001D126F /* ProgressViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE182B7FB905001D126F /* ProgressViewController.swift */; };
-		9EE8AE1F2B7FB905001D126F /* ProgressProtocols.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE192B7FB905001D126F /* ProgressProtocols.swift */; };
-		9EE8AE202B7FB905001D126F /* ProgressInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE1A2B7FB905001D126F /* ProgressInteractor.swift */; };
-		9EE8AE212B7FB905001D126F /* ProgressContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE1B2B7FB905001D126F /* ProgressContainer.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -366,7 +364,19 @@
 /* Begin PBXFileReference section */
 		8C50285C2BF9626E0010F918 /* NotificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		8C50285E2BF9626E0010F918 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
+		8C50286B2BF980630010F918 /* EverydayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EverydayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
+		8C50286D2BF980630010F918 /* EverydayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverydayTests.swift; sourceTree = "<group>"; };
 		8CA0C3632BE968C200353FB2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		8CFEAFCE2BFA0B1F00BCECF8 /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
+		8CFEAFD02BFA0B8D00BCECF8 /* HealthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthController.swift; sourceTree = "<group>"; };
+		8CFEAFD22BFA11AA00BCECF8 /* ActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCard.swift; sourceTree = "<group>"; };
+		9D6337B12BFB8FF10034844E /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
+		9D6337B42BFB92D40034844E /* ResultsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResultsView.swift; sourceTree = "<group>"; };
+		9D6337B72BFB931F0034844E /* WeightFatView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WeightFatView.swift; sourceTree = "<group>"; };
+		9D6337BA2BFB934A0034844E /* ActivityView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityView.swift; sourceTree = "<group>"; };
+		9D6337BD2BFB936B0034844E /* ActivityViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityViewModel.swift; sourceTree = "<group>"; };
+		9D6337C02BFB93880034844E /* PhotoLibraryView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryView.swift; sourceTree = "<group>"; };
+		9D6337C32BFB939C0034844E /* PhotoLibraryViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoLibraryViewModel.swift; sourceTree = "<group>"; };
 		9DEC6A8A2BFA125A0028BAFD /* ExtraTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		9DEC6A8E2BFA12960028BAFD /* ExtraTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraTableViewCell.swift; sourceTree = "<group>"; };
 		9DEC6A912BFA12CE0028BAFD /* HeartRatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRatePresenter.swift; sourceTree = "<group>"; };
@@ -411,16 +421,8 @@
 		9DEC6AF92BFA19580028BAFD /* DTO.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DTO.swift; sourceTree = "<group>"; };
 		9DEC6AFB2BFA195D0028BAFD /* Domain.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Domain.swift; sourceTree = "<group>"; };
 		9DEC6AFE2BFA199C0028BAFD /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
-		8C5028642BF9641E0010F918 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
-		8C50286B2BF980630010F918 /* EverydayTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = EverydayTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		8C50286D2BF980630010F918 /* EverydayTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EverydayTests.swift; sourceTree = "<group>"; };
-		8CA0C3632BE968C200353FB2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
-		8CFEAFCE2BFA0B1F00BCECF8 /* HealthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthView.swift; sourceTree = "<group>"; };
-		8CFEAFD02BFA0B8D00BCECF8 /* HealthController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HealthController.swift; sourceTree = "<group>"; };
-		8CFEAFD22BFA11AA00BCECF8 /* ActivityCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityCard.swift; sourceTree = "<group>"; };
 		9E0C348D2BD700CB00D8696B /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9E36D47B2BFA435E004C5658 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E467A312BF2342400127EFA /* Everyday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everyday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E467A322BF2356100127EFA /* WorkoutViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
 		9E467A342BF2356100127EFA /* WorkoutContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutContainer.swift; sourceTree = "<group>"; };
@@ -700,12 +702,6 @@
 		9ED8C9392BF182F500D400A3 /* Optional+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Optional+Extension.swift"; sourceTree = "<group>"; };
 		9EE8AE042B7FA45F001D126F /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9EE8AE062B7FB77D001D126F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
-		9EE8AE162B7FB905001D126F /* ProgressPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressPresenter.swift; sourceTree = "<group>"; };
-		9EE8AE172B7FB905001D126F /* ProgressRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressRouter.swift; sourceTree = "<group>"; };
-		9EE8AE182B7FB905001D126F /* ProgressViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressViewController.swift; sourceTree = "<group>"; };
-		9EE8AE192B7FB905001D126F /* ProgressProtocols.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressProtocols.swift; sourceTree = "<group>"; };
-		9EE8AE1A2B7FB905001D126F /* ProgressInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressInteractor.swift; sourceTree = "<group>"; };
-		9EE8AE1B2B7FB905001D126F /* ProgressContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressContainer.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -751,6 +747,78 @@
 				8C50285E2BF9626E0010F918 /* NotificationService.swift */,
 			);
 			path = Notification;
+			sourceTree = "<group>";
+		};
+		8C50286C2BF980630010F918 /* EverydayTests */ = {
+			isa = PBXGroup;
+			children = (
+				8C50286D2BF980630010F918 /* EverydayTests.swift */,
+			);
+			path = EverydayTests;
+			sourceTree = "<group>";
+		};
+		8CFEAFCD2BFA0B0B00BCECF8 /* Health */ = {
+			isa = PBXGroup;
+			children = (
+				8CFEAFCE2BFA0B1F00BCECF8 /* HealthView.swift */,
+				8CFEAFD02BFA0B8D00BCECF8 /* HealthController.swift */,
+				8CFEAFD22BFA11AA00BCECF8 /* ActivityCard.swift */,
+			);
+			path = Health;
+			sourceTree = "<group>";
+		};
+		9D6337B32BFB91E60034844E /* Results */ = {
+			isa = PBXGroup;
+			children = (
+				9D6337BF2BFB93770034844E /* PhotoLibrary */,
+				9D6337B92BFB932D0034844E /* Activity */,
+				9D6337B62BFB930E0034844E /* WeightFat */,
+				8CFEAFCD2BFA0B0B00BCECF8 /* Health */,
+				9D6337B42BFB92D40034844E /* ResultsView.swift */,
+			);
+			path = Results;
+			sourceTree = "<group>";
+		};
+		9D6337B62BFB930E0034844E /* WeightFat */ = {
+			isa = PBXGroup;
+			children = (
+				9D6337B72BFB931F0034844E /* WeightFatView.swift */,
+			);
+			path = WeightFat;
+			sourceTree = "<group>";
+		};
+		9D6337B92BFB932D0034844E /* Activity */ = {
+			isa = PBXGroup;
+			children = (
+				9D6337BC2BFB93610034844E /* ViewModel */,
+				9D6337BA2BFB934A0034844E /* ActivityView.swift */,
+			);
+			path = Activity;
+			sourceTree = "<group>";
+		};
+		9D6337BC2BFB93610034844E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9D6337BD2BFB936B0034844E /* ActivityViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
+		9D6337BF2BFB93770034844E /* PhotoLibrary */ = {
+			isa = PBXGroup;
+			children = (
+				9D6337C22BFB93910034844E /* ViewModel */,
+				9D6337C02BFB93880034844E /* PhotoLibraryView.swift */,
+			);
+			path = PhotoLibrary;
+			sourceTree = "<group>";
+		};
+		9D6337C22BFB93910034844E /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				9D6337C32BFB939C0034844E /* PhotoLibraryViewModel.swift */,
+			);
+			path = ViewModel;
 			sourceTree = "<group>";
 		};
 		9DEC6A8C2BFA12800028BAFD /* Views */ = {
@@ -897,24 +965,6 @@
 				9DEC6ACF2BFA16A60028BAFD /* TimerViewModel.swift */,
 			);
 			path = Models;
-			sourceTree = "<group>";
-		};
-		8C50286C2BF980630010F918 /* EverydayTests */ = {
-			isa = PBXGroup;
-			children = (
-				8C50286D2BF980630010F918 /* EverydayTests.swift */,
-			);
-			path = EverydayTests;
-			sourceTree = "<group>";
-		};
-		8CFEAFCD2BFA0B0B00BCECF8 /* Health */ = {
-			isa = PBXGroup;
-			children = (
-				8CFEAFCE2BFA0B1F00BCECF8 /* HealthView.swift */,
-				8CFEAFD02BFA0B8D00BCECF8 /* HealthController.swift */,
-				8CFEAFD22BFA11AA00BCECF8 /* ActivityCard.swift */,
-			);
-			path = Health;
 			sourceTree = "<group>";
 		};
 		9DEC6AD12BFA16B30028BAFD /* Presenter */ = {
@@ -1361,10 +1411,10 @@
 		9E53FB4A2B7F94C200C55A45 /* Modules */ = {
 			isa = PBXGroup;
 			children = (
+				9D6337B32BFB91E60034844E /* Results */,
 				9EA953372BF2288B00ADBF9A /* ScreenSaver */,
 				9EA952AE2BF2279A00ADBF9A /* Notepad */,
 				9EE8AE2F2B7FB94D001D126F /* Workout */,
-				9EE8AE152B7FB8F3001D126F /* Progress */,
 				9EE8AE082B7FB8BC001D126F /* Settings */,
 				9E5B74E02B7F990100E2BDE6 /* TabBar */,
 				9E5B74CF2B7F96ED00E2BDE6 /* Authorization */,
@@ -2022,7 +2072,7 @@
 		9EA952FC2BF2286300ADBF9A /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				9E36D47A2BFA435E004C5658 /* Model.xcdatamodeld */,
+				9D6337B02BFB8FF10034844E /* Model.xcdatamodeld */,
 				9EA952F82BF2286300ADBF9A /* CoreDataService.swift */,
 				9EA952FA2BF2286300ADBF9A /* UserAuthentication+CoreDataClass.swift */,
 				9EA952FB2BF2286300ADBF9A /* UserAuthentication+CoreDataProperties.swift */,
@@ -2220,20 +2270,6 @@
 			path = Settings;
 			sourceTree = "<group>";
 		};
-		9EE8AE152B7FB8F3001D126F /* Progress */ = {
-			isa = PBXGroup;
-			children = (
-				8CFEAFCD2BFA0B0B00BCECF8 /* Health */,
-				9EE8AE162B7FB905001D126F /* ProgressPresenter.swift */,
-				9EE8AE172B7FB905001D126F /* ProgressRouter.swift */,
-				9EE8AE182B7FB905001D126F /* ProgressViewController.swift */,
-				9EE8AE192B7FB905001D126F /* ProgressProtocols.swift */,
-				9EE8AE1A2B7FB905001D126F /* ProgressInteractor.swift */,
-				9EE8AE1B2B7FB905001D126F /* ProgressContainer.swift */,
-			);
-			path = Progress;
-			sourceTree = "<group>";
-		};
 		9EE8AE2F2B7FB94D001D126F /* Workout */ = {
 			isa = PBXGroup;
 			children = (
@@ -2409,6 +2445,7 @@
 				9EA952C12BF2279A00ADBF9A /* NotepadTableViewCellViewModel.swift in Sources */,
 				9E5B75482B7F9D7600E2BDE6 /* ProfileAcknowledgementViewModel.swift in Sources */,
 				9DEC6A9F2BFA134B0028BAFD /* HeartRateViewModel.swift in Sources */,
+				9D6337B82BFB931F0034844E /* WeightFatView.swift in Sources */,
 				9EA952C82BF2279A00ADBF9A /* NotepadPresenter.swift in Sources */,
 				9EA952442BF19D5500ADBF9A /* UnitsRouter.swift in Sources */,
 				9EA952522BF2263800ADBF9A /* SettingsRouter.swift in Sources */,
@@ -2436,7 +2473,6 @@
 				9EA951FB2BF19D5500ADBF9A /* ChangeEmailRouter.swift in Sources */,
 				9E467A8D2BF2358300127EFA /* TargetCollectionViewCell.swift in Sources */,
 				9E5B753E2B7F9D7600E2BDE6 /* WeightViewModel.swift in Sources */,
-				9EE8AE212B7FB905001D126F /* ProgressContainer.swift in Sources */,
 				9EA9523D2BF19D5500ADBF9A /* ThemeTableViewCell.swift in Sources */,
 				9EA9531F2BF2286300ADBF9A /* GoogleAuthService.swift in Sources */,
 				9DEC6AB32BFA15BF0028BAFD /* SheetPresenter.swift in Sources */,
@@ -2462,7 +2498,6 @@
 				9EA952ED2BF2283400ADBF9A /* Email.swift in Sources */,
 				9EA952102BF19D5500ADBF9A /* DateAndTimeRouter.swift in Sources */,
 				9EA951722BF19BA200ADBF9A /* SignInProtocols.swift in Sources */,
-				9EE8AE1E2B7FB905001D126F /* ProgressViewController.swift in Sources */,
 				9EA952152BF19D5500ADBF9A /* DeleteAccountContainer.swift in Sources */,
 				9DEC6AC82BFA16660028BAFD /* WeightMeasurementViewModel.swift in Sources */,
 				9EA952E42BF2279A00ADBF9A /* TrainingRouter.swift in Sources */,
@@ -2525,6 +2560,7 @@
 				9EA951FD2BF19D5500ADBF9A /* ChangeLanguageViewModel.swift in Sources */,
 				9E467A892BF2358300127EFA /* LevelCell.swift in Sources */,
 				9EA952E02BF2279A00ADBF9A /* TrainingContainer.swift in Sources */,
+				9D6337C12BFB93880034844E /* PhotoLibraryView.swift in Sources */,
 				9E467A622BF2356C00127EFA /* ProgramsSectionItem.swift in Sources */,
 				9EA952112BF19D5500ADBF9A /* DateAndTimeTableViewCell.swift in Sources */,
 				9EA952282BF19D5500ADBF9A /* ProfileInteractor.swift in Sources */,
@@ -2546,13 +2582,13 @@
 				9DEC6A9A2BFA12CE0028BAFD /* HeartRateProtocols.swift in Sources */,
 				9DEC6A9B2BFA12CE0028BAFD /* HeartRateInteractor.swift in Sources */,
 				9DEC6A9C2BFA12CE0028BAFD /* HeartRateContainer.swift in Sources */,
+				9D6337C42BFB939C0034844E /* PhotoLibraryViewModel.swift in Sources */,
 				9EA952D52BF2279A00ADBF9A /* ResultsTableViewCell.swift in Sources */,
 				9EA951862BF19D3900ADBF9A /* AuthorizationContainer.swift in Sources */,
 				9E467A8C2BF2358300127EFA /* TargetCell.swift in Sources */,
 				9EA952CF2BF2279A00ADBF9A /* ResultsViewModel.swift in Sources */,
 				9EA952022BF19D5500ADBF9A /* ChangeLanguageTableViewCell.swift in Sources */,
 				9DEC6A8F2BFA12960028BAFD /* ExtraTableViewCell.swift in Sources */,
-				9EE8AE1C2B7FB905001D126F /* ProgressPresenter.swift in Sources */,
 				9EBB2FA62BF7A37F00D1A2D4 /* CatalogViewModel.swift in Sources */,
 				9EA953302BF2286300ADBF9A /* HealthService.swift in Sources */,
 				9E467A4C2BF2356400127EFA /* WalkProgramsContainer.swift in Sources */,
@@ -2563,7 +2599,6 @@
 				9EA952C52BF2279A00ADBF9A /* NotepadInnerCollectionViewCell.swift in Sources */,
 				9ED8C93A2BF182F500D400A3 /* Optional+Extension.swift in Sources */,
 				9DEC6AEF2BFA17CB0028BAFD /* ConditionChoiceView.swift in Sources */,
-				9EE8AE1D2B7FB905001D126F /* ProgressRouter.swift in Sources */,
 				9E467A9C2BF2436D00127EFA /* TrainViewController.swift in Sources */,
 				9EA951762BF19BA200ADBF9A /* SignUpContainer.swift in Sources */,
 				9EA9518A2BF19D3900ADBF9A /* AuthorizationRouter.swift in Sources */,
@@ -2583,18 +2618,17 @@
 				9EA953392BF2288B00ADBF9A /* SplashPresenter.swift in Sources */,
 				9DEC6ABF2BFA160C0028BAFD /* SheetType.swift in Sources */,
 				9EA9523A2BF19D5500ADBF9A /* ThemePresenter.swift in Sources */,
+				9D6337BB2BFB934A0034844E /* ActivityView.swift in Sources */,
 				9EA9532B2BF2286300ADBF9A /* AuthService.swift in Sources */,
 				9EA952262BF19D5500ADBF9A /* ProfileViewModelSingWithVKOrGoogle.swift in Sources */,
 				8CFEAFD32BFA11AA00BCECF8 /* ActivityCard.swift in Sources */,
 				9EA953252BF2286300ADBF9A /* DataReload.swift in Sources */,
 				9E5B75452B7F9D7600E2BDE6 /* AgeView.swift in Sources */,
-				9E36D47C2BFA435E004C5658 /* Model.xcdatamodeld in Sources */,
 				9DEC6AD92BFA17010028BAFD /* SheetPresenter+WeightMeasurementViewOutput.swift in Sources */,
 				9E5B75472B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift in Sources */,
 				9EA952092BF19D5500ADBF9A /* ChangePasswordProtocols.swift in Sources */,
 				8C5028612BF9626E0010F918 /* NotificationService.swift in Sources */,
 				9EA952C32BF2279A00ADBF9A /* NotepadContainer.swift in Sources */,
-				9EE8AE202B7FB905001D126F /* ProgressInteractor.swift in Sources */,
 				9EA952E12BF2279A00ADBF9A /* TrainingInteractor.swift in Sources */,
 				9E467A3E2BF2356100127EFA /* WorkoutPresenter.swift in Sources */,
 				9EBB2FB92BF7E8DA00D1A2D4 /* ExercisePreviewViewModel.swift in Sources */,
@@ -2699,6 +2733,8 @@
 				9EBB2FB52BF7CA4D00D1A2D4 /* CatalogService.swift in Sources */,
 				9DEC6AE62BFA17830028BAFD /* ExerciseTimerView.swift in Sources */,
 				9EA9523C2BF19D5500ADBF9A /* ThemeRouter.swift in Sources */,
+				9D6337B22BFB8FF10034844E /* Model.xcdatamodeld in Sources */,
+				9D6337BE2BFB936B0034844E /* ActivityViewModel.swift in Sources */,
 				9EA9521B2BF19D5500ADBF9A /* HealthViewModel.swift in Sources */,
 				9EA952432BF19D5500ADBF9A /* UnitsProtocols.swift in Sources */,
 				9EA952012BF19D5500ADBF9A /* ChangeLanguageRouter.swift in Sources */,
@@ -2719,11 +2755,11 @@
 				9E5B75392B7F9D7600E2BDE6 /* GenderView.swift in Sources */,
 				9EA9522A2BF19D5500ADBF9A /* ProfileProtocols.swift in Sources */,
 				9EA952272BF19D5500ADBF9A /* ProfileContainer.swift in Sources */,
+				9D6337B52BFB92D40034844E /* ResultsView.swift in Sources */,
 				9EA9523E2BF19D5500ADBF9A /* ThemeViewController.swift in Sources */,
 				9DEC6ABD2BFA15FA0028BAFD /* SheetActionOutput.swift in Sources */,
 				9E467AA12BF3764A00127EFA /* TrainViewModel.swift in Sources */,
 				9E5B75142B7F9D1D00E2BDE6 /* AgeButtonView.swift in Sources */,
-				9EE8AE1F2B7FB905001D126F /* ProgressProtocols.swift in Sources */,
 				9E5B753F2B7F9D7600E2BDE6 /* WeightView.swift in Sources */,
 				9E5B754C2B7F9D7600E2BDE6 /* ProfileSetupModel.swift in Sources */,
 			);
@@ -2930,12 +2966,13 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72F47Y7J7T;
+				DEVELOPMENT_TEAM = LW5X22QCW4;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Everyday;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow access to enjoy all the features of the application";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -2948,7 +2985,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sportic;
+				PRODUCT_BUNDLE_IDENTIFIER = Everyday.Sportic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -2968,12 +3005,13 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72F47Y7J7T;
+				DEVELOPMENT_TEAM = LW5X22QCW4;
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Everyday;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow access to enjoy all the features of the application";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -2986,7 +3024,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sportic;
+				PRODUCT_BUNDLE_IDENTIFIER = Everyday.Sportic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -3127,14 +3165,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		9E36D47A2BFA435E004C5658 /* Model.xcdatamodeld */ = {
+		9D6337B02BFB8FF10034844E /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9E36D47B2BFA435E004C5658 /* Model.xcdatamodel */,
+				9D6337B12BFB8FF10034844E /* Model.xcdatamodel */,
 			);
-			currentVersion = 9E36D47B2BFA435E004C5658 /* Model.xcdatamodel */;
+			currentVersion = 9D6337B12BFB8FF10034844E /* Model.xcdatamodel */;
 			name = Model.xcdatamodeld;
-			path = "/Users/mk126/Desktop/МГТУ/Технопарк ios/Технопарк 21/2023_2_HealthTechStartUp/Everyday/Services/Auth/Helpers/CoreData/Model.xcdatamodeld";
+			path = /Users/a123/VK_education/sem2/swift/2023_2_HealthTechStartUp/Everyday/Services/Auth/Helpers/CoreData/Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
