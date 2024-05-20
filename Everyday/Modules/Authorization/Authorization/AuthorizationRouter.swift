@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by Михаил on 23.04.2024.
-//  
+//
 //
 
 import UIKit
@@ -26,7 +26,7 @@ extension AuthorizationRouter: AuthorizationRouterInput {
     func openApp() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let window = windowScene.windows.first else {
-            fatalError("oops")
+            return
         }
 
         let tabBarController = TabBarController()

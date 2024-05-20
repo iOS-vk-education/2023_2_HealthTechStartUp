@@ -271,6 +271,10 @@ extension NotepadViewController: UITableViewDelegate {
 // MARK: - ViewInput
 
 extension NotepadViewController: NotepadViewInput {
+    func showAlert(with type: AlertType) {
+        AlertService.shared.presentAlert(on: self, alertType: type)
+    }
+    
     func configure(with viewModel: NotepadViewModel) {
         stateLabel.attributedText = viewModel.stateTitle
     }

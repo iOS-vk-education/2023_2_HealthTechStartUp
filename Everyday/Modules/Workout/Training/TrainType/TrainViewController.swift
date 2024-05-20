@@ -179,6 +179,7 @@ final class TrainViewController: UIViewController {
         downloadButton.backgroundColor = Constants.accentColor
         downloadButton.setTitleColor(Constants.textColor, for: .normal)
         downloadButton.addTarget(self, action: #selector(didTapDownloadButton), for: .touchUpInside)
+        downloadButton.backgroundColor = Constants.accentColor
     }
     
     private func getAuthView() {
@@ -227,9 +228,8 @@ final class TrainViewController: UIViewController {
     }
         
     private func updateDownloadButtonTitle() {
-        let title = isDownloaded ? "Удалить" : "Загрузить"
+        let title = isDownloaded ? "Изменить" : "Добавить"
         downloadButton.setTitle(title, for: .normal)
-        downloadButton.backgroundColor = isDownloaded ? .red : Constants.accentColor
     }
 
     // MARK: - Layout
@@ -333,9 +333,6 @@ final class TrainViewController: UIViewController {
     // MARK: - actions
     
     @objc func didTapCloseButton() {
-        if let user = Auth.auth().currentUser {
-            Fetcher.shared.updateFavoriteStatus(with: model.id, forUser: user.uid, isFavorited: isFavorited)
-        }
         self.dismiss(animated: true, completion: nil)
     }
     
@@ -360,14 +357,28 @@ final class TrainViewController: UIViewController {
         }
         
         HapticService.shared.selectionVibrate()
-       
-        DispatchQueue.global().async {
-            DispatchQueue.main.async {
-                self.isDownloaded.toggle()
-                self.updateDownloadButtonTitle()
-                Fetcher.shared.updateDownloadStatus(with: self.model.id, forUser: user.uid, isDownloaded: self.isDownloaded)
-            }
+        
+        let trainingDaysVC = TrainingDaysViewController(model: self.model, isDownloaded: self.isDownloaded, user: user.uid)
+        trainingDaysVC.delegate = self
+        
+        let navigationController = UINavigationController(rootViewController: trainingDaysVC)
+        navigationController.navigationBar.isHidden = true
+        
+        if let sheet = navigationController.sheetPresentationController {
+            sheet.detents = [
+                .custom(identifier: .init("small"), resolver: { _ in
+                    return self.view.frame.height / 2
+                })
+            ]
+            sheet.prefersGrabberVisible = true
+            sheet.preferredCornerRadius = 20
+            sheet.prefersGrabberVisible = false
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.prefersEdgeAttachedInCompactHeight = true
         }
+        
+        present(navigationController, animated: true)
     }
 }
 
@@ -409,6 +420,12 @@ extension TrainViewController: UICollectionViewDelegateFlowLayout {
     func collectionView(_ collectionView: UICollectionView,
                         layout collectionViewLayout: UICollectionViewLayout, insetForSectionAt section: Int) -> UIEdgeInsets {
         UIEdgeInsets(top: 6, left: 10, bottom: 0, right: 10)
+    }
+}
+
+extension TrainViewController: ScheduleViewControllerDelegate {
+    func scheduleDismiss() {
+        checkIfDownloaded()
     }
 }
 

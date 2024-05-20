@@ -13,6 +13,8 @@ protocol CatalogServiceDesription {
     func loadTrainingPrograms(for training: Training, completion: @escaping (Result<[Train], Error>) -> Void)
     func loadOtherPrograms(for other: Other, completion: @escaping (Result<[Train], Error>) -> Void)
     func loadLevelPrograms(for level: Level, completion: @escaping (Result<[Train], Error>) -> Void)
+    
+    func loadDownloadedWorkouts(for userId: String, completion: @escaping (Result<[Train], Error>) -> Void)
 }
 
 final class CatalogService: CatalogServiceDesription {
@@ -31,6 +33,18 @@ final class CatalogService: CatalogServiceDesription {
         self.trainingService = trainingService
         self.otherService = otherService
         self.levelService = levelService
+    }
+    
+    func loadDownloadedWorkouts(for userId: String, completion: @escaping (Result<[Train], Error>) -> Void) {
+        Fetcher.shared.fetchDownloadedWorkouts(forUser: userId) { data, error in
+            if let error = error {
+                completion(.failure(error))
+            } else if let data = data {
+                completion(.success(data))
+            } else {
+                completion(.failure(NSError(domain: "DataError", code: -1, userInfo: [NSLocalizedDescriptionKey: "Нет данных"])))
+            }
+        }
     }
     
     func loadTargetPrograms(for target: Target, completion: @escaping (Result<[Train], Error>) -> Void) {

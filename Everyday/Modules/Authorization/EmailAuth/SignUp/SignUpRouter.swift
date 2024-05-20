@@ -3,7 +3,7 @@
 //  Everyday
 //
 //  Created by Михаил on 28.04.2024.
-//  
+//
 //
 
 import UIKit
@@ -20,7 +20,7 @@ extension SignUpRouter: SignUpRouterInput {
     func openApp() {
         guard let windowScene = UIApplication.shared.connectedScenes.first as? UIWindowScene,
               let window = windowScene.windows.first else {
-            fatalError("oops")
+            return
         }
 
         let tabBarController = TabBarController()
@@ -29,7 +29,7 @@ extension SignUpRouter: SignUpRouterInput {
             window.rootViewController = tabBarController
         }, completion: nil)
     }
-    
+
     func openLogin() {
         let signInViewController = SignInContainer.assemble(with: .init()).viewController
         viewController?.navigationController?.pushViewController(signInViewController, animated: true)
