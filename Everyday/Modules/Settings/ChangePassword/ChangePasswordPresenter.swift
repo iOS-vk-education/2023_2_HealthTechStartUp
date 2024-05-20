@@ -27,6 +27,8 @@ extension ChangePasswordPresenter: ChangePasswordModuleInput {
 extension ChangePasswordPresenter: ChangePasswordViewOutput {
     
     func didTapConfirmButton(with oldPassword: String?, and newPassword: String?) {
+        HapticService.shared.selectionVibrate()
+        
         let validationErrors = Validator.validatePassword(for: oldPassword ?? "")
         if !validationErrors.isEmpty {
             view?.showAlert(with: .invalidPasswordWithRegExp(description: validationErrors.description))

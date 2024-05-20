@@ -2531,6 +2531,7 @@
 				9EBB2FA22BF796F200D1A2D4 /* CatalogContainer.swift in Sources */,
 				9EA952D32BF2279A00ADBF9A /* ResultsProtocols.swift in Sources */,
 				9EA953312BF2286300ADBF9A /* SettingsUserDefaultsService.swift in Sources */,
+				8CA8699B2BFB5615009F0B51 /* Model.xcdatamodeld in Sources */,
 				9EA952452BF19D5500ADBF9A /* UnitsTableViewCell.swift in Sources */,
 				9DEC6ADD2BFA17260028BAFD /* SheetPresenter+ExerciseTimerViewOutput.swift in Sources */,
 				9EA952072BF19D5500ADBF9A /* ChangePasswordInteractor.swift in Sources */,
@@ -2985,7 +2986,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sport;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sportic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -3024,7 +3025,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sport;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sportic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
