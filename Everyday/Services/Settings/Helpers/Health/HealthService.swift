@@ -16,6 +16,7 @@ protocol HealthServiceDescription {
     func fetchWeeklySteps()
     func fetchFlightClimbed()
     func fetchWeight(completion: @escaping (Result<Void, Error>, _ bodyMass: String?, _ measure: String?) -> Void)
+    func fetchFatPercentage(completion: @escaping (Result<Void, Error>, _ fatPercent: String?) -> Void)
 }
 
 final class HealthService: ObservableObject, HealthServiceDescription {
@@ -32,8 +33,9 @@ final class HealthService: ObservableObject, HealthServiceDescription {
         let flightsClimbed = HKQuantityType(.flightsClimbed)
         let heartRate = HKQuantityType(.heartRate)
         let bodyMass = HKQuantityType(.bodyMass)
+        let bodyFatPercentage = HKQuantityType(.bodyFatPercentage)
         
-        let healthTypes: Set = [steps, distance, activeEnergyBurned, flightsClimbed, heartRate, bodyMass]
+        let healthTypes: Set = [steps, distance, activeEnergyBurned, flightsClimbed, heartRate, bodyMass, bodyFatPercentage]
         
         Task {
             do {
@@ -76,7 +78,6 @@ final class HealthService: ObservableObject, HealthServiceDescription {
             DispatchQueue.main.async {
                 self.activities["todaySteps"] = activity
             }
-            print(stepCount)
         }
         
         healthStore.execute(query)
@@ -101,7 +102,6 @@ final class HealthService: ObservableObject, HealthServiceDescription {
             DispatchQueue.main.async {
                 self.activities["todayCalories"] = activity
             }
-            print(caloriesBurned)
         }
         
         healthStore.execute(query)
@@ -129,7 +129,6 @@ final class HealthService: ObservableObject, HealthServiceDescription {
             DispatchQueue.main.async {
                 self.activities["todayDistance"] = activity
             }
-            print(currentFormattedDistance)
         }
         
         healthStore.execute(query)
@@ -190,7 +189,6 @@ final class HealthService: ObservableObject, HealthServiceDescription {
             DispatchQueue.main.async {
                 self.activities["weeklySteps"] = activity
             }
-            print(stepCount)
         }
         
         healthStore.execute(query)
@@ -202,7 +200,6 @@ final class HealthService: ObservableObject, HealthServiceDescription {
         let calendar = Calendar.current
         let now = Date()
         guard let startOfWeek = calendar.date(from: calendar.dateComponents([.yearForWeekOfYear, .weekOfYear], from: now)) else {
-            print("неделя не неделя")
             return
         }
         
@@ -225,7 +222,6 @@ final class HealthService: ObservableObject, HealthServiceDescription {
             DispatchQueue.main.async {
                 self.activities["flightsClimbed"] = activity
             }
-            print(flightsCount)
         }
         
         healthStore.execute(query)
@@ -253,8 +249,34 @@ final class HealthService: ObservableObject, HealthServiceDescription {
             
             let weightInKilograms = result.quantity.doubleValue(for: .gramUnit(with: .kilo))
             let currentWeightData = self.getMeasureForBodyWeight(bodyMass: weightInKilograms)
-            print(currentWeightData)
             completion(.success(()), currentWeightData.formattedBodyWeight, currentWeightData.currentMeasure)
+        }
+        
+        healthStore.execute(query)
+    }
+    
+    func fetchFatPercentage(completion: @escaping (Result<Void, Error>, _ fatPercent: String?) -> Void) {
+        guard let fatPercentage = HKQuantityType.quantityType(forIdentifier: .bodyFatPercentage) else {
+            completion(.failure(NSError(domain: "HealthService", code: -1, userInfo: [NSLocalizedDescriptionKey: "fatPercentage type is unavailable"])), nil)
+            return
+        }
+        
+        let sortDescriptor = NSSortDescriptor(key: HKSampleSortIdentifierStartDate, ascending: false)
+        let query = HKSampleQuery(sampleType: fatPercentage, predicate: nil, limit: 1, sortDescriptors: [sortDescriptor]) { _, results, error in
+            if let error = error {
+                completion(.failure(error), nil)
+                print("Failed to fetch fatPercentage: \(error.localizedDescription)")
+                return
+            }
+            
+            guard let result = results?.first as? HKQuantitySample else {
+                completion(.failure(NSError(domain: "HealthService", code: -1, userInfo: [NSLocalizedDescriptionKey: "No fatPercentage data available"])), nil)
+                print("No fatPercentage data available")
+                return
+            }
+            
+            let bodyFatPercentage = result.quantity.doubleValue(for: HKUnit.percent())
+            completion(.success(()), String(bodyFatPercentage * 100))
         }
         
         healthStore.execute(query)
