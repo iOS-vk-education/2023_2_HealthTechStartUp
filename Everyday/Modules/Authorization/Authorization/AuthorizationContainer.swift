@@ -13,7 +13,7 @@ final class AuthorizationContainer {
     let viewController: UIViewController
     private(set) weak var router: AuthorizationRouterInput!
     
-    class func assemble(with context: AuthorizationContext) -> AuthorizationContainer {
+    static func assemble(with context: AuthorizationContext) -> AuthorizationContainer {
         let router = AuthorizationRouter()
         let interactor = AuthorizationInteractor(authService: AuthService.shared, coreDataService: CoreDataService.shared)
         let presenter = AuthorizationPresenter(router: router, interactor: interactor)

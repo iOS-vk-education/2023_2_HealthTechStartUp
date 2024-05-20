@@ -13,7 +13,7 @@ final class ChangeEmailContainer {
     let viewController: UIViewController
     private(set) weak var router: ChangeEmailRouterInput!
     
-    class func assemble(with context: ChangeEmailContext) -> ChangeEmailContainer {
+    static func assemble(with context: ChangeEmailContext) -> ChangeEmailContainer {
         let router = ChangeEmailRouter()
         let interactor = ChangeEmailInteractor(settingsService: SettingsService.shared)
         let presenter = ChangeEmailPresenter(router: router, interactor: interactor)

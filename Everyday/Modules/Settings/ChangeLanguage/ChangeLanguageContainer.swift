@@ -13,7 +13,7 @@ final class ChangeLanguageContainer {
     let viewController: UIViewController
     private(set) weak var router: ChangeLanguageRouterInput!
     
-    class func assemble(with context: ChangeLanguageContext) -> ChangeLanguageContainer {
+    static func assemble(with context: ChangeLanguageContext) -> ChangeLanguageContainer {
         let router = ChangeLanguageRouter()
         let presenter = ChangeLanguagePresenter(router: router)
         let viewController = ChangeLanguageViewController(output: presenter)

@@ -13,7 +13,7 @@ final class CatalogContainer {
     let viewController: UIViewController
     private(set) weak var router: CatalogRouterInput!
     
-    class func assemble(with context: CatalogContext) -> CatalogContainer {
+    static func assemble(with context: CatalogContext) -> CatalogContainer {
         let router = CatalogRouter()
         let interactor = CatalogInteractor()
         let presenter = CatalogPresenter(router: router, interactor: interactor)

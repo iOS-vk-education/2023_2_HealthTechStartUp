@@ -13,7 +13,7 @@ final class DeleteAccountContainer {
     let viewController: UIViewController
     private(set) weak var router: DeleteAccountRouterInput!
     
-    class func assemble(with context: DeleteAccountContext) -> DeleteAccountContainer {
+    static func assemble(with context: DeleteAccountContext) -> DeleteAccountContainer {
         let router = DeleteAccountRouter()
         let interactor = DeleteAccountInteractor(settingsService: SettingsService.shared)
         let presenter = DeleteAccountPresenter(router: router, interactor: interactor)

@@ -13,7 +13,7 @@ final class NotepadContainer {
     let viewController: UIViewController
     private(set) weak var router: NotepadRouterInput!
     
-    class func assemble(with context: NotepadContext) -> NotepadContainer {
+    static func assemble(with context: NotepadContext) -> NotepadContainer {
         let router = NotepadRouter()
         let interactor = NotepadInteractor()
         let presenter = NotepadPresenter(router: router, interactor: interactor)

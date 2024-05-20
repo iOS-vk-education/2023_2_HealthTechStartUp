@@ -13,7 +13,7 @@ final class HeartRateContainer {
     let viewController: UIViewController
     private(set) weak var router: HeartRateRouterInput!
     
-    class func assemble(with context: HeartRateContext) -> HeartRateContainer {
+    static func assemble(with context: HeartRateContext) -> HeartRateContainer {
         let router = HeartRateRouter()
         let interactor = HeartRateInteractor()
         let presenter = HeartRatePresenter(router: router, interactor: interactor)

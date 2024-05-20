@@ -13,7 +13,7 @@ final class SignUpContainer {
     let viewController: UIViewController
     private(set) weak var router: SignUpRouterInput!
     
-    class func assemble(with context: SignUpContext) -> SignUpContainer {
+    static func assemble(with context: SignUpContext) -> SignUpContainer {
         let router = SignUpRouter()
         let interactor = SignUpInteractor(authService: AuthService.shared)
         let presenter = SignUpPresenter(router: router, interactor: interactor)

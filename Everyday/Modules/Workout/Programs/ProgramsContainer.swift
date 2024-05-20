@@ -13,7 +13,7 @@ final class ProgramsContainer {
     let viewController: UIViewController
     private(set) weak var router: ProgramsRouterInput!
     
-    class func assemble(with context: ProgramsContext) -> ProgramsContainer {
+    static func assemble(with context: ProgramsContext) -> ProgramsContainer {
         let router = ProgramsRouter()
         let interactor = ProgramsInteractor(catalogService: CatalogService.shared)
         let presenter = ProgramsPresenter(router: router, interactor: interactor)

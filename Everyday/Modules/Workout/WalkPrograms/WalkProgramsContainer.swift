@@ -13,7 +13,7 @@ final class WalkProgramsContainer {
     let viewController: UIViewController
     private(set) weak var router: WalkProgramsRouterInput!
     
-    class func assemble(with context: WalkProgramsContext) -> WalkProgramsContainer {
+    static func assemble(with context: WalkProgramsContext) -> WalkProgramsContainer {
         let router = WalkProgramsRouter()
         let interactor = WalkProgramsInteractor()
         let presenter = WalkProgramsPresenter(router: router, interactor: interactor)
