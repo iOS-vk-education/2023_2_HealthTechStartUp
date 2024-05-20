@@ -30,11 +30,12 @@ extension ChangeEmailPresenter: ChangeEmailViewOutput {
     }
     
     func didTapConfirmButton(with email: String?, and password: String?) {
+        HapticService.shared.selectionVibrate()
         guard let email = email, Validator.isValidEmail(for: email) else {
             view?.showAlert(with: .invalidEmail)
             return
         }
-
+        
         self.interactor.changeEmail(email: email, password: password ?? "")
     }
     
@@ -52,6 +53,7 @@ extension ChangeEmailPresenter: ChangeEmailInteractorOutput {
     func didChanged(_ result: Result<Void, any Error>, _ reauth: Bool?) {
         switch result {
         case .success(()):
+            HapticService.shared.vibrate(for: .success)
             self.router.getBackToMainView()
         case .failure(let error):
             if reauth == nil {

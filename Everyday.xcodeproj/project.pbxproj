@@ -10,6 +10,7 @@
 		8C5028602BF9626E0010F918 /* NotificationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50285C2BF9626E0010F918 /* NotificationModel.swift */; };
 		8C5028612BF9626E0010F918 /* NotificationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8C50285E2BF9626E0010F918 /* NotificationService.swift */; };
 		8CA0C3642BE968C200353FB2 /* Date+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 8CA0C3632BE968C200353FB2 /* Date+Extension.swift */; };
+		8CA8699B2BFB5615009F0B51 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 8CA869992BFB5614009F0B51 /* Model.xcdatamodeld */; };
 		9DEC6A8B2BFA125A0028BAFD /* ExtraTableViewCellViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6A8A2BFA125A0028BAFD /* ExtraTableViewCellViewModel.swift */; };
 		9DEC6A8F2BFA12960028BAFD /* ExtraTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6A8E2BFA12960028BAFD /* ExtraTableViewCell.swift */; };
 		9DEC6A972BFA12CE0028BAFD /* HeartRatePresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6A912BFA12CE0028BAFD /* HeartRatePresenter.swift */; };
@@ -56,7 +57,6 @@
 		9DEC6AFF2BFA199C0028BAFD /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6AFE2BFA199C0028BAFD /* Preview.swift */; };
 		9E0C348E2BD700CB00D8696B /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0C348D2BD700CB00D8696B /* CloseButton.swift */; };
 		9E0C34902BD7CE6A00D8696B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */; };
-		9E36D47C2BFA435E004C5658 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E36D47A2BFA435E004C5658 /* Model.xcdatamodeld */; };
 		9E36D4822BFA4833004C5658 /* BeamAISDK in Frameworks */ = {isa = PBXBuildFile; productRef = 9E36D4812BFA4833004C5658 /* BeamAISDK */; };
 		9E36D4852BFA4863004C5658 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9E36D4842BFA4863004C5658 /* FirebaseAuth */; };
 		9E36D4872BFA4863004C5658 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9E36D4862BFA4863004C5658 /* FirebaseFirestore */; };
@@ -351,6 +351,7 @@
 		8C50285C2BF9626E0010F918 /* NotificationModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationModel.swift; sourceTree = "<group>"; };
 		8C50285E2BF9626E0010F918 /* NotificationService.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NotificationService.swift; sourceTree = "<group>"; };
 		8CA0C3632BE968C200353FB2 /* Date+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Date+Extension.swift"; sourceTree = "<group>"; };
+		8CA8699A2BFB5614009F0B51 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9DEC6A8A2BFA125A0028BAFD /* ExtraTableViewCellViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraTableViewCellViewModel.swift; sourceTree = "<group>"; };
 		9DEC6A8E2BFA12960028BAFD /* ExtraTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ExtraTableViewCell.swift; sourceTree = "<group>"; };
 		9DEC6A912BFA12CE0028BAFD /* HeartRatePresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeartRatePresenter.swift; sourceTree = "<group>"; };
@@ -397,7 +398,6 @@
 		9DEC6AFE2BFA199C0028BAFD /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		9E0C348D2BD700CB00D8696B /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9E36D47B2BFA435E004C5658 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E467A312BF2342400127EFA /* Everyday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everyday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E467A322BF2356100127EFA /* WorkoutViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
 		9E467A342BF2356100127EFA /* WorkoutContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutContainer.swift; sourceTree = "<group>"; };
@@ -1972,7 +1972,7 @@
 		9EA952FC2BF2286300ADBF9A /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				9E36D47A2BFA435E004C5658 /* Model.xcdatamodeld */,
+				8CA869992BFB5614009F0B51 /* Model.xcdatamodeld */,
 				9EA952F82BF2286300ADBF9A /* CoreDataService.swift */,
 				9EA952FA2BF2286300ADBF9A /* UserAuthentication+CoreDataClass.swift */,
 				9EA952FB2BF2286300ADBF9A /* UserAuthentication+CoreDataProperties.swift */,
@@ -2405,6 +2405,7 @@
 				9EBB2FA22BF796F200D1A2D4 /* CatalogContainer.swift in Sources */,
 				9EA952D32BF2279A00ADBF9A /* ResultsProtocols.swift in Sources */,
 				9EA953312BF2286300ADBF9A /* SettingsUserDefaultsService.swift in Sources */,
+				8CA8699B2BFB5615009F0B51 /* Model.xcdatamodeld in Sources */,
 				9EA952452BF19D5500ADBF9A /* UnitsTableViewCell.swift in Sources */,
 				9DEC6ADD2BFA17260028BAFD /* SheetPresenter+ExerciseTimerViewOutput.swift in Sources */,
 				9EA952072BF19D5500ADBF9A /* ChangePasswordInteractor.swift in Sources */,
@@ -2497,7 +2498,6 @@
 				9EA952262BF19D5500ADBF9A /* ProfileViewModelSingWithVKOrGoogle.swift in Sources */,
 				9EA953252BF2286300ADBF9A /* DataReload.swift in Sources */,
 				9E5B75452B7F9D7600E2BDE6 /* AgeView.swift in Sources */,
-				9E36D47C2BFA435E004C5658 /* Model.xcdatamodeld in Sources */,
 				9DEC6AD92BFA17010028BAFD /* SheetPresenter+WeightMeasurementViewOutput.swift in Sources */,
 				9E5B75472B7F9D7600E2BDE6 /* ProfileAcknowledgementModel.swift in Sources */,
 				9EA952092BF19D5500ADBF9A /* ChangePasswordProtocols.swift in Sources */,
@@ -2792,12 +2792,13 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72F47Y7J7T;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Everyday;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow access to enjoy all the features of the application";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -2810,7 +2811,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sport;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sportic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -2830,12 +2831,13 @@
 				CODE_SIGN_ENTITLEMENTS = Everyday/Everyday.entitlements;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 1;
-				DEVELOPMENT_TEAM = 72F47Y7J7T;
+				DEVELOPMENT_TEAM = "";
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = Everyday/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = Everyday;
 				INFOPLIST_KEY_LSApplicationCategoryType = "public.app-category.healthcare-fitness";
+				INFOPLIST_KEY_NSCameraUsageDescription = "";
 				INFOPLIST_KEY_NSHealthShareUsageDescription = "Please allow access to enjoy all the features of the application";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
@@ -2848,7 +2850,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sport;
+				PRODUCT_BUNDLE_IDENTIFIER = ru.Everyday.Sportic;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SUPPORTED_PLATFORMS = "iphoneos iphonesimulator";
 				SUPPORTS_MACCATALYST = NO;
@@ -2980,14 +2982,14 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		9E36D47A2BFA435E004C5658 /* Model.xcdatamodeld */ = {
+		8CA869992BFB5614009F0B51 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9E36D47B2BFA435E004C5658 /* Model.xcdatamodel */,
+				8CA8699A2BFB5614009F0B51 /* Model.xcdatamodel */,
 			);
-			currentVersion = 9E36D47B2BFA435E004C5658 /* Model.xcdatamodel */;
+			currentVersion = 8CA8699A2BFB5614009F0B51 /* Model.xcdatamodel */;
 			name = Model.xcdatamodeld;
-			path = "/Users/mk126/Desktop/МГТУ/Технопарк ios/Технопарк 21/2023_2_HealthTechStartUp/Everyday/Services/Auth/Helpers/CoreData/Model.xcdatamodeld";
+			path = /Users/iwanm/EvrdTech/2023_2_HealthTechStartUp/Everyday/Services/Auth/Helpers/CoreData/Model.xcdatamodeld;
 			sourceTree = "<group>";
 			versionGroupType = wrapper.xcdatamodel;
 		};
