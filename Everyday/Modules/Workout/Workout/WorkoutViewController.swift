@@ -194,7 +194,7 @@ extension WorkoutViewController: UICollectionViewDataSource {
         } 
         
         if indexPath.item == 0 {
-            cell.setText("Программы", isActive: true)
+            cell.setText("Workout_title".localized, isActive: true)
         } else {
             cell.setText("Ходьба и бег", isActive: false)
         }
