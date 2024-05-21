@@ -13,7 +13,7 @@ struct EmptyUserProgramsViewModel {
         
     init(title: String) {
         self.title = NSAttributedString(string: title, attributes: Styles.titleAttributes)
-        self.description = NSAttributedString(string: "Кажется, пока тут ничего нет..", attributes: Styles.descriptionAttributes)
+        self.description = NSAttributedString(string: "EmptyTrainViewModel1".localized, attributes: Styles.descriptionAttributes)
     }
 }
 

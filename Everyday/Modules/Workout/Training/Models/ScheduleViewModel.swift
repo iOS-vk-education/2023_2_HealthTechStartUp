@@ -12,15 +12,15 @@ struct ScheduleViewModel {
     let schedule: [NSAttributedString]
         
     init() {
-        self.title = NSAttributedString(string: "Выберите дни тренировок", attributes: Styles.titleAttributes)
+        self.title = NSAttributedString(string: "ScheduleViewModel_title".localized, attributes: Styles.titleAttributes)
         
-        self.schedule = [NSAttributedString(string: "Пн", attributes: Styles.scheduleAttributes),
-                         NSAttributedString(string: "Вт", attributes: Styles.scheduleAttributes),
-                         NSAttributedString(string: "Ср", attributes: Styles.scheduleAttributes),
-                         NSAttributedString(string: "Чт", attributes: Styles.scheduleAttributes),
-                         NSAttributedString(string: "Пт", attributes: Styles.scheduleAttributes),
-                         NSAttributedString(string: "Сб", attributes: Styles.scheduleAttributes),
-                         NSAttributedString(string: "Вс", attributes: Styles.scheduleAttributes)
+        self.schedule = [NSAttributedString(string: "TrainViewController_mo".localized, attributes: Styles.scheduleAttributes),
+                         NSAttributedString(string: "TrainViewController_tu".localized, attributes: Styles.scheduleAttributes),
+                         NSAttributedString(string: "TrainViewController_we".localized, attributes: Styles.scheduleAttributes),
+                         NSAttributedString(string: "TrainViewController_th".localized, attributes: Styles.scheduleAttributes),
+                         NSAttributedString(string: "TrainViewController_fr".localized, attributes: Styles.scheduleAttributes),
+                         NSAttributedString(string: "TrainViewController_sa".localized, attributes: Styles.scheduleAttributes),
+                         NSAttributedString(string: "TrainViewController_su".localized, attributes: Styles.scheduleAttributes)
                         ]
     }
 }

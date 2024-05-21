@@ -228,7 +228,7 @@ final class TrainViewController: UIViewController {
     }
         
     private func updateDownloadButtonTitle() {
-        let title = isDownloaded ? "Изменить" : "Добавить"
+        let title = isDownloaded ? "ChangeEmail_ConfirmButton_title".localized : "TrainViewController_add".localized
         downloadButton.setTitle(title, for: .normal)
     }
 
@@ -394,7 +394,8 @@ extension TrainViewController: UICollectionViewDataSource {
             return .init()
         }
         
-        cell.titleLabel.text = ("Упражнение \(indexPath.item + 1)")
+        let text = "TrainViewController_exercise".localized.appending(" \(indexPath.item + 1)")
+        cell.titleLabel.text = (text)
         
         let descTitles = model.exercises
         let descTitle = descTitles[indexPath.item]

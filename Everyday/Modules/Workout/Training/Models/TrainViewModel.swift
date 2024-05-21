@@ -22,7 +22,7 @@ struct TrainViewModel {
         self.buttonTitle = "Загрузить"
         self.levelDescriptionLabel = NSAttributedString(string: "ProgramLevelsCollectionViewCell".localized, attributes: Styles.descriptionAttributes)
         self.timeDescriptionLabel = NSAttributedString(string: "TrainViewModelTime".localized, attributes: Styles.descriptionAttributes)
-        self.countDescriptionLabel = NSAttributedString(string: "TrainViewModelTime", attributes: Styles.descriptionAttributes)
+        self.countDescriptionLabel = NSAttributedString(string: "TrainViewModelCount".localized, attributes: Styles.descriptionAttributes)
         
         self.infoLabel = NSAttributedString(string: infoLabel, attributes: Styles.titleAttributes)
         self.timeLabel = NSAttributedString(string: timeLabel, attributes: Styles.valueAttributes)
