@@ -13,7 +13,7 @@ final class ExtraContainer {
     let viewController: UIViewController
     private(set) weak var router: ExtraRouterInput!
     
-    class func assemble(with context: ExtraContext) -> ExtraContainer {
+    static func assemble(with context: ExtraContext) -> ExtraContainer {
         let router = ExtraRouter()
         let interactor = ExtraInteractor()
         let presenter = ExtraPresenter(router: router, interactor: interactor, workout: context.workout, date: context.date)

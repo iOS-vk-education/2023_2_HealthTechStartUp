@@ -66,7 +66,6 @@
 		9DEC6AFF2BFA199C0028BAFD /* Preview.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9DEC6AFE2BFA199C0028BAFD /* Preview.swift */; };
 		9E0C348E2BD700CB00D8696B /* CloseButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9E0C348D2BD700CB00D8696B /* CloseButton.swift */; };
 		9E0C34902BD7CE6A00D8696B /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */; };
-		9E2A9EDF2BFBF01C0095C938 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9E2A9EDD2BFBF01C0095C938 /* Model.xcdatamodeld */; };
 		9E36D4822BFA4833004C5658 /* BeamAISDK in Frameworks */ = {isa = PBXBuildFile; productRef = 9E36D4812BFA4833004C5658 /* BeamAISDK */; };
 		9E36D4852BFA4863004C5658 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 9E36D4842BFA4863004C5658 /* FirebaseAuth */; };
 		9E36D4872BFA4863004C5658 /* FirebaseFirestore in Frameworks */ = {isa = PBXBuildFile; productRef = 9E36D4862BFA4863004C5658 /* FirebaseFirestore */; };
@@ -351,6 +350,7 @@
 		9EE1BFAC2BD7F5E100458F04 /* PinLayout in Frameworks */ = {isa = PBXBuildFile; productRef = 9EE1BFAB2BD7F5E100458F04 /* PinLayout */; };
 		9EE1BFB02BD7F5EE00458F04 /* VKID in Frameworks */ = {isa = PBXBuildFile; productRef = 9EE1BFAF2BD7F5EE00458F04 /* VKID */; };
 		9EE1BFB22BD7F5EE00458F04 /* VKIDCore in Frameworks */ = {isa = PBXBuildFile; productRef = 9EE1BFB12BD7F5EE00458F04 /* VKIDCore */; };
+		9EE507542BFC034C003BA676 /* Model.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = 9EE507522BFC034C003BA676 /* Model.xcdatamodeld */; };
 		9EE8AE052B7FA45F001D126F /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 9EE8AE042B7FA45F001D126F /* Localizable.xcstrings */; };
 		9EE8AE072B7FB77D001D126F /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 9EE8AE062B7FB77D001D126F /* TabBarController.swift */; };
 /* End PBXBuildFile section */
@@ -426,7 +426,6 @@
 		9DEC6AFE2BFA199C0028BAFD /* Preview.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Preview.swift; sourceTree = "<group>"; };
 		9E0C348D2BD700CB00D8696B /* CloseButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CloseButton.swift; sourceTree = "<group>"; };
 		9E0C348F2BD7CE6A00D8696B /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
-		9E2A9EDE2BFBF01C0095C938 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9E467A312BF2342400127EFA /* Everyday.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Everyday.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		9E467A322BF2356100127EFA /* WorkoutViewModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutViewModel.swift; sourceTree = "<group>"; };
 		9E467A342BF2356100127EFA /* WorkoutContainer.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WorkoutContainer.swift; sourceTree = "<group>"; };
@@ -708,6 +707,7 @@
 		9EDA25662BFBF3E1008FDACA /* ScheduleViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewController.swift; sourceTree = "<group>"; };
 		9EDA25682BFBF42C008FDACA /* EmptyUserProgramsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmptyUserProgramsViewModel.swift; sourceTree = "<group>"; };
 		9EDA256A2BFBF443008FDACA /* ScheduleViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ScheduleViewModel.swift; sourceTree = "<group>"; };
+		9EE507532BFC034C003BA676 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		9EE8AE042B7FA45F001D126F /* Localizable.xcstrings */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		9EE8AE062B7FB77D001D126F /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -2082,7 +2082,7 @@
 		9EA952FC2BF2286300ADBF9A /* CoreData */ = {
 			isa = PBXGroup;
 			children = (
-				9E2A9EDD2BFBF01C0095C938 /* Model.xcdatamodeld */,
+				9EE507522BFC034C003BA676 /* Model.xcdatamodeld */,
 				9EA952F82BF2286300ADBF9A /* CoreDataService.swift */,
 				9EA952FA2BF2286300ADBF9A /* UserAuthentication+CoreDataClass.swift */,
 				9EA952FB2BF2286300ADBF9A /* UserAuthentication+CoreDataProperties.swift */,
@@ -2718,6 +2718,7 @@
 				9EA9520C2BF19D5500ADBF9A /* DateAndTimeViewModel.swift in Sources */,
 				9DEC6AC42BFA16400028BAFD /* SheetViewModel.swift in Sources */,
 				9E467A842BF2358300127EFA /* OtherTypeViewModel.swift in Sources */,
+				9EE507542BFC034C003BA676 /* Model.xcdatamodeld in Sources */,
 				9E467A8E2BF2358300127EFA /* TextCell.swift in Sources */,
 				9EA952422BF19D5500ADBF9A /* UnitsPresenter.swift in Sources */,
 				9EA9524C2BF2262800ADBF9A /* SettingsInteractor.swift in Sources */,
@@ -2750,7 +2751,6 @@
 				9DEC6AE62BFA17830028BAFD /* ExerciseTimerView.swift in Sources */,
 				9EA9523C2BF19D5500ADBF9A /* ThemeRouter.swift in Sources */,
 				9D6337BE2BFB936B0034844E /* ActivityViewModel.swift in Sources */,
-				9E2A9EDF2BFBF01C0095C938 /* Model.xcdatamodeld in Sources */,
 				9EA9521B2BF19D5500ADBF9A /* HealthViewModel.swift in Sources */,
 				9EA952432BF19D5500ADBF9A /* UnitsProtocols.swift in Sources */,
 				9EA952012BF19D5500ADBF9A /* ChangeLanguageRouter.swift in Sources */,
@@ -3181,12 +3181,12 @@
 /* End XCSwiftPackageProductDependency section */
 
 /* Begin XCVersionGroup section */
-		9E2A9EDD2BFBF01C0095C938 /* Model.xcdatamodeld */ = {
+		9EE507522BFC034C003BA676 /* Model.xcdatamodeld */ = {
 			isa = XCVersionGroup;
 			children = (
-				9E2A9EDE2BFBF01C0095C938 /* Model.xcdatamodel */,
+				9EE507532BFC034C003BA676 /* Model.xcdatamodel */,
 			);
-			currentVersion = 9E2A9EDE2BFBF01C0095C938 /* Model.xcdatamodel */;
+			currentVersion = 9EE507532BFC034C003BA676 /* Model.xcdatamodel */;
 			name = Model.xcdatamodeld;
 			path = "/Users/mk126/Desktop/МГТУ/Технопарк ios/Технопарк 21/2023_2_HealthTechStartUp/Everyday/Services/Auth/Helpers/CoreData/Model.xcdatamodeld";
 			sourceTree = "<group>";

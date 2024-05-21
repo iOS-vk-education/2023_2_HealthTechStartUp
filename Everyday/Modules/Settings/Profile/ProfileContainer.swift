@@ -13,7 +13,7 @@ final class ProfileContainer {
     let viewController: UIViewController
     private(set) weak var router: ProfileRouterInput!
     
-    class func assemble(with context: ProfileContext) -> ProfileContainer {
+    static func assemble(with context: ProfileContext) -> ProfileContainer {
         let router = ProfileRouter()
         let interactor = ProfileInteractor(settingsService: SettingsService.shared, authService: AuthService.shared)
         let presenter = ProfilePresenter(router: router, interactor: interactor)

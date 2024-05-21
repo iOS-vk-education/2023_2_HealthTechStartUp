@@ -31,7 +31,9 @@ extension DeleteAccountPresenter: DeleteAccountViewOutput {
     }
     
     func didTapConfirmButton(with email: String?, and password: String?) {
-       interactor.deleteAccount(email: email ?? "", password: password ?? "")
+        HapticService.shared.selectionVibrate()
+        
+        interactor.deleteAccount(email: email ?? "", password: password ?? "")
     }
     
     func didLoadView() {

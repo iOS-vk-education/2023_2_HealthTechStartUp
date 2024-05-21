@@ -11,40 +11,50 @@ struct PhotoLibraryView: View {
     @StateObject private var viewModel = PhotoLibraryViewModel()
     
     var body: some View {
-        ScrollView(.horizontal) {
-            LazyHStack {
-                ForEach(viewModel.imageUrls, id: \.self) { imageUrl in
-                        AsyncImage(url: imageUrl) { phase in
-                            switch phase {
-                            case .empty:
-                                ProgressView()
-                                    .controlSize(.large)
-                            case .success(let image):
-                                image
-                                    .resizable()
-                                    .scaledToFit()
-                            case .failure:
-                                Text("Loading error")
-                                    .foregroundStyle(Color.gray)
-                            @unknown default:
-                                EmptyView()
+        ZStack {
+            Color.background
+                .ignoresSafeArea()
+            
+            if !viewModel.imageUrls.isEmpty {
+                ScrollView(.horizontal) {
+                    LazyHStack {
+                        ForEach(viewModel.imageUrls, id: \.self) { imageUrl in
+                            AsyncImage(url: imageUrl) { phase in
+                                switch phase {
+                                case .empty:
+                                    ProgressView()
+                                        .controlSize(.large)
+                                case .success(let image):
+                                    image
+                                        .resizable()
+                                        .scaledToFit()
+                                case .failure:
+                                    Text("Loading error")
+                                        .foregroundStyle(Color.gray)
+                                @unknown default:
+                                    EmptyView()
+                                }
                             }
+                            .frame(width: 400, height: 600)
+                            .background(
+                                Rectangle()
+                                    .fill(Color(uiColor: .gray.withAlphaComponent(0.1)))
+                                    .cornerRadius(8)
+                            )
                         }
-                        .frame(width: 400, height: 600)
-                        .background(
-                            Rectangle()
-                                .fill(Color(uiColor: .gray.withAlphaComponent(0.1)))
-                                .cornerRadius(8)
-                        )
+                    }
+                    .scrollTargetLayout()
                 }
+                .onAppear {
+                    viewModel.fetchImageUrls()
+                }
+                .scrollTargetBehavior(.viewAligned)
+                .background(Color.background)
+            } else {
+                Text("No saved photos")
+                    .font(.title)
             }
-            .scrollTargetLayout()
         }
-        .onAppear {
-            viewModel.fetchImageUrls()
-        }
-        .scrollTargetBehavior(.viewAligned)
-        .background(Color.background)
     }
 }
 

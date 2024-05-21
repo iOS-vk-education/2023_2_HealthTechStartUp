@@ -83,7 +83,7 @@ final class OtherCollectionViewCell: UICollectionViewCell {
     
     private func setupLabel() {
         label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.text = "Другое"
+        label.text = "OtherCollectionViewCell".localized
         label.textColor = UIColor(named: "SpaceGray")
     }
     

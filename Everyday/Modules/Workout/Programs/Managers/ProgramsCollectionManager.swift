@@ -111,7 +111,7 @@ extension ProgramsCollectionManager: UICollectionViewDelegateFlowLayout {
             return .init(width: collectionView.frame.width, height: 272)
             
         case .targetType:
-            return .init(width: collectionView.frame.width, height: 262)
+            return .init(width: collectionView.frame.width, height: 290)
             
         case .otherType:
             return .init(width: collectionView.frame.width, height: 180)

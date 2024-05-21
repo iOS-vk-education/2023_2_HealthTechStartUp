@@ -13,7 +13,7 @@ final class ChangePasswordContainer {
     let viewController: UIViewController
     private(set) weak var router: ChangePasswordRouterInput!
     
-    class func assemble(with context: ChangePasswordContext) -> ChangePasswordContainer {
+    static func assemble(with context: ChangePasswordContext) -> ChangePasswordContainer {
         let router = ChangePasswordRouter()
         let interactor = ChangePasswordInteractor(settingsService: SettingsService.shared)
         let presenter = ChangePasswordPresenter(router: router, interactor: interactor)

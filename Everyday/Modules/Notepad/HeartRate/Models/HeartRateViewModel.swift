@@ -17,13 +17,13 @@ struct HeartRateViewModel {
     let hrvDescriptionLabel: NSAttributedString
     
     init() {
-        self.stressTitleLabel = NSAttributedString(string: "Stress", attributes: Styles.titleAttributes)
-        self.hrvTitleLabel = NSAttributedString(string: "HRV", attributes: Styles.titleAttributes)
-        self.heartRateTitleLabel = NSAttributedString(string: "Heart Rate", attributes: Styles.titleAttributes)
-        self.heartRateDescriptionLabel = NSAttributedString(string: "BPM", attributes: Styles.descriptionAttributes)
-        self.hrvDescriptionLabel = NSAttributedString(string: "SDNN (ms)", attributes: Styles.descriptionAttributes)
-        self.startButtonTitle = NSAttributedString(string: "Start", attributes: Styles.buttonAttributes)
-        self.stopButtonTitle = NSAttributedString(string: "Stop", attributes: Styles.buttonAttributes)
+        self.stressTitleLabel = NSAttributedString(string: "HeartRateViewModel_stress".localized, attributes: Styles.titleAttributes)
+        self.hrvTitleLabel = NSAttributedString(string: "HeartRateViewModel_hrv".localized, attributes: Styles.titleAttributes)
+        self.heartRateTitleLabel = NSAttributedString(string: "HeartRateViewModel_rate".localized, attributes: Styles.titleAttributes)
+        self.heartRateDescriptionLabel = NSAttributedString(string: "".localized, attributes: Styles.descriptionAttributes)
+        self.hrvDescriptionLabel = NSAttributedString(string: "HeartRateViewModel_hrv_description".localized, attributes: Styles.descriptionAttributes)
+        self.startButtonTitle = NSAttributedString(string: "Onboarding_start_button_title".localized, attributes: Styles.buttonAttributes)
+        self.stopButtonTitle = NSAttributedString(string: "Timer_Stop_Button_Title".localized, attributes: Styles.buttonAttributes)
     }
 }
 

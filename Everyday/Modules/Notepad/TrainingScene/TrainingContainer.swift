@@ -13,7 +13,7 @@ final class TrainingContainer {
     let viewController: UIViewController
     private(set) weak var router: TrainingRouterInput!
     
-    class func assemble(with context: TrainingContext) -> TrainingContainer {
+    static func assemble(with context: TrainingContext) -> TrainingContainer {
         let router = TrainingRouter()
         let interactor = TrainingInteractor()
         let presenter = TrainingPresenter(router: router, interactor: interactor, workout: context.workout, date: context.date)

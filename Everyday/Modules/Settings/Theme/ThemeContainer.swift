@@ -13,7 +13,7 @@ final class ThemeContainer {
     let viewController: UIViewController
     private(set) weak var router: ThemeRouterInput!
     
-    class func assemble(with context: ThemeContext) -> ThemeContainer {
+    static func assemble(with context: ThemeContext) -> ThemeContainer {
         let router = ThemeRouter()
         let presenter = ThemePresenter(router: router)
         let viewController = ThemeViewController(output: presenter)

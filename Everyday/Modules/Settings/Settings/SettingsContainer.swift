@@ -14,7 +14,7 @@ final class SettingsContainer {
     
     private(set) weak var router: SettingsRouterInput!
     
-    class func assemble(with context: SettingsContext) -> SettingsContainer {
+    static func assemble(with context: SettingsContext) -> SettingsContainer {
         let router = SettingsRouter()
         let interactor = SettingsInteractor()
         let presenter = SettingsPresenter(router: router, interactor: interactor)

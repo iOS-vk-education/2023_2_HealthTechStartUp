@@ -177,11 +177,11 @@ extension NotepadPresenter: NotepadInteractorOutput {
         DispatchQueue.main.async {
             switch result {
             case .success(let train):
-                self.router.openPrograms(with: train, and: "Загруженные программы")
+                self.router.openPrograms(with: train, and: "NotepadPresenterLoadedPrograms".localized)
             case .failure(let error):
                 if let nsError = error as NSError? {
                     if nsError.domain == "DataError" && nsError.code == -1 {
-                        self.router.openEmptyPrograms(with: "Загруженные программы")
+                        self.router.openEmptyPrograms(with: "NotepadPresenterLoadedPrograms".localized)
                     } else {
                         self.view?.showAlert(with: .networkMessage(error: error))
                     }

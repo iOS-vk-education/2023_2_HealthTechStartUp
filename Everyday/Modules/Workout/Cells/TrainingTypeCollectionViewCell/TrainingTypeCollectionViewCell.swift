@@ -86,12 +86,12 @@ extension TrainingTypeCollectionViewCell: UICollectionViewDataSource {
             }
 
         let imageDescriptions = ["TrainingCollectionViewCell_description_pic1".localized,
-                                 "TrainingCollectionViewCell_description_pic2".localized,
-                                 "TrainingCollectionViewCell_description_pic3".localized,
-                                 "TrainingCollectionViewCell_description_pic4".localized,
-                                 "TrainingtCollectionViewCell_description_pic5".localized,
-                                 "TrainingCollectionViewCell_description_pic6".localized,
-                                 "TrainingCollectionViewCell_description_pic7".localized]
+             "TrainingCollectionViewCell_description_pic2".localized,
+             "TrainingCollectionViewCell_description_pic3".localized,
+             "TrainingCollectionViewCell_description_pic4".localized,
+             "TrainingtCollectionViewCell_description_pic5".localized,
+             "TrainingCollectionViewCell_description_pic6".localized,
+             "TrainingCollectionViewCell_description_pic7".localized]
         cell.setText("\(imageDescriptions[indexPath.row])")
 
         return cell

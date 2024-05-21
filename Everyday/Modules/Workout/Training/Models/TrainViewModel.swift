@@ -20,9 +20,9 @@ struct TrainViewModel {
     
     init(infoLabel: String, levelLabel: String, timeLabel: String, countLabel: String) {
         self.buttonTitle = "Загрузить"
-        self.levelDescriptionLabel = NSAttributedString(string: "Сложность", attributes: Styles.descriptionAttributes)
-        self.timeDescriptionLabel = NSAttributedString(string: "Длительность", attributes: Styles.descriptionAttributes)
-        self.countDescriptionLabel = NSAttributedString(string: "Тренировок", attributes: Styles.descriptionAttributes)
+        self.levelDescriptionLabel = NSAttributedString(string: "ProgramLevelsCollectionViewCell".localized, attributes: Styles.descriptionAttributes)
+        self.timeDescriptionLabel = NSAttributedString(string: "TrainViewModelTime".localized, attributes: Styles.descriptionAttributes)
+        self.countDescriptionLabel = NSAttributedString(string: "TrainViewModelCount".localized, attributes: Styles.descriptionAttributes)
         
         self.infoLabel = NSAttributedString(string: infoLabel, attributes: Styles.titleAttributes)
         self.timeLabel = NSAttributedString(string: timeLabel, attributes: Styles.valueAttributes)

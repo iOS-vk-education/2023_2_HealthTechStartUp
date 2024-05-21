@@ -13,7 +13,7 @@ final class DateAndTimeContainer {
     let viewController: UIViewController
     private(set) weak var router: DateAndTimeRouterInput!
     
-    class func assemble(with context: DateAndTimeContext) -> DateAndTimeContainer {
+    static func assemble(with context: DateAndTimeContext) -> DateAndTimeContainer {
         let router = DateAndTimeRouter()
         let presenter = DateAndTimePresenter(router: router)
         let viewController = DateAndTimeViewController(output: presenter)

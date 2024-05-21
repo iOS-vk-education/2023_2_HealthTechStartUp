@@ -82,7 +82,7 @@ final class TargetCollectionViewCell: UICollectionViewCell {
     
     private func setupLabel() {
         label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.text = "Выбор по направлению"
+        label.text = "TargetCollectionViewCell".localized
         label.textColor = UIColor(named: "SpaceGray")
     }
     

@@ -10,14 +10,13 @@ import SwiftUI
 struct WeightFatView: View {
     @ObservedObject var healthService: HealthService
     @State var weight: String = ""
-    @State var unit: String = ""
     @State var fat: String = ""
     
     var body: some View {
         HStack {
             VStack {
                 Text("Weight")
-                Text("\(weight) \(unit)")
+                Text("\(weight)")
             }
             Spacer()
             VStack {
@@ -29,19 +28,18 @@ struct WeightFatView: View {
             healthService.fetchWeight { result, bodyMass, measure in
                 switch result {
                 case .success:
-                    weight = bodyMass ?? ""
-                    unit = measure ?? ""
-                case .failure(let error):
-                    print(error.localizedDescription)
+                    weight = (bodyMass ?? "?") + " " + (measure ?? "")
+                case .failure:
+                    weight = "?"
                 }
             }
             
             healthService.fetchFatPercentage { result, fatPercent in
                 switch result {
                 case .success:
-                    fat = fatPercent ?? ""
-                case .failure(let error):
-                    print(error.localizedDescription)
+                    fat = fatPercent ?? "?"
+                case .failure:
+                    fat = "?"
                 }
             }
         }

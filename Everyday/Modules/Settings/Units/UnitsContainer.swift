@@ -13,7 +13,7 @@ final class UnitsContainer {
     let viewController: UIViewController
     private(set) weak var router: UnitsRouterInput!
     
-    class func assemble(with context: UnitsContext) -> UnitsContainer {
+    static func assemble(with context: UnitsContext) -> UnitsContainer {
         let router = UnitsRouter()
         let interactor = UnitsInteractor(settingsService: SettingsService.shared)
         let presenter = UnitsPresenter(router: router, interactor: interactor)

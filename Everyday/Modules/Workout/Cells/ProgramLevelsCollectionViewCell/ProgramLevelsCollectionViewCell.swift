@@ -78,7 +78,6 @@ final class ProgramLevelsCollectionViewCell: UICollectionViewCell {
     // MARK: - actions
     
     private func setUp() {
-        
         setupLabel()
         
         contentView.addSubview(containerView)
@@ -90,7 +89,7 @@ final class ProgramLevelsCollectionViewCell: UICollectionViewCell {
     
     private func setupLabel() {
         label.font = UIFont.boldSystemFont(ofSize: 24)
-        label.text = "Сложность тренировок"
+        label.text = "ProgramLevelsCollectionViewCell".localized
         label.textColor = UIColor(named: "SpaceGray")
     }
     

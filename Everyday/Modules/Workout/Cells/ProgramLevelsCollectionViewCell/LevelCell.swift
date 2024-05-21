@@ -60,9 +60,9 @@ final class LevelCell: UICollectionViewCell {
     
     private func setupLabel() {
         if Locale.current.language.languageCode?.identifier == "ru" {
-            label.font = UIFont(name: "Arial-Black", size: 20)
+            label.font = UIFont.boldSystemFont(ofSize: 20)
         } else {
-            label.font = UIFont(name: "Arial-Black", size: 27)
+            label.font = UIFont.boldSystemFont(ofSize: 27)
         }
         label.textColor = .black
         label.textAlignment = .center

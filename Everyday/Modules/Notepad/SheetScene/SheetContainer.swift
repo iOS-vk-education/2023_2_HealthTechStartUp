@@ -13,7 +13,7 @@ final class SheetContainer {
     let viewController: UIViewController
     private(set) weak var router: SheetRouterInput!
     
-    class func assemble(with context: SheetContext) -> SheetContainer {
+    static func assemble(with context: SheetContext) -> SheetContainer {
         let router = SheetRouter()
         let interactor = SheetInteractor()
         let presenter = SheetPresenter(router: router, interactor: interactor)

@@ -412,24 +412,30 @@ extension HeartRateViewController {
         }
 
         if stress.isNaN {
-            stressValueLabel.attributedText = NSAttributedString(string: "NaN", attributes: Constants.Styles.valueAttributes)
-            stressDescriptionLabel.attributedText = NSAttributedString(string: "---", attributes: Constants.Styles.descriptionAttributes)
+            stressValueLabel.attributedText = NSAttributedString(string: "HeartRateViewController_empty".localized, 
+                                                                 attributes: Constants.Styles.valueAttributes)
+            stressDescriptionLabel.attributedText = NSAttributedString(string: "---", 
+                                                                       attributes: Constants.Styles.descriptionAttributes)
             stressDescriptionLabel.backgroundColor = .black
         } else {
             let stressRounded = round(stress * 100) / 100
             stressValueLabel.attributedText = NSAttributedString(string: "\(stressRounded)", attributes: Constants.Styles.valueAttributes)
 
             if stressRounded < 1.5 {
-                stressDescriptionLabel.attributedText = NSAttributedString(string: "Normal", attributes: Constants.Styles.descriptionAttributes)
+                stressDescriptionLabel.attributedText = NSAttributedString(string: "HeartRateViewController_normal".localized, 
+                                                                           attributes: Constants.Styles.descriptionAttributes)
                 stressDescriptionLabel.backgroundColor = UIColor(red: 12 / 256, green: 128 / 256, blue: 42 / 256, alpha: 1.0)
             } else if (1.5 <= stressRounded) && (stressRounded < 2.5) {
-                stressDescriptionLabel.attributedText = NSAttributedString(string: "Mild", attributes: Constants.Styles.descriptionAttributes)
+                stressDescriptionLabel.attributedText = NSAttributedString(string: "HeartRateViewController_mild".localized, 
+                                                                           attributes: Constants.Styles.descriptionAttributes)
                 stressDescriptionLabel.backgroundColor = .blue
             } else if (2.5 <= stressRounded) && (stressRounded < 3.5) {
-                stressDescriptionLabel.attributedText = NSAttributedString(string: "High", attributes: Constants.Styles.descriptionAttributes)
+                stressDescriptionLabel.attributedText = NSAttributedString(string: "HeartRateViewController_high".localized, 
+                                                                           attributes: Constants.Styles.descriptionAttributes)
                 stressDescriptionLabel.backgroundColor = .orange
             } else if 3.5 <= stressRounded {
-                stressDescriptionLabel.attributedText = NSAttributedString(string: "Very High", attributes: Constants.Styles.descriptionAttributes)
+                stressDescriptionLabel.attributedText = NSAttributedString(string: "HeartRateViewController_very_high".localized, 
+                                                                           attributes: Constants.Styles.descriptionAttributes)
                 stressDescriptionLabel.backgroundColor = .red
             }
         }
@@ -441,7 +447,8 @@ extension HeartRateViewController {
         }
 
         if heartRate.isNaN {
-           heartRateValueLabel.attributedText = NSAttributedString(string: "NaN", attributes: Constants.Styles.valueAttributes)
+           heartRateValueLabel.attributedText = NSAttributedString(string: "HeartRateViewController_empty".localized, 
+                                                                   attributes: Constants.Styles.valueAttributes)
         } else {
            heartRateValueLabel.attributedText = NSAttributedString(string: "\(round(heartRate * 10) / 10)", attributes: Constants.Styles.valueAttributes)
         }
@@ -453,7 +460,7 @@ extension HeartRateViewController {
         }
 
         if heartRateVariability.isNaN {
-            hrvValueLabel.attributedText = NSAttributedString(string: "NaN", attributes: Constants.Styles.valueAttributes)
+            hrvValueLabel.attributedText = NSAttributedString(string: "HeartRateViewController_empty".localized, attributes: Constants.Styles.valueAttributes)
         } else {
             hrvValueLabel.attributedText = NSAttributedString(string: "\(Int(round(heartRateVariability * 1000)))",
                                                               attributes: Constants.Styles.valueAttributes)

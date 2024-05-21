@@ -32,16 +32,23 @@ final class TrainingDaysViewController: UIViewController {
     private let user: String
     
     private let dayMapping: [String: String] = [
-        "Пн": "monday",
-        "Вт": "tuesday",
-        "Ср": "wednesday",
-        "Чт": "thursday",
-        "Пт": "friday",
-        "Сб": "saturday",
-        "Вс": "sunday"
+        "TrainViewController_mo".localized: "monday",
+        "TrainViewController_tu".localized: "tuesday",
+        "TrainViewController_we".localized: "wednesday",
+        "TrainViewController_th".localized: "thursday",
+        "TrainViewController_fr".localized: "friday",
+        "TrainViewController_sa".localized: "saturday",
+        "TrainViewController_su".localized: "sunday"
     ]
     
-    private let dayOrder: [String] = ["Пн", "Вт", "Ср", "Чт", "Пт", "Сб", "Вс"]
+    private let dayOrder: [String] = ["TrainViewController_mo".localized,
+                                      "TrainViewController_tu".localized,
+                                      "TrainViewController_we".localized,
+                                      "TrainViewController_th".localized,
+                                      "TrainViewController_fr".localized,
+                                      "TrainViewController_sa".localized,
+                                      "TrainViewController_su".localized
+    ]
     
     // MARK: - Lifecycle
     
@@ -91,7 +98,7 @@ final class TrainingDaysViewController: UIViewController {
         deleteButton.backgroundColor = .red
         deleteButton.setTitleColor(.white, for: .normal)
         deleteButton.layer.cornerRadius = 10
-        deleteButton.setTitle("Удалить", for: .normal)
+        deleteButton.setTitle("DeleteAccount_Delete_title".localized, for: .normal)
         deleteButton.addTarget(self, action: #selector(deleteButtonTapped), for: .touchUpInside)
         deleteButton.isHidden = true
     }
@@ -168,7 +175,7 @@ final class TrainingDaysViewController: UIViewController {
     }
     
     private func updateDownloadButtonTitle() {
-        let title = isDownloaded ? "Изменить" : "Загрузить"
+        let title = isDownloaded ? "ChangeEmail_ConfirmButton_title".localized : "TrainingDaysViewController_load".localized
         downloadButton.setTitle(title, for: .normal)
     }
     

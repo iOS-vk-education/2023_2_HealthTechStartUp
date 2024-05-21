@@ -13,7 +13,7 @@ final class ResultsContainer {
     let viewController: UIViewController
     private(set) weak var router: ResultsRouterInput!
     
-    class func assemble(with context: ResultsContext) -> ResultsContainer {
+    static func assemble(with context: ResultsContext) -> ResultsContainer {
         let router = ResultsRouter()
         let interactor = ResultsInteractor()
         let presenter = ResultsPresenter(router: router, interactor: interactor, exercises: context.exercises)

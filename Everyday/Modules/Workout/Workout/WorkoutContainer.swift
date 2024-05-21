@@ -13,7 +13,7 @@ final class WorkoutContainer {
     let viewController: UIViewController
     private(set) weak var router: WorkoutRouterInput!
     
-    class func assemble(with context: WorkoutContext) -> WorkoutContainer {
+    static func assemble(with context: WorkoutContext) -> WorkoutContainer {
         let programsViewController = ProgramsContainer.assemble(with: .init()).viewController
         let walkProgramsViewController = WalkProgramsContainer.assemble(with: .init()).viewController
         let router = WorkoutRouter(programsViewController: programsViewController, walkProgramsViewController: walkProgramsViewController)

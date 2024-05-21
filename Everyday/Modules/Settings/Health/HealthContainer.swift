@@ -13,7 +13,7 @@ final class HealthContainer {
     let viewController: UIViewController
     private(set) weak var router: HealthRouterInput!
     
-    class func assemble(with context: HealthContext) -> HealthContainer {
+    static func assemble(with context: HealthContext) -> HealthContainer {
         let router = HealthRouter()
         let interactor = HealthInteractor()
         let presenter = HealthPresenter(router: router, interactor: interactor)
